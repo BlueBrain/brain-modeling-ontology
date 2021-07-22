@@ -1,3 +1,3 @@
-# Generic DKE template
+# Brain Modeling Ontology
 
-This is a generic template for any DKE app
+TODO
