@@ -1,0 +1,4 @@
+pytest==6.2.4
+pyLD
+ontospy
+git+https://github.com/BlueBrain/nexus-forge

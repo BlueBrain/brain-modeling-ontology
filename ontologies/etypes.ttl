@@ -1,0 +1,367 @@
+@prefix : <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes> .
+
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes> rdf:type owl:Ontology ;
+                                                          rdfs:label "Cell Electrophysiological Types" ;
+                                                          <https://neuroshapes.org/defines> <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/BlueBrainEType> ,
+                                                                                            <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ,
+                                                                                            <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ,
+                                                                                            <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/cACint> ,
+                                                                                            <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/cADpyr> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738197> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738198> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738199> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738200> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738201> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738202> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738203> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738204> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738205> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738206> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738207> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738241> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738242> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738243> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738244> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738245> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738246> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738247> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738248> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738249> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738250> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738251> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738252> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738253> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738254> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738255> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738256> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738257> ,
+                                                                                            <http://uri.interlex.org/base/ilx_0738258> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+<http://www.w3.org/2004/02/skos/core#notation> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
+
+
+###  https://neuroshapes.org/defines
+<https://neuroshapes.org/defines> rdf:type owl:AnnotationProperty .
+
+
+###  https://neuroshapes.org/hasInstanceInSpecies
+<https://neuroshapes.org/hasInstanceInSpecies> rdf:type owl:AnnotationProperty .
+
+
+###  https://neuroshapes.org/hasSomaLocatedIn
+<https://neuroshapes.org/hasSomaLocatedIn> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/BlueBrainEType
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/BlueBrainEType> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf <https://neuroshapes.org/Neuron> ;
+                                                                        rdfs:label "BlueBrainEType"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/BlueBrainEType> ,
+                                                                                        <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/R7cPrffcjnsvV5Nyigk3ht0> ;
+                                                                        rdfs:label "NeocortexEType"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/R7cPrffcjnsvV5Nyigk3ht0
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/R7cPrffcjnsvV5Nyigk3ht0> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <https://neuroshapes.org/Neuron> ;
+                                                                                 rdfs:label "Neuron Electrical Type"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/BlueBrainEType> ,
+                                                                                       <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/R7cPrffcjnsvV5Nyigk3ht0> ;
+                                                                       rdfs:label "ThalamusEType"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/cACint
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/cACint> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
+                                                                rdfs:label "cACint"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#notation> "cACint"^^xsd:string ;
+                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous accommodating interneuron electrical type"^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/cADpyr
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/cADpyr> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
+                                                                rdfs:label "cADpyr"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#notation> "cADpyr"^^xsd:string ;
+                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous adapting pyramidal cell electrical type"^^xsd:string .
+
+
+###  http://uri.interlex.org/base/ilx_0738197
+<http://uri.interlex.org/base/ilx_0738197> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ,
+                                                           <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cAC"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cAC"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous accommodating electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738198
+<http://uri.interlex.org/base/ilx_0738198> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cSTUT"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cSTUT"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous stuttering electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738199
+<http://uri.interlex.org/base/ilx_0738199> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "bAC"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "bAC"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Burst accommodating electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738200
+<http://uri.interlex.org/base/ilx_0738200> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
+                                           rdfs:label "bSTUT"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "bSTUT"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Burst stuttering electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738201
+<http://uri.interlex.org/base/ilx_0738201> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
+                                           rdfs:label "cNAC"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cNAC"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous non-accommodating electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738202
+<http://uri.interlex.org/base/ilx_0738202> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
+                                           rdfs:label "dSTUT"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "dSTUT"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Delayed stuttering electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738203
+<http://uri.interlex.org/base/ilx_0738203> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
+                                           rdfs:label "bNAC"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "bNAC"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Burst non-accommodating electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738204
+<http://uri.interlex.org/base/ilx_0738204> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
+                                           rdfs:label "cIR"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cIR"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous irregular electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738205
+<http://uri.interlex.org/base/ilx_0738205> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
+                                           rdfs:label "dNAC"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "dNAC"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Delayed non-accommodating electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738206
+<http://uri.interlex.org/base/ilx_0738206> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
+                                           rdfs:label "bIR"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "bIR"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Burst irregular electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738207
+<http://uri.interlex.org/base/ilx_0738207> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ,
+                                                           <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cAD"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cAD"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous adapting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738241
+<http://uri.interlex.org/base/ilx_0738241> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "ltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "ltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738242
+<http://uri.interlex.org/base/ilx_0738242> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "noscltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "noscltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Non-oscillatory low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738243
+<http://uri.interlex.org/base/ilx_0738243> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cNAD"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cNAD"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous non-adapting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738244
+<http://uri.interlex.org/base/ilx_0738244> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "oscltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "oscltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Oscillatory low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738245
+<http://uri.interlex.org/base/ilx_0738245> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "dNAD"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "dNAD"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Delayed non-adapting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738246
+<http://uri.interlex.org/base/ilx_0738246> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "dAD"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "dAD"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Delayed adapting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738247
+<http://uri.interlex.org/base/ilx_0738247> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "bAD"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "bAD"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Burst adapting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738248
+<http://uri.interlex.org/base/ilx_0738248> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "nltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "nltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Non-low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738249
+<http://uri.interlex.org/base/ilx_0738249> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cNAD-noscltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cNAD-noscltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous non-adapting non-oscillatory low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738250
+<http://uri.interlex.org/base/ilx_0738250> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cAD-noscltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cAD-noscltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous adapting non-oscillatory low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738251
+<http://uri.interlex.org/base/ilx_0738251> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cNAD-nltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cNAD-nltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous non-adapting non-low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738252
+<http://uri.interlex.org/base/ilx_0738252> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cNAD-oscltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cNAD-oscltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous non-adapting oscillatory low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738253
+<http://uri.interlex.org/base/ilx_0738253> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cNAD-altb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cNAD-altb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous non-adapting atypical low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738254
+<http://uri.interlex.org/base/ilx_0738254> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cNAD-ltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cNAD-ltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous non-adapting low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738255
+<http://uri.interlex.org/base/ilx_0738255> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cAD-ltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cAD-ltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous adapting low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738256
+<http://uri.interlex.org/base/ilx_0738256> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "dNAD-ltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "dNAD-ltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Delayed non-adapting low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738257
+<http://uri.interlex.org/base/ilx_0738257> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "cSTUT-noscltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cSTUT-noscltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous stuttering non-oscillatory low-threshold bursting electrical type"@en .
+
+
+###  http://uri.interlex.org/base/ilx_0738258
+<http://uri.interlex.org/base/ilx_0738258> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
+                                           rdfs:label "dAD-ltb"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "dAD-ltb"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Delayed adapting low-threshold bursting electrical type"@en .
+
+
+###  https://neuroshapes.org/Cell
+<https://neuroshapes.org/Cell> rdf:type owl:Class ;
+                               rdfs:subClassOf owl:Thing ;
+                               rdfs:label "Brain Cell Type"@en .
+
+
+###  https://neuroshapes.org/Neuron
+<https://neuroshapes.org/Neuron> rdf:type owl:Class ;
+                                 rdfs:subClassOf <https://neuroshapes.org/Cell> ;
+                                 rdfs:label "Neuron Type"@en ;
+                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Neuron Type"@en .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

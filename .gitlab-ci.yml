@@ -1,76 +1,71 @@
-# This is a template, edit it to make it work on your project.
-
-# Here add the image required for running your CI/CD pipeline
 image: python:3.7
 
-# This is an external config for building and pushing Docker images (remove, if not applicable)
 include:
   - project: cs/gitlabci-templates
     file: /build-image-using-kaniko.yml
 
-# Here, add the necessary variables.
-# You can also add variables to your project by going to
-# 'Settings -> CI/CD -> Variables'. If you add sensitive information to your variable (e.g. password, username)
-# do not forget to mask them!
-variables:
-  VAR1: "Hello world!"
-  VAR2: "Hello user!"
-
-# This is executed before running your stages
-before_script:
-  - echo "Executing this before all jobs..."
-
-# This is an example sequence of stages
 stages:
-  - build
   - test
+  - register
   - deploy
 
-build:
-  stage: build
-  script:
-   - echo "Building..." && exit 0
-
-# Here we have two jobs that will be run on the 'test' stage in parallel
-
-test-job-1:
+# It runs only when a push is executed in a merge request and an ontology file has changed
+# or when a commit is executed in develop branch and an ontology file has changed
+# or when a new tag is pushed
+test-ontologies-on-merge-request:
   stage: test
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: always
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
+      changes:
+        - ontologies/bbp/*
+      when: always
+    - if: $CI_COMMIT_TAG
+      when: always
   script:
-    - echo "Running test job 1..." && echo $VAR1 && exit 0
+    - pytest tests/test_ontologies.py
+  before_script:
+    - pip install -r requirements.txt
 
-test-job-2:
-  stage: test
+# It runs only when a commit is done on develop branch and the pipeline was triggered from a Merge Request
+# and an ontology file has changed
+register-on-staging-environment:
+  stage: register
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
+      changes:
+        - ontologies/bbp/*
+      when: on_success
   script:
-    - echo "Running test job 2..." && echo $VAR2 && exit 0
+    - git fetch
+    - CHANGED_FILES=$(git diff --name-only HEAD~1)
+    - python register_ontologies.py --environment staging --token $NEXUS_TOKEN_STAGING --files $CHANGED_FILES
+  before_script:
+    - pip install -r requirements.txt
 
-# Here we have two jobs that will be run on 'deploy' stage
-# Deploy in staging will be executed, only when changes to 'develop' are made
-deploy-staging:
+# It runs only when a new tag is pushed.
+# It executes ontologies registration for the files changed between this version and the previous one
+register-on-production-environment:
+  stage: register
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: on_success
+  script:
+    - echo $CI_COMMIT_TAG
+    - python register_ontologies.py --environment production --token $NEXUS_TOKEN_PRODUCTION --tag $CI_COMMIT_TAG
+  before_script:
+    - pip install -r requirements.txt
+
+# It runs only when a new tag is pushed
+# It executes deployment of ontologies documentation to Openshift
+deploy-docs-in-openshift:
   stage: deploy
-  script:
-    - echo "Deploying on staging..." && exit 0
-  only:
-    - develop
-
-# Deploy in production will be executed, only when changes to 'main' are made
-deploy-production:
-  stage: deploy
-  script:
-    - echo "Deploying on production..." && exit 0
-  only:
-    - main
-
-# If you want one of your deploy jobs to build and push Docker images to the BBP image registry,
-# add the following variables in 'Settings -> CI/CD -> Variables'
-# CI_REGISTRY: docker-registry-default.ocp.bbp.epfl.ch
-# CI_REGISTRY_IMAGE: docker-registry-default.ocp.bbp.epfl.ch/<your-project>/<your-image>
-# (!MASKED) CI_REGISTRY_PASSWORD: the token for the service account
-# (!MASKED) CI_REGISTRY_USER: remote-pusher (or any other service account you have in Openshift to push images)
-# and use the following commented job:
-
-# build-push-image-job-example:
-#  stage: deploy
-#  extends: .build-image-using-kaniko
-#  only:
-#    - main
-  
+  extends: .build-image-using-kaniko
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
+      changes:
+        - ontologies/bbp/*
+      when: on_success
+  variables:
+    KANIKO_EXTRA_ARGS: "--build-arg GITLAB_DEPLOY_TOKEN=${GITLAB_DEPLOY_TOKEN} --build-arg GITLAB_DEPLOY_PASSWORD=${GITLAB_DEPLOY_PASSWORD}"
