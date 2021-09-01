@@ -38,9 +38,7 @@ register-on-staging-environment:
         - ontologies/bbp/*
       when: on_success
   script:
-    - git fetch
-    - CHANGED_FILES=$(git diff --name-only HEAD~1)
-    - python register_ontologies.py --environment staging --token $NEXUS_TOKEN_STAGING --files $CHANGED_FILES
+    - python register_ontologies.py --environment staging --token $NEXUS_TOKEN_STAGING
   before_script:
     - pip install -r requirements.txt
 

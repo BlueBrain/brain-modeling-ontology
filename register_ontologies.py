@@ -1,16 +1,13 @@
 import argparse
+import glob
 
 import rdflib
 
 import bmo_tools.ontologies as bmo
 
-from os import listdir
-
 from kgforge.core import KnowledgeGraphForge
 
 from ontospy import Ontospy
-
-from os.path import isfile, join
 
 from rdflib import Namespace
 
@@ -28,7 +25,6 @@ def define_arguments():
                         help='In which Nexus environment should the script run?',
                         required=True)
     parser.add_argument("--token", help="The nexus token", type=str, required=True)
-    parser.add_argument("--files", nargs="+", default=[], required=False)
     parser.add_argument("--tag", help="The tag of the ontology. Defaults to None", default=None, type=str)
     return parser
 
@@ -120,18 +116,15 @@ def parse_and_register_ontologies(arguments):
     """
     environment = arguments.environment
     token = arguments.token
-    files = arguments.files
     tag = arguments.tag
+
+    # ontology files are all turtle files that are placed under the "ontologies/bbp" directory
+    ontology_files = glob.glob(f"./ontologies/bbp/*.ttl")
 
     if environment == "staging":
         endpoint = "https://staging.nexus.ocp.bbp.epfl.ch/v1"
-        # ontology files are all changed files that are placed under the "ontologies/" directory
-        ontology_files = [file for file in files if "ontologies/bbp" in file]
     elif environment == "production":
         endpoint = "https://bbp.epfl.ch/nexus/v1"
-        # ontology files are all files under ./ontologies/bbp
-        ontology_path = "./ontologies/bbp"
-        ontology_files = [f"{ontology_path}/{file}" for file in listdir(ontology_path) if isfile(join(ontology_path, file))]
     else:
         raise ValueError("Environment argument must be either \"staging\" or \"production\" ")
 
