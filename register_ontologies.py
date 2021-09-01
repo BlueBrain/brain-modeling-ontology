@@ -71,7 +71,8 @@ def execute_registration(forge, ontology_path, tag=None):
         # Already exist in Nexus
         "https://bbp.epfl.ch/nexus/webprotege/#projects/c0f3a3e7-6dd2-4802-a00a-61ae366a35bb/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mba",
         "https://bbp.epfl.ch/nexus/webprotege/#projects/7515dc12-ce84-4eea-ba8e-6262670ac741/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes",
-        "https://bbp.epfl.ch/nexus/webprotege/#projects/6a23494a-360c-4152-9e81-fd9828f44db9/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes"
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/6a23494a-360c-4152-9e81-fd9828f44db9/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/e57bffdc-40fb-4507-b23e-e7b279625a45/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/"
     }
 
     bmo.replace_is_defined_by_uris(ontology_graph, WEBPROTEGE_TO_NEXUS)

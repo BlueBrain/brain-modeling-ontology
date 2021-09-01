@@ -57,7 +57,7 @@ def _register_ontology_resource(forge, ontology_json, ontology_path):
 
 def register_ontology(forge, ontology_graph, context, path, prefix, tag=None):
     """Register ontology resource to the store.
-    
+
     Try registering ontology to the store of the initialized forge.
     if ontology is too large, remove `defines` relationships from the ontology
     to classes and retry registering. If ontology exisits, update it.

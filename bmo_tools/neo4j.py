@@ -1,4 +1,5 @@
 """Utils for pushing ontologies into a Neo4j DB."""
+import re
 from neo4j import GraphDatabase
 
 from bluegraph import PandasPGFrame
@@ -17,6 +18,15 @@ LABEL_MAPPING = {
     "Dataset": "DATASET",
     "Molecule": "MOLECULE"
 }
+
+
+def replace_uris(x):
+    return {
+        el
+        if not re.match(r"(http:\/\/.*)#(.*)", el)
+        else re.match(r"(http:\/\/.*)#(.*)", el).groups()[1]
+        for el in x
+    }
 
 
 def execute(driver, query):
@@ -58,6 +68,10 @@ def ontology_to_neo4j(uri, username, password, path_to_ontology=None,
     frame = PandasPGFrame.from_ontology(
         filepath=path_to_ontology, rdf_graph=rdf_graph,
         format=format, remove_prop_uris=True)
+
+    # Check no uri-like edge types were produced
+    frame._edges["@type"] = frame._edges["@type"].apply(replace_uris)
+
     clean_db(driver)
     pgframe_to_neo4j(
         frame, driver=driver, node_label="ONTOLOGY_CLASS",
