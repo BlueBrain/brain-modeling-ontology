@@ -18,8 +18,6 @@ test-ontologies-on-merge-request:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
       when: always
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
-      changes:
-        - ontologies/bbp/*
       when: always
     - if: $CI_COMMIT_TAG
       when: always
@@ -34,8 +32,6 @@ register-on-staging-environment:
   stage: register
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
-      changes:
-        - ontologies/bbp/*
       when: on_success
   script:
     - python register_ontologies.py --environment staging --token $NEXUS_TOKEN_STAGING
@@ -62,8 +58,6 @@ deploy-docs-in-openshift:
   extends: .build-image-using-kaniko
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
-      changes:
-        - ontologies/bbp/*
       when: on_success
   variables:
     KANIKO_EXTRA_ARGS: "--build-arg GITLAB_DEPLOY_TOKEN=${GITLAB_DEPLOY_TOKEN} --build-arg GITLAB_DEPLOY_PASSWORD=${GITLAB_DEPLOY_PASSWORD}"
