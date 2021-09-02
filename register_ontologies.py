@@ -11,6 +11,8 @@ from ontospy import Ontospy
 
 from rdflib import Namespace
 
+from bmo_tools.utils import remove_non_ascii
+
 
 def define_arguments():
     """
@@ -45,6 +47,9 @@ def execute_registration(forge, ontology_path, tag=None):
     UBERON = Namespace('http://purl.obolibrary.org/obo/UBERON_')
     SKOS = Namespace('http://www.w3.org/2004/02/skos/core#')
     OWL = Namespace('http://www.w3.org/2002/07/owl#')
+    # first remove non-ascii characters from ontology
+    remove_non_ascii(ontology_path)
+    # read the ontology
     ontology_graph = rdflib.Graph()
     ontology_graph.parse(ontology_path, format="turtle")
     ontology_graph.bind('nsg', NSG)
