@@ -710,6 +710,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
 
 ###  http://schema.org/QuantitativeValue
 <http://schema.org/QuantitativeValue> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
                                       rdfs:label "Quantitative Value"@en .
 
 
@@ -3010,6 +3011,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
 
 ###  https://neuroshapes.org/Vector3D
 <https://neuroshapes.org/Vector3D> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
                                    rdfs:label "Vector3D"@en .
 
 
