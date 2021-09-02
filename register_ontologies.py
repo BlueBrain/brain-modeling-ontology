@@ -107,7 +107,7 @@ def execute_registration(forge, ontology_path, tag=None):
 
     class_jsons = bmo.frame_classes(ontology_graph, context, PREFIX)
     print(f"Registering classes for ontology: {ontology_path}")
-    bmo.register_classes(forge, class_jsons)
+    bmo.register_classes(forge, class_jsons, tag)
     print(f"Registration finished for ontology: {ontology_path}")
 
 
