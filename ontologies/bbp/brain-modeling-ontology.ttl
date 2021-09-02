@@ -7,6 +7,7 @@
 @base <https://bbp.epfl.ch/ontologies/core/bmo> .
 
 <https://bbp.epfl.ch/ontologies/core/bmo> rdf:type owl:Ontology ;
+                                           owl:versionInfo "R3"^^xsd:string ;
                                            <http://purl.org/dc/elements/1.1/title> "Brain Modeling Ontology"^^xsd:string ;
                                            <http://purl.org/vocab/vann/preferredNamespacePrefix> "bmo"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string .
