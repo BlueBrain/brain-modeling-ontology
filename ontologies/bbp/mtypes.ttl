@@ -4,7 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix UBERON: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix uberon: <http://purl.obolibrary.org/obo/UBERON_> .
 @base <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes> .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes> rdf:type owl:Ontology ;
@@ -241,7 +241,7 @@
                                                                                 rdfs:label "SP_Ivy"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SP_Ivy"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal layer Ivy Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0002313> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
@@ -251,7 +251,7 @@
                                                                                 rdfs:label "L6_BP"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "L6_BP"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Bipolar Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BipolarPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -262,7 +262,7 @@
                                                                                 rdfs:label "SR_SCA"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SR_SCA"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Radiatum GO:1990021 Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005372> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005372> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/GO:1990021Phenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
@@ -273,7 +273,7 @@
                                                                                 rdfs:label "SO_OLM"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SO_OLM"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Oriens-Lacunosum Moleculare Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005371> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
@@ -377,7 +377,7 @@
                                                                                 rdfs:label "SO_BS"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SO_BS"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Bistratified Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005371> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BistratifiedPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
@@ -388,7 +388,7 @@
                                                                                 rdfs:label "SP_PC"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SP_PC"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal Layer Pyramidal Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0002313> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/PyramidalPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
@@ -399,7 +399,7 @@
                                                                                 rdfs:label "SP_PVBC"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SP_PVBC"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "SP_PVBC"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0002313> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
@@ -409,7 +409,7 @@
                                                                                 rdfs:label "SP_CCKBC"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SP_CCKBC"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "SP_CCKBC"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0002313> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
@@ -419,7 +419,7 @@
                                                                                 rdfs:label "L3_TPC"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "L3_TPC"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Tufted Pyramidal Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005392> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005392> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/TuftedPyramidalPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -430,7 +430,7 @@
                                                                                 rdfs:label "SR_IS1"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SR_IS1"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "SR_IS1"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005372> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005372> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
@@ -440,7 +440,7 @@
                                                                                 rdfs:label "L2_TPC"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "L2_TPC"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Tufted Pyramidal Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/TuftedPyramidalPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -451,7 +451,7 @@
                                                                                 rdfs:label "SO_BP"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SO_BP"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Bipolar Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005371> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BipolarPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
@@ -462,7 +462,7 @@
                                                                                 rdfs:label "SP_BS"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SP_BS"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal Layer Bistratified Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0002313> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BistratifiedPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
@@ -473,7 +473,7 @@
                                                                                 rdfs:label "SO_Tri"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SO_Tri"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Trilaminar Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005371> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
@@ -483,7 +483,7 @@
                                                                                 rdfs:label "L5_NGC"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "L5_NGC"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Neurogliaform Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NeurogliaformPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -494,7 +494,7 @@
                                                                                 rdfs:label "SP_AA"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SP_AA"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal layer Axo-Axonic Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0002313> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
@@ -504,7 +504,7 @@
                                                                                 rdfs:label "L2_ChC"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "L2_ChC"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Chandelier Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/ChandelierPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -515,7 +515,7 @@
                                                                                 rdfs:label "SLM_PPA"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "SLM_PPA"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Lacunosum Moleculare Perforant Pathway Associated Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0007640> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0007640> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/PerforantPathwayAssociatedPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
@@ -526,7 +526,7 @@
                                                                                 rdfs:label "L2_MC"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "L2_MC"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Martinotti Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/MartinottiPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -537,7 +537,7 @@
                                                                                 rdfs:label "L3_MC"@en ;
                                                                                 <http://www.w3.org/2004/02/skos/core#notation> "L3_MC"^^xsd:string ;
                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Martinotti Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005392> ;
+                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005392> ;
                                                                                 <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/MartinottiPhenotype> ;
                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -548,7 +548,7 @@
                                            rdfs:label "L5_TPC:B"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_TPC:B"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Early Bifurcating Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/EarlyBifurcatingTuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -559,7 +559,7 @@
                                            rdfs:label "L5_TPC:A"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_TPC:A"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Late Bifurcating Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/LateBifurcatingTuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -570,7 +570,7 @@
                                            rdfs:label "L3_TPC:A"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L3_TPC:A"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Late Bifurcating Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/LateBifurcatingTuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -581,7 +581,7 @@
                                            rdfs:label "L2_TPC:B"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L2_TPC:B"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Early Bifurcating Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/EarlyBifurcatingTuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -592,7 +592,7 @@
                                            rdfs:label "L3_TPC:B"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L3_TPC:B"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Early Bifurcating Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/EarlyBifurcatingTuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -603,7 +603,7 @@
                                            rdfs:label "L5_MC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_MC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Martinotti Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/MartinottiPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -614,7 +614,7 @@
                                            rdfs:label "L5_TPC:C"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_TPC:C"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Narrow Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NarrowTuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -625,7 +625,7 @@
                                            rdfs:label "L5_UPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_UPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Untufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/UntuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -636,7 +636,7 @@
                                            rdfs:label "L6_IPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_IPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Inverted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/InvertedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -647,7 +647,7 @@
                                            rdfs:label "L6_MC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_MC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Martinotti Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/MartinottiPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -658,7 +658,7 @@
                                            rdfs:label "L6_TPC:A"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_TPC:A"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Late Bifurcating Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/LateBifurcatingTuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -669,7 +669,7 @@
                                            rdfs:label "L6_TPC:C"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_TPC:C"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Narrow Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NarrowTuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -680,7 +680,7 @@
                                            rdfs:label "L6_UPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_UPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Untufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/UntuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -691,7 +691,7 @@
                                            rdfs:label "L1_DAC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L1_DAC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 1 Descending Axon Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005390> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005390> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/DescendingAxonPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -702,7 +702,7 @@
                                            rdfs:label "L1_HAC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L1_HAC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 1 Horizontal Axon Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005390> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005390> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/HorizontalAxonPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -713,7 +713,7 @@
                                            rdfs:label "L1_LAC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L1_LAC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 1 Large Axon Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005390> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005390> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/LargeAxonPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -724,7 +724,7 @@
                                            rdfs:label "L1_NGC-DA"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L1_NGC-DA"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Neurogliaform Cell_ dense axon"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005390> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005390> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
@@ -734,7 +734,7 @@
                                            rdfs:label "L1_NGC-SA"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L1_NGC-SA"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Neurogliaform Cell_sparse axon"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005390> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005390> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
@@ -744,7 +744,7 @@
                                            rdfs:label "L1_SAC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L1_SAC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 1 Small Axon Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005390> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005390> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/SmallAxonPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -755,8 +755,8 @@
                                            rdfs:label "L23_BP"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L23_BP"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Bipolar Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ,
-                                                                                               <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ,
+                                                                                               <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BipolarPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -767,8 +767,8 @@
                                            rdfs:label "L23_BTC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L23_BTC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Bitufted Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ,
-                                                                                               <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ,
+                                                                                               <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BituftedPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -779,8 +779,8 @@
                                            rdfs:label "L23_ChC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L23_ChC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Chandelier Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ,
-                                                                                               <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ,
+                                                                                               <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/ChandelierPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -791,8 +791,8 @@
                                            rdfs:label "L23_DBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L23_DBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Double Bouquet Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ,
-                                                                                               <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ,
+                                                                                               <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/DoubleBouquetPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -803,8 +803,8 @@
                                            rdfs:label "L23_LBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L23_LBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Large Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ,
-                                                                                               <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ,
+                                                                                               <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/LargeBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -815,8 +815,8 @@
                                            rdfs:label "L23_MC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L23_MC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Martinotti Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ,
-                                                                                               <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ,
+                                                                                               <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/MartinottiPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -827,8 +827,8 @@
                                            rdfs:label "L23_NBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L23_NBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Nest Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ,
-                                                                                               <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ,
+                                                                                               <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NestBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -839,8 +839,8 @@
                                            rdfs:label "L23_NGC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L23_NGC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Neurogliaform Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ,
-                                                                                               <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ,
+                                                                                               <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NeurogliaformPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -851,8 +851,8 @@
                                            rdfs:label "L23_SBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L23_SBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Small Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ,
-                                                                                               <UBERON:0005392> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ,
+                                                                                               <uberon:0005392> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/SmallBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -863,7 +863,7 @@
                                            rdfs:label "L2_IPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L2_IPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Inverted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/InvertedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -874,7 +874,7 @@
                                            rdfs:label "L2_TPC:A"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L2_TPC:A"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Late Bifurcating Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005391> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/LateBifurcatingTuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -885,7 +885,7 @@
                                            rdfs:label "L4_BP"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_BP"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Bipolar Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BipolarPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -896,7 +896,7 @@
                                            rdfs:label "L4_BTC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_BTC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Bitufted Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BituftedPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -907,7 +907,7 @@
                                            rdfs:label "L4_ChC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_ChC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Chandelier Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/ChandelierPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -918,7 +918,7 @@
                                            rdfs:label "L4_DBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_DBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Double Bouquet Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/DoubleBouquetPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -929,7 +929,7 @@
                                            rdfs:label "L4_LBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_LBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Large Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/LargeBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -940,7 +940,7 @@
                                            rdfs:label "L4_MC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_MC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Martinotti Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/MartinottiPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -951,7 +951,7 @@
                                            rdfs:label "L4_NBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_NBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Nest Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NestBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -962,7 +962,7 @@
                                            rdfs:label "L4_NGC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_NGC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Neurogliaform Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NeurogliaformPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -973,7 +973,7 @@
                                            rdfs:label "L4_SBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_SBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Small Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/SmallBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -984,7 +984,7 @@
                                            rdfs:label "L4_SSC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_SSC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Spiny Stellate Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/SpinyStellatePhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -995,7 +995,7 @@
                                            rdfs:label "L4_TPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_TPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/TuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1006,7 +1006,7 @@
                                            rdfs:label "L4_UPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L4_UPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 4 Untufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005393> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005393> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/UntuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1017,7 +1017,7 @@
                                            rdfs:label "L5_BP"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_BP"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Bipolar Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BipolarPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1028,7 +1028,7 @@
                                            rdfs:label "L5_BTC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_BTC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Bitufted Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BituftedPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1039,7 +1039,7 @@
                                            rdfs:label "L5_ChC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_ChC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Chandelier Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/ChandelierPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1050,7 +1050,7 @@
                                            rdfs:label "L5_DBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_DBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Double Bouquet Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/DoubleBouquetPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1061,7 +1061,7 @@
                                            rdfs:label "L5_LBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_LBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Large Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/LargeBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1072,7 +1072,7 @@
                                            rdfs:label "L5_NBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_NBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Nest Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NestBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1083,7 +1083,7 @@
                                            rdfs:label "L5_SBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_SBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Small Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/SmallBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1094,7 +1094,7 @@
                                            rdfs:label "L6_BPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_BPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Biopolar Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BiopolarPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1105,7 +1105,7 @@
                                            rdfs:label "L6_BTC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_BTC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Bitufted Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BituftedPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1116,7 +1116,7 @@
                                            rdfs:label "L6_ChC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_ChC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Chandelier Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/ChandelierPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1127,7 +1127,7 @@
                                            rdfs:label "L6_DBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_DBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Double Bouquet Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/DoubleBouquetPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1138,7 +1138,7 @@
                                            rdfs:label "L6_HPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_HPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Horizontal Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/HorizontalPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1149,7 +1149,7 @@
                                            rdfs:label "L6_LBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_LBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Large Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/LargeBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1160,7 +1160,7 @@
                                            rdfs:label "L6_NBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_NBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Nest Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NestBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1171,7 +1171,7 @@
                                            rdfs:label "L6_NGC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_NGC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Neurogliaform Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NeurogliaformPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1182,7 +1182,7 @@
                                            rdfs:label "L6_SBC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_SBC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Small Basket Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/SmallBasketPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1193,7 +1193,7 @@
                                            rdfs:label "L5_TPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L5_TPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005394> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/TuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
@@ -1204,7 +1204,7 @@
                                            rdfs:label "L6_TPC"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L6_TPC"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Tufted Pyramidal Cell"@en ;
-                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <UBERON:0005395> ;
+                                           <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
                                            <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/TuftedPyramidalPhenotype> ;
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
