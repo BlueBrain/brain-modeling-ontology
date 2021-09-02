@@ -179,9 +179,6 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
                                                 rdfs:label "Homo sapiens"@en .
 
 
-###  https://bbp.epfl.ch/nexus/webprotege/#projects/fb104c23-27f8-4eae-9de0-de57b3853d5b/edit/Classes?selection=Class(%3Chttp://purl.obolibrary.org/obo/GO_0005575%3E)
-<https://bbp.epfl.ch/nexus/webprotege/#projects/fb104c23-27f8-4eae-9de0-de57b3853d5b/edit/Classes?selection=Class(%3Chttp://purl.obolibrary.org/obo/GO_0005575%3E)> rdf:type owl:Class ;
-                                                                                                                                                                    owl:equivalentClass <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>.
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Gene
 <https://bbp.epfl.ch/ontologies/core/bmo/Gene> rdf:type owl:Class ;
                                                rdfs:subClassOf prov:Entity ,
