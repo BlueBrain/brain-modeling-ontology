@@ -1,5 +1,5 @@
 ====================
-O.1.0 Release Notes
+O.1.1 Release Notes
 ====================
 
 This release introduces the Brain Modeling Ontology along with its specialisation for Molecular Systems.
