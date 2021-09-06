@@ -782,7 +782,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BACFiringFeature
 <https://bbp.epfl.ch/ontologies/core/bmo/BACFiringFeature> rdf:type owl:Class ;
-                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeature> ,
+                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ,
                                                                            [ rdf:type owl:Restriction ;
                                                                              owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/compartment> ;
                                                                              owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Soma>
@@ -1091,7 +1091,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
                                                                                  ] ,
                                                                                  [ rdf:type owl:Restriction ;
                                                                                    owl:onProperty <https://neuroshapes.org/hasTarget> ;
-                                                                                   owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeature>
+                                                                                   owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature>
                                                                                  ] ,
                                                                                  [ rdf:type owl:Restriction ;
                                                                                    owl:onProperty <https://neuroshapes.org/qualifiedAssociation> ;
@@ -1164,7 +1164,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
                                                                                               ] ,
                                                                                               [ rdf:type owl:Restriction ;
                                                                                                 owl:onProperty <https://neuroshapes.org/hasTarget> ;
-                                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeature>
+                                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature>
                                                                                               ] ,
                                                                                               [ rdf:type owl:Restriction ;
                                                                                                 owl:onProperty <https://neuroshapes.org/uses> ;
@@ -1203,7 +1203,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
                                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ModelValidationWorkflow> ,
                                                                                    [ rdf:type owl:Restriction ;
                                                                                      owl:onProperty <https://neuroshapes.org/hasTarget> ;
-                                                                                     owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeature>
+                                                                                     owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature>
                                                                                    ] ,
                                                                                    [ rdf:type owl:Restriction ;
                                                                                      owl:onProperty <https://neuroshapes.org/uses> ;
@@ -1233,8 +1233,8 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
                                                              <http://www.w3.org/2004/02/skos/core#editorialNote> "How is this related to 'Protocol' in BluePyEModel"^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeature
-<https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeature> rdf:type owl:Class ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature
+<https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> rdf:type owl:Class ;
                                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronFeature> ,
                                                                                       [ rdf:type owl:Restriction ;
                                                                                         owl:onProperty <https://neuroshapes.org/stimulusType> ;
@@ -1245,8 +1245,8 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
                                                                       <http://www.w3.org/2004/02/skos/core#definition> "An electrical property of a neuron that characterizes a cell's ability to control transmembrane ion flux to enable the generation of action potentials (APs)."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeatureExtractionWorkflow
-<https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeatureExtractionWorkflow> rdf:type owl:Class ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeatureExtractionWorkflow
+<https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeatureExtractionWorkflow> rdf:type owl:Class ;
                                                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/FeatureExtractionWorkflow> ,
                                                                                                         [ rdf:type owl:Restriction ;
                                                                                                           owl:onProperty <http://schema.org/isPartOf> ;
@@ -1254,7 +1254,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
                                                                                                         ] ,
                                                                                                         [ rdf:type owl:Restriction ;
                                                                                                           owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/generates> ;
-                                                                                                          owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeature>
+                                                                                                          owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature>
                                                                                                         ] ,
                                                                                                         [ rdf:type owl:Restriction ;
                                                                                                           owl:onProperty <https://neuroshapes.org/uses> ;
@@ -2280,7 +2280,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PerisomaticCurrentFiringFeature
 <https://bbp.epfl.ch/ontologies/core/bmo/PerisomaticCurrentFiringFeature> rdf:type owl:Class ;
-                                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeature> ,
+                                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ,
                                                                                           [ rdf:type owl:Restriction ;
                                                                                             owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/compartment> ;
                                                                                             owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Soma>
@@ -2822,7 +2822,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty <https://neuroshapes.org/hasFeature> ;
-                                                  owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ElectrophysiologicalFeature>
+                                                  owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature>
                                                 ] ;
                                 rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/6a23494a-360c-4152-9e81-fd9828f44db9/edit/Classes> ;
                                 rdfs:label "Neuron Morphological Type"^^xsd:string ;
