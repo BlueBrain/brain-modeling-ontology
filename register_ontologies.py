@@ -79,7 +79,7 @@ def execute_registration(forge, ontology_path, tag=None):
     bmo.replace_is_defined_by_uris(ontology_graph, WEBPROTEGE_TO_NEXUS)
 
     # context = forge.retrieve("https://neuroshapes.org")
-    context = forge.retrieve("https://bbp.neuroshapes.org")
+    context = forge.retrieve("https://neuroshapes.org")
     context = forge.as_jsonld(context)["@context"]
     context["label"] = {
         "@id": "rdfs:label",
