@@ -1,0 +1,14 @@
+====================
+O.1.0 Release Notes
+====================
+
+This release introduces the Brain Modeling Ontology along with its specialisation for Molecular Systems.
+
+New Features
+============
+
+Enhancements
+============
+
+Bug Fixes
+=========
