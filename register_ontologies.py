@@ -40,7 +40,6 @@ def execute_registration(forge, ontology_path, tag=None):
     :param tag: optional tag
     :return:
     """
-    PREFIX = "https://neuroshapes.org/"
     ontologyspy = Ontospy(ontology_path, verbose=True)
     for x in ontologyspy.stats(): print(f"{x[0]}: {x[1]}")
     NSG = Namespace('https://neuroshapes.org/')
@@ -61,7 +60,7 @@ def execute_registration(forge, ontology_path, tag=None):
     if not ontology_graph.label(ontology):
         bmo.add_ontology_label(ontology_graph, ontology)
 
-    bmo.add_defines_relation(ontology_graph, PREFIX)
+    bmo.add_defines_relation(ontology_graph)
 
     bmo.restrictions_to_triples(ontology_graph)
 
@@ -73,7 +72,8 @@ def execute_registration(forge, ontology_path, tag=None):
         "https://bbp.epfl.ch/nexus/webprotege/#projects/c0f3a3e7-6dd2-4802-a00a-61ae366a35bb/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mba",
         "https://bbp.epfl.ch/nexus/webprotege/#projects/7515dc12-ce84-4eea-ba8e-6262670ac741/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes",
         "https://bbp.epfl.ch/nexus/webprotege/#projects/6a23494a-360c-4152-9e81-fd9828f44db9/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes",
-        "https://bbp.epfl.ch/nexus/webprotege/#projects/e57bffdc-40fb-4507-b23e-e7b279625a45/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/"
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/ea484e60-5a27-4790-8f2a-e2975897f407/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/d4ee40c6-4131-4915-961d-51a5c587c667/edit/Classes": "https://bbp.epfl.ch/ontologies/core/efeatures"
     }
 
     bmo.replace_is_defined_by_uris(ontology_graph, WEBPROTEGE_TO_NEXUS)
@@ -101,11 +101,10 @@ def execute_registration(forge, ontology_path, tag=None):
         "@language": "en"
     }
     print(f"Registering ontology: {ontology_path}")
-    bmo.register_ontology(forge, ontology_graph, context, ontology_path, PREFIX, tag)
+    bmo.register_ontology(forge, ontology_graph, context, ontology_path, tag)
+    bmo.remove_defines_relation(ontology_graph)
 
-    bmo.remove_defines_relation(ontology_graph, PREFIX)
-
-    class_jsons = bmo.frame_classes(ontology_graph, context, PREFIX)
+    class_jsons = bmo.frame_classes(ontology_graph, context)
     print(f"Registering classes for ontology: {ontology_path}")
     bmo.register_classes(forge, class_jsons, tag)
     print(f"Registration finished for ontology: {ontology_path}")
@@ -136,8 +135,9 @@ def parse_and_register_ontologies(arguments):
     BUCKET = "neurosciencegraph/datamodels"
 
     forge = KnowledgeGraphForge(
-        "https://raw.githubusercontent.com/BlueBrain/nexus-forge/master/examples/notebooks/use-cases/prod-forge-nexus.yml",
-        endpoint=endpoint, bucket=BUCKET, token=token)
+        # "https://raw.githubusercontent.com/BlueBrain/nexus-forge/master/examples/notebooks/use-cases/prod-forge-nexus.yml",
+        "config/forge-config.yml",
+        endpoint=endpoint, bucket=BUCKET, token=token, debug=True)
 
     # for every ontology files that changed
     for ontology_filename in ontology_files:

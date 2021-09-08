@@ -51,11 +51,12 @@ def _register_ontology_resource(forge, ontology_json, ontology_path):
     ontology_resource = forge.from_json(ontology_json)
     ontology_resource.distribution = forge.attach(
         ontology_path, content_type="text/turtle")
-    forge.register(ontology_resource, schema_id="datashapes:ontology")
+    forge.register(
+        ontology_resource, schema_id="https://neuroshapes.org/dash/ontology")
     return ontology_resource
 
 
-def register_ontology(forge, ontology_graph, context, path, prefix, tag=None):
+def register_ontology(forge, ontology_graph, context, path, tag=None):
     """Register ontology resource to the store.
 
     Try registering ontology to the store of the initialized forge.
@@ -68,29 +69,25 @@ def register_ontology(forge, ontology_graph, context, path, prefix, tag=None):
     # Register ontology as is
     ontology_resource = _register_ontology_resource(forge, ontology_json, path)
 
-    if ontology_resource._last_action.error == "RegistrationError":
-        if TOO_LARGE_ERROR in ontology_resource._last_action.message:
-            print("Ontology is too large, removing 'defines' relationships...\n")
-            # If ontology is too large (too many classes), we need to remove
-            # 'defines', relationships otherwise the payload explodes
-            remove_defines_relation(ontology_graph, prefix)
-            # Retry registering after the `define` rels are removed
-            ontology_json = frame_ontology(ontology_graph, context)
-            print("Retrying registration...\n")
-            ontology_resource = _register_ontology_resource(
-                forge, ontology_json, path)
+    if not ontology_resource._last_action.succeeded and\
+       ALREADY_EXISTS_ERROR not in ontology_resource._last_action.message:
+        print("Ontology registration failed, removing 'defines' relationships...\n")
+        # If ontology is too large (too many classes), we need to remove
+        # 'defines', relationships otherwise the payload explodes
+        remove_defines_relation(ontology_graph)
+        # Retry registering after the `define` rels are removed
+        ontology_json = frame_ontology(ontology_graph, context)
+        print("Retrying registration...\n")
+        ontology_resource = _register_ontology_resource(
+            forge, ontology_json, path)
 
-    # Tag if the registration was successful
-    if ontology_resource._last_action.succeeded is True and tag:
-        print("Registration successful, tagging...\n")
-        forge.tag(ontology_resource, tag)
-
-    if not ontology_resource._last_action.succeeded and ALREADY_EXISTS_ERROR in ontology_resource._last_action.message:
-        print("Ontology already exists, updating...\n")
+    if not ontology_resource._last_action.succeeded and\
+       ALREADY_EXISTS_ERROR in ontology_resource._last_action.message:
         # Update and tag if 'already exists' error was encountered
+        print("Ontology already exists, updating...\n")
         upd_ontology_json = forge.as_json(ontology_resource)
         existing_ontology_resource = forge.retrieve(upd_ontology_json["@id"])
-        del upd_ontology_json["@id"] 
+        del upd_ontology_json["@id"]
         del upd_ontology_json["@type"]
         ontology_resource = forge.from_json(upd_ontology_json)
         ontology_resource.id = existing_ontology_resource.id
@@ -100,6 +97,11 @@ def register_ontology(forge, ontology_graph, context, path, prefix, tag=None):
         forge.update(ontology_resource)
         if tag:
             forge.tag(ontology_resource, tag)
+
+    # Tag if the registration was successful
+    if ontology_resource._last_action.succeeded is True and tag:
+        print("Registration successful, tagging...\n")
+        forge.tag(ontology_resource, tag)
 
 
 def find_ontology_resource(graph):
@@ -111,12 +113,12 @@ def find_ontology_resource(graph):
             "Ontology resource with the specified label is not found")
 
 
-def add_defines_relation(graph, prefix):
-    """Add prefix:defines relationship from the ontology to every class."""
+def add_defines_relation(graph):
+    """Add defines relationship from the ontology to every class."""
     ontology = find_ontology_resource(graph)
 
     # Create 'defines' rel
-    defines_rel = rdflib.URIRef(f"{prefix}defines")
+    defines_rel = rdflib.URIRef("https://neuroshapes.org/defines")
     graph.add((defines_rel, RDF.type, OWL.ObjectProperty))
     graph.add((defines_rel, RDFS.label, rdflib.Literal("defines", lang="en")))
 
@@ -125,14 +127,12 @@ def add_defines_relation(graph, prefix):
         graph.add((ontology, defines_rel, c))
 
 
-def remove_defines_relation(graph, prefix):
-    """Add prefix:defines relationship from the ontology to every class."""
+def remove_defines_relation(graph):
+    """Add defines relationship from the ontology to every class."""
     ontology = find_ontology_resource(graph)
 
     # Create 'defines' rel
-    defines_rel = rdflib.URIRef(f"{prefix}defines")
-    graph.add((defines_rel, RDF.type, OWL.ObjectProperty))
-    graph.add((defines_rel, RDFS.label, rdflib.Literal("defines", lang="en")))
+    defines_rel = rdflib.URIRef("https://neuroshapes.org/defines")
 
     # Add 'defines' rels to all the classes
     for c in graph.subjects(RDF.type, OWL.Class):
@@ -192,7 +192,7 @@ def add_ontology_label(ontology_graph, ontology, label=None):
         (ontology, RDFS.label, rdflib.Literal(label, datatype=XSD.string)))
 
 
-def frame_classes(ontology_graph, context, prefix):
+def frame_classes(ontology_graph, context):
     """Frame ontology classes into JSON-LD payloads."""
     frame_json_class = {
         "@context": context,
@@ -208,7 +208,7 @@ def frame_classes(ontology_graph, context, prefix):
         for (p, o) in ontology_graph.predicate_objects(current_class):
             current_class_graph.add((current_class, p, o))
             current_class_graph.add(
-                (current_class, rdflib.URIRef(f"{prefix}isDefinedBy"), ontology))
+                (current_class, RDFS.isDefinedBy, ontology))
 
         current_class_string = current_class_graph.serialize(
             format="json-ld", auto_compact=True, indent=2)
