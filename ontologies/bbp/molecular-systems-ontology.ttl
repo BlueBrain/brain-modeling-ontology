@@ -8,8 +8,8 @@
 @base <https://bbp.epfl.ch/ontologies/core/molecular-systems> .
 
 <https://bbp.epfl.ch/ontologies/core/molecular-systems> rdf:type owl:Ontology ;
-                                                        owl:versionInfo "R2"^^xsd:string ;
-                                                        rdfs:label "Molecular Systems Ontology"^^xsd:string .
+                                                        owl:versionInfo "R9"^^xsd:string ;
+                                                         rdfs:label "Molecular Systems Ontology"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -58,74 +58,73 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
                              rdfs:label "isPartOf"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/Molecule
+<https://bbp.epfl.ch/ontologies/core/bmo/Molecule> rdf:type owl:ObjectProperty .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/catalizedBy
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/catalizedBy> rdf:type owl:ObjectProperty ;
-                                                                       rdfs:label "catalizedBy"@en .
+                                                                    rdfs:label "catalizedBy"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment> rdf:type owl:ObjectProperty ;
-                                                                       rdfs:label "compartment"@en .
+                                                                    rdfs:label "compartment"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/concentration
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/concentration> rdf:type owl:ObjectProperty ;
-                                                                         rdfs:label "concentration"@en .
+                                                                      rdfs:label "concentration"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/expressedIn
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/expressedIn> rdf:type owl:ObjectProperty ;
-                                                                       rdfs:label "expressedIn"@en .
+                                                                    rdfs:label "expressedIn"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/generates
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/generates> rdf:type owl:ObjectProperty ;
-                                                                     rdfs:label "generates"@en .
+                                                                  rdfs:label "generates"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/hasParameter
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/hasParameter> rdf:type owl:ObjectProperty ;
-                                                                        rdfs:label "hasParameter"@en .
+                                                                     rdfs:label "hasParameter"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/hasRate
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/hasRate> rdf:type owl:ObjectProperty ;
-                                                                   rdfs:label "hasRate"@en .
+                                                                rdfs:label "hasRate"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/isAssociatedWith
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/isAssociatedWith> rdf:type owl:ObjectProperty ;
-                                                                            rdfs:label "isAssociatedWith"@en .
+                                                                         rdfs:label "isAssociatedWith"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/isDescribedBy
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/isDescribedBy> rdf:type owl:ObjectProperty ;
-                                                                         rdfs:label "isDescribedBy"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/Molecule
-<https://bbp.epfl.ch/ontologies/core/bmo/Molecule> rdf:type owl:ObjectProperty ;
-                                                          rdfs:label "Molecule"@en .
+                                                                      rdfs:label "isDescribedBy"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/product
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/product> rdf:type owl:ObjectProperty ;
-                                                                   rdfs:label "product"@en .
+                                                                rdfs:label "product"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/substrate
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/substrate> rdf:type owl:ObjectProperty ;
-                                                                     rdfs:label "substrate"@en .
+                                                                  rdfs:label "substrate"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/translatesInto
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/translatesInto> rdf:type owl:ObjectProperty ;
-                                                                          rdfs:label "translatesInto"@en .
+                                                                       rdfs:label "translatesInto"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/uses
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/uses> rdf:type owl:ObjectProperty ;
-                                                                rdfs:label "uses"@en .
+                                                             rdfs:label "uses"@en .
 
 
 ###  https://neuroshapes.org/cellType
@@ -159,7 +158,10 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
 
 ###  http://purl.obolibrary.org/obo/CHEBI_24431
 <http://purl.obolibrary.org/obo/CHEBI_24431> rdf:type owl:Class ;
-                                             owl:equivalentClass <https://neuroshapes.org/Metabolite> .
+                                             owl:equivalentClass <https://neuroshapes.org/Metabolite> ;
+                                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Mapping> ;
+                                             rdfs:label "chemical entity"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "A chemical entity is a physical entity of interest in chemistry including molecular entities, parts thereof, and chemical substances."@en .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_10090
@@ -180,9 +182,102 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
                                                 rdfs:label "Homo sapiens"@en .
 
 
+###  http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class ;
+                                   rdfs:label "Entity"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/Artery
+<https://bbp.epfl.ch/ontologies/core/bmo/Artery> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> ;
+                                                 rdfs:label "Artery"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BasalLamina
+<https://bbp.epfl.ch/ontologies/core/bmo/BasalLamina> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart> ;
+                                                      rdfs:label "Basal Lamina"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BiochemicalReaction
+<https://bbp.epfl.ch/ontologies/core/bmo/BiochemicalReaction> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <http://schema.org/isPartOf> ;
+                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicNetwork>
+                                                                              ] ,
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <http://schema.org/isPartOf> ;
+                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicPathway>
+                                                                              ] ,
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/catalizedBy> ;
+                                                                                owl:someValuesFrom <https://neuroshapes.org/Complex>
+                                                                              ] ,
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/catalizedBy> ;
+                                                                                owl:someValuesFrom <https://neuroshapes.org/Protein>
+                                                                              ] ,
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment> ;
+                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
+                                                                              ] ,
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/hasRate> ;
+                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/molecular-systems/ReactionRate>
+                                                                              ] ,
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/product> ;
+                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Molecule>
+                                                                              ] ,
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/substrate> ;
+                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Molecule>
+                                                                              ] ;
+                                                              rdfs:label "Biochemical Reaction"@en ;
+                                                              <http://www.w3.org/2004/02/skos/core#definition> "A chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainCell
+<https://bbp.epfl.ch/ontologies/core/bmo/BrainCell> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
+                                                    rdfs:label "Brain Cell"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent
+<https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
+                                                                 rdfs:label "Brain Vascular Component"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/Capillary
+<https://bbp.epfl.ch/ontologies/core/bmo/Capillary> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> ;
+                                                    rdfs:label "Capillary"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/Cytosol
+<https://bbp.epfl.ch/ontologies/core/bmo/Cytosol> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart> ;
+                                                  rdfs:label "Cytosol"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/EndoplasmicReticulum
+<https://bbp.epfl.ch/ontologies/core/bmo/EndoplasmicReticulum> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Organelle> ;
+                                                               rdfs:label "Endoplasmic Reticulum"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart
+<https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
+                                                            rdfs:label "Extracellular Part"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "This compartment is used as location for metabolites, proteins, reactions and molecular diffusion that are taking place specifically in the extracellular space. This is the compartment where metabolites and proteins from some references are measured."^^xsd:string .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Gene
 <https://bbp.epfl.ch/ontologies/core/bmo/Gene> rdf:type owl:Class ;
-                                               rdfs:subClassOf prov:Entity ,
+                                               rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/expressedIn> ;
                                                                  owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomicType>
@@ -195,222 +290,137 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
                                                <http://www.w3.org/2004/02/skos/core#definition> "In biology, a gene is a basic unit of heredity and a sequence of nucleotides in DNA or RNA that encodes the synthesis of a gene product, either RNA or protein."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/Artery
-<https://bbp.epfl.ch/ontologies/core/bmo/Artery> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> ;
-                                                                  rdfs:label "Artery"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/BasalLamina
-<https://bbp.epfl.ch/ontologies/core/bmo/BasalLamina> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart> ;
-                                                                       rdfs:label "Basal Lamina"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/BiochemicalReaction
-<https://bbp.epfl.ch/ontologies/core/bmo/BiochemicalReaction> rdf:type owl:Class ;
-                                                                               rdfs:subClassOf prov:Entity ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <http://schema.org/isPartOf> ;
-                                                                                                 owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicNetwork>
-                                                                                               ] ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <http://schema.org/isPartOf> ;
-                                                                                                 owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicPathway>
-                                                                                               ] ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/catalizedBy> ;
-                                                                                                 owl:someValuesFrom <https://neuroshapes.org/Complex>
-                                                                                               ] ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/catalizedBy> ;
-                                                                                                 owl:someValuesFrom <https://neuroshapes.org/Protein>
-                                                                                               ] ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment> ;
-                                                                                                 owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
-                                                                                               ] ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/hasRate> ;
-                                                                                                 owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/molecular-systems/ReactionRate>
-                                                                                               ] ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/product> ;
-                                                                                                 owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Molecule>
-                                                                                               ] ,
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/substrate> ;
-                                                                                                 owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Molecule>
-                                                                                               ] ;
-                                                                               rdfs:label "Biochemical Reaction"@en ;
-                                                                               <http://www.w3.org/2004/02/skos/core#definition> "A chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/BrainCell
-<https://bbp.epfl.ch/ontologies/core/bmo/BrainCell> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                                     rdfs:label "Brain Cell"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent
-<https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> rdf:type owl:Class ;
-                                                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                                                  rdfs:label "Brain Vascular Component"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/Capillary
-<https://bbp.epfl.ch/ontologies/core/bmo/Capillary> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> ;
-                                                                     rdfs:label "Capillary"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/Cytosol
-<https://bbp.epfl.ch/ontologies/core/bmo/Cytosol> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart> ;
-                                                                   rdfs:label "Cytosol"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/EndoplasmicReticulum
-<https://bbp.epfl.ch/ontologies/core/bmo/EndoplasmicReticulum> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Organelle> ;
-                                                                                rdfs:label "Endoplasmic Reticulum"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart
-<https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart> rdf:type owl:Class ;
-                                                                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                                             rdfs:label "Extracellular Part"@en ;
-                                                                             <http://www.w3.org/2004/02/skos/core#definition> "This compartment is used as location for metabolites, proteins, reactions and molecular diffusion that are taking place specifically in the extracellular space. This is the compartment where metabolites and proteins from some references are measured."^^xsd:string .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/InterstitialSpace
 <https://bbp.epfl.ch/ontologies/core/bmo/InterstitialSpace> rdf:type owl:Class ;
-                                                                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart> ;
-                                                                             rdfs:label "Interstitial Space"@en .
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart> ;
+                                                            rdfs:label "Interstitial Space"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicNetwork
-<https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicNetwork> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf prov:Entity ,
-                                                                                            [ rdf:type owl:Restriction ;
-                                                                                              owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment> ;
-                                                                                              owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
-                                                                                            ] ;
-                                                                            rdfs:label "Metabolic Network"@en ;
-                                                                            <http://www.w3.org/2004/02/skos/core#definition> "A set of metabolic reactions."^^xsd:string .
-
-
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicPathway
-<https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicPathway> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf prov:Entity ,
-                                                                                            [ rdf:type owl:Restriction ;
-                                                                                              owl:onProperty <http://schema.org/isPartOf> ;
-                                                                                              owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicNetwork>
-                                                                                            ] ,
-                                                                                            [ rdf:type owl:Restriction ;
-                                                                                              owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment> ;
-                                                                                              owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
-                                                                                            ] ;
-                                                                            rdfs:label "Metabolic Pathway"@en ;
-                                                                            <http://www.w3.org/2004/02/skos/core#definition> "In biochemistry, a metabolic pathway is a linked series of chemical reactions occurring within a cell."^^xsd:string .
+###  https://bbp.epfl.ch/ontologies/core/bmo/Mapping
+<https://bbp.epfl.ch/ontologies/core/bmo/Mapping> rdf:type owl:Class ;
+                                                  rdfs:label "Mapping"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Mitochondrion
 <https://bbp.epfl.ch/ontologies/core/bmo/Mitochondrion> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Organelle> ;
-                                                                         rdfs:label "Mitochondrion"@en .
+                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Organelle> ;
+                                                        rdfs:label "Mitochondrion"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment
 <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf prov:Entity ;
-                                                                                rdfs:label "Molecular Compartment"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#definition> "A compartment in which molecular species live and in which biochemical reactions can take place."^^xsd:string .
+                                                               rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                                               rdfs:label "Molecular Compartment"@en ;
+                                                               <http://www.w3.org/2004/02/skos/core#definition> "A compartment in which molecular species live and in which biochemical reactions can take place."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Molecule
 <https://bbp.epfl.ch/ontologies/core/bmo/Molecule> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf prov:Entity ,
-                                                                                    [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment> ;
-                                                                                      owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
-                                                                                    ] ,
-                                                                                    [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty <https://neuroshapes.org/species> ;
-                                                                                      owl:someValuesFrom <https://neuroshapes.org/Species>
-                                                                                    ] ;
-                                                                    rdfs:label "Molecule"@en ;
-                                                                    <http://www.w3.org/2004/02/skos/core#definition> "A molecule is an electrically neutral group of two or more atoms held together by chemical bonds."^^xsd:string .
+                                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment> ;
+                                                                     owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
+                                                                   ] ,
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty <https://neuroshapes.org/species> ;
+                                                                     owl:someValuesFrom <https://neuroshapes.org/Species>
+                                                                   ] .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NGVUnit
 <https://bbp.epfl.ch/ontologies/core/bmo/NGVUnit> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                                   rdfs:label "NGV Unit"@en ;
-                                                                   <http://www.w3.org/2004/02/skos/core#definition> "A neuron + glia + vasculature unit"^^xsd:string .
+                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
+                                                  rdfs:label "NGV Unit"@en ;
+                                                  <http://www.w3.org/2004/02/skos/core#definition> "A neuron + glia + vasculature unit"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomicType
 <https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomicType> rdf:type owl:Class ;
-                                                                                    rdfs:subClassOf prov:Entity ;
-                                                                                    rdfs:label "Neuron Transcriptomic Type"@en .
+                                                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                                                   rdfs:label "Neuron Transcriptomic Type"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Organelle
 <https://bbp.epfl.ch/ontologies/core/bmo/Organelle> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart> ;
-                                                                     rdfs:label "Organelle"@en .
+                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart> ;
+                                                    rdfs:label "Organelle"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter
 <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter> rdf:type owl:Class ;
-                                                                                    rdfs:subClassOf prov:Entity ;
-                                                                                    rdfs:label "Reaction Kinetic Parameter"@en ;
-                                                                                    <http://www.w3.org/2004/02/skos/core#definition> "Kinetic parameter is a parameter in the rate equation of the chemical process (reaction, transport, diffusion)."^^xsd:string .
-
-
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/ReactionRate
-<https://bbp.epfl.ch/ontologies/core/molecular-systems/ReactionRate> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf prov:Entity ,
-                                                                                        [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/isDescribedBy> ;
-                                                                                          owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ReactionRateEquation>
-                                                                                        ] ;
-                                                                        rdfs:label "Reaction Rate"@en ;
-                                                                        <http://www.w3.org/2004/02/skos/core#definition> "The reaction rate or rate of reaction is the speed at which a chemical reaction takes place, defined as proportional to the increase in the concentration of a product per unit time and to the decrease in the concentration of a reactant per unit time."^^xsd:string .
+                                                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                                                   rdfs:label "Reaction Kinetic Parameter"@en ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "Kinetic parameter is a parameter in the rate equation of the chemical process (reaction, transport, diffusion)."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ReactionRateEquation
 <https://bbp.epfl.ch/ontologies/core/bmo/ReactionRateEquation> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf prov:Entity ,
-                                                                                                [ rdf:type owl:Restriction ;
-                                                                                                  owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/hasParameter> ;
-                                                                                                  owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter>
-                                                                                                ] ;
-                                                                                rdfs:label "Reaction Rate Equation"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#definition> "A rate equation or rate law is a mathematical expression used in chemical kinetics to link the rate of a reaction to the concentration of each reactant."^^xsd:string .
+                                                               rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/hasParameter> ;
+                                                                                 owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter>
+                                                                               ] ;
+                                                               rdfs:label "Reaction Rate Equation"@en ;
+                                                               <http://www.w3.org/2004/02/skos/core#definition> "A rate equation or rate law is a mathematical expression used in chemical kinetics to link the rate of a reaction to the concentration of each reactant."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SteadyStateMolecularConcentration
 <https://bbp.epfl.ch/ontologies/core/bmo/SteadyStateMolecularConcentration> rdf:type owl:Class ;
-                                                                                             rdfs:subClassOf prov:Entity ,
-                                                                                                             [ rdf:type owl:Restriction ;
-                                                                                                               owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/Molecule> ;
-                                                                                                               owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Molecule>
-                                                                                                             ] ;
-                                                                                             rdfs:label "Steady State Molecular Concentration"@en .
+                                                                            rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/Molecule> ;
+                                                                                              owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Molecule>
+                                                                                            ] ;
+                                                                            rdfs:label "Steady State Molecular Concentration"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart
 <https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                                           rdfs:label "Subcellular Part"@en .
+                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
+                                                          rdfs:label "Subcellular Part"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicNetwork
+<https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicNetwork> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment> ;
+                                                                                           owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
+                                                                                         ] ;
+                                                                         rdfs:label "Metabolic Network"@en ;
+                                                                         <http://www.w3.org/2004/02/skos/core#definition> "A set of metabolic reactions."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicPathway
+<https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicPathway> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <http://schema.org/isPartOf> ;
+                                                                                           owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicNetwork>
+                                                                                         ] ,
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment> ;
+                                                                                           owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
+                                                                                         ] ;
+                                                                         rdfs:label "Metabolic Pathway"@en ;
+                                                                         <http://www.w3.org/2004/02/skos/core#definition> "In biochemistry, a metabolic pathway is a linked series of chemical reactions occurring within a cell."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/molecular-systems/ReactionRate
+<https://bbp.epfl.ch/ontologies/core/molecular-systems/ReactionRate> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://bbp.epfl.ch/ontologies/core/molecular-systems/isDescribedBy> ;
+                                                                                       owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ReactionRateEquation>
+                                                                                     ] ;
+                                                                     rdfs:label "Reaction Rate"@en ;
+                                                                     <http://www.w3.org/2004/02/skos/core#definition> "The reaction rate or rate of reaction is the speed at which a chemical reaction takes place, defined as proportional to the increase in the concentration of a product per unit time and to the decrease in the concentration of a reactant per unit time."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/VenousVolume
 <https://bbp.epfl.ch/ontologies/core/molecular-systems/VenousVolume> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> ;
-                                                                        rdfs:label "Venous Volume"@en .
+                                                                     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> ;
+                                                                     rdfs:label "Venous Volume"@en .
 
 
 ###  https://neuroshapes.org/Astrocyte
@@ -432,11 +442,6 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
                                                   ] ;
                                   rdfs:label "Complex"@en ;
                                   <http://www.w3.org/2004/02/skos/core#definition> "A protein complex or multiprotein complex is a group of two or more associated polypeptide chains."^^xsd:string .
-
-
-###  http://www.w3.org/ns/prov#Entity
-prov:Entity rdf:type owl:Class ;
-                                 rdfs:label "Entity"@en .
 
 
 ###  https://neuroshapes.org/Glia
@@ -511,7 +516,7 @@ prov:Entity rdf:type owl:Class ;
 
 ###  https://neuroshapes.org/Species
 <https://neuroshapes.org/Species> rdf:type owl:Class ;
-                                  rdfs:subClassOf prov:Entity ;
+                                  rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
                                   rdfs:label "Species"@en .
 
 
@@ -543,4 +548,12 @@ prov:Entity rdf:type owl:Class ;
                                 <http://www.w3.org/2004/02/skos/core#definition> "Turnover number, catalytic constant (for the enzymes with single active site)."^^xsd:string .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+#################################################################
+#    Annotations
+#################################################################
+
+<https://bbp.epfl.ch/ontologies/core/bmo/Molecule> rdfs:label "Molecule"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A molecule is an electrically neutral group of two or more atoms held together by chemical bonds."^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

@@ -390,8 +390,15 @@
                                             rdfs:label "Wistar Han"@en .
 
 
+
+###  http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class ;
+                                   rdfs:label "Entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank
 <http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
                                                            rdfs:label "Taxonomic rank"@en .
 
 

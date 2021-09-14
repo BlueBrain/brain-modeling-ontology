@@ -13,7 +13,6 @@ from rdflib import Namespace
 
 from bmo_tools.utils import remove_non_ascii
 
-
 def define_arguments():
     """
     Defines the arguments of the Python script
@@ -31,6 +30,43 @@ def define_arguments():
     return parser
 
 
+PREFIX_MAPPINGS = {
+    "mso": "https://bbp.epfl.ch/ontologies/core/molecular-systems/",
+    "GO": "http://purl.obolibrary.org/obo/GO_",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "bmo": "https://bbp.epfl.ch/ontologies/core/bmo/",
+    "bmc": "https://bbp.epfl.ch/ontologies/core/bmc/",
+    "nsg": "https://neuroshapes.org/",
+    "nxv": "https://bluebrain.github.io/nexus/vocabulary/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "xml": "http://www.w3.org/XML/1998/namespace/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "shsh": "http://www.w3.org/ns/shacl-shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "uberon": "http://purl.obolibrary.org/obo/UBERON_",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
+    "NCBITaxon_TAXON": "http://purl.obolibrary.org/obo/NCBITaxon#_",
+    "stim": "https://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/",
+    "datashapes": "https://neuroshapes.org/dash/",
+    "commonshapes": "https://neuroshapes.org/commons/",
+    "ilx": "http://uri.interlex.org/base/ilx_",
+    "efe": "https://bbp.epfl.ch/ontologies/core/efeatures/",
+    "et": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/",
+    "mt": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/",
+    "EFO": "http://www.ebi.ac.uk/efo/EFO_",
+    "RS": "http://purl.obolibrary.org/obo/RS_",
+    "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_"
+}
+
+
 def execute_registration(forge, ontology_path, tag=None):
     """
     Executes the registration process
@@ -42,19 +78,14 @@ def execute_registration(forge, ontology_path, tag=None):
     """
     ontologyspy = Ontospy(ontology_path, verbose=True)
     for x in ontologyspy.stats(): print(f"{x[0]}: {x[1]}")
-    NSG = Namespace('https://neuroshapes.org/')
-    UBERON = Namespace('http://purl.obolibrary.org/obo/UBERON_')
-    SKOS = Namespace('http://www.w3.org/2004/02/skos/core#')
-    OWL = Namespace('http://www.w3.org/2002/07/owl#')
     # first remove non-ascii characters from ontology
     remove_non_ascii(ontology_path)
     # read the ontology
     ontology_graph = rdflib.Graph()
     ontology_graph.parse(ontology_path, format="turtle")
-    ontology_graph.bind('nsg', NSG)
-    ontology_graph.bind('skos', SKOS)
-    ontology_graph.bind('owl', OWL)
-    ontology_graph.bind('UBERON', UBERON)
+    for prefix, mapping in PREFIX_MAPPINGS.items:
+        ontology_graph.bind(prefix, Namespace(mapping))
+
     ontology = bmo.find_ontology_resource(ontology_graph)
 
     if not ontology_graph.label(ontology):
