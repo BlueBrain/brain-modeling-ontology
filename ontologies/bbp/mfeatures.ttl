@@ -1,0 +1,180 @@
+@prefix : <https://bbp.epfl.ch/ontologies/core/mfeatures#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://bbp.epfl.ch/ontologies/core/mfeatures> .
+
+<https://bbp.epfl.ch/ontologies/core/mfeatures> rdf:type owl:Ontology ;
+                                                rdfs:label "Neuron Morphological Feature Ontology"^^xsd:string  ;
+                                                owl:versionInfo "R65"^^xsd:string .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id
+<https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> rdf:type owl:AnnotationProperty ;
+                                                          rdfs:label "neurom_id"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature
+<https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> rdf:type owl:Class ;
+                                                                     rdfs:label "Neuron Morphological Feature"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfBifurcations
+:NumberOfBifurcations rdf:type owl:Class ;
+                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                      rdfs:label "Number of Bifurcations"^^xsd:string ;
+                      <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_bifurcations"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfForkingPoints
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfForkingPoints> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                      rdfs:label "Number of Forking Points"@en ;
+                                                                      <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_forking_points"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSections
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSections> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                 rdfs:label "Number of Sections"@en ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_sections"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSegments
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSegments> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                 rdfs:label "Number of Segments"@en ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_segments"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionAsymmetry
+<https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionAsymmetry> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                   rdfs:label "Partition Asymmetry"@en ;
+                                                                   <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "partition_asymmetry"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionPairs
+<https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionPairs> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                               rdfs:label "Partition Pairs"@en ;
+                                                               <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "partition_pairs"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/RemoteBifurcationAngles
+<https://bbp.epfl.ch/ontologies/core/mfeatures/RemoteBifurcationAngles> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                        rdfs:label "Remote Bifurcation Angles"@en ;
+                                                                        <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "remote_bifurcation_angles"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifBranchOrders
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifBranchOrders> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                       rdfs:label "Section Bif Branch Orders"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#definition> "Bifurcation section branch orders."^^xsd:string ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_bif_branch_orders"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifRadialDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifRadialDistances> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                          rdfs:label "Section Bif Radial Distances"@en ;
+                                                                          <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_bif_radial_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBranchOrders
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBranchOrders> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                    rdfs:label "Section Branch Orders"@en ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_branch_orders"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionEndDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionEndDistances> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                    rdfs:label "Section End Distances"@en ;
+                                                                    <http://www.w3.org/2004/02/skos/core#definition> "Section end to end distances."^^xsd:string ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_end_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionLengths
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionLengths> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                               rdfs:label "Section Lengths"@en ;
+                                                               <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_lengths"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionPathDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionPathDistances> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                     rdfs:label "Section Path Distances"@en ;
+                                                                     <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_path_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionRadialDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionRadialDistances> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                       rdfs:label "Section Radial Distances"@en ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_radial_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionStrahlerOrders
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionStrahlerOrders> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                      rdfs:label "Section Strahler Orders"@en ;
+                                                                      <http://www.w3.org/2004/02/skos/core#definition> "Inter-segment opening angles in a section."^^xsd:string ;
+                                                                      <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_strahler_orders"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTermBranchOrders
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTermBranchOrders> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                        rdfs:label "Section Term Branch Orders"@en ;
+                                                                        <http://www.w3.org/2004/02/skos/core#definition> "Termination section branch orders"^^xsd:string ;
+                                                                        <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_term_branch_orders"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentLengths
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentLengths> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                               rdfs:label "Segment Lengths"@en ;
+                                                               <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "segment_lengths"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentMidpoints
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentMidpoints> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                 rdfs:label "Segment Midpoints"@en ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "segment_midpoints"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentRadialDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentRadialDistances> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                       rdfs:label "Segment Radial Distances"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#definition> "Distances between all segment mid points and origin."^^xsd:string ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "segment_radial_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/TerminalPathLengths
+<https://bbp.epfl.ch/ontologies/core/mfeatures/TerminalPathLengths> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                              rdfs:label "Terminal Path Lengths"@en ;
+                                                                              <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "terminal_path_lengths"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

@@ -13,6 +13,7 @@ from rdflib import Namespace
 
 from bmo_tools.utils import remove_non_ascii
 
+
 def define_arguments():
     """
     Defines the arguments of the Python script
@@ -25,8 +26,11 @@ def define_arguments():
                         choices=["production", "staging"],
                         help='In which Nexus environment should the script run?',
                         required=True)
-    parser.add_argument("--token", help="The nexus token", type=str, required=True)
-    parser.add_argument("--tag", help="The tag of the ontology. Defaults to None", default=None, type=str)
+    parser.add_argument(
+        "--token", help="The nexus token", type=str, required=True)
+    parser.add_argument(
+        "--tag", help="The tag of the ontology. Defaults to None",
+        default=None, type=str)
     return parser
 
 
@@ -99,12 +103,13 @@ def execute_registration(forge, ontology_path, tag=None):
         # Target ontology ID's to define
         "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes": "https://bbp.epfl.ch/ontologies/lib/molecular-systems",
         "https://bbp.epfl.ch/nexus/webprotege/#projects/facad879-18ea-4499-8f44-b154ed6c0020/edit/Classes": "https://bbp.epfl.ch/ontologies/lib/e-features",
-        # Already exist in Nexus
         "https://bbp.epfl.ch/nexus/webprotege/#projects/c0f3a3e7-6dd2-4802-a00a-61ae366a35bb/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mba",
         "https://bbp.epfl.ch/nexus/webprotege/#projects/7515dc12-ce84-4eea-ba8e-6262670ac741/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes",
         "https://bbp.epfl.ch/nexus/webprotege/#projects/6a23494a-360c-4152-9e81-fd9828f44db9/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes",
         "https://bbp.epfl.ch/nexus/webprotege/#projects/ea484e60-5a27-4790-8f2a-e2975897f407/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/",
-        "https://bbp.epfl.ch/nexus/webprotege/#projects/d4ee40c6-4131-4915-961d-51a5c587c667/edit/Classes": "https://bbp.epfl.ch/ontologies/core/efeatures"
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/d4ee40c6-4131-4915-961d-51a5c587c667/edit/Classes": "https://bbp.epfl.ch/ontologies/core/efeatures",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/a9878003-7d0b-4f75-aad8-7de3eeeacd73/edit/Classes": "https://bbp.epfl.ch/ontologies/core/mfeatures",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/648aec19-2694-4ab2-9231-3905e2bd3d38/edit/Classes": "https://bbp.epfl.ch/ontologies/core/metypes"
     }
 
     bmo.replace_is_defined_by_uris(ontology_graph, WEBPROTEGE_TO_NEXUS)
@@ -153,7 +158,8 @@ def parse_and_register_ontologies(arguments):
     token = arguments.token
     tag = arguments.tag
 
-    # ontology files are all turtle files that are placed under the "ontologies/bbp" directory
+    # ontology files are all turtle files that are placed under the
+    # "ontologies/bbp" directory
     ontology_files = glob.glob(f"./ontologies/bbp/*.ttl")
 
     if environment == "staging":
@@ -161,7 +167,8 @@ def parse_and_register_ontologies(arguments):
     elif environment == "production":
         endpoint = "https://bbp.epfl.ch/nexus/v1"
     else:
-        raise ValueError("Environment argument must be either \"staging\" or \"production\" ")
+        raise ValueError(
+            "Environment argument must be either \"staging\" or \"production\" ")
 
     BUCKET = "neurosciencegraph/datamodels"
 

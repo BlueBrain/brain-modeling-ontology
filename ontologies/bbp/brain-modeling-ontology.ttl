@@ -38,7 +38,7 @@
                                            dc:title "Brain Modeling Ontology"^^xsd:string ;
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
-                                           owl:versionInfo "R13"^^xsd:string .
+                                           owl:versionInfo "R25"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -186,6 +186,11 @@ bmo:generates rdf:type owl:ObjectProperty ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/hasParameter
 bmo:hasParameter rdf:type owl:ObjectProperty ;
                  rdfs:label "hasParameter"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/hasTType
+bmo:hasTType rdf:type owl:ObjectProperty ;
+             rdfs:label "hasTType"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/isAssociatedWith
@@ -2158,6 +2163,7 @@ bmo:NeuronFeature rdf:type owl:Class ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronMEType
 bmo:NeuronMEType rdf:type owl:Class ;
                  rdfs:subClassOf bmo:NeuronType ;
+                 rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/648aec19-2694-4ab2-9231-3905e2bd3d38/edit/Classes> ;
                  rdfs:label "Neuron ME Type"@en ;
                  skos:prefLabel "METype"^^xsd:string .
 
@@ -2187,9 +2193,16 @@ bmo:NeuronModelParameter rdf:type owl:Class ;
                          skos:definition "A neuron model parameter is a parameter used to represent a specific biological or theoretical value that is used in the modeling of a particular aspect of a neuron."^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronMolecularType
+bmo:NeuronMolecularType rdf:type owl:Class ;
+                        rdfs:subClassOf bmo:NeuronType ;
+                        rdfs:label "Neuron Molecular Type"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature
 bmo:NeuronMorphologicalFeature rdf:type owl:Class ;
                                rdfs:subClassOf bmo:NeuronFeature ;
+                               rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/a9878003-7d0b-4f75-aad8-7de3eeeacd73/edit/Classes> ;
                                rdfs:label "Neuron Morphological Feature"@en .
 
 
@@ -2227,14 +2240,14 @@ bmo:NeuronProjectionType rdf:type owl:Class ;
                          skos:prefLabel "PType"^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomicType
-bmo:NeuronTranscriptomicType rdf:type owl:Class ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomeType
+bmo:NeuronTranscriptomeType rdf:type owl:Class ;
                              rdfs:subClassOf bmo:NeuronType ,
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty nsg:gene ;
                                                owl:someValuesFrom bmo:Gene
                                              ] ;
-                             rdfs:label "Neuron Transcriptomic Type"@en .
+                             rdfs:label "Neuron Transcriptome Type"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronType
@@ -2318,6 +2331,17 @@ bmo:PerisomaticCurrentFiringFeature rdf:type owl:Class ;
 bmo:PredictedData rdf:type owl:Class ;
                   rdfs:subClassOf bmo:DataGenerationModality ;
                   rdfs:label "Predicted Data"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/RNASequencingProfile
+bmo:RNASequencingProfile rdf:type owl:Class ;
+                         rdfs:subClassOf schema:Dataset ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty bmo:hasTType ;
+                                           owl:someValuesFrom bmo:NeuronTranscriptomeType
+                                         ] ;
+                         rdfs:label "RNA Sequencing Profile"@en ;
+                         skos:definition "A dataset describing presence and quantity of RNA in a biological sample at a given moment obtained using a sequencing technique called RNA-Seq. RNA sequencing data is used to analyze the continuously changing cellular transcriptome."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter
@@ -2529,6 +2553,18 @@ bmo:Workflow rdf:type owl:Class ;
                                                                  nsg:synonym "SK_E2"^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/Lamp%2B
+<https://bbp.epfl.ch/ontologies/core/bmo/Lamp%2B> rdf:type owl:Class ;
+                                                  rdfs:subClassOf bmo:NeuronMolecularType ;
+                                                  rdfs:label "Lamp+"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/PV%2B
+<https://bbp.epfl.ch/ontologies/core/bmo/PV%2B> rdf:type owl:Class ;
+                                                rdfs:subClassOf bmo:NeuronMolecularType ;
+                                                rdfs:label "PV+"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PersistentK+Current
 <https://bbp.epfl.ch/ontologies/core/bmo/PersistentK+Current> rdf:type owl:Class ;
                                                               rdfs:subClassOf bmo:IonicMechanism ,
@@ -2553,6 +2589,12 @@ bmo:Workflow rdf:type owl:Class ;
                                                                skos:definition "Persistent sodium current."^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/SST%2B
+<https://bbp.epfl.ch/ontologies/core/bmo/SST%2B> rdf:type owl:Class ;
+                                                 rdfs:subClassOf bmo:NeuronMolecularType ;
+                                                 rdfs:label "SST+"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TransientK+Current
 <https://bbp.epfl.ch/ontologies/core/bmo/TransientK+Current> rdf:type owl:Class ;
                                                              rdfs:subClassOf bmo:IonicMechanism ,
@@ -2575,6 +2617,12 @@ bmo:Workflow rdf:type owl:Class ;
                                                                               ] ;
                                                               rdfs:label "Transient Na+ Current"@en ;
                                                               skos:definition "Transient sodium current."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/VIP%2B
+<https://bbp.epfl.ch/ontologies/core/bmo/VIP%2B> rdf:type owl:Class ;
+                                                 rdfs:subClassOf bmo:NeuronMolecularType ;
+                                                 rdfs:label "VIP+"@en .
 
 
 ###  https://neuroshapes.org/Acetylcholine
@@ -3105,8 +3153,8 @@ owl:topObjectProperty rdfs:label "Relations"@en .
 
 
 bmo:BiochemicalReaction rdfs:label "Biochemical Reaction"@en ;
-                        skos:definition "A chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string ;
-                        rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ChemicalReaction%3E)> .
+                        rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ChemicalReaction%3E)> ;
+                        skos:definition "A chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string .
 
 
 bmo:BrainLayer rdfs:label "Brain Layer"@en ;
