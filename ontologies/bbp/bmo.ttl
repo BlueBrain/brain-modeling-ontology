@@ -154,7 +154,6 @@ nsg:skos:notation rdf:type owl:AnnotationProperty ;
 #    Datatypes
 #################################################################
 
-
 ###  https://neuroshapes.org/descriptionOfSpikeAdaptation
 nsg:descriptionOfSpikeAdaptation rdf:type rdfs:Datatype ;
                                  rdfs:label "description of spike adaptation"@en .
@@ -833,7 +832,10 @@ bmo:BasalLamina rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BiochemicalReaction
 bmo:BiochemicalReaction rdf:type owl:Class ;
-                        rdfs:subClassOf bmo:BiologicalBrainActivity .
+                        rdfs:subClassOf bmo:BiologicalBrainActivity ;
+                        rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ChemicalReaction%3E)> ;
+                        rdfs:label "Biochemical Reaction"^^xsd:string ;
+                        skos:definition "A chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BiologicalBrainActivity
@@ -2242,12 +2244,12 @@ bmo:NeuronProjectionType rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomeType
 bmo:NeuronTranscriptomeType rdf:type owl:Class ;
-                             rdfs:subClassOf bmo:NeuronType ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty nsg:gene ;
-                                               owl:someValuesFrom bmo:Gene
-                                             ] ;
-                             rdfs:label "Neuron Transcriptome Type"@en .
+                            rdfs:subClassOf bmo:NeuronType ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty nsg:gene ;
+                                              owl:someValuesFrom bmo:Gene
+                                            ] ;
+                            rdfs:label "Neuron Transcriptome Type"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronType
@@ -3111,17 +3113,8 @@ nsg:Vector3D rdf:type owl:Class ;
                                                 owl:sameAs bmo:BrainLayer .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/BiochemicalReaction
-bmo:BiochemicalReaction rdf:type owl:NamedIndividual ;
-                        owl:sameAs <https://bioportal.bioontology.org/ontologies/BP?p=classes&conceptid=http://www.biopax.org/release/biopax-level3.owl#BiochemicalReaction> .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer
 bmo:BrainLayer rdf:type owl:NamedIndividual .
-
-
-###  https://bioportal.bioontology.org/ontologies/BP?p=classes&conceptid=http://www.biopax.org/release/biopax-level3.owl#BiochemicalReaction
-<https://bioportal.bioontology.org/ontologies/BP?p=classes&conceptid=http://www.biopax.org/release/biopax-level3.owl#BiochemicalReaction> rdf:type owl:NamedIndividual .
 
 
 ###  https://neuroshapes.org/BluePyEModel
@@ -3150,11 +3143,6 @@ owl:topDataProperty rdfs:label "Attributes"@en .
 
 
 owl:topObjectProperty rdfs:label "Relations"@en .
-
-
-bmo:BiochemicalReaction rdfs:label "Biochemical Reaction"@en ;
-                        rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ChemicalReaction%3E)> ;
-                        skos:definition "A chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string .
 
 
 bmo:BrainLayer rdfs:label "Brain Layer"@en ;
