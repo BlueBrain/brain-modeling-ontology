@@ -8,7 +8,7 @@
 
 <https://bbp.epfl.ch/ontologies/core/metypes> rdf:type owl:Ontology  ;
                                               rdfs:label "Cell Morpho-Electric Types Ontology"^^xsd:string  ;
-                                              owl:versionInfo "R4^^xsd:string .
+                                              owl:versionInfo "R4"^^xsd:string .
 
 #################################################################
 #    Classes
