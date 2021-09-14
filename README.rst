@@ -32,7 +32,7 @@ When `develop` branch receives a commit:
 
 - Tests ontologies
 - Register to nexus staging environment
-- Deploy ontology documentation on staging environment
+- Deploy ontology documentation on Openshift staging environment
 
 On tag
 ^^^^^^
@@ -41,6 +41,7 @@ When `main` branch receives a tag:
 
 - Tests ontologies
 - Register to nexus production environment
+- Deploy ontology documentation on Openshift production environment
 
 Variables
 ---------
@@ -50,19 +51,19 @@ The Gitlab CI configuration requires the following variables to be set as [CI/CD
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
 | Variable Name            | Description                                                                                               | Masked                   |
 +==========================+===========================================================================================================+==========================+
-| `CI_REGISTRY`            | The registry of docs deployment. Should be set to                                                         | No                       |
-|                          | `docker-registry-default.ocp.bbp.epfl.ch`                                                                 |                          |
+| `CI_REGISTRY_USER_STAGING`       | The username of the account with permission to push an image to the staging openshift project eg. `remote-pusher`    | Yes   |
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
-| `CI_REGISTRY_USER`       | The username of the account with permission to push an image to openshift project eg.                     | Yes                      |
-|                          | `remote-pusher`                                                                                           |                          |
+| `CI_REGISTRY_USER_PRODUCTION`    | The username of the account with permission to push an image to the production openshift project eg. `remote-pusher` | Yes   |
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
-| `CI_REGISTRY_PASSWORD`   | The password of the account with permission to push an image to openshift project                         | Yes                      |
+| `CI_REGISTRY_PASSWORD_STAGING`   | The password of the account with permission to push an image to the staging openshift project                        | Yes   |
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
-| `GITLAB_DEPLOY_TOKEN`    | The deploy token of the custom Ontodocs repository. Dockerfile uses it to clone the private repository    | Yes                      |
+| `CI_REGISTRY_PASSWORD_PRODUCTION`| The password of the account with permission to push an image to the production openshift project                     | Yes   |
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
-| `GITLAB_DEPLOY_PASSWORD` | The deploy password of the custom Ontodocs repository. Dockerfile uses it to clone the private repository | Yes                      |
+| `GITLAB_DEPLOY_TOKEN`            | The deploy token of the custom Ontodocs repository. Dockerfile uses it to clone the private repository               | Yes   |
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
-| `NEXUS_TOKEN_STAGING`    | The token of Nexus staging environment                                                                    | Yes                      |
+| `GITLAB_DEPLOY_PASSWORD`         | The deploy password of the custom Ontodocs repository. Dockerfile uses it to clone the private repository            | Yes   |
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
-| `NEXUS_TOKEN_PRODUCTION` | The token of Nexus production environment                                                                 | Yes                      |
+| `NEXUS_TOKEN_STAGING`            | The token of Nexus staging environment                                                                               | Yes   |
++--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
+| `NEXUS_TOKEN_PRODUCTION`         | The token of Nexus production environment                                                                            | Yes   |
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
