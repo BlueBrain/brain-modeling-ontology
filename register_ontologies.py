@@ -83,7 +83,7 @@ def execute_registration(forge, ontology_path, tag=None):
     # read the ontology
     ontology_graph = rdflib.Graph()
     ontology_graph.parse(ontology_path, format="turtle")
-    for prefix, mapping in PREFIX_MAPPINGS.items:
+    for prefix, mapping in PREFIX_MAPPINGS.items():
         ontology_graph.bind(prefix, Namespace(mapping))
 
     ontology = bmo.find_ontology_resource(ontology_graph)
