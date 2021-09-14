@@ -15,7 +15,7 @@ COPY . .
 # Create directory to host visualization files
 RUN mkdir /app/visualization
 # Generate ontologies documentation
-RUN ontodocs ./ontologies/bbp --theme lumen --outputpath /app/visualization
+RUN ontodocs ./ontologies/bbp --theme lumen --outputpath /app/visualization --title "Brain Modeling Ontology"
 
 FROM nginx:latest
 

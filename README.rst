@@ -51,6 +51,8 @@ The Gitlab CI configuration requires the following variables to be set as [CI/CD
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
 | Variable Name            | Description                                                                                               | Masked                   |
 +==========================+===========================================================================================================+==========================+
+| `CI_REGISTRY`                    | The registry of docs deployment. Should be set to `docker-registry-default.ocp.bbp.epfl.ch`                          | Yes   |
++--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
 | `CI_REGISTRY_USER_STAGING`       | The username of the account with permission to push an image to the staging openshift project eg. `remote-pusher`    | Yes   |
 +--------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------+
 | `CI_REGISTRY_USER_PRODUCTION`    | The username of the account with permission to push an image to the production openshift project eg. `remote-pusher` | Yes   |
