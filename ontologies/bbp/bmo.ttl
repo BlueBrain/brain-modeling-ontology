@@ -2557,14 +2557,14 @@ bmo:Workflow rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Lamp+
 <https://bbp.epfl.ch/ontologies/core/bmo/Lamp+> rdf:type owl:Class ;
-                                                  rdfs:subClassOf bmo:NeuronMolecularType ;
-                                                  rdfs:label "Lamp+"@en .
+                                                rdfs:subClassOf bmo:NeuronMolecularType ;
+                                                rdfs:label "Lamp+"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PV+
 <https://bbp.epfl.ch/ontologies/core/bmo/PV+> rdf:type owl:Class ;
-                                                rdfs:subClassOf bmo:NeuronMolecularType ;
-                                                rdfs:label "PV+"@en .
+                                              rdfs:subClassOf bmo:NeuronMolecularType ;
+                                              rdfs:label "PV+"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PersistentK+Current
@@ -2593,8 +2593,8 @@ bmo:Workflow rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SST+
 <https://bbp.epfl.ch/ontologies/core/bmo/SST+> rdf:type owl:Class ;
-                                                 rdfs:subClassOf bmo:NeuronMolecularType ;
-                                                 rdfs:label "SST+"@en .
+                                               rdfs:subClassOf bmo:NeuronMolecularType ;
+                                               rdfs:label "SST+"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TransientK+Current
@@ -2623,8 +2623,8 @@ bmo:Workflow rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/VIP+
 <https://bbp.epfl.ch/ontologies/core/bmo/VIP+> rdf:type owl:Class ;
-                                                 rdfs:subClassOf bmo:NeuronMolecularType ;
-                                                 rdfs:label "VIP+"@en .
+                                               rdfs:subClassOf bmo:NeuronMolecularType ;
+                                               rdfs:label "VIP+"@en .
 
 
 ###  https://neuroshapes.org/Acetylcholine
