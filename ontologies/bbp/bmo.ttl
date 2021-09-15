@@ -2555,14 +2555,14 @@ bmo:Workflow rdf:type owl:Class ;
                                                                  nsg:synonym "SK_E2"^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/Lamp%2B
-<https://bbp.epfl.ch/ontologies/core/bmo/Lamp%2B> rdf:type owl:Class ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/Lamp+
+<https://bbp.epfl.ch/ontologies/core/bmo/Lamp+> rdf:type owl:Class ;
                                                   rdfs:subClassOf bmo:NeuronMolecularType ;
                                                   rdfs:label "Lamp+"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/PV%2B
-<https://bbp.epfl.ch/ontologies/core/bmo/PV%2B> rdf:type owl:Class ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/PV+
+<https://bbp.epfl.ch/ontologies/core/bmo/PV+> rdf:type owl:Class ;
                                                 rdfs:subClassOf bmo:NeuronMolecularType ;
                                                 rdfs:label "PV+"@en .
 
@@ -2591,8 +2591,8 @@ bmo:Workflow rdf:type owl:Class ;
                                                                skos:definition "Persistent sodium current."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/SST%2B
-<https://bbp.epfl.ch/ontologies/core/bmo/SST%2B> rdf:type owl:Class ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/SST+
+<https://bbp.epfl.ch/ontologies/core/bmo/SST+> rdf:type owl:Class ;
                                                  rdfs:subClassOf bmo:NeuronMolecularType ;
                                                  rdfs:label "SST+"@en .
 
@@ -2621,8 +2621,8 @@ bmo:Workflow rdf:type owl:Class ;
                                                               skos:definition "Transient sodium current."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/VIP%2B
-<https://bbp.epfl.ch/ontologies/core/bmo/VIP%2B> rdf:type owl:Class ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/VIP+
+<https://bbp.epfl.ch/ontologies/core/bmo/VIP+> rdf:type owl:Class ;
                                                  rdfs:subClassOf bmo:NeuronMolecularType ;
                                                  rdfs:label "VIP+"@en .
 
