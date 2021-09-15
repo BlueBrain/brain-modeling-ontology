@@ -3056,6 +3056,7 @@ nsg:Somatostatin rdf:type owl:Class ;
 ###  https://neuroshapes.org/Species
 nsg:Species rdf:type owl:Class ;
             rdfs:subClassOf prov:Entity ;
+            rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/c9128328-fe63-4e5e-8ec1-c7f0f0f33d19/edit/Classes> ;
             rdfs:label "Species"@en ;
             skos:definition "In biology, a species is the basic unit of classification and a taxonomic rank of an organism, as well as a unit of biodiversity."^^xsd:string .
 
