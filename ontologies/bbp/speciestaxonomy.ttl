@@ -149,7 +149,7 @@
                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
                          rdfs:label "Vipr2-IRES2-Cre-neo"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Vipr2-IRES2-Cre-neo"^^xsd:string ;
-                         <http://www.w3.org/2004/02/skos/core#definition> "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK–Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells."^^xsd:string .
+                         <http://www.w3.org/2004/02/skos/core#definition> "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK-Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells."^^xsd:string .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RCdsmhhTCAVRU9NaRWZ4hyk
@@ -185,7 +185,7 @@
                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
                         rdfs:label "Plxnd1-CreER"@en ;
                         <http://www.w3.org/2004/02/skos/core#altLabel> "Plxnd1-CreER"^^xsd:string ;
-                        <http://www.w3.org/2004/02/skos/core#definition> "The PlxnD1-CreER driver recapitulates endogenous PlxnD1 expression and labeles projection neurons in the cerebral cortex, hippocampus, amygdala (BLA and LA), and medium spiny neurons of the striatum."^^xsd:string .
+                        <http://www.w3.org/2004/02/skos/core#definition> "The PlxnD1-CreER driver recapitulates endogenous PlxnD1 expression and labeles projection neurons in the cerebral cortex, hippocampus, amygdala (BLA and LA), and medium spiny neurons of the striatum."^^xsd:string .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000016
@@ -206,8 +206,8 @@
                                                                           rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
                                                                           <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                                                                           rdfs:label "Tg(PrP-tTA-lacZ)"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(Prnp-tTA:βGal)"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a double transgenic mice produced by crossbreeding the PrP promoter (Prnp-tTA) mouse line F959 (Tremblay et al., 1998) with a responder mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme β-galactosidase."@en .
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(Prnp-tTA:betaGal)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a double transgenic mice produced by crossbreeding the PrP promoter (Prnp-tTA) mouse line F959 (Tremblay et al., 1998) with a responder mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme beta-galactosidase."@en .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000018
@@ -215,8 +215,8 @@
                                                                           rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
                                                                           <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                                                                           rdfs:label "Tg(CamKII-tTA-lacZ)"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(CamKII  -tTA:βGal)"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a double transgenic mouse produced by crossbreeding the CamKII promoter (CamKII-tTA) with a responder mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme β-galactosidase."@en .
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(CamKII  -tTA:betaGal)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a double transgenic mouse produced by crossbreeding the CamKII promoter (CamKII-tTA) with a responder mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme beta-galactosidase."@en .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000019
@@ -224,8 +224,8 @@
                                                                           rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
                                                                           <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                                                                           rdfs:label "Tg(Nop-tTA-lacZ)"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(NOP-tTA:βGal)"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a double transgenic mice produced by crossbreeding the NOP promoter (NOP-tTA) with a responder mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme β-galactosidase."@en .
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(NOP-tTA:betaGal)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a double transgenic mice produced by crossbreeding the NOP promoter (NOP-tTA) with a responder mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme beta-galactosidase."@en .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000020
@@ -233,8 +233,8 @@
                                                                           rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
                                                                           <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                                                                           rdfs:label "Tg(tTA-lacZ)"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(TA:βGal)"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme β-galactosidase."@en .
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(TA:betaGal)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme beta-galactosidase."@en .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000021
@@ -243,7 +243,7 @@
                                                                           <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                                                                           rdfs:label "Tg(ArcSwe)"@en ;
                                                                           <http://www.w3.org/2004/02/skos/core#altLabel> "tg-ArcSwe"@en ;
-                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a mouse model for Alzheimer's disease. It carries the Arctic (E693G) and Swedish (KM670/6701NL) mutations, it develops amyloid-beta (Aβ) deposits in the brain."@en .
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a mouse model for Alzheimer's disease. It carries the Arctic (E693G) and Swedish (KM670/6701NL) mutations, it develops amyloid-beta (Abeta) deposits in the brain."@en .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000022

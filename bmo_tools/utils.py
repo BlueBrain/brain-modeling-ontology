@@ -13,10 +13,10 @@ def remove_non_ascii(filepath):
     with open(filepath, "r") as f:
         content = f.read()
 
-    for k, v in MAPPING.items():
-        content = content.replace(k, v)
-
     if not is_ascii(content):
+        for k, v in MAPPING.items():
+            content = content.replace(k, v)
+
         for c in content:
             if ord(c) >= 128:
                 content = content.replace(c, "")
