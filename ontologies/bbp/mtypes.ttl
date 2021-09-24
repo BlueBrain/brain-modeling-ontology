@@ -10,14 +10,13 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes> rdf:type owl:Ontology ;
                                                           rdfs:label "Cell Morphological Types"^^xsd:string .
 
-
 #################################################################
 #    Annotation properties
 #################################################################
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RX7kj5BzRwPqntDPM1GnN7
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RX7kj5BzRwPqntDPM1GnN7> rdf:type owl:AnnotationProperty ;
-                                                                                rdfs:label "alt" .
+:RX7kj5BzRwPqntDPM1GnN7 rdf:type owl:AnnotationProperty ;
+                        rdfs:label "alt" .
 
 
 ###  http://www.w3.org/2004/02/skos/core#altLabel
@@ -58,292 +57,300 @@
 
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  https://neuroshapes.org/componentType
+<https://neuroshapes.org/componentType> rdf:type owl:ObjectProperty .
+
+
+#################################################################
 #    Classes
 #################################################################
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/Fm_UzRBbSwaPUbvbRTj4Vg
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/Fm_UzRBbSwaPUbvbRTj4Vg> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SP_Ivy"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SP_Ivy"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal layer Ivy Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:Fm_UzRBbSwaPUbvbRTj4Vg rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SP_Ivy"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SP_Ivy"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal layer Ivy Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/GaBeBiJcTQqLpE8LFIPQlw
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/GaBeBiJcTQqLpE8LFIPQlw> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "L6_BP"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "L6_BP"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Bipolar Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BipolarPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
+:GaBeBiJcTQqLpE8LFIPQlw rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "L6_BP"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "L6_BP"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 6 Bipolar Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005395> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BipolarPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/HLLmSCEaTSmhu4XkojEmjQ
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/HLLmSCEaTSmhu4XkojEmjQ> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SR_SCA"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SR_SCA"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Radiatum GO:1990021 Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005372> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/GO:1990021Phenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:HLLmSCEaTSmhu4XkojEmjQ rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SR_SCA"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SR_SCA"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Radiatum GO:1990021 Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005372> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/GO:1990021Phenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R0J7pXALR2O5lS5mVIo9mA
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R0J7pXALR2O5lS5mVIo9mA> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SO_OLM"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SO_OLM"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Oriens-Lacunosum Moleculare Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:R0J7pXALR2O5lS5mVIo9mA rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SO_OLM"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SO_OLM"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Oriens-Lacunosum Moleculare Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R79epEbzgOahMQtT1dLVWxl
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R79epEbzgOahMQtT1dLVWxl> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "SP_WATri"@en ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:R79epEbzgOahMQtT1dLVWxl rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "SP_WATri"@en ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R7bd9XkCMkaNDisaYIfQ2jh
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R7bd9XkCMkaNDisaYIfQ2jh> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "SP_SPSR"@en ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:R7bd9XkCMkaNDisaYIfQ2jh rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "SP_SPSR"@en ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R8hdjjRLXwh0Tm6MOOsor0E
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R8hdjjRLXwh0Tm6MOOsor0E> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "SP_NABC"@en ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:R8hdjjRLXwh0Tm6MOOsor0E rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "SP_NABC"@en ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R91jXXv0zFw51k5RYHewrR0
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R91jXXv0zFw51k5RYHewrR0> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "SP_WABC"@en ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:R91jXXv0zFw51k5RYHewrR0 rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "SP_WABC"@en ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R9AKuZxZe5be0iKN9G0fi7a
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R9AKuZxZe5be0iKN9G0fi7a> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "SL_IS2"@en ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:R9AKuZxZe5be0iKN9G0fi7a rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "SL_IS2"@en ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R9ObH1BpKWZsq4eQzOtl4rf
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/R9ObH1BpKWZsq4eQzOtl4rf> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "L23_PTPC"@en ;
-                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Profuse-Tufted Pyramidal Cell"^^xsd:string ;
-                                                                                 <https://neuroshapes.org/hasInstanceInSpecies> <http://purl.obolibrary.org/obo/NCBITaxon_9606> ;
-                                                                                 <https://neuroshapes.org/hasLayerLocationPhenotype> <http://purl.obolibrary.org/obo/UBERON_0005391> ,
-                                                                                                                                     <http://purl.obolibrary.org/obo/UBERON_0005392> ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
+:R9ObH1BpKWZsq4eQzOtl4rf rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "L23_PTPC"@en ;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Profuse-Tufted Pyramidal Cell"^^xsd:string ;
+                         <https://neuroshapes.org/hasInstanceInSpecies> <http://purl.obolibrary.org/obo/NCBITaxon_9606> ;
+                         <https://neuroshapes.org/hasLayerLocationPhenotype> <http://purl.obolibrary.org/obo/UBERON_0005391> ,
+                                                                             <http://purl.obolibrary.org/obo/UBERON_0005392> ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RB3ZljX4hGHq8KAFtfbgZLr
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RB3ZljX4hGHq8KAFtfbgZLr> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "SO_PC"@en ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:RB3ZljX4hGHq8KAFtfbgZLr rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "SO_PC"@en ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RBBdVrzFV2oc7MTeg1DvyUt
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RBBdVrzFV2oc7MTeg1DvyUt> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "GCL_GC"@en ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:RBBdVrzFV2oc7MTeg1DvyUt rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "GCL_GC"@en ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RCVODyB8yWyoXJc4ETtLYPQ
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RCVODyB8yWyoXJc4ETtLYPQ> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "SR_BP"@en ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:RCVODyB8yWyoXJc4ETtLYPQ rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "SR_BP"@en ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RClVSAncpAgZqYURYkxH2ge
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RClVSAncpAgZqYURYkxH2ge> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                 rdfs:label "L23_STPC"@en ;
-                                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Slim-Tufted Pyramidal Cell"^^xsd:string ;
-                                                                                 <https://neuroshapes.org/hasInstanceInSpecies> <http://purl.obolibrary.org/obo/NCBITaxon_9606> ;
-                                                                                 <https://neuroshapes.org/hasLayerLocationPhenotype> <http://purl.obolibrary.org/obo/UBERON_0005391> ,
-                                                                                                                                     <http://purl.obolibrary.org/obo/UBERON_0005392> ;
-                                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
+:RClVSAncpAgZqYURYkxH2ge rdf:type owl:Class ;
+                         rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                         rdfs:label "L23_STPC"@en ;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2/3 Slim-Tufted Pyramidal Cell"^^xsd:string ;
+                         <https://neuroshapes.org/hasInstanceInSpecies> <http://purl.obolibrary.org/obo/NCBITaxon_9606> ;
+                         <https://neuroshapes.org/hasLayerLocationPhenotype> <http://purl.obolibrary.org/obo/UBERON_0005391> ,
+                                                                             <http://purl.obolibrary.org/obo/UBERON_0005392> ;
+                         <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RHYUdxH7spioam6E9haPwu
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RHYUdxH7spioam6E9haPwu> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/d7DETlMBQS_x0zQO9Nb9Vg> ;
-                                                                                rdfs:label "L3_TPC:C"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Narrow Tufted Pyramidal Cell"^^xsd:string ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <http://purl.obolibrary.org/obo/UBERON_0005392> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NarrowTuftedPyramidalPhenotype> .
+:RHYUdxH7spioam6E9haPwu rdf:type owl:Class ;
+                        rdfs:subClassOf :d7DETlMBQS_x0zQO9Nb9Vg ;
+                        rdfs:label "L3_TPC:C"@en ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Narrow Tufted Pyramidal Cell"^^xsd:string ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <http://purl.obolibrary.org/obo/UBERON_0005392> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NarrowTuftedPyramidalPhenotype> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/Rtu3Mehm0WvscA3VaDOxWU
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/Rtu3Mehm0WvscA3VaDOxWU> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SP_BC"@en ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:Rtu3Mehm0WvscA3VaDOxWU rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SP_BC"@en ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/TNJ_NwHgTKe1iv_XLR_0Yg
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/TNJ_NwHgTKe1iv_XLR_0Yg> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SO_BS"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SO_BS"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Bistratified Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BistratifiedPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:TNJ_NwHgTKe1iv_XLR_0Yg rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SO_BS"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SO_BS"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Bistratified Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BistratifiedPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/UWn6SVr6TMKkvqSTtMPzrA
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/UWn6SVr6TMKkvqSTtMPzrA> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SP_PC"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SP_PC"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal Layer Pyramidal Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/PyramidalPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:UWn6SVr6TMKkvqSTtMPzrA rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SP_PC"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SP_PC"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal Layer Pyramidal Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/PyramidalPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/UgAe4eoKTMS196HnxlLqLg
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/UgAe4eoKTMS196HnxlLqLg> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SP_PVBC"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SP_PVBC"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "SP_PVBC"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:UgAe4eoKTMS196HnxlLqLg rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SP_PVBC"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SP_PVBC"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "SP_PVBC"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/a_602RslReCiM3idt4RmcA
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/a_602RslReCiM3idt4RmcA> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SP_CCKBC"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SP_CCKBC"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "SP_CCKBC"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:a_602RslReCiM3idt4RmcA rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SP_CCKBC"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SP_CCKBC"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "SP_CCKBC"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/d7DETlMBQS_x0zQO9Nb9Vg
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/d7DETlMBQS_x0zQO9Nb9Vg> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "L3_TPC"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "L3_TPC"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Tufted Pyramidal Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005392> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/TuftedPyramidalPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
+:d7DETlMBQS_x0zQO9Nb9Vg rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "L3_TPC"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "L3_TPC"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Tufted Pyramidal Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005392> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/TuftedPyramidalPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/dC6fZJINSYuN45oLxd8uDg
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/dC6fZJINSYuN45oLxd8uDg> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SR_IS1"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SR_IS1"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "SR_IS1"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005372> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:dC6fZJINSYuN45oLxd8uDg rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SR_IS1"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SR_IS1"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "SR_IS1"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005372> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/f_BMc1X7QY_yvuYzOz1XpQ
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/f_BMc1X7QY_yvuYzOz1XpQ> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "L2_TPC"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "L2_TPC"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Tufted Pyramidal Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/TuftedPyramidalPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
+:f_BMc1X7QY_yvuYzOz1XpQ rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "L2_TPC"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "L2_TPC"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Tufted Pyramidal Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/TuftedPyramidalPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/hShPzJJOQRWH0d9cnvGw6A
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/hShPzJJOQRWH0d9cnvGw6A> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SO_BP"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SO_BP"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Bipolar Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BipolarPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:hShPzJJOQRWH0d9cnvGw6A rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SO_BP"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SO_BP"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Bipolar Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BipolarPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/je1Ez_4FTuGhER4rXXE_Jw
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/je1Ez_4FTuGhER4rXXE_Jw> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SP_BS"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SP_BS"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal Layer Bistratified Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BistratifiedPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:je1Ez_4FTuGhER4rXXE_Jw rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SP_BS"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SP_BS"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal Layer Bistratified Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/BistratifiedPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/jgg6PSigRK2o3xsyUhslkw
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/jgg6PSigRK2o3xsyUhslkw> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SO_Tri"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SO_Tri"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Trilaminar Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:jgg6PSigRK2o3xsyUhslkw rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SO_Tri"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SO_Tri"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Oriens Trilaminar Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005371> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/jlvcB3V4QiGC3_K_DurznQ
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/jlvcB3V4QiGC3_K_DurznQ> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "L5_NGC"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "L5_NGC"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Neurogliaform Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NeurogliaformPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
+:jlvcB3V4QiGC3_K_DurznQ rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "L5_NGC"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "L5_NGC"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 5 Neurogliaform Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005394> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/NeurogliaformPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/otGJXMTAQvCq2lQ_qKSxtA
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/otGJXMTAQvCq2lQ_qKSxtA> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SP_AA"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SP_AA"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal layer Axo-Axonic Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:otGJXMTAQvCq2lQ_qKSxtA rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SP_AA"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SP_AA"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyramidal layer Axo-Axonic Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0002313> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/wUi4lNv7Q66iTvNqlPBjJQ
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/wUi4lNv7Q66iTvNqlPBjJQ> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "L2_ChC"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "L2_ChC"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Chandelier Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/ChandelierPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
+:wUi4lNv7Q66iTvNqlPBjJQ rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "L2_ChC"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "L2_ChC"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Chandelier Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0005391> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/ChandelierPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/zAmefgYgSeaBDAv2ls9bmw
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/zAmefgYgSeaBDAv2ls9bmw> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://neuroshapes.org/MType> ;
-                                                                                rdfs:label "SLM_PPA"@en ;
-                                                                                <http://www.w3.org/2004/02/skos/core#notation> "SLM_PPA"^^xsd:string ;
-                                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Lacunosum Moleculare Perforant Pathway Associated Cell"@en ;
-                                                                                <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0007640> ;
-                                                                                <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/PerforantPathwayAssociatedPhenotype> ;
-                                                                                <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
+:zAmefgYgSeaBDAv2ls9bmw rdf:type owl:Class ;
+                        rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                        rdfs:label "SLM_PPA"@en ;
+                        <http://www.w3.org/2004/02/skos/core#notation> "SLM_PPA"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Stratum Lacunosum Moleculare Perforant Pathway Associated Cell"@en ;
+                        <https://neuroshapes.org/hasLayerLocationPhenotype> <uberon:0007640> ;
+                        <https://neuroshapes.org/hasMorphologicalPhenotype> <https://neuroshapes.org/PerforantPathwayAssociatedPhenotype> ;
+                        <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/6LZqO1y_RCyflICMXG09iA
@@ -392,7 +399,7 @@
 
 ###  http://uri.interlex.org/base/ilx_0381366
 <http://uri.interlex.org/base/ilx_0381366> rdf:type owl:Class ;
-                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/d7DETlMBQS_x0zQO9Nb9Vg> ;
+                                           rdfs:subClassOf :d7DETlMBQS_x0zQO9Nb9Vg ;
                                            rdfs:label "L3_TPC:A"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L3_TPC:A"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Late Bifurcating Tufted Pyramidal Cell"@en ;
@@ -403,7 +410,7 @@
 
 ###  http://uri.interlex.org/base/ilx_0381367
 <http://uri.interlex.org/base/ilx_0381367> rdf:type owl:Class ;
-                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/f_BMc1X7QY_yvuYzOz1XpQ> ;
+                                           rdfs:subClassOf :f_BMc1X7QY_yvuYzOz1XpQ ;
                                            rdfs:label "L2_TPC:B"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L2_TPC:B"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Early Bifurcating Tufted Pyramidal Cell"@en ;
@@ -414,7 +421,7 @@
 
 ###  http://uri.interlex.org/base/ilx_0381368
 <http://uri.interlex.org/base/ilx_0381368> rdf:type owl:Class ;
-                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/d7DETlMBQS_x0zQO9Nb9Vg> ;
+                                           rdfs:subClassOf :d7DETlMBQS_x0zQO9Nb9Vg ;
                                            rdfs:label "L3_TPC:B"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L3_TPC:B"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 3 Early Bifurcating Tufted Pyramidal Cell"@en ;
@@ -696,7 +703,7 @@
 
 ###  http://uri.interlex.org/base/ilx_0383208
 <http://uri.interlex.org/base/ilx_0383208> rdf:type owl:Class ;
-                                           rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/f_BMc1X7QY_yvuYzOz1XpQ> ;
+                                           rdfs:subClassOf :f_BMc1X7QY_yvuYzOz1XpQ ;
                                            rdfs:label "L2_TPC:A"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "L2_TPC:A"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Layer 2 Late Bifurcating Tufted Pyramidal Cell"@en ;
@@ -1305,6 +1312,12 @@
                                            <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0001950> .
 
 
+###  http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class ;
+                                   rdfs:label "Entity" ;
+                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Entity" .
+
+
 ###  https://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_PC
 <https://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_PC> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <https://neuroshapes.org/MType> ;
@@ -1313,29 +1326,72 @@
                                                                 <https://neuroshapes.org/hasSomaLocatedIn> <http://purl.obolibrary.org/obo/UBERON_0002421> .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/BiologicalBrainComponent
+<https://bbp.epfl.ch/ontologies/core/bmo/BiologicalBrainComponent> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                                                   rdfs:label "Biological Brain Component" ;
+                                                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Biological Brain Component" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainCell
+<https://bbp.epfl.ch/ontologies/core/bmo/BrainCell> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BiologicalBrainComponent> ;
+                                                    rdfs:label "Brain Cell" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainCellType
+<https://bbp.epfl.ch/ontologies/core/bmo/BrainCellType> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainComponentType> ;
+                                                        rdfs:label "Brain Cell Type"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainComponentType
+<https://bbp.epfl.ch/ontologies/core/bmo/BrainComponentType> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                                             rdfs:label "Brain Component Type" ;
+                                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Brain Component Type" .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronType
 <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> rdf:type owl:Class ;
                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainCellType> ;
                                                      rdfs:label "Neuron Type"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/BrainCellType
-<https://bbp.epfl.ch/ontologies/core/bmo/BrainCellType> rdf:type owl:Class ;
-                                        rdfs:label "Brain Cell Type"@en .
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeurotransmitterType
+<https://bbp.epfl.ch/ontologies/core/bmo/NeurotransmitterType> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ;
+                                                               rdfs:label "Neurotransmitter Type" ;
+                                                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Neurotransmitter Type" .
+
+
+###  https://neuroshapes.org/Astrocyte
+<https://neuroshapes.org/Astrocyte> rdf:type owl:Class ;
+                                    rdfs:subClassOf <https://neuroshapes.org/Glia> ;
+                                    rdfs:label "Astrocyte" ;
+                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Astrocyte" ;
+                                    <https://schema.org/color> "#009900" .
 
 
 ###  https://neuroshapes.org/ExcitatoryNeuron
 <https://neuroshapes.org/ExcitatoryNeuron> rdf:type owl:Class ;
-                                           rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeurotransmitterType> ;
                                            rdfs:label "Excitatory neuron"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "Exc"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Excitatory neuron"^^xsd:string ;
                                            <https://schema.org/color> "#6666ff"^^xsd:string .
 
 
+###  https://neuroshapes.org/Glia
+<https://neuroshapes.org/Glia> rdf:type owl:Class ;
+                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainCell> ;
+                               rdfs:label "Glia" ;
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Glia" .
+
+
 ###  https://neuroshapes.org/InhibitoryNeuron
 <https://neuroshapes.org/InhibitoryNeuron> rdf:type owl:Class ;
-                                           rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeurotransmitterType> ;
                                            rdfs:label "Inhibitory neuron"@en ;
                                            <http://www.w3.org/2004/02/skos/core#notation> "Inh"^^xsd:string ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Inhibitory neuron"^^xsd:string ;
@@ -1344,7 +1400,7 @@
 
 ###  https://neuroshapes.org/Interneuron
 <https://neuroshapes.org/Interneuron> rdf:type owl:Class ;
-                                      rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                                      rdfs:subClassOf <https://neuroshapes.org/Neuron> ;
                                       rdfs:label "Interneuron"@en ;
                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Interneuron"^^xsd:string .
 
@@ -1355,11 +1411,33 @@
                                 rdfs:label "Neuron Morphological Type"@en .
 
 
+###  https://neuroshapes.org/Microglia
+<https://neuroshapes.org/Microglia> rdf:type owl:Class ;
+                                    rdfs:subClassOf <https://neuroshapes.org/Glia> ;
+                                    rdfs:label "Microglia" ;
+                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Microglia" ;
+                                    <https://schema.org/color> "#00cc99" .
+
+
 ###  https://neuroshapes.org/ModulatoryNeuron
 <https://neuroshapes.org/ModulatoryNeuron> rdf:type owl:Class ;
-                                           rdfs:subClassOf <https://neuroshapes.org/MType> ;
+                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeurotransmitterType> ;
                                            rdfs:label "Modulatory neuron"@en ;
                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Modulatory neuron"^^xsd:string .
+
+
+###  https://neuroshapes.org/Neuron
+<https://neuroshapes.org/Neuron> rdf:type owl:Class ;
+                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainCell> ;
+                                 rdfs:label "Neuron" .
+
+
+###  https://neuroshapes.org/Oligodendrocyte
+<https://neuroshapes.org/Oligodendrocyte> rdf:type owl:Class ;
+                                          rdfs:subClassOf <https://neuroshapes.org/Glia> ;
+                                          rdfs:label "Oligodendrocyte" ;
+                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Oligodendrocyte" ;
+                                          <https://schema.org/color> "#99cc00" .
 
 
 ###  https://neuroshapes.org/PyramidalNeuron
@@ -1374,7 +1452,7 @@
 #    Annotations
 #################################################################
 
-<http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/RUM9qjr1jQxl3EdePR2vy0> rdfs:label "Spiny_14"@en .
+:RUM9qjr1jQxl3EdePR2vy0 rdfs:label "Spiny_14"@en .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

@@ -1,0 +1,27 @@
+====================
+O.1.3 Release Notes
+====================
+
+
+This release adds new ontologies and applies a set of minor bugfixes to the ontology registration pipeline.
+
+
+New features
+============
+
+
+New ontologies
+----------------
+
+Electrophysiological Feature Ontology 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This specialized ontology (:code:`ontologies/bbp/efeatures.ttl`) catalogues electrophysiological features used at the BBP to characterize brain cells. Individual classes correspond to features extracted by `eFEL <https://github.com/BlueBrain/eFEL>`_ (for example, AHP Depth, ISI CSV and so on).
+
+
+Stimulus Type Ontology
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This specialized ontology  (:code:`ontologies/bbp/stimulustypes.ttl`) lists different types of electrical stimuli applied to brain cells in order to activate them. The ontology contains names of stimuli from both the Laboratory of Neural Microcircuitry (LNMC) and the BBP.
+
+

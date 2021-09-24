@@ -1,0 +1,67 @@
+====================
+O.1.4 Release Notes
+====================
+
+New features
+============
+
+Updates to existing ontologies
+-------------------------------
+
+Brain Modeling Ontology
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Added :code:`RNA Sequencing Profile` (a subclass of :code:`Dataset`).
+- Added :code:`Neuron Molecular Type`.
+- Renamed :code:`Neuron Transcriptomic Type` to :code:`Neuron Transcriptome Type`.
+- Added :code:`Neurotransmitter Type` and its subclasses: :code:`Excitatory Neuron`, :code:`Inhibitory Neuron` and :code:`Modulatory Neuron`.
+- Added :code:`Interneuron` (a subclass of :code:`Neuron`).
+
+
+Molecular Systems Ontology
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Relabeled :code:`Complex` to :code:`ProteinComplex`
+- Changed URIs:
+
+     - :code:`https://neuroshapes.org/Metabolite`to :code:`https://bbp.epfl.ch/ontologies/core/molecular-systems/Metabolite`
+     - :code:`https://neuroshapes.org/Complex` to :code:`https://bbp.epfl.ch/ontologies/core/molecular-systems/ProteinComplex`
+     - :code:`https://neuroshapes.org/Protein` to :code:`https://bbp.epfl.ch/ontologies/core/molecular-systems/Protein`
+
+- Removed :code:`prov:Entity` and made all its children to be the top-level classes (previous structure introduced inconsistency with BMO).
+
+
+Cell Morphological Types Ontology
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Removed :code:`defines` relations (from the ontology to classes).
+- Added BMO-like high-level structure (:code:`Entity/Biological Brain Component/Brain Cell` and :code:`Entity/Brain Component Type/Brain Cell Type` according to the requirements of Atlas to have a single root node).
+- Added some "non-morphological" cell types for the purposes of Atlas (:code:`Entity/Biological Brain Component/Brain Cell/Glia/..` and :code:`Entity/Brain Component Type/Brain Cell Type/Neuron Type/Neurotransmitter Type/...`).
+
+
+Organismal Species/Strain Ontology
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Moved :code:`Species` under :code:`prov:Entity` to be consistent with the other ontologies.
+- Relabeled :code:`Class`, :code:`Species` under :code:`Taxonomic Rank` into :code:`Class Rank`, :code:`Species Rank` not to confuse with :code:`Species` representing a set of real species.
+- Added a link from BMO to this ontology through :code:`(Species)-[:isDefinedBy]->(Organismal Species/Strain Ontology)`.
+
+
+New ontologies
+-----------------
+
+Morphological Feature Ontology
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This specialized ontology (:code:`ontologies/bbp/mfeatures.ttl`) catalogues morphological features used at the BBP to characterize brain cells. Individual classes correspond to features extracted by NeuronM https://neurom.readthedocs.io/en/stable/ (for example, number of bifurcations, section lengths and so on).
+
+
+Cell Morpho-Electric Types
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This specialized ontology (:code:`ontologies/bbp/metypes.ttl`) provides a classification of all cell types according to the combinations of their morphological types and their electrical behaviour as described in `Markram, 2015 <https://www.cell.com/fulltext/S0092-8674(15)01191-5>`_ (for example, L1_HAC_cNAC, L23_MC_cAC).
+
+Updates on CI/CD
+-----------------
+
+- Added new pipeline step for deploying ontodocs in production when tagged
+- Modified CI variables to deploy on different environments based on case

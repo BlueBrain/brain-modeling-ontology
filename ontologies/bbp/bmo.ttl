@@ -38,7 +38,7 @@
                                            dc:title "Brain Modeling Ontology"^^xsd:string ;
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
-                                           owl:versionInfo "R37"^^xsd:string .
+                                           owl:versionInfo "R56"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -2270,6 +2270,13 @@ bmo:Neurotransmitter rdf:type owl:Class ;
                      skos:definition "Blue Brain considers a neurotransmitter as any chemical agent that is produced by one cell in any part of the body and targets one or more cells in the Brain"^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeurotransmitterType
+bmo:NeurotransmitterType rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:NeuronType ;
+                         rdfs:label "Neurotransmitter Type"@en ;
+                         skos:prefLabel "Neurotransmitter Type"^^xsd:string .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/OffspringSize
 bmo:OffspringSize rdf:type owl:Class ;
                   rdfs:subClassOf bmo:EModelHyperparameter ;
@@ -2798,7 +2805,11 @@ nsg:EModel rdf:type owl:Class ;
 
 ###  https://neuroshapes.org/EType
 nsg:EType rdf:type owl:Class ;
-          rdfs:subClassOf bmo:NeuronType ;
+          rdfs:subClassOf bmo:NeuronType ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty nsg:hasFeature ;
+                            owl:someValuesFrom bmo:NeuronElectrophysiologicalFeature
+                          ] ;
           rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/7515dc12-ce84-4eea-ba8e-6262670ac741/edit/Classes> ;
           rdfs:label "Neuron Electrical Type"^^xsd:string .
 
@@ -2813,6 +2824,15 @@ nsg:ElectricalSeries rdf:type owl:Class ;
 nsg:Estrogen rdf:type owl:Class ;
              rdfs:subClassOf nsg:Hormone ;
              rdfs:label "Estrogen"@en .
+
+
+###  https://neuroshapes.org/ExcitatoryNeuron
+nsg:ExcitatoryNeuron rdf:type owl:Class ;
+                     rdfs:subClassOf bmo:NeurotransmitterType ;
+                     rdfs:label "Excitatory Neuron" ;
+                     skos:prefLabel "Excitatory Neuron" ;
+                     nsg:color "#6666ff"^^xsd:string ;
+                     nsg:skos:notation "Exc"^^xsd:string .
 
 
 ###  https://neuroshapes.org/ExcitatorySynapse
@@ -2848,7 +2868,8 @@ nsg:Glia rdf:type owl:Class ;
                            owl:onProperty schema:isPartOf ;
                            owl:someValuesFrom bmo:NGVUnit
                          ] ;
-         rdfs:label "Glia"@en .
+         rdfs:label "Glia"@en ;
+         skos:prefLabel "Glia"^^xsd:string .
 
 
 ###  https://neuroshapes.org/Glutamate
@@ -2871,10 +2892,26 @@ nsg:Hormone rdf:type owl:Class ;
             rdfs:label "Hormone"@en .
 
 
+###  https://neuroshapes.org/InhibitoryNeuron
+nsg:InhibitoryNeuron rdf:type owl:Class ;
+                     rdfs:subClassOf bmo:NeurotransmitterType ;
+                     rdfs:label "Inhibitory Neuron"^^xsd:string ;
+                     skos:prefLabel "Inhibitory Neuron"^^xsd:string ;
+                     nsg:color "#ff2222"^^xsd:string ;
+                     nsg:skos:notation "Inh"^^xsd:string .
+
+
 ###  https://neuroshapes.org/InhibitoryTransmitter
 nsg:InhibitoryTransmitter rdf:type owl:Class ;
                           rdfs:subClassOf bmo:Neurotransmitter ;
                           rdfs:label "Inhibitory Transmitter"@en .
+
+
+###  https://neuroshapes.org/Interneuron
+nsg:Interneuron rdf:type owl:Class ;
+                rdfs:subClassOf nsg:Neuron ;
+                rdfs:label "Interneuron"^^xsd:string ;
+                skos:prefLabel "Interneuron"^^xsd:string .
 
 
 ###  https://neuroshapes.org/K
@@ -2911,7 +2948,7 @@ nsg:MType rdf:type owl:Class ;
           rdfs:subClassOf bmo:NeuronType ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty nsg:hasFeature ;
-                            owl:someValuesFrom bmo:NeuronElectrophysiologicalFeature
+                            owl:someValuesFrom bmo:NeuronMorphologicalFeature
                           ] ;
           rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/6a23494a-360c-4152-9e81-fd9828f44db9/edit/Classes> ;
           rdfs:label "Neuron Morphological Type"^^xsd:string ;
@@ -2931,6 +2968,13 @@ nsg:Microglia rdf:type owl:Class ;
               rdfs:label "Microglia"@en ;
               skos:prefLabel "Microglia"^^xsd:string ;
               nsg:color "#00cc99"^^xsd:string .
+
+
+###  https://neuroshapes.org/ModulatoryNeuron
+nsg:ModulatoryNeuron rdf:type owl:Class ;
+                     rdfs:subClassOf bmo:NeurotransmitterType ;
+                     rdfs:label "Modulatory Neuron"^^xsd:string ;
+                     skos:prefLabel "Modulatory Neuron"^^xsd:string .
 
 
 ###  https://neuroshapes.org/MolecularConcentration

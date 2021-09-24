@@ -1,0 +1,5 @@
+====================
+O.1.2 Release Notes
+====================
+
+This release contains minor bugfixes to BMO.

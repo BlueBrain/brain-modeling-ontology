@@ -2,13 +2,113 @@
 O.1.1 Release Notes
 ====================
 
-This release introduces the Brain Modeling Ontology along with its specialisation for Molecular Systems.
 
-New Features
+This release introduces the Brain Modeling Ontology along with all its specializations.
+
+Ontologies included in this release are divided into two modules:
+
+- :code:`ontologies.bbp` including internal ontologies for the Blue Brain Project (BBP)
+- :code:`ontologies.external` including external ontologies used by various BBP workflows.
+
+Along with the ontologies, as a part of the :code:`bmo_tools` Python module a set of tools for their processing, testing, and deployment is distributed. These tools constitute an automated CI/CD pipeline.
+
+
+
+New features
 ============
 
-Enhancements
-============
+:code:`ontologies.bbp` package
+------------------------------
 
-Bug Fixes
-=========
+Brain Modeling Ontology (BMO)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Brain Modeling Ontology (BMO) (:code:`ontologies/bbp/bmo.ttl`) defines a set of classes, annotations, and properties that define a common vocabulary for all the BBP workflows, such as, model building, validation, simulation, etc.
+
+
+Molecular Systems Ontology 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Molecular Systems ontology (:code:`ontologies/bbp/molecular-systems.ttl`) extends BMO with classes, annotations, and properties that describe common BBP vocabulary for modeling different aspects of molecular systems (cellular parts, extracellular parts, whole cells) including their metabolism, various gene expression or cellular signaling processes.
+
+
+Cell Electrophysiological Type Ontology
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This specialized ontology (:code:`ontologies/bbp/etypes.ttl`) provides a classification of all cell types according to their electrical behavior (for example, bNAC, cAC).
+
+Cell Morphological Types Ontology 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This specialized ontology (:code:`ontologies/bbp/mtypes.ttl`) provides a classification of all cell types according to their morphology (for example, L23_BP, L4_MC).
+
+Organismal Species/Strain Ontology
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This specialized ontology (:code:`ontologies/bbp/speciestaxonomy.ttl`) provides classes, annotations, and properties associated with the ranking and classification of organisms studied by the BBP (species, strains).
+
+
+
+
+:code:`ontologies.external` package
+-----------------------------------
+
+Uber-anatomy ontology (UBERON) 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Uberon (:code:`ontologies/external/uberon.ttl`) is an integrated cross-species ontology covering anatomical structures in animals (see `UBERON <https://www.ebi.ac.uk/ols/ontologies/uberon>`_).
+
+
+Allen MBA CCFv3 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Allen Mouse Brain Atlas Common Coordinate Framework v3 ontology (Allen MBA CCFv3, :code:`ontologies/external/allen_MBA_ontology_ccfv3.ttl`) was derived from the :code:`mbaslim.ttl` ontology which in turn was derived from the :code:`1.json` file. In the :code:`1.json` file, the Allen Institute for Brain Science (AIBS) provides a hierarchical structure of mouse brain regions. Version 3 was released in 2015 and contains additional brain regions compared to previous versions.
+
+Gene Ontology (GO) 
+^^^^^^^^^^^^^^^^^^^^^
+
+Gene Ontology (:code:`ontologies/external/go.ttl`) collects the representation of gene and gene product attributes (including cellular components, molecular functions and biological processes) across all species (see `http://geneontology.org/ <http://geneontology.org/>`_). 
+
+
+
+:code:`bmo_tools` package
+-------------------------
+
+- :code:`bmo_tools.ontologies` contains a set of utils for processing and registering ontologies;
+- :code:`bmo_tools.neo4j` contains a set of utils for transforming ontologies to property graphs and loading them into Neo4j;
+- :code:`bmo_tools.kbs` contains a set of utils for querying various knowledge bases (Reactome, GO, Gene Annotations);
+- :code:`examples.notebooks` collects a set of notebooks providing example of use for all the above-mentioned modules.
+
+
+
+CI/CD
+-----
+:code:`.gitlab-ci.yml` configures the continuous integration pipeline.
+
+Pipeline stages
+^^^^^^^^^^^^^^^^
+The pipeline consists of 3 stages:
+
+- **test** runs unit tests on the ontologies files
+- **register** registers the modified ontologies either on staging or production environments
+- **deploy** deploys the documentation on production
+
+Triggers
+^^^^^^^^^^^^^^^^
+
+On Merge Request, when a merge request receives a commit:
+
+- Tests ontologies
+
+On push/merge to develop, when develop branch receives a commit:
+
+- Tests ontologies
+- Register to nexus staging environment
+- Deploy ontology documentation on Openshift staging environment
+
+On tag, when main branch receives a tag:
+
+- Tests ontologies
+- Register to nexus production environment
+- Deploy ontology documentation on Openshift production environment
+
