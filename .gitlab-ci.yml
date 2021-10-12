@@ -7,7 +7,10 @@ include:
 stages:
   - test
   - register
+  - generate
   - deploy
+
+# TEST STAGE
 
 # It runs only when a push is executed in a merge request and an ontology file has changed
 # or when a commit is executed in develop branch and an ontology file has changed
@@ -25,6 +28,8 @@ test-ontologies-on-merge-request:
     - pytest tests/test_ontologies.py
   before_script:
     - pip install -r requirements.txt
+
+# REGISTER STAGE
 
 # It runs only when a commit is done on develop branch and the pipeline was triggered from a Merge Request
 # and an ontology file has changed
@@ -51,30 +56,114 @@ register-on-production-environment:
   before_script:
     - pip install -r requirements.txt
 
-# It runs only when a merge request is merged to develop branch
-# It executes deployment of ontologies documentation to Openshift
-deploy-docs-in-staging-openshift:
+# GENERATE STAGE
+
+# Building documentation for sphinx and ontodocs
+# The docs are generated and stored in artifacts in order to be used in the deploy stage
+
+# Generate ontodocs documentation and stores the artifact under /visualization
+generate-ontodocs-documentation:
+  stage: generate
+  image: python:2.7
+  tags:
+    - c8r16
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
+      when: on_success
+    - if: $CI_COMMIT_TAG
+      when: on_success
+  script:
+    - pip install pyld==1.0.4 ontospy==1.9.1 rdflib==4.2.2 pygments==2.1.3
+    - pip install git+https://$GITLAB_DEPLOY_TOKEN:$GITLAB_DEPLOY_PASSWORD@bbpgitlab.epfl.ch/dke/apps/ontodocs.git
+    - mkdir visualization
+    - ontodocs ./ontologies/bbp --theme lumen --outputpath visualization --title "Brain Modeling Ontology"
+  artifacts:
+    paths:
+      - visualization
+
+# Generate sphinx documentation and stores the artifact under /generated/html
+generate-sphinx-documentation:
+  stage: generate
+  image: python:3.7.12
+  tags:
+    - c8r16
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
+      when: on_success
+    - if: $CI_COMMIT_TAG
+      when: on_success
+  script:
+    - pip install .[docs]
+    - sphinx-build -T --keep-going -b html -d _build/doctrees -c ./docs/source -D language=en ./docs/source generated/html
+  artifacts:
+    paths:
+      - generated/html
+
+# DEPLOY STAGE
+
+# Deploys the documentation to Openshift using Kaniko
+
+# Executes deployment of ontodocs documentation to bbp-dke-staging Openshift
+deploy-ontodocs-in-staging-openshift:
   stage: deploy
   extends: .build-image-using-kaniko
+  dependencies:
+    - generate-ontodocs-documentation
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success
   variables:
-    KANIKO_EXTRA_ARGS: "--build-arg GITLAB_DEPLOY_TOKEN=${GITLAB_DEPLOY_TOKEN} --build-arg GITLAB_DEPLOY_PASSWORD=${GITLAB_DEPLOY_PASSWORD}"
-    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-staging/bmo-docs"
+    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization"
+    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-staging/bmo-ontodocs"
     CI_REGISTRY_USER: $CI_REGISTRY_USER_STAGING
     CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_STAGING
 
-# It runs only when a new tag is pushed
-# It executes deployment of ontologies documentation to Openshift
-deploy-docs-in-production-openshift:
+# Executes deployment of project documentation to bbp-dke-staging Openshift
+deploy-documentation-in-staging-openshift:
   stage: deploy
   extends: .build-image-using-kaniko
+  tags:
+    - c8r16
+  dependencies:
+    - generate-sphinx-documentation
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
+      when: on_success
+  variables:
+    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=generated/html"
+    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-staging/bmo-documentation"
+    CI_REGISTRY_USER: $CI_REGISTRY_USER_STAGING
+    CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_STAGING
+
+# Executes deployment of ontodocs documentation to bbp-dke-production Openshift
+deploy-ontodocs-in-production-openshift:
+  stage: deploy
+  extends: .build-image-using-kaniko
+  dependencies:
+    - generate-ontodocs-documentation
   rules:
     - if: $CI_COMMIT_TAG
       when: on_success
   variables:
-    KANIKO_EXTRA_ARGS: "--build-arg GITLAB_DEPLOY_TOKEN=${GITLAB_DEPLOY_TOKEN} --build-arg GITLAB_DEPLOY_PASSWORD=${GITLAB_DEPLOY_PASSWORD}"
-    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-production/bmo-docs"
+    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization"
+    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-production/bmo-ontodocs"
+    CI_REGISTRY_USER: $CI_REGISTRY_USER_PRODUCTION
+    CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_PRODUCTION
+
+
+# Executes deployment of project documentation to bbp-dke-staging Openshift
+deploy-documentation-in-production-openshift:
+  stage: deploy
+  extends: .build-image-using-kaniko
+  tags:
+    - c8r16
+  dependencies:
+    - generate-sphinx-documentation
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: on_success
+  variables:
+    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=generated/html"
+    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-production/bmo-documentation"
     CI_REGISTRY_USER: $CI_REGISTRY_USER_PRODUCTION
     CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_PRODUCTION

@@ -63,5 +63,15 @@ This specialized ontology (:code:`ontologies/bbp/metypes.ttl`) provides a classi
 Updates on CI/CD
 -----------------
 
+Added new CI steps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 - Added new pipeline step for deploying ontodocs in production when tagged
-- Modified CI variables to deploy on different environments based on case
+- Added new pipeline step for generating and deploying :code:`Sphinx` documentation both on staging and production environments
+
+Modified documentation generation process
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The documentation generation process was moved from a multi-stage Dockerfile to a separate CI step. This change was applied due to several issues of Kaniko on multi-stage docker builds.
+
+The generated documents are stored in a Gitlab artifact and then picked from the deployment step based on where they are supposed to be deployed.
