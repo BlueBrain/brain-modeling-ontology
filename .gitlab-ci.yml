@@ -65,8 +65,6 @@ register-on-production-environment:
 generate-ontodocs-documentation:
   stage: generate
   image: python:2.7
-  tags:
-    - c8r16
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success
@@ -80,13 +78,14 @@ generate-ontodocs-documentation:
   artifacts:
     paths:
       - visualization
+  variables:
+    KUBERNETES_MEMORY_LIMIT: 4Gi
+    KUBERNETES_MEMORY_REQUEST: 4Gi
 
 # Generate sphinx documentation and stores the artifact under /generated/html
 generate-sphinx-documentation:
   stage: generate
   image: python:3.7.12
-  tags:
-    - c8r16
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success
@@ -98,6 +97,9 @@ generate-sphinx-documentation:
   artifacts:
     paths:
       - generated/html
+  variables:
+    KUBERNETES_MEMORY_LIMIT: 4Gi
+    KUBERNETES_MEMORY_REQUEST: 4Gi
 
 # DEPLOY STAGE
 
@@ -119,11 +121,9 @@ deploy-ontodocs-in-staging-openshift:
     CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_STAGING
 
 # Executes deployment of project documentation to bbp-dke-staging Openshift
-deploy-documentation-in-staging-openshift:
+deploy-sphinx-documentation-in-staging-openshift:
   stage: deploy
   extends: .build-image-using-kaniko
-  tags:
-    - c8r16
   dependencies:
     - generate-sphinx-documentation
   rules:
@@ -134,6 +134,8 @@ deploy-documentation-in-staging-openshift:
     CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-staging/bmo-documentation"
     CI_REGISTRY_USER: $CI_REGISTRY_USER_STAGING
     CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_STAGING
+    KUBERNETES_MEMORY_LIMIT: 4Gi
+    KUBERNETES_MEMORY_REQUEST: 4Gi
 
 # Executes deployment of ontodocs documentation to bbp-dke-production Openshift
 deploy-ontodocs-in-production-openshift:
@@ -152,11 +154,9 @@ deploy-ontodocs-in-production-openshift:
 
 
 # Executes deployment of project documentation to bbp-dke-staging Openshift
-deploy-documentation-in-production-openshift:
+deploy-sphinx-documentation-in-production-openshift:
   stage: deploy
   extends: .build-image-using-kaniko
-  tags:
-    - c8r16
   dependencies:
     - generate-sphinx-documentation
   rules:
@@ -167,3 +167,5 @@ deploy-documentation-in-production-openshift:
     CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-production/bmo-documentation"
     CI_REGISTRY_USER: $CI_REGISTRY_USER_PRODUCTION
     CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_PRODUCTION
+    KUBERNETES_MEMORY_LIMIT: 4Gi
+    KUBERNETES_MEMORY_REQUEST: 4Gi
