@@ -161,7 +161,7 @@ def parse_and_register_ontologies(arguments):
     ontology_files = glob.glob(f"./ontologies/bbp/*.ttl")
 
     if environment == "staging":
-        endpoint = "https://staging.nexus.ocp.bbp.epfl.ch/v1"
+        endpoint = "https://staging.nise.bbp.epfl.ch/nexus/v1"
     elif environment == "production":
         endpoint = "https://bbp.epfl.ch/nexus/v1"
     else:
