@@ -16,7 +16,9 @@ LABEL_MAPPING = {
     "Electrical Stimulus": "STIMULUS",
     "Model Brain Parameter": "PARAMETER",
     "Dataset": "DATASET",
-    "Molecule": "MOLECULE"
+    "Molecule": "MOLECULE",
+    "Rule": "RULE",
+    "Principle": "PRINCIPLE"
 }
 
 
@@ -49,6 +51,7 @@ def label_top_level(driver):
     execute(driver, "MATCH (n)-[:IS_SUBCLASS_OF|IS_INSTANCE_OF*..]->(m {id: 'Entity'}) SET n:ENTITY SET m:ENTITY")
     execute(driver, "MATCH (n)-[:IS_SUBCLASS_OF|IS_INSTANCE_OF*..]->(m {id: 'Activity'}) SET n:ACTIVITY SET m:ACTIVITY")
     execute(driver, "MATCH (n)-[:IS_SUBCLASS_OF|IS_INSTANCE_OF*..]->(m {id: 'Brain Modeling Agent'}) SET n:AGENT SET m:AGENT")
+    execute(driver, "MATCH (m {id: 'Principle'}) SET m:PRINCIPLE")
 
 
 def label_entities(driver, mapping=LABEL_MAPPING):

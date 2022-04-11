@@ -28,6 +28,12 @@ test-ontologies-on-merge-request:
     - pytest tests/test_ontologies.py
   before_script:
     - pip install -r requirements.txt
+variables:
+  KUBERNETES_HELPER_MEMORY_REQUEST: 512Mi
+  KUBERNETES_HELPER_MEMORY_LIMIT: 1Gi
+#    KUBERNETES_MEMORY_LIMIT: 8Gi
+#    KUBERNETES_MEMORY_REQUEST: 8Gi
+
 
 # REGISTER STAGE
 

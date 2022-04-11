@@ -8,7 +8,8 @@
 @base <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes> .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes> rdf:type owl:Ontology ;
-                                                          rdfs:label "Cell Morphological Types"^^xsd:string .
+                                                         rdfs:label "Cell Morphological Types"^^xsd:string ;
+                                                         owl:versionInfo "R387"^^xsd:string .
 
 #################################################################
 #    Annotation properties

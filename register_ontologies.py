@@ -65,6 +65,7 @@ PREFIX_MAPPINGS = {
     "efe": "https://bbp.epfl.ch/ontologies/core/efeatures/",
     "et": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/",
     "mt": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/",
+    "tt": "http://bbp.epfl.ch/neurosciencegraph/ontologies/ttypes/",
     "EFO": "http://www.ebi.ac.uk/efo/EFO_",
     "RS": "http://purl.obolibrary.org/obo/RS_",
     "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_"
