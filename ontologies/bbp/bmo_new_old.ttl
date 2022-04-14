@@ -38,7 +38,7 @@
                                            dc:title "Brain Modeling Ontology"^^xsd:string ;
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
-                                           owl:versionInfo "R472"^^xsd:string .
+                                           owl:versionInfo "R463"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -1678,7 +1678,7 @@ bmo:EModelnstanceGenerator rdf:type owl:Class ;
                                            ] ,
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty bmo:usesCircuitWithProperty ;
-                                             owl:someValuesFrom bmo:ETypeCircuitProperty
+                                             owl:someValuesFrom bmo:EtypeCircuitProperty
                                            ] ,
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty bmo:usesCircuitWithProperty ;
@@ -1693,12 +1693,6 @@ bmo:EModelnstanceGenerator rdf:type owl:Class ;
                                              owl:someValuesFrom bmo:ModelCircuit
                                            ] ;
                            rdfs:label "EModelnstanceGenerator"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/ETypeCircuitProperty
-bmo:ETypeCircuitProperty rdf:type owl:Class ;
-                         rdfs:subClassOf bmo:ModelCircuitProperty ;
-                         rdfs:label "ETypeCircuitProperty"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus
@@ -1721,6 +1715,12 @@ bmo:Equation rdf:type owl:Class ;
              rdfs:subClassOf prov:Entity ;
              rdfs:label "Equation"@en ;
              skos:definition "In mathematics, an equation is a statement that asserts the equality of two expressions, which are connected by the equals sign \"=\"."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/EtypeCircuitProperty
+bmo:EtypeCircuitProperty rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:ModelCircuitProperty ;
+                         rdfs:label "EtypeCircuitProperty"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/EvolutionaryAlgorithm
@@ -2090,12 +2090,6 @@ bmo:MO-CMA rdf:type owl:Class ;
            skos:definition "Multi-objective covariance matrix adaptation evolution strategy."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/MTypeCircuitProperty
-bmo:MTypeCircuitProperty rdf:type owl:Class ;
-                         rdfs:subClassOf bmo:ModelCircuitProperty ;
-                         rdfs:label "MTypeCircuitProperty"@en .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Mapping
 bmo:Mapping rdf:type owl:Class ;
             skos:definition "This class groups all external classes mapped to locally defined classes"@en .
@@ -2337,6 +2331,22 @@ bmo:ModelCell rdf:type owl:Class ;
 bmo:ModelCircuit rdf:type owl:Class ;
                  rdfs:subClassOf bmo:ModelBrainComponent ,
                                  [ rdf:type owl:Restriction ;
+                                   owl:onProperty bmo:eType ;
+                                   owl:someValuesFrom nsg:EType
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty bmo:emodelInstance ;
+                                   owl:someValuesFrom bmo:EModelInstance
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty bmo:mType ;
+                                   owl:someValuesFrom nsg:MType
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty bmo:position ;
+                                   owl:someValuesFrom bmo:CellPosition
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
                                    owl:onProperty nsg:modelOf ;
                                    owl:someValuesFrom bmo:BrainVolume
                                  ] ;
@@ -2414,6 +2424,40 @@ bmo:ModelCircuitPropertyGenerator rdf:type owl:Class ;
 bmo:ModelCircuitPropertyGeneratorCategory rdf:type owl:Class ;
                                           rdfs:subClassOf prov:Entity ;
                                           rdfs:label "ModelCircuitPropertyGeneratorCategory"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitWithEModelInstance
+bmo:ModelCircuitWithEModelInstance rdf:type owl:Class ;
+                                   rdfs:subClassOf bmo:ModelCircuit ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty bmo:emodelInstance ;
+                                                     owl:someValuesFrom bmo:EModelInstance
+                                                   ] ;
+                                   rdfs:label "ModelCircuitWithEModelInstance"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitWithETypeNeuronMorphology
+bmo:ModelCircuitWithETypeNeuronMorphology rdf:type owl:Class ;
+                                          rdfs:subClassOf bmo:ModelCircuit ,
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty nsg:hasMorphology ;
+                                                            owl:someValuesFrom nsg:NeuronMorphology
+                                                          ] ;
+                                          rdfs:label "ModelCircuitWithETypeNeuronMorphology"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitWithPositionOrientationMType
+bmo:ModelCircuitWithPositionOrientationMType rdf:type owl:Class ;
+                                             rdfs:subClassOf bmo:ModelCircuit ;
+                                             rdfs:label "ModelCircuitWithPositionOrientationMType"@en ;
+                                             skos:definition "A circuit with x, y, z, orientation_x, orientation_y, orientation_z, orientation_w, m-type"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitWithPositionOrientationMTypeNeuronMorphology
+bmo:ModelCircuitWithPositionOrientationMTypeNeuronMorphology rdf:type owl:Class ;
+                                                             rdfs:subClassOf bmo:ModelCircuit ;
+                                                             rdfs:label "ModelCircuitWithPositionOrientationMTypeNeuronMorphology"@en ;
+                                                             skos:definition "A circuit with an additional property “morphology” and the corresponding morphology file"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelConnectivityParameter
@@ -2775,7 +2819,7 @@ bmo:MorphologyGenerator rdf:type owl:Class ;
                                         ] ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty bmo:generatesCircuitWithProperty ;
-                                          owl:someValuesFrom bmo:MTypeCircuitProperty
+                                          owl:someValuesFrom bmo:MtypeCircuitProperty
                                         ] ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty bmo:generatesCircuitWithProperty ;
@@ -2787,7 +2831,7 @@ bmo:MorphologyGenerator rdf:type owl:Class ;
                                         ] ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty bmo:usesCircuitWithProperty ;
-                                          owl:someValuesFrom bmo:MTypeCircuitProperty
+                                          owl:someValuesFrom bmo:MtypeCircuitProperty
                                         ] ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty nsg:about ;
@@ -2798,6 +2842,12 @@ bmo:MorphologyGenerator rdf:type owl:Class ;
                                           owl:someValuesFrom bmo:ModelCircuit
                                         ] ;
                         rdfs:label "MorphologyGenerator"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/MtypeCircuitProperty
+bmo:MtypeCircuitProperty rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:ModelCircuitProperty ;
+                         rdfs:label "MtypeCircuitProperty"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NGVUnit
