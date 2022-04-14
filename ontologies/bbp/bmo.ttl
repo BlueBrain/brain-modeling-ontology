@@ -38,7 +38,7 @@
                                            dc:title "Brain Modeling Ontology"^^xsd:string ;
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
-                                           owl:versionInfo "R252"^^xsd:string .
+                                           owl:versionInfo "R463"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -182,6 +182,21 @@ bmo:constraints rdf:type owl:ObjectProperty ;
                 rdfs:label "constraints"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/eType
+bmo:eType rdf:type owl:ObjectProperty ;
+          rdfs:label "eType"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/emodelInstance
+bmo:emodelInstance rdf:type owl:ObjectProperty ;
+                   rdfs:label "emodelInstance"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/exposesParameter
+bmo:exposesParameter rdf:type owl:ObjectProperty ;
+                     rdfs:label "exposesParameter"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/expressionProfile
 bmo:expressionProfile rdf:type owl:ObjectProperty ;
                       rdfs:label "expressionProfile"@en .
@@ -190,6 +205,16 @@ bmo:expressionProfile rdf:type owl:ObjectProperty ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/generates
 bmo:generates rdf:type owl:ObjectProperty ;
               rdfs:label "generates"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/generatesCircuitWithProperty
+bmo:generatesCircuitWithProperty rdf:type owl:ObjectProperty ;
+                                 rdfs:label "generatesCircuitWithProperty"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/hasCircuitProperty
+bmo:hasCircuitProperty rdf:type owl:ObjectProperty ;
+                       rdfs:label "hasCircuitProperty"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/hasEType
@@ -227,9 +252,19 @@ bmo:isBasedOn rdf:type owl:ObjectProperty ;
               rdfs:label "isBasedOn"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/mType
+bmo:mType rdf:type owl:ObjectProperty ;
+          rdfs:label "mType"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/molecule
 bmo:molecule rdf:type owl:ObjectProperty ;
              rdfs:label "molecule"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/position
+bmo:position rdf:type owl:ObjectProperty ;
+             rdfs:label "position"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/postsynapticNeuron
@@ -270,6 +305,11 @@ bmo:sourceType rdf:type owl:ObjectProperty ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/targetType
 bmo:targetType rdf:type owl:ObjectProperty ;
                rdfs:label "targetType"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/usesCircuitWithProperty
+bmo:usesCircuitWithProperty rdf:type owl:ObjectProperty ;
+                            rdfs:label "usesCircuitWithProperty"@en .
 
 
 ###  https://neuroshapes.org/about
@@ -592,6 +632,11 @@ nsg:wasAssociatedWith rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/encodingFormat
+bmo:encodingFormat rdf:type owl:DatatypeProperty ;
+                   rdfs:label "encodingFormat"@en .
+
+
 ###  https://neuroshapes.org/atTime
 nsg:atTime rdf:type owl:DatatypeProperty ;
            rdfs:label "atTime"@en .
@@ -779,7 +824,8 @@ schema:Dataset rdf:type owl:Class ;
                                  owl:onProperty nsg:subject ;
                                  owl:someValuesFrom nsg:Subject
                                ] ;
-               rdfs:label "Dataset"@en .
+               rdfs:label "Dataset"@en ;
+               skos:definition "A body of structured information describing some topic(s) of interest."@en .
 
 
 ###  http://schema.org/Organization
@@ -882,6 +928,17 @@ bmo:BACFiringFeature rdf:type owl:Class ;
                                      ] ;
                      rdfs:label "BACFiringFeature"@en ;
                      skos:definition "Back-propagating action potential activated Ca2+ spike firing feature."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BallAndStickPlaceHolderMorphologyGenerator
+bmo:BallAndStickPlaceHolderMorphologyGenerator rdf:type owl:Class ;
+                                               rdfs:subClassOf bmo:MorphologyGenerator ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty nsg:uses ;
+                                                                 owl:someValuesFrom bmo:SomaStatistics
+                                                               ] ;
+                                               rdfs:label "BallAndStickPlaceHolderMorphologyGenerator"@en ;
+                                               skos:definition "Neuron Morphology Ball and Stick PlaceHolder Generator variant"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BasalLamina
@@ -1005,6 +1062,7 @@ bmo:BrainCellType rdf:type owl:Class ;
                                     owl:onProperty nsg:hasFeature ;
                                     owl:someValuesFrom bmo:BrainCellFeature
                                   ] ;
+                  rdfs:isDefinedBy <https://webprotege.kcp.bbp.epfl.ch/#projects/968c9144-bca3-4436-bdb5-6529d46016b9/edit/Classes?selection=Class(owl:Thing)> ;
                   rdfs:label "Brain Cell Type"@en .
 
 
@@ -1150,9 +1208,27 @@ bmo:BrainVolumeParameter rdf:type owl:Class ;
                          rdfs:label "Model Brain Volume Parameter"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/CaDynamicsModel
+bmo:CaDynamicsModel rdf:type owl:Class ;
+                    rdfs:subClassOf bmo:IntraCellularConcentrationModel ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty bmo:exposesParameter ;
+                                      owl:someValuesFrom bmo:GammaCaDynamicsDC0
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty bmo:exposesParameter ;
+                                      owl:someValuesFrom bmo:TaudecayCaDynamicsDC0
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty nsg:ion ;
+                                      owl:someValuesFrom nsg:Ca
+                                    ] ;
+                    rdfs:label "Ca Dynamics Model"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Ca_HVA2
 bmo:Ca_HVA2 rdf:type owl:Class ;
-            rdfs:subClassOf bmo:IonicMechanism ,
+            rdfs:subClassOf bmo:SubCellularProcess ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty nsg:ion ;
                               owl:someValuesFrom nsg:Ca
@@ -1163,7 +1239,7 @@ bmo:Ca_HVA2 rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Ca_LVAst
 bmo:Ca_LVAst rdf:type owl:Class ;
-             rdfs:subClassOf bmo:IonicMechanism ,
+             rdfs:subClassOf bmo:SubCellularProcess ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty nsg:ion ;
                                owl:someValuesFrom nsg:Ca
@@ -1179,7 +1255,7 @@ bmo:CalciumDynamics rdf:type owl:Class ;
                                       owl:onProperty nsg:ion ;
                                       owl:someValuesFrom nsg:Ca
                                     ] ;
-                    rdfs:label "Calcium Dynamics"@en ;
+                    rdfs:label "Calcium Dynamics Feature"@en ;
                     skos:definition "Kinetics of the conductance mechanism of calcium ion."^^xsd:string .
 
 
@@ -1220,6 +1296,17 @@ bmo:CellDensity rdf:type owl:Class ;
                 rdfs:label "Cell Density"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/CellPosition
+bmo:CellPosition rdf:type owl:Class ;
+                 rdfs:label "CellPosition"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/CellPositionCircuitProperty
+bmo:CellPositionCircuitProperty rdf:type owl:Class ;
+                                rdfs:subClassOf bmo:ModelCircuitProperty ;
+                                rdfs:label "CellPositionCircuitProperty"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/CellTypeMapping
 bmo:CellTypeMapping rdf:type owl:Class ;
                     rdfs:subClassOf prov:Entity ,
@@ -1256,10 +1343,66 @@ bmo:CircuitConnectivityBlueprintBuildingWorkflow rdf:type owl:Class ;
                                                  rdfs:label "Circuit Connectivity Blueprint Building Workflow"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/ClassicBBPEModelInstanceGenerator
+bmo:ClassicBBPEModelInstanceGenerator rdf:type owl:Class ;
+                                      rdfs:subClassOf bmo:EModelnstanceGenerator ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty nsg:uses ;
+                                                        owl:someValuesFrom bmo:SubCellularModel
+                                                      ] ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty nsg:uses ;
+                                                        owl:someValuesFrom nsg:Trace
+                                                      ] ;
+                                      rdfs:label "ClassicBBPEModelInstanceGenerator"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ConductanceDensity
+bmo:ConductanceDensity rdf:type owl:Class ;
+                       rdfs:subClassOf bmo:EModelParameter ,
+                                       bmo:NeuronPartFeature ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty bmo:compartment ;
+                                         owl:someValuesFrom bmo:NeuronPart
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty nsg:ion ;
+                                         owl:someValuesFrom bmo:Ion
+                                       ] ;
+                       rdfs:label "Conductance Density"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Cytosol
 bmo:Cytosol rdf:type owl:Class ;
             rdfs:subClassOf bmo:SubcellularPart ;
             rdfs:label "Cytosol"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/DataCurationWorkflow
+bmo:DataCurationWorkflow rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:Workflow ;
+                         rdfs:label "Data Curation Workflow"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/DataDownload
+bmo:DataDownload rdf:type owl:Class ;
+                 rdfs:subClassOf prov:Entity ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty bmo:encodingFormat ;
+                                   owl:someValuesFrom xsd:string
+                                 ] ;
+                 rdfs:label "DataDownload"^^xsd:string ;
+                 skos:definition "A downloadable form of this dataset, at a specific location, in a specific format."@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/DataDownloadASC
+bmo:DataDownloadASC rdf:type owl:Class ;
+                    rdfs:subClassOf bmo:DataDownload ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty bmo:encodingFormat ;
+                                      owl:hasValue "application/asc"^^xsd:string
+                                    ] ;
+                    rdfs:label "DataDownloadASC"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/DataGeneralizationRule
@@ -1364,6 +1507,10 @@ bmo:EModelBuildingWorkflow rdf:type owl:Class ;
                                            ] ,
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty nsg:uses ;
+                                             owl:someValuesFrom bmo:SubCellularModel
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty nsg:uses ;
                                              owl:someValuesFrom nsg:NeuronMorphology
                                            ] ,
                                            [ rdf:type owl:Restriction ;
@@ -1378,6 +1525,24 @@ bmo:EModelHyperparameter rdf:type owl:Class ;
                          rdfs:subClassOf bmo:Hyperparameter ;
                          rdfs:label "EModel Hyperparameter"@en ;
                          skos:definition "A parameter used to represent a specific value used in the settings of the EModel building pipeline."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/EModelInstance
+bmo:EModelInstance rdf:type owl:Class ;
+                   rdfs:subClassOf prov:Entity ;
+                   rdfs:label "EModelInstance"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/EModelInstanceCategory
+bmo:EModelInstanceCategory rdf:type owl:Class ;
+                           rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorCategory ;
+                           rdfs:label "EModelInstanceCategory"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/EModelInstanceCircuitProperty
+bmo:EModelInstanceCircuitProperty rdf:type owl:Class ;
+                                  rdfs:subClassOf bmo:ModelCircuitProperty ;
+                                  rdfs:label "EModelInstanceCircuitProperty"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/EModelOptimizationBatchSize
@@ -1496,6 +1661,40 @@ bmo:EModelValidationWorkflow rdf:type owl:Class ;
                              rdfs:label "EModel Validation Workflow"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/EModelnstanceGenerator
+bmo:EModelnstanceGenerator rdf:type owl:Class ;
+                           rdfs:subClassOf bmo:ModelCircuitPropertyGenerator ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty schema:isPartOf ;
+                                             owl:someValuesFrom bmo:ModelCircuitBuildingWorkflow
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty bmo:generates ;
+                                             owl:someValuesFrom bmo:EModelInstance
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty bmo:generatesCircuitWithProperty ;
+                                             owl:someValuesFrom bmo:EModelInstanceCircuitProperty
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty bmo:usesCircuitWithProperty ;
+                                             owl:someValuesFrom bmo:EtypeCircuitProperty
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty bmo:usesCircuitWithProperty ;
+                                             owl:someValuesFrom bmo:NeuronMorphologyCircuitProperty
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty nsg:about ;
+                                             owl:someValuesFrom bmo:EModelInstanceCategory
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty nsg:uses ;
+                                             owl:someValuesFrom bmo:ModelCircuit
+                                           ] ;
+                           rdfs:label "EModelnstanceGenerator"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus
 bmo:ElectricalStimulus rdf:type owl:Class ;
                        rdfs:subClassOf prov:Entity ;
@@ -1516,6 +1715,12 @@ bmo:Equation rdf:type owl:Class ;
              rdfs:subClassOf prov:Entity ;
              rdfs:label "Equation"@en ;
              skos:definition "In mathematics, an equation is a statement that asserts the equality of two expressions, which are connected by the equals sign \"=\"."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/EtypeCircuitProperty
+bmo:EtypeCircuitProperty rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:ModelCircuitProperty ;
+                         rdfs:label "EtypeCircuitProperty"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/EvolutionaryAlgorithm
@@ -1595,7 +1800,7 @@ bmo:FeatureExtractionWorkflow rdf:type owl:Class ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/GammaCaDynamicsDC0
 bmo:GammaCaDynamicsDC0 rdf:type owl:Class ;
                        rdfs:subClassOf bmo:CalciumDynamics ;
-                       rdfs:label "Gamma CaDynamics DC0"@en ;
+                       rdfs:label "Ca Dynamics Gamma"@en ;
                        skos:definition "The inverse of the calcium ion buffer's binding ratio."^^xsd:string .
 
 
@@ -1652,10 +1857,20 @@ bmo:GliaType rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/HCurrent
 bmo:HCurrent rdf:type owl:Class ;
-             rdfs:subClassOf bmo:IonicMechanism ;
+             rdfs:subClassOf bmo:SubCellularProcess ;
              rdfs:label "H Current"@en ;
              skos:definition "Hyperpolarization-activated current."^^xsd:string ;
              nsg:synonym "Ih"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/HodgkinHuxleyIonCurrentModel
+bmo:HodgkinHuxleyIonCurrentModel rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:IonCurrentModel ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty bmo:exposesParameter ;
+                                                   owl:someValuesFrom bmo:ConductanceDensity
+                                                 ] ;
+                                 rdfs:label "Hodgkin Huxley Ion Current Model"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Hyperparameter
@@ -1707,6 +1922,16 @@ bmo:ICSelector-BasedIonChannelDensityConstraintGenerationWorkflow rdf:type owl:C
                                                                   rdfs:label "IC Selector-Based Ion Channel Density Constraint Generation Workflow"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/IVIonCurrentModel
+bmo:IVIonCurrentModel rdf:type owl:Class ;
+                      rdfs:subClassOf bmo:IonCurrentModel ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty bmo:exposesParameter ;
+                                        owl:someValuesFrom bmo:ConductanceDensity
+                                      ] ;
+                      rdfs:label "IV Ion Current Model"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/InferredData
 bmo:InferredData rdf:type owl:Class ;
                  rdfs:subClassOf bmo:DataGenerationModality ;
@@ -1725,6 +1950,20 @@ bmo:InterstitialSpace rdf:type owl:Class ;
                       rdfs:label "Interstitial Space"@en ;
                       rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0301008215300691#bib0390> ;
                       skos:definition "The Interstitial Space is a narrow space between neural cells and blood vessels."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/IntraCellularConcentrationModel
+bmo:IntraCellularConcentrationModel rdf:type owl:Class ;
+                                    rdfs:subClassOf bmo:SubCellularModel ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty bmo:molecule ;
+                                                      owl:someValuesFrom bmo:Molecule
+                                                    ] ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty nsg:ion ;
+                                                      owl:someValuesFrom bmo:Ion
+                                                    ] ;
+                                    rdfs:label "IntraCellular Concentration Model"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Ion
@@ -1781,6 +2020,30 @@ bmo:IonChannelDensityConstraint rdf:type owl:Class ;
                                 rdfs:label "Ion Channel Density Constraint"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/IonCurrent
+bmo:IonCurrent rdf:type owl:Class ;
+               rdfs:subClassOf bmo:SubCellularProcess ;
+               rdfs:label "Ion Current"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/IonCurrentModel
+bmo:IonCurrentModel rdf:type owl:Class ;
+                    rdfs:subClassOf bmo:SubCellularModel ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty nsg:ion ;
+                                      owl:someValuesFrom bmo:Ion
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty nsg:ionChannel ;
+                                      owl:someValuesFrom bmo:IonChannel
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty nsg:modelOf ;
+                                      owl:someValuesFrom bmo:IonCurrent
+                                    ] ;
+                    rdfs:label "Ion Current Model"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/IonDensityConstraintGenerationWorkflow
 bmo:IonDensityConstraintGenerationWorkflow rdf:type owl:Class ;
                                            rdfs:subClassOf bmo:EModelParameterConstraintGenerationWorkflow ,
@@ -1807,35 +2070,16 @@ bmo:IonDynamicsFeature rdf:type owl:Class ;
                        skos:definition "Kinetics of the conductance mechanism of an ion."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/IonicMechanism
-bmo:IonicMechanism rdf:type owl:Class ;
-                   rdfs:subClassOf bmo:BiologicalBrainActivity ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty nsg:associatedIon ;
-                                     owl:someValuesFrom bmo:Ion
-                                   ] ;
-                   rdfs:label "Ionic Mechanism"@en ;
-                   skos:definition "A mechanism underlying the dynamics of specific ion current type."^^xsd:string .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/IonicMechanismBuildingWorkflow
-bmo:IonicMechanismBuildingWorkflow rdf:type owl:Class ;
-                                   rdfs:subClassOf bmo:ModelBuildingWorkflow ,
-                                                   [ rdf:type owl:Restriction ;
-                                                     owl:onProperty bmo:generates ;
-                                                     owl:someValuesFrom bmo:ModelIonicMechanism
-                                                   ] ,
-                                                   [ rdf:type owl:Restriction ;
-                                                     owl:onProperty nsg:about ;
-                                                     owl:someValuesFrom bmo:IonicMechanism
-                                                   ] ;
-                                   rdfs:label "Ionic Mechanism Building Workflow"@en .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/LeafRegions
 bmo:LeafRegions rdf:type owl:Class ;
                 rdfs:subClassOf bmo:NeuriteLocationFeature ;
                 rdfs:label "Leaf Regions"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/LocalConnectomeCategory
+bmo:LocalConnectomeCategory rdf:type owl:Class ;
+                            rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorCategory ;
+                            rdfs:label "LocalConnectomeCategory"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/MO-CMA
@@ -1849,6 +2093,16 @@ bmo:MO-CMA rdf:type owl:Class ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Mapping
 bmo:Mapping rdf:type owl:Class ;
             skos:definition "This class groups all external classes mapped to locally defined classes"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/MarkovIonCurrentModel
+bmo:MarkovIonCurrentModel rdf:type owl:Class ;
+                          rdfs:subClassOf bmo:IonCurrentModel ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty bmo:exposesParameter ;
+                                            owl:someValuesFrom bmo:IonChannelDensity
+                                          ] ;
+                          rdfs:label "Markov Ion Current Model"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/MaxGenerations
@@ -1877,6 +2131,17 @@ bmo:Microcircuit rdf:type owl:Class ;
 bmo:Mitochondrion rdf:type owl:Class ;
                   rdfs:subClassOf bmo:Organelle ;
                   rdfs:label "Mitochondrion"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/MixAndMatchMorphologyGenerator
+bmo:MixAndMatchMorphologyGenerator rdf:type owl:Class ;
+                                   rdfs:subClassOf bmo:MorphologyGenerator ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty nsg:uses ;
+                                                     owl:someValuesFrom nsg:ReconstructedNeuronMorphology
+                                                   ] ;
+                                   rdfs:label "MixAndMatchMorphologyGenerator"@en ;
+                                   skos:definition "Neuron Morphology  Mix and match Generator variant"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBasalLaminaMetabolism
@@ -1926,6 +2191,21 @@ bmo:ModelBrainActivity rdf:type owl:Class ;
                                        ] ;
                        rdfs:label "Model Brain Activity"@en ;
                        skos:definition "A computational model of any measurable electrical or chemical activity in the real brain."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBrainBuildingWorkflow
+bmo:ModelBrainBuildingWorkflow rdf:type owl:Class ;
+                               rdfs:subClassOf bmo:ModelBuildingWorkflow ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty bmo:generates ;
+                                                 owl:someValuesFrom bmo:ModelCircuit
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty nsg:uses ;
+                                                 owl:someValuesFrom prov:Entity
+                                               ] ;
+                               rdfs:label "Model Brain Building Workflow"@en ;
+                               skos:prefLabel "Model Brain Building Workflow"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBrainComponent
@@ -2051,10 +2331,27 @@ bmo:ModelCell rdf:type owl:Class ;
 bmo:ModelCircuit rdf:type owl:Class ;
                  rdfs:subClassOf bmo:ModelBrainComponent ,
                                  [ rdf:type owl:Restriction ;
+                                   owl:onProperty bmo:eType ;
+                                   owl:someValuesFrom nsg:EType
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty bmo:emodelInstance ;
+                                   owl:someValuesFrom bmo:EModelInstance
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty bmo:mType ;
+                                   owl:someValuesFrom nsg:MType
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty bmo:position ;
+                                   owl:someValuesFrom bmo:CellPosition
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
                                    owl:onProperty nsg:modelOf ;
                                    owl:someValuesFrom bmo:BrainVolume
                                  ] ;
-                 rdfs:label "Model Circuit"@en .
+                 rdfs:label "Model Circuit"@en ;
+                 skos:altLabel "Circuit"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitBuildingWorkflow
@@ -2066,11 +2363,7 @@ bmo:ModelCircuitBuildingWorkflow rdf:type owl:Class ;
                                                  ] ,
                                                  [ rdf:type owl:Restriction ;
                                                    owl:onProperty nsg:uses ;
-                                                   owl:someValuesFrom bmo:ModelBrainVolume
-                                                 ] ,
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty nsg:uses ;
-                                                   owl:someValuesFrom bmo:ModelCircuitConnectivity
+                                                   owl:someValuesFrom prov:Entity
                                                  ] ;
                                  rdfs:label "Model Circuit Building Workflow"@en .
 
@@ -2101,6 +2394,70 @@ bmo:ModelCircuitConnectivityBuildingWorkflow rdf:type owl:Class ;
                                                                owl:someValuesFrom bmo:ModelSynapse
                                                              ] ;
                                              rdfs:label "Model Circuit Connectivity Building Workflow"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitProperty
+bmo:ModelCircuitProperty rdf:type owl:Class ;
+                         rdfs:subClassOf prov:Entity ;
+                         rdfs:label "ModelCircuitProperty"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitPropertyGenerator
+bmo:ModelCircuitPropertyGenerator rdf:type owl:Class ;
+                                  rdfs:subClassOf bmo:ModelBuildingWorkflow ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty bmo:generates ;
+                                                    owl:someValuesFrom bmo:ModelCircuit
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty bmo:usesCircuitWithProperty ;
+                                                    owl:someValuesFrom bmo:ModelCircuitProperty
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty nsg:uses ;
+                                                    owl:someValuesFrom prov:Entity
+                                                  ] ;
+                                  rdfs:label "ModelCircuitPropertyGenerator"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitPropertyGeneratorCategory
+bmo:ModelCircuitPropertyGeneratorCategory rdf:type owl:Class ;
+                                          rdfs:subClassOf prov:Entity ;
+                                          rdfs:label "ModelCircuitPropertyGeneratorCategory"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitWithEModelInstance
+bmo:ModelCircuitWithEModelInstance rdf:type owl:Class ;
+                                   rdfs:subClassOf bmo:ModelCircuit ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty bmo:emodelInstance ;
+                                                     owl:someValuesFrom bmo:EModelInstance
+                                                   ] ;
+                                   rdfs:label "ModelCircuitWithEModelInstance"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitWithETypeNeuronMorphology
+bmo:ModelCircuitWithETypeNeuronMorphology rdf:type owl:Class ;
+                                          rdfs:subClassOf bmo:ModelCircuit ,
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty nsg:hasMorphology ;
+                                                            owl:someValuesFrom nsg:NeuronMorphology
+                                                          ] ;
+                                          rdfs:label "ModelCircuitWithETypeNeuronMorphology"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitWithPositionOrientationMType
+bmo:ModelCircuitWithPositionOrientationMType rdf:type owl:Class ;
+                                             rdfs:subClassOf bmo:ModelCircuit ;
+                                             rdfs:label "ModelCircuitWithPositionOrientationMType"@en ;
+                                             skos:definition "A circuit with x, y, z, orientation_x, orientation_y, orientation_z, orientation_w, m-type"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitWithPositionOrientationMTypeNeuronMorphology
+bmo:ModelCircuitWithPositionOrientationMTypeNeuronMorphology rdf:type owl:Class ;
+                                                             rdfs:subClassOf bmo:ModelCircuit ;
+                                                             rdfs:label "ModelCircuitWithPositionOrientationMTypeNeuronMorphology"@en ;
+                                                             skos:definition "A circuit with an additional property “morphology” and the corresponding morphology file"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelConnectivityParameter
@@ -2189,12 +2546,9 @@ bmo:ModelIonChannel rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelIonicMechanism
 bmo:ModelIonicMechanism rdf:type owl:Class ;
-                        rdfs:subClassOf bmo:ModelBrainActivity ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty nsg:modelOf ;
-                                          owl:someValuesFrom bmo:IonicMechanism
-                                        ] ;
-                        rdfs:label "Model Ionic Mechanism"@en .
+                        rdfs:subClassOf bmo:ModelBrainActivity ;
+                        rdfs:label "Model Ionic Mechanism"@en ;
+                        skos:note "To be removed (replaced by SubCellular Model)"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelMitochondrionMetabolism
@@ -2448,6 +2802,54 @@ bmo:Molecule rdf:type owl:Class ;
              skos:definition "A molecule is an electrically neutral group of two or more atoms held together by chemical bonds."^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/MorphologyGenerator
+bmo:MorphologyGenerator rdf:type owl:Class ;
+                        rdfs:subClassOf bmo:ModelCircuitPropertyGenerator ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty schema:isPartOf ;
+                                          owl:someValuesFrom bmo:ModelCircuitBuildingWorkflow
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty bmo:generates ;
+                                          owl:someValuesFrom bmo:SynthesizedNeuronMorphologyInAsc
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty bmo:generatesCircuitWithProperty ;
+                                          owl:someValuesFrom bmo:CellPositionCircuitProperty
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty bmo:generatesCircuitWithProperty ;
+                                          owl:someValuesFrom bmo:MtypeCircuitProperty
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty bmo:generatesCircuitWithProperty ;
+                                          owl:someValuesFrom bmo:NeuronMorphologyCircuitProperty
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty bmo:usesCircuitWithProperty ;
+                                          owl:someValuesFrom bmo:CellPositionCircuitProperty
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty bmo:usesCircuitWithProperty ;
+                                          owl:someValuesFrom bmo:MtypeCircuitProperty
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty nsg:about ;
+                                          owl:someValuesFrom bmo:NeuronSynthesisCategory
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty nsg:uses ;
+                                          owl:someValuesFrom bmo:ModelCircuit
+                                        ] ;
+                        rdfs:label "MorphologyGenerator"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/MtypeCircuitProperty
+bmo:MtypeCircuitProperty rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:ModelCircuitProperty ;
+                         rdfs:label "MtypeCircuitProperty"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NGVUnit
 bmo:NGVUnit rdf:type owl:Class ;
             rdfs:subClassOf bmo:BiologicalBrainComponent ,
@@ -2608,6 +3010,12 @@ bmo:NeuronMorphologicalFeature rdf:type owl:Class ;
                                rdfs:label "Neuron Morphological Feature"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologyCircuitProperty
+bmo:NeuronMorphologyCircuitProperty rdf:type owl:Class ;
+                                    rdfs:subClassOf bmo:ModelCircuitProperty ;
+                                    rdfs:label "NeuronMorphologyCircuitProperty"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronPart
 bmo:NeuronPart rdf:type owl:Class ;
                rdfs:subClassOf bmo:SubcellularPart ,
@@ -2640,6 +3048,12 @@ bmo:NeuronProjectionType rdf:type owl:Class ;
                          rdfs:subClassOf bmo:NeuronType ;
                          rdfs:label "Neuron Projection Type"@en ;
                          skos:prefLabel "PType"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronSynthesisCategory
+bmo:NeuronSynthesisCategory rdf:type owl:Class ;
+                            rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorCategory ;
+                            rdfs:label "NeuronSynthesisCategory"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomeType
@@ -2769,6 +3183,11 @@ bmo:PerisomaticCurrentFiringFeature rdf:type owl:Class ;
                                     skos:definition "Feature of perisomatic firing response to current steps"^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/Position
+bmo:Position rdf:type owl:Class ;
+             rdfs:label "Position"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PredictedData
 bmo:PredictedData rdf:type owl:Class ;
                   rdfs:subClassOf bmo:DataGenerationModality ;
@@ -2785,6 +3204,12 @@ bmo:Premise rdf:type owl:Class ;
 bmo:Principle rdf:type owl:Class ;
               rdfs:subClassOf prov:Entity ;
               rdfs:label "Principle"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ProjectomeCategory
+bmo:ProjectomeCategory rdf:type owl:Class ;
+                       rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorCategory ;
+                       rdfs:label "ProjectomeCategory"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ProteinProteinInteraction
@@ -2829,6 +3254,18 @@ bmo:ReactionRateEquation rdf:type owl:Class ;
                          skos:definition "A rate equation or rate law is a mathematical expression used in chemical kinetics to link the rate of a reaction to the concentration of each reactant."^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/ReconstructedNeuronMorphologyInAsc
+bmo:ReconstructedNeuronMorphologyInAsc rdf:type owl:Class ;
+                                       rdfs:subClassOf nsg:ReconstructedNeuronMorphology ;
+                                       rdfs:label "ReconstructedNeuronMorphologyInAsc"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ReconstructedNeuronMorphologyInSwc
+bmo:ReconstructedNeuronMorphologyInSwc rdf:type owl:Class ;
+                                       rdfs:subClassOf nsg:ReconstructedNeuronMorphology ;
+                                       rdfs:label "ReconstructedNeuronMorphologyInSwc"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ReconstructingModelBrain
 bmo:ReconstructingModelBrain rdf:type owl:Class ;
                              rdfs:subClassOf bmo:BrainModelingActivity ;
@@ -2848,7 +3285,7 @@ bmo:Rule rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SKv3_1
 bmo:SKv3_1 rdf:type owl:Class ;
-           rdfs:subClassOf bmo:IonicMechanism ,
+           rdfs:subClassOf bmo:IonCurrent ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty nsg:ion ;
                              owl:someValuesFrom nsg:K
@@ -2881,6 +3318,11 @@ bmo:Soma rdf:type owl:Class ;
          rdfs:label "Soma"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/SomaStatistics
+bmo:SomaStatistics rdf:type owl:Class ;
+                   rdfs:label "SomaStatistics"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SteadyStateConcentrationExtractionWorkflow
 bmo:SteadyStateConcentrationExtractionWorkflow rdf:type owl:Class ;
                                                rdfs:subClassOf bmo:FeatureExtractionWorkflow ,
@@ -2908,6 +3350,32 @@ bmo:SteadyStateMolecularConcentration rdf:type owl:Class ;
                                                       ] ;
                                       rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/SteadyStateMolecularConcentration%3E)> ;
                                       rdfs:label "Steady State Molecular Concentration"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/SubCellularModel
+bmo:SubCellularModel rdf:type owl:Class ;
+                     rdfs:subClassOf bmo:ModelBrainActivity ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty nsg:modelOf ;
+                                       owl:someValuesFrom bmo:SubCellularProcess
+                                     ] ;
+                     rdfs:label "SubCellular Model"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/SubCellularModelBuildingWorkflow
+bmo:SubCellularModelBuildingWorkflow rdf:type owl:Class ;
+                                     rdfs:subClassOf bmo:ModelBuildingWorkflow ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty bmo:generates ;
+                                                       owl:someValuesFrom bmo:SubCellularModel
+                                                     ] ;
+                                     rdfs:label "SubCellular Model Building Workflow"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/SubCellularProcess
+bmo:SubCellularProcess rdf:type owl:Class ;
+                       rdfs:subClassOf bmo:BiologicalBrainActivity ;
+                       rdfs:label "SubCellular Process"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart
@@ -2991,6 +3459,12 @@ bmo:Synapse rdf:type owl:Class ;
                             ] ;
             rdfs:label "Synapse"@en ;
             skos:definition "A structure that permits a neuron to pass an electrical or chemical signal to another neuron or to the target effector cell. Synapse is formed by a presynaptic and postsynaptic part with a space between the two parts. Different structural proteins connect the pre- and postsynaptic parts of the synapse."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/SynapseModelCategory
+bmo:SynapseModelCategory rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorCategory ;
+                         rdfs:label "SynapseModelCategory"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SynapsePhenotypicFeature
@@ -3089,10 +3563,52 @@ bmo:SynapticStrength rdf:type owl:Class ;
                      rdfs:label "Synaptic Strength"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/SynthesizedNeuronMorphologyInAsc
+bmo:SynthesizedNeuronMorphologyInAsc rdf:type owl:Class ;
+                                     rdfs:subClassOf nsg:SynthesizedNeuronMorphology ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty nsg:distribution ;
+                                                       owl:someValuesFrom bmo:DataDownloadASC
+                                                     ] ;
+                                     rdfs:label "SynthesizedNeuronMorphologyInAsc"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/SynthesizedNeuronMorphologyInH5
+bmo:SynthesizedNeuronMorphologyInH5 rdf:type owl:Class ;
+                                    rdfs:subClassOf nsg:SynthesizedNeuronMorphology ;
+                                    rdfs:label "SynthesizedNeuronMorphologyInH5"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/SynthesizedNeuronMorphologyInSWC
+bmo:SynthesizedNeuronMorphologyInSWC rdf:type owl:Class ;
+                                     rdfs:subClassOf nsg:SynthesizedNeuronMorphology ;
+                                     rdfs:label "SynthesizedNeuronMorphologyInSWC"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/TMDSynthesisMorphologyGenerator
+bmo:TMDSynthesisMorphologyGenerator rdf:type owl:Class ;
+                                    rdfs:subClassOf bmo:MorphologyGenerator ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty nsg:uses ;
+                                                      owl:someValuesFrom bmo:NeuronMorphologicalFeature
+                                                    ] ;
+                                    rdfs:label "TMDSynthesisMorphologyGenerator"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/TTT
+bmo:TTT rdf:type owl:Class ;
+        rdfs:subClassOf bmo:ParameterOptimizationWorkflow ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty nsg:uses ;
+                          owl:someValuesFrom nsg:NeuronMorphology
+                        ] ;
+        rdfs:label "TTT"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TaudecayCaDynamicsDC0
 bmo:TaudecayCaDynamicsDC0 rdf:type owl:Class ;
                           rdfs:subClassOf bmo:CalciumDynamics ;
-                          rdfs:label "Tau decay CaDynamics DC0"@en ;
+                          rdfs:label "Ca Dynamics Decay"@en ;
                           skos:definition "Time constant of calcium ion diffusion."^^xsd:string .
 
 
@@ -3157,7 +3673,7 @@ bmo:cAD rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Ca2+ActivatedK+Current
 <https://bbp.epfl.ch/ontologies/core/bmo/Ca2+ActivatedK+Current> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf bmo:IonicMechanism ,
+                                                                 rdfs:subClassOf bmo:IonCurrent ,
                                                                                  [ rdf:type owl:Restriction ;
                                                                                    owl:onProperty nsg:ion ;
                                                                                    owl:someValuesFrom nsg:K
@@ -3181,7 +3697,7 @@ bmo:cAD rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PersistentK+Current
 <https://bbp.epfl.ch/ontologies/core/bmo/PersistentK+Current> rdf:type owl:Class ;
-                                                              rdfs:subClassOf bmo:IonicMechanism ,
+                                                              rdfs:subClassOf bmo:IonCurrent ,
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty nsg:ion ;
                                                                                 owl:someValuesFrom nsg:K
@@ -3194,7 +3710,7 @@ bmo:cAD rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PersistentNa+Current
 <https://bbp.epfl.ch/ontologies/core/bmo/PersistentNa+Current> rdf:type owl:Class ;
-                                                               rdfs:subClassOf bmo:IonicMechanism ,
+                                                               rdfs:subClassOf bmo:IonCurrent ,
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty nsg:ion ;
                                                                                  owl:someValuesFrom nsg:Na
@@ -3211,7 +3727,7 @@ bmo:cAD rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TransientK+Current
 <https://bbp.epfl.ch/ontologies/core/bmo/TransientK+Current> rdf:type owl:Class ;
-                                                             rdfs:subClassOf bmo:IonicMechanism ,
+                                                             rdfs:subClassOf bmo:IonCurrent ,
                                                                              [ rdf:type owl:Restriction ;
                                                                                owl:onProperty nsg:ion ;
                                                                                owl:someValuesFrom nsg:K
@@ -3224,7 +3740,7 @@ bmo:cAD rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TransientNa+Current
 <https://bbp.epfl.ch/ontologies/core/bmo/TransientNa+Current> rdf:type owl:Class ;
-                                                              rdfs:subClassOf bmo:IonicMechanism ,
+                                                              rdfs:subClassOf bmo:IonCurrent ,
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty nsg:ion ;
                                                                                 owl:someValuesFrom nsg:Na
@@ -3680,6 +4196,12 @@ nsg:Protein rdf:type owl:Class ;
             rdfs:label "Protein"@en .
 
 
+###  https://neuroshapes.org/ReconstructedNeuronMorphology
+nsg:ReconstructedNeuronMorphology rdf:type owl:Class ;
+                                  rdfs:subClassOf nsg:NeuronMorphology ;
+                                  rdfs:label "ReconstructedNeuronMorphology"@en .
+
+
 ###  https://neuroshapes.org/Serotonin
 nsg:Serotonin rdf:type owl:Class ;
               rdfs:subClassOf nsg:ExcitatoryTransmitter ,
@@ -3719,6 +4241,12 @@ nsg:Subject rdf:type owl:Class ;
                               owl:someValuesFrom nsg:Species
                             ] ;
             rdfs:label "Subject"@en .
+
+
+###  https://neuroshapes.org/SynthesizedNeuronMorphology
+nsg:SynthesizedNeuronMorphology rdf:type owl:Class ;
+                                rdfs:subClassOf nsg:NeuronMorphology ;
+                                rdfs:label "SynthesizedNeuronMorphology"@en .
 
 
 ###  https://neuroshapes.org/Testosterone
