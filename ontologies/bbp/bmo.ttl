@@ -38,7 +38,7 @@
                                            dc:title "Brain Modeling Ontology"^^xsd:string ;
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
-                                           owl:versionInfo "R472"^^xsd:string .
+                                           owl:versionInfo "R477"^^xsd:string .
 
 #################################################################
 #    Annotation properties
