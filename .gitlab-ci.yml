@@ -46,7 +46,6 @@ register-on-staging-environment:
       when: on_success
   script:
     - CA_BUNDLE=$(python3 -c "import certifi; print(certifi.where())")
-    - cat $BBP_CA_CERT
     - cat $BBP_CA_CERT >> $CA_BUNDLE
     - python register_ontologies.py --environment staging --token $NEXUS_TOKEN_STAGING
   before_script:
