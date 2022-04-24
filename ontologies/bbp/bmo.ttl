@@ -3858,7 +3858,7 @@ nsg:Dopamine rdf:type owl:Class ;
              rdfs:subClassOf nsg:ExcitatoryTransmitter ,
                              nsg:Neuromodulator ;
              rdfs:label "Dopamine"@en ;
-             skos:definition "A neuromodulatory molecule that plays several important roles in cells. It is an organic chemical of the catecholamine and phenethylamine families. In the brain, dopamine functions as a neurotransmitter—a chemical released by neurons (nerve cells) to send signals to other nerve cells. Neurotransmitters are synthesized in specific regions of the brain, but affect many regions systemically. The brain includes several distinct dopamine pathways, one of which plays a major role in the motivational component of reward-motivated behavior. The anticipation of most types of rewards increases the level of dopamine in the brain, and many addictive drugs increase dopamine release or block its reuptake into neurons following release." .
+             skos:definition "A neuromodulatory molecule that plays several important roles in cells. It is an organic chemical of the catecholamine and phenethylamine families. In the brain, dopamine functions as a neurotransmitter -- a chemical released by neurons (nerve cells) to send signals to other nerve cells. Neurotransmitters are synthesized in specific regions of the brain, but affect many regions systemically. The brain includes several distinct dopamine pathways, one of which plays a major role in the motivational component of reward-motivated behavior. The anticipation of most types of rewards increases the level of dopamine in the brain, and many addictive drugs increase dopamine release or block its reuptake into neurons following release." .
 
 
 ###  https://neuroshapes.org/EModel
