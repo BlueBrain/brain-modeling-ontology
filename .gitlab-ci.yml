@@ -124,9 +124,7 @@ deploy-ontodocs-in-staging-openshift:
       when: on_success
   variables:
     KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization"
-    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-staging/bmo-ontodocs"
-    CI_REGISTRY_USER: $CI_REGISTRY_USER_STAGING
-    CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_STAGING
+    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/ontodocs-staging
 
 # Executes deployment of project documentation to bbp-dke-staging Openshift
 deploy-sphinx-documentation-in-staging-openshift:
@@ -139,9 +137,7 @@ deploy-sphinx-documentation-in-staging-openshift:
       when: on_success
   variables:
     KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=generated/html"
-    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-staging/bmo-documentation"
-    CI_REGISTRY_USER: $CI_REGISTRY_USER_STAGING
-    CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_STAGING
+    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/sphinx-documentation-staging
     KUBERNETES_MEMORY_LIMIT: 4Gi
     KUBERNETES_MEMORY_REQUEST: 4Gi
 
@@ -156,9 +152,7 @@ deploy-ontodocs-in-production-openshift:
       when: on_success
   variables:
     KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization"
-    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-production/bmo-ontodocs"
-    CI_REGISTRY_USER: $CI_REGISTRY_USER_PRODUCTION
-    CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_PRODUCTION
+    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/ontodocs-production
 
 
 # Executes deployment of project documentation to bbp-dke-staging Openshift
@@ -172,8 +166,6 @@ deploy-sphinx-documentation-in-production-openshift:
       when: on_success
   variables:
     KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=generated/html"
-    CI_REGISTRY_IMAGE: "docker-registry-default.ocp.bbp.epfl.ch/bbp-dke-production/bmo-documentation"
-    CI_REGISTRY_USER: $CI_REGISTRY_USER_PRODUCTION
-    CI_REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD_PRODUCTION
+    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/sphinx-documentation-production
     KUBERNETES_MEMORY_LIMIT: 4Gi
     KUBERNETES_MEMORY_REQUEST: 4Gi
