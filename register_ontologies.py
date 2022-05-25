@@ -7,11 +7,14 @@ import bmo_tools.ontologies as bmo
 
 from kgforge.core import KnowledgeGraphForge
 
+from kgforge.specializations.mappings import DictionaryMapping
+
+
 from ontospy import Ontospy
 
 from rdflib import Namespace
 
-from bmo_tools.utils import remove_non_ascii
+from bmo_tools.utils import remove_non_ascii, PREFIX_MAPPINGS
 
 
 def define_arguments():
@@ -34,44 +37,6 @@ def define_arguments():
     return parser
 
 
-PREFIX_MAPPINGS = {
-    "mso": "https://bbp.epfl.ch/ontologies/core/molecular-systems/",
-    "GO": "http://purl.obolibrary.org/obo/GO_",
-    "dc": "http://purl.org/dc/elements/1.1/",
-    "sh": "http://www.w3.org/ns/shacl#",
-    "bmo": "https://bbp.epfl.ch/ontologies/core/bmo/",
-    "bmc": "https://bbp.epfl.ch/ontologies/core/bmc/",
-    "nsg": "https://neuroshapes.org/",
-    "nxv": "https://bluebrain.github.io/nexus/vocabulary/",
-    "owl": "http://www.w3.org/2002/07/owl#",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "xml": "http://www.w3.org/XML/1998/namespace/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "prov": "http://www.w3.org/ns/prov#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "shsh": "http://www.w3.org/ns/shacl-shacl#",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "vann": "http://purl.org/vocab/vann/",
-    "void": "http://rdfs.org/ns/void#",
-    "uberon": "http://purl.obolibrary.org/obo/UBERON_",
-    "schema": "http://schema.org/",
-    "dcterms": "http://purl.org/dc/terms/",
-    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
-    "NCBITaxon_TAXON": "http://purl.obolibrary.org/obo/NCBITaxon#_",
-    "stim": "https://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/",
-    "datashapes": "https://neuroshapes.org/dash/",
-    "commonshapes": "https://neuroshapes.org/commons/",
-    "ilx": "http://uri.interlex.org/base/ilx_",
-    "efe": "https://bbp.epfl.ch/ontologies/core/efeatures/",
-    "et": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/",
-    "mt": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/",
-    "tt": "http://bbp.epfl.ch/neurosciencegraph/ontologies/ttypes/",
-    "EFO": "http://www.ebi.ac.uk/efo/EFO_",
-    "RS": "http://purl.obolibrary.org/obo/RS_",
-    "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_"
-}
-
-
 def execute_registration(forge, ontology_path, tag=None):
     """
     Executes the registration process
@@ -81,15 +46,16 @@ def execute_registration(forge, ontology_path, tag=None):
     :param tag: optional tag
     :return:
     """
+    print(f"Registering ontology: {ontology_path}")
     ontologyspy = Ontospy(ontology_path, verbose=True)
     for x in ontologyspy.stats(): print(f"{x[0]}: {x[1]}")
     # first remove non-ascii characters from ontology
     remove_non_ascii(ontology_path)
     # read the ontology
     ontology_graph = rdflib.Graph()
-    ontology_graph.parse(ontology_path, format="turtle")
     for prefix, mapping in PREFIX_MAPPINGS.items():
         ontology_graph.bind(prefix, Namespace(mapping))
+    ontology_graph.parse(ontology_path, format="turtle")
 
     ontology = bmo.find_ontology_resource(ontology_graph)
 
@@ -98,7 +64,8 @@ def execute_registration(forge, ontology_path, tag=None):
 
     bmo.add_defines_relation(ontology_graph)
 
-    bmo.restrictions_to_triples(ontology_graph)
+    # Consider keeping restrictions in ontology and remove them in classes
+    #bmo.restrictions_to_triples(ontology_graph)
 
     WEBPROTEGE_TO_NEXUS = {
         # Target ontology ID's to define
@@ -107,12 +74,26 @@ def execute_registration(forge, ontology_path, tag=None):
         "https://bbp.epfl.ch/nexus/webprotege/#projects/7515dc12-ce84-4eea-ba8e-6262670ac741/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes",
         "https://bbp.epfl.ch/nexus/webprotege/#projects/6a23494a-360c-4152-9e81-fd9828f44db9/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes",
         "https://bbp.epfl.ch/nexus/webprotege/#projects/ea484e60-5a27-4790-8f2a-e2975897f407/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/",
-        "https://bbp.epfl.ch/nexus/webprotege/#projects/d4ee40c6-4131-4915-961d-51a5c587c667/edit/Classes": "https://bbp.epfl.ch/ontologies/core/efeatures"
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/ea484e60-5a27-4790-8f2a-e2975897f407/edit/Classes?selection=Class(%3Chttps://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus%3E)": "https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/d4ee40c6-4131-4915-961d-51a5c587c667/edit/Classes": "https://bbp.epfl.ch/ontologies/core/efeatures",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/a9878003-7d0b-4f75-aad8-7de3eeeacd73/edit/Classes": "https://bbp.epfl.ch/ontologies/core/mfeatures",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/648aec19-2694-4ab2-9231-3905e2bd3d38/edit/Classes": "https://bbp.epfl.ch/ontologies/core/metypes",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/c9128328-fe63-4e5e-8ec1-c7f0f0f33d19/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/",
+        "urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/celltypes",
+        "urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec": "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/celltypes",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ChemicalReaction%3E)": "https://neuroshapes.org/ChemicalReaction",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Molecule%3E)": "https://neuroshapes.org/Molecule",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ReactionKineticParameter%3E)": "https://neuroshapes.org/ReactionKineticParameter",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ReactionRateEquation%3E)": "https://neuroshapes.org/ReactionRateEquation",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/SteadyStateMolecularConcentration%3E)": "https://neuroshapes.org/SteadyStateMolecularConcentration",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Complex%3E)": "https://neuroshapes.org/Complex",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Metabolite%3E)": "https://neuroshapes.org/Metabolite",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Protein%3E)": "https://neuroshapes.org/Protein",
+        "https://bbp.epfl.ch/nexus/webprotege/#projects/ea484e60-5a27-4790-8f2a-e2975897f407/edit/Classes?selection=Class(%3Chttps://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus%3E)": "https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus"
     }
 
-    bmo.replace_is_defined_by_uris(ontology_graph, WEBPROTEGE_TO_NEXUS)
+    bmo.replace_is_defined_by_uris(ontology_graph, WEBPROTEGE_TO_NEXUS, str(ontology))
 
-    # context = forge.retrieve("https://neuroshapes.org")
     context = forge.retrieve("https://neuroshapes.org")
     context = forge.as_jsonld(context)["@context"]
     context["label"] = {
@@ -134,13 +115,17 @@ def execute_registration(forge, ontology_path, tag=None):
         "@id": "skos:definition",
         "@language": "en"
     }
-    print(f"Registering ontology: {ontology_path}")
-    bmo.register_ontology(forge, ontology_graph, context, ontology_path, tag)
-    bmo.remove_defines_relation(ontology_graph)
+    class_jsons = bmo.frame_classes(forge, ontology_graph, context)
 
-    class_jsons = bmo.frame_classes(ontology_graph, context)
+    print(f"Got {len(class_jsons)} non mapped classes")
+    class_resources_mapped = forge.map(data=class_jsons,
+                                   mapping=DictionaryMapping.load("./mappings/term-to-resource-mapping.hjson"), na="None")
+
+    print(f"Got {len(class_resources_mapped)} mapped classes")
+    bmo.register_ontology(forge, ontology_graph, context, ontology_path, tag, class_resources_mapped)
+    bmo.remove_defines_relation(ontology_graph)
     print(f"Registering classes for ontology: {ontology_path}")
-    bmo.register_classes(forge, class_jsons, tag)
+    bmo.register_classes(forge, class_resources_mapped, tag)
     print(f"Registration finished for ontology: {ontology_path}")
 
 

@@ -45,29 +45,45 @@ def frame_ontology(ontology_graph, context):
     return framed_onto_json
 
 
-def _register_ontology_resource(forge, ontology_json, ontology_path):
+def _register_ontology_resource(forge, ontology_json, ontology_path, ontology_graph, class_resources_mapped = None):
+
     ontology_json = copy.deepcopy(ontology_json)
     del ontology_json["@context"]
     ontology_resource = forge.from_json(ontology_json)
-    ontology_resource.distribution = forge.attach(
-        ontology_path, content_type="text/turtle")
-    forge.register(
-        ontology_resource, schema_id="https://neuroshapes.org/dash/ontology")
+    dirpath = f"./{ontology_path.split('/')[-1].split('.')[0]}"
+    dirpath_ttl = f"{dirpath}.ttl"
+    ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
+    ontology_resource.distribution = [forge.attach(
+        dirpath_ttl, content_type="text/turtle")]
+
+    dirpath_json = f"{dirpath}.json"
+    with open(dirpath_json, "w") as fp:
+        json.dump(ontology_json, fp)
+    ontology_resource.distribution.append(forge.attach(dirpath_json, content_type="application/ld+json"))
+
+    if class_resources_mapped is not None:
+        defined_types_df = forge.as_dataframe(class_resources_mapped)
+        dirpath_csv = f"{dirpath}.csv"
+        defined_types_df.to_csv(dirpath_csv)
+        ontology_resource.distribution.append(forge.attach(dirpath_csv, content_type="text/csv"))
+
+    forge.register(ontology_resource, schema_id="https://neuroshapes.org/dash/ontology")
     return ontology_resource
 
 
-def register_ontology(forge, ontology_graph, context, path, tag=None):
+def register_ontology(forge, ontology_graph, context, path, tag=None, class_resources_mapped=None):
     """Register ontology resource to the store.
+
 
     Try registering ontology to the store of the initialized forge.
     if ontology is too large, remove `defines` relationships from the ontology
-    to classes and retry registering. If ontology exisits, update it.
+    to classes and retry registering. If ontology exists, update it.
     """
     # Frame ontology given the provided context
     ontology_json = frame_ontology(ontology_graph, context)
 
     # Register ontology as is
-    ontology_resource = _register_ontology_resource(forge, ontology_json, path)
+    ontology_resource = _register_ontology_resource(forge, ontology_json, path, ontology_graph, class_resources_mapped)
 
     if not ontology_resource._last_action.succeeded and\
        ALREADY_EXISTS_ERROR not in ontology_resource._last_action.message:
@@ -79,29 +95,32 @@ def register_ontology(forge, ontology_graph, context, path, tag=None):
         ontology_json = frame_ontology(ontology_graph, context)
         print("Retrying registration...\n")
         ontology_resource = _register_ontology_resource(
-            forge, ontology_json, path)
+            forge, ontology_json, path, ontology_graph, class_resources_mapped)
 
     if not ontology_resource._last_action.succeeded and\
        ALREADY_EXISTS_ERROR in ontology_resource._last_action.message:
         # Update and tag if 'already exists' error was encountered
         print("Ontology already exists, updating...\n")
-        upd_ontology_json = forge.as_json(ontology_resource)
-        existing_ontology_resource = forge.retrieve(upd_ontology_json["@id"])
-        del upd_ontology_json["@id"]
-        del upd_ontology_json["@type"]
-        ontology_resource = forge.from_json(upd_ontology_json)
-        ontology_resource.id = existing_ontology_resource.id
-        ontology_resource.type = existing_ontology_resource.type
-        ontology_resource._store_metadata =\
-            existing_ontology_resource._store_metadata
-        forge.update(ontology_resource)
+        ontology_updated = _process_already_existing_resource(forge, ontology_resource)
+        forge.update(ontology_updated)
         if tag:
-            forge.tag(ontology_resource, tag)
-
+            forge.tag(ontology_updated, tag)
+    
     # Tag if the registration was successful
     if ontology_resource._last_action.succeeded is True and tag:
         print("Registration successful, tagging...\n")
         forge.tag(ontology_resource, tag)
+
+def _process_already_existing_resource(forge, resource):
+    resource_json = forge.as_json(resource)
+    resource_json.pop("@id", resource_json.pop("id", None))
+    resource_json.pop("@type", resource_json.pop("type", None))
+    resource_updated = forge.from_json(resource_json)
+    existing_resource = forge.retrieve(resource.id)
+    resource_updated.id = existing_resource.id
+    resource_updated.type = existing_resource.type
+    resource_updated._store_metadata = existing_resource._store_metadata
+    return resource_updated
 
 
 def find_ontology_resource(graph):
@@ -139,24 +158,28 @@ def remove_defines_relation(graph):
         graph.remove((ontology, defines_rel, c))
 
 
-def _process_blank_nodes(ontology_graph, source, blank_node, triples_to_remove):
-    if isinstance(blank_node, rdflib.term.BNode):
-        for (p, o) in ontology_graph.predicate_objects(blank_node):
-            triples_to_remove.append((blank_node, p, o))
-        rel = None
-        target = None
-        for o in ontology_graph.objects(blank_node, OWL.onProperty):
-            rel = o
-        for o in ontology_graph.objects(blank_node, OWL.someValuesFrom):
-            target = o
-        if target is None:
-            for o in ontology_graph.objects(blank_node, OWL.hasValue):
-                target = o
-        ontology_graph.add((source, rel, target))
+def _process_blank_nodes(ontology_graph, source, blank_node):
+    blank_node_triples = []
+
+    rel = None
+    target = None
+    for oo in ontology_graph.objects(blank_node, OWL.onProperty):
+        rel = oo
+    for oo in ontology_graph.objects(blank_node, OWL.someValuesFrom):
+        target = oo
+    if target is None:
+        for oo in ontology_graph.objects(blank_node, OWL.hasValue):
+            target = oo
+    if target is None:
+        for oo in ontology_graph.objects(blank_node, OWL.allValuesFrom):
+            target = oo
+    blank_node_triples.append((blank_node, rel, target))
+    return rel, target, blank_node_triples
 
 
 def restrictions_to_triples(ontology_graph):
     """Convert restrictions on relationships to simple RDF triples."""
+    # Consider keeping restrictions in ontology and remove them in classes
     triples_to_remove = []
     for c in ontology_graph.subjects(RDF.type, OWL.Class):
         if isinstance(c, rdflib.term.BNode):
@@ -192,23 +215,28 @@ def add_ontology_label(ontology_graph, ontology, label=None):
         (ontology, RDFS.label, rdflib.Literal(label, datatype=XSD.string)))
 
 
-def frame_classes(ontology_graph, context):
+def frame_classes(forge, ontology_graph, context):
     """Frame ontology classes into JSON-LD payloads."""
     frame_json_class = {
         "@context": context,
-        "@type": str(OWL.Class),
+        "@type": [str(OWL.Class), str(OWL.NamedIndividual)],
         "@embed": True
     }
 
     ontology = find_ontology_resource(ontology_graph)
 
     class_jsons = []
+    # Consider removing the restrictions
     for current_class in ontology_graph.subjects(RDF.type, OWL.Class):
         current_class_graph = rdflib.Graph()
         for (p, o) in ontology_graph.predicate_objects(current_class):
-            current_class_graph.add((current_class, p, o))
-            current_class_graph.add(
-                (current_class, RDFS.isDefinedBy, ontology))
+            if p == RDFS.subClassOf and isinstance(o, rdflib.term.BNode):
+                rel, target, blank_node_triples = _process_blank_nodes(ontology_graph, current_class, o)
+                current_class_graph.add((current_class, rel, target))
+            else:
+                current_class_graph.add((current_class, p, o))
+        current_class_graph.add(
+            (current_class, RDFS.isDefinedBy, ontology))
 
         current_class_string = current_class_graph.serialize(
             format="json-ld", auto_compact=True, indent=2)
@@ -238,25 +266,18 @@ def frame_classes(ontology_graph, context):
     return class_jsons
 
 
-def register_classes(forge, class_jsons, tag=None):
+def register_classes(forge, class_resources_mapped, tag=None):
     """Register ontology classes to the store."""
-    for class_json in class_jsons:
-        resource = forge.from_json(class_json)
+    for resource in class_resources_mapped:
+        #resource = forge.from_json(class_json)
         forge.register(resource, schema_id="datashapes:ontologyentity")
         if resource._last_action.succeeded is True and tag is not None:
             forge.tag(resource, tag)
         if resource._last_action.error == "RegistrationError":
-            existing_ontology_resource = forge.retrieve(forge.as_json(resource)["@id"])
-            resource = forge.as_json(resource)
-            del resource["@id"]
-            del resource["@type"]
-            resource = forge.from_json(resource)
-            resource.id = existing_ontology_resource.id
-            resource.type = existing_ontology_resource.type
-            resource._store_metadata = existing_ontology_resource._store_metadata
-            forge.update(resource)
+            resource_updated = _process_already_existing_resource(forge, resource)
+            forge.update(resource_updated)
             if tag is not None:
-                forge.tag(resource, tag)
+                forge.tag(resource_updated, tag)
 
 
 def normalize_uris(filename, prefix, new_filename, format="turtle"):
@@ -378,8 +399,12 @@ def subontology_from_term(graph, entry_point, top_down=True, closed=True):
     return subgraph
 
 
-def replace_is_defined_by_uris(graph, uri_mapping):
-    """Replace targets of `isDefinedBy` rel with Nexus URIs."""
+def replace_is_defined_by_uris(graph, uri_mapping, ontology_uri):
+    """
+        Replace targets of `isDefinedBy` rel with Nexus URIs.
+        Replace WebProtégé generated ontology URIs with mapped ones.
+    """
+
     triples_to_add = set()
     triples_to_remove = set()
     for s, p, o in graph.triples((None, RDFS.isDefinedBy, None)):
@@ -388,6 +413,15 @@ def replace_is_defined_by_uris(graph, uri_mapping):
             if is_defined_by.startswith(k):
                 triples_to_add.add((s, p, rdflib.URIRef(uri_mapping[k])))
                 triples_to_remove.add((s, p, o))
+    new_ontology_uri = ontology_uri
+    if ontology_uri in uri_mapping:
+        new_ontology_uri = uri_mapping[ontology_uri]
+    for s, p, o in graph.triples((rdflib.term.URIRef(ontology_uri), None, None)):
+        triples_to_add.add((rdflib.term.URIRef(new_ontology_uri), p, o))
+        triples_to_remove.add((s, p, o))
+    for s, p, o in graph.triples((None, RDF.type, None)):
+        if isinstance(o, rdflib.term.BNode):
+            triples_to_remove.add((s, p, o))
 
     for el in triples_to_remove:
         graph.remove(el)

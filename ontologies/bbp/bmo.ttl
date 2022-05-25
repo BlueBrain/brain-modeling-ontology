@@ -38,7 +38,7 @@
                                            dc:title "Brain Modeling Ontology"^^xsd:string ;
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
-                                           owl:versionInfo "R477"^^xsd:string .
+                                           owl:versionInfo "R485"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -932,7 +932,8 @@ bmo:BACFiringFeature rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BallAndStickPlaceHolderMorphologyGenerator
 bmo:BallAndStickPlaceHolderMorphologyGenerator rdf:type owl:Class ;
-                                               rdfs:subClassOf bmo:MorphologyGenerator ,
+                                               rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorVariant ,
+                                                               bmo:MorphologyGenerator ,
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty nsg:uses ;
                                                                  owl:someValuesFrom bmo:SomaStatistics
@@ -1104,6 +1105,7 @@ bmo:BrainComponentType rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer
 bmo:BrainLayer rdf:type owl:Class ;
+               owl:equivalentClass <http://purl.obolibrary.org/obo/UBERON_0022303>;
                rdfs:subClassOf bmo:BiologicalBrainComponent ,
                                bmo:BrainVolume ,
                                [ rdf:type owl:Restriction ;
@@ -1346,6 +1348,7 @@ bmo:CircuitConnectivityBlueprintBuildingWorkflow rdf:type owl:Class ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ClassicBBPEModelInstanceGenerator
 bmo:ClassicBBPEModelInstanceGenerator rdf:type owl:Class ;
                                       rdfs:subClassOf bmo:EModelnstanceGenerator ,
+                                                      bmo:ModelCircuitPropertyGeneratorVariant ,
                                                       [ rdf:type owl:Restriction ;
                                                         owl:onProperty nsg:uses ;
                                                         owl:someValuesFrom bmo:SubCellularModel
@@ -2141,7 +2144,8 @@ bmo:Mitochondrion rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/MixAndMatchMorphologyGenerator
 bmo:MixAndMatchMorphologyGenerator rdf:type owl:Class ;
-                                   rdfs:subClassOf bmo:MorphologyGenerator ,
+                                   rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorVariant ,
+                                                   bmo:MorphologyGenerator ,
                                                    [ rdf:type owl:Restriction ;
                                                      owl:onProperty nsg:uses ;
                                                      owl:someValuesFrom nsg:ReconstructedNeuronMorphology
@@ -2414,6 +2418,12 @@ bmo:ModelCircuitPropertyGenerator rdf:type owl:Class ;
 bmo:ModelCircuitPropertyGeneratorCategory rdf:type owl:Class ;
                                           rdfs:subClassOf prov:Entity ;
                                           rdfs:label "ModelCircuitPropertyGeneratorCategory"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitPropertyGeneratorVariant
+bmo:ModelCircuitPropertyGeneratorVariant rdf:type owl:Class ;
+                                         rdfs:subClassOf bmo:ModelBuildingWorkflow ;
+                                         rdfs:label "ModelCircuitPropertyGeneratorVariant"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelConnectivityParameter
@@ -3537,10 +3547,19 @@ bmo:SynthesizedNeuronMorphologyInSWC rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TMDSynthesisMorphologyGenerator
 bmo:TMDSynthesisMorphologyGenerator rdf:type owl:Class ;
-                                    rdfs:subClassOf bmo:MorphologyGenerator ,
+                                    rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorVariant ,
+                                                    bmo:MorphologyGenerator ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty nsg:uses ;
+                                                      owl:someValuesFrom bmo:ModelCircuit
+                                                    ] ,
                                                     [ rdf:type owl:Restriction ;
                                                       owl:onProperty nsg:uses ;
                                                       owl:someValuesFrom bmo:NeuronMorphologicalFeature
+                                                    ] ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty nsg:uses ;
+                                                      owl:someValuesFrom nsg:NeuronMorphology
                                                     ] ;
                                     rdfs:label "TMDSynthesisMorphologyGenerator"@en .
 
@@ -3858,7 +3877,7 @@ nsg:Dopamine rdf:type owl:Class ;
              rdfs:subClassOf nsg:ExcitatoryTransmitter ,
                              nsg:Neuromodulator ;
              rdfs:label "Dopamine"@en ;
-             skos:definition "A neuromodulatory molecule that plays several important roles in cells. It is an organic chemical of the catecholamine and phenethylamine families. In the brain, dopamine functions as a neurotransmitter -- a chemical released by neurons (nerve cells) to send signals to other nerve cells. Neurotransmitters are synthesized in specific regions of the brain, but affect many regions systemically. The brain includes several distinct dopamine pathways, one of which plays a major role in the motivational component of reward-motivated behavior. The anticipation of most types of rewards increases the level of dopamine in the brain, and many addictive drugs increase dopamine release or block its reuptake into neurons following release." .
+             skos:definition "A neuromodulatory molecule that plays several important roles in cells. It is an organic chemical of the catecholamine and phenethylamine families. In the brain, dopamine functions as a neurotransmitter-a chemical released by neurons (nerve cells) to send signals to other nerve cells. Neurotransmitters are synthesized in specific regions of the brain, but affect many regions systemically. The brain includes several distinct dopamine pathways, one of which plays a major role in the motivational component of reward-motivated behavior. The anticipation of most types of rewards increases the level of dopamine in the brain, and many addictive drugs increase dopamine release or block its reuptake into neurons following release."^^xsd:string .
 
 
 ###  https://neuroshapes.org/EModel
@@ -4235,15 +4254,6 @@ nsg:Vector3D rdf:type owl:Class ;
 #################################################################
 #    Individuals
 #################################################################
-
-###  http://purl.obolibrary.org/obo/UBERON_0022303
-<http://purl.obolibrary.org/obo/UBERON_0022303> rdf:type owl:NamedIndividual ;
-                                                owl:sameAs bmo:BrainLayer .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer
-bmo:BrainLayer rdf:type owl:NamedIndividual .
-
 
 ###  https://neuroshapes.org/BluePyEModel
 nsg:BluePyEModel rdf:type owl:NamedIndividual ,
