@@ -7,6 +7,7 @@
 @base <urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec> .
 
 <urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec> rdf:type owl:Ontology ;
+                                                                owl:versionInfo "R581"^^xsd:string ;
                                                                 <http://purl.org/dc/elements/1.1/title> "Cell Types Ontology"^^xsd:string ;
                                                                 <http://purl.org/vocab/vann/preferredNamespacePrefix> "celltypes"^^xsd:string ;
                                                                 rdfs:label "Cell Types Ontology"^^xsd:string ;
