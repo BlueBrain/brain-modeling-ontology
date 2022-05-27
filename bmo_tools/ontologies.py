@@ -113,10 +113,10 @@ def register_ontology(forge, ontology_graph, context, path, tag=None, class_reso
 
 def _process_already_existing_resource(forge, resource):
     resource_json = forge.as_json(resource)
-    resource_json.pop("@id", resource_json.pop("id", None))
+    resource_id = resource_json.pop("@id", resource_json.pop("id", None))
     resource_json.pop("@type", resource_json.pop("type", None))
     resource_updated = forge.from_json(resource_json)
-    existing_resource = forge.retrieve(resource.id)
+    existing_resource = forge.retrieve(resource_id)
     resource_updated.id = existing_resource.id
     resource_updated.type = existing_resource.type
     resource_updated._store_metadata = existing_resource._store_metadata
