@@ -7,8 +7,8 @@
 @base <urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec> .
 
 <urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec> rdf:type owl:Ontology ;
-                                                                owl:versionInfo "R581"^^xsd:string ;
                                                                 <http://purl.org/dc/elements/1.1/title> "Cell Types Ontology"^^xsd:string ;
+                                                                owl:versionInfo "R589"^^xsd:string ;
                                                                 <http://purl.org/vocab/vann/preferredNamespacePrefix> "celltypes"^^xsd:string ;
                                                                 rdfs:label "Cell Types Ontology"^^xsd:string ;
                                                                 <https://neuroshapes.org/defines> <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/BlueBrainEType> ,
@@ -105,8 +105,7 @@
 
 
 ###  https://neuroshapes.org/hasMorphologicalPhenotype
-<https://neuroshapes.org/hasMorphologicalPhenotype> rdf:type owl:AnnotationProperty ;
-                                                    rdfs:label "hasMorphologicalPhenotype"^^xsd:string .
+<https://neuroshapes.org/hasMorphologicalPhenotype> rdf:type owl:AnnotationProperty .
 
 
 ###  https://neuroshapes.org/hasSomaLocatedIn
@@ -115,7 +114,8 @@
 
 ###  https://schema.org/color
 <https://schema.org/color> rdf:type owl:AnnotationProperty ;
-                           rdfs:label "color"@en .
+                           rdfs:label "color"@en ;
+                           rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/title> .
 
 
 #################################################################
@@ -24994,9 +24994,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/ACB_HFN
 <https://bbp.epfl.ch/ontologies/core/celltypes/ACB_HFN> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                        <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                         rdfs:label "ACB_HFN"@en ;
-                                                        <http://www.w3.org/2004/02/skos/core#definition> "High-firing neuron"^^xsd:string ;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "High-firing neuron"^^xsd:string ,
+                                                                                                         "High-firing neurons " ;
                                                         <http://www.w3.org/2004/02/skos/core#notation> "ACB_HFN"@en ;
                                                         <http://www.w3.org/2004/02/skos/core#prefLabel> "ACB_HFN"@en ;
                                                         <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/56> .
@@ -25004,9 +25006,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/ACB_PN
 <https://bbp.epfl.ch/ontologies/core/celltypes/ACB_PN> rdf:type owl:Class ;
-                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                       <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                        rdfs:label "ACB_PN"@en ;
-                                                       <http://www.w3.org/2004/02/skos/core#definition> "Projection neuron"^^xsd:string ;
+                                                       <http://www.w3.org/2004/02/skos/core#definition> "Projection neuron"^^xsd:string ,
+                                                                                                        "Projection neurons " ;
                                                        <http://www.w3.org/2004/02/skos/core#notation> "ACB_PN"@en ;
                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "ACB_PN"@en ;
                                                        <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/56> .
@@ -25014,9 +25018,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/ACB_TAN
 <https://bbp.epfl.ch/ontologies/core/celltypes/ACB_TAN> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                        <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                         rdfs:label "ACB_TAN"@en ;
-                                                        <http://www.w3.org/2004/02/skos/core#definition> "Tonically active neuron"^^xsd:string ;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Tonically active neuron"^^xsd:string ,
+                                                                                                         "Tonically active neurons " ;
                                                         <http://www.w3.org/2004/02/skos/core#notation> "ACB_TAN"@en ;
                                                         <http://www.w3.org/2004/02/skos/core#prefLabel> "ACB_TAN"@en ;
                                                         <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/56> .
@@ -25077,7 +25083,8 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/CP_CR
 <https://bbp.epfl.ch/ontologies/core/celltypes/CP_CR> rdf:type owl:Class ;
-                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                      <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                       rdfs:label "CP_CR"@en ;
                                                       <http://www.w3.org/2004/02/skos/core#definition> "Calretinin-positive neurons " ;
                                                       <http://www.w3.org/2004/02/skos/core#notation> "CP_CR"@en ;
@@ -25087,9 +25094,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/CP_ChIN
 <https://bbp.epfl.ch/ontologies/core/celltypes/CP_ChIN> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                        <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                         rdfs:label "CP_ChIN"@en ;
-                                                        <http://www.w3.org/2004/02/skos/core#definition> "Cholingeric interneuron"^^xsd:string ;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Cholingeric interneuron"^^xsd:string ,
+                                                                                                         "Cholingeric interneurons " ;
                                                         <http://www.w3.org/2004/02/skos/core#notation> "CP_ChIN"@en ;
                                                         <http://www.w3.org/2004/02/skos/core#prefLabel> "CP_ChIN"@en ;
                                                         <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/672> .
@@ -25097,9 +25106,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/CP_FS
 <https://bbp.epfl.ch/ontologies/core/celltypes/CP_FS> rdf:type owl:Class ;
-                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                      <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                       rdfs:label "CP_FS"@en ;
-                                                      <http://www.w3.org/2004/02/skos/core#definition> "PV positive fast-spiking neuron"^^xsd:string ;
+                                                      <http://www.w3.org/2004/02/skos/core#definition> "PV positive fast-spiking neuron"^^xsd:string ,
+                                                                                                       "PV+ fast-spiking neurons " ;
                                                       <http://www.w3.org/2004/02/skos/core#notation> "CP_FS"@en ;
                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "CP_FS"@en ;
                                                       <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/672> .
@@ -25107,9 +25118,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/CP_LTS
 <https://bbp.epfl.ch/ontologies/core/celltypes/CP_LTS> rdf:type owl:Class ;
-                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                       <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                        rdfs:label "CP_LTS"@en ;
-                                                       <http://www.w3.org/2004/02/skos/core#definition> "NPY/SOM positive low-threshold spiking interneuron"^^xsd:string ;
+                                                       <http://www.w3.org/2004/02/skos/core#definition> "NPY/SOM positive low-threshold spiking interneuron"^^xsd:string ,
+                                                                                                        "NPY/SOM+ low-threshold spiking interneurons " ;
                                                        <http://www.w3.org/2004/02/skos/core#notation> "CP_LTS"@en ;
                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "CP_LTS"@en ;
                                                        <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/672> .
@@ -25117,9 +25130,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/CP_NGF
 <https://bbp.epfl.ch/ontologies/core/celltypes/CP_NGF> rdf:type owl:Class ;
-                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                       <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                        rdfs:label "CP_NGF"@en ;
-                                                       <http://www.w3.org/2004/02/skos/core#definition> "NPY/SOM negative neurogliaform neuron"^^xsd:string ;
+                                                       <http://www.w3.org/2004/02/skos/core#definition> "NPY/SOM negative neurogliaform neuron"^^xsd:string ,
+                                                                                                        "NPY/SOM- neurogliaform neurons " ;
                                                        <http://www.w3.org/2004/02/skos/core#notation> "CP_NGF"@en ;
                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "CP_NGF"@en ;
                                                        <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/672> .
@@ -25127,9 +25142,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/CP_PN
 <https://bbp.epfl.ch/ontologies/core/celltypes/CP_PN> rdf:type owl:Class ;
-                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                      <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                       rdfs:label "CP_PN"@en ;
-                                                      <http://www.w3.org/2004/02/skos/core#definition> "Projection neuron"^^xsd:string ;
+                                                      <http://www.w3.org/2004/02/skos/core#definition> "Projection neuron"^^xsd:string ,
+                                                                                                       "Projection neurons " ;
                                                       <http://www.w3.org/2004/02/skos/core#notation> "CP_PN"@en ;
                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "CP_PN"@en ;
                                                       <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/672> .
@@ -25137,9 +25154,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/CP_THIN
 <https://bbp.epfl.ch/ontologies/core/celltypes/CP_THIN> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                        <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                         rdfs:label "CP_THIN"@en ;
-                                                        <http://www.w3.org/2004/02/skos/core#definition> "TH positive interneuron"^^xsd:string ;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "TH positive interneuron"^^xsd:string ,
+                                                                                                         "TH+ interneurons " ;
                                                         <http://www.w3.org/2004/02/skos/core#notation> "CP_THIN"@en ;
                                                         <http://www.w3.org/2004/02/skos/core#prefLabel> "CP_THIN"@en ;
                                                         <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/672> .
@@ -25399,9 +25418,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/ETC
 <https://bbp.epfl.ch/ontologies/core/celltypes/ETC> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                    <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                     rdfs:label "ETC"@en ;
-                                                    <http://www.w3.org/2004/02/skos/core#definition> "External tufted cell"^^xsd:string ;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "External tufted cell"^^xsd:string ,
+                                                                                                     "external tufted cells " ;
                                                     <http://www.w3.org/2004/02/skos/core#notation> "ETC"@en ;
                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "ETC"@en ;
                                                     <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/698> .
@@ -25463,9 +25484,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/GC
 <https://bbp.epfl.ch/ontologies/core/celltypes/GC> rdf:type owl:Class ;
-                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                   <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                    rdfs:label "GC"@en ;
-                                                   <http://www.w3.org/2004/02/skos/core#definition> "Granule cell"^^xsd:string ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "Granule cell"^^xsd:string ,
+                                                                                                    "granule cell " ;
                                                    <http://www.w3.org/2004/02/skos/core#notation> "GC"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "GC"@en ;
                                                    <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/220> .
@@ -25473,9 +25496,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/GPe_ChIN
 <https://bbp.epfl.ch/ontologies/core/celltypes/GPe_ChIN> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                         <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                          rdfs:label "GPe_ChIN"@en ;
-                                                         <http://www.w3.org/2004/02/skos/core#definition> "Cholingeric interneuron"^^xsd:string ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "Cholingeric interneuron"^^xsd:string ,
+                                                                                                          "Cholingeric interneurons " ;
                                                          <http://www.w3.org/2004/02/skos/core#notation> "GPe_ChIN"@en ;
                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "GPe_ChIN"@en ;
                                                          <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/1022> .
@@ -25483,9 +25508,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/GPe_GaPN
 <https://bbp.epfl.ch/ontologies/core/celltypes/GPe_GaPN> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                         <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                          rdfs:label "GPe_GaPN"@en ;
-                                                         <http://www.w3.org/2004/02/skos/core#definition> "GABAergic projection neuron"^^xsd:string ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "GABAergic projection neuron"^^xsd:string ,
+                                                                                                          "GABAergic projection neurons " ;
                                                          <http://www.w3.org/2004/02/skos/core#notation> "GPe_GaPN"@en ;
                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "GPe_GaPN"@en ;
                                                          <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/1022> .
@@ -25493,9 +25520,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/GPi_GaPN
 <https://bbp.epfl.ch/ontologies/core/celltypes/GPi_GaPN> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                         <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                          rdfs:label "GPi_GaPN"@en ;
-                                                         <http://www.w3.org/2004/02/skos/core#definition> "GABAergic projection neurons"^^xsd:string ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "GABAergic projection neurons"^^xsd:string ,
+                                                                                                          "GABAergic projection neurons " ;
                                                          <http://www.w3.org/2004/02/skos/core#notation> "GPi_GaPN"@en ;
                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "GPi_GaPN"@en ;
                                                          <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/1031> .
@@ -25903,9 +25932,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/MC
 <https://bbp.epfl.ch/ontologies/core/celltypes/MC> rdf:type owl:Class ;
-                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                   <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                    rdfs:label "MC"@en ;
-                                                   <http://www.w3.org/2004/02/skos/core#definition> "Mitral cell"^^xsd:string ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "Mitral cell"^^xsd:string ,
+                                                                                                    "mitral cell " ;
                                                    <http://www.w3.org/2004/02/skos/core#notation> "MC"@en ;
                                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "MC"@en ;
                                                    <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/244> .
@@ -25962,6 +25993,7 @@
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/NN11
 <https://bbp.epfl.ch/ontologies/core/celltypes/NN11> rdf:type owl:Class ;
                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainCellTranscriptomeType> ,
+                                                                     <https://bbp.epfl.ch/ontologies/core/celltypes/NeuronTranscriptomicType> ,
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/canHaveBrainRegion> ;
                                                                        owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/1097>
@@ -26156,9 +26188,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/OSN
 <https://bbp.epfl.ch/ontologies/core/celltypes/OSN> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                    <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                     rdfs:label "OSN"@en ;
-                                                    <http://www.w3.org/2004/02/skos/core#definition> "Olfactory sensory neuron"^^xsd:string ;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Olfactory sensory neuron"^^xsd:string ,
+                                                                                                     "olfactory sensory neuron " ;
                                                     <http://www.w3.org/2004/02/skos/core#notation> "OSN"@en ;
                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "OSN"@en ;
                                                     <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/698> .
@@ -26184,9 +26218,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/PALv_ChIN
 <https://bbp.epfl.ch/ontologies/core/celltypes/PALv_ChIN> rdf:type owl:Class ;
-                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                          <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                           rdfs:label "PALv_ChIN"@en ;
-                                                          <http://www.w3.org/2004/02/skos/core#definition> "Cholingeric interneuron"^^xsd:string ;
+                                                          <http://www.w3.org/2004/02/skos/core#definition> "Cholingeric interneuron"^^xsd:string ,
+                                                                                                           "Cholingeric interneurons " ;
                                                           <http://www.w3.org/2004/02/skos/core#notation> "PALv_ChIN"@en ;
                                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "PALv_ChIN"@en ;
                                                           <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/835> .
@@ -26194,9 +26230,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/PALv_GaPN
 <https://bbp.epfl.ch/ontologies/core/celltypes/PALv_GaPN> rdf:type owl:Class ;
-                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                          <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                           rdfs:label "PALv_GaPN"@en ;
-                                                          <http://www.w3.org/2004/02/skos/core#definition> "GABAergic projection neuron"^^xsd:string ;
+                                                          <http://www.w3.org/2004/02/skos/core#definition> "GABAergic projection neuron"^^xsd:string ,
+                                                                                                           "GABAergic projection neurons " ;
                                                           <http://www.w3.org/2004/02/skos/core#notation> "PALv_GaPN"@en ;
                                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "PALv_GaPN"@en ;
                                                           <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/835> .
@@ -26204,9 +26242,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/PALv_GlPN
 <https://bbp.epfl.ch/ontologies/core/celltypes/PALv_GlPN> rdf:type owl:Class ;
-                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                          <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                           rdfs:label "PALv_GlPN"@en ;
-                                                          <http://www.w3.org/2004/02/skos/core#definition> "Glutamatergic projection neuron"^^xsd:string ;
+                                                          <http://www.w3.org/2004/02/skos/core#definition> "Glutamatergic projection neuron"^^xsd:string ,
+                                                                                                           "Glutamatergic projection neurons " ;
                                                           <http://www.w3.org/2004/02/skos/core#notation> "PALv_GlPN"@en ;
                                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "PALv_GlPN"@en ;
                                                           <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/835> .
@@ -26214,9 +26254,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/PGC
 <https://bbp.epfl.ch/ontologies/core/celltypes/PGC> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                    <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                     rdfs:label "PGC"@en ;
-                                                    <http://www.w3.org/2004/02/skos/core#definition> "Periglomerular cell"^^xsd:string ;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Periglomerular cell"^^xsd:string ,
+                                                                                                     "periglomerular cell " ;
                                                     <http://www.w3.org/2004/02/skos/core#notation> "PGC"@en ;
                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "PGC"@en ;
                                                     <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/212> .
@@ -26352,9 +26394,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/SNc_DPN
 <https://bbp.epfl.ch/ontologies/core/celltypes/SNc_DPN> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                        <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                         rdfs:label "SNc_DPN"@en ;
-                                                        <http://www.w3.org/2004/02/skos/core#definition> "Dopaminergic projection neuron"^^xsd:string ;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Dopaminergic projection neuron"^^xsd:string ,
+                                                                                                         "Dopaminergic projection neurons " ;
                                                         <http://www.w3.org/2004/02/skos/core#notation> "SNc_DPN"@en ;
                                                         <http://www.w3.org/2004/02/skos/core#prefLabel> "SNc_DPN"@en ;
                                                         <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/374> .
@@ -26362,9 +26406,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/SNc_GaIN
 <https://bbp.epfl.ch/ontologies/core/celltypes/SNc_GaIN> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                         <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                          rdfs:label "SNc_GaIN"@en ;
-                                                         <http://www.w3.org/2004/02/skos/core#definition> "GABAergic interneuron"^^xsd:string ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "GABAergic interneuron"^^xsd:string ,
+                                                                                                          "GABAergic interneurons " ;
                                                          <http://www.w3.org/2004/02/skos/core#notation> "SNc_GaIN"@en ;
                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "SNc_GaIN"@en ;
                                                          <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/374> .
@@ -26372,9 +26418,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/SNr_GaPN
 <https://bbp.epfl.ch/ontologies/core/celltypes/SNr_GaPN> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                         <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                          rdfs:label "SNr_GaPN"@en ;
-                                                         <http://www.w3.org/2004/02/skos/core#definition> "GABAergic projection neuron"^^xsd:string ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "GABAergic projection neuron"^^xsd:string ,
+                                                                                                          "GABAergic projection neurons " ;
                                                          <http://www.w3.org/2004/02/skos/core#notation> "SNr_GaPN"@en ;
                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "SNr_GaPN"@en ;
                                                          <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/381> .
@@ -26382,9 +26430,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/STN_GlPN
 <https://bbp.epfl.ch/ontologies/core/celltypes/STN_GlPN> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                         <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                          rdfs:label "STN_GlPN"@en ;
-                                                         <http://www.w3.org/2004/02/skos/core#definition> "Glutamatergic projection neuron"^^xsd:string ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "Glutamatergic projection neuron"^^xsd:string ,
+                                                                                                          "Glutamatergic projection neurons " ;
                                                          <http://www.w3.org/2004/02/skos/core#notation> "STN_GlPN"@en ;
                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "STN_GlPN"@en ;
                                                          <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/470> .
@@ -26454,9 +26504,11 @@
 
 ###  https://bbp.epfl.ch/ontologies/core/celltypes/mTC
 <https://bbp.epfl.ch/ontologies/core/celltypes/mTC> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
+                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronType> ,
+                                                                    <https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType> ;
                                                     rdfs:label "mTC"@en ;
-                                                    <http://www.w3.org/2004/02/skos/core#definition> "Middle tufted cell"^^xsd:string ;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Middle tufted cell"^^xsd:string ,
+                                                                                                     "middle tufted cell " ;
                                                     <http://www.w3.org/2004/02/skos/core#notation> "mTC"@en ;
                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "mTC"@en ;
                                                     <https://neuroshapes.org/hasSomaLocatedIn> <http://api.brain-map.org/api/v2/data/Structure/244> .
@@ -29738,23 +29790,7 @@
                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/ttypes/Glutamatergic_neurons> ,
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/canHaveBrainRegion> ;
-                                                                       owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/1097>
-                                                                     ] ,
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/canHaveBrainRegion> ;
-                                                                       owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/477>
-                                                                     ] ,
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/canHaveBrainRegion> ;
                                                                        owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/502>
-                                                                     ] ,
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/canHaveBrainRegion> ;
-                                                                       owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/512>
-                                                                     ] ,
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/canHaveBrainRegion> ;
-                                                                       owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/549>
                                                                      ] .
 
 
@@ -32905,8 +32941,8 @@
                                                           rdfs:seeAlso <https://www.pnas.org/content/115/5/E1051> .
 
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/Cluster11> rdfs:label "Cluster 11"@en ;
-                                                          rdfs:seeAlso <https://www.pnas.org/content/115/5/E1051> .
+<https://bbp.epfl.ch/ontologies/core/celltypes/Cluster11> rdfs:seeAlso <https://www.pnas.org/content/115/5/E1051> ;
+                                                          rdfs:label "Cluster 11"@en .
 
 
 <https://bbp.epfl.ch/ontologies/core/celltypes/Cluster12> rdfs:label "Cluster 12"@en ;
@@ -32989,8 +33025,8 @@
                                                          rdfs:label "Cluster 5"@en .
 
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/Cluster6> rdfs:seeAlso <https://www.pnas.org/content/115/5/E1051> ;
-                                                         rdfs:label "Cluster 6"@en .
+<https://bbp.epfl.ch/ontologies/core/celltypes/Cluster6> rdfs:label "Cluster 6"@en ;
+                                                         rdfs:seeAlso <https://www.pnas.org/content/115/5/E1051> .
 
 
 <https://bbp.epfl.ch/ontologies/core/celltypes/Cluster7> rdfs:label "Cluster 7"@en ;
@@ -33061,8 +33097,8 @@
                                                        rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> .
 
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/Gaba17> rdfs:label "Gaba 17"@en ;
-                                                       rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> .
+<https://bbp.epfl.ch/ontologies/core/celltypes/Gaba17> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> ;
+                                                       rdfs:label "Gaba 17"@en .
 
 
 <https://bbp.epfl.ch/ontologies/core/celltypes/Gaba18> rdfs:label "Gaba 18"@en ;
@@ -33121,16 +33157,16 @@
                                                       rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> .
 
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/Glu14> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> ;
-                                                      rdfs:label "Glu 14"@en .
+<https://bbp.epfl.ch/ontologies/core/celltypes/Glu14> rdfs:label "Glu 14"@en ;
+                                                      rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> .
 
 
 <https://bbp.epfl.ch/ontologies/core/celltypes/Glu2> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> ;
                                                      rdfs:label "Glu 2"@en .
 
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/Glu3> rdfs:label "Glu 3"@en ;
-                                                     rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> .
+<https://bbp.epfl.ch/ontologies/core/celltypes/Glu3> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> ;
+                                                     rdfs:label "Glu 3"@en .
 
 
 <https://bbp.epfl.ch/ontologies/core/celltypes/Glu4> rdfs:label "Glu 4"@en ;
@@ -33281,8 +33317,8 @@
                                                       rdfs:label "OPC_1"@en .
 
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/OPC_2> rdfs:label "OPC_2"@en ;
-                                                      rdfs:seeAlso <https://www.nature.com/articles/s41586-021-03220-z> .
+<https://bbp.epfl.ch/ontologies/core/celltypes/OPC_2> rdfs:seeAlso <https://www.nature.com/articles/s41586-021-03220-z> ;
+                                                      rdfs:label "OPC_2"@en .
 
 
 <https://bbp.epfl.ch/ontologies/core/celltypes/OPC_3> rdfs:seeAlso <https://www.nature.com/articles/s41586-021-03220-z> ;
@@ -33309,8 +33345,8 @@
                                                       rdfs:seeAlso <https://www.nature.com/articles/s41586-021-03220-z> .
 
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/Purkinje_Aldoc_1> rdfs:seeAlso <https://www.nature.com/articles/s41586-021-03220-z> ;
-                                                                 rdfs:label "Purkinje_Aldoc_1"@en .
+<https://bbp.epfl.ch/ontologies/core/celltypes/Purkinje_Aldoc_1> rdfs:label "Purkinje_Aldoc_1"@en ;
+                                                                 rdfs:seeAlso <https://www.nature.com/articles/s41586-021-03220-z> .
 
 
 <https://bbp.epfl.ch/ontologies/core/celltypes/Purkinje_Aldoc_2> rdfs:label "Purkinje_Aldoc_2"@en ;
@@ -33375,8 +33411,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/100_Sst> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_100"^^xsd:string ;
                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                     rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                     rdfs:label "100_Sst"^^xsd:string .
+                                                     rdfs:label "100_Sst"^^xsd:string ;
+                                                     rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/101_Sst> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
@@ -33386,9 +33422,9 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/102_Sst_HPF> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                         rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_102"^^xsd:string ;
                                                          rdfs:label "102_Sst HPF"^^xsd:string ;
-                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_102"^^xsd:string .
+                                                         rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/103_Sst_HPF> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_103"^^xsd:string ;
@@ -33439,8 +33475,8 @@
                                                       rdfs:label "11_Lamp5"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/110_Pvalb> rdfs:label "110_Pvalb"^^xsd:string ;
-                                                       <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/110_Pvalb> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                       rdfs:label "110_Pvalb"^^xsd:string ;
                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_110"^^xsd:string ;
                                                        rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
@@ -33458,8 +33494,8 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/113_Pvalb> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                       <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_113"^^xsd:string ;
+                                                       <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                        rdfs:label "113_Pvalb"^^xsd:string .
 
 
@@ -33523,8 +33559,8 @@
                                                              rdfs:label "122_Pvalb Vipr2"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/123_Pvalb_Vipr2> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_123"^^xsd:string ;
-                                                             rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/123_Pvalb_Vipr2> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                             <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_123"^^xsd:string ;
                                                              rdfs:label "123_Pvalb Vipr2"^^xsd:string ;
                                                              <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
@@ -33584,8 +33620,8 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/21_Sncg> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_21"^^xsd:string ;
+                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                      rdfs:label "21_Sncg"^^xsd:string .
 
 
@@ -33625,8 +33661,8 @@
                                                       rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/239_L5_PT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_239"^^xsd:string ;
-                                                           rdfs:label "239_L5 PT CTX"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/239_L5_PT_CTX> rdfs:label "239_L5 PT CTX"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_239"^^xsd:string ;
                                                            rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
@@ -33663,8 +33699,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/244_L5_PT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                            rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_244"^^xsd:string ;
-                                                           rdfs:label "244_L5 PT CTX"^^xsd:string .
+                                                           rdfs:label "244_L5 PT CTX"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_244"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/245_L5_PT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
@@ -33675,8 +33711,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/246_L5_PT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_246"^^xsd:string ;
                                                            rdfs:label "246_L5 PT CTX"^^xsd:string ;
-                                                           rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                           rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/247_L5_PT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_247"^^xsd:string ;
@@ -33685,8 +33721,8 @@
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/248_L5_PT_CTX> rdfs:label "248_L5 PT CTX"^^xsd:string ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_248"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/248_L5_PT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_248"^^xsd:string ;
+                                                           rdfs:label "248_L5 PT CTX"^^xsd:string ;
                                                            rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
@@ -33734,8 +33770,8 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/255_L5_PT_CTX> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_255"^^xsd:string ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_255"^^xsd:string ;
                                                            rdfs:label "255_L5 PT CTX"^^xsd:string .
 
 
@@ -33751,8 +33787,8 @@
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/258_L5_PT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_258"^^xsd:string ;
-                                                           rdfs:label "258_L5 PT CTX"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/258_L5_PT_CTX> rdfs:label "258_L5 PT CTX"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_258"^^xsd:string ;
                                                            rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
@@ -33769,8 +33805,8 @@
                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/260_L5_PT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_260"^^xsd:string ;
-                                                           rdfs:label "260_L5 PT CTX"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/260_L5_PT_CTX> rdfs:label "260_L5 PT CTX"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_260"^^xsd:string ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                            rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
@@ -33800,8 +33836,8 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/265_L5_6_NP_CTX> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                             <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                              <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_265"^^xsd:string ;
+                                                             <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                              rdfs:label "265_L5/6 NP CTX"^^xsd:string .
 
 
@@ -33824,15 +33860,15 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/269_L5_6_NP_CTX> rdfs:label "269_L5/6 NP CTX"^^xsd:string ;
-                                                             <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_269"^^xsd:string ;
                                                              <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                             <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_269"^^xsd:string ;
                                                              rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/27_Ntng1_HPF> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_27"^^xsd:string ;
-                                                          rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                          <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                           rdfs:label "27_Ntng1 HPF"^^xsd:string ;
-                                                          <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
+                                                          rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/270_L5_6_NP_CT_CTX> rdfs:label "270_L5/6 NP CT CTX"^^xsd:string ;
@@ -33843,8 +33879,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/271_NP_SUB> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_271"^^xsd:string ;
                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                        rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                        rdfs:label "271_NP SUB"^^xsd:string .
+                                                        rdfs:label "271_NP SUB"^^xsd:string ;
+                                                        rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/272_NP_SUB> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_272"^^xsd:string ;
@@ -33860,9 +33896,9 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/274_NP_SUB> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                        rdfs:label "274_NP SUB"^^xsd:string ;
                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_274"^^xsd:string .
+                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_274"^^xsd:string ;
+                                                        rdfs:label "274_NP SUB"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/275_NP_PPP> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
@@ -33883,8 +33919,8 @@
                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/278_L6_CT_CTX> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_278"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/278_L6_CT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_278"^^xsd:string ;
+                                                           rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                            rdfs:label "278_L6 CT CTX"^^xsd:string ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
@@ -33902,14 +33938,14 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/280_L6_CT_CTX> rdfs:label "280_L6 CT CTX"^^xsd:string ;
-                                                           rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_280"^^xsd:string ;
+                                                           rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/281_L6_CT_CTX> rdfs:label "281_L6 CT CTX"^^xsd:string ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_281"^^xsd:string ;
                                                            rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_281"^^xsd:string ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
@@ -33921,8 +33957,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/283_L6_CT_CTX> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                            rdfs:label "283_L6 CT CTX"^^xsd:string ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_283"^^xsd:string ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_283"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/284_L6_CT_CTX> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
@@ -33933,8 +33969,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/285_L6_CT_CTX> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                            rdfs:label "285_L6 CT CTX"^^xsd:string ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_285"^^xsd:string .
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_285"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/286_L6_CT_CTX> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
@@ -33945,8 +33981,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/287_L6_CT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_287"^^xsd:string ;
                                                            rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                           rdfs:label "287_L6 CT CTX"^^xsd:string ;
-                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
+                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                           rdfs:label "287_L6 CT CTX"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/288_L6_CT_CTX> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_288"^^xsd:string ;
@@ -33963,8 +33999,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/29_Ntng1_HPF> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                           rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                          <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_29"^^xsd:string ;
-                                                          rdfs:label "29_Ntng1 HPF"^^xsd:string .
+                                                          rdfs:label "29_Ntng1 HPF"^^xsd:string ;
+                                                          <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_29"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/290_L6_CT_CTX> rdfs:label "290_L6 CT CTX"^^xsd:string ;
@@ -34005,8 +34041,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/296_CT_SUB> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                         rdfs:label "296_CT SUB"^^xsd:string ;
-                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_296"^^xsd:string .
+                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_296"^^xsd:string ;
+                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/297_CT_SUB> rdfs:label "297_CT SUB"^^xsd:string ;
@@ -34089,8 +34125,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/308_L6b_RHP> rdfs:label "308_L6b RHP"^^xsd:string ;
                                                          <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_308"^^xsd:string ;
-                                                         rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
+                                                         rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_308"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/309_L6b_RHP> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
@@ -34106,8 +34142,8 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/310_L6b_RHP> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_310"^^xsd:string ;
                                                          rdfs:label "310_L6b RHP"^^xsd:string ;
+                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_310"^^xsd:string ;
                                                          rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
@@ -34181,9 +34217,9 @@
                                                      rdfs:seeAlso <https://www.pnas.org/content/115/5/E1051> ,
                                                                   <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> ,
                                                                   <https://www.nature.com/articles/s41586-021-03220-z> ,
-                                                                  <https://www.ncbi.nlm.nih.gov/labs/pmc/articles/PMC5004635/> ;
+                                                                  <https://www.ncbi.nlm.nih.gov/labs/pmc/articles/PMC5004635/> ,
+                                                                  <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                     rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_321"^^xsd:string .
 
 
@@ -34200,13 +34236,13 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/324_ProS> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_324"^^xsd:string ;
                                                       rdfs:label "324_ProS"^^xsd:string ;
-                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_324"^^xsd:string .
+                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/325_ProS> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/325_ProS> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                      rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                       <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_325"^^xsd:string ;
                                                       rdfs:label "325_ProS"^^xsd:string .
 
@@ -34225,12 +34261,12 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/328_ProS> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                       rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                      rdfs:label "328_ProS"^^xsd:string ;
-                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_328"^^xsd:string .
+                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_328"^^xsd:string ;
+                                                      rdfs:label "328_ProS"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/329_CA1-ProS> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                          <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_329"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/329_CA1-ProS> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_329"^^xsd:string ;
+                                                          rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                           rdfs:label "329_CA1-ProS"^^xsd:string ;
                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
@@ -34253,15 +34289,15 @@
                                                           rdfs:label "331_CA1-ProS"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/332_CA1-ProS> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_332"^^xsd:string ;
-                                                          rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/332_CA1-ProS> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                          <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_332"^^xsd:string ;
                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                           rdfs:label "332_CA1-ProS"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/333_CA1-ProS> rdfs:label "333_CA1-ProS"^^xsd:string ;
-                                                          <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_333"^^xsd:string ;
                                                           rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                          <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_333"^^xsd:string ;
                                                           <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
@@ -34285,8 +34321,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/34_Sncg> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                      rdfs:label "34_Sncg"^^xsd:string ;
-                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_34"^^xsd:string ;
-                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
+                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_34"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/340_CA1> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
@@ -34325,8 +34361,8 @@
                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/349_Mossy> rdfs:label "349_Mossy"^^xsd:string ;
-                                                       <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/349_Mossy> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                       rdfs:label "349_Mossy"^^xsd:string ;
                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_349"^^xsd:string ;
                                                        rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
@@ -34339,8 +34375,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/350_Mossy> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_350"^^xsd:string ;
-                                                       rdfs:label "350_Mossy"^^xsd:string ;
-                                                       rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
+                                                       rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                       rdfs:label "350_Mossy"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/359_CA2-IG-FC> rdfs:label "359_CA2-IG-FC"^^xsd:string ;
@@ -34380,8 +34416,8 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/364_DG> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_364"^^xsd:string ;
                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_364"^^xsd:string ;
                                                     rdfs:label "364_DG"^^xsd:string .
 
 
@@ -34439,8 +34475,8 @@
                                                        rdfs:label "372_Oligo"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/373_Oligo> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_373"^^xsd:string ;
-                                                       <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/373_Oligo> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                       <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_373"^^xsd:string ;
                                                        rdfs:label "373_Oligo"^^xsd:string ;
                                                        rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
@@ -34453,8 +34489,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/375_Oligo> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_375"^^xsd:string ;
                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                       rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                       rdfs:label "375_Oligo"^^xsd:string .
+                                                       rdfs:label "375_Oligo"^^xsd:string ;
+                                                       rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/376_Astro> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
@@ -34482,9 +34518,9 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/38_Sncg> rdfs:label "38_Sncg"^^xsd:string ;
-                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_38"^^xsd:string ;
+                                                     rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                     rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
+                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_38"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/380_SMC-Peri> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
@@ -34506,8 +34542,8 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/384_VLMC> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_384"^^xsd:string ;
                                                       <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_384"^^xsd:string ;
                                                       rdfs:label "384_VLMC"^^xsd:string .
 
 
@@ -34591,8 +34627,8 @@
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/47_Vip> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                     rdfs:label "47_Vip"^^xsd:string ;
-                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_47"^^xsd:string .
+                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_47"^^xsd:string ;
+                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/48_Vip> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
@@ -34692,8 +34728,8 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/62_Vip_Igfbp6> <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_62"^^xsd:string ;
-                                                           rdfs:label "62_Vip Igfbp6"^^xsd:string ;
                                                            rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                           rdfs:label "62_Vip Igfbp6"^^xsd:string ;
                                                            <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
@@ -34721,8 +34757,8 @@
                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/67_Sst> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                    rdfs:label "67_Sst"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/67_Sst> rdfs:label "67_Sst"^^xsd:string ;
+                                                    rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_67"^^xsd:string ;
                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string .
 
@@ -34793,8 +34829,8 @@
                                                         rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/78_Sst_HPF> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                        rdfs:label "78_Sst HPF"^^xsd:string ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/78_Sst_HPF> rdfs:label "78_Sst HPF"^^xsd:string ;
+                                                        <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                         <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_78"^^xsd:string ;
                                                         rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
@@ -34823,8 +34859,8 @@
                                                     rdfs:label "81_Sst"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/82_Sst> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                    rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+<https://bbp.epfl.ch/ontologies/core/ttypes/82_Sst> rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                     rdfs:label "82_Sst"^^xsd:string ;
                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_82"^^xsd:string .
 
@@ -34841,10 +34877,10 @@
                                                     <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_84"^^xsd:string .
 
 
-<https://bbp.epfl.ch/ontologies/core/ttypes/85_Sst> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
-                                                    rdfs:label "85_Sst"^^xsd:string ;
-                                                    rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
-                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_85"^^xsd:string .
+<https://bbp.epfl.ch/ontologies/core/ttypes/85_Sst> rdfs:label "85_Sst"^^xsd:string ;
+                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
+                                                    <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_85"^^xsd:string ;
+                                                    rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> .
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/86_Sst> <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
