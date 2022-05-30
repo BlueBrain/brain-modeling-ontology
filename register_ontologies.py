@@ -125,7 +125,7 @@ def execute_registration(forge, ontology_path, tag=None):
     bmo.register_ontology(forge, ontology_graph, context, ontology_path, tag, class_resources_mapped)
     bmo.remove_defines_relation(ontology_graph)
     print(f"Registering classes for ontology: {ontology_path}")
-    bmo.register_classes(forge, class_resources_mapped, tag)
+    bmo.register_classes(forge, class_jsons, tag)
     print(f"Registration finished for ontology: {ontology_path}")
 
 

@@ -36,7 +36,7 @@
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/> rdf:type owl:Ontology ;
                                                                     rdfs:label "Species Taxonomy ontology"@en ;
-                                                                    owl:versionInfo "0.1.0" ;
+                                                                    owl:versionInfo "R303" ;
                                                                     <https://neuroshapes.org/defines> :R7Oi9skq7JQf4Fi0CgTOVjy ,
                                                                                                       :R7VSXBJ6dYm8vikkDPJqne8 ,
                                                                                                       :R7W0jC5jLW97wVGcqzpUtT6 ,
@@ -154,6 +154,12 @@
                          <http://www.w3.org/2004/02/skos/core#definition> "Gnb4-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression directed to guanine nucleotide binding protein (G protein) beta 4-expressing cells. Cre recombinase expression and activity largely recapitulates the endogenous Gnb4 gene - it is enriched in claustrum but relatively sparse in nearby structures (endopiriform nucleus and deep insular cortex). These mice may be used to generate conditional mutations for studying gain-or-loss of function and/or fate mapping related to this G protein."^^xsd:string .
 
 
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RB1cHDJDESM94SO6duQxrM6
+:RB1cHDJDESM94SO6duQxrM6 rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         rdfs:label "GAD67-eGFP"@en .
+
+
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RB2Q9UJLyRfCOk0ih1UFXG7
 :RB2Q9UJLyRfCOk0ih1UFXG7 rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
@@ -177,7 +183,7 @@
                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
                          rdfs:label "Vipr2-IRES2-Cre-neo"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Vipr2-IRES2-Cre-neo"^^xsd:string ;
-                         <http://www.w3.org/2004/02/skos/core#definition> "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK-Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells."^^xsd:string .
+                         <http://www.w3.org/2004/02/skos/core#definition> "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK–Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells."^^xsd:string .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RCdsmhhTCAVRU9NaRWZ4hyk
@@ -312,7 +318,15 @@
                                                  rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10114> ;
                                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
                                                  rdfs:label "Rattus norvegicus"@en ;
-                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "Norway rat"@en .
+                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "Norway rat"@en ,
+                                                                                                "rat"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_119089
+<http://purl.obolibrary.org/obo/NCBITaxon_119089> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                  rdfs:label "Chromadorea"@en .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_13616
@@ -321,6 +335,37 @@
                                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
                                                  rdfs:label "Monodelphis domestica"@en ;
                                                  <http://www.w3.org/2004/02/skos/core#altLabel> "gray short-tailed opossum"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_186623
+<http://purl.obolibrary.org/obo/NCBITaxon_186623> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                  rdfs:label "Actinopteri"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_3398
+<http://purl.obolibrary.org/obo/NCBITaxon_3398> rdf:type owl:Class ;
+                                                rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                rdfs:label "Magnoliopsida"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_3699
+<http://purl.obolibrary.org/obo/NCBITaxon_3699> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_3398> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Brassicales"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_3702
+<http://purl.obolibrary.org/obo/NCBITaxon_3702> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_3699> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Arabidopsis thaliana"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "mouse-ear cress"@en ,
+                                                                                               "thale cress"@en ,
+                                                                                               "thale-cress"@en .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_38605
@@ -336,6 +381,123 @@
                                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
                                                  rdfs:label "Mammalia"@en ;
                                                  <http://www.w3.org/2004/02/skos/core#altLabel> "mammals"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_50557
+<http://purl.obolibrary.org/obo/NCBITaxon_50557> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                 rdfs:label "Insecta"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_6236
+<http://purl.obolibrary.org/obo/NCBITaxon_6236> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_119089> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Rhabditida"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_6239
+<http://purl.obolibrary.org/obo/NCBITaxon_6239> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_6236> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Caenorhabditis elegans"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "roundworm"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_7147
+<http://purl.obolibrary.org/obo/NCBITaxon_7147> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_50557> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Diptera"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_7227
+<http://purl.obolibrary.org/obo/NCBITaxon_7227> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_7147> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Drosophila melanogaster"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "fruit fly"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_7952
+<http://purl.obolibrary.org/obo/NCBITaxon_7952> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_186623> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Cypriniformes"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_7955
+<http://purl.obolibrary.org/obo/NCBITaxon_7955> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_7952> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Danio rerio"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "leopard danio"@en ,
+                                                                                               "zebra fish"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8292
+<http://purl.obolibrary.org/obo/NCBITaxon_8292> rdf:type owl:Class ;
+                                                rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                rdfs:label "Amphibia"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8342
+<http://purl.obolibrary.org/obo/NCBITaxon_8342> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8292> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Anura"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8355
+<http://purl.obolibrary.org/obo/NCBITaxon_8355> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8342> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Xenopus laevis"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "African clawed frog"@en ,
+                                                                                               "clawed frog"@en ,
+                                                                                               "common platanna"@en ,
+                                                                                               "platanna"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8364
+<http://purl.obolibrary.org/obo/NCBITaxon_8364> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8342> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Xenopus tropicalis"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "tropical clawed frog"@en ,
+                                                                                               "western clawed frog"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8782
+<http://purl.obolibrary.org/obo/NCBITaxon_8782> rdf:type owl:Class ;
+                                                rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                rdfs:label "Aves"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8976
+<http://purl.obolibrary.org/obo/NCBITaxon_8976> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8782> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Galliformes"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9031
+<http://purl.obolibrary.org/obo/NCBITaxon_9031> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8976> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Gallus gallus"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "Gallus domesticus"@en ,
+                                                                                               "chicken"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_91561
+<http://purl.obolibrary.org/obo/NCBITaxon_91561> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_40674> ;
+                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                 rdfs:label "Artiodactyla"@en .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_9443
@@ -375,6 +537,34 @@
                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
                                                 rdfs:label "Homo sapiens"@en ;
                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "human"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9913
+<http://purl.obolibrary.org/obo/NCBITaxon_9913> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_91561> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Bos taurus"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "bovine"@en ,
+                                                                                               "cattle"@en ,
+                                                                                               "cow"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9975
+<http://purl.obolibrary.org/obo/NCBITaxon_9975> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_40674> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Lagomorpha"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9986
+<http://purl.obolibrary.org/obo/NCBITaxon_9986> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_9975> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Oryctolagus cuniculus"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "European rabbit"@en ,
+                                                                                               "Japanese white rabbit"@en ,
+                                                                                               "domestic rabbit"@en ,
+                                                                                               "rabbit"@en .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_9989

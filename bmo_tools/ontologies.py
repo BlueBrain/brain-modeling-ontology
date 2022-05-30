@@ -266,10 +266,10 @@ def frame_classes(forge, ontology_graph, context):
     return class_jsons
 
 
-def register_classes(forge, class_resources_mapped, tag=None):
+def register_classes(forge, class_resources_jsons, tag=None):
     """Register ontology classes to the store."""
-    for resource in class_resources_mapped:
-        #resource = forge.from_json(class_json)
+    for class_json in class_resources_jsons:
+        resource = forge.from_json(class_json)
         forge.register(resource, schema_id="datashapes:ontologyentity")
         if resource._last_action.succeeded is True and tag is not None:
             forge.tag(resource, tag)
