@@ -34214,11 +34214,7 @@
 
 
 <https://bbp.epfl.ch/ontologies/core/ttypes/321_SUB> rdfs:label "321_SUB"^^xsd:string ;
-                                                     rdfs:seeAlso <https://www.pnas.org/content/115/5/E1051> ,
-                                                                  <https://www.sciencedirect.com/science/article/pii/S2211124717303212?via%3Dihub> ,
-                                                                  <https://www.nature.com/articles/s41586-021-03220-z> ,
-                                                                  <https://www.ncbi.nlm.nih.gov/labs/pmc/articles/PMC5004635/> ,
-                                                                  <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
+                                                     rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/taxonomy_id> "CCN202106160"^^xsd:string ;
                                                      <https://bbp.epfl.ch/ontologies/core/ttypes/cell_set_alias> "CS202106160_321"^^xsd:string .
 
