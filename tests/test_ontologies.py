@@ -23,6 +23,7 @@ PREFIX_MAPPINGS = {
     "vann": "http://purl.org/vocab/vann/",
     "void": "http://rdfs.org/ns/void#",
     "uberon": "http://purl.obolibrary.org/obo/UBERON_",
+    "obo": "http://purl.obolibrary.org/obo/",
     "schema": "http://schema.org/",
     "dcterms": "http://purl.org/dc/terms/",
     "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",

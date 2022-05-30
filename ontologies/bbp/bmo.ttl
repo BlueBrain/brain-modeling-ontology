@@ -27,6 +27,7 @@
 @prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
 @prefix schema: <http://schema.org/> .
 @prefix uberon: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix datashapes: <https://neuroshapes.org/dash/> .
