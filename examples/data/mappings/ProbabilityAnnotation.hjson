@@ -1,0 +1,43 @@
+{
+    id: forge.format("identifier", "annotations", x["name"])
+    name: f"Probability Annotation for cell type {x['name']}"
+    description: f"This resource contains the probability annotation for the cell type {x['name']}"
+    type: [
+        "Annotation", 
+        "ProbabilityAnnotation"
+    ]
+    hasTarget: [{
+        type: AnnotationTarget
+        hasSource: {
+            id: x["etype_id"]
+            label:x["etype_label"]
+            type: ["Class", "EType"]
+        } 
+    },
+    {
+        type: AnnotationTarget
+        hasSource: {
+            id: x["mtype_id"]
+            label:x["mtype_label"]
+            type: ["Class", "MType"]
+        } 
+    },
+    {
+        type: AnnotationTarget
+        hasSource: {
+            id: x["moltype_id"]
+            label:x["moltype_label"]
+            type: ["Class", "NeuronMolecularType"]
+        } 
+    }]
+    hasBody: {
+            type: AnnotationBody
+            isMeasurementOf: {
+                id: bmo:probabilityMetric
+                type: Metric
+                label: Probability Metric
+            },
+            value: x["value"] 
+    }
+}
+
