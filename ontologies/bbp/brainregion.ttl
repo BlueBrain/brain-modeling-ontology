@@ -8,6 +8,8 @@
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> rdf:type owl:Ontology ;
                                                                     owl:versionInfo "R17"^^xsd:string ;
+                                                                    dc:title "Brain Region Ontology"^^xsd:string ;
+                                                                    rdfs:label "Brain Region Ontology"^^xsd:string ;
                                                                     <https://neuroshapes.org/defines> <http://api.brain-map.org/api/v2/data/Structure/1> ,
                                                                                                       <http://api.brain-map.org/api/v2/data/Structure/10> ,
                                                                                                       <http://api.brain-map.org/api/v2/data/Structure/100> ,
