@@ -4,7 +4,8 @@
     description: f"This resource contains the probability annotation for the cell type {x['name']}"
     type: [
         "Annotation", 
-        "ProbabilityAnnotation"
+        "ProbabilityAnnotation",
+        "CellTypeMappingProbabilityAnnotation"
     ]
     hasTarget: [{
         type: AnnotationTarget
@@ -33,7 +34,7 @@
     hasBody: {
             type: AnnotationBody
             isMeasurementOf: {
-                id: bmo:probabilityMetric
+                id: https://bbp.epfl.ch/ontologies/core/bmo/cellTypeMappingProbabilityMetric
                 type: Metric
                 label: Probability Metric
             },
