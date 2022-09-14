@@ -25,7 +25,9 @@ test-ontologies-on-merge-request:
     - if: $CI_COMMIT_TAG
       when: always
   script:
-    - pytest tests/test_ontologies.py
+    - CA_BUNDLE=$(python3 -c "import certifi; print(certifi.where())")
+    - cat $BBP_CA_CERT >> $CA_BUNDLE
+    - pytest tests/test_ontologies.py --token $NEXUS_TOKEN_STAGING
   before_script:
     - pip install -r requirements.txt
 variables:
@@ -47,6 +49,7 @@ register-on-staging-environment:
   script:
     - CA_BUNDLE=$(python3 -c "import certifi; print(certifi.where())")
     - cat $BBP_CA_CERT >> $CA_BUNDLE
+    - python register_ontologies.py --environment staging --bucket neurosciencegraph/datamodels --ontology_dir './ontologies/bbp/*.ttl' --schema_dir './shapes/**/*.json' --token $NEXUS_TOKEN_STAGING
   before_script:
     - pip install -r requirements.txt
 
@@ -59,7 +62,7 @@ register-on-production-environment:
       when: on_success
   script:
     - echo $CI_COMMIT_TAG
-    - python register_ontologies.py --environment production --token $NEXUS_TOKEN_PRODUCTION --tag $CI_COMMIT_TAG
+    - python register_ontologies.py --environment production --bucket neurosciencegraph/datamodels --ontology_dir './ontologies/bbp/*.ttl' --schema_dir './shapes/**/*.json' --token $NEXUS_TOKEN_PRODUCTION --tag $CI_COMMIT_TAG
   before_script:
     - pip install -r requirements.txt
 
@@ -78,7 +81,7 @@ generate-ontodocs-documentation:
     - if: $CI_COMMIT_TAG
       when: on_success
   script:
-    - pip install pyld==1.0.4 ontospy==1.9.1 rdflib==4.2.2 pygments==2.1.3
+    - pip install pyld==1.0.4 ontospy==1.9.1 rdflib==4.2.2 rdflib-jsonld==0.4.0 pygments==2.1.3
     - pip install git+https://$GITLAB_DEPLOY_TOKEN:$GITLAB_DEPLOY_PASSWORD@bbpgitlab.epfl.ch/dke/apps/ontodocs.git
     - mkdir visualization
     - ontodocs ./ontologies/bbp --theme lumen --outputpath visualization --title "Brain Modeling Ontology"

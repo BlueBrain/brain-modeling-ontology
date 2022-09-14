@@ -35,10 +35,10 @@
 @base <http://purl.obolibrary.org/obo/pato.owl> .
 
 <http://purl.obolibrary.org/obo/pato.owl> rdf:type owl:Ontology ;
-                                           owl:versionInfo "R18"^^xsd:string ;
+                                           owl:versionInfo "R63"^^xsd:string ;
                                            owl:versionIRI <http://purl.obolibrary.org/obo/pato/releases/2020-02-09/pato.owl> ;
-                                           <http://purl.org/dc/elements/1.1/description> "An ontology of phenotypic qualities (properties, attributes or characteristics)."^^xsd:string ;
-                                           <http://purl.org/dc/elements/1.1/title> "PATO - the Phenotype And Trait Ontology"^^xsd:string ;
+                                           schema:description "An ontology of phenotypic qualities (properties, attributes or characteristics)."^^xsd:string ;
+                                           <http://schema.org/title> "PATO - the Phenotype And Trait Ontology"^^xsd:string ;
                                            <http://www.geneontology.org/formats/oboInOwl#default-namespace> "quality"^^xsd:string ;
                                            <http://www.geneontology.org/formats/oboInOwl#hasOBOFormatVersion> "1.2"^^xsd:string ;
                                            rdfs:label "PATO - the Phenotype And Trait Ontology"^^xsd:string ;
@@ -173,7 +173,7 @@ Where we have an annotation assertion
 
   \"directly P\" \"is direct form of\" \"P\"""" ;
                                             <http://purl.obolibrary.org/obo/RO_0002423> "If we have the annotation P is-direct-form-of Q, and we have inverses P' and Q', then it follows that P' is-direct-form-of Q'" ;
-                                            <http://purl.org/dc/terms/creator> "Chris Mungall" ;
+                                            <http://purl.org/dc/elements/1.1/creator> "Chris Mungall" ;
                                             rdfs:label "is direct form of" .
 
 
@@ -391,25 +391,20 @@ Where we have an annotation assertion
 ###  http://purl.org/dc/elements/1.1/date
 <http://purl.org/dc/elements/1.1/date> rdf:type owl:AnnotationProperty .
 
-
-###  http://purl.org/dc/elements/1.1/description
-<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/elements/1.1/source
-<http://purl.org/dc/elements/1.1/source> rdf:type owl:AnnotationProperty .
+###  https://neuroshapes.org/source
+<https://neuroshapes.org/source> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/elements/1.1/title
-<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+###  http://schema.org/title
+<http://schema.org/title> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/terms/creator
-<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/terms/source
-<http://purl.org/dc/terms/source> rdf:type owl:AnnotationProperty .
+###  https://neuroshapes.org/source
+<https://neuroshapes.org/source> rdf:type owl:AnnotationProperty .
 
 
 ###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
@@ -612,7 +607,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                              <http://purl.obolibrary.org/obo/IAO_0000116> "An example is: translation preceded_by transcription; aging preceded_by development (not however death preceded_by aging). Where derives_from links classes of continuants, preceded_by links classes of processes. Clearly, however, these two relations are not independent of each other. Thus if cells of type C1 derive_from cells of type C, then any cell division involving an instance of C1 in a given lineage is preceded_by cellular processes involving an instance of C.    The assertion P preceded_by P1 tells us something about Ps in general: that is, it tells us something about what happened earlier, given what we know about what happened later. Thus it does not provide information pointing in the opposite direction, concerning instances of P1 in general; that is, that each is such as to be succeeded by some instance of P. Note that an assertion to the effect that P preceded_by P1 is rather weak; it tells us little about the relations between the underlying instances in virtue of which the preceded_by relation obtains. Typically we will be interested in stronger relations, for example in the relation immediately_preceded_by, or in relations which combine preceded_by with a condition to the effect that the corresponding instances of P and P1 share participants, or that their participants are connected by relations of derivation, or (as a first step along the road to a treatment of causality) that the one process in some way affects (for example, initiates or regulates) the other."@en ;
                                              <http://purl.obolibrary.org/obo/IAO_0000118> "is preceded by"@en ,
                                                                                           "preceded_by"@en ;
-                                             <http://purl.org/dc/elements/1.1/source> "http://www.obofoundry.org/ro/#OBO_REL:preceded_by" ;
+                                             <https://neuroshapes.org/source> "http://www.obofoundry.org/ro/#OBO_REL:preceded_by" ;
                                              <http://www.geneontology.org/formats/oboInOwl#inSubset> <http://purl.obolibrary.org/obo/ro/subsets#ro-eco> ;
                                              rdfs:label "preceded by"@en .
 
@@ -714,7 +709,7 @@ A continuant cannot have an occurrent as part: use 'participates in'. An occurre
                                             <http://purl.obolibrary.org/obo/IAO_0000115> "a relation between a process and a continuant, in which the continuant is somehow involved in the process"@en ;
                                             <http://purl.obolibrary.org/obo/IAO_0000116> "Has_participant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane has_participant this particular sample of hemoglobin at this particular time."@en ;
                                             <http://purl.obolibrary.org/obo/IAO_0000118> "has_participant"@en ;
-                                            <http://purl.org/dc/elements/1.1/source> "http://www.obofoundry.org/ro/#OBO_REL:has_participant" ;
+                                            <https://neuroshapes.org/source> "http://www.obofoundry.org/ro/#OBO_REL:has_participant" ;
                                             rdfs:label "has participant"@en .
 
 
@@ -792,7 +787,7 @@ range: spatial region or site (immaterial continuant)
                                                                                          "Most location relations will only hold at certain times, but this is difficult to specify in OWL. See https://code.google.com/p/obo-relations/wiki/ROAndTime"@en ;
                                             <http://purl.obolibrary.org/obo/IAO_0000118> "located_in"@en ;
                                             <http://purl.obolibrary.org/obo/RO_0001900> <http://purl.obolibrary.org/obo/RO_0001901> ;
-                                            <http://purl.org/dc/elements/1.1/source> "http://www.obofoundry.org/ro/#OBO_REL:located_in" ;
+                                            <https://neuroshapes.org/source> "http://www.obofoundry.org/ro/#OBO_REL:located_in" ;
                                             rdfs:label "located in"@en .
 
 
@@ -1169,7 +1164,7 @@ range: spatial region or site (immaterial continuant)
                                             <http://purl.obolibrary.org/obo/IAO_0000117> "Chris Mungall" ;
                                             <http://purl.obolibrary.org/obo/IAO_0000119> <https://en.wikipedia.org/wiki/Allen%27s_interval_algebra> ;
                                             <http://purl.obolibrary.org/obo/IAO_0000232> "Do not use this relation directly. It is ended as a grouping for relations between occurrents involving the relative timing of their starts and ends." ;
-                                            <http://purl.org/dc/terms/source> "https://docs.google.com/document/d/1kBv1ep_9g3sTR-SD3jqzFqhuwo9TPNF-l-9fUDbO6rM/edit?pli=1"^^xsd:anyURI ;
+                                            <https://neuroshapes.org/source> "https://docs.google.com/document/d/1kBv1ep_9g3sTR-SD3jqzFqhuwo9TPNF-l-9fUDbO6rM/edit?pli=1"^^xsd:anyURI ;
                                             <http://www.geneontology.org/formats/oboInOwl#inSubset> <http://purl.obolibrary.org/obo/ro/subsets#ro-eco> ;
                                             rdfs:comment "A relation that holds between two occurrents. This is a grouping relation that collects together all the Allen relations." ;
                                             rdfs:label "temporally related to"@en .
@@ -1305,7 +1300,7 @@ range: spatial region or site (immaterial continuant)
                                             rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0002411> ,
                                                                <http://purl.obolibrary.org/obo/RO_0004047> ;
                                             <http://purl.obolibrary.org/obo/RO_0004049> <http://purl.obolibrary.org/obo/RO_0002411> ;
-                                            <http://purl.org/dc/terms/creator> "cjm" ;
+                                            <http://purl.org/dc/elements/1.1/creator> "cjm" ;
                                             rdfs:comment "holds between x and y if and only if x is causally upstream of y and the progression of x increases the frequency, rate or extent of y" ;
                                             rdfs:label "causally upstream of, positive effect" .
 
@@ -1315,7 +1310,7 @@ range: spatial region or site (immaterial continuant)
                                             rdfs:subPropertyOf <http://purl.obolibrary.org/obo/RO_0002411> ,
                                                                <http://purl.obolibrary.org/obo/RO_0004046> ;
                                             <http://purl.obolibrary.org/obo/RO_0004050> <http://purl.obolibrary.org/obo/RO_0002411> ;
-                                            <http://purl.org/dc/terms/creator> "cjm" ;
+                                            <http://purl.org/dc/elements/1.1/creator> "cjm" ;
                                             rdfs:comment "holds between x and y if and only if x is causally upstream of y and the progression of x decreases the frequency, rate or extent of y" ;
                                             rdfs:label "causally upstream of, negative effect" .
 
@@ -1951,7 +1946,7 @@ Each of these 3 primitives can be composed to yield a cross-product of different
                                             <http://purl.obolibrary.org/obo/IAO_0000117> "Chris Mungall" ;
                                             <http://purl.obolibrary.org/obo/IAO_0000119> <http://www.ncbi.nlm.nih.gov/pubmed/24330602> ;
                                             <http://purl.obolibrary.org/obo/IAO_0000589> "determined by (system to material entity)" ;
-                                            <http://purl.org/dc/terms/creator> "Chris Mungall" ,
+                                            <http://purl.org/dc/elements/1.1/creator> "Chris Mungall" ,
                                                                                "Pier Buttigieg" ;
                                             <http://www.geneontology.org/formats/oboInOwl#inSubset> <http://purl.obolibrary.org/obo/ro/subsets#ro-eco> ;
                                             rdfs:label "determined by" .

@@ -36,7 +36,7 @@
 
 <https://bbp.epfl.ch/ontologies/core/molecular-systems> rdf:type owl:Ontology ;
                                                          rdfs:label "Molecular Systems Ontology"^^xsd:string ;
-                                                         owl:versionInfo "R10"^^xsd:string .
+                                                         owl:versionInfo "R45"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -46,9 +46,14 @@
 owl:equivalentClass rdf:type owl:AnnotationProperty .
 
 
-###  http://www.w3.org/2002/07/owl#sameAs
-owl:sameAs rdf:type owl:AnnotationProperty ;
-           rdfs:label "sameAs"@en .
+###  http://schema.org/sameAs
+schema:sameAs rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:label "sameAs"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#definition
@@ -57,23 +62,23 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/humanGene
-<https://bbp.epfl.ch/ontologies/core/bmo/humanGene> rdf:type owl:AnnotationProperty ;
-                                                    rdfs:label "humanGene"@en .
+bmo:humanGene rdf:type owl:AnnotationProperty ;
+              rdfs:label "humanGene"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/mouseGene
-<https://bbp.epfl.ch/ontologies/core/bmo/mouseGene> rdf:type owl:AnnotationProperty ;
-                                                    rdfs:label "mouseGene"@en .
+bmo:mouseGene rdf:type owl:AnnotationProperty ;
+              rdfs:label "mouseGene"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ratGene
-<https://bbp.epfl.ch/ontologies/core/bmo/ratGene> rdf:type owl:AnnotationProperty ;
-                                                  rdfs:label "ratGene"@en .
+bmo:ratGene rdf:type owl:AnnotationProperty ;
+            rdfs:label "ratGene"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/uniprotID
-<https://bbp.epfl.ch/ontologies/core/bmo/uniprotID> rdf:type owl:AnnotationProperty ;
-                                                    rdfs:label "uniprotID"@en .
+bmo:uniprotID rdf:type owl:AnnotationProperty ;
+              rdfs:label "uniprotID"@en .
 
 
 #################################################################
@@ -86,7 +91,7 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Molecule
-<https://bbp.epfl.ch/ontologies/core/bmo/Molecule> rdf:type owl:ObjectProperty .
+bmo:Molecule rdf:type owl:ObjectProperty .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/catalizedBy
@@ -94,8 +99,8 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
              rdfs:label "catalizedBy"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/compartment
-:compartment rdf:type owl:ObjectProperty ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/compartment
+bmo:compartment rdf:type owl:ObjectProperty ;
              rdfs:label "compartment"@en .
 
 
@@ -109,13 +114,13 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
              rdfs:label "expressedIn"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/generates
-:generates rdf:type owl:ObjectProperty ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/generates
+bmo:generates rdf:type owl:ObjectProperty ;
            rdfs:label "generates"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/hasParameter
-:hasParameter rdf:type owl:ObjectProperty ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/hasParameter
+bmo:hasParameter rdf:type owl:ObjectProperty ;
               rdfs:label "hasParameter"@en .
 
 
@@ -124,8 +129,8 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
          rdfs:label "hasRate"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/isAssociatedWith
-:isAssociatedWith rdf:type owl:ObjectProperty ;
+###  https://bbp.epfl.ch/ontologies/core/bmoisAssociatedWith
+bmo:isAssociatedWith rdf:type owl:ObjectProperty ;
                   rdfs:label "isAssociatedWith"@en .
 
 
@@ -149,34 +154,34 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
                 rdfs:label "translatesInto"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/uses
-:uses rdf:type owl:ObjectProperty ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/uses
+bmo:uses rdf:type owl:ObjectProperty ;
       rdfs:label "uses"@en .
 
 
 ###  https://neuroshapes.org/cellType
-<https://neuroshapes.org/cellType> rdf:type owl:ObjectProperty ;
-                                   rdfs:label "cellType"@en .
+nsg:cellType rdf:type owl:ObjectProperty ;
+             rdfs:label "cellType"@en .
 
 
 ###  https://neuroshapes.org/gene
-<https://neuroshapes.org/gene> rdf:type owl:ObjectProperty ;
-                               rdfs:label "gene"@en .
+nsg:gene rdf:type owl:ObjectProperty ;
+         rdfs:label "gene"@en .
 
 
 ###  https://neuroshapes.org/hasTarget
-<https://neuroshapes.org/hasTarget> rdf:type owl:ObjectProperty ;
-                                    rdfs:label "hasTarget"@en .
+nsg:hasTarget rdf:type owl:ObjectProperty ;
+              rdfs:label "hasTarget"@en .
 
 
 ###  https://neuroshapes.org/modelOf
-<https://neuroshapes.org/modelOf> rdf:type owl:ObjectProperty ;
-                                  rdfs:label "modelOf"@en .
+nsg:modelOf rdf:type owl:ObjectProperty ;
+            rdfs:label "modelOf"@en .
 
 
 ###  https://neuroshapes.org/species
-<https://neuroshapes.org/species> rdf:type owl:ObjectProperty ;
-                                  rdfs:label "species"@en .
+nsg:species rdf:type owl:ObjectProperty ;
+            rdfs:label "species"@en .
 
 
 #################################################################
@@ -185,234 +190,236 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
 
 ###  http://purl.obolibrary.org/obo/CHEBI_24431
 <http://purl.obolibrary.org/obo/CHEBI_24431> rdf:type owl:Class ;
-                                             owl:equivalentClass :Metabolite ;
-                                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Mapping> ;
+                                             owl:equivalentClass nsg:Metabolite ;
+                                             rdfs:subClassOf bmo:Mapping ;
                                              rdfs:label "chemical entity"@en ;
                                              <http://www.w3.org/2004/02/skos/core#definition> "A chemical entity is a physical entity of interest in chemistry including molecular entities, parts thereof, and chemical substances."@en .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_10090
 <http://purl.obolibrary.org/obo/NCBITaxon_10090> rdf:type owl:Class ;
-                                                 rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                 rdfs:subClassOf nsg:Species ;
                                                  rdfs:label "Mus musculus"@en .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_10116
 <http://purl.obolibrary.org/obo/NCBITaxon_10116> rdf:type owl:Class ;
-                                                 rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                 rdfs:subClassOf nsg:Species ;
                                                  rdfs:label "Rattus norvegicus"@en .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_9606
 <http://purl.obolibrary.org/obo/NCBITaxon_9606> rdf:type owl:Class ;
-                                                rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                rdfs:subClassOf nsg:Species ;
                                                 rdfs:label "Homo sapiens"@en .
 
 
-###  http://www.w3.org/ns/prov#Entity
-<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class ;
-                                   rdfs:label "Entity"@en .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Artery
-<https://bbp.epfl.ch/ontologies/core/bmo/Artery> rdf:type owl:Class ;
-                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> ;
-                                                 rdfs:label "Artery"@en .
+bmo:Artery rdf:type owl:Class ;
+           rdfs:subClassOf bmo:BrainVascularComponent ;
+           rdfs:label "Artery"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BasalLamina
-<https://bbp.epfl.ch/ontologies/core/bmo/BasalLamina> rdf:type owl:Class ;
-                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart> ;
-                                                      rdfs:label "Basal Lamina"@en .
+bmo:BasalLamina rdf:type owl:Class ;
+                rdfs:subClassOf bmo:ExtracellularPart ;
+                rdfs:label "Basal Lamina"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BiochemicalReaction
-<https://bbp.epfl.ch/ontologies/core/bmo/BiochemicalReaction> rdf:type owl:Class ;
-                                                              rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty <http://schema.org/isPartOf> ;
-                                                                                owl:someValuesFrom :MetabolicNetwork
-                                                                              ] ,
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty <http://schema.org/isPartOf> ;
-                                                                                owl:someValuesFrom :MetabolicPathway
-                                                                              ] ,
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :catalizedBy ;
-                                                                                owl:someValuesFrom :Protein
-                                                                              ] ,
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :catalizedBy ;
-                                                                                owl:someValuesFrom :ProteinComplex
-                                                                              ] ,
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :compartment ;
-                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
-                                                                              ] ,
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :hasRate ;
-                                                                                owl:someValuesFrom :ReactionRate
-                                                                              ] ,
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :product ;
-                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Molecule>
-                                                                              ] ,
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :substrate ;
-                                                                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Molecule>
-                                                                              ] ;
-                                                              rdfs:label "Biochemical Reaction"@en ;
-                                                              <http://www.w3.org/2004/02/skos/core#definition> "A chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string .
+bmo:BiochemicalReaction rdf:type owl:Class ;
+                        rdfs:subClassOf owl:Thing ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http://schema.org/isPartOf> ;
+                                          owl:someValuesFrom :MetabolicNetwork
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http://schema.org/isPartOf> ;
+                                          owl:someValuesFrom :MetabolicPathway
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :catalizedBy ;
+                                          owl:someValuesFrom :ProteinComplex
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :catalizedBy ;
+                                          owl:someValuesFrom nsg:Protein
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :compartment ;
+                                          owl:someValuesFrom bmo:MolecularCompartment
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasRate ;
+                                          owl:someValuesFrom :ReactionRate
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :product ;
+                                          owl:someValuesFrom bmo:Molecule
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :substrate ;
+                                          owl:someValuesFrom bmo:Molecule
+                                        ] ;
+                        rdfs:label "Biochemical Reaction"@en ;
+                        <http://www.w3.org/2004/02/skos/core#definition> "A chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BrainCell
-<https://bbp.epfl.ch/ontologies/core/bmo/BrainCell> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                    rdfs:label "Brain Cell"@en .
+bmo:BrainCell rdf:type owl:Class ;
+              rdfs:subClassOf bmo:MolecularCompartment ;
+              rdfs:label "Brain Cell"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent
-<https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                                 rdfs:label "Brain Vascular Component"@en .
+bmo:BrainVascularComponent rdf:type owl:Class ;
+                           rdfs:subClassOf bmo:MolecularCompartment ;
+                           rdfs:label "Brain Vascular Component"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Capillary
-<https://bbp.epfl.ch/ontologies/core/bmo/Capillary> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> ;
-                                                    rdfs:label "Capillary"@en .
+bmo:Capillary rdf:type owl:Class ;
+              rdfs:subClassOf bmo:BrainVascularComponent ;
+              rdfs:label "Capillary"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Cytosol
-<https://bbp.epfl.ch/ontologies/core/bmo/Cytosol> rdf:type owl:Class ;
-                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart> ;
-                                                  rdfs:label "Cytosol"@en .
+bmo:Cytosol rdf:type owl:Class ;
+            rdfs:subClassOf bmo:SubcellularPart ;
+            rdfs:label "Cytosol"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/EndoplasmicReticulum
-<https://bbp.epfl.ch/ontologies/core/bmo/EndoplasmicReticulum> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Organelle> ;
-                                                               rdfs:label "Endoplasmic Reticulum"@en .
+bmo:EndoplasmicReticulum rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:Organelle ;
+                         rdfs:label "Endoplasmic Reticulum"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart
-<https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart> rdf:type owl:Class ;
-                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                            rdfs:label "Extracellular Part"@en ;
-                                                            <http://www.w3.org/2004/02/skos/core#definition> "This compartment is used as location for metabolites, proteins, reactions and molecular diffusion that are taking place specifically in the extracellular space. This is the compartment where metabolites and proteins from some references are measured."^^xsd:string .
+bmo:ExtracellularPart rdf:type owl:Class ;
+                      rdfs:subClassOf bmo:MolecularCompartment ;
+                      rdfs:label "Extracellular Part"@en ;
+                      <http://www.w3.org/2004/02/skos/core#definition> "This compartment is used as location for metabolites, proteins, reactions and molecular diffusion that are taking place specifically in the extracellular space. This is the compartment where metabolites and proteins from some references are measured."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Gene
-<https://bbp.epfl.ch/ontologies/core/bmo/Gene> rdf:type owl:Class ;
-                                               rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :expressedIn ;
-                                                                 owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomeType>
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :translatesInto ;
-                                                                 owl:someValuesFrom :Protein
-                                                               ] ;
-                                               rdfs:label "Gene"@en ;
-                                               <http://www.w3.org/2004/02/skos/core#definition> "In biology, a gene is a basic unit of heredity and a sequence of nucleotides in DNA or RNA that encodes the synthesis of a gene product, either RNA or protein."^^xsd:string .
+bmo:Gene rdf:type owl:Class ;
+         rdfs:subClassOf owl:Thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :expressedIn ;
+                           owl:someValuesFrom bmo:NeuronTranscriptomeType
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :translatesInto ;
+                           owl:someValuesFrom nsg:Protein
+                         ] ;
+         rdfs:label "Gene"@en ;
+         <http://www.w3.org/2004/02/skos/core#definition> "In biology, a gene is a basic unit of heredity and a sequence of nucleotides in DNA or RNA that encodes the synthesis of a gene product, either RNA or protein."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/InterstitialSpace
-<https://bbp.epfl.ch/ontologies/core/bmo/InterstitialSpace> rdf:type owl:Class ;
-                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart> ;
-                                                            rdfs:label "Interstitial Space"@en .
+bmo:InterstitialSpace rdf:type owl:Class ;
+                      rdfs:subClassOf bmo:ExtracellularPart ;
+                      rdfs:label "Interstitial Space"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Mapping
-<https://bbp.epfl.ch/ontologies/core/bmo/Mapping> rdf:type owl:Class ;
-                                                  rdfs:label "Mapping"@en .
+bmo:Mapping rdf:type owl:Class ;
+            rdfs:label "Mapping"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Mitochondrion
-<https://bbp.epfl.ch/ontologies/core/bmo/Mitochondrion> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Organelle> ;
-                                                        rdfs:label "Mitochondrion"@en .
+bmo:Mitochondrion rdf:type owl:Class ;
+                  rdfs:subClassOf bmo:Organelle ;
+                  rdfs:label "Mitochondrion"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment
-<https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
-                                                               rdfs:label "Molecular Compartment"@en ;
-                                                               <http://www.w3.org/2004/02/skos/core#definition> "A compartment in which molecular species live and in which biochemical reactions can take place."^^xsd:string .
+bmo:MolecularCompartment rdf:type owl:Class ;
+                         rdfs:subClassOf owl:Thing ;
+                         rdfs:label "Molecular Compartment"@en ;
+                         <http://www.w3.org/2004/02/skos/core#definition> "A compartment in which molecular species live and in which biochemical reactions can take place."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Molecule
-<https://bbp.epfl.ch/ontologies/core/bmo/Molecule> rdf:type owl:Class ;
-                                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :compartment ;
-                                                                     owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
-                                                                   ] ,
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty <https://neuroshapes.org/species> ;
-                                                                     owl:someValuesFrom <https://neuroshapes.org/Species>
-                                                                   ] .
+bmo:Molecule rdf:type owl:Class ;
+             rdfs:subClassOf owl:Thing ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :compartment ;
+                               owl:someValuesFrom bmo:MolecularCompartment
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty nsg:species ;
+                               owl:someValuesFrom nsg:Species
+                             ] .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NGVUnit
-<https://bbp.epfl.ch/ontologies/core/bmo/NGVUnit> rdf:type owl:Class ;
-                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                  rdfs:label "NGV Unit"@en ;
-                                                  <http://www.w3.org/2004/02/skos/core#definition> "A neuron + glia + vasculature unit"^^xsd:string .
+bmo:NGVUnit rdf:type owl:Class ;
+            rdfs:subClassOf bmo:MolecularCompartment ;
+            rdfs:label "NGV Unit"@en ;
+            <http://www.w3.org/2004/02/skos/core#definition> "A neuron + glia + vasculature unit"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomeType
-<https://bbp.epfl.ch/ontologies/core/bmo/NeuronTranscriptomeType> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
-                                                                  rdfs:label "Neuron Transcriptome Type"@en .
+bmo:NeuronTranscriptomeType rdf:type owl:Class ;
+                            rdfs:subClassOf owl:Thing ;
+                            rdfs:label "Neuron Transcriptome Type"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Organelle
-<https://bbp.epfl.ch/ontologies/core/bmo/Organelle> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart> ;
-                                                    rdfs:label "Organelle"@en .
+bmo:Organelle rdf:type owl:Class ;
+              rdfs:subClassOf bmo:SubcellularPart ;
+              rdfs:label "Organelle"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ProteinProteinInteraction
+bmo:ProteinProteinInteraction rdf:type owl:Class ;
+                              rdfs:subClassOf bmo:BiochemicalReaction ;
+                              rdfs:label "ProteinProteinInteraction"@en ;
+                              <http://www.w3.org/2004/02/skos/core#altLabel> "ProteinProteinInteraction"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter
-<https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
-                                                                   rdfs:label "Reaction Kinetic Parameter"@en ;
-                                                                   <http://www.w3.org/2004/02/skos/core#definition> "Kinetic parameter is a parameter in the rate equation of the chemical process (reaction, transport, diffusion)."^^xsd:string .
+bmo:ReactionKineticParameter rdf:type owl:Class ;
+                             rdfs:subClassOf owl:Thing ;
+                             rdfs:label "Reaction Kinetic Parameter"@en ;
+                             <http://www.w3.org/2004/02/skos/core#definition> "Kinetic parameter is a parameter in the rate equation of the chemical process (reaction, transport, diffusion)."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ReactionRateEquation
-<https://bbp.epfl.ch/ontologies/core/bmo/ReactionRateEquation> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :hasParameter ;
-                                                                                 owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter>
-                                                                               ] ;
-                                                               rdfs:label "Reaction Rate Equation"@en ;
-                                                               <http://www.w3.org/2004/02/skos/core#definition> "A rate equation or rate law is a mathematical expression used in chemical kinetics to link the rate of a reaction to the concentration of each reactant."^^xsd:string .
+bmo:ReactionRateEquation rdf:type owl:Class ;
+                         rdfs:subClassOf owl:Thing ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :hasParameter ;
+                                           owl:someValuesFrom bmo:ReactionKineticParameter
+                                         ] ;
+                         rdfs:label "Reaction Rate Equation"@en ;
+                         <http://www.w3.org/2004/02/skos/core#definition> "A rate equation or rate law is a mathematical expression used in chemical kinetics to link the rate of a reaction to the concentration of each reactant."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SteadyStateMolecularConcentration
-<https://bbp.epfl.ch/ontologies/core/bmo/SteadyStateMolecularConcentration> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
-                                                                                            [ rdf:type owl:Restriction ;
-                                                                                              owl:onProperty <https://bbp.epfl.ch/ontologies/core/bmo/Molecule> ;
-                                                                                              owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Molecule>
-                                                                                            ] ;
-                                                                            rdfs:label "Steady State Molecular Concentration"@en .
+bmo:SteadyStateMolecularConcentration rdf:type owl:Class ;
+                                      rdfs:subClassOf owl:Thing ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty bmo:Molecule ;
+                                                        owl:someValuesFrom bmo:Molecule
+                                                      ] ;
+                                      rdfs:label "Steady State Molecular Concentration"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart
-<https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart> rdf:type owl:Class ;
-                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment> ;
-                                                          rdfs:label "Subcellular Part"@en .
+bmo:SubcellularPart rdf:type owl:Class ;
+                    rdfs:subClassOf bmo:MolecularCompartment ;
+                    rdfs:label "Subcellular Part"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicNetwork
 :MetabolicNetwork rdf:type owl:Class ;
-                  rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                  rdfs:subClassOf owl:Thing ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :compartment ;
-                                    owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
+                                    owl:someValuesFrom bmo:MolecularCompartment
                                   ] ;
                   rdfs:label "Metabolic Network"@en ;
                   <http://www.w3.org/2004/02/skos/core#definition> "A set of metabolic reactions."^^xsd:string .
@@ -420,67 +427,29 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/MetabolicPathway
 :MetabolicPathway rdf:type owl:Class ;
-                  rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                  rdfs:subClassOf owl:Thing ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty <http://schema.org/isPartOf> ;
                                     owl:someValuesFrom :MetabolicNetwork
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :compartment ;
-                                    owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
+                                    owl:someValuesFrom bmo:MolecularCompartment
                                   ] ;
                   rdfs:label "Metabolic Pathway"@en ;
                   <http://www.w3.org/2004/02/skos/core#definition> "In biochemistry, a metabolic pathway is a linked series of chemical reactions occurring within a cell."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/Metabolite
-:Metabolite rdf:type owl:Class ;
-            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Molecule> ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <http://schema.org/isPartOf> ;
-                              owl:someValuesFrom :ProteinComplex
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :compartment ;
-                              owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty <https://neuroshapes.org/species> ;
-                              owl:someValuesFrom <https://neuroshapes.org/Species>
-                            ] ;
-            rdfs:label "Metabolite"@en ;
-            <http://www.w3.org/2004/02/skos/core#definition> "Molecule (usually small molecule) which participate in chemical reactions as intermediate, substrate or product. It can also participate in transport and diffusion processes."^^xsd:string .
-
-
-###  https://bbp.epfl.ch/ontologies/core/molecular-systems/Protein
-:Protein rdf:type owl:Class ;
-         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Molecule> ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty <http://schema.org/isPartOf> ;
-                           owl:someValuesFrom :ProteinComplex
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :compartment ;
-                           owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty <https://neuroshapes.org/species> ;
-                           owl:someValuesFrom <https://neuroshapes.org/Species>
-                         ] ;
-         rdfs:label "Protein"@en ;
-         <http://www.w3.org/2004/02/skos/core#definition> "Macromolecules that consist of amino acids. Enzymes that calatyze reactions in our model are proteins. Transporters in our model are proteins."^^xsd:string .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/ProteinComplex
 :ProteinComplex rdf:type owl:Class ;
-                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/Molecule> ,
+                rdfs:subClassOf bmo:Molecule ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :compartment ;
-                                  owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/MolecularCompartment>
+                                  owl:someValuesFrom bmo:MolecularCompartment
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty <https://neuroshapes.org/species> ;
-                                  owl:someValuesFrom <https://neuroshapes.org/Species>
+                                  owl:onProperty nsg:species ;
+                                  owl:someValuesFrom nsg:Species
                                 ] ;
                 rdfs:label "Protein Complex"@en ;
                 <http://www.w3.org/2004/02/skos/core#definition> "A protein complex or multiprotein complex is a group of two or more associated polypeptide chains."^^xsd:string .
@@ -488,10 +457,10 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/ReactionRate
 :ReactionRate rdf:type owl:Class ;
-              rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+              rdfs:subClassOf owl:Thing ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :isDescribedBy ;
-                                owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/ReactionRateEquation>
+                                owl:someValuesFrom bmo:ReactionRateEquation
                               ] ;
               rdfs:label "Reaction Rate"@en ;
               <http://www.w3.org/2004/02/skos/core#definition> "The reaction rate or rate of reaction is the speed at which a chemical reaction takes place, defined as proportional to the increase in the concentration of a product per unit time and to the decrease in the concentration of a reactant per unit time."^^xsd:string .
@@ -499,88 +468,128 @@ owl:sameAs rdf:type owl:AnnotationProperty ;
 
 ###  https://bbp.epfl.ch/ontologies/core/molecular-systems/VenousVolume
 :VenousVolume rdf:type owl:Class ;
-              rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainVascularComponent> ;
+              rdfs:subClassOf bmo:BrainVascularComponent ;
               rdfs:label "Venous Volume"@en .
 
 
 ###  https://neuroshapes.org/Astrocyte
-<https://neuroshapes.org/Astrocyte> rdf:type owl:Class ;
-                                    rdfs:subClassOf <https://neuroshapes.org/Glia> ;
-                                    rdfs:label "Astrocyte"@en .
+nsg:Astrocyte rdf:type owl:Class ;
+              rdfs:subClassOf nsg:Glia ;
+              rdfs:label "Astrocyte"@en .
 
 
 ###  https://neuroshapes.org/Glia
-<https://neuroshapes.org/Glia> rdf:type owl:Class ;
-                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainCell> ;
-                               rdfs:label "Glia"@en .
+nsg:Glia rdf:type owl:Class ;
+         rdfs:subClassOf bmo:BrainCell ;
+         rdfs:label "Glia"@en .
 
 
 ###  https://neuroshapes.org/Ki
-<https://neuroshapes.org/Ki> rdf:type owl:Class ;
-                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter> ;
-                             rdfs:label "Ki"@en ;
-                             <http://www.w3.org/2004/02/skos/core#definition> "Inhibition constant."^^xsd:string .
+nsg:Ki rdf:type owl:Class ;
+       rdfs:subClassOf bmo:ReactionKineticParameter ;
+       rdfs:label "Ki"@en ;
+       <http://www.w3.org/2004/02/skos/core#definition> "Inhibition constant."^^xsd:string .
 
 
 ###  https://neuroshapes.org/Km
-<https://neuroshapes.org/Km> rdf:type owl:Class ;
-                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter> ;
-                             rdfs:label "Km"@en ;
-                             <http://www.w3.org/2004/02/skos/core#definition> "Michaelis constant."^^xsd:string .
+nsg:Km rdf:type owl:Class ;
+       rdfs:subClassOf bmo:ReactionKineticParameter ;
+       rdfs:label "Km"@en ;
+       <http://www.w3.org/2004/02/skos/core#definition> "Michaelis constant."^^xsd:string .
+
+
+###  https://neuroshapes.org/Metabolite
+nsg:Metabolite rdf:type owl:Class ;
+               rdfs:subClassOf bmo:Molecule ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://schema.org/isPartOf> ;
+                                 owl:someValuesFrom :ProteinComplex
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :compartment ;
+                                 owl:someValuesFrom bmo:MolecularCompartment
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty nsg:species ;
+                                 owl:someValuesFrom nsg:Species
+                               ] ;
+               rdfs:label "Metabolite"@en ;
+               <http://www.w3.org/2004/02/skos/core#altLabel> "Metabolite"@en ;
+               <http://www.w3.org/2004/02/skos/core#definition> "Molecule (usually small molecule) which participate in chemical reactions as intermediate, substrate or product. It can also participate in transport and diffusion processes."^^xsd:string .
 
 
 ###  https://neuroshapes.org/Microglia
-<https://neuroshapes.org/Microglia> rdf:type owl:Class ;
-                                    rdfs:subClassOf <https://neuroshapes.org/Glia> ;
-                                    rdfs:label "Microglia"@en .
+nsg:Microglia rdf:type owl:Class ;
+              rdfs:subClassOf nsg:Glia ;
+              rdfs:label "Microglia"@en .
 
 
 ###  https://neuroshapes.org/Neuron
-<https://neuroshapes.org/Neuron> rdf:type owl:Class ;
-                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainCell> ;
-                                 rdfs:label "Neuron"@en .
+nsg:Neuron rdf:type owl:Class ;
+           rdfs:subClassOf bmo:BrainCell ;
+           rdfs:label "Neuron"@en .
+
+
+###  https://neuroshapes.org/Protein
+nsg:Protein rdf:type owl:Class ;
+            rdfs:subClassOf bmo:Molecule ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://schema.org/isPartOf> ;
+                              owl:someValuesFrom :ProteinComplex
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :compartment ;
+                              owl:someValuesFrom bmo:MolecularCompartment
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty nsg:species ;
+                              owl:someValuesFrom nsg:Species
+                            ] ;
+            rdfs:label "Protein"@en ;
+            <http://www.w3.org/2004/02/skos/core#altLabel> "Protein"@en ;
+            <http://www.w3.org/2004/02/skos/core#definition> "Macromolecules that consist of amino acids. Enzymes that calatyze reactions in our model are proteins. Transporters in our model are proteins."^^xsd:string .
 
 
 ###  https://neuroshapes.org/Species
-<https://neuroshapes.org/Species> rdf:type owl:Class ;
-                                  rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
-                                  rdfs:label "Species"@en .
+nsg:Species rdf:type owl:Class ;
+            rdfs:subClassOf owl:Thing ;
+            rdfs:label "Species"@en .
 
 
 ###  https://neuroshapes.org/Vmax
-<https://neuroshapes.org/Vmax> rdf:type owl:Class ;
-                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter> ;
-                               rdfs:label "Vmax"@en ;
-                               <http://www.w3.org/2004/02/skos/core#definition> "Maximum reaction rate."^^xsd:string .
+nsg:Vmax rdf:type owl:Class ;
+         rdfs:subClassOf bmo:ReactionKineticParameter ;
+         rdfs:label "Vmax"@en ;
+         <http://www.w3.org/2004/02/skos/core#definition> "Maximum reaction rate."^^xsd:string .
 
 
 ###  https://neuroshapes.org/Vmax_f
-<https://neuroshapes.org/Vmax_f> rdf:type owl:Class ;
-                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter> ;
-                                 rdfs:label "Vmax_f"@en ;
-                                 <http://www.w3.org/2004/02/skos/core#definition> "Maximum reaction rate in forward direction (for reversible reactions)."^^xsd:string .
+nsg:Vmax_f rdf:type owl:Class ;
+           rdfs:subClassOf bmo:ReactionKineticParameter ;
+           rdfs:label "Vmax_f"@en ;
+           <http://www.w3.org/2004/02/skos/core#definition> "Maximum reaction rate in forward direction (for reversible reactions)."^^xsd:string .
 
 
 ###  https://neuroshapes.org/Vmax_r
-<https://neuroshapes.org/Vmax_r> rdf:type owl:Class ;
-                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter> ;
-                                 rdfs:label "Vmax_r"@en ;
-                                 <http://www.w3.org/2004/02/skos/core#definition> "Maximum reaction rate in reverse direction (for reversible reactions)."^^xsd:string .
+nsg:Vmax_r rdf:type owl:Class ;
+           rdfs:subClassOf bmo:ReactionKineticParameter ;
+           rdfs:label "Vmax_r"@en ;
+           <http://www.w3.org/2004/02/skos/core#definition> "Maximum reaction rate in reverse direction (for reversible reactions)."^^xsd:string .
 
 
 ###  https://neuroshapes.org/k_cat
-<https://neuroshapes.org/k_cat> rdf:type owl:Class ;
-                                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ReactionKineticParameter> ;
-                                rdfs:label "k_cat"@en ;
-                                <http://www.w3.org/2004/02/skos/core#definition> "Turnover number, catalytic constant (for the enzymes with single active site)."^^xsd:string .
+nsg:k_cat rdf:type owl:Class ;
+          rdfs:subClassOf bmo:ReactionKineticParameter ;
+          rdfs:label "k_cat"@en ;
+          <http://www.w3.org/2004/02/skos/core#definition> "Turnover number, catalytic constant (for the enzymes with single active site)."^^xsd:string .
 
 
 #################################################################
 #    Annotations
 #################################################################
 
-<https://bbp.epfl.ch/ontologies/core/bmo/Molecule> rdfs:label "Molecule"@en ;
-                                                   <http://www.w3.org/2004/02/skos/core#definition> "A molecule is an electrically neutral group of two or more atoms held together by chemical bonds."^^xsd:string .
+bmo:Molecule rdfs:label "Molecule"@en ;
+             <http://www.w3.org/2004/02/skos/core#definition> "A molecule is an electrically neutral group of two or more atoms held together by chemical bonds."^^xsd:string .
 
 
 ###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

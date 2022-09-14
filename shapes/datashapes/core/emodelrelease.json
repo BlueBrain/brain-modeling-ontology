@@ -1,0 +1,38 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/emodelrelease/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/emodelrelease",
+  "@type": "Schema",
+  "imports": [
+    "nsg:dash/modelrelease"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/emodelrelease/v0.1.4.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/emodelrelease/shapes/EModelReleaseShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:dash/modelrelease/shapes/ModelReleaseShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:ModelReleaseIndex",
+              "description": "EModel release index file.",
+              "name": "EModel release index file",
+              "path": "nsg:emodelIndex",
+              "seeAlso": "nsg:dash/modelreleaseindex/shapes/ModelReleaseIndexShape"
+            }
+          ]
+        }
+      ],
+      "label": "EModel release shape. Output of BluePyOpt",
+      "targetClass": "nsg:EModelRelease"
+    }
+  ]
+}

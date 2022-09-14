@@ -88,8 +88,8 @@
 #    Annotation properties
 #################################################################
 
-###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/equivalentClass
-:equivalentClass rdf:type owl:AnnotationProperty ;
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:AnnotationProperty ;
                  rdfs:label "equivalentClass"@en .
 
 
@@ -183,7 +183,7 @@
                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
                          rdfs:label "Vipr2-IRES2-Cre-neo"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Vipr2-IRES2-Cre-neo"^^xsd:string ;
-                         <http://www.w3.org/2004/02/skos/core#definition> "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK–Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells."^^xsd:string .
+                         <http://www.w3.org/2004/02/skos/core#definition> "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK?Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells."^^xsd:string .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RCdsmhhTCAVRU9NaRWZ4hyk

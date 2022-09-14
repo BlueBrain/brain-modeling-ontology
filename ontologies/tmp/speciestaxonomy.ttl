@@ -1,0 +1,796 @@
+@prefix : <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/> .
+@prefix GO: <http://purl.obolibrary.org/obo/GO_> .
+@prefix RS: <http://purl.obolibrary.org/obo/RS_> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix et: <https://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/> .
+@prefix mt: <https://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix EFO: <http://www.ebi.ac.uk/efo/EFO_> .
+@prefix bmc: <https://bbp.epfl.ch/ontologies/core/bmc/> .
+@prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
+@prefix efe: <https://bbp.epfl.ch/ontologies/core/efeatures/> .
+@prefix ilx: <http://uri.interlex.org/base/ilx_> .
+@prefix mso: <https://bbp.epfl.ch/ontologies/core/molecular-systems/> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix nxv: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix stim: <https://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix schema: <http://schema.org/> .
+@prefix uberon: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix datashapes: <https://neuroshapes.org/dash/> .
+@prefix commonshapes: <https://neuroshapes.org/commons/> .
+@prefix NCBITaxon_TAXON: <http://purl.obolibrary.org/obo/NCBITaxon#_> .
+@base <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/> .
+
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/> rdf:type owl:Ontology ;
+                                                                    rdfs:label "Species Taxonomy ontology"@en ;
+                                                                    owl:versionInfo "R303" ;
+                                                                    <https://neuroshapes.org/defines> :R7Oi9skq7JQf4Fi0CgTOVjy ,
+                                                                                                      :R7VSXBJ6dYm8vikkDPJqne8 ,
+                                                                                                      :R7W0jC5jLW97wVGcqzpUtT6 ,
+                                                                                                      <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000016> ,
+                                                                                                      <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000017> ,
+                                                                                                      <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000018> ,
+                                                                                                      <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000019> ,
+                                                                                                      <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000020> ,
+                                                                                                      <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000021> ,
+                                                                                                      <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000022> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_10088> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_10090> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_10114> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_10116> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_13616> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_38605> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_40674> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_9443> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_9483> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_9541> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_9544> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_9606> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_9989> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_class> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_order> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_species> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon_strain> ,
+                                                                                                      <http://purl.obolibrary.org/obo/RS_0001827> ,
+                                                                                                      <http://purl.obolibrary.org/obo/RS_0001833> ,
+                                                                                                      <http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0000176> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0000597> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0000599> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0000600> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0000602> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0000606> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0001336> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0001342> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0001345> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0001352> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0001353> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0004472> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0005184> ,
+                                                                                                      <http://www.ebi.ac.uk/efo/EFO_0005290> ,
+                                                                                                      <https://neuroshapes.org/Species> ,
+                                                                                                      <https://phenome.jax.org/strains/178> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/equivalentClass
+:equivalentClass rdf:type owl:AnnotationProperty ;
+                 rdfs:label "equivalentClass"@en .
+
+
+###  http://purl.obolibrary.org/obo/ncbitaxon#has_rank
+<http://purl.obolibrary.org/obo/ncbitaxon#has_rank> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  https://neuroshapes.org/defines
+<https://neuroshapes.org/defines> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R5onge4DcxhsWZwa37pMyj
+:R5onge4DcxhsWZwa37pMyj rdf:type owl:Class ;
+                        rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                        rdfs:label "Fezf2-CreER"@en ;
+                        <http://www.w3.org/2004/02/skos/core#altLabel> "Fezf2-CreER"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#definition> "In this strain, CreER was inserted in front of the Fezf2 open reading frame through homologous recombination. In Fezf2-CreER, the GCaMP6f (genetically encoded fluorescent Ca[2+] indicator) is strongly expressed in cortical layer 5 and some layer 6 as well as basolateral amygdala and scattered expression in pyramidal cell layers of hippocampus."^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R7Oi9skq7JQf4Fi0CgTOVjy
+:R7Oi9skq7JQf4Fi0CgTOVjy rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         rdfs:label "Cre +/-, Tom +/-"@en ;
+                         <http://www.w3.org/2004/02/skos/core#definition> "This is a hemizygote mouse carrying an allele of the gene for the cre-recombinase as well as the cell membrane-localized tdTomato (mT)"^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R7VSXBJ6dYm8vikkDPJqne8
+:R7VSXBJ6dYm8vikkDPJqne8 rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                         rdfs:label "Tnnt1-IRES2-CreERT2"@en ;
+                         <http://www.w3.org/2004/02/skos/core#altLabel> "Tnnt1-IRES2-CreERT2"^^xsd:string ;
+                         <http://www.w3.org/2004/02/skos/core#definition> "Created by inserting Cre into the C terminus of an endogenous gene via homologous recombination, with driver gene expression mediated by an internal ribosome entry site (IRES). Tnnt1 gene was chosen for making Cre driver line ifor sparse labelling of the thalamic cells."^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R7W0jC5jLW97wVGcqzpUtT6
+:R7W0jC5jLW97wVGcqzpUtT6 rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         rdfs:label "GFP +/-"@en ;
+                         <http://www.w3.org/2004/02/skos/core#definition> "This is a hemizygote mouse carrying an allele of the gene for the green fluorescent protein (GFP)"^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R8IQIkKuFhWqFB5Zht7qTkh
+:R8IQIkKuFhWqFB5Zht7qTkh rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                         rdfs:label "Gnb4-IRES2-CreERT2"@en ;
+                         <http://www.w3.org/2004/02/skos/core#altLabel> "Gnb4-IRES2-CreERT2"^^xsd:string ;
+                         <http://www.w3.org/2004/02/skos/core#definition> "Gnb4-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression directed to guanine nucleotide binding protein (G protein) beta 4-expressing cells. Cre recombinase expression and activity largely recapitulates the endogenous Gnb4 gene - it is enriched in claustrum but relatively sparse in nearby structures (endopiriform nucleus and deep insular cortex). These mice may be used to generate conditional mutations for studying gain-or-loss of function and/or fate mapping related to this G protein."^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RB1cHDJDESM94SO6duQxrM6
+:RB1cHDJDESM94SO6duQxrM6 rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         rdfs:label "GAD67-eGFP"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RB2Q9UJLyRfCOk0ih1UFXG7
+:RB2Q9UJLyRfCOk0ih1UFXG7 rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                         rdfs:label "Nos1-CreERT2;Sst-IRES-FlpO"@en ;
+                         <http://www.w3.org/2004/02/skos/core#altLabel> "Nos1-CreERT2;Sst-IRES-FlpO"^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RBS4I6tyfUBSDt1i0jXLpgN
+:RBS4I6tyfUBSDt1i0jXLpgN rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                         rdfs:label "Cux2-CreERT2"@en ;
+                         <http://www.w3.org/2004/02/skos/core#altLabel> "Cux2-CreERT2"^^xsd:string ;
+                         <http://www.w3.org/2004/02/skos/core#definition> "Cux2-CreERT2 label radial glial cells (RGCs) that gave rise to neurons in the neocortex that predominantly resided in upper neocortical layers (Franco et al., 2012). Cux2-Cre also labels a subset of interneurons and a minor fraction of Ctip2+ projection neurons and neocortical astrocytes. Guo et al., 2013 and Eckler et al., 2018 showed that neurons in neocortical ventricular zone (VZ) can be labelled in this mouse strain but there is some polemics about it (Gil-Sanz et al., 2018)."^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RCIhpGlEct4tnqzSfzEVqIs
+:RCIhpGlEct4tnqzSfzEVqIs rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                         rdfs:label "Vipr2-IRES2-Cre-neo"@en ;
+                         <http://www.w3.org/2004/02/skos/core#altLabel> "Vipr2-IRES2-Cre-neo"^^xsd:string ;
+                         <http://www.w3.org/2004/02/skos/core#definition> "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK?Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells."^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RCdsmhhTCAVRU9NaRWZ4hyk
+:RCdsmhhTCAVRU9NaRWZ4hyk rdf:type owl:Class ;
+                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                         rdfs:label "Esr2-IRES2-Cre"@en ;
+                         <http://www.w3.org/2004/02/skos/core#altLabel> "Esr2-IRES2-Cre"^^xsd:string ;
+                         <http://www.w3.org/2004/02/skos/core#definition> "Esr2-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression/activity directed by the endogenous Esr2 promoter/enhancer sequences. In the brain, it is observed mainly in medial amygdalar nucleus, bed nuclei of the stria terminalis, paraventricular hypothalamic nucleus, cortical layer 6 and scattered neurons elsewhere in the brain. These mice may be used to generate conditional mutations for studying gain-or-loss of function and/or fate mapping in ESR2-expressing cells."^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RbgCce6FpZBH0tGFk6b88A
+:RbgCce6FpZBH0tGFk6b88A rdf:type owl:Class ;
+                        rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                        rdfs:label "Tlx3-Cre_PL56"@en ;
+                        <http://www.w3.org/2004/02/skos/core#altLabel> "Tlx3-Cre_PL56"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#definition> "Tlx3-Cre_PL56;Ai148 mice exhibit GCaMP6f primarily restricted to IT corticostriatal in layer 5."^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RxoGvqCAmwBJS0E7RVI7qT
+:RxoGvqCAmwBJS0E7RVI7qT rdf:type owl:Class ;
+                        rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                        rdfs:label "Pvalb-T2A-CreERT2"@en ;
+                        <http://www.w3.org/2004/02/skos/core#altLabel> "Pvalb-T2A-CreERT2"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#definition> "Pvalb-T2A-CreERT2-D (Pvalb-2A-CreERT2-D) mice have Cre-ERT2 fusion gene expression directed to Pvalb-expressing cells by the endogenous promoter/enhancer elements of the parvalbumin locus. These mice are a Cre-lox tool that allows inducible Cre expression of genes in Pvalb-expressing cells/tissues."^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RyopyomzZDtQGWHX5lddmE
+:RyopyomzZDtQGWHX5lddmE rdf:type owl:Class ;
+                        rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "strain"^^xsd:string ;
+                        rdfs:label "Plxnd1-CreER"@en ;
+                        <http://www.w3.org/2004/02/skos/core#altLabel> "Plxnd1-CreER"^^xsd:string ;
+                        <http://www.w3.org/2004/02/skos/core#definition> "The PlxnD1-CreER driver recapitulates endogenous PlxnD1 expression and labeles projection neurons in the cerebral cortex, hippocampus, amygdala (BLA and LA), and medium spiny neurons of the striatum."^^xsd:string .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000016
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000016> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                                                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                                                          rdfs:label "Tg2576"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "APP(sw)"@en ,
+                                                                                                                         "App-Swe"@en ,
+                                                                                                                         "App-sw"@en ,
+                                                                                                                         "B6;SJL-Tg(APPSWE)2576Kha"@en ,
+                                                                                                                         "Hsiao mice"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a mouse model for Alzheimer's disease. It overexpresses a mutant form of APP (isoform 695) with the Swedish mutation (KM670/671NL)"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000017
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000017> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                                                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                                                          rdfs:label "Tg(PrP-tTA-lacZ)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(Prnp-tTA:betaGal)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a double transgenic mice produced by crossbreeding the PrP promoter (Prnp-tTA) mouse line F959 (Tremblay et al., 1998) with a responder mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme beta-galactosidase."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000018
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000018> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                                                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                                                          rdfs:label "Tg(CamKII-tTA-lacZ)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(CamKII  -tTA:betaGal)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a double transgenic mouse produced by crossbreeding the CamKII promoter (CamKII-tTA) with a responder mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme beta-galactosidase."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000019
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000019> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                                                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                                                          rdfs:label "Tg(Nop-tTA-lacZ)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(NOP-tTA:betaGal)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a double transgenic mice produced by crossbreeding the NOP promoter (NOP-tTA) with a responder mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme beta-galactosidase."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000020
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000020> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                                                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                                                          rdfs:label "Tg(tTA-lacZ)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(TA:betaGal)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a mouse line transgenic for a bidirectional reporter geneconstruct containing both the Luciferase and LacZ reporter gene, which encodes the enzyme beta-galactosidase."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000021
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000021> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                                                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                                                          rdfs:label "Tg(ArcSwe)"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "tg-ArcSwe"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "This is a mouse model for Alzheimer's disease. It carries the Arctic (E693G) and Swedish (KM670/6701NL) mutations, it develops amyloid-beta (Abeta) deposits in the brain."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000022
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/0000022> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                                                          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                                                          rdfs:label "C57BL/6J X 129/Sv"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#altLabel> "129/Sv X C57BL/6"@en ,
+                                                                                                                         "C57 x Sv129"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "C57BL/6 X 129/Sv is a mouse strain derived from the mixture of C57BL/6 and 129/Sv strains."@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_10088
+<http://purl.obolibrary.org/obo/NCBITaxon_10088> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_9989> ;
+                                                 rdfs:label "Mouse"@en ;
+                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "Mus"^^xsd:string ,
+                                                                                                "mice"^^xsd:string ,
+                                                                                                "mouse"^^xsd:string .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_10090
+<http://purl.obolibrary.org/obo/NCBITaxon_10090> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10088> ;
+                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                 rdfs:label "Mus musculus"@en ;
+                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "house mouse"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_10114
+<http://purl.obolibrary.org/obo/NCBITaxon_10114> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_9989> ;
+                                                 rdfs:label "Rat"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_10116
+<http://purl.obolibrary.org/obo/NCBITaxon_10116> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10114> ;
+                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                 rdfs:label "Rattus norvegicus"@en ;
+                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "Norway rat"@en ,
+                                                                                                "rat"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_119089
+<http://purl.obolibrary.org/obo/NCBITaxon_119089> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                  rdfs:label "Chromadorea"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_13616
+<http://purl.obolibrary.org/obo/NCBITaxon_13616> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_38605> ;
+                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                 rdfs:label "Monodelphis domestica"@en ;
+                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "gray short-tailed opossum"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_186623
+<http://purl.obolibrary.org/obo/NCBITaxon_186623> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                  rdfs:label "Actinopteri"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_3398
+<http://purl.obolibrary.org/obo/NCBITaxon_3398> rdf:type owl:Class ;
+                                                rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                rdfs:label "Magnoliopsida"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_3699
+<http://purl.obolibrary.org/obo/NCBITaxon_3699> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_3398> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Brassicales"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_3702
+<http://purl.obolibrary.org/obo/NCBITaxon_3702> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_3699> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Arabidopsis thaliana"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "mouse-ear cress"@en ,
+                                                                                               "thale cress"@en ,
+                                                                                               "thale-cress"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_38605
+<http://purl.obolibrary.org/obo/NCBITaxon_38605> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_40674> ;
+                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                 rdfs:label "Didelphimorphia"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_40674
+<http://purl.obolibrary.org/obo/NCBITaxon_40674> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                 rdfs:label "Mammalia"@en ;
+                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "mammals"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_50557
+<http://purl.obolibrary.org/obo/NCBITaxon_50557> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                 rdfs:label "Insecta"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_6236
+<http://purl.obolibrary.org/obo/NCBITaxon_6236> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_119089> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Rhabditida"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_6239
+<http://purl.obolibrary.org/obo/NCBITaxon_6239> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_6236> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Caenorhabditis elegans"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "roundworm"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_7147
+<http://purl.obolibrary.org/obo/NCBITaxon_7147> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_50557> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Diptera"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_7227
+<http://purl.obolibrary.org/obo/NCBITaxon_7227> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_7147> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Drosophila melanogaster"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "fruit fly"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_7952
+<http://purl.obolibrary.org/obo/NCBITaxon_7952> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_186623> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Cypriniformes"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_7955
+<http://purl.obolibrary.org/obo/NCBITaxon_7955> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_7952> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Danio rerio"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "leopard danio"@en ,
+                                                                                               "zebra fish"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8292
+<http://purl.obolibrary.org/obo/NCBITaxon_8292> rdf:type owl:Class ;
+                                                rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                rdfs:label "Amphibia"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8342
+<http://purl.obolibrary.org/obo/NCBITaxon_8342> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8292> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Anura"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8355
+<http://purl.obolibrary.org/obo/NCBITaxon_8355> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8342> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Xenopus laevis"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "African clawed frog"@en ,
+                                                                                               "clawed frog"@en ,
+                                                                                               "common platanna"@en ,
+                                                                                               "platanna"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8364
+<http://purl.obolibrary.org/obo/NCBITaxon_8364> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8342> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Xenopus tropicalis"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "tropical clawed frog"@en ,
+                                                                                               "western clawed frog"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8782
+<http://purl.obolibrary.org/obo/NCBITaxon_8782> rdf:type owl:Class ;
+                                                rdfs:subClassOf <https://neuroshapes.org/Species> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_class> ;
+                                                rdfs:label "Aves"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_8976
+<http://purl.obolibrary.org/obo/NCBITaxon_8976> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8782> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Galliformes"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9031
+<http://purl.obolibrary.org/obo/NCBITaxon_9031> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_8976> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Gallus gallus"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "Gallus domesticus"@en ,
+                                                                                               "chicken"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_91561
+<http://purl.obolibrary.org/obo/NCBITaxon_91561> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_40674> ;
+                                                 <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                 rdfs:label "Artiodactyla"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9443
+<http://purl.obolibrary.org/obo/NCBITaxon_9443> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_40674> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Primates"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9483
+<http://purl.obolibrary.org/obo/NCBITaxon_9483> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_9443> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Callithrix jacchus"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "white ear-tufted marmoset"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9541
+<http://purl.obolibrary.org/obo/NCBITaxon_9541> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_9443> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Macaca fascicularis"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "crab-eating macaque"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9544
+<http://purl.obolibrary.org/obo/NCBITaxon_9544> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_9443> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Macaca mulatta"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "Rhesus monkey"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9606
+<http://purl.obolibrary.org/obo/NCBITaxon_9606> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_9443> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Homo sapiens"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "human"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9913
+<http://purl.obolibrary.org/obo/NCBITaxon_9913> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_91561> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Bos taurus"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "bovine"@en ,
+                                                                                               "cattle"@en ,
+                                                                                               "cow"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9975
+<http://purl.obolibrary.org/obo/NCBITaxon_9975> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_40674> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Lagomorpha"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9986
+<http://purl.obolibrary.org/obo/NCBITaxon_9986> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_9975> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                                rdfs:label "Oryctolagus cuniculus"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "European rabbit"@en ,
+                                                                                               "Japanese white rabbit"@en ,
+                                                                                               "domestic rabbit"@en ,
+                                                                                               "rabbit"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9989
+<http://purl.obolibrary.org/obo/NCBITaxon_9989> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_40674> ;
+                                                <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_order> ;
+                                                rdfs:label "Rodentia"@en ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "rodents"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_class
+<http://purl.obolibrary.org/obo/NCBITaxon_class> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank> ;
+                                                 rdfs:label "Class Rank"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_order
+<http://purl.obolibrary.org/obo/NCBITaxon_order> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank> ;
+                                                 rdfs:label "Order Rank"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_species
+<http://purl.obolibrary.org/obo/NCBITaxon_species> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank> ;
+                                                   rdfs:label "Species Rank"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_strain
+<http://purl.obolibrary.org/obo/NCBITaxon_strain> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank> ;
+                                                  rdfs:label "Strain Rank"@en .
+
+
+###  http://purl.obolibrary.org/obo/RS_0001827
+<http://purl.obolibrary.org/obo/RS_0001827> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10116> ;
+                                            <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                            rdfs:label "Long-Evans"@en .
+
+
+###  http://purl.obolibrary.org/obo/RS_0001833
+<http://purl.obolibrary.org/obo/RS_0001833> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10116> ;
+                                            <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                            rdfs:label "Wistar Han"@en .
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank
+<http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                                           rdfs:label "Taxonomic Rank"@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0000176
+<http://www.ebi.ac.uk/efo/EFO_0000176> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10116> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "Fischer 344"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "F344"@en ,
+                                                                                      "Ficher 344"@en ,
+                                                                                      "Fisher 344"@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0000597
+<http://www.ebi.ac.uk/efo/EFO_0000597> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "129"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "129 mouse"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "129 is a mouse strain as described in Jackson Laboratory."@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0000599
+<http://www.ebi.ac.uk/efo/EFO_0000599> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "129/Sv"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "129Sv"@en ,
+                                                                                      "SV129"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "129/Sv is a mouse strain as described in Jackson Laboratory."@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0000600
+<http://www.ebi.ac.uk/efo/EFO_0000600> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "129X1/SvJ"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "129/SvJ"@en ,
+                                                                                      "129SJ"@en ,
+                                                                                      "129X1"@en ,
+                                                                                      "Sv129J"@en ,
+                                                                                      "SvJ/129"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "129X1/SvJ is a substrain of the mouse strain 129 as described in Jackson Laboratory."@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0000602
+<http://www.ebi.ac.uk/efo/EFO_0000602> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "BALB/cJ"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "BALB-C"@en ,
+                                                                                      "BALB/c"@en ,
+                                                                                      "BALBc"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "BALB/cJ is a mouse strain as described in Jackson Laboratory."@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0000606
+<http://www.ebi.ac.uk/efo/EFO_0000606> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "C57BL/6J"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "C57BL/6j"@en ,
+                                                                                      "C57BL6J"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "C57BL/6J is a mouse strain as described in Jackson Laboratory."@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0001336
+<http://www.ebi.ac.uk/efo/EFO_0001336> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "CBA/CaJ "@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "CBA Carter J"@en ,
+                                                                                      "CBA/Ca"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "CBA/CaJ is a mouse strain as described in Jackson Laboratory."@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0001342
+<http://www.ebi.ac.uk/efo/EFO_0001342> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10116> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "Wistar"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "Rats, Wistar"@en ,
+                                                                                      "Wistar rat"@en ,
+                                                                                      "Wistar rats"@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0001345
+<http://www.ebi.ac.uk/efo/EFO_0001345> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10116> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "Wistar Kyoto"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "WKY"@en ,
+                                                                                      "Wistar-Kyoto"@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0001352
+<http://www.ebi.ac.uk/efo/EFO_0001352> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10116> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "Sprague Dawley"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "Rats, Sprague Dawley" ,
+                                                                                      "Sprague-Dawley rat"@en ,
+                                                                                      "Sprague-Dawley rats"@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0001353
+<http://www.ebi.ac.uk/efo/EFO_0001353> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10116> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "Lewis"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "LEW"@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0004472
+<http://www.ebi.ac.uk/efo/EFO_0004472> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "C57BL/6"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "B6"@en ,
+                                                                                      "C57"@en ,
+                                                                                      "C57 Black/6"@en ,
+                                                                                      "C57/B6"@en ,
+                                                                                      "C57/BL6"@en ,
+                                                                                      "C57B/6"@en ,
+                                                                                      "C57BL6"@en ,
+                                                                                      "C57Bl,"@en ,
+                                                                                      "C57Bl\\6"@en ,
+                                                                                      "C57Black"@en ,
+                                                                                      "C57Black/6"@en ,
+                                                                                      "C57Black6"@en ,
+                                                                                      "CB57"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "C57BL/6 is a mouse strain as described in Jackson Laboratory strain index."@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0005184
+<http://www.ebi.ac.uk/efo/EFO_0005184> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "DBA/2J"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "D2J"@en ,
+                                                                                      "DBA/2"@en ,
+                                                                                      "DBA2"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "DBA/2J is a mouse strain as described in Jackson Laboratory."@en .
+
+
+###  http://www.ebi.ac.uk/efo/EFO_0005290
+<http://www.ebi.ac.uk/efo/EFO_0005290> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10116> ;
+                                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                       rdfs:label "Brown Norway"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "BN"@en ,
+                                                                                      "BN rat"@en .
+
+
+###  http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class ;
+                                   rdfs:label "Entity"@en .
+
+
+###  https://neuroshapes.org/Species
+<https://neuroshapes.org/Species> rdf:type owl:Class ;
+                                  rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
+                                  rdfs:label "Species"@en .
+
+
+###  https://phenome.jax.org/strains/178
+<https://phenome.jax.org/strains/178> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                      <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                      rdfs:comment "https://phenome.jax.org/about/termsofuse" ;
+                                      rdfs:label "C57BL/6J X SJL"@en ;
+                                      <http://www.w3.org/2004/02/skos/core#altLabel> "B6SJLF1"@en ,
+                                                                                     "B6SJLF1/J"@en ;
+                                      <http://www.w3.org/2004/02/skos/core#definition> "C57BL/6J is a mouse strain as described in Jackson Laboratory."@en .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

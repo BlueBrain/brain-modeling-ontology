@@ -36,7 +36,7 @@
 
 <https://bbp.epfl.ch/ontologies/core/mfeatures> rdf:type owl:Ontology ;
                                                 rdfs:label "Neuron Morphological Feature Ontology"^^xsd:string  ;
-                                                owl:versionInfo "R65"^^xsd:string .
+                                                owl:versionInfo "R187"^^xsd:string .
 
 #################################################################
 #    Annotation properties

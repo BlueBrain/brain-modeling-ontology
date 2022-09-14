@@ -1,0 +1,90 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/intrasharprecordedcell/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/intrasharprecordedcell",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/quantitativevalue",
+    "nsg:commons/typedlabeledontologyterm",
+    "nsg:commons/brainlocation"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/intrasharprecordedcell/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/intrasharprecordedcell/shapes/IntraCellularSharpElectrodeRecordedCellShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Brain location information of the recorded cell",
+              "name": "Brain location",
+              "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+              "path": "nsg:brainLocation"
+            },
+            {
+              "description": "The putative e-type of the recorded cell",
+              "maxCount": 1,
+              "name": "Putative e-type",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape",
+              "path": "nsg:putativeEtype"
+            },
+            {
+              "description": "The e-type of the recorded cell",
+              "maxCount": 1,
+              "name": "E-type",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape",
+              "path": "nsg:eType"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Number of electrode used",
+              "maxCount": 1,
+              "name": "Electrode number",
+              "path": "nsg:electrodeNumber"
+            },
+            {
+              "description": "Membrane potential of recorded cell at beginning",
+              "maxCount": 1,
+              "name": "Start membrane potential",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:startMembranePotential"
+            },
+            {
+              "description": "Membrane potential of recorded cell at the end",
+              "maxCount": 1,
+              "name": "End membrane potential",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:endMembranePotential"
+            },
+            {
+              "description": "Resistance of electrode used",
+              "maxCount": 1,
+              "name": "Electrode resistance",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:electrodeResistance"
+            },
+            {
+              "description": "Liquid junction potential of electrode",
+              "maxCount": 1,
+              "name": "Liquid junction potential",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:liquidJunctionPotential"
+            }
+          ]
+        }
+      ],
+      "label": "Intracellular sharp electrode-recorded cell shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:IntraCellularSharpElectrodeRecordedCell"
+    }
+  ]
+}

@@ -1,9 +1,16 @@
+from rdflib import Namespace
+
 MAPPING = {
     "β": "beta",
     "\xa0": " ",
-    "–": "-"
+    "–": "-",
+    "\u2013":"?"
 }
 
+
+SH = Namespace("http://www.w3.org/ns/shacl#")
+NXV = Namespace("https://bluebrain.github.io/nexus/vocabulary/")
+SHACL = Namespace('http://www.w3.org/ns/shacl#')
 PREFIX_MAPPINGS = {
     "mso": "https://bbp.epfl.ch/ontologies/core/molecular-systems/",
     "GO": "http://purl.obolibrary.org/obo/GO_",

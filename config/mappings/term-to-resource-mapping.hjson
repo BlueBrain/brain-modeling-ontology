@@ -1,0 +1,15 @@
+{
+    type: x.get('type', x.get('@type',None))
+    id:  forge._model.context().expand(x.get('id', x.get('@id',None)))
+    label: x.get('label', None)
+    prefLabel: x.get('prefLabel', x.get('skos:prefLabel', None))
+    definition: x.get('definition', x.get('skos:definition', None))
+    altLabel:  x.get('altLabel', x.get('skos:altLabel', None)),
+    subClassOf: list(forge._model.context().expand(s) for s in x.get('subClassOf', None))  if isinstance(x.get('subClassOf', None), list) else [forge._model.context().expand(x.get('subClassOf', None))]
+    hasPart:  list(forge._model.context().expand(s) for s in x.get('hasPart', None))  if isinstance(x.get('hasPart', None), list) else [forge._model.context().expand(x.get('hasPart', None))]
+    isPartOf: list(forge._model.context().expand(s) for s in x.get('isPartOf', x.get("schema:isPartOf", None)))  if isinstance(x.get('isPartOf', x.get("schema:isPartOf", None)), list) else [forge._model.context().expand(x.get('isPartOf', x.get("schema:isPartOf", None)))]
+    isDefinedBy:  x.get('isDefinedBy', None)
+    notation:  x.get('notation', x.get('skos:notation', None))
+    equivalentClass:  x.get('equivalentClass', x.get('owl:equivalentClass',None))
+    sameAs:  x.get('sameAs', x.get('schema:sameAs', None))
+}

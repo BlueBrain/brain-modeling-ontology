@@ -147,16 +147,19 @@
 #    Annotation properties
 #################################################################
 
-###  http://purl.org/dc/elements/1.1/description
-<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+###  http://schema.org/description
+<http://schema.org/description> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/elements/1.1/rights
 <http://purl.org/dc/elements/1.1/rights> rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/terms/license
-<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+###  http://schema.org/license
+schema:license rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:label "license"@en ;
+               skos:altLabel "license"@en .
 
 
 ###  http://purl.org/vocab/vann/preferredNamespacePrefix
@@ -824,14 +827,14 @@
 ###  https://neuroshapes.org/BlueBrainStimulus
 <https://neuroshapes.org/BlueBrainStimulus> rdf:type owl:Class ;
                                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus> ;
-                                            <http://purl.org/dc/elements/1.1/description> "The stimuli under BlueBrainStimulus and their description are based on the eCode Specification v 1.04 document."^^xsd:string ;
+                                            <http://schema.org/description> "The stimuli under BlueBrainStimulus and their description are based on the eCode Specification v 1.04 document."^^xsd:string ;
                                             rdfs:label "BlueBrainStimulus"@en .
 
 
 ###  https://neuroshapes.org/LNMCStimulus
 <https://neuroshapes.org/LNMCStimulus> rdf:type owl:Class ;
                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus> ;
-                                       <http://purl.org/dc/elements/1.1/description> "The stimuli under LNMCStimulus were identified from the NWB files of the \"NMC SSCX\" and the \"Adaptive Stimulus Set\" datasets from the Laboratory of Neural Microcircuitry. They represent the 'raw' stimuli as assigned by the experimenter."^^xsd:string ;
+                                       <http://schema.org/description> "The stimuli under LNMCStimulus were identified from the NWB files of the \"NMC SSCX\" and the \"Adaptive Stimulus Set\" datasets from the Laboratory of Neural Microcircuitry. They represent the 'raw' stimuli as assigned by the experimenter."^^xsd:string ;
                                        rdfs:label "LNMCStimulus"@en .
 
 

@@ -1,56 +1,128 @@
+import json
+
 import pytest
-from rdflib import Graph, Namespace
+import rdflib
+from kgforge.core.commons import Context
+from rdflib import Graph, Namespace, RDF, OWL, SH
 from rdflib.plugins.parsers.notation3 import BadSyntax
 import glob
-
-PREFIX_MAPPINGS = {
-    "mso": "https://bbp.epfl.ch/ontologies/core/molecular-systems/",
-    "GO": "http://purl.obolibrary.org/obo/GO_",
-    "dc": "http://purl.org/dc/elements/1.1/",
-    "sh": "http://www.w3.org/ns/shacl#",
-    "bmo": "https://bbp.epfl.ch/ontologies/core/bmo/",
-    "bmc": "https://bbp.epfl.ch/ontologies/core/bmc/",
-    "nsg": "https://neuroshapes.org/",
-    "nxv": "https://bluebrain.github.io/nexus/vocabulary/",
-    "owl": "http://www.w3.org/2002/07/owl#",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "xml": "http://www.w3.org/XML/1998/namespace/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "prov": "http://www.w3.org/ns/prov#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "shsh": "http://www.w3.org/ns/shacl-shacl#",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "vann": "http://purl.org/vocab/vann/",
-    "void": "http://rdfs.org/ns/void#",
-    "uberon": "http://purl.obolibrary.org/obo/UBERON_",
-    "obo": "http://purl.obolibrary.org/obo/",
-    "schema": "http://schema.org/",
-    "dcterms": "http://purl.org/dc/terms/",
-    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
-    "NCBITaxon_TAXON": "http://purl.obolibrary.org/obo/NCBITaxon#_",
-    "stim": "https://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/",
-    "datashapes": "https://neuroshapes.org/dash/",
-    "commonshapes": "https://neuroshapes.org/commons/",
-    "ilx": "http://uri.interlex.org/base/ilx_",
-    "efe": "https://bbp.epfl.ch/ontologies/core/efeatures/",
-    "et": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/",
-    "mt": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/",
-    "tt": "http://bbp.epfl.ch/neurosciencegraph/ontologies/ttypes/",
-    "EFO": "http://www.ebi.ac.uk/efo/EFO_",
-    "RS": "http://purl.obolibrary.org/obo/RS_",
-    "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_"
-}
+import bmo_tools.ontologies as bmo
+from register_ontologies import JSONLD_CONTEXT_IRI
 
 
-def test_validate_ontologies():
-    """
-    Tests whether the ontology files under /ontologies/bbp are correctly formatted
-    """
-    for filepath in glob.glob(f"./ontologies/bbp/*.ttl"):
-        graph = Graph()
-        try:
-            for prefix, mapping in PREFIX_MAPPINGS.items():
-                graph.bind(prefix, Namespace(mapping))
-            graph.parse(filepath, format="turtle")
-        except BadSyntax:
-            pytest.fail(f"File {filepath} does not validate")
+
+def test_terms_aligned_with_context(forge, all_ontology_graphs, all_schema_graphs):
+
+    with open ("./jsonldcontext/neuroshapes_org.json", "r") as f:
+        previous_forge_context_json = json.load(f)
+
+    forge_context = Context(previous_forge_context_json["@context"], previous_forge_context_json["@id"])
+    new_jsonld_context, ontology_errors = bmo.build_context_from_ontology(all_ontology_graphs[0], forge_context)
+    new_jsonld_context, schema_errors = bmo.build_context_from_schema(all_schema_graphs[0], new_jsonld_context)
+    errors = []
+    errors.extend(ontology_errors)
+    errors.extend(schema_errors)
+    assert len(errors) == 0
+    assert new_jsonld_context.iri == forge_context.iri
+    assert set(forge_context.document.keys()).issubset(new_jsonld_context.document.keys())
+
+
+def test_ontologies_classes_conform_schemas(forge, all_ontology_graphs):
+    pass
+    #Tests that all:
+    #  - ontologies conform to the schema https://neuroshapes.org/dash/ontology
+    #  - classes conform to the schema https://neuroshapes.org/dash/ontologyentity
+
+    #ontologies = forge.from_graph(all_ontology_graphs[0], type="Ontology", use_model_context=True)
+    #forge.validate(ontologies, _type="Ontology")
+    #classes = forge.from_graph(all_ontology_graphs[0], type="Class", use_model_context=True)
+    #forge.validate(classes, _type="Class")
+    
+
+def test_classes_instances_are_disjoint(forge, all_ontology_graphs):
+    classes_instances = []
+    for cls in all_ontology_graphs[0].subjects(RDF.type, OWL.Class):
+        if (cls, RDF.type, OWL.NamedIndividual) in all_ontology_graphs[0]:
+            classes_instances.append(cls)
+    assert len(classes_instances) == 0
+
+
+def test_object_annotation_properties_are_disjoint(forge, all_ontology_graphs):
+    obj_prop_instances = []
+    for obj_prop in all_ontology_graphs[0].subjects(RDF.type, OWL.ObjectProperty):
+        if (obj_prop, RDF.type, OWL.AnnotationProperty) in all_ontology_graphs[0]:
+            obj_prop_instances.append(obj_prop)
+    assert len(obj_prop_instances) == 0
+
+
+
+def test_no_topObjectProperty_instances(forge, all_ontology_graphs):
+    topobj_prop_instances = all_ontology_graphs[0].subjects(RDF.type, OWL.topObjectProperty)
+    assert len(list(topobj_prop_instances)) == 0
+
+
+def test_all_classes_are_extracted(data_jsonld_context, all_ontology_graphs):
+    new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
+
+    class_ids, class_jsons, all_blank_node_triples = bmo.frame_classes(all_ontology_graphs[0], new_jsonld_context,
+                                                                       new_jsonld_context.document)
+    assert len(class_ids) == len(class_jsons)
+
+    classes = all_ontology_graphs[0].subjects(RDF.type, OWL.Class)
+    classes = [str(c) for c in classes]
+    instances = all_ontology_graphs[0].subjects(RDF.type, OWL.NamedIndividual)
+    instances = [str(i) for i in instances]
+    cls_int = []
+    cls_int.extend(classes)
+    cls_int.extend(instances)
+    assert len(cls_int) > 0
+    assert len(cls_int) == len(class_jsons)
+
+
+"""
+def test_all_jsonld_classes_have_same_triples_then_in_ttl(data_jsonld_context, forge, all_ontology_graphs):
+    #forge_context = forge._model.context()
+    new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1] #bmo.build_context_from_ontology(all_ontology_graphs[0], forge_context)
+
+    class_ids, class_jsons, all_blank_node_triples = bmo.frame_classes(all_ontology_graphs[0], new_jsonld_context,
+                                                                       new_jsonld_context.document)
+    
+    #for cls in class_jsons:
+    #    cls["@context"] = new_jsonld_context.document
+    #    cls_graph_jsonld = rdflib.Graph().parse(data=json.dumps(cls), format="json-ld")
+    #    cls_triples_all = all_ontology_graphs[0].triples((rdflib.term.URIRef(cls.get("@id")), None, None))
+    #    #assert len(list(cls_triples_all)) == len(list(cls_graph_jsonld.triples((rdflib.term.URIRef(cls.get("@id")), None, None))))
+"""
+
+
+
+def test_one_type_one_schema(all_schema_graphs):
+    schema_graphs, schema_graphs_dict, schema_id_to_filepath_dict = all_schema_graphs
+    targeted_class_triples = set(schema_graphs.triples((None, SH.targetClass, None)))
+    targeted_classes = {}
+    for t in targeted_class_triples:
+        if t[0] not in targeted_classes:
+            targeted_classes[str(t[0])] = [t[2]]
+        else:
+            targeted_classes[str(t[0])].append(str(t[2]))
+    all_t = [len(v) == 1 for k, v in targeted_classes.items()]
+    assert all(all_t)
+
+
+"""
+def test_all_schema_are_valid(forge_schema, all_schema_graphs):
+    schema_graphs, schema_graphs_dict, schema_id_to_filepath_dict = all_schema_graphs
+    for k, schema_graph in schema_graphs_dict:
+        schema = forge_schema.from_graph(schema_graph, type="Schema", use_model_context=True)
+        forge_schema._model.service._validate(shape_iri, data_graph)
+        forge_schema.validate(schema, _type="Class")
+    # check imported schemas are defined
+    #check against SHACL
+    # https://incf.github.io/neuroshapes/contexts/schema.json is in
+    pass
+"""
+
+
+
+
+

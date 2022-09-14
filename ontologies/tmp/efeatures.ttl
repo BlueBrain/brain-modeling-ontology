@@ -1,0 +1,520 @@
+@prefix : <https://bbp.epfl.ch/ontologies/core/efeatures/> .
+@prefix GO: <http://purl.obolibrary.org/obo/GO_> .
+@prefix RS: <http://purl.obolibrary.org/obo/RS_> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix et: <https://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/> .
+@prefix mt: <https://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix EFO: <http://www.ebi.ac.uk/efo/EFO_> .
+@prefix bmc: <https://bbp.epfl.ch/ontologies/core/bmc/> .
+@prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
+@prefix efe: <https://bbp.epfl.ch/ontologies/core/efeatures/> .
+@prefix ilx: <http://uri.interlex.org/base/ilx_> .
+@prefix mso: <https://bbp.epfl.ch/ontologies/core/molecular-systems/> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix nxv: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix stim: <https://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix schema: <http://schema.org/> .
+@prefix uberon: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix datashapes: <https://neuroshapes.org/dash/> .
+@prefix commonshapes: <https://neuroshapes.org/commons/> .
+@prefix NCBITaxon_TAXON: <http://purl.obolibrary.org/obo/NCBITaxon#_> .
+@base <https://bbp.epfl.ch/ontologies/core/efeatures> .
+
+<https://bbp.epfl.ch/ontologies/core/efeatures> rdf:type owl:Ontology ;
+                                                rdfs:label "Electrophysiological Features Ontology"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/efel_id
+<https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> rdf:type owl:AnnotationProperty ;
+                                                        rdfs:label "efel_id"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace
+<https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> rdf:type owl:AnnotationProperty ;
+                                                               rdfs:label "efel_namespace"@en .
+
+
+###  https://neuroshapes.org/units
+<https://neuroshapes.org/units> rdf:type owl:AnnotationProperty ;
+                                rdfs:label "units"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature
+<https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> rdf:type owl:Class ;
+                                                                            rdfs:label "Neuron Electrophysiological Feature"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/AHPDepth
+<https://bbp.epfl.ch/ontologies/core/efeatures/AHPDepth> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                         rdfs:label "AHP Depth"@en ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "Relative voltage values at the first after-hyperpolarization."^^xsd:string ;
+                                                         <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AHP_depth"^^xsd:string ;
+                                                         <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                         <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/AHPDepthAbs
+<https://bbp.epfl.ch/ontologies/core/efeatures/AHPDepthAbs> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                            rdfs:label "AHP Depth Abs"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "Absolute voltage values at the first after-hyperpolarization."^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AHP_depth_abs"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                            <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/AHPDepthAbsSlow
+<https://bbp.epfl.ch/ontologies/core/efeatures/AHPDepthAbsSlow> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                rdfs:label "AHP Depth Abs Slow"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#definition> "Absolute voltage values at the first after-hyperpolarization starting a given number of ms (default: 5) after the peak."^^xsd:string ;
+                                                                <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AHP_depth_abs_slow"^^xsd:string ;
+                                                                <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                                <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/AHPSlowTime
+<https://bbp.epfl.ch/ontologies/core/efeatures/AHPSlowTime> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                            rdfs:label "AHP Slow Time"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "Time difference between slow AHP (see AHP Depth Abs Slow) and peak, divided by interspike interval."^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AHP_slow_time"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                            <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/AHPTimeFromPeak
+<https://bbp.epfl.ch/ontologies/core/efeatures/AHPTimeFromPeak> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                rdfs:label "AHP Time From Peak"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#definition> "Time between AP peaks and first AHP depths"^^xsd:string ;
+                                                                <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AHP_time_from_peak"^^xsd:string ;
+                                                                <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/AP1Width
+<https://bbp.epfl.ch/ontologies/core/efeatures/AP1Width> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                         rdfs:label "AP1 Width"@en ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "Width of the first spike at threshold"^^xsd:string ;
+                                                         <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AP1_width"^^xsd:string ;
+                                                         <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                         <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/AP2Width
+<https://bbp.epfl.ch/ontologies/core/efeatures/AP2Width> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                         rdfs:label "AP2 Width"@en ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "Width of the second spike at threshold"^^xsd:string ;
+                                                         <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AP2_width"^^xsd:string ;
+                                                         <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                         <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/APAmplitude
+<https://bbp.epfl.ch/ontologies/core/efeatures/APAmplitude> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                            rdfs:label "AP Amplitude"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "The relative height of the action potential from spike onset."^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AP_Amplitude"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                            <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/APDurationHalfWidth
+<https://bbp.epfl.ch/ontologies/core/efeatures/APDurationHalfWidth> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                    rdfs:label "AP Duration Half Width"@en ;
+                                                                    <http://www.w3.org/2004/02/skos/core#definition> "Width of spike at half spike amplitude."^^xsd:string ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AP_duration_half_width"^^xsd:string ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV2"^^xsd:string ;
+                                                                    <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/APRiseTime
+<https://bbp.epfl.ch/ontologies/core/efeatures/APRiseTime> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                           rdfs:label "AP Rise Time"@en ;
+                                                           <http://www.w3.org/2004/02/skos/core#definition> "Time between the AP threshold and the peak, given a window (default: from 0% to 100% of the AP amplitude)"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "AP_rise_time"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV2"^^xsd:string ;
+                                                           <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/BurstNumber
+<https://bbp.epfl.ch/ontologies/core/efeatures/BurstNumber> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                            rdfs:label "Burst Number"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "The number of bursts."^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "burst_number"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                            <https://neuroshapes.org/units> "dimensionless"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/CheckAISInitiation
+<https://bbp.epfl.ch/ontologies/core/efeatures/CheckAISInitiation> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                   rdfs:label "Check AIS Initiation"@en ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "Check initiation of AP in AIS"^^xsd:string ;
+                                                                   <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "check_AISInitiation"^^xsd:string ;
+                                                                   <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                   <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/DecayTimeConstantAfterStim
+<https://bbp.epfl.ch/ontologies/core/efeatures/DecayTimeConstantAfterStim> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                           rdfs:label "Decay Time Constant After Stim"@en ;
+                                                                           <http://www.w3.org/2004/02/skos/core#definition> "The decay time constant of the voltage right after the stimulus"^^xsd:string ;
+                                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "decay_time_constant_after_stim"^^xsd:string ;
+                                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                           <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/ISICV
+<https://bbp.epfl.ch/ontologies/core/efeatures/ISICV> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                      rdfs:label "ISI CV"@en ;
+                                                      <http://www.w3.org/2004/02/skos/core#definition> "The coefficient of variation of the ISIs"^^xsd:string ;
+                                                      <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "ISI_CV"^^xsd:string ;
+                                                      <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                      <https://neuroshapes.org/units> "dimensionless"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/ISILogSlope
+<https://bbp.epfl.ch/ontologies/core/efeatures/ISILogSlope> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                            rdfs:label "ISI Log Slope"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "The slope of a linear fit to a loglog plot of the ISI values."^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "ISI_log_slope"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                            <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/ISISemilogSlope
+<https://bbp.epfl.ch/ontologies/core/efeatures/ISISemilogSlope> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                rdfs:label "ISI Semilog Slope"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#definition> "The slope of a linear fit to a semilog plot of the  inter-spike interval (ISI) values"^^xsd:string ;
+                                                                <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "ISI_semilog_slope"^^xsd:string ;
+                                                                <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/InvFifthISI
+<https://bbp.epfl.ch/ontologies/core/efeatures/InvFifthISI> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                            rdfs:label "Inv Fifth ISI"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "1.0 over fith inter-spike interval (ISI); returns 0 when no ISI"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "inv_fifth_ISI"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                            <https://neuroshapes.org/units> "Hz"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/InvFirstISI
+<https://bbp.epfl.ch/ontologies/core/efeatures/InvFirstISI> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                            rdfs:label "Inv First ISI"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "1.0 over first inter-spike interval (ISI); returns 0 when no ISI"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "inv_first_ISI"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                            <https://neuroshapes.org/units> "Hz"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/InvFourthISI
+<https://bbp.epfl.ch/ontologies/core/efeatures/InvFourthISI> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                             rdfs:label "Inv Fourth ISI"@en ;
+                                                             <http://www.w3.org/2004/02/skos/core#definition> "1.0 over fourth inter-spike interval (ISI); returns 0 when no ISI"^^xsd:string ;
+                                                             <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "inv_fourth_ISI"^^xsd:string ;
+                                                             <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                             <https://neuroshapes.org/units> "Hz"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/InvLastISI
+<https://bbp.epfl.ch/ontologies/core/efeatures/InvLastISI> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                           rdfs:label "Inv Last ISI"@en ;
+                                                           <http://www.w3.org/2004/02/skos/core#definition> "1.0 over last inter-spike interval (ISI); returns 0 when no ISI"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "inv_last_ISI"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                           <https://neuroshapes.org/units> "Hz"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/InvSecondISI
+<https://bbp.epfl.ch/ontologies/core/efeatures/InvSecondISI> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                             rdfs:label "Inv Second ISI"@en ;
+                                                             <http://www.w3.org/2004/02/skos/core#definition> "1.0 over second inter-spike interval (ISI); returns 0 when no ISI"^^xsd:string ;
+                                                             <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "inv_second_ISI"^^xsd:string ;
+                                                             <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                             <https://neuroshapes.org/units> "Hz"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/InvThirdISI
+<https://bbp.epfl.ch/ontologies/core/efeatures/InvThirdISI> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                            rdfs:label "Inv Third ISI"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "1.0 over third inter-spike interval (ISI); returns 0 when no ISI"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "inv_third_ISI"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                            <https://neuroshapes.org/units> "Hz"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/InvTimeToFirstSpike
+<https://bbp.epfl.ch/ontologies/core/efeatures/InvTimeToFirstSpike> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                    rdfs:label "Inv Time To First Spike"@en ;
+                                                                    <http://www.w3.org/2004/02/skos/core#definition> "1.0 over time to first spike; returns 0 when no spike"^^xsd:string ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "inv_time_to_first_spike"^^xsd:string ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/MaximumVoltage
+<https://bbp.epfl.ch/ontologies/core/efeatures/MaximumVoltage> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                               rdfs:label "Maximum Voltage"@en ;
+                                                               <http://www.w3.org/2004/02/skos/core#definition> "The maximum of the voltage during the stimulus."^^xsd:string ;
+                                                               <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "maximum_voltage"^^xsd:string ;
+                                                               <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                               <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/MaximumVoltageFromVoltagebase
+<https://bbp.epfl.ch/ontologies/core/efeatures/MaximumVoltageFromVoltagebase> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                              rdfs:label "Maximum Voltage From Voltagebase"@en ;
+                                                                              <http://www.w3.org/2004/02/skos/core#definition> "Difference between maximum voltage during stimulus and voltage base"^^xsd:string ;
+                                                                              <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "maximum_voltage_from_voltagebase"^^xsd:string ;
+                                                                              <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                              <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/MeanFrequency
+<https://bbp.epfl.ch/ontologies/core/efeatures/MeanFrequency> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                              rdfs:label "Mean Frequency"@en ;
+                                                              <http://www.w3.org/2004/02/skos/core#definition> "The mean frequency of the firing rate."^^xsd:string ;
+                                                              <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "mean_frequency"^^xsd:string ;
+                                                              <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                              <https://neuroshapes.org/units> "Hz"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/MinimumVoltage
+<https://bbp.epfl.ch/ontologies/core/efeatures/MinimumVoltage> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                               rdfs:label "Minimum Voltage"@en ;
+                                                               <http://www.w3.org/2004/02/skos/core#definition> "The minimum of the voltage during the stimulus."^^xsd:string ;
+                                                               <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "minimum_voltage"^^xsd:string ;
+                                                               <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                               <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/NumberInitialSpikes
+<https://bbp.epfl.ch/ontologies/core/efeatures/NumberInitialSpikes> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                    rdfs:label "Number Initial Spikes"@en ;
+                                                                    <http://www.w3.org/2004/02/skos/core#definition> "Number of spikes at the beginning of the stimulus"^^xsd:string ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "number_initial_spikes"^^xsd:string ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                    <https://neuroshapes.org/units> "dimensionless"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/OhmicInputResistance
+<https://bbp.epfl.ch/ontologies/core/efeatures/OhmicInputResistance> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                     rdfs:label "Ohmic Input Resistance"@en ;
+                                                                     <http://www.w3.org/2004/02/skos/core#definition> "The ratio between the voltage deflection and stimulus current."^^xsd:string ;
+                                                                     <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "ohmic_input_resistance"^^xsd:string ;
+                                                                     <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                                     <https://neuroshapes.org/units> "mV/nA"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/OhmicInputResistanceVBSSSE
+<https://bbp.epfl.ch/ontologies/core/efeatures/OhmicInputResistanceVBSSSE> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                           rdfs:label "Ohmic Input Resistance VB SSSE"@en ;
+                                                                           <http://www.w3.org/2004/02/skos/core#definition> "The  ratio  between  the  voltage  deflection  (between  voltage  base  and  steady-state  voltage  at  stimend)  and  stimuluscurrent"^^xsd:string ;
+                                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "ohmic_input_resistance_vb_ssse"^^xsd:string ;
+                                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                           <https://neuroshapes.org/units> "mV/nA"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/SagAmplitude
+<https://bbp.epfl.ch/ontologies/core/efeatures/SagAmplitude> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                             rdfs:label "Sag Amplitude"@en ;
+                                                             <http://www.w3.org/2004/02/skos/core#definition> "The difference between the minimal voltage and the steady state at stimend"^^xsd:string ;
+                                                             <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "sag_amplitude"^^xsd:string ;
+                                                             <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                             <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/SagRatio1
+<https://bbp.epfl.ch/ontologies/core/efeatures/SagRatio1> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                          rdfs:label "Sag Ratio1"@en ;
+                                                          <http://www.w3.org/2004/02/skos/core#definition> "The ratio between the sag amplitude and the maximal sag extend from voltage base"^^xsd:string ;
+                                                          <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "sag_ratio1"^^xsd:string ;
+                                                          <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                          <https://neuroshapes.org/units> "dimensionless"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/SagRatio2
+<https://bbp.epfl.ch/ontologies/core/efeatures/SagRatio2> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                          rdfs:label "Sag Ratio2"@en ;
+                                                          <http://www.w3.org/2004/02/skos/core#definition> "The ratio between the maximal extends of sag from steady state and voltage base"^^xsd:string ;
+                                                          <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "sag_ratio2"^^xsd:string ;
+                                                          <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                          <https://neuroshapes.org/units> "dimensionless"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/Spikecount
+<https://bbp.epfl.ch/ontologies/core/efeatures/Spikecount> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                           rdfs:label "Spikecount"@en ;
+                                                           <http://www.w3.org/2004/02/skos/core#definition> "Number of spikes in the trace, including outside of stimulus interval."^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "Spikecount"^^xsd:string ;
+                                                           <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                           <https://neuroshapes.org/units> "dimensionless"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/SpikecountStimint
+<https://bbp.epfl.ch/ontologies/core/efeatures/SpikecountStimint> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                  rdfs:label "Spikecount Stimint"@en ;
+                                                                  <http://www.w3.org/2004/02/skos/core#definition> "Number of spikes inside the stimulus interval"^^xsd:string ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "Spikecount_stimint"^^xsd:string ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                  <https://neuroshapes.org/units> "dimensionless"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/SteadyStateVoltage
+<https://bbp.epfl.ch/ontologies/core/efeatures/SteadyStateVoltage> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                   rdfs:label "Steady State Voltage"@en ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "The average voltage after the stimulus."^^xsd:string ;
+                                                                   <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "steady_state_voltage"^^xsd:string ;
+                                                                   <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                                   <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/SteadyStateVoltageStimend
+<https://bbp.epfl.ch/ontologies/core/efeatures/SteadyStateVoltageStimend> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                          rdfs:label "Steady State Voltage Stimend"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "The average voltage during the last 10% of the stimulus duration."^^xsd:string ;
+                                                                          <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "steady_state_voltage_stimend"^^xsd:string ;
+                                                                          <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                          <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/TimeToFirstSpike
+<https://bbp.epfl.ch/ontologies/core/efeatures/TimeToFirstSpike> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                 rdfs:label "Time To First Spike"@en ;
+                                                                 <http://www.w3.org/2004/02/skos/core#definition> "Time from the start of the stimulus to the maximum of the first peak."^^xsd:string ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "time_to_first_spike"^^xsd:string ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                                 <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/TimeToLastSpike
+<https://bbp.epfl.ch/ontologies/core/efeatures/TimeToLastSpike> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                rdfs:label "Time To Last Spike"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#definition> "Time from stimulus start to last spike"^^xsd:string ;
+                                                                <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "time_to_last_spike"^^xsd:string ;
+                                                                <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/TimeToSecondSpike
+<https://bbp.epfl.ch/ontologies/core/efeatures/TimeToSecondSpike> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                  rdfs:label "Time To Second Spike"@en ;
+                                                                  <http://www.w3.org/2004/02/skos/core#definition> "Time from the start of the stimulus to the maximum of the second peak"^^xsd:string ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "time_to_second_spike"^^xsd:string ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                  <https://neuroshapes.org/units> "ms"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/VoltageAfterStim
+<https://bbp.epfl.ch/ontologies/core/efeatures/VoltageAfterStim> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                 rdfs:label "Voltage After Stim"@en ;
+                                                                 <http://www.w3.org/2004/02/skos/core#definition> "The mean voltage after the stimulus in (stim_end + 25%*end_period, stim_end + 75%*end_period)"^^xsd:string ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "voltage_after_stim"^^xsd:string ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                 <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/VoltageBase
+<https://bbp.epfl.ch/ontologies/core/efeatures/VoltageBase> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                            rdfs:label "Voltage Base"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "The average voltage during the last 10% of time before the stimulus."^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "voltage_base"^^xsd:string ;
+                                                            <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                            <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/VoltageDeflection
+<https://bbp.epfl.ch/ontologies/core/efeatures/VoltageDeflection> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                  rdfs:label "Voltage Deflection"@en ;
+                                                                  <http://www.w3.org/2004/02/skos/core#definition> "The voltage deflection between voltage base and steady-state voltage at stimend. The voltage base used is the average voltage during all of the time before the stimulus and the steady state voltage at stimend used is the average voltage of the five values before the last five values before the end of the stimulus duration."^^xsd:string ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "voltage_deflection"^^xsd:string ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV1"^^xsd:string ;
+                                                                  <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/VoltageDeflectionBegin
+<https://bbp.epfl.ch/ontologies/core/efeatures/VoltageDeflectionBegin> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                       rdfs:label "Voltage Deflection Begin"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#definition> "The voltage deflection between voltage base and steady-state voltage soon after stimulation start. The voltage base used is the average voltage during all of the time before the stimulus and the steady state voltage used is the average voltage taken from 5% to 15% of the stimulus duration."^^xsd:string ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "voltage_deflection_begin"^^xsd:string ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/VoltageDeflectionVBSSSE
+<https://bbp.epfl.ch/ontologies/core/efeatures/VoltageDeflectionVBSSSE> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectrophysiologicalFeature> ;
+                                                                        rdfs:label "Voltage Deflection VB SSSE"@en ;
+                                                                        <http://www.w3.org/2004/02/skos/core#definition> "The voltage deflection between voltage base and steady-state voltage at stimend. The voltage base used is the average voltage during the last 10% of time before the stimulus and the steady statevoltage at stimend used is the average voltage during the last 10% of the stimulus duration"^^xsd:string ;
+                                                                        <https://bbp.epfl.ch/ontologies/core/efeatures/efel_id> "voltage_deflection_vb_ssse"^^xsd:string ;
+                                                                        <https://bbp.epfl.ch/ontologies/core/efeatures/efel_namespace> "LibV5"^^xsd:string ;
+                                                                        <https://neuroshapes.org/units> "mV"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

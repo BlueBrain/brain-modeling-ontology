@@ -1,0 +1,56 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/intrasharprecordedslice/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/intrasharprecordedslice",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/brainlocation"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/intrasharprecordedslice/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/intrasharprecordedslice/shapes/IntraCellularSharpElectrodeRecordedSliceShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Brain location information of the recorded cell",
+              "name": "Brain location",
+              "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+              "path": "nsg:brainLocation"
+            },
+            {
+              "class": "prov:Collection",
+              "description": "The collections of recorded cells.",
+              "minCount": 1,
+              "name": "Recorded cells collection",
+              "path": "schema:hasPart",
+              "seeAlso": "nsg:dash/intrasharprecordedcellcollection/shapes/IntraCellularSharpElectrodeRecordedCellCollectionShape"
+            },
+            {
+              "class": "nsg:Slice",
+              "description": "The slice this recorded slice is a revision of.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Slice",
+              "path": "prov:wasRevisionOf",
+              "seeAlso": "nsg:dash/slice/shapes/SliceShape"
+            }
+          ]
+        }
+      ],
+      "label": "Intracellular sharp electrode-recorded slice shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:IntraCellularSharpElectrodeRecordedSlice"
+    }
+  ]
+}

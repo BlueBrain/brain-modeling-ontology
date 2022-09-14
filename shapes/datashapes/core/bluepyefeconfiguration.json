@@ -1,0 +1,107 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/bluepyefeconfiguration/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/bluepyefeconfiguration",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/typedlabeledontologyterm"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/bluepyefeconfiguration/v0.1.7.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/bluepyefeconfiguration/shapes/BluePyEfeConfigurationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Species",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Species",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/SpeciesOntologyTermShape",
+              "path": "nsg:species"
+            },
+            {
+              "description": "Brain region",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Brain region",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/BrainRegionOntologyTermShape",
+              "path": "nsg:brainRegion"
+            },
+            {
+              "description": "Morphological cell type",
+              "maxCount": 1,
+              "minCount": 1,
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/MorphologicalCellTypeOntologyTermShape",
+              "path": "nsg:mType"
+            },
+            {
+              "description": "Electrical cell type",
+              "maxCount": 1,
+              "minCount": 1,
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/ElectricalCellTypeOntologyTermShape",
+              "path": "nsg:eType"
+            },
+            {
+              "description": "Optional list of experimental cells for this cell type",
+              "node": "this:ExperimentalCellShape",
+              "path": "nsg:experimentalCell"
+            },
+            {
+              "description": "Configuration dictionary for features extraction",
+              "maxCount": 1,
+              "minCount": 1,
+              "nodeKind": "sh:BlankNode",
+              "path": "nsg:featureExtractionConfiguration"
+            },
+            {
+              "description": "Stimuli to experiment mapping",
+              "maxCount": 1,
+              "nodeKind": "sh:BlankNode",
+              "path": "nsg:stimuliToExperimentMap"
+            }
+          ]
+        }
+      ],
+      "comment": "BluePyEfe features extraction configuration shape.",
+      "label": "BluePyEfe configuration shape",
+      "targetClass": "nsg:Configuration"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/bluepyefeconfiguration/shapes/ExperimentalCellShape",
+      "@type": "NodeShape",
+      "label": "Shape specifies cell list ",
+      "property": [
+        {
+          "description": "Name of the cell",
+          "maxCount": 1,
+          "minCount": 1,
+          "path": "schema:name"
+        },
+        {
+          "description": "Comments about the cell",
+          "maxCount": 1,
+          "path": "schema:description"
+        },
+        {
+          "datatype": "xsd:integer",
+          "description": "Channel number",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Channel",
+          "path": "nsg:channel"
+        }
+      ]
+    }
+  ]
+}

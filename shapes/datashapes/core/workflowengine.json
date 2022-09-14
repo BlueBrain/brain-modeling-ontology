@@ -1,0 +1,79 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/workflowengine/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/workflowengine",
+  "@type": "Schema",
+  "imports": [
+    "nsg:dash/softwareagent",
+    "nsg:commons/entity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/workflowengine/shapes/WorkflowEngineShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:dash/softwareagent/shapes/SoftwareAgentShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "Name of the workflow that engine was running.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Name.",
+              "path": "schema:name"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Optional description of the workflow.",
+              "maxCount": 1,
+              "name": "Description.",
+              "path": "schema:description"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Version of the workflow engine.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Version.",
+              "path": "schema:version"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Parameters which were used to run the workflow.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Parameter.",
+              "path": "nsg:parameter"
+            },
+            {
+              "class": "nsg:Configuration",
+              "description": "Workflow configuration file.",
+              "maxCount": 1,
+              "name": "Workflow Engine Configuration file.",
+              "node": "nsg:commons/entity/shapes/EntityShape",
+              "path": "nsg:configuration"
+            },
+            {
+              "class": "prov:Entity",
+              "description": "Workflow tasks definition file.",
+              "maxCount": 1,
+              "name": "Task file.",
+              "node": "nsg:commons/entity/shapes/EntityShape",
+              "path": "nsg:task"
+            }
+          ]
+        }
+      ],
+      "description": "Software agent which executes automated workflows.",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:WorkflowEngine"
+    }
+  ]
+}

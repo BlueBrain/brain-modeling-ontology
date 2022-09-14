@@ -1,13 +1,18 @@
 """Utils for processing ontologies."""
 import copy
 import json
-from pyld import jsonld
+from typing import Dict
 
+from pyld import jsonld
+from kgforge.core.commons.context import Context
 from collections import OrderedDict
 
 import rdflib
+from pyshacl.rdfutil import clone_graph
 from rdflib import OWL, RDF, RDFS, XSD
-from rdflib.paths import OneOrMore
+from rdflib.paths import OneOrMore, ZeroOrMore
+
+from bmo_tools.utils import SHACL, NXV
 
 TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
 ALREADY_EXISTS_ERROR = " already exists in project"
@@ -27,28 +32,135 @@ def graph_free_jsonld(jsonld_doc, context=None):
         return jsonld_doc
 
 
-def frame_ontology(ontology_graph, context):
+def frame_ontology(ontology_graph, context, context_json):
     """Frame ontology into a JSON-LD payload."""
-    onto_string = ontology_graph.serialize(
-        format="json-ld", auto_compact=True, indent=2)
-    onto_json = json.loads(onto_string)
+
     frame_json = {
-        "@context": context,
+        "@context": context_json,
         "@type": str(OWL.Ontology),
-        "@embed": True,
-        "nsg:defines": [{
-            "@type": ["owl:Class", "owl:ObjectProperty"]
+        "defines": [{
+            "@type": ["owl:Class", "owl:ObjectProperty"],
+            "subClassOf":[
+                {
+                    "@embed": False
+                    #"@id":{},
+                   #"@explicit": True
+                }
+            ],
+            "equivalentClass":[
+                {
+                    "@embed": False
+
+                }
+            ],
+            "sameAs": [
+                {
+                    "@embed": False
+
+                }
+            ],
+            "hasPart": [
+                {
+                    "@embed": False
+                }
+            ],
+            "isPartOf": [
+                {
+                    "@embed": False
+                }
+            ],
+            #,
+           "@embed": True
         }]
     }
-    framed = jsonld.frame(onto_json, frame_json)
+    new_ontology_graph = ontology_graph
+    # handle OWL.NamedIndividual with blank node type
+    for indiv in ontology_graph.subjects(RDF.type, OWL.NamedIndividual):
+        _types = ontology_graph.objects(indiv, RDF.type)
+        bns = [bn for bn in _types if isinstance(bn, rdflib.term.BNode)]
+
+        if bns:
+            new_ontology_graph = clone_graph(ontology_graph)
+            for b in bns:
+                new_ontology_graph.remove((indiv, RDF.type, b))
+    onto_string = new_ontology_graph.serialize(format="json-ld", auto_compact=True, indent=2)
+    onto_json = json.loads(onto_string)
+
+    framed = jsonld.frame(onto_json, frame_json,  options={"expandContext": context_json, "pruneBlankNodeIdentifiers":True})
     framed_onto_json = graph_free_jsonld(framed)
+    if "skos:prefLabel" in framed_onto_json and framed_onto_json["skos:prefLabel"]:
+        framed_onto_json["prefLabel"] = framed_onto_json.pop("skos:prefLabel", None)
+    if "rdfs:label" in framed_onto_json and framed_onto_json["rdfs:label"]:
+        framed_onto_json["label"] = framed_onto_json.pop("rdfs:label", None)
+
+    to_remove = []
+    for i, cls in enumerate(framed_onto_json["defines"]):
+        if isinstance(cls, dict):
+            _frame_class(cls, context, ontology_graph)
+
+    framed_onto_json["defines"][:] = (val for val in framed_onto_json["defines"] if val not in to_remove)
+    framed_onto_json["@context"] = context.iri
     return framed_onto_json
 
+
+SYNTHETIC_SENTENCES = {
+"./ontologies/bbp/bmo.ttl":{
+    "synthetic":"./texts/synthetic_texts_bmo.json"
+},
+        "./ontologies/bbp/data-types.ttl":{
+},
+        "./ontologies/bbp/efeatures.ttl":{
+    "synthetic":"./texts/synthetic_texts_NeuronElectrophysiologicalFeature.json"
+},
+        "./ontologies/bbp/mfeatures.ttl":{
+    "synthetic":"./texts/synthetic_texts_NeuronMorphologicalFeature.json"
+},
+        "./ontologies/bbp/molecular-systems.ttl":{
+    "synthetic":"./texts/synthetic_texts_Molecular_systems.json"
+},
+        "./ontologies/bbp/speciestaxonomy.ttl":{
+    "synthetic":"./texts/synthetic_texts_Species.json"
+},
+        "./ontologies/bbp/stimulustypes.ttl":{
+    "synthetic":"./texts/synthetic_texts_ElectricalStimulus.json"
+},
+        "./ontologies/bbp/celltypes.ttl":{
+    "synthetic":"./texts/synthetic_texts_BrainCellType.json"
+},
+        "./ontologies/bbp/brainregion.ttl":{
+    "synthetic":"./texts/synthetic_texts_BrainRegion.json",
+    "wiki":"./texts/wiki_texts_BrainRegion.json"
+
+}
+}
+
+def _register_schema(forge, schema_file, schema_resource, all_schema_graph, jsonld_schema_context_resource, tag):
+
+    forge.register(schema_resource, schema_id="https://bluebrain.github.io/nexus/schemas/shacl-20170720.ttl")
+    if schema_resource._last_action and not schema_resource._last_action.succeeded and\
+       ALREADY_EXISTS_ERROR not in schema_resource._last_action.message:
+        raise Exception(f"Registration of the schema with id '{schema_resource.id}' located in '{schema_file}' failed: {schema_resource._last_action.message}...\n")
+
+    if schema_resource._last_action and not schema_resource._last_action.succeeded and\
+       ALREADY_EXISTS_ERROR in schema_resource._last_action.message:
+        # Update and tag if 'already exists' error was encountered
+        print("Schema already exists, updating...\n")
+        schema_updated = _process_already_existing_resource(forge, schema_resource)
+        forge.update(schema_updated, schema_id="https://bluebrain.github.io/nexus/schemas/shacl-20170720.ttl")
+        if schema_updated._last_action and schema_updated._last_action.succeeded is True and tag:
+            forge.tag(schema_updated, tag)
+            pass
+
+    # Tag if the registration was successful
+    if schema_resource._last_action and schema_resource._last_action.succeeded is True and tag:
+        print("Schema registration successful, tagging...\n")
+        forge.tag(schema_resource, tag)
+        pass
 
 def _register_ontology_resource(forge, ontology_json, ontology_path, ontology_graph, class_resources_mapped = None):
 
     ontology_json = copy.deepcopy(ontology_json)
-    del ontology_json["@context"]
+    #del ontology_json["@context"]
     ontology_resource = forge.from_json(ontology_json)
     dirpath = f"./{ontology_path.split('/')[-1].split('.')[0]}"
     dirpath_ttl = f"{dirpath}.ttl"
@@ -67,11 +179,19 @@ def _register_ontology_resource(forge, ontology_json, ontology_path, ontology_gr
         defined_types_df.to_csv(dirpath_csv)
         ontology_resource.distribution.append(forge.attach(dirpath_csv, content_type="text/csv"))
 
+    if ontology_path in SYNTHETIC_SENTENCES:
+        synthetic = SYNTHETIC_SENTENCES[ontology_path].get("synthetic", None)
+        wiki = SYNTHETIC_SENTENCES[ontology_path].get("wiki", None)
+        if synthetic:
+            ontology_resource.distribution.append(forge.attach(synthetic, content_type="text/json"))
+        if wiki:
+            ontology_resource.distribution.append(forge.attach(wiki, content_type="text/json"))
+
     forge.register(ontology_resource, schema_id="https://neuroshapes.org/dash/ontology")
     return ontology_resource
 
 
-def register_ontology(forge, ontology_graph, context, path, tag=None, class_resources_mapped=None):
+def register_ontology(forge, ontology_graph, context, context_json, path, tag=None, class_resources_mapped=None):
     """Register ontology resource to the store.
 
 
@@ -80,61 +200,66 @@ def register_ontology(forge, ontology_graph, context, path, tag=None, class_reso
     to classes and retry registering. If ontology exists, update it.
     """
     # Frame ontology given the provided context
-    ontology_json = frame_ontology(ontology_graph, context)
+    ontology_json = frame_ontology(ontology_graph, context, context_json)
 
     # Register ontology as is
     ontology_resource = _register_ontology_resource(forge, ontology_json, path, ontology_graph, class_resources_mapped)
 
-    if not ontology_resource._last_action.succeeded and\
+    if ontology_resource._last_action and not ontology_resource._last_action.succeeded and\
        ALREADY_EXISTS_ERROR not in ontology_resource._last_action.message:
         print("Ontology registration failed, removing 'defines' relationships...\n")
         # If ontology is too large (too many classes), we need to remove
         # 'defines', relationships otherwise the payload explodes
         remove_defines_relation(ontology_graph)
         # Retry registering after the `define` rels are removed
-        ontology_json = frame_ontology(ontology_graph, context)
+        ontology_json = frame_ontology(ontology_graph, context, context_json)
         print("Retrying registration...\n")
         ontology_resource = _register_ontology_resource(
             forge, ontology_json, path, ontology_graph, class_resources_mapped)
 
-    if not ontology_resource._last_action.succeeded and\
+    if ontology_resource._last_action and not ontology_resource._last_action.succeeded and\
        ALREADY_EXISTS_ERROR in ontology_resource._last_action.message:
         # Update and tag if 'already exists' error was encountered
         print("Ontology already exists, updating...\n")
         ontology_updated = _process_already_existing_resource(forge, ontology_resource)
         forge.update(ontology_updated)
         if tag:
+            print("Registration successful, tagging...\n")
             forge.tag(ontology_updated, tag)
-    
+            pass
     # Tag if the registration was successful
-    if ontology_resource._last_action.succeeded is True and tag:
+    if ontology_resource._last_action and ontology_resource._last_action.succeeded is True and tag:
         print("Registration successful, tagging...\n")
         forge.tag(ontology_resource, tag)
+        pass
 
 def _process_already_existing_resource(forge, resource):
     resource_json = forge.as_json(resource)
     resource_id = resource_json.pop("@id", resource_json.pop("id", None))
-    resource_json.pop("@type", resource_json.pop("type", None))
+    resource_id = forge._model.context().expand(resource_id)
+    #resource_json.pop("@type", resource_json.pop("type", None))
     resource_updated = forge.from_json(resource_json)
     existing_resource = forge.retrieve(resource_id)
     resource_updated.id = existing_resource.id
-    resource_updated.type = existing_resource.type
+    if hasattr(resource, "context"):
+        resource_updated.context = resource.context
+    #resource_updated.type = existing_resource.type
     resource_updated._store_metadata = existing_resource._store_metadata
     return resource_updated
 
 
 def find_ontology_resource(graph):
-    """Find the ontology resource by label."""
+    """Find the ontology resource by type. The first one is returned"""
     for s in graph.subjects(RDF.type, OWL.Ontology):
         return s
     else:
         raise ValueError(
-            "Ontology resource with the specified label is not found")
+            "No Ontology resource was found")
 
 
-def add_defines_relation(graph):
+def add_defines_relation(graph, ontology):
     """Add defines relationship from the ontology to every class."""
-    ontology = find_ontology_resource(graph)
+    #ontology = find_ontology_resource(graph)
 
     # Create 'defines' rel
     defines_rel = rdflib.URIRef("https://neuroshapes.org/defines")
@@ -148,14 +273,14 @@ def add_defines_relation(graph):
 
 def remove_defines_relation(graph):
     """Add defines relationship from the ontology to every class."""
-    ontology = find_ontology_resource(graph)
+    #ontology = find_ontology_resource(graph)
 
     # Create 'defines' rel
     defines_rel = rdflib.URIRef("https://neuroshapes.org/defines")
 
     # Add 'defines' rels to all the classes
     for c in graph.subjects(RDF.type, OWL.Class):
-        graph.remove((ontology, defines_rel, c))
+        graph.remove((None, defines_rel, c))
 
 
 def _process_blank_nodes(ontology_graph, source, blank_node):
@@ -215,70 +340,284 @@ def add_ontology_label(ontology_graph, ontology, label=None):
         (ontology, RDFS.label, rdflib.Literal(label, datatype=XSD.string)))
 
 
-def frame_classes(forge, ontology_graph, context):
+def _collect_ancestors_restrictions(ontology_graph, _class, restrictions_property =RDFS.subClassOf, restrictions_only=False):
+    rels = []
+    all_blank_node_triples = []
+    for p, o in ontology_graph.predicate_objects(_class):
+        if p == restrictions_property and isinstance(o, rdflib.term.BNode):
+            rel, target, blank_node_triples = _process_blank_nodes(ontology_graph, _class, o)
+            rels.append((rel, target))
+            all_blank_node_triples.extend(blank_node_triples)
+        elif not restrictions_only:
+            rels.append((p,o))
+        """
+        elif p == RDFS.subClassOf:
+            rels.extend(_collect_ancestors_restrictions(ontology_graph, o))
+        """
+    return rels, all_blank_node_triples
+
+
+def frame_classes(ontology_graph, forge_context, context):
     """Frame ontology classes into JSON-LD payloads."""
+    class_jsons = []
+    class_ids= []
+    all_blank_node_triples = []
     frame_json_class = {
         "@context": context,
         "@type": [str(OWL.Class), str(OWL.NamedIndividual)],
         "@embed": True
     }
 
-    ontology = find_ontology_resource(ontology_graph)
-
-    class_jsons = []
     # Consider removing the restrictions
-    for current_class in ontology_graph.subjects(RDF.type, OWL.Class):
+    cls = ontology_graph.subjects(RDF.type, OWL.Class)
+
+    cls_int = [(c, RDFS.subClassOf) for c in cls]
+    inst = ontology_graph.subjects(RDF.type, OWL.NamedIndividual)
+
+    cls_int.extend([(i, RDF.type) for i in inst])
+    for current_class, restrictions_property in cls_int:
         current_class_graph = rdflib.Graph()
-        for (p, o) in ontology_graph.predicate_objects(current_class):
-            if p == RDFS.subClassOf and isinstance(o, rdflib.term.BNode):
-                rel, target, blank_node_triples = _process_blank_nodes(ontology_graph, current_class, o)
-                current_class_graph.add((current_class, rel, target))
-            else:
-                current_class_graph.add((current_class, p, o))
-        current_class_graph.add(
-            (current_class, RDFS.isDefinedBy, ontology))
+        # consider collecting transitive ancestors' restrictions only for argument provided classes
+
+        rels, blank_node_triples = _collect_ancestors_restrictions(ontology_graph, current_class, restrictions_property=restrictions_property)
+
+        for p, o in rels:
+            current_class_graph.add((current_class, p, o))
 
         current_class_string = current_class_graph.serialize(
             format="json-ld", auto_compact=True, indent=2)
         current_class_framed = jsonld.frame(
             json.loads(current_class_string), frame_json_class)
         current_class_framed = graph_free_jsonld(current_class_framed)
-
         identifier = str(current_class)
         current_class_framed["@id"] = str(identifier)
-
-        if "subClassOf" in current_class_framed:
-            if isinstance(current_class_framed["subClassOf"], list):
-                item_list = []
-                for item in current_class_framed["subClassOf"]:
-                    if isinstance(item, str):
-                        item_list.append(item)
-                current_class_framed["subClassOf"] = item_list
-            elif isinstance(current_class_framed["subClassOf"], dict):
-                current_class_framed["subClassOf"] =\
-                    current_class_framed["subClassOf"]["@id"]
-            else:
-                current_class_framed["subClassOf"] =\
-                    [current_class_framed["subClassOf"]]
-
         del current_class_framed["@context"]
-        class_jsons.append(current_class_framed)
-    return class_jsons
+        new_current_class_framed = _frame_class(current_class_framed, forge_context, ontology_graph)
+        new_current_class_framed.pop("bmo:canHaveTType", None)
+        class_jsons.append(new_current_class_framed)
+        class_ids.append(identifier)
+        all_blank_node_triples.append(blank_node_triples)
+    return class_ids, class_jsons, all_blank_node_triples
+
+
+def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
+
+    to_pop = []
+    for k, v in cls.items():
+        if v and v != {}:
+            k_expanded = context.expand(k)
+            k_term = context.find_term(k_expanded, "@id")
+
+            if k_term and k_term.type == "@id":
+                res = [context.expand(s) if "uberon:" not in s else str(s).replace("uberon:", context.expand('uberon'))
+                    for s in v] if isinstance(v, list) \
+                    else ([context.expand(v) if "uberon:" not in v else str(v).replace("uberon:", context.expand(
+                    'uberon'))] if isinstance(v, str) else [context.expand(v["@id"])])
+                ns, fragment = rdflib.namespace.split_uri(k_expanded)
+
+                if fragment in cls and fragment != k:
+                    if isinstance(cls[fragment], list):
+                        cls[fragment].extend(res)
+                    elif isinstance(cls[fragment], Dict):
+                        cls[fragment] = [cls[fragment]]
+                        cls[fragment].extend(res)
+                    elif isinstance(cls[fragment], str):
+                        cls[fragment] = [cls[fragment]]
+                        cls[fragment].extend(res)
+
+                    to_pop.append(k)
+                else:
+                    cls[k] = res
+        else:
+            to_pop.append(k)
+    for c in to_pop:
+        cls.pop(c)
+    cls.pop("bmo:canHaveTType", None)
+    if "@id" in cls:
+        cls["@id"] = context.expand(cls["@id"])
+    if "subClassOf" in cls and cls["subClassOf"] and cls["subClassOf"] != {}:
+        cls["subClassOf"] = list(context.expand(s) for s in cls["subClassOf"] if s != {}) if isinstance(
+            cls["subClassOf"], list) \
+            else ([context.expand(cls["subClassOf"])] if isinstance(cls["subClassOf"], str) else [
+            context.expand(cls["subClassOf"]["@id"])])
+
+    rels, _ = _collect_ancestors_restrictions(ontology_graph, rdflib.term.URIRef(cls["@id"]), restrictions_only=True)
+
+    for p, o in rels:
+        p_symbol = context.to_symbol(p)
+        if p_symbol not in cls:
+            cls[p_symbol] = []
+        else:
+            if isinstance(cls[p_symbol], Dict) or isinstance(cls[p_symbol], str):
+                cls[p_symbol] = [cls[p_symbol]]
+        cls[p_symbol].append(context.expand(str(o)))
+
+    if "hasPart" in cls and cls["hasPart"] and cls["hasPart"] != {}:
+        cls["hasPart"] = list(context.expand(s) for s in cls["hasPart"]) if isinstance(cls["hasPart"], list) \
+            else ([context.expand(cls["hasPart"])] if isinstance(cls["hasPart"], str) else [
+            context.expand(cls["hasPart"]["@id"])])
+    if "isPartOf" in cls and cls["isPartOf"] and cls["isPartOf"] != {}:
+        cls["isPartOf"] = list(context.expand(s) for s in cls["isPartOf"]) if isinstance(cls["isPartOf"], list) \
+            else ([context.expand(cls["isPartOf"])] if isinstance(cls["isPartOf"], str) else [
+            context.expand(cls["isPartOf"]["@id"])])
+
+    if "schema:isPartOf" in cls and cls["schema:isPartOf"]:
+        ip = cls.pop("schema:isPartOf", None)
+        if ip:
+            cls["isPartOf"] = ip if isinstance(ip, list) else [ip]
+    if "rdfs:seeAlso" in cls and cls["rdfs:seeAlso"]:
+        sa = cls.pop("rdfs:seeAlso", None)
+        if sa:
+            cls["seeAlso"] = sa if isinstance(sa, list) else [sa]
+    if "schema:about" in cls and cls["schema:about"]:
+        ab = cls.pop("schema:about", None)
+        if ab:
+            cls["about"] = ab if isinstance(ab, list) else [ab]
+
+    if "bmo:usesCircuitWithProperty" in cls and cls["bmo:usesCircuitWithProperty"]:
+        uc = cls.pop("bmo:usesCircuitWithProperty", None)
+        if uc:
+            cls["usesCircuitWithProperty"] = uc if isinstance(uc, list) else [uc]
+
+    if "bmo:generatesCircuitWithProperty" in cls and cls["bmo:generatesCircuitWithProperty"]:
+        gc = cls.pop("bmo:generatesCircuitWithProperty", None)
+        if gc:
+            cls["generatesCircuitWithProperty"] = gc if isinstance(gc, list) else [gc]
+
+    if "bmo:canHaveTType" in cls and cls["bmo:canHaveTType"]:
+        ct = cls.pop("bmo:canHaveTType", None)
+        if ct:
+            cls["canHaveTType"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:canHaveBrainRegion" in cls and cls["bmo:canHaveBrainRegion"]:
+        ct = cls.pop("bmo:canHaveBrainRegion", None)
+        if ct:
+            cls["canHaveBrainRegion"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:hasParameter" in cls and cls["bmo:hasParameter"]:
+        ct = cls.pop("bmo:hasParameter", None)
+        if ct:
+            cls["hasParameter"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:isAssociatedWith" in cls and cls["bmo:isAssociatedWith"]:
+        ct = cls.pop("bmo:isAssociatedWith", None)
+        if ct:
+            cls["isAssociatedWith"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:expressionProfile" in cls and cls["bmo:expressionProfile"]:
+        ct = cls.pop("bmo:expressionProfile", None)
+        if ct:
+            cls["expressionProfile"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:isBasedOn" in cls and cls["bmo:isBasedOn"]:
+        ct = cls.pop("bmo:isBasedOn", None)
+        if ct:
+            cls["isBasedOn"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:molecule" in cls and cls["bmo:molecule"]:
+        ct = cls.pop("bmo:molecule", None)
+        if ct:
+            cls["molecule"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:postsynapticNeuron" in cls and cls["bmo:postsynapticNeuron"]:
+        ct = cls.pop("bmo:postsynapticNeuron", None)
+        if ct:
+            cls["postsynapticNeuron"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:presynapticNeuron" in cls and cls["bmo:presynapticNeuron"]:
+        ct = cls.pop("bmo:presynapticNeuron", None)
+        if ct:
+            cls["presynapticNeuron"] = ct if isinstance(ct, list) else [ct]
+    if "nsg:hasFeature" in cls and cls["nsg:hasFeature"]:
+        ct = cls.pop("nsg:hasFeature", None)
+        if ct:
+            cls["hasFeature"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:hasWorkflowDefinition" in cls and cls["bmo:hasWorkflowDefinition"]:
+        ct = cls.pop("bmo:hasWorkflowDefinition", None)
+        if ct:
+            cls["hasWorkflowDefinition"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:hasType" in cls and cls["bmo:hasType"]:
+        ct = cls.pop("bmo:hasType", None)
+        if ct:
+            cls["hasType"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:hasMType" in cls and cls["bmo:hasMType"]:
+        ct = cls.pop("bmo:hasMType", None)
+        if ct:
+            cls["hasMType"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:canHaveBrainRegion" in cls and cls["bmo:canHaveBrainRegion"]:
+        ct = cls.pop("bmo:canHaveBrainRegion", None)
+        if ct:
+            cls["canHaveBrainRegion"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:canHaveMType" in cls and cls["bmo:canHaveMType"]:
+        ct = cls.pop("bmo:canHaveMType", None)
+        if ct:
+            cls["canHaveMType"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:exposesParameter" in cls and cls["bmo:exposesParameter"]:
+        ct = cls.pop("bmo:exposesParameter", None)
+        if ct:
+            cls["exposesParameter"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:sourceType" in cls and cls["bmo:sourceType"]:
+        ct = cls.pop("bmo:sourceType", None)
+        if ct:
+            cls["sourceType"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:targetType" in cls and cls["bmo:targetType"]:
+        ct = cls.pop("bmo:targetType", None)
+        if ct:
+            cls["targetType"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:constraints" in cls and cls["bmo:constraints"]:
+        ct = cls.pop("bmo:constraints", None)
+        if ct:
+            cls["constraints"] = ct if isinstance(ct, list) else [ct]
+
+    if "skos:prefLabel" in cls and cls["skos:prefLabel"]:
+        cls["prefLabel"] = cls.pop("skos:prefLabel", None)
+    if "rdfs:label" in cls and cls["rdfs:label"]:
+        cls["label"] = cls.pop("rdfs:label", None)
+
+    if "skos:definition" in cls and cls["skos:definition"]:
+        cls["definition"] = cls.pop("skos:definition", None)
+    if "skos:notation" in cls and cls["skos:notation"]:
+        cls["notation"] = cls.pop("skos:notation", None)
+    if "skos:definition" in cls and cls["skos:definition"]:
+        cls["definition"] = cls.pop("skos:definition", None)
+    if "skos:altLabel" in cls and cls["skos:altLabel"]:
+        cls["altLabel"] = cls.pop("skos:altLabel", None)
+
+    if "isDefinedBy" in cls and cls["isDefinedBy"] and isinstance(cls["isDefinedBy"], list):
+        cls["isDefinedBy"] = cls["isDefinedBy"][0]
+
+    return cls
 
 
 def register_classes(forge, class_resources_jsons, tag=None):
     """Register ontology classes to the store."""
+    errors = []
     for class_json in class_resources_jsons:
-        resource = forge.from_json(class_json)
-        forge.register(resource, schema_id="datashapes:ontologyentity")
-        if resource._last_action.succeeded is True and tag is not None:
-            forge.tag(resource, tag)
-        if resource._last_action.error == "RegistrationError":
-            resource_updated = _process_already_existing_resource(forge, resource)
-            forge.update(resource_updated)
-            if tag is not None:
-                forge.tag(resource_updated, tag)
+        class_json["@context"] = "https://neuroshapes.org"
+        try:
+            resource = forge.from_json(class_json)
+            forge.register(resource, schema_id="datashapes:ontologyentity")
+            if resource._last_action and resource._last_action.succeeded is True and tag is not None:
+                forge.tag(resource, tag)
 
+            """
+            if resource._last_action and resource._last_action.error == "RegistrationError":
+                resource_updated = _process_already_existing_resource(forge, resource)
+                forge.update(resource_updated)
+                if tag is not None:
+                    forge.tag(resource_updated, tag)
+            """
+            if resource._last_action and not resource._last_action.succeeded and \
+                    ALREADY_EXISTS_ERROR in resource._last_action.message:
+                resource_updated = _process_already_existing_resource(forge, resource)
+                forge._debug = True
+                forge.update(resource_updated)
+                if tag is not None:
+                    forge.tag(resource_updated, tag)
+                if not resource_updated._last_action.succeeded:
+                    raise Exception(
+                        f"Failed to register or update class:{json.dumps(class_json)}: {resource_updated._last_action.message}")
+
+            if resource._last_action and not resource._last_action.succeeded and \
+                    ALREADY_EXISTS_ERROR not in resource._last_action.message:
+                print(f"Failed to register or update class:{resource.id}: {resource._last_action.message}")
+                raise Exception(f"Failed to register or update class:{json.dumps(class_json)}: {resource._last_action.message}")
+        except Exception as e:
+            errors.append(e)
+            pass
+    return errors
 
 def normalize_uris(filename, prefix, new_filename, format="turtle"):
     """Normalize resource URIs to the provided prefix."""
@@ -399,7 +738,149 @@ def subontology_from_term(graph, entry_point, top_down=True, closed=True):
     return subgraph
 
 
-def replace_is_defined_by_uris(graph, uri_mapping, ontology_uri):
+def build_context_from_ontology(ontology_graph, forge_context, vocab=None, binding=None):
+    """
+    Build a jsonld context object.
+    """
+    # Check whether a term is already defined in the context
+    # excludes brain region (https://neuroshapes.org/BrainRegion) values
+    new_forge_context = _initialise_new_context(forge_context, vocab, binding)
+    errors = []
+    for cls in ontology_graph.subjects(RDF.type, OWL.Class):
+        try:
+            brain_region_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://neuroshapes.org/BrainRegion"))))
+            species_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://neuroshapes.org/Species"))))
+            taxonomic_rank_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*ZeroOrMore, rdflib.term.URIRef("http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank"))))
+            pato_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*ZeroOrMore, rdflib.term.URIRef("http://purl.obolibrary.org/obo/PATO_0000001"))))
+            bmo_mapping_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/Mapping"))))
+            braincell_types_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/BrainCellTranscriptomeType"))))
+            etypes_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://neuroshapes.org/EType"))))
+            mtypes_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://neuroshapes.org/MType"))))
+            nt_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/NeurotransmitterType"))))
+            nnt_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType"))))
+            glia_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/GliaType"))))
+            ion_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/Ion"))))
+            ioncurrent_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/IonCurrent"))))
+            potassium_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://neuroshapes.org/PotassiumChannel"))))
+            brain_area_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/BrainArea"))))
+            brainlayer_triples = list(ontology_graph.triples((cls, RDFS.subClassOf*OneOrMore, rdflib.term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer"))))
+
+            name, idref = _build_context_item(cls, new_forge_context)
+
+            if name is not None and idref is not None and not str(idref).startswith("http://purl.obolibrary.org/obo/UBERON_")\
+                    and len(brain_region_triples) == 0 and len(species_triples) == 0 \
+                            and len(taxonomic_rank_triples) == 0 and len(pato_triples) == 0 \
+                            and len(bmo_mapping_triples) == 0 and len(braincell_types_triples) == 0 \
+                            and len(mtypes_triples) == 0 and len(nt_triples) == 0 \
+                            and len(ion_triples) == 0 and len(ioncurrent_triples) == 0 \
+                            and len(potassium_triples) == 0 and len(brain_area_triples) == 0 \
+                            and len(brainlayer_triples) == 0 and len(etypes_triples) == 0\
+                    and len(nnt_triples) == 0 and len(glia_triples) == 0:
+                new_forge_context.add_term(name, idref)
+                new_forge_context.document["@context"][name] = {"@id": idref}
+
+        except Exception as e:
+            defining_ontology = ontology_graph.objects(cls, RDFS.isDefinedBy)
+            errors.append(f"Failed to build context from {cls} defined in the ontology {str(list(defining_ontology))}: {e}")
+
+    for obj_prop in ontology_graph.subjects(RDF.type, OWL.ObjectProperty):
+
+        try:
+            name, idref = _build_context_item(obj_prop, new_forge_context)
+            if name is not None and idref is not None:
+                new_forge_context.add_term(name, idref, "@id")
+                new_forge_context.document["@context"][name] = {"@id": idref, "@type":"@id"}
+
+        except Exception as e:
+            defining_ontology = ontology_graph.objects(obj_prop, RDFS.isDefinedBy)
+            errors.append(f"Failed to build context from {obj_prop} defined in the ontology {str(list(defining_ontology))}: {e}")
+
+    for annot_prop in ontology_graph.subjects(RDF.type, OWL.AnnotationProperty):
+        try:
+            name, idref = _build_context_item(annot_prop, new_forge_context)
+            if name is not None and idref is not None:
+                new_forge_context.add_term(name, idref)
+                new_forge_context.document["@context"][name] = {"@id": idref}
+        except Exception as e:
+            defining_ontology = ontology_graph.objects(annot_prop, RDFS.isDefinedBy)
+            errors.append(
+                f"Failed to build context from {annot_prop} defined in the ontology {str(list(defining_ontology))}: {e}")
+    return new_forge_context, errors
+
+
+def build_context_from_schema(schema_graph, forge_context, vocab=None, binding=None):
+    new_forge_context = _initialise_new_context(forge_context, vocab, binding)
+    errors = []
+
+    for shape in schema_graph.subjects(RDF.type, SHACL.NodeShape):
+        defining_schema = schema_graph.subjects(NXV.shapes, shape)
+        for targetClass in schema_graph.objects(shape, SHACL.targetClass):
+            try:
+                name, idref = _build_context_item(targetClass, new_forge_context)
+                if name is not None and idref is not None:
+                    new_forge_context.add_term(name, idref)
+                    new_forge_context.document["@context"][name] = {"@id": idref}
+            except Exception as e:
+                errors.append(
+                    f"Failed to build context from {targetClass} targeted by the shape {shape} in the schema {str(list(defining_schema))}: {e}")
+
+        for targetObjects in schema_graph.objects(shape, SHACL.targetObjectsOf):
+            try:
+                name, idref = _build_context_item(targetObjects, new_forge_context)
+                if name is not None and idref is not None:
+                    new_forge_context.add_term(name, idref)
+                    new_forge_context.document["@context"][name] = {"@id": idref}
+            except Exception as e:
+                errors.append(
+                    f"Failed to build context from {targetObjects} targeted by the shape {shape} in the schema {str(list(defining_schema))}: {e}")
+
+        for targetSubjects in schema_graph.objects(shape, SHACL.targetSubjectsOf):
+            try:
+                name, idref = _build_context_item(targetSubjects, new_forge_context)
+                if name is not None and idref is not None:
+                    new_forge_context.add_term(name, idref)
+                    new_forge_context.document["@context"][name] = {"@id": idref}
+            except Exception as e:
+                errors.append(
+                    f"Failed to build context from {targetSubjects} targeted by the shape {shape} in the schema {str(list(defining_schema))}: {e}")
+
+    return new_forge_context, errors
+
+
+def _initialise_new_context(forge_context, vocab, binding):
+    new_forge_context = Context(forge_context.document, forge_context.iri)
+    if vocab:
+        new_forge_context.vocab = vocab
+    if binding:
+        for b in binding:
+            new_forge_context.add_term(name=b[0], idref=b[1], prefix=True)
+    return new_forge_context
+
+
+def _build_context_item(uri_ref, forge_context):
+
+    try:
+        ns, fragment = rdflib.namespace.split_uri(str(uri_ref))
+    except ValueError as ve:
+        raise ValueError(f"Error splitting URI {uri_ref}: {ve}")
+
+    name, idref = None, None
+    found_uri_ref = forge_context.find_term(str(uri_ref))
+    if found_uri_ref:  # uri_ref in context
+        if found_uri_ref.name == fragment:  # uri_ref in context, with same fragment
+            pass  # nothing to do
+        else:  # uri_ref in context, with different fragments
+            raise ValueError(f"The URI {str(uri_ref)} is present in the context under a name {found_uri_ref.name} different of its fragment {fragment}")
+    else:  # uri_ref not in context
+        if fragment in forge_context.terms:  # uri_ref not in context, fragment in
+            if str(uri_ref) != forge_context.terms[fragment].id:  # uri_ref not in context, fragment in but under different ns
+                raise ValueError(f"The fragment {fragment} of the term {str(uri_ref)} is present in the context under a different namespace {forge_context.terms[fragment].id}")
+        else:  # uri_ref not in context, fragment not in
+            name, idref = fragment, str(uri_ref) # a new context term can be created
+    return name, idref
+
+
+def replace_is_defined_by_uris(graph, uri_mapping, ontology_uri=None):
     """
         Replace targets of `isDefinedBy` rel with Nexus URIs.
         Replace WebProtégé generated ontology URIs with mapped ones.
@@ -407,23 +888,25 @@ def replace_is_defined_by_uris(graph, uri_mapping, ontology_uri):
 
     triples_to_add = set()
     triples_to_remove = set()
-    for s, p, o in graph.triples((None, RDFS.isDefinedBy, None)):
-        is_defined_by = str(o)
-        for k in uri_mapping:
-            if is_defined_by.startswith(k):
-                triples_to_add.add((s, p, rdflib.URIRef(uri_mapping[k])))
-                triples_to_remove.add((s, p, o))
-    new_ontology_uri = ontology_uri
-    if ontology_uri in uri_mapping:
-        new_ontology_uri = uri_mapping[ontology_uri]
-    for s, p, o in graph.triples((rdflib.term.URIRef(ontology_uri), None, None)):
-        triples_to_add.add((rdflib.term.URIRef(new_ontology_uri), p, o))
-        triples_to_remove.add((s, p, o))
-    for s, p, o in graph.triples((None, RDF.type, None)):
-        if isinstance(o, rdflib.term.BNode):
+    for s, p, o in graph.triples((None, None, None)):
+        new_s = uri_mapping.get(str(s), str(s))
+        new_p = uri_mapping.get(str(p), str(p))
+        new_o = uri_mapping.get(str(o), str(o))
+        if new_s != str(s) or new_p != str(p) or new_o != str(o):
+            if not isinstance(o, rdflib.term.Literal):
+                new_o = rdflib.URIRef(new_o)
+            else:
+                new_o = rdflib.Literal(new_o, o.language, o.datatype)
+            triples_to_add.add((rdflib.URIRef(new_s), rdflib.URIRef(new_p), new_o))
             triples_to_remove.add((s, p, o))
+
 
     for el in triples_to_remove:
         graph.remove(el)
     for el in triples_to_add:
         graph.add(el)
+    if ontology_uri:
+        new_ontology_uri = uri_mapping.get(ontology_uri, ontology_uri)
+        return rdflib.term.URIRef(new_ontology_uri)
+    return None
+

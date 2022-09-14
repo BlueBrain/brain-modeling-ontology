@@ -1,0 +1,112 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/minds/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/minds",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/subject",
+    "nsg:commons/brainlocation",
+    "nsg:commons/distribution",
+    "nsg:commons/typedlabeledontologyterm",
+    "nsg:commons/entity",
+    "nsg:commons/annotation"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/minds/shapes/MINDSShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The dataset release date.",
+              "maxCount": 1,
+              "name": "Release date",
+              "path": "schema:releaseDate"
+            },
+            {
+              "description": "The dataset type.",
+              "minCount": 1,
+              "name": "Type",
+              "nodeKind": "sh:IRI",
+              "path": "rdf:type"
+            },
+            {
+              "class": "nsg:BrainAtlasSpatialReferenceSystem",
+              "maxCount": 1,
+              "path": "nsg:isRegisteredIn"
+            },
+            {
+              "maxCount": 1,
+              "nodeKind": "sh:IRI",
+              "path": "nsg:atlasRelease"
+            },
+            {
+              "class": "nsg:Subject",
+              "description": "The subject of the study. This data represent an observation of this subject.",
+              "editorialNote": "Asserted subject entity. It may differ from the subject from the provenance.",
+              "minCount": 1,
+              "name": "Subject",
+              "path": "nsg:subject",
+              "seeAlso": "nsg:commons/subject/shapes/SubjectShape"
+            },
+            {
+              "class": "nsg:BrainLocation",
+              "description": "The Brain location object.",
+              "minCount": 1,
+              "name": "Brain Location",
+              "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+              "path": "nsg:brainLocation"
+            },
+            {
+              "class": "nsg:ObjectOfStudy",
+              "description": "Object of Study",
+              "editorialNote": "The object of study ",
+              "name": "Object of Study",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/ObjectOfStudyOntologyTermShape",
+              "path": "nsg:objectOfStudy"
+            },
+            {
+              "class": "nsg:Contribution",
+              "description": "Information about the contribution of an agent during the generation of this dataset.",
+              "minCount": 1,
+              "name": "Qualified Contribution",
+              "nodeKind": "sh:BlankNodeOrIRI",
+              "path": "nsg:contribution",
+              "seeAlso": "nsg:commons/contribution/shapes/ContributionShape"
+            },
+            {
+              "class": "schema:DataDownload",
+              "description": "A dataset in downloadable form. The downloadable form has a specific format and is located at a specific location.",
+              "minCount": 1,
+              "name": "Distribution",
+              "node": "nsg:commons/distribution/shapes/DistributionShape",
+              "path": "schema:distribution"
+            },
+            {
+              "class": "nsg:Annotation",
+              "description": "Annotations of the dataset.",
+              "name": "Annotation",
+              "node": "nsg:commons/annotation/shapes/AnnotationShape",
+              "path": "nsg:annotation"
+            }
+          ]
+        }
+      ],
+      "label": "Minimum Information about a Neuroscience DataSet",
+      "nodeKind": "sh:IRI",
+      "seeAlso": [
+        "https://www.w3.org/TR/vocab-dcat",
+        "https://schema.org",
+        "https://www.w3.org/TR/prov-o"
+      ]
+    }
+  ]
+}

@@ -13,6 +13,7 @@
 @prefix mso: <https://bbp.epfl.ch/ontologies/core/molecular-systems/> .
 @prefix nsg: <https://neuroshapes.org/> .
 @prefix nxv: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace/> .
@@ -27,7 +28,6 @@
 @prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
 @prefix schema: <http://schema.org/> .
 @prefix uberon: <http://purl.obolibrary.org/obo/UBERON_> .
-@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix datashapes: <https://neuroshapes.org/dash/> .
@@ -36,21 +36,28 @@
 @base <https://bbp.epfl.ch/ontologies/core/bmo> .
 
 <https://bbp.epfl.ch/ontologies/core/bmo> rdf:type owl:Ontology ;
-                                           dc:title "Brain Modeling Ontology"^^xsd:string ;
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
+                                           schema:title "Brain Modeling Ontology"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
-                                           owl:versionInfo "R649"^^xsd:string .
+                                           owl:versionInfo "R777"^^xsd:string .
 
 #################################################################
 #    Annotation properties
 #################################################################
 
-###  http://purl.org/dc/elements/1.1/title
-dc:title rdf:type owl:AnnotationProperty .
-
-
 ###  http://purl.org/vocab/vann/preferredNamespacePrefix
 vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/name
+schema:name rdf:type owl:AnnotationProperty ;
+            rdfs:label "name"@en ;
+            skos:altLabel "name"@en .
+
+
+###  http://schema.org/title
+schema:title rdf:type owl:AnnotationProperty ;
+             rdfs:label "title"@en .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
@@ -65,16 +72,14 @@ rdfs:label rdfs:label "label"@en .
 owl:equivalentClass rdf:type owl:AnnotationProperty .
 
 
-###  http://www.w3.org/2002/07/owl#sameAs
-owl:sameAs rdf:type owl:AnnotationProperty .
-
-
 ###  http://www.w3.org/2004/02/skos/core#altLabel
-skos:altLabel rdf:type owl:AnnotationProperty .
+skos:altLabel rdf:type owl:AnnotationProperty ;
+              skos:altLabel "altLabel"@en .
 
 
 ###  http://www.w3.org/2004/02/skos/core#definition
-skos:definition rdf:type owl:AnnotationProperty .
+skos:definition rdf:type owl:AnnotationProperty ;
+                rdfs:label "definition"@en .
 
 
 ###  http://www.w3.org/2004/02/skos/core#editorialNote
@@ -85,12 +90,17 @@ skos:editorialNote rdf:type owl:AnnotationProperty .
 skos:example rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#notation
+skos:notation rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#note
 skos:note rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#prefLabel
-skos:prefLabel rdf:type owl:AnnotationProperty .
+skos:prefLabel rdf:type owl:AnnotationProperty ;
+               rdfs:label "prefLabel"@en .
 
 
 ###  https://neuroshapes.org/color
@@ -108,47 +118,15 @@ nsg:hasBasalDentrite rdf:type owl:AnnotationProperty ;
                      rdfs:label "hasBasalDentrite"@en .
 
 
-###  https://neuroshapes.org/hasBaselDendriteFeature
-nsg:hasBaselDendriteFeature rdf:type owl:AnnotationProperty .
-
-
-###  https://neuroshapes.org/hasLayerLocation
-nsg:hasLayerLocation rdf:type owl:AnnotationProperty .
-
-
 ###  https://neuroshapes.org/hasMorphologyPhenotype
 nsg:hasMorphologyPhenotype rdf:type owl:AnnotationProperty .
-
-
-###  https://neuroshapes.org/hasObliqDendrite
-nsg:hasObliqDendrite rdf:type owl:AnnotationProperty .
-
 
 ###  https://neuroshapes.org/hasSpikeAdaptation
 nsg:hasSpikeAdaptation rdf:type owl:AnnotationProperty .
 
 
-###  https://neuroshapes.org/hasTuftDendriteFeature
-nsg:hasTuftDendriteFeature rdf:type owl:AnnotationProperty .
-
-
 ###  https://neuroshapes.org/haskv11
 nsg:haskv11 rdf:type owl:AnnotationProperty .
-
-
-###  https://neuroshapes.org/name
-nsg:name rdf:type owl:AnnotationProperty ;
-         rdfs:label "name"@en .
-
-
-###  https://neuroshapes.org/synonym
-nsg:synonym rdf:type owl:AnnotationProperty ;
-            rdfs:label "synonym"@en .
-
-
-###  https://neuroshapes.org/skos:notation
-nsg:skos:notation rdf:type owl:AnnotationProperty ;
-                  rdfs:label "skos:notation"@en .
 
 
 #################################################################
@@ -164,13 +142,138 @@ nsg:descriptionOfSpikeAdaptation rdf:type rdfs:Datatype ;
 #    Object Properties
 #################################################################
 
+###  http://schema.org/about
+schema:about rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:label "about"@en ;
+             skos:altLabel "about"@en .
+
+
+###  http://schema.org/algorithm
+schema:algorithm rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:label "algorithm"@en ;
+                 skos:altLabel "algorithm"@en .
+
+
+###  http://schema.org/citation
+schema:citation rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:label "citation"@en ;
+                skos:altLabel "citation"@en .
+
+
+###  http://schema.org/distribution
+schema:distribution rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:label "distribution"@en ;
+                    skos:altLabel "distribution"@en .
+
+
 ###  http://schema.org/isPartOf
 schema:isPartOf rdf:type owl:ObjectProperty ;
                 rdfs:label "isPartOf"@en .
 
 
-###  http://www.w3.org/2002/07/owl#equivalentClass
-owl:equivalentClass rdf:type owl:ObjectProperty .
+###  http://schema.org/license
+schema:license rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:label "license"@en ;
+               skos:altLabel "license"@en .
+
+
+###  http://schema.org/sameAs
+schema:sameAs rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:label "sameAs"@en .
+
+
+###  http://schema.org/value
+schema:value rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:label "value"@en ;
+             skos:altLabel "value"@en .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdfs:label "Relations"@en .
+
+
+###  http://www.w3.org/ns/prov#agent
+prov:agent rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:label "agent"@en ;
+           skos:altLabel "agent"@en .
+
+
+###  http://www.w3.org/ns/prov#entity
+prov:entity rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:label "entity"@en ;
+            skos:altLabel "entity"@en .
+
+
+###  http://www.w3.org/ns/prov#generated
+prov:generated rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:label "generated"@en ;
+               skos:altLabel "generated"@en .
+
+
+###  http://www.w3.org/ns/prov#hadActivity
+prov:hadActivity rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:label "hadActivity"@en ;
+                 skos:altLabel "hadActivity"@en .
+
+
+###  http://www.w3.org/ns/prov#hadPlan
+prov:hadPlan rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:label "hadPlan"@en ;
+             skos:altLabel "hadPlan"@en .
+
+
+###  http://www.w3.org/ns/prov#hadRole
+prov:hadRole rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:label "hadRole"@en ;
+             skos:altLabel "hadRole"@en .
+
+
+###  http://www.w3.org/ns/prov#hadUsage
+prov:hadUsage rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:label "hadUsage"@en ;
+              skos:altLabel "hadUsage"@en .
+
+
+###  http://www.w3.org/ns/prov#qualifiedAssociation
+prov:qualifiedAssociation rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:label "qualifiedAssociation"@en ;
+                          skos:altLabel "qualifiedAssociation"@en .
+
+
+###  http://www.w3.org/ns/prov#qualifiedUsage
+prov:qualifiedUsage rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:label "qualifiedUsage"@en ;
+                    skos:altLabel "qualifiedUsage"@en .
+
+
+###  http://www.w3.org/ns/prov#used
+prov:used rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:label "used"@en ;
+          skos:altLabel "used"@en .
+
+
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+prov:wasAssociatedWith rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdfs:label "wasAssociatedWith"@en ;
+                       skos:altLabel "wasAssociatedWith"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/compartment
@@ -180,12 +283,8 @@ bmo:compartment rdf:type owl:ObjectProperty ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/constraints
 bmo:constraints rdf:type owl:ObjectProperty ;
-                rdfs:label "constraints"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/eType
-bmo:eType rdf:type owl:ObjectProperty ;
-          rdfs:label "eType"@en .
+                rdfs:label "constraints"@en ;
+                skos:altLabel "constraint"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/emodelInstance
@@ -223,6 +322,13 @@ bmo:hasEType rdf:type owl:ObjectProperty ;
              rdfs:label "hasEType"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/hasMType
+bmo:hasMType rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:label "hasMType"@en ;
+             skos:altLabel "hasMType"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/hasParameter
 bmo:hasParameter rdf:type owl:ObjectProperty ;
                  rdfs:label "hasParameter"@en .
@@ -251,11 +357,6 @@ bmo:isAssociatedWith rdf:type owl:ObjectProperty ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/isBasedOn
 bmo:isBasedOn rdf:type owl:ObjectProperty ;
               rdfs:label "isBasedOn"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/mType
-bmo:mType rdf:type owl:ObjectProperty ;
-          rdfs:label "mType"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/molecule
@@ -308,24 +409,16 @@ bmo:targetType rdf:type owl:ObjectProperty ;
                rdfs:label "targetType"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/uses
+bmo:uses rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:label "uses"@en ;
+         skos:altLabel "uses"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/usesCircuitWithProperty
 bmo:usesCircuitWithProperty rdf:type owl:ObjectProperty ;
                             rdfs:label "usesCircuitWithProperty"@en .
-
-
-###  https://neuroshapes.org/about
-nsg:about rdf:type owl:ObjectProperty ;
-          rdfs:label "about"@en .
-
-
-###  https://neuroshapes.org/agent
-nsg:agent rdf:type owl:ObjectProperty ;
-          rdfs:label "agent"@en .
-
-
-###  https://neuroshapes.org/algorithm
-nsg:algorithm rdf:type owl:ObjectProperty ;
-              rdfs:label "algorithm"@en .
 
 
 ###  https://neuroshapes.org/annotation
@@ -364,19 +457,9 @@ nsg:cellType rdf:type owl:ObjectProperty ;
              rdfs:label "cellType"@en .
 
 
-###  https://neuroshapes.org/citation
-nsg:citation rdf:type owl:ObjectProperty ;
-             rdfs:label "citation"@en .
-
-
 ###  https://neuroshapes.org/componentType
 nsg:componentType rdf:type owl:ObjectProperty ;
                   rdfs:label "componentType"@en .
-
-
-###  https://neuroshapes.org/constraint
-nsg:constraint rdf:type owl:ObjectProperty ;
-               rdfs:label "constraint"@en .
 
 
 ###  https://neuroshapes.org/contribution
@@ -394,14 +477,11 @@ nsg:derivation rdf:type owl:ObjectProperty ;
                rdfs:label "derivation"@en .
 
 
-###  https://neuroshapes.org/distribution
-nsg:distribution rdf:type owl:ObjectProperty ;
-                 rdfs:label "distribution"@en .
-
-
-###  https://neuroshapes.org/entity
-nsg:entity rdf:type owl:ObjectProperty ;
-           rdfs:label "entity"@en .
+###  https://neuroshapes.org/eType
+nsg:eType rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:label "eType"@en ;
+          skos:altLabel "eType"@en .
 
 
 ###  https://neuroshapes.org/followedWorkflow
@@ -419,11 +499,6 @@ nsg:generate rdf:type owl:ObjectProperty ;
              rdfs:label "generate"@en .
 
 
-###  https://neuroshapes.org/generated
-nsg:generated rdf:type owl:ObjectProperty ;
-              rdfs:label "generated"@en .
-
-
 ###  https://neuroshapes.org/generation
 nsg:generation rdf:type owl:ObjectProperty ;
                rdfs:label "generation"@en .
@@ -434,29 +509,9 @@ nsg:generationModality rdf:type owl:ObjectProperty ;
                        rdfs:label "generationModality"@en .
 
 
-###  https://neuroshapes.org/hadActivity
-nsg:hadActivity rdf:type owl:ObjectProperty ;
-                rdfs:label "hadActivity"@en .
-
-
-###  https://neuroshapes.org/hadPlan
-nsg:hadPlan rdf:type owl:ObjectProperty ;
-            rdfs:label "hadPlan"@en .
-
-
 ###  https://neuroshapes.org/hadProtocol
 nsg:hadProtocol rdf:type owl:ObjectProperty ;
                 rdfs:label "hadProtocol"@en .
-
-
-###  https://neuroshapes.org/hadRole
-nsg:hadRole rdf:type owl:ObjectProperty ;
-            rdfs:label "hadRole"@en .
-
-
-###  https://neuroshapes.org/hadUsage
-nsg:hadUsage rdf:type owl:ObjectProperty ;
-             rdfs:label "hadUsage"@en .
 
 
 ###  https://neuroshapes.org/hasBaselDendriteFeature
@@ -480,11 +535,6 @@ nsg:hasFeature rdf:type owl:ObjectProperty ;
 
 ###  https://neuroshapes.org/hasLayerLocation
 nsg:hasLayerLocation rdf:type owl:ObjectProperty .
-
-
-###  https://neuroshapes.org/hasMType
-nsg:hasMType rdf:type owl:ObjectProperty ;
-             rdfs:label "hasMType"@en .
 
 
 ###  https://neuroshapes.org/hasMorphology
@@ -531,9 +581,11 @@ nsg:ionChannel rdf:type owl:ObjectProperty ;
                rdfs:label "ionChannel"@en .
 
 
-###  https://neuroshapes.org/license
-nsg:license rdf:type owl:ObjectProperty ;
-            rdfs:label "license"@en .
+###  https://neuroshapes.org/mType
+nsg:mType rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:label "mType"@en ;
+          skos:altLabel "mType"@en .
 
 
 ###  https://neuroshapes.org/maxDensity
@@ -557,19 +609,11 @@ nsg:modelOf rdf:type owl:ObjectProperty ;
             skos:altLabel "replicaOf"@en .
 
 
-###  https://neuroshapes.org/object
-nsg:object rdf:type owl:ObjectProperty ;
-           rdfs:label "object"@en .
-
-
-###  https://neuroshapes.org/qualifiedAssociation
-nsg:qualifiedAssociation rdf:type owl:ObjectProperty ;
-                         rdfs:label "qualifiedAssociation"@en .
-
-
-###  https://neuroshapes.org/qualifiedUsage
-nsg:qualifiedUsage rdf:type owl:ObjectProperty ;
-                   rdfs:label "qualifiedUsage"@en .
+###  https://neuroshapes.org/objectOfStudy
+nsg:objectOfStudy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:label "objectOfStudy"@en ;
+                  skos:altLabel "object"@en .
 
 
 ###  https://neuroshapes.org/relatedTo
@@ -602,31 +646,6 @@ nsg:stimulusType rdf:type owl:ObjectProperty ;
 ###  https://neuroshapes.org/subject
 nsg:subject rdf:type owl:ObjectProperty ;
             rdfs:label "subject"@en .
-
-
-###  https://neuroshapes.org/use
-nsg:use rdf:type owl:ObjectProperty ;
-        rdfs:label "use"@en .
-
-
-###  https://neuroshapes.org/used
-nsg:used rdf:type owl:ObjectProperty ;
-         rdfs:label "used"@en .
-
-
-###  https://neuroshapes.org/uses
-nsg:uses rdf:type owl:ObjectProperty ;
-         rdfs:label "uses"@en .
-
-
-###  https://neuroshapes.org/value
-nsg:value rdf:type owl:ObjectProperty ;
-          rdfs:label "value"@en .
-
-
-###  https://neuroshapes.org/wasAssociatedWith
-nsg:wasAssociatedWith rdf:type owl:ObjectProperty ;
-                      rdfs:label "wasAssociatedWith"@en .
 
 
 #################################################################
@@ -682,9 +701,9 @@ obo:GO_0005575 rdf:type owl:Class ;
                owl:equivalentClass bmo:SubcellularPart ;
                rdfs:subClassOf bmo:Mapping ;
                rdfs:label "Cellular Component"^^xsd:string ;
-               skos:definition "A location, relative to cellular compartments and structures, occupied by a macromolecular machine when it carries out a molecular function. There are two ways in which the gene ontology describes locations of gene products: (1) relative to cellular structures (e.g., cytoplasmic side of plasma membrane) or compartments (e.g., mitochondrion), and (2) the stable macromolecular complexes of which they are parts (e.g., the ribosome)."^^xsd:string ;
-               nsg:synonym "cell or subcellular entity"^^xsd:string ,
-                           "cellular component"^^xsd:string .
+               skos:altLabel "cell or subcellular entity"^^xsd:string ,
+                             "cellular component"^^xsd:string ;
+               skos:definition "A location, relative to cellular compartments and structures, occupied by a macromolecular machine when it carries out a molecular function. There are two ways in which the gene ontology describes locations of gene products: (1) relative to cellular structures (e.g., cytoplasmic side of plasma membrane) or compartments (e.g., mitochondrion), and (2) the stable macromolecular complexes of which they are parts (e.g., the ribosome)."^^xsd:string .
 
 
 ###  http://purl.obolibrary.org/obo/GO_0005739
@@ -745,23 +764,23 @@ obo:GO_0097441 rdf:type owl:Class ;
 obo:NCBITaxon_10090 rdf:type owl:Class ;
                     rdfs:subClassOf nsg:Species ;
                     rdfs:label "Mus Musculus"@en ;
-                    nsg:synonym "M. musculus"^^xsd:string ,
-                                "Mouse"^^xsd:string ,
-                                "house mouse"^^xsd:string .
+                    skos:altLabel "M. musculus"^^xsd:string ,
+                                  "Mouse"^^xsd:string ,
+                                  "house mouse"^^xsd:string .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_10116
 obo:NCBITaxon_10116 rdf:type owl:Class ;
                     rdfs:subClassOf nsg:Species ;
                     rdfs:label "Rattus Norvegicus"@en ;
-                    nsg:synonym "Rat"^^xsd:string .
+                    skos:altLabel "Rat"^^xsd:string .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_9606
 obo:NCBITaxon_9606 rdf:type owl:Class ;
                    rdfs:subClassOf nsg:Species ;
                    rdfs:label "Homo Sapiens"@en ;
-                   nsg:synonym "Human"^^xsd:string .
+                   skos:altLabel "Human"^^xsd:string .
 
 
 ###  http://purl.obolibrary.org/obo/UBERON_0000955
@@ -815,6 +834,18 @@ obo:UBERON_0022319 rdf:type owl:Class ;
                    rdfs:label "lateral geniculate nucleus parvocellular layer"^^xsd:string .
 
 
+###  http://schema.org/DataDownload
+schema:DataDownload rdf:type owl:Class ;
+                    rdfs:subClassOf prov:Entity ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty bmo:encodingFormat ;
+                                      owl:someValuesFrom xsd:string
+                                    ] ;
+                    rdfs:label "Data Download"@en ;
+                    skos:altLabel "DataDownload"^^xsd:string ;
+                    skos:definition "A downloadable form of this dataset, at a specific location, in a specific format."@en .
+
+
 ###  http://schema.org/Dataset
 schema:Dataset rdf:type owl:Class ;
                rdfs:subClassOf prov:Entity ,
@@ -827,7 +858,7 @@ schema:Dataset rdf:type owl:Class ;
                                  owl:someValuesFrom bmo:DataGenerationModality
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty nsg:object ;
+                                 owl:onProperty nsg:objectOfStudy ;
                                  owl:someValuesFrom nsg:ObjectOfStudy
                                ] ,
                                [ rdf:type owl:Restriction ;
@@ -858,34 +889,22 @@ schema:QuantitativeValue rdf:type owl:Class ;
                          rdfs:label "Quantitative Value"@en .
 
 
-###  http://schema.org/SoftwareAgent
-schema:SoftwareAgent rdf:type owl:Class ;
-                     rdfs:subClassOf bmo:BrainModelingAgent ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty nsg:algorithm ;
-                                       owl:someValuesFrom bmo:Algorithm
-                                     ] ;
-                     rdfs:label "SoftwareAgent"@en ;
-                     skos:definition "A software agent is running software."^^xsd:string ,
-                                     "A software application"^^xsd:string .
-
-
 ###  http://www.w3.org/ns/prov#Activity
 prov:Activity rdf:type owl:Class ;
               rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                owl:onProperty nsg:generated ;
+                                owl:onProperty prov:generated ;
                                 owl:someValuesFrom prov:Entity
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty nsg:hadPlan ;
+                                owl:onProperty prov:hadPlan ;
                                 owl:someValuesFrom bmo:Workflow
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty nsg:used ;
+                                owl:onProperty prov:used ;
                                 owl:someValuesFrom prov:Entity
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty nsg:wasAssociatedWith ;
+                                owl:onProperty prov:wasAssociatedWith ;
                                 owl:someValuesFrom bmo:BrainModelingAgent
                               ] ;
               rdfs:label "Activity"@en ;
@@ -904,6 +923,19 @@ prov:Entity rdf:type owl:Class ;
             rdfs:subClassOf owl:Thing ;
             rdfs:label "Entity"@en ;
             skos:definition "A Brain Modeling Entity is any entity (biological or modeled) that can be used or generated in the process of digitally reconstructing brain tissue"^^xsd:string .
+
+
+###  http://www.w3.org/ns/prov#SoftwareAgent
+prov:SoftwareAgent rdf:type owl:Class ;
+                   rdfs:subClassOf bmo:BrainModelingAgent ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty schema:algorithm ;
+                                     owl:someValuesFrom bmo:Algorithm
+                                   ] ;
+                   rdfs:label "SoftwareAgent"@en ;
+                   skos:altLabel "SoftwareAgent"@en ;
+                   skos:definition "A software agent is running software."^^xsd:string ,
+                                   "A software application"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Algorithm
@@ -944,24 +976,24 @@ bmo:AxonGraftingPlusPHNeuronMorphologyGenerator rdf:type owl:Class ;
                                                 rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorVariant ,
                                                                 bmo:MorphologyGenerator ,
                                                                 [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty bmo:uses ;
+                                                                  owl:someValuesFrom bmo:AtlasDistanceToLayer
+                                                                ] ,
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty bmo:uses ;
+                                                                  owl:someValuesFrom bmo:ReconstructedNeuronMorphologyInAsc
+                                                                ] ,
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty bmo:uses ;
+                                                                  owl:someValuesFrom nsg:CellOrientationField
+                                                                ] ,
+                                                                [ rdf:type owl:Restriction ;
                                                                   owl:onProperty bmo:usesCircuitWithProperty ;
                                                                   owl:someValuesFrom bmo:METypeCircuitProperty
                                                                 ] ,
                                                                 [ rdf:type owl:Restriction ;
                                                                   owl:onProperty bmo:usesCircuitWithProperty ;
                                                                   owl:someValuesFrom bmo:NeuronIdCircuitProperty
-                                                                ] ,
-                                                                [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty nsg:uses ;
-                                                                  owl:someValuesFrom bmo:AtlasDistanceToLayer
-                                                                ] ,
-                                                                [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty nsg:uses ;
-                                                                  owl:someValuesFrom bmo:ReconstructedNeuronMorphologyInAsc
-                                                                ] ,
-                                                                [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty nsg:uses ;
-                                                                  owl:someValuesFrom nsg:CellOrientationField
                                                                 ] ;
                                                 rdfs:label "AxonGrafting + PH Neuron Morphology Generator"@en ;
                                                 skos:prefLabel "Axon Grafting + PH Neuron Morphology Generator"@en .
@@ -1041,21 +1073,6 @@ bmo:BlueprintBuildingWorkflow rdf:type owl:Class ;
                               rdfs:label "Blueprint Building Workflow"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/BoutonDensity
-bmo:BoutonDensity rdf:type owl:Class ;
-                  rdfs:subClassOf bmo:BrainVolumeFeature ,
-                                  bmo:ModelConnectivityParameter ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty nsg:brainLocation ;
-                                    owl:someValuesFrom nsg:BrainLocation
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty nsg:cellType ;
-                                    owl:someValuesFrom bmo:BrainCellType
-                                  ] ;
-                  rdfs:label "Bouton Density"@en .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BrainArea
 bmo:BrainArea rdf:type owl:Class ;
               rdfs:subClassOf bmo:BiologicalBrainComponent ,
@@ -1086,15 +1103,15 @@ bmo:BrainBuilderAssignmentMETypeGenerator rdf:type owl:Class ;
                                                             owl:someValuesFrom bmo:NeuronIdCircuitProperty
                                                           ] ,
                                                           [ rdf:type owl:Restriction ;
-                                                            owl:onProperty nsg:uses ;
+                                                            owl:onProperty bmo:uses ;
                                                             owl:someValuesFrom bmo:AtlasETypeRatio
                                                           ] ,
                                                           [ rdf:type owl:Restriction ;
-                                                            owl:onProperty nsg:uses ;
+                                                            owl:onProperty bmo:uses ;
                                                             owl:someValuesFrom bmo:ModelCircuit
                                                           ] ,
                                                           [ rdf:type owl:Restriction ;
-                                                            owl:onProperty nsg:uses ;
+                                                            owl:onProperty bmo:uses ;
                                                             owl:someValuesFrom nsg:CellDensityDataLayer
                                                           ] ;
                                           rdfs:label "Brain builder assignment METype generator"@en ;
@@ -1151,15 +1168,15 @@ bmo:BrainComponentFeature rdf:type owl:Class ;
 bmo:BrainComponentSimulationWorkflow rdf:type owl:Class ;
                                      rdfs:subClassOf bmo:Workflow ,
                                                      [ rdf:type owl:Restriction ;
+                                                       owl:onProperty schema:about ;
+                                                       owl:someValuesFrom bmo:BiologicalBrainComponent
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
                                                        owl:onProperty bmo:generates ;
                                                        owl:someValuesFrom schema:Dataset
                                                      ] ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty nsg:about ;
-                                                       owl:someValuesFrom bmo:BiologicalBrainComponent
-                                                     ] ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty nsg:uses ;
+                                                       owl:onProperty bmo:uses ;
                                                        owl:someValuesFrom bmo:ModelBrainComponent
                                                      ] ;
                                      rdfs:label "Brain Component Simulation Workflow"@en .
@@ -1258,12 +1275,12 @@ bmo:BrainVolumeBlueprintBuildingWorkflow rdf:type owl:Class ;
                                                            owl:someValuesFrom bmo:BrainVolumeBlueprint
                                                          ] ,
                                                          [ rdf:type owl:Restriction ;
-                                                           owl:onProperty nsg:uses ;
-                                                           owl:someValuesFrom bmo:CellDensity
+                                                           owl:onProperty bmo:uses ;
+                                                           owl:someValuesFrom bmo:CellTypeMapping
                                                          ] ,
                                                          [ rdf:type owl:Restriction ;
-                                                           owl:onProperty nsg:uses ;
-                                                           owl:someValuesFrom bmo:CellTypeMapping
+                                                           owl:onProperty bmo:uses ;
+                                                           owl:someValuesFrom nsg:CellDensity
                                                          ] ;
                                          rdfs:label "Brain Volume Blueprint Building Workflow"@en .
 
@@ -1349,34 +1366,14 @@ bmo:Capillary rdf:type owl:Class ;
 bmo:CellBuildingWorkflow rdf:type owl:Class ;
                          rdfs:subClassOf bmo:ModelBuildingWorkflow ,
                                          [ rdf:type owl:Restriction ;
-                                           owl:onProperty bmo:generates ;
-                                           owl:someValuesFrom bmo:ModelCell
+                                           owl:onProperty schema:about ;
+                                           owl:someValuesFrom bmo:BrainCell
                                          ] ,
                                          [ rdf:type owl:Restriction ;
-                                           owl:onProperty nsg:about ;
-                                           owl:someValuesFrom bmo:BrainCell
+                                           owl:onProperty bmo:generates ;
+                                           owl:someValuesFrom bmo:ModelCell
                                          ] ;
                          rdfs:label "Cell Building Workflow"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/CellDensity
-bmo:CellDensity rdf:type owl:Class ;
-                rdfs:subClassOf bmo:BrainVolumeFeature ,
-                                bmo:BrainVolumeParameter ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty nsg:brainLocation ;
-                                  owl:someValuesFrom nsg:BrainLocation
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty nsg:cellType ;
-                                  owl:someValuesFrom bmo:BrainCellType
-                                ] ;
-                rdfs:label "Cell Density"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/CellPosition
-bmo:CellPosition rdf:type owl:Class ;
-                 rdfs:label "CellPosition"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/CellPositionCircuitProperty
@@ -1407,16 +1404,16 @@ bmo:CircuitConnectivityBlueprintBuildingWorkflow rdf:type owl:Class ;
                                                                    owl:someValuesFrom bmo:BrainVolumeConnectivityBlueprint
                                                                  ] ,
                                                                  [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty nsg:uses ;
-                                                                   owl:someValuesFrom bmo:BoutonDensity
-                                                                 ] ,
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty nsg:uses ;
+                                                                   owl:onProperty bmo:uses ;
                                                                    owl:someValuesFrom bmo:ModelBrainVolume
                                                                  ] ,
                                                                  [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty nsg:uses ;
+                                                                   owl:onProperty bmo:uses ;
                                                                    owl:someValuesFrom bmo:NumberOfSynapsesPerConnection
+                                                                 ] ,
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty bmo:uses ;
+                                                                   owl:someValuesFrom nsg:BoutonDensity
                                                                  ] ;
                                                  rdfs:label "Circuit Connectivity Blueprint Building Workflow"@en .
 
@@ -1436,6 +1433,68 @@ bmo:ConductanceDensity rdf:type owl:Class ;
                        rdfs:label "Conductance Density"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/ConnectivityModelCoefficient
+bmo:ConnectivityModelCoefficient rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:ModelConnectivityParameter ;
+                                 rdfs:label "Connectivity Model Coefficient"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ConnectivityModelCoefficientGenerator
+bmo:ConnectivityModelCoefficientGenerator rdf:type owl:Class ;
+                                          rdfs:subClassOf bmo:EntityGenerator ,
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty bmo:generates ;
+                                                            owl:someValuesFrom bmo:ConnectivityModelCoefficient
+                                                          ] ;
+                                          rdfs:label "Connectivity Model Coefficient Generator"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ConnectivityModelCoefficientGeneratorUsingDistance-DependentAlgorithm
+bmo:ConnectivityModelCoefficientGeneratorUsingDistance-DependentAlgorithm rdf:type owl:Class ;
+                                                                          rdfs:subClassOf bmo:ConnectivityModelCoefficientGenerator ,
+                                                                                          bmo:GeneratorVariant ,
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty bmo:generates ;
+                                                                                            owl:someValuesFrom bmo:ConnectivityModelCoefficient
+                                                                                          ] ,
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty bmo:uses ;
+                                                                                            owl:someValuesFrom bmo:NeuronIdCircuitProperty
+                                                                                          ] ,
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty bmo:uses ;
+                                                                                            owl:someValuesFrom bmo:NeuronMorphologicalFeatureAnnotation
+                                                                                          ] ;
+                                                                          rdfs:label "Connectivity Model Coefficient Generator Using Distance-Dependent Algorithm"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ConnectivityModelCoefficientGeneratorUsingErdos-RenyiAlgorithm
+bmo:ConnectivityModelCoefficientGeneratorUsingErdos-RenyiAlgorithm rdf:type owl:Class ;
+                                                                   rdfs:subClassOf bmo:ConnectivityModelCoefficientGenerator ,
+                                                                                   bmo:GeneratorVariant ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty bmo:generates ;
+                                                                                     owl:someValuesFrom bmo:ConnectivityModelCoefficient
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty bmo:uses ;
+                                                                                     owl:someValuesFrom bmo:DendriteSynapseDensity
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty bmo:uses ;
+                                                                                     owl:someValuesFrom bmo:NeuronMorphologicalFeatureAnnotation
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty bmo:uses ;
+                                                                                     owl:someValuesFrom nsg:BoutonDensity
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty bmo:usesCircuitWithProperty ;
+                                                                                     owl:someValuesFrom bmo:NeuronIdCircuitProperty
+                                                                                   ] ;
+                                                                   rdfs:label "Connectivity Model Coefficient Generator Using Erdos-Renyi Algorithm"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Cytosol
 bmo:Cytosol rdf:type owl:Class ;
             rdfs:subClassOf bmo:SubcellularPart ;
@@ -1448,20 +1507,9 @@ bmo:DataCurationWorkflow rdf:type owl:Class ;
                          rdfs:label "Data Curation Workflow"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/DataDownload
-bmo:DataDownload rdf:type owl:Class ;
-                 rdfs:subClassOf prov:Entity ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty bmo:encodingFormat ;
-                                   owl:someValuesFrom xsd:string
-                                 ] ;
-                 rdfs:label "DataDownload"^^xsd:string ;
-                 skos:definition "A downloadable form of this dataset, at a specific location, in a specific format."@en .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/DataDownloadASC
 bmo:DataDownloadASC rdf:type owl:Class ;
-                    rdfs:subClassOf bmo:DataDownload ,
+                    rdfs:subClassOf schema:DataDownload ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty bmo:encodingFormat ;
                                       owl:hasValue "application/asc"^^xsd:string
@@ -1511,6 +1559,12 @@ bmo:DefaultIonChannelDensityConstraintGenerationWorkflow rdf:type owl:Class ;
                                                          rdfs:label "Default Ion Channel Density Constraint Generation Workflow"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/DendriteSynapseDensity
+bmo:DendriteSynapseDensity rdf:type owl:Class ;
+                           rdfs:subClassOf prov:Entity ;
+                           rdfs:label "DendriteSynapseDensity"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/DepressingSynapseType
 bmo:DepressingSynapseType rdf:type owl:Class ;
                           rdfs:subClassOf bmo:SynapsePlasticityType ;
@@ -1548,40 +1602,40 @@ bmo:E3SynapseType rdf:type owl:Class ;
 bmo:EModelBuildingWorkflow rdf:type owl:Class ;
                            rdfs:subClassOf bmo:NeuronBuildingWorkflow ,
                                            [ rdf:type owl:Restriction ;
+                                             owl:onProperty schema:about ;
+                                             owl:someValuesFrom nsg:EType
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty prov:qualifiedAssociation ;
+                                             owl:someValuesFrom prov:Association
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
                                              owl:onProperty bmo:generates ;
                                              owl:someValuesFrom nsg:EModel
                                            ] ,
                                            [ rdf:type owl:Restriction ;
-                                             owl:onProperty nsg:about ;
-                                             owl:someValuesFrom nsg:EType
+                                             owl:onProperty bmo:uses ;
+                                             owl:someValuesFrom bmo:IonChannelDensity
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty bmo:uses ;
+                                             owl:someValuesFrom bmo:IonDynamicsFeature
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty bmo:uses ;
+                                             owl:someValuesFrom bmo:ModelIonicMechanism
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty bmo:uses ;
+                                             owl:someValuesFrom nsg:NeuronMorphology
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty bmo:uses ;
+                                             owl:someValuesFrom nsg:SubCellularModel
                                            ] ,
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty nsg:hasTarget ;
                                              owl:someValuesFrom bmo:NeuronElectrophysiologicalFeature
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty nsg:qualifiedAssociation ;
-                                             owl:someValuesFrom prov:Association
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty nsg:uses ;
-                                             owl:someValuesFrom bmo:IonChannelDensity
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty nsg:uses ;
-                                             owl:someValuesFrom bmo:IonDynamicsFeature
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty nsg:uses ;
-                                             owl:someValuesFrom bmo:ModelIonicMechanism
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty nsg:uses ;
-                                             owl:someValuesFrom bmo:SubCellularModel
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty nsg:uses ;
-                                             owl:someValuesFrom nsg:NeuronMorphology
                                            ] ,
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty bmo:isAssociatedWith ;
@@ -1678,20 +1732,20 @@ bmo:EModelParameterOptimizationWorkflow rdf:type owl:Class ;
                                                           owl:someValuesFrom bmo:EModelHyperparameter
                                                         ] ,
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty nsg:hasTarget ;
-                                                          owl:someValuesFrom bmo:NeuronElectrophysiologicalFeature
-                                                        ] ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty nsg:uses ;
+                                                          owl:onProperty bmo:uses ;
                                                           owl:someValuesFrom bmo:IonChannelDensityConstraint
                                                         ] ,
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty nsg:uses ;
+                                                          owl:onProperty bmo:uses ;
                                                           owl:someValuesFrom bmo:ModelIonicMechanism
                                                         ] ,
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty nsg:uses ;
+                                                          owl:onProperty bmo:uses ;
                                                           owl:someValuesFrom nsg:NeuronMorphology
+                                                        ] ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty nsg:hasTarget ;
+                                                          owl:someValuesFrom bmo:NeuronElectrophysiologicalFeature
                                                         ] ;
                                         rdfs:label "EModel Parameter Optimization Workflow"@en .
 
@@ -1704,7 +1758,7 @@ bmo:EModelSimulationWorkflow rdf:type owl:Class ;
                                                owl:someValuesFrom nsg:Trace
                                              ] ,
                                              [ rdf:type owl:Restriction ;
-                                               owl:onProperty nsg:uses ;
+                                               owl:onProperty bmo:uses ;
                                                owl:someValuesFrom nsg:EModel
                                              ] ;
                              rdfs:label "EModel Simulation Workflow"@en .
@@ -1721,12 +1775,12 @@ bmo:EModelValidationThreshold rdf:type owl:Class ;
 bmo:EModelValidationWorkflow rdf:type owl:Class ;
                              rdfs:subClassOf bmo:ModelValidationWorkflow ,
                                              [ rdf:type owl:Restriction ;
-                                               owl:onProperty nsg:hasTarget ;
-                                               owl:someValuesFrom bmo:NeuronElectrophysiologicalFeature
+                                               owl:onProperty bmo:uses ;
+                                               owl:someValuesFrom nsg:Trace
                                              ] ,
                                              [ rdf:type owl:Restriction ;
-                                               owl:onProperty nsg:uses ;
-                                               owl:someValuesFrom nsg:Trace
+                                               owl:onProperty nsg:hasTarget ;
+                                               owl:someValuesFrom bmo:NeuronElectrophysiologicalFeature
                                              ] ;
                              rdfs:label "EModel Validation Workflow"@en .
 
@@ -1750,6 +1804,12 @@ bmo:ElectricalStimulus rdf:type owl:Class ;
 bmo:EndoplasmicReticulum rdf:type owl:Class ;
                          rdfs:subClassOf bmo:Organelle ;
                          rdfs:label "Endoplasmic Reticulum"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/EntityGenerator
+bmo:EntityGenerator rdf:type owl:Class ;
+                    rdfs:subClassOf bmo:Workflow ;
+                    rdfs:label "Entity Generator"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Equation
@@ -1795,15 +1855,15 @@ bmo:ExtracellularPartBuildingWorkflow rdf:type owl:Class ;
 bmo:ExtracellularPartMetabolismBuildingWorkflow rdf:type owl:Class ;
                                                 rdfs:subClassOf bmo:ExtracellularPartBuildingWorkflow ,
                                                                 [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty schema:about ;
+                                                                  owl:someValuesFrom bmo:ExtracellularPart
+                                                                ] ,
+                                                                [ rdf:type owl:Restriction ;
                                                                   owl:onProperty bmo:generates ;
                                                                   owl:someValuesFrom bmo:ModelExtracellularPartMetabolism
                                                                 ] ,
                                                                 [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty nsg:about ;
-                                                                  owl:someValuesFrom bmo:ExtracellularPart
-                                                                ] ,
-                                                                [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty nsg:uses ;
+                                                                  owl:onProperty bmo:uses ;
                                                                   owl:someValuesFrom bmo:ModelBiochemicalReaction
                                                                 ] ;
                                                 rdfs:label "Extracellular Part Metabolism Building Workflow"@en .
@@ -1817,7 +1877,8 @@ bmo:FacilitatingSynapseType rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/FeatureExtractionWorkflow
 bmo:FeatureExtractionWorkflow rdf:type owl:Class ;
-                              rdfs:subClassOf bmo:Workflow ,
+                              rdfs:subClassOf bmo:EntityGenerator ,
+                                              bmo:Workflow ,
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty schema:isPartOf ;
                                                 owl:someValuesFrom bmo:ModelBuildingWorkflow
@@ -1827,7 +1888,7 @@ bmo:FeatureExtractionWorkflow rdf:type owl:Class ;
                                                 owl:someValuesFrom bmo:BrainComponentFeature
                                               ] ,
                                               [ rdf:type owl:Restriction ;
-                                                owl:onProperty nsg:uses ;
+                                                owl:onProperty bmo:uses ;
                                                 owl:someValuesFrom schema:Dataset
                                               ] ;
                               rdfs:label "Feature Extraction Workflow"@en .
@@ -1864,12 +1925,12 @@ bmo:GeneratorVariant rdf:type owl:Class ;
 bmo:GliaBuildingWorkflow rdf:type owl:Class ;
                          rdfs:subClassOf bmo:CellBuildingWorkflow ,
                                          [ rdf:type owl:Restriction ;
-                                           owl:onProperty bmo:generates ;
-                                           owl:someValuesFrom bmo:ModelGlia
+                                           owl:onProperty schema:about ;
+                                           owl:someValuesFrom nsg:Glia
                                          ] ,
                                          [ rdf:type owl:Restriction ;
-                                           owl:onProperty nsg:about ;
-                                           owl:someValuesFrom nsg:Glia
+                                           owl:onProperty bmo:generates ;
+                                           owl:someValuesFrom bmo:ModelGlia
                                          ] ;
                          rdfs:label "Glia Building Workflow"@en .
 
@@ -1882,11 +1943,11 @@ bmo:GliaMetabolismBuildingWorkflow rdf:type owl:Class ;
                                                      owl:someValuesFrom bmo:ModelGliaMetabolism
                                                    ] ,
                                                    [ rdf:type owl:Restriction ;
-                                                     owl:onProperty nsg:uses ;
+                                                     owl:onProperty bmo:uses ;
                                                      owl:someValuesFrom bmo:ModelBiochemicalReaction
                                                    ] ,
                                                    [ rdf:type owl:Restriction ;
-                                                     owl:onProperty nsg:uses ;
+                                                     owl:onProperty bmo:uses ;
                                                      owl:someValuesFrom bmo:ModelSubcellularPartMetabolism
                                                    ] ;
                                    rdfs:label "Glia Metabolism Building Workflow"@en .
@@ -1902,8 +1963,8 @@ bmo:GliaType rdf:type owl:Class ;
 bmo:HCurrent rdf:type owl:Class ;
              rdfs:subClassOf bmo:SubCellularProcess ;
              rdfs:label "H Current"@en ;
-             skos:definition "Hyperpolarization-activated current."^^xsd:string ;
-             nsg:synonym "Ih"^^xsd:string .
+             skos:altLabel "Ih"^^xsd:string ;
+             skos:definition "Hyperpolarization-activated current."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/HodgkinHuxleyIonCurrentModel
@@ -1959,7 +2020,7 @@ bmo:ICSelector-BasedIonChannelDensityConstraintGenerationWorkflow rdf:type owl:C
                                                                                     owl:someValuesFrom bmo:IonChannelDensityConstraint
                                                                                   ] ,
                                                                                   [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty nsg:uses ;
+                                                                                    owl:onProperty bmo:uses ;
                                                                                     owl:someValuesFrom bmo:IonChannelDensityConstraint
                                                                                   ] ;
                                                                   rdfs:label "IC Selector-Based Ion Channel Density Constraint Generation Workflow"@en .
@@ -1997,7 +2058,7 @@ bmo:InterstitialSpace rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/IntraCellularConcentrationModel
 bmo:IntraCellularConcentrationModel rdf:type owl:Class ;
-                                    rdfs:subClassOf bmo:SubCellularModel ,
+                                    rdfs:subClassOf nsg:SubCellularModel ,
                                                     [ rdf:type owl:Restriction ;
                                                       owl:onProperty bmo:molecule ;
                                                       owl:someValuesFrom bmo:Molecule
@@ -2071,7 +2132,7 @@ bmo:IonCurrent rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/IonCurrentModel
 bmo:IonCurrentModel rdf:type owl:Class ;
-                    rdfs:subClassOf bmo:SubCellularModel ,
+                    rdfs:subClassOf nsg:SubCellularModel ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty nsg:ion ;
                                       owl:someValuesFrom bmo:Ion
@@ -2130,6 +2191,22 @@ bmo:MEModelClassicNeuronModelGenerator rdf:type owl:Class ;
                                        rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorVariant ,
                                                        bmo:NeuronModelInSpaceGenerator ,
                                                        [ rdf:type owl:Restriction ;
+                                                         owl:onProperty bmo:uses ;
+                                                         owl:someValuesFrom bmo:ModelCircuit
+                                                       ] ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty bmo:uses ;
+                                                         owl:someValuesFrom bmo:ModelIonicMechanism
+                                                       ] ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty bmo:uses ;
+                                                         owl:someValuesFrom nsg:NeuronMorphology
+                                                       ] ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty bmo:uses ;
+                                                         owl:someValuesFrom nsg:Trace
+                                                       ] ,
+                                                       [ rdf:type owl:Restriction ;
                                                          owl:onProperty bmo:usesCircuitWithProperty ;
                                                          owl:someValuesFrom bmo:CellPositionCircuitProperty
                                                        ] ,
@@ -2144,22 +2221,6 @@ bmo:MEModelClassicNeuronModelGenerator rdf:type owl:Class ;
                                                        [ rdf:type owl:Restriction ;
                                                          owl:onProperty bmo:usesCircuitWithProperty ;
                                                          owl:someValuesFrom bmo:NeuronMorphologyCircuitProperty
-                                                       ] ,
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty nsg:uses ;
-                                                         owl:someValuesFrom bmo:ModelCircuit
-                                                       ] ,
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty nsg:uses ;
-                                                         owl:someValuesFrom bmo:ModelIonicMechanism
-                                                       ] ,
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty nsg:uses ;
-                                                         owl:someValuesFrom nsg:NeuronMorphology
-                                                       ] ,
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty nsg:uses ;
-                                                         owl:someValuesFrom nsg:Trace
                                                        ] ;
                                        rdfs:label "MEModel classic neuron model generator"@en ;
                                        skos:prefLabel "MEModel classic neuron model generator"@en .
@@ -2169,6 +2230,22 @@ bmo:MEModelClassicNeuronModelGenerator rdf:type owl:Class ;
 bmo:MEModelCylinderNeuronModelGenerator rdf:type owl:Class ;
                                         rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorVariant ,
                                                         bmo:NeuronModelInSpaceGenerator ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty bmo:uses ;
+                                                          owl:someValuesFrom bmo:ModelCircuit
+                                                        ] ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty bmo:uses ;
+                                                          owl:someValuesFrom bmo:ModelIonicMechanism
+                                                        ] ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty bmo:uses ;
+                                                          owl:someValuesFrom bmo:NeuronMorphologicalFeature
+                                                        ] ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty bmo:uses ;
+                                                          owl:someValuesFrom nsg:Trace
+                                                        ] ,
                                                         [ rdf:type owl:Restriction ;
                                                           owl:onProperty bmo:usesCircuitWithProperty ;
                                                           owl:someValuesFrom bmo:CellPositionCircuitProperty
@@ -2180,22 +2257,6 @@ bmo:MEModelCylinderNeuronModelGenerator rdf:type owl:Class ;
                                                         [ rdf:type owl:Restriction ;
                                                           owl:onProperty bmo:usesCircuitWithProperty ;
                                                           owl:someValuesFrom bmo:NeuronIdCircuitProperty
-                                                        ] ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty nsg:uses ;
-                                                          owl:someValuesFrom bmo:ModelCircuit
-                                                        ] ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty nsg:uses ;
-                                                          owl:someValuesFrom bmo:ModelIonicMechanism
-                                                        ] ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty nsg:uses ;
-                                                          owl:someValuesFrom bmo:NeuronMorphologicalFeature
-                                                        ] ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty nsg:uses ;
-                                                          owl:someValuesFrom nsg:Trace
                                                         ] ;
                                         rdfs:label "MEModel cylinder neuron model generator"@en ;
                                         skos:altLabel "me-model cylinder neuron model generator"@en ;
@@ -2214,11 +2275,11 @@ bmo:METypeCircuitProperty rdf:type owl:Class ;
 bmo:METypePropertyGenerator rdf:type owl:Class ;
                             rdfs:subClassOf bmo:ModelCircuitPropertyGenerator ,
                                             [ rdf:type owl:Restriction ;
-                                              owl:onProperty nsg:about ;
+                                              owl:onProperty schema:about ;
                                               owl:someValuesFrom bmo:NeuronSynthesisCategory
                                             ] ,
                                             [ rdf:type owl:Restriction ;
-                                              owl:onProperty nsg:uses ;
+                                              owl:onProperty bmo:uses ;
                                               owl:someValuesFrom bmo:ModelCircuit
                                             ] ;
                             rdfs:label "METype property generator"@en ;
@@ -2340,7 +2401,7 @@ bmo:ModelBrainBuildingWorkflow rdf:type owl:Class ;
                                                  owl:someValuesFrom bmo:ModelCircuit
                                                ] ,
                                                [ rdf:type owl:Restriction ;
-                                                 owl:onProperty nsg:uses ;
+                                                 owl:onProperty bmo:uses ;
                                                  owl:someValuesFrom prov:Entity
                                                ] ;
                                rdfs:label "Model Brain Building Workflow"@en ;
@@ -2367,7 +2428,7 @@ bmo:ModelBrainComponent rdf:type owl:Class ;
 bmo:ModelBrainParameter rdf:type owl:Class ;
                         rdfs:subClassOf prov:Entity ,
                                         [ rdf:type owl:Restriction ;
-                                          owl:onProperty nsg:value ;
+                                          owl:onProperty schema:value ;
                                           owl:someValuesFrom schema:QuantitativeValue
                                         ] ;
                         rdfs:label "Model Brain Parameter"@en ;
@@ -2412,11 +2473,11 @@ bmo:ModelBrainVolumeBuildingWorkflow rdf:type owl:Class ;
                                                        owl:someValuesFrom bmo:ModelBrainVolume
                                                      ] ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty nsg:uses ;
+                                                       owl:onProperty bmo:uses ;
                                                        owl:someValuesFrom bmo:BrainVolumeBlueprint
                                                      ] ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty nsg:uses ;
+                                                       owl:onProperty bmo:uses ;
                                                        owl:someValuesFrom bmo:ModelNeuron
                                                      ] ;
                                      rdfs:label "Model Brain Volume Building Workflow"@en .
@@ -2435,23 +2496,23 @@ bmo:ModelBuildingWorkflow rdf:type owl:Class ;
                                           ] ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty bmo:isAssociatedWith ;
-                                            owl:someValuesFrom schema:SoftwareAgent
+                                            owl:someValuesFrom prov:SoftwareAgent
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty bmo:uses ;
+                                            owl:someValuesFrom schema:Dataset
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty bmo:uses ;
+                                            owl:someValuesFrom bmo:Equation
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty bmo:uses ;
+                                            owl:someValuesFrom bmo:ModelBrainComponent
                                           ] ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty nsg:hasTarget ;
                                             owl:someValuesFrom bmo:BrainComponentFeature
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty nsg:uses ;
-                                            owl:someValuesFrom schema:Dataset
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty nsg:uses ;
-                                            owl:someValuesFrom bmo:Equation
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty nsg:uses ;
-                                            owl:someValuesFrom bmo:ModelBrainComponent
                                           ] ;
                           rdfs:label "Model Building Workflow"@en .
 
@@ -2485,7 +2546,7 @@ bmo:ModelCircuitBuildingWorkflow rdf:type owl:Class ;
                                                    owl:someValuesFrom bmo:ModelCircuit
                                                  ] ,
                                                  [ rdf:type owl:Restriction ;
-                                                   owl:onProperty nsg:uses ;
+                                                   owl:onProperty bmo:uses ;
                                                    owl:someValuesFrom prov:Entity
                                                  ] ;
                                  rdfs:label "Model Circuit Building Workflow"@en .
@@ -2509,11 +2570,11 @@ bmo:ModelCircuitConnectivityBuildingWorkflow rdf:type owl:Class ;
                                                                owl:someValuesFrom bmo:ModelCircuitConnectivity
                                                              ] ,
                                                              [ rdf:type owl:Restriction ;
-                                                               owl:onProperty nsg:uses ;
+                                                               owl:onProperty bmo:uses ;
                                                                owl:someValuesFrom bmo:BrainVolumeConnectivityBlueprint
                                                              ] ,
                                                              [ rdf:type owl:Restriction ;
-                                                               owl:onProperty nsg:uses ;
+                                                               owl:onProperty bmo:uses ;
                                                                owl:someValuesFrom bmo:ModelSynapse
                                                              ] ;
                                              rdfs:label "Model Circuit Connectivity Building Workflow"@en .
@@ -2527,18 +2588,19 @@ bmo:ModelCircuitProperty rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCircuitPropertyGenerator
 bmo:ModelCircuitPropertyGenerator rdf:type owl:Class ;
-                                  rdfs:subClassOf bmo:ModelBuildingWorkflow ,
+                                  rdfs:subClassOf bmo:EntityGenerator ,
+                                                  bmo:ModelBuildingWorkflow ,
                                                   [ rdf:type owl:Restriction ;
                                                     owl:onProperty bmo:generates ;
                                                     owl:someValuesFrom bmo:ModelCircuit
                                                   ] ,
                                                   [ rdf:type owl:Restriction ;
-                                                    owl:onProperty bmo:usesCircuitWithProperty ;
-                                                    owl:someValuesFrom bmo:ModelCircuitProperty
+                                                    owl:onProperty bmo:uses ;
+                                                    owl:someValuesFrom prov:Entity
                                                   ] ,
                                                   [ rdf:type owl:Restriction ;
-                                                    owl:onProperty nsg:uses ;
-                                                    owl:someValuesFrom prov:Entity
+                                                    owl:onProperty bmo:usesCircuitWithProperty ;
+                                                    owl:someValuesFrom bmo:ModelCircuitProperty
                                                   ] ;
                                   rdfs:label "ModelCircuitPropertyGenerator"@en .
 
@@ -2707,6 +2769,10 @@ bmo:ModelNeuronMetabolism rdf:type owl:Class ;
 bmo:ModelReactionBuildingWorkflow rdf:type owl:Class ;
                                   rdfs:subClassOf bmo:ModelBuildingWorkflow ,
                                                   [ rdf:type owl:Restriction ;
+                                                    owl:onProperty schema:about ;
+                                                    owl:someValuesFrom bmo:BiochemicalReaction
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
                                                     owl:onProperty bmo:generates ;
                                                     owl:someValuesFrom bmo:ModelBiochemicalReaction
                                                   ] ,
@@ -2715,20 +2781,16 @@ bmo:ModelReactionBuildingWorkflow rdf:type owl:Class ;
                                                     owl:someValuesFrom bmo:ModelBiochemicalReactionParameter
                                                   ] ,
                                                   [ rdf:type owl:Restriction ;
-                                                    owl:onProperty nsg:about ;
-                                                    owl:someValuesFrom bmo:BiochemicalReaction
+                                                    owl:onProperty bmo:uses ;
+                                                    owl:someValuesFrom bmo:ReactionRateEquation
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty bmo:uses ;
+                                                    owl:someValuesFrom nsg:MolecularConcentration
                                                   ] ,
                                                   [ rdf:type owl:Restriction ;
                                                     owl:onProperty nsg:hasTarget ;
                                                     owl:someValuesFrom bmo:SteadyStateMolecularConcentration
-                                                  ] ,
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty nsg:uses ;
-                                                    owl:someValuesFrom bmo:ReactionRateEquation
-                                                  ] ,
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty nsg:uses ;
-                                                    owl:someValuesFrom nsg:MolecularConcentration
                                                   ] ;
                                   rdfs:label "Model Reaction Building Workflow"@en .
 
@@ -2745,16 +2807,16 @@ bmo:ModelReactionParameterOptimizationWorkflow rdf:type owl:Class ;
                                                                  owl:someValuesFrom bmo:ModelBiochemicalReactionParameter
                                                                ] ,
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty nsg:hasTarget ;
-                                                                 owl:someValuesFrom bmo:SteadyStateMolecularConcentration
-                                                               ] ,
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty nsg:uses ;
+                                                                 owl:onProperty bmo:uses ;
                                                                  owl:someValuesFrom bmo:ReactionRateEquation
                                                                ] ,
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty nsg:uses ;
+                                                                 owl:onProperty bmo:uses ;
                                                                  owl:someValuesFrom nsg:MolecularConcentration
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty nsg:hasTarget ;
+                                                                 owl:someValuesFrom bmo:SteadyStateMolecularConcentration
                                                                ] ;
                                                rdfs:label "Model Reaction Parameter Optimization Workflow"@en .
 
@@ -2767,7 +2829,7 @@ bmo:ModelReactionSimulationWorkflow rdf:type owl:Class ;
                                                       owl:someValuesFrom bmo:MolecularConcentrationSeries
                                                     ] ,
                                                     [ rdf:type owl:Restriction ;
-                                                      owl:onProperty nsg:uses ;
+                                                      owl:onProperty bmo:uses ;
                                                       owl:someValuesFrom bmo:ModelBiochemicalReaction
                                                     ] ;
                                     rdfs:label "Model Reaction Simulation Workflow"@en .
@@ -2777,12 +2839,12 @@ bmo:ModelReactionSimulationWorkflow rdf:type owl:Class ;
 bmo:ModelReactionValidationWorkflow rdf:type owl:Class ;
                                     rdfs:subClassOf bmo:ModelValidationWorkflow ,
                                                     [ rdf:type owl:Restriction ;
-                                                      owl:onProperty nsg:hasTarget ;
-                                                      owl:someValuesFrom bmo:SteadyStateMolecularConcentration
+                                                      owl:onProperty bmo:uses ;
+                                                      owl:someValuesFrom bmo:MolecularConcentrationSeries
                                                     ] ,
                                                     [ rdf:type owl:Restriction ;
-                                                      owl:onProperty nsg:uses ;
-                                                      owl:someValuesFrom bmo:MolecularConcentrationSeries
+                                                      owl:onProperty nsg:hasTarget ;
+                                                      owl:someValuesFrom bmo:SteadyStateMolecularConcentration
                                                     ] ;
                                     rdfs:label "Model Reaction Validation Workflow"@en .
 
@@ -2839,12 +2901,12 @@ bmo:ModelSynapseBuildingWorkflow rdf:type owl:Class ;
 bmo:ModelValidationWorkflow rdf:type owl:Class ;
                             rdfs:subClassOf bmo:Workflow ,
                                             [ rdf:type owl:Restriction ;
-                                              owl:onProperty nsg:hasTarget ;
-                                              owl:someValuesFrom bmo:BrainComponentFeature
+                                              owl:onProperty bmo:uses ;
+                                              owl:someValuesFrom schema:Dataset
                                             ] ,
                                             [ rdf:type owl:Restriction ;
-                                              owl:onProperty nsg:uses ;
-                                              owl:someValuesFrom schema:Dataset
+                                              owl:onProperty nsg:hasTarget ;
+                                              owl:someValuesFrom bmo:BrainComponentFeature
                                             ] ;
                             rdfs:label "Model Validation Workflow"@en .
 
@@ -2902,6 +2964,10 @@ bmo:Molecule rdf:type owl:Class ;
 bmo:MorphologyGenerator rdf:type owl:Class ;
                         rdfs:subClassOf bmo:ModelCircuitPropertyGenerator ,
                                         [ rdf:type owl:Restriction ;
+                                          owl:onProperty schema:about ;
+                                          owl:someValuesFrom bmo:NeuronSynthesisCategory
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
                                           owl:onProperty schema:isPartOf ;
                                           owl:someValuesFrom bmo:ModelCircuitBuildingWorkflow
                                         ] ,
@@ -2926,11 +2992,7 @@ bmo:MorphologyGenerator rdf:type owl:Class ;
                                           owl:someValuesFrom bmo:NeuronMorphologyCircuitProperty
                                         ] ,
                                         [ rdf:type owl:Restriction ;
-                                          owl:onProperty nsg:about ;
-                                          owl:someValuesFrom bmo:NeuronSynthesisCategory
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty nsg:uses ;
+                                          owl:onProperty bmo:uses ;
                                           owl:someValuesFrom bmo:ModelCircuit
                                         ] ;
                         rdfs:label "Neuron Morphology in space generator"@en ;
@@ -2949,12 +3011,12 @@ bmo:NGVUnit rdf:type owl:Class ;
 bmo:NGVUnitBuildingWorkflow rdf:type owl:Class ;
                             rdfs:subClassOf bmo:ModelBuildingWorkflow ,
                                             [ rdf:type owl:Restriction ;
-                                              owl:onProperty bmo:generates ;
-                                              owl:someValuesFrom bmo:ModelNGVUnit
+                                              owl:onProperty schema:about ;
+                                              owl:someValuesFrom bmo:NGVUnit
                                             ] ,
                                             [ rdf:type owl:Restriction ;
-                                              owl:onProperty nsg:about ;
-                                              owl:someValuesFrom bmo:NGVUnit
+                                              owl:onProperty bmo:generates ;
+                                              owl:someValuesFrom bmo:ModelNGVUnit
                                             ] ;
                             rdfs:label "NGV Unit Building Workflow"@en .
 
@@ -2963,31 +3025,31 @@ bmo:NGVUnitBuildingWorkflow rdf:type owl:Class ;
 bmo:NGVUnitMetabolismBuildingWorkflow rdf:type owl:Class ;
                                       rdfs:subClassOf bmo:NGVUnitBuildingWorkflow ,
                                                       [ rdf:type owl:Restriction ;
+                                                        owl:onProperty schema:about ;
+                                                        owl:someValuesFrom bmo:NGVUnit
+                                                      ] ,
+                                                      [ rdf:type owl:Restriction ;
                                                         owl:onProperty bmo:generates ;
                                                         owl:someValuesFrom bmo:ModelNGVUnitMetabolism
                                                       ] ,
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty nsg:about ;
-                                                        owl:someValuesFrom bmo:NGVUnit
-                                                      ] ,
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty nsg:uses ;
+                                                        owl:onProperty bmo:uses ;
                                                         owl:someValuesFrom bmo:ModelBasalLaminaMetabolism
                                                       ] ,
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty nsg:uses ;
+                                                        owl:onProperty bmo:uses ;
                                                         owl:someValuesFrom bmo:ModelBiochemicalReaction
                                                       ] ,
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty nsg:uses ;
+                                                        owl:onProperty bmo:uses ;
                                                         owl:someValuesFrom bmo:ModelGliaMetabolism
                                                       ] ,
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty nsg:uses ;
+                                                        owl:onProperty bmo:uses ;
                                                         owl:someValuesFrom bmo:ModelInterstitialSpaceMetabolism
                                                       ] ,
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty nsg:uses ;
+                                                        owl:onProperty bmo:uses ;
                                                         owl:someValuesFrom bmo:ModelNeuronMetabolism
                                                       ] ;
                                       rdfs:label "NGV Unit Metabolism Building Workflow"@en .
@@ -3013,10 +3075,10 @@ bmo:NeuroMNeuronMorphologyFeatureGenerator rdf:type owl:Class ;
                                                            bmo:NeuronMorphologyFeatureGenerator ,
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty bmo:generates ;
-                                                             owl:someValuesFrom bmo:NeuronMorphologicalFeature
+                                                             owl:someValuesFrom bmo:NeuronMorphologicalFeatureAnnotation
                                                            ] ,
                                                            [ rdf:type owl:Restriction ;
-                                                             owl:onProperty nsg:uses ;
+                                                             owl:onProperty bmo:uses ;
                                                              owl:someValuesFrom nsg:NeuronMorphology
                                                            ] ;
                                            rdfs:label "Neuron morphology feature generator using Neuronal Morphology Analysis Tool  (NeuroM)"@en ;
@@ -3028,12 +3090,12 @@ bmo:NeuroMNeuronMorphologyFeatureGenerator rdf:type owl:Class ;
 bmo:NeuronBuildingWorkflow rdf:type owl:Class ;
                            rdfs:subClassOf bmo:CellBuildingWorkflow ,
                                            [ rdf:type owl:Restriction ;
-                                             owl:onProperty bmo:generates ;
-                                             owl:someValuesFrom bmo:ModelNeuron
+                                             owl:onProperty schema:about ;
+                                             owl:someValuesFrom nsg:Neuron
                                            ] ,
                                            [ rdf:type owl:Restriction ;
-                                             owl:onProperty nsg:about ;
-                                             owl:someValuesFrom nsg:Neuron
+                                             owl:onProperty bmo:generates ;
+                                             owl:someValuesFrom bmo:ModelNeuron
                                            ] ;
                            rdfs:label "Neuron Building Workflow"@en .
 
@@ -3062,7 +3124,7 @@ bmo:NeuronElectrophysiologicalFeatureExtractionWorkflow rdf:type owl:Class ;
                                                                           owl:someValuesFrom bmo:NeuronElectrophysiologicalFeature
                                                                         ] ,
                                                                         [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty nsg:uses ;
+                                                                          owl:onProperty bmo:uses ;
                                                                           owl:someValuesFrom nsg:Trace
                                                                         ] ;
                                                         rdfs:label "Electrophysiological Feature Extraction Workflow"@en .
@@ -3099,11 +3161,11 @@ bmo:NeuronMetabolismBuildingWorkflow rdf:type owl:Class ;
                                                        owl:someValuesFrom bmo:ModelNeuronMetabolism
                                                      ] ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty nsg:uses ;
+                                                       owl:onProperty bmo:uses ;
                                                        owl:someValuesFrom bmo:ModelBiochemicalReaction
                                                      ] ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty nsg:uses ;
+                                                       owl:onProperty bmo:uses ;
                                                        owl:someValuesFrom bmo:ModelSubcellularPartMetabolism
                                                      ] ;
                                      rdfs:label "Neuron Metabolism Building Workflow"@en .
@@ -3112,6 +3174,10 @@ bmo:NeuronMetabolismBuildingWorkflow rdf:type owl:Class ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronModelInSpaceGenerator
 bmo:NeuronModelInSpaceGenerator rdf:type owl:Class ;
                                 rdfs:subClassOf bmo:ModelCircuitPropertyGenerator ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty schema:about ;
+                                                  owl:someValuesFrom bmo:NeuronSynthesisCategory
+                                                ] ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty bmo:generates ;
                                                   owl:someValuesFrom nsg:NeuronMorphology
@@ -3145,11 +3211,7 @@ bmo:NeuronModelInSpaceGenerator rdf:type owl:Class ;
                                                   owl:someValuesFrom bmo:TemplatePropertyCircuitProperty
                                                 ] ,
                                                 [ rdf:type owl:Restriction ;
-                                                  owl:onProperty nsg:about ;
-                                                  owl:someValuesFrom bmo:NeuronSynthesisCategory
-                                                ] ,
-                                                [ rdf:type owl:Restriction ;
-                                                  owl:onProperty nsg:uses ;
+                                                  owl:onProperty bmo:uses ;
                                                   owl:someValuesFrom bmo:ModelCircuit
                                                 ] ;
                                 rdfs:label "Neuron model in space generator"@en ;
@@ -3169,6 +3231,12 @@ bmo:NeuronMorphologicalFeature rdf:type owl:Class ;
                                rdfs:label "Neuron Morphological Feature"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeatureAnnotation
+bmo:NeuronMorphologicalFeatureAnnotation rdf:type owl:Class ;
+                                         rdfs:subClassOf prov:Entity ;
+                                         rdfs:label "Neuron Morphological Feature Annotation"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologyCircuitProperty
 bmo:NeuronMorphologyCircuitProperty rdf:type owl:Class ;
                                     rdfs:subClassOf bmo:ModelCircuitProperty ;
@@ -3179,7 +3247,7 @@ bmo:NeuronMorphologyCircuitProperty rdf:type owl:Class ;
 bmo:NeuronMorphologyFeatureGenerator rdf:type owl:Class ;
                                      rdfs:subClassOf bmo:FeatureExtractionWorkflow ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty nsg:about ;
+                                                       owl:onProperty schema:about ;
                                                        owl:someValuesFrom bmo:NeuronSynthesisCategory
                                                      ] ;
                                      rdfs:label "Neuron morphology feature generator"@en ;
@@ -3329,16 +3397,16 @@ bmo:ParameterOptimizationWorkflow rdf:type owl:Class ;
                                                     owl:someValuesFrom bmo:ModelBrainParameter
                                                   ] ,
                                                   [ rdf:type owl:Restriction ;
-                                                    owl:onProperty nsg:hasTarget ;
-                                                    owl:someValuesFrom bmo:BrainComponentFeature
-                                                  ] ,
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty nsg:uses ;
+                                                    owl:onProperty bmo:uses ;
                                                     owl:someValuesFrom schema:Dataset
                                                   ] ,
                                                   [ rdf:type owl:Restriction ;
-                                                    owl:onProperty nsg:uses ;
+                                                    owl:onProperty bmo:uses ;
                                                     owl:someValuesFrom bmo:ModelBrainComponent
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty nsg:hasTarget ;
+                                                    owl:someValuesFrom bmo:BrainComponentFeature
                                                   ] ;
                                   rdfs:label "Parameter Optimization Workflow"@en .
 
@@ -3356,6 +3424,7 @@ bmo:PerisomaticCurrentFiringFeature rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Position
 bmo:Position rdf:type owl:Class ;
+             rdfs:subClassOf prov:Entity ;
              rdfs:label "Position"@en .
 
 
@@ -3393,14 +3462,6 @@ bmo:ProteinProteinInteraction rdf:type owl:Class ;
 bmo:Pseudo-LinearSynapseType rdf:type owl:Class ;
                              rdfs:subClassOf bmo:SynapsePlasticityType ;
                              rdfs:label "Pseudo-Linear Synapse Type"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/PyramidalNeuron
-bmo:PyramidalNeuron rdf:type owl:Class ;
-                    rdfs:subClassOf nsg:MType ;
-                    rdfs:label "Pyramidal Neuron"@en ;
-                    skos:definition "A neuron with a pyramidal shaped soma and two distinct dendritic trees. The basal dendrites emerge from the base and the apical dendrites from the apex of the pyramidal cell body." ;
-                    nsg:synonym "Pyramidal cell" .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Query
@@ -3491,6 +3552,7 @@ bmo:Soma rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SomaStatistics
 bmo:SomaStatistics rdf:type owl:Class ;
+                   rdfs:subClassOf prov:Entity ;
                    rdfs:label "SomaStatistics"@en .
 
 
@@ -3506,7 +3568,7 @@ bmo:SteadyStateConcentrationExtractionWorkflow rdf:type owl:Class ;
                                                                  owl:someValuesFrom bmo:SteadyStateMolecularConcentration
                                                                ] ,
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty nsg:uses ;
+                                                                 owl:onProperty bmo:uses ;
                                                                  owl:someValuesFrom bmo:MolecularConcentrationSeries
                                                                ] ;
                                                rdfs:label "Steady State Concentration Extraction Workflow"@en .
@@ -3523,22 +3585,12 @@ bmo:SteadyStateMolecularConcentration rdf:type owl:Class ;
                                       rdfs:label "Steady State Molecular Concentration"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/SubCellularModel
-bmo:SubCellularModel rdf:type owl:Class ;
-                     rdfs:subClassOf bmo:ModelBrainActivity ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty nsg:modelOf ;
-                                       owl:someValuesFrom bmo:SubCellularProcess
-                                     ] ;
-                     rdfs:label "SubCellular Model"@en .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SubCellularModelBuildingWorkflow
 bmo:SubCellularModelBuildingWorkflow rdf:type owl:Class ;
                                      rdfs:subClassOf bmo:ModelBuildingWorkflow ,
                                                      [ rdf:type owl:Restriction ;
                                                        owl:onProperty bmo:generates ;
-                                                       owl:someValuesFrom bmo:SubCellularModel
+                                                       owl:someValuesFrom nsg:SubCellularModel
                                                      ] ;
                                      rdfs:label "SubCellular Model Building Workflow"@en .
 
@@ -3570,12 +3622,12 @@ bmo:SubcellularPart rdf:type owl:Class ;
 bmo:SubcellularPartBuildingWorkflow rdf:type owl:Class ;
                                     rdfs:subClassOf bmo:ModelBuildingWorkflow ,
                                                     [ rdf:type owl:Restriction ;
-                                                      owl:onProperty bmo:generates ;
-                                                      owl:someValuesFrom bmo:ModelSubcellularPart
+                                                      owl:onProperty schema:about ;
+                                                      owl:someValuesFrom bmo:SubcellularPart
                                                     ] ,
                                                     [ rdf:type owl:Restriction ;
-                                                      owl:onProperty nsg:about ;
-                                                      owl:someValuesFrom bmo:SubcellularPart
+                                                      owl:onProperty bmo:generates ;
+                                                      owl:someValuesFrom bmo:ModelSubcellularPart
                                                     ] ;
                                     rdfs:label "Subcellular Part Building Workflow"@en .
 
@@ -3591,15 +3643,15 @@ bmo:SubcellularPartFeature rdf:type owl:Class ;
 bmo:SubcellularPartMetabolismBuildingWorkflow rdf:type owl:Class ;
                                               rdfs:subClassOf bmo:SubcellularPartBuildingWorkflow ,
                                                               [ rdf:type owl:Restriction ;
+                                                                owl:onProperty schema:about ;
+                                                                owl:someValuesFrom bmo:SubcellularPart
+                                                              ] ,
+                                                              [ rdf:type owl:Restriction ;
                                                                 owl:onProperty bmo:generates ;
                                                                 owl:someValuesFrom bmo:ModelSubcellularPartMetabolism
                                                               ] ,
                                                               [ rdf:type owl:Restriction ;
-                                                                owl:onProperty nsg:about ;
-                                                                owl:someValuesFrom bmo:SubcellularPart
-                                                              ] ,
-                                                              [ rdf:type owl:Restriction ;
-                                                                owl:onProperty nsg:uses ;
+                                                                owl:onProperty bmo:uses ;
                                                                 owl:someValuesFrom bmo:ModelBiochemicalReaction
                                                               ] ;
                                               rdfs:label "Subcellular Part Metabolism Building Workflow"@en .
@@ -3738,7 +3790,7 @@ bmo:SynapticStrength rdf:type owl:Class ;
 bmo:SynthesizedNeuronMorphologyInAsc rdf:type owl:Class ;
                                      rdfs:subClassOf nsg:SynthesizedNeuronMorphology ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty nsg:distribution ;
+                                                       owl:onProperty schema:distribution ;
                                                        owl:someValuesFrom bmo:DataDownloadASC
                                                      ] ;
                                      rdfs:label "SynthesizedNeuronMorphologyInAsc"@en .
@@ -3761,28 +3813,28 @@ bmo:TMDSynthesisMorphologyGenerator rdf:type owl:Class ;
                                     rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorVariant ,
                                                     bmo:MorphologyGenerator ,
                                                     [ rdf:type owl:Restriction ;
+                                                      owl:onProperty bmo:uses ;
+                                                      owl:someValuesFrom bmo:AtlasDistanceToLayer
+                                                    ] ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty bmo:uses ;
+                                                      owl:someValuesFrom bmo:ModelCircuit
+                                                    ] ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty bmo:uses ;
+                                                      owl:someValuesFrom nsg:CellOrientationField
+                                                    ] ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty bmo:uses ;
+                                                      owl:someValuesFrom nsg:NeuronMorphology
+                                                    ] ,
+                                                    [ rdf:type owl:Restriction ;
                                                       owl:onProperty bmo:usesCircuitWithProperty ;
                                                       owl:someValuesFrom bmo:METypeCircuitProperty
                                                     ] ,
                                                     [ rdf:type owl:Restriction ;
                                                       owl:onProperty bmo:usesCircuitWithProperty ;
                                                       owl:someValuesFrom bmo:NeuronIdCircuitProperty
-                                                    ] ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty nsg:uses ;
-                                                      owl:someValuesFrom bmo:AtlasDistanceToLayer
-                                                    ] ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty nsg:uses ;
-                                                      owl:someValuesFrom bmo:ModelCircuit
-                                                    ] ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty nsg:uses ;
-                                                      owl:someValuesFrom nsg:CellOrientationField
-                                                    ] ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty nsg:uses ;
-                                                      owl:someValuesFrom nsg:NeuronMorphology
                                                     ] ;
                                     rdfs:label "TMDSynthesisMorphologyGenerator"@en .
 
@@ -3791,7 +3843,7 @@ bmo:TMDSynthesisMorphologyGenerator rdf:type owl:Class ;
 bmo:TTT rdf:type owl:Class ;
         rdfs:subClassOf bmo:ParameterOptimizationWorkflow ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty nsg:uses ;
+                          owl:onProperty bmo:uses ;
                           owl:someValuesFrom nsg:NeuronMorphology
                         ] ;
         rdfs:label "TTT"@en .
@@ -3836,6 +3888,10 @@ bmo:WholeBrain rdf:type owl:Class ;
 bmo:Workflow rdf:type owl:Class ;
              rdfs:subClassOf prov:Entity ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty schema:about ;
+                               owl:someValuesFrom prov:Entity
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty schema:isPartOf ;
                                owl:someValuesFrom bmo:Workflow
                              ] ,
@@ -3849,14 +3905,10 @@ bmo:Workflow rdf:type owl:Class ;
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty bmo:isAssociatedWith ;
-                               owl:someValuesFrom schema:SoftwareAgent
+                               owl:someValuesFrom prov:SoftwareAgent
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty nsg:about ;
-                               owl:someValuesFrom prov:Entity
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty nsg:uses ;
+                               owl:onProperty bmo:uses ;
                                owl:someValuesFrom prov:Entity
                              ] ;
              rdfs:label "Workflow"@en ;
@@ -3869,12 +3921,6 @@ bmo:WorkflowDefinition rdf:type owl:Class ;
                        rdfs:label "WorkflowDefinition"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/cAD
-bmo:cAD rdf:type owl:Class ;
-        rdfs:subClassOf nsg:EType ;
-        rdfs:label "cAD"@en .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Ca2+ActivatedK+Current
 <https://bbp.epfl.ch/ontologies/core/bmo/Ca2+ActivatedK+Current> rdf:type owl:Class ;
                                                                  rdfs:subClassOf bmo:IonCurrent ,
@@ -3883,20 +3929,8 @@ bmo:cAD rdf:type owl:Class ;
                                                                                    owl:someValuesFrom nsg:K
                                                                                  ] ;
                                                                  rdfs:label "Ca2+ Activated K+ Current"@en ;
-                                                                 skos:definition "Small-conductance calcium-activated potassium current."^^xsd:string ;
-                                                                 nsg:synonym "SK_E2"^^xsd:string .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/Lamp+
-<https://bbp.epfl.ch/ontologies/core/bmo/Lamp+> rdf:type owl:Class ;
-                                                rdfs:subClassOf bmo:NeuronMolecularType ;
-                                                rdfs:label "Lamp+"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/PV+
-<https://bbp.epfl.ch/ontologies/core/bmo/PV+> rdf:type owl:Class ;
-                                              rdfs:subClassOf bmo:NeuronMolecularType ;
-                                              rdfs:label "PV+"@en .
+                                                                 skos:altLabel "SK_E2"^^xsd:string ;
+                                                                 skos:definition "Small-conductance calcium-activated potassium current."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PersistentK+Current
@@ -3907,9 +3941,9 @@ bmo:cAD rdf:type owl:Class ;
                                                                                 owl:someValuesFrom nsg:K
                                                                               ] ;
                                                               rdfs:label "Persistent K+ Current"@en ;
-                                                              skos:altLabel "K_Pst"^^xsd:string ;
-                                                              skos:definition "The persistent component of the potassium current"^^xsd:string ;
-                                                              nsg:synonym "Persistent potassium current"^^xsd:string .
+                                                              skos:altLabel "K_Pst"^^xsd:string ,
+                                                                            "Persistent potassium current"^^xsd:string ;
+                                                              skos:definition "The persistent component of the potassium current"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PersistentNa+Current
@@ -3923,12 +3957,6 @@ bmo:cAD rdf:type owl:Class ;
                                                                skos:definition "Persistent sodium current."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/SST+
-<https://bbp.epfl.ch/ontologies/core/bmo/SST+> rdf:type owl:Class ;
-                                               rdfs:subClassOf bmo:NeuronMolecularType ;
-                                               rdfs:label "SST+"@en .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TransientK+Current
 <https://bbp.epfl.ch/ontologies/core/bmo/TransientK+Current> rdf:type owl:Class ;
                                                              rdfs:subClassOf bmo:IonCurrent ,
@@ -3937,9 +3965,9 @@ bmo:cAD rdf:type owl:Class ;
                                                                                owl:someValuesFrom nsg:K
                                                                              ] ;
                                                              rdfs:label "Transient K+ Current"@en ;
-                                                             skos:altLabel "K_Tst"^^xsd:string ;
-                                                             skos:definition "The transient component of the potassium current"^^xsd:string ;
-                                                             nsg:synonym "Transient potassium current"^^xsd:string .
+                                                             skos:altLabel "K_Tst"^^xsd:string ,
+                                                                           "Transient potassium current"^^xsd:string ;
+                                                             skos:definition "The transient component of the potassium current"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TransientNa+Current
@@ -3951,12 +3979,6 @@ bmo:cAD rdf:type owl:Class ;
                                                                               ] ;
                                                               rdfs:label "Transient Na+ Current"@en ;
                                                               skos:definition "Transient sodium current."^^xsd:string .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/VIP+
-<https://bbp.epfl.ch/ontologies/core/bmo/VIP+> rdf:type owl:Class ;
-                                               rdfs:subClassOf bmo:NeuronMolecularType ;
-                                               rdfs:label "VIP+"@en .
 
 
 ###  https://neuroshapes.org/Acetylcholine
@@ -4000,6 +4022,22 @@ nsg:Axon rdf:type owl:Class ;
 nsg:BasalDendrite rdf:type owl:Class ;
                   rdfs:subClassOf nsg:Dendrite ;
                   rdfs:label "Basal Dendrite"@en .
+
+
+###  https://neuroshapes.org/BoutonDensity
+nsg:BoutonDensity rdf:type owl:Class ;
+                  rdfs:subClassOf bmo:BrainVolumeFeature ,
+                                  bmo:ModelConnectivityParameter ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty nsg:brainLocation ;
+                                    owl:someValuesFrom nsg:BrainLocation
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty nsg:cellType ;
+                                    owl:someValuesFrom bmo:BrainCellType
+                                  ] ;
+                  rdfs:label "Bouton Density"@en ;
+                  skos:altLabel "Bouton Density"@en .
 
 
 ###  https://neuroshapes.org/BrainAtlasRelease
@@ -4055,7 +4093,7 @@ nsg:BrainRegion rdf:type owl:Class ;
 nsg:Ca rdf:type owl:Class ;
        rdfs:subClassOf bmo:Ion ;
        rdfs:label "Ca"@en ;
-       nsg:synonym "Calcium"^^xsd:string .
+       skos:altLabel "Calcium"^^xsd:string .
 
 
 ###  https://neuroshapes.org/CalciumChannel
@@ -4065,6 +4103,22 @@ nsg:CalciumChannel rdf:type owl:Class ;
                                      owl:onProperty nsg:associatedIon ;
                                      owl:someValuesFrom nsg:Ca
                                    ] .
+
+
+###  https://neuroshapes.org/CellDensity
+nsg:CellDensity rdf:type owl:Class ;
+                rdfs:subClassOf bmo:BrainVolumeFeature ,
+                                bmo:BrainVolumeParameter ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty nsg:brainLocation ;
+                                  owl:someValuesFrom nsg:BrainLocation
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty nsg:cellType ;
+                                  owl:someValuesFrom bmo:BrainCellType
+                                ] ;
+                rdfs:label "Cell Density"@en ;
+                skos:altLabel "Cell Density"@en .
 
 
 ###  https://neuroshapes.org/CellDensityDataLayer
@@ -4092,7 +4146,7 @@ nsg:ChlorideChannel rdf:type owl:Class ;
 nsg:Cl rdf:type owl:Class ;
        rdfs:subClassOf bmo:Ion ;
        rdfs:label "Cl"@en ;
-       nsg:synonym "Chloride"^^xsd:string .
+       skos:altLabel "Chloride"^^xsd:string .
 
 
 ###  https://neuroshapes.org/ClassicalNeurotransmitter
@@ -4165,9 +4219,9 @@ nsg:ExcitatoryNeuron rdf:type owl:Class ;
                      rdfs:subClassOf bmo:NeurotransmitterType ;
                      rdfs:label "Excitatory Neuron" ;
                      skos:definition "A neuron that releases excitatory neurotransmitters. These types of neurotransmitters have excitatory effects on the neuron, meaning they increase the likelihood that the neuron will fire an action potential. Some of the major excitatory neurotransmitters include epinephrine and norepinephrine." ;
+                     skos:notation "Exc"^^xsd:string ;
                      skos:prefLabel "Excitatory Neuron" ;
-                     nsg:color "#6666ff"^^xsd:string ;
-                     nsg:skos:notation "Exc"^^xsd:string .
+                     nsg:color "#6666ff"^^xsd:string .
 
 
 ###  https://neuroshapes.org/ExcitatorySynapse
@@ -4233,9 +4287,9 @@ nsg:InhibitoryNeuron rdf:type owl:Class ;
                      rdfs:subClassOf bmo:NeurotransmitterType ;
                      rdfs:label "Inhibitory Neuron"^^xsd:string ;
                      skos:definition "A neuron that releases inhibitory neurotransmitters. These types of neurotransmitters have inhibitory effects on the neuron; they decrease the likelihood that the neuron will fire an action potential. Some of the major inhibitory neurotransmitters include serotonin and gamma-aminobutyric acid (GABA)." ;
+                     skos:notation "Inh"^^xsd:string ;
                      skos:prefLabel "Inhibitory Neuron"^^xsd:string ;
-                     nsg:color "#ff2222"^^xsd:string ;
-                     nsg:skos:notation "Inh"^^xsd:string .
+                     nsg:color "#ff2222"^^xsd:string .
 
 
 ###  https://neuroshapes.org/InhibitoryTransmitter
@@ -4255,7 +4309,7 @@ nsg:Interneuron rdf:type owl:Class ;
 nsg:K rdf:type owl:Class ;
       rdfs:subClassOf bmo:Ion ;
       rdfs:label "K"@en ;
-      nsg:synonym "Potassium"^^xsd:string .
+      skos:altLabel "Potassium"^^xsd:string .
 
 
 ###  https://neuroshapes.org/Kv11
@@ -4327,7 +4381,7 @@ nsg:MolecularConcentration rdf:type owl:Class ;
 nsg:Na rdf:type owl:Class ;
        rdfs:subClassOf bmo:Ion ;
        rdfs:label "Na"@en ;
-       nsg:synonym "Sodium"^^xsd:string .
+       skos:altLabel "Sodium"^^xsd:string .
 
 
 ###  https://neuroshapes.org/Neuromodulator
@@ -4359,7 +4413,7 @@ nsg:Neuron rdf:type owl:Class ;
 nsg:NeuronMorphology rdf:type owl:Class ;
                      rdfs:subClassOf schema:Dataset ,
                                      [ rdf:type owl:Restriction ;
-                                       owl:onProperty nsg:hasMType ;
+                                       owl:onProperty bmo:hasMType ;
                                        owl:someValuesFrom nsg:MType
                                      ] ;
                      rdfs:label "Neuron Morphology"@en .
@@ -4375,11 +4429,11 @@ nsg:Non-specificChannel rdf:type owl:Class ;
 nsg:Noradrenaline rdf:type owl:Class ;
                   rdfs:subClassOf nsg:Neuromodulator ;
                   rdfs:label "Noradrenaline"@en ;
-                  skos:definition "An organic chemical in the catecholamine family that functions in the brain and body as both a hormone and neurotransmitter. The general function of norepinephrine is to mobilize the brain and body for action. Norepinephrine release is lowest during sleep, rises during wakefulness, and reaches much higher levels during situations of stress or danger, in the so-called fight-or-flight response. In the brain, norepinephrine increases arousal and alertness, promotes vigilance, enhances formation and retrieval of memory, and focuses attention; it also increases restlessness and anxiety. In the rest of the body, norepinephrine increases heart rate and blood pressure, triggers the release of glucose from energy stores, increases blood flow to skeletal muscle, reduces blood flow to the gastrointestinal system, and inhibits voiding of the bladder and gastrointestinal motility." ;
-                  nsg:synonym "NA" ,
-                              "NE" ,
-                              "Noradrenalin" ,
-                              "Norepinephrine" .
+                  skos:altLabel "NA" ,
+                                "NE" ,
+                                "Noradrenalin" ,
+                                "Norepinephrine" ;
+                  skos:definition "An organic chemical in the catecholamine family that functions in the brain and body as both a hormone and neurotransmitter. The general function of norepinephrine is to mobilize the brain and body for action. Norepinephrine release is lowest during sleep, rises during wakefulness, and reaches much higher levels during situations of stress or danger, in the so-called fight-or-flight response. In the brain, norepinephrine increases arousal and alertness, promotes vigilance, enhances formation and retrieval of memory, and focuses attention; it also increases restlessness and anxiety. In the rest of the body, norepinephrine increases heart rate and blood pressure, triggers the release of glucose from energy stores, increases blood flow to skeletal muscle, reduces blood flow to the gastrointestinal system, and inhibits voiding of the bladder and gastrointestinal motility." .
 
 
 ###  https://neuroshapes.org/ObjectOfStudy
@@ -4438,6 +4492,7 @@ nsg:SodiumChannel rdf:type owl:Class ;
 
 ###  https://neuroshapes.org/Somatostatin
 nsg:Somatostatin rdf:type owl:Class ;
+                 rdfs:subClassOf prov:Entity ;
                  rdfs:label "Somatostatin"@en .
 
 
@@ -4447,6 +4502,17 @@ nsg:Species rdf:type owl:Class ;
             rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/c9128328-fe63-4e5e-8ec1-c7f0f0f33d19/edit/Classes> ;
             rdfs:label "Species"@en ;
             skos:definition "In biology, a species is a basic unit of classification and a taxonomic rank of an organism, as well as a unit of biodiversity."^^xsd:string .
+
+
+###  https://neuroshapes.org/SubCellularModel
+nsg:SubCellularModel rdf:type owl:Class ;
+                     rdfs:subClassOf bmo:ModelBrainActivity ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty nsg:modelOf ;
+                                       owl:someValuesFrom bmo:SubCellularProcess
+                                     ] ;
+                     rdfs:label "SubCellularModel"@en ;
+                     skos:altLabel "SubCellular Model"@en .
 
 
 ###  https://neuroshapes.org/Subject
@@ -4481,7 +4547,7 @@ nsg:TimeSeries rdf:type owl:Class ;
 nsg:Trace rdf:type owl:Class ;
           rdfs:subClassOf nsg:ElectricalSeries ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty nsg:hasMType ;
+                            owl:onProperty bmo:hasMType ;
                             owl:someValuesFrom nsg:MType
                           ] ;
           rdfs:label "Trace"@en .
@@ -4489,6 +4555,7 @@ nsg:Trace rdf:type owl:Class ;
 
 ###  https://neuroshapes.org/VasoactiveIntestinalPeptide
 nsg:VasoactiveIntestinalPeptide rdf:type owl:Class ;
+                                rdfs:subClassOf prov:Entity ;
                                 rdfs:label "Vasoactive Intestinal Peptide"@en .
 
 
@@ -4504,9 +4571,9 @@ nsg:Vector3D rdf:type owl:Class ;
 
 ###  https://neuroshapes.org/BluePyEModel
 nsg:BluePyEModel rdf:type owl:NamedIndividual ,
-                          schema:SoftwareAgent ,
+                          prov:SoftwareAgent ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty nsg:algorithm ;
+                            owl:onProperty schema:algorithm ;
                             owl:someValuesFrom bmo:EvolutionaryAlgorithm
                           ] ;
                  rdfs:label "BluePyEModel"@en ;
@@ -4525,9 +4592,6 @@ owl:equivalentClass rdfs:label "equivalentClass"@en .
 
 
 owl:topDataProperty rdfs:label "Attributes"@en .
-
-
-owl:topObjectProperty rdfs:label "Relations"@en .
 
 
 nsg:hasBaselDendriteFeature rdfs:label "hasBaselDendriteFeature"@en .
