@@ -8,9 +8,9 @@ See `Guidelines for Building and Extending the Brain Modeling Ontology (BMO) <ht
 
 
 
-+-----------------------------------------------------+----------------------------------------------------+
-| .. image:: ../assets/images/onto_layer_example.png   | .. image:: ../assets/images/onto_layer_abstract.png |
-+-----------------------------------------------------+----------------------------------------------------+
++-----------------------------------------------------+-----------------------------------------------------+
+| .. image:: ../assets/images/onto_layer_example.png  | .. image:: ../assets/images/onto_layer_abstract.png |
++-----------------------------------------------------+-----------------------------------------------------+
 
 
 How to access and use WebProtégé ?

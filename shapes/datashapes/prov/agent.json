@@ -17,7 +17,6 @@
       "@type": "NodeShape",
       "comment": "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.",
       "label": "Agent shape",
-      "node": "https://provshapes.org/commons/agent/shapes/AgentShape",
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "prov:Agent"
     }

@@ -52,7 +52,6 @@
             {
               "description": "Origin of the image volume",
               "maxCount": 1,
-              "minCount": 1,
               "name": "Image Origin",
               "node": "nsg:commons/vector3d/shapes/Vector3DShape",
               "path": "nsg:imageOrigin"
@@ -60,7 +59,6 @@
             {
               "description": "Direction of the image volume represented as a rotational matrix",
               "maxCount": 1,
-              "minCount": 1,
               "name": "Image direction",
               "node": "nsg:commons/vector3d/shapes/RotationalMatrixShape",
               "path": "nsg:imageDirection"
