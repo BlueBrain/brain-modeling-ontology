@@ -71,27 +71,6 @@ register-on-production-environment:
 # Building documentation for sphinx and ontodocs
 # The docs are generated and stored in artifacts in order to be used in the deploy stage
 
-# Generate ontodocs documentation and stores the artifact under /visualization
-generate-ontodocs-documentation:
-  stage: generate
-  image: python:2.7
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
-      when: on_success
-    - if: $CI_COMMIT_TAG
-      when: on_success
-  script:
-    - pip install pyld==1.0.4 ontospy==1.9.1 rdflib==4.2.2 rdflib-jsonld==0.4.0 pygments==2.1.3
-    - pip install git+https://$GITLAB_DEPLOY_TOKEN:$GITLAB_DEPLOY_PASSWORD@bbpgitlab.epfl.ch/dke/apps/ontodocs.git
-    - mkdir visualization
-    - ontodocs ./ontologies/bbp --theme lumen --outputpath visualization --title "Brain Modeling Ontology"
-  artifacts:
-    paths:
-      - visualization
-  variables:
-    KUBERNETES_MEMORY_LIMIT: 4Gi
-    KUBERNETES_MEMORY_REQUEST: 4Gi
-
 # Generate sphinx documentation and stores the artifact under /generated/html
 generate-sphinx-documentation:
   stage: generate
@@ -115,18 +94,6 @@ generate-sphinx-documentation:
 
 # Deploys the documentation to Openshift using Kaniko
 
-# Executes deployment of ontodocs documentation to bbp-dke-staging Openshift
-deploy-ontodocs-in-staging-openshift:
-  stage: deploy
-  extends: .build-image-using-kaniko
-  dependencies:
-    - generate-ontodocs-documentation
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
-      when: on_success
-  variables:
-    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization"
-    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/ontodocs-staging
 
 # Executes deployment of project documentation to bbp-dke-staging Openshift
 deploy-sphinx-documentation-in-staging-openshift:
@@ -143,18 +110,6 @@ deploy-sphinx-documentation-in-staging-openshift:
     KUBERNETES_MEMORY_LIMIT: 4Gi
     KUBERNETES_MEMORY_REQUEST: 4Gi
 
-# Executes deployment of ontodocs documentation to bbp-dke-production Openshift
-deploy-ontodocs-in-production-openshift:
-  stage: deploy
-  extends: .build-image-using-kaniko
-  dependencies:
-    - generate-ontodocs-documentation
-  rules:
-    - if: $CI_COMMIT_TAG
-      when: on_success
-  variables:
-    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization"
-    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/ontodocs-production
 
 
 # Executes deployment of project documentation to bbp-dke-staging Openshift
