@@ -45,6 +45,14 @@ register-on-staging-environment:
   stage: register
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
+      changes:
+          - ./ontologies/bbp/*.ttl
+          - ./shapes/**/*.json
+          - ./jsonldcontext/*.json
+          - ./texts/*.json
+          - ./register_ontologies.py
+          - ./bmo_tools/ontologies.py
+          - ./bmo_tools/utils.py
       when: on_success
   script:
     - CA_BUNDLE=$(python3 -c "import certifi; print(certifi.where())")
