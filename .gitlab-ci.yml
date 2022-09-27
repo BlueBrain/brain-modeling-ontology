@@ -81,7 +81,6 @@ generate-ontodocs-documentation:
     - if: $CI_COMMIT_TAG
       when: on_success
   script:
-    - pip install pyld==2.0.3
     - pip install git+https://$GITLAB_DEPLOY_TOKEN:$GITLAB_DEPLOY_PASSWORD@bbpgitlab.epfl.ch/dke/apps/ontodocs.git
     - mkdir visualization
     - ontospy gendocs ./ontologies/bbp --theme lumen --outputpath ./visualization --title "Brain Modeling Ontology" --preflabel "label" -v
