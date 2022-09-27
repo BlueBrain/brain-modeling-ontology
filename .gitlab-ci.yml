@@ -74,7 +74,7 @@ register-on-production-environment:
 # Generate ontodocs documentation and stores the artifact under /visualization
 generate-ontodocs-documentation:
   stage: generate
-  image: python:3.7.12
+  image: python:3.7
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success
@@ -95,7 +95,7 @@ generate-ontodocs-documentation:
 # Generate sphinx documentation and stores the artifact under /generated/html
 generate-sphinx-documentation:
   stage: generate
-  image: python:3.7.12
+  image: python:3.7
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success
