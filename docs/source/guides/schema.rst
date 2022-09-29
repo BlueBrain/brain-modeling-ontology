@@ -82,6 +82,7 @@ Different constraints (also called shapes in SHACL) applicable to the metadata o
 * with a type: value of the "@type" key
 * with a label: value of the "label" key
 * defining a set of constraints:
+
  * targeting specific data types: value of the "targetClass" key.
  * enforcing that the metadata should have an identifier or not: value of the "nodeKind" key
  * enforcing that the schema should extend another schema: value of the 'node' key of the first item of the "and" array key.
@@ -174,8 +175,8 @@ The following JSON is an example of schema:
 How to create a SHACL schema ?
 ------------------------------
 
-Schemas are stored and managed in a directory within the `BMO pipeline repository <https://bbpgitlab.epfl.ch/dke/apps/brain-modeling-ontology/shapes>`__.
-This directory is structure as follows:
+Schemas are stored and managed in a directory within the `BMO pipeline repository <https://bbpgitlab.epfl.ch/dke/apps/brain-modeling-ontology/-/tree/develop/shapes>`__.
+This directory is structured as follows:
 
 * the subdirectory `commons` is a library of reusable schemas. A reusable schema should not target specific types, i.e should not have a value for the targetClasss property.
 * the subdirectory `datashapes.core` is where schemas targeting specific BBP data types are defined as files with the following naming pattern: `data_type_lowercased.json` (e.g. scholarlyarticle.json for the type ScholarlyArticle).
