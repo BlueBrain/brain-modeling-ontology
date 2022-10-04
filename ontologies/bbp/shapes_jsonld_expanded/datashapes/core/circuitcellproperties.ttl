@@ -1,0 +1,15 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://neuroshapes.org/dash/circuitcellproperties> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/circuitcellproperties/v0.1.1.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/circuitcellproperties/shapes/CircuitCellPropertiesShape> .
+
+<https://neuroshapes.org/dash/circuitcellproperties/shapes/CircuitCellPropertiesShape> a ns1:NodeShape ;
+    ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/CircuitCellProperties> .
+

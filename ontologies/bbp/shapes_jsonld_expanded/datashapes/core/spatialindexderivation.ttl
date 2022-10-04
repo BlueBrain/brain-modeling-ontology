@@ -1,0 +1,26 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/spatialindexderivation> a ns3:Schema ;
+    owl:imports <https://provshapes.org/commons/derivation> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/spatialindexderivation/v0.1.0.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/spatialindexderivation/shapes/SpatialIndexDerivationShape> .
+
+<https://neuroshapes.org/dash/spatialindexderivation/shapes/SpatialIndexDerivationShape> a ns1:NodeShape ;
+    rdfs:label "Spatial index derivation shape definition"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://provshapes.org/commons/derivation/shapes/DerivationShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/DetailedCircuit> ;
+                        ns1:description "The detailed circuit entity from which the spatial index derived from." ;
+                        ns1:name "Entity" ;
+                        ns1:path ns2:entity ],
+                    [ ns1:class <https://neuroshapes.org/SpatialIndex> ;
+                        ns1:description "The spatial index derived from the circuit." ;
+                        ns1:name "Spatial index" ;
+                        ns1:path <https://neuroshapes.org/spatialIndex> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/SpatialIndexDerivation> .
+

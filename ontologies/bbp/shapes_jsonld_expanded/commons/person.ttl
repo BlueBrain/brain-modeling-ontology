@@ -1,0 +1,42 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/person> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/identifier>,
+        <https://neuroshapes.org/commons/organization> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/person/v0.1.0.json" ;
+    ns2:shapes <https://neuroshapes.org/commons/person/shapes/PersonShape> .
+
+<https://neuroshapes.org/commons/person/shapes/PersonShape> a ns1:NodeShape ;
+    rdfs:label "Schema.org person specification is used as a vocabulary to describe a person."^^xsd:string ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ ns1:class <http://schema.org/Organization> ;
+            ns1:name "Person's affiliation" ;
+            ns1:node <https://neuroshapes.org/commons/organization/shapes/OrganizationShape> ;
+            ns1:path <http://schema.org/affiliation> ],
+        [ ns1:datatype xsd:string ;
+            ns1:description "Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property." ;
+            ns1:name "familyName" ;
+            ns1:path <http://schema.org/familyName> ],
+        [ ns1:datatype xsd:string ;
+            ns1:name "Email" ;
+            ns1:path <http://schema.org/email> ;
+            ns1:pattern "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$" ],
+        [ ns1:description "Person identifiers (e.g orcid)" ;
+            ns1:name "Person identifiers" ;
+            ns1:node <https://neuroshapes.org/commons/identifier/shapes/IdentifierShape> ;
+            ns1:path <http://schema.org/identifier> ],
+        [ ns1:datatype xsd:string ;
+            ns1:description "An additional name for a Person, can be used for a middle name." ;
+            ns1:name "additionalName" ;
+            ns1:path <http://schema.org/additionalName> ],
+        [ ns1:datatype xsd:string ;
+            ns1:description "Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property." ;
+            ns1:name "givenName" ;
+            ns1:path <http://schema.org/givenName> ],
+        <https://neuroshapes.org/commons/identifier/shapes/WithOrcidIdentifierPropertyShape> .
+

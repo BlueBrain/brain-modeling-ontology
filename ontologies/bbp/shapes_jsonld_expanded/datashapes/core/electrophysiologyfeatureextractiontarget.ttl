@@ -1,0 +1,64 @@
+@prefix ns1: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns2: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget> a ns1:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/labeledontologyentity>,
+        <https://neuroshapes.org/commons/quantitativevalue>,
+        <https://neuroshapes.org/commons/subject> ;
+    ns1:shapes <https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget/shapes/ElectrophysiologyFeatureExtractionTargetShape> .
+
+<https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget/shapes/ElectrophysiologyFeatureExtractionTargetShape> a ns2:NodeShape ;
+    ns2:and ( [ ns2:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns2:property [ ns2:description "The shape of the stimulus" ;
+                        ns2:name "Stimulus" ;
+                        ns2:node <https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget/shapes/StimulusShape> ;
+                        ns2:path <https://neuroshapes.org/stimulus> ],
+                    [ ns2:datatype xsd:string ;
+                        ns2:description "The e-model" ;
+                        ns2:name "E-model" ;
+                        ns2:path <https://neuroshapes.org/eModel> ],
+                    [ ns2:description "Electrophysiology feature" ;
+                        ns2:name "Feature" ;
+                        ns2:node <https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget/shapes/FeatureShape> ;
+                        ns2:path <https://neuroshapes.org/feature> ],
+                    [ ns2:class <https://neuroshapes.org/Subject> ;
+                        ns2:description "The subject information (e.g. species)." ;
+                        ns2:name "Subject" ;
+                        ns2:path <https://neuroshapes.org/subject> ] ] <https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget/shapes/StimulusShape> <https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget/shapes/FeatureShape> ) ;
+    ns2:nodeKind ns2:IRI ;
+    ns2:targetClass <https://neuroshapes.org/ElectrophysiologyFeatureExtractionTarget> .
+
+<https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget/shapes/FeatureShape> a ns2:NodeShape ;
+    rdfs:label "Feature shape definition"^^xsd:string ;
+    ns2:property [ ns2:name "Onset time" ;
+            ns2:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+            ns2:path <https://neuroshapes.org/onsetTime> ],
+        [ ns2:maxCount 1 ;
+            ns2:minCount 1 ;
+            ns2:name "Feature name" ;
+            ns2:path <http://schema.org/name> ],
+        [ ns2:name "Offest time" ;
+            ns2:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+            ns2:path <https://neuroshapes.org/offsetTime> ] .
+
+<https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget/shapes/StimulusShape> a ns2:NodeShape ;
+    rdfs:label "Stimulus shape definition"^^xsd:string ;
+    ns2:property [ ns2:name "Tolerance" ;
+            ns2:path <https://neuroshapes.org/tolerance> ],
+        [ ns2:name "Stimulus target" ;
+            ns2:path <https://neuroshapes.org/stimulusTarget> ],
+        [ ns2:datatype xsd:boolean ;
+            ns2:maxCount 1 ;
+            ns2:path <https://neuroshapes.org/threshold> ],
+        [ ns2:datatype xsd:string ;
+            ns2:maxCount 1 ;
+            ns2:path <https://neuroshapes.org/recordingLocation> ],
+        [ ns2:maxCount 1 ;
+            ns2:name "Stimulus type" ;
+            ns2:node <https://neuroshapes.org/commons/labeledontologyentity/shapes/LabeledOntologyEntityShape> ;
+            ns2:path <https://neuroshapes.org/stimulusType> ] .
+

@@ -1,0 +1,17 @@
+@prefix ns1: <http://www.w3.org/ns/prov#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/modelinstance> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/modelinstance> ;
+    ns1:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/modelinstance/v0.1.2.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/modelinstance/shapes/ModelInstanceShape> .
+
+<https://neuroshapes.org/dash/modelinstance/shapes/ModelInstanceShape> a ns3:NodeShape ;
+    rdfs:label "A model instance shape"^^xsd:string ;
+    ns3:node <https://neuroshapes.org/commons/modelinstance/shapes/ModelInstanceShape> ;
+    ns3:targetClass <https://neuroshapes.org/ModelInstance> .
+

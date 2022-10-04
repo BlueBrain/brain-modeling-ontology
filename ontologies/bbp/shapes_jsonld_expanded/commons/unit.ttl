@@ -1,0 +1,27 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/unit> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/labeledontologyentity> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/unit/v0.1.0.json" ;
+    ns2:shapes <https://neuroshapes.org/commons/unit/shapes/UnitShape>,
+        <https://neuroshapes.org/commons/unit/shapes/WithUnitCodeShape> .
+
+<https://neuroshapes.org/commons/unit/shapes/UnitCodePropertyShape> ns1:maxCount 1 ;
+    ns1:name "Unit" ;
+    ns1:or ( [ ns1:node <https://neuroshapes.org/commons/labeledontologyentity/shapes/LabeledOntologyEntityShape> ] [ ns1:datatype xsd:string ] ) ;
+    ns1:path <http://schema.org/unitCode> .
+
+<https://neuroshapes.org/commons/unit/shapes/UnitShape> a ns1:NodeShape ;
+    ns1:property <https://neuroshapes.org/commons/unit/shapes/UnitCodePropertyShape> .
+
+<https://neuroshapes.org/commons/unit/shapes/WithUnitCodeShape> a ns1:PropertyShape ;
+    ns1:minCount 1 ;
+    ns1:name "Unit" ;
+    ns1:or ( [ ns1:node <https://neuroshapes.org/commons/labeledontologyentity/shapes/LabeledOntologyEntityShape> ] [ ns1:datatype xsd:string ] ) ;
+    ns1:path <http://schema.org/unitCode> .
+

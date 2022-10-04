@@ -1,0 +1,22 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/slicecollection> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/slicecollection> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/slicecollection/v0.1.0.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/slicecollection/shapes/SliceCollectionShape> .
+
+<https://neuroshapes.org/dash/slicecollection/shapes/SliceCollectionShape> a ns1:NodeShape ;
+    rdfs:label "Slice Collection"^^xsd:string ;
+    rdfs:comment "Slice collection."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/slicecollection/shapes/SliceCollectionShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/LabeledCell> ;
+                        ns1:description "Labeled cell which is contained within the collection of slices. Through the cutting of the brain into slices, the labeled cell gets cut as well and different parts are contained within different slices." ;
+                        ns1:name "Has part" ;
+                        ns1:path <http://schema.org/hasPart> ] ] ) ;
+    ns1:targetClass <https://neuroshapes.org/SliceCollection> .
+

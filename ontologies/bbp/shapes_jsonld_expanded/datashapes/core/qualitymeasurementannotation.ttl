@@ -1,0 +1,55 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/qualitymeasurementannotation> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/annotation>,
+        <https://neuroshapes.org/commons/distribution> ;
+    ns2:shapes <https://neuroshapes.org/dash/qualitymeasurementannotation/shapes/HasBodyShape>,
+        <https://neuroshapes.org/dash/qualitymeasurementannotation/shapes/MetricShape>,
+        <https://neuroshapes.org/dash/qualitymeasurementannotation/shapes/QualityMeasurementAnnotationShape> .
+
+<https://neuroshapes.org/dash/qualitymeasurementannotation/shapes/QualityMeasurementAnnotationShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/annotation/shapes/AnnotationShape> ] [ ns1:property [ ns1:class <http://schema.org/DataDownload> ;
+                        ns1:description "The Quality Measurement Annotation downloadable as report." ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ],
+                    [ ns1:class <https://neuroshapes.org/AnnotationTarget> ;
+                        ns1:description "The target of an Annotation: the entity being annotated." ;
+                        ns1:name "Target" ;
+                        ns1:node <https://neuroshapes.org/commons/annotation/shapes/SelectorTargetShape> ;
+                        ns1:path <https://neuroshapes.org/hasTarget> ],
+                    [ ns1:class <https://neuroshapes.org/AnnotationBody> ;
+                        ns1:description "The entity or value that the target entity is being annotated with." ;
+                        ns1:name "Body" ;
+                        ns1:node <https://neuroshapes.org/dash/qualitymeasurementannotation/shapes/HasBodyShape> ;
+                        ns1:path <https://neuroshapes.org/hasBody> ] ] ) ;
+    ns1:nodeKind ns1:IRI ;
+    ns1:targetClass <https://neuroshapes.org/BatchQualityMeasurementAnnotation>,
+        <https://neuroshapes.org/QualityMeasurementAnnotation> .
+
+<https://neuroshapes.org/dash/qualitymeasurementannotation/shapes/HasBodyShape> a ns1:NodeShape ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ ns1:maxCount 1 ;
+            ns1:name "Count" ;
+            ns1:path <https://neuroshapes.org/count> ],
+        [ ns1:name "Value" ;
+            ns1:path <http://schema.org/value> ],
+        [ rdfs:seeAlso <https://www.w3.org/TR/vocab-dqv/#dqv:isMeasurementOf> ;
+            ns1:class <https://neuroshapes.org/Metric> ;
+            ns1:description "Indicates the metric being observed." ;
+            ns1:name "Is measurement of" ;
+            ns1:node <https://neuroshapes.org/dash/qualitymeasurementannotation/shapes/MetricShape> ;
+            ns1:path <https://neuroshapes.org/isMeasurementOf> ] .
+
+<https://neuroshapes.org/dash/qualitymeasurementannotation/shapes/MetricShape> a ns1:NodeShape ;
+    rdfs:seeAlso <https://www.w3.org/TR/vocab-dqv/#dqv:Metric> ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ ns1:datatype xsd:string ;
+            ns1:name "label" ;
+            ns1:path rdfs:label ] .
+

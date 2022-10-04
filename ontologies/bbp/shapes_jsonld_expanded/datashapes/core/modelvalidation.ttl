@@ -1,0 +1,42 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/modelvalidation> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/activity> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/modelvalidation/v0.2.0.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/modelvalidation/shapes/ModelValidationShape> .
+
+<https://neuroshapes.org/dash/modelvalidation/shapes/ModelValidationShape> a ns1:NodeShape ;
+    rdfs:label "Model or simulation report analysis shape"^^xsd:string ;
+    rdfs:comment "The analysis strategy/protocol is defined in a protocol."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/activity/shapes/ActivityShape> ] [ ns1:property [ rdfs:seeAlso <https://neuroshapes.org/dash/modelinstance/shapes/ModelInstanceShape> ;
+                        ns1:description "Used model (to be validated)." ;
+                        ns1:name "Model" ;
+                        ns1:path ns3:used ;
+                        ns1:qualifiedMaxCount 1 ;
+                        ns1:qualifiedMinCount 1 ;
+                        ns1:qualifiedValueShape [ ns1:class <https://neuroshapes.org/ModelInstance> ] ;
+                        ns1:qualifiedValueShapesDisjoint true ],
+                    [ ns1:minCount 2 ;
+                        ns1:path ns3:used ],
+                    [ rdfs:seeAlso <https://neuroshapes.org/dash/validationresult/shapes/ValidationResultShape> ;
+                        ns1:class <https://neuroshapes.org/ValidationResult> ;
+                        ns1:description "Generated validation result." ;
+                        ns1:minCount 1 ;
+                        ns1:name "Result" ;
+                        ns1:path ns3:generated ],
+                    [ rdfs:seeAlso <https://neuroshapes.org/dash/collection/shapes/CollectionShape> ;
+                        ns1:description "Data (entities) used as reference for validation." ;
+                        ns1:name "Reference data" ;
+                        ns1:path ns3:used ;
+                        ns1:qualifiedMaxCount 1 ;
+                        ns1:qualifiedMinCount 1 ;
+                        ns1:qualifiedValueShape [ ns1:class ns3:Collection ] ;
+                        ns1:qualifiedValueShapesDisjoint true ] ] ) ;
+    ns1:targetClass <https://neuroshapes.org/ModelValidation> .
+

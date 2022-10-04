@@ -1,0 +1,24 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/hostcell> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/typedlabeledontologyterm> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/hostcell/v0.1.0.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/hostcell/shapes/HostCellShape> .
+
+<https://neuroshapes.org/dash/hostcell/shapes/HostCellShape> a ns1:NodeShape ;
+    rdfs:label "Host cell shape definition"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "The cell line to which the host cell belongs. Cell lines may come fom the cell line ontology: http://www.clo-ontology.org/" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Cell line" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/CellLineOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/cellLine> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/HostCell> .
+

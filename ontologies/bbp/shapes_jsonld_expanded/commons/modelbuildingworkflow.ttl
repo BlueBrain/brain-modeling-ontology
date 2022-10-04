@@ -1,0 +1,30 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://bbp.epfl.ch/shapes/commons/modelbuildingworkflow> a ns2:Schema ;
+    owl:imports <https://bbp.epfl.ch/shapes/commons/workflow> ;
+    ns2:shapes <https://bbp.epfl.ch/shapes/commons/modelbuildingworkflow/shapes/ModelBuildingWorkflowShape> .
+
+<https://bbp.epfl.ch/shapes/commons/modelbuildingworkflow/shapes/ModelBuildingWorkflowShape> a ns1:NodeShape ;
+    rdfs:label "Model Building Workflow."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/workflow/shapes/WorkflowShape> ] [ ns1:property [ ns1:class <https://bbp.epfl.ch/ontologies/core/bmo/ModelBrainParameter> ;
+                        ns1:description "Has Parameter" ;
+                        ns1:name "Has Parameter" ;
+                        ns1:path <https://bbp.epfl.ch/ontologies/core/bmo/hasParameter> ],
+                    [ ns1:class <https://bbp.epfl.ch/ontologies/core/bmo/BrainComponentFeature> ;
+                        ns1:description "Has Target" ;
+                        ns1:name "Has Target" ;
+                        ns1:path <https://bbp.epfl.ch/ontologies/core/bmo/hasTarget> ],
+                    [ ns1:class <http://www.w3.org/ns/prov#SoftwareAgent> ;
+                        ns1:description "What the workflow is associated with" ;
+                        ns1:name "Is Associated With" ;
+                        ns1:path <https://bbp.epfl.ch/ontologies/core/bmo/isAssociatedWith> ],
+                    [ ns1:class <https://bbp.epfl.ch/ontologies/core/bmo/ModelBrainComponent> ;
+                        ns1:description "What the workflow will generate" ;
+                        ns1:name "Generates" ;
+                        ns1:path <https://bbp.epfl.ch/ontologies/core/bmo/generates> ] ] ) .
+

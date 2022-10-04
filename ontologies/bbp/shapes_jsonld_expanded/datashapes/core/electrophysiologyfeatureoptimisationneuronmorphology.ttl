@@ -1,0 +1,39 @@
+@prefix ns1: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns2: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationneuronmorphology> a ns1:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/subject> ;
+    ns1:shapes <https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationneuronmorphology/shapes/ElectrophysiologyFeatureOptimisationNeuronMorphologyShape> .
+
+<https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationneuronmorphology/shapes/ElectrophysiologyFeatureOptimisationNeuronMorphologyShape> a ns2:NodeShape ;
+    ns2:and ( [ ns2:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns2:property [ ns2:datatype xsd:integer ;
+                        ns2:description "Section index" ;
+                        ns2:name "Section index" ;
+                        ns2:path <https://neuroshapes.org/sectionIndex> ],
+                    [ ns2:class <https://neuroshapes.org/NeuronMorphology> ;
+                        ns2:description "Experimental neuron morphology used for optimisation" ;
+                        ns2:name "Neuron morphology" ;
+                        ns2:path <https://neuroshapes.org/morphology> ],
+                    [ ns2:datatype xsd:string ;
+                        ns2:description "The e-model" ;
+                        ns2:name "E-model" ;
+                        ns2:path <https://neuroshapes.org/eModel> ],
+                    [ ns2:class <https://neuroshapes.org/Subject> ;
+                        ns2:description "The subject information (e.g. species)." ;
+                        ns2:name "Subject" ;
+                        ns2:path <https://neuroshapes.org/subject> ],
+                    [ ns2:datatype xsd:string ;
+                        ns2:description "Section list names" ;
+                        ns2:name "Section list names" ;
+                        ns2:path <https://neuroshapes.org/sectionListNames> ],
+                    [ ns2:datatype xsd:string ;
+                        ns2:description "Section array names" ;
+                        ns2:name "Section array names" ;
+                        ns2:path <https://neuroshapes.org/sectionArrayNames> ] ] ) ;
+    ns2:nodeKind ns2:IRI ;
+    ns2:targetClass <https://neuroshapes.org/ElectrophysiologyFeatureOptimisationNeuronMorphology> .
+

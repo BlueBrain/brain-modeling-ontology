@@ -1,0 +1,22 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/intrasharprecordedcellcollection> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/dash/collection> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/intrasharprecordedcellcollection/v0.1.0.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/intrasharprecordedcellcollection/shapes/IntraCellularSharpElectrodeRecordedCellCollectionShape> .
+
+<https://neuroshapes.org/dash/intrasharprecordedcellcollection/shapes/IntraCellularSharpElectrodeRecordedCellCollectionShape> a ns1:NodeShape ;
+    rdfs:label "Intracellular sharp electrode-recorded cell collection shape"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/collection/shapes/CollectionShape> ] [ ns1:property [ rdfs:seeAlso <https://neuroshapes.org/dash/intrasharprecordedcell/shapes/IntraCellularSharpElectrodeRecordedCellShape> ;
+                        ns1:class <https://neuroshapes.org/IntraCellularSharpElectrodeRecordedCell> ;
+                        ns1:description "The recorded cell member(s) of the collection" ;
+                        ns1:name "Member" ;
+                        ns1:path ns2:hadMember ] ] ) ;
+    ns1:targetClass <https://neuroshapes.org/IntraCellularSharpElectrodeRecordedCellCollection> .
+

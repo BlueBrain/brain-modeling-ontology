@@ -1,0 +1,32 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/memodelrelease> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/dash/modelrelease> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/memodelrelease/v0.1.3.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/memodelrelease/shapes/MEModelReleaseShape> .
+
+<https://neuroshapes.org/dash/memodelrelease/shapes/MEModelReleaseShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/modelrelease/shapes/ModelReleaseShape> ] [ ns1:property [ rdfs:seeAlso <https://neuroshapes.org/dash/morphologyrelease/shapes/MorphologyReleaseShape> ;
+                        ns1:class <https://neuroshapes.org/MorphologyRelease> ;
+                        ns1:description "Morphology release shape." ;
+                        ns1:name "Morphology release" ;
+                        ns1:path <https://neuroshapes.org/morphologyRelease> ],
+                    [ rdfs:seeAlso <https://neuroshapes.org/dash/modelreleaseindex/shapes/ModelReleaseIndexShape> ;
+                        ns1:class <https://neuroshapes.org/ModelReleaseIndex> ;
+                        ns1:description "Memodel release index file." ;
+                        ns1:name "Memodel index" ;
+                        ns1:path <https://neuroshapes.org/memodelIndex> ],
+                    [ rdfs:seeAlso <https://neuroshapes.org/dash/emodelrelease/shapes/EModelReleaseShape> ;
+                        ns1:class <https://neuroshapes.org/EModelRelease> ;
+                        ns1:description "EModel release shape." ;
+                        ns1:name "EModel release" ;
+                        ns1:path <https://neuroshapes.org/emodelRelease> ] ] ) ;
+    ns1:targetClass <https://neuroshapes.org/MEModelRelease> .
+

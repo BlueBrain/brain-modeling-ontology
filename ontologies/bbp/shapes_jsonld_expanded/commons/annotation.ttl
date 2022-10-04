@@ -1,0 +1,109 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns4: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/annotation> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/annotationselector>,
+        <https://neuroshapes.org/commons/entity> ;
+    ns4:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/annotation/v0.2.0.json" ;
+    ns2:shapes <https://neuroshapes.org/commons/annotation/shapes/AnnotationShape>,
+        <https://neuroshapes.org/commons/annotation/shapes/AreaTargetShape>,
+        <https://neuroshapes.org/commons/annotation/shapes/EquationTargetShape>,
+        <https://neuroshapes.org/commons/annotation/shapes/FigureTargetShape>,
+        <https://neuroshapes.org/commons/annotation/shapes/HasBodyShape>,
+        <https://neuroshapes.org/commons/annotation/shapes/SelectorTargetShape>,
+        <https://neuroshapes.org/commons/annotation/shapes/TableTargetShape>,
+        <https://neuroshapes.org/commons/annotation/shapes/TextPositionTargetShape> .
+
+<https://neuroshapes.org/commons/annotation/shapes/AnnotationShape> a ns1:NodeShape ;
+    rdfs:seeAlso <https://www.w3.org/TR/annotation-model/#introduction> ;
+    ns3:editorialNote "The higher level vocabulary (hasTarget, hasBody, hasSource,hasSelector, Annotation) are mapped to the nsg namespace (instead of using oa namespace) for consistency and ease of use purpose. The selector"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/AnnotationTarget> ;
+                        ns1:description "The target of an Annotation: the entity being annotated." ;
+                        ns1:name "Target" ;
+                        ns1:nodeKind ns1:BlankNodeOrIRI ;
+                        ns1:path <https://neuroshapes.org/hasTarget> ],
+                    [ rdfs:seeAlso <http://www.w3.org/ns/oa#motivatedBy> ;
+                        ns1:class <https://neuroshapes.org/Motivation> ;
+                        ns1:description "The relationship between an Annotation and a Motivation that describes the reason for the Annotation's creation." ;
+                        ns1:name "Motivation" ;
+                        ns1:nodeKind ns1:BlankNodeOrIRI ;
+                        ns1:path <https://neuroshapes.org/motivatedBy> ],
+                    [ ns1:class <https://neuroshapes.org/AnnotationBody> ;
+                        ns1:description "The entity or value that the target entity is being annotated with." ;
+                        ns1:name "Body" ;
+                        ns1:node <https://neuroshapes.org/commons/annotation/shapes/HasBodyShape> ;
+                        ns1:path <https://neuroshapes.org/hasBody> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "A general note, for any purpose. This could include reasons on which an annotation - such as an mType classification - was based." ;
+                        ns1:name "Note" ;
+                        ns1:path ns3:note ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI .
+
+<https://neuroshapes.org/commons/annotation/shapes/AreaTargetShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/annotation/shapes/SelectorTargetShape> ] [ ns1:property [ ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:node <https://neuroshapes.org/commons/annotationselector/shapes/DocumentAreaSelectorShape> ;
+                        ns1:path <https://neuroshapes.org/hasSelector> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI .
+
+<https://neuroshapes.org/commons/annotation/shapes/EquationTargetShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/annotation/shapes/SelectorTargetShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/EquationSelector> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:node <https://neuroshapes.org/commons/annotationselector/shapes/DocumentIndexSelectorShape> ;
+                        ns1:path <https://neuroshapes.org/hasSelector> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI .
+
+<https://neuroshapes.org/commons/annotation/shapes/FigureTargetShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/annotation/shapes/SelectorTargetShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/FigureSelector> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:node <https://neuroshapes.org/commons/annotationselector/shapes/DocumentIndexSelectorShape> ;
+                        ns1:path <https://neuroshapes.org/hasSelector> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI .
+
+<https://neuroshapes.org/commons/annotation/shapes/TableTargetShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/annotation/shapes/SelectorTargetShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/TableSelector> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:node <https://neuroshapes.org/commons/annotationselector/shapes/TableSelectorShape> ;
+                        ns1:path <https://neuroshapes.org/hasSelector> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI .
+
+<https://neuroshapes.org/commons/annotation/shapes/TextPositionTargetShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/annotation/shapes/SelectorTargetShape> ] [ ns1:property [ ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:node <https://neuroshapes.org/commons/annotationselector/shapes/TextPositionSelectorShape> ;
+                        ns1:path <https://neuroshapes.org/hasSelector> ] ] ) ;
+    ns1:class <https://neuroshapes.org/TextPositionTarget> .
+
+<https://neuroshapes.org/commons/annotation/shapes/HasBodyShape> a ns1:NodeShape ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ ns1:nodeKind ns1:IRI ;
+            ns1:path rdf:type ],
+        [ ns1:datatype xsd:string ;
+            ns1:description "A general note, for any purpose. This could include reasons on which an annotation - such as an mType classification - was based." ;
+            ns1:name "Note" ;
+            ns1:path ns3:note ],
+        [ ns1:datatype xsd:string ;
+            ns1:name "label" ;
+            ns1:path rdfs:label ] .
+
+<https://neuroshapes.org/commons/annotation/shapes/SelectorTargetShape> a ns1:NodeShape ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ ns1:description "The relationship between a Specific Resource and the resource that it is a more specific representation of." ;
+            ns1:maxCount 1 ;
+            ns1:minCount 1 ;
+            ns1:name "Source" ;
+            ns1:path <https://neuroshapes.org/hasSource> ],
+        [ ns1:description "The relationship between a Specific Resource and a Selector." ;
+            ns1:name "Selector" ;
+            ns1:node <https://neuroshapes.org/commons/annotationselector/shapes/SelectorShape> ;
+            ns1:path <https://neuroshapes.org/hasSelector> ] .
+

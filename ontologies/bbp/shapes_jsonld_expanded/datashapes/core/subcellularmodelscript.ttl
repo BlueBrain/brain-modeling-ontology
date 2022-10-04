@@ -1,0 +1,30 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/subcellularmodelscript> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/distribution>,
+        <https://neuroshapes.org/commons/entity> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/subcellularmodelscript/v0.1.1.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/subcellularmodelscript/shapes/SubCellularModelScriptDistributionShape>,
+        <https://neuroshapes.org/dash/subcellularmodelscript/shapes/SubCellularModelScriptShape> .
+
+<https://neuroshapes.org/dash/subcellularmodelscript/shapes/SubCellularModelScriptShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "SubCellular modelScript distribution." ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/dash/subcellularmodelscript/shapes/SubCellularModelScriptDistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) ;
+    ns1:targetClass <https://neuroshapes.org/SubCellularModelScript> .
+
+<https://neuroshapes.org/dash/subcellularmodelscript/shapes/SubCellularModelScriptDistributionShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ] [ ns1:property [ ns1:description "Subcellular model script media type(s)" ;
+                        ns1:in ( "application/neuron-mod" ) ;
+                        ns1:name "Media type" ;
+                        ns1:path <http://schema.org/encodingFormat> ] ] ) .
+

@@ -1,0 +1,167 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix ns4: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/simplifiedcircuit> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/modelinstance>,
+        <https://neuroshapes.org/commons/typedlabeledontologyterm> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/simplifiedcircuit/v0.1.2.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/simplifiedcircuit/shapes/BuilderRecipeDetailsShape>,
+        <https://neuroshapes.org/dash/simplifiedcircuit/shapes/CircuitDetailsShape>,
+        <https://neuroshapes.org/dash/simplifiedcircuit/shapes/EModelDetailsShape>,
+        <https://neuroshapes.org/dash/simplifiedcircuit/shapes/EdgeCollectionShape>,
+        <https://neuroshapes.org/dash/simplifiedcircuit/shapes/MEComboDetailsShape>,
+        <https://neuroshapes.org/dash/simplifiedcircuit/shapes/MorphologyDetailsShape>,
+        <https://neuroshapes.org/dash/simplifiedcircuit/shapes/NodeCollectionShape>,
+        <https://neuroshapes.org/dash/simplifiedcircuit/shapes/SimplifiedCircuitShape>,
+        <https://neuroshapes.org/dash/simplifiedcircuit/shapes/SynapseReleaseDistributionShape>,
+        <https://neuroshapes.org/dash/simplifiedcircuit/shapes/TargetFileDetailsShape> .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/BuilderRecipeDetailsShape> a ns1:NodeShape ;
+    rdfs:label "Location of builder recipe"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Location of the data" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/CircuitDetailsShape> a ns1:NodeShape ;
+    rdfs:label "Location of circuit file containing general circuit geometry"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Location of the data" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Name of the cells file" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Cells file name" ;
+                        ns1:path <https://neuroshapes.org/cellLibraryFile> ] ] ) .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/EModelDetailsShape> a ns1:NodeShape ;
+    rdfs:label "Location of metypes or CCells, the files defining morphological and electrical combinations used by the simulation"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Location of the data" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/MEComboDetailsShape> a ns1:NodeShape ;
+    rdfs:label "File containing info about me-combos, such as emodel used, threshold currents, etc"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Location of the data" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/MorphologyDetailsShape> a ns1:NodeShape ;
+    rdfs:label "Location of morphology files. Note that there should be two subdirectories, ascii and h5"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Location of the data" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/SimplifiedCircuitShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/modelinstance/shapes/ModelInstanceShape> ] [ ns1:property [ ns1:description "" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "" ;
+                        ns1:node <https://neuroshapes.org/dash/simplifiedcircuit/shapes/NodeCollectionShape> ;
+                        ns1:path <https://neuroshapes.org/synapse> ],
+                    [ ns1:description "Location of nrn synapse file and additional circuit description files: start.ncs and start.target" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "nrnPath" ;
+                        ns1:node <https://neuroshapes.org/dash/simplifiedcircuit/shapes/EdgeCollectionShape> ;
+                        ns1:path <https://neuroshapes.org/edgeCollection> ],
+                    [ ns1:description "Term representing a species" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Species" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/SpeciesOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/species> ],
+                    [ ns1:description "Term representing a brain region" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Brain Region" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/BrainRegionOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/brainRegion> ],
+                    [ ns1:description "Optional parameter giving location of custom user targets stored in the named file" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "TargetFile" ;
+                        ns1:node <https://neuroshapes.org/dash/simplifiedcircuit/shapes/TargetFileDetailsShape> ;
+                        ns1:path <https://neuroshapes.org/target> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/SimplifiedCircuit> .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/SynapseReleaseDistributionShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ] [ ns1:property [ ns1:description "" ;
+                        ns1:in ( "application/mod" ) ;
+                        ns1:name "Media type" ;
+                        ns1:path <http://schema.org/encodingFormat> ] ] ) .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/EdgeCollectionShape> a ns1:NodeShape ;
+    rdfs:label ""^^xsd:string,
+        " Elements of the collection defined like Location of nrn synapse file and additional circuit description files: start.ncs and start.target"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Location of data files with additional connectivity info" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Path" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Optional. Provides new gids if the connection sources are external to the main circuit" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Source" ;
+                        ns1:path <https://neuroshapes.org/source> ] ] ),
+        ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ rdfs:seeAlso <https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseDistributionShape> ;
+                        ns1:description "Collection of mod files identified by git hash." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Synapse release" ;
+                        ns1:path <https://neuroshapes.org/synapseRelease> ],
+                    [ ns4:editorialNote ""^^xsd:string ;
+                        ns1:description "Location of the data file defining properties of the synapses." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Properties" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <https://neuroshapes.org/properties> ] ] ) .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/NodeCollectionShape> a ns1:NodeShape ;
+    rdfs:label "elements of the collection defined like this: "^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Location of the mvd3 file  mvd3 mediaType" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ],
+                    [ ns1:description "" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "" ;
+                        ns1:node <https://neuroshapes.org/dash/simplifiedcircuit/shapes/MEModelReleaseShape> ;
+                        ns1:path <https://neuroshapes.org/memodelRelease> ] ] ) .
+
+<https://neuroshapes.org/dash/simplifiedcircuit/shapes/TargetFileDetailsShape> a ns1:NodeShape ;
+    rdfs:label "Optional parameter giving location of custom user targets stored in the named file"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Location of the data" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) .
+

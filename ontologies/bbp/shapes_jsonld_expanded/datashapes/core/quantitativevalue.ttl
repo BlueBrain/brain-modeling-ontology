@@ -1,0 +1,12 @@
+@prefix ns1: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns2: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://neuroshapes.org/dash/quantitativevalue> a ns1:Schema ;
+    owl:imports <https://neuroshapes.org/commons/quantitativevalue> ;
+    ns1:shapes <https://neuroshapes.org/dash/quantitativevalue/shapes/QuantitativeValueShape> .
+
+<https://neuroshapes.org/dash/quantitativevalue/shapes/QuantitativeValueShape> a ns2:NodeShape ;
+    ns2:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+    ns2:targetClass <http://schema.org/QuantitativeValue> .
+

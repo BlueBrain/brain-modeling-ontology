@@ -1,0 +1,24 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://provshapes.org/commons/invalidation> a ns2:Schema ;
+    ns2:shapes <https://provshapes.org/commons/invalidation/shapes/InvalidationShape> .
+
+<https://provshapes.org/commons/invalidation/shapes/InvalidationShape> a ns1:NodeShape ;
+    rdfs:label "Entity Invalidation shape"^^xsd:string ;
+    rdfs:comment "Invalidation is the start of the destruction, cessation, or expiry of an existing entity by an activity. The entity is no longer available for use (or further invalidation) after invalidation. Any generation or usage of an entity precedes its invalidation."^^xsd:string ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ ns1:datatype xsd:dateTime ;
+            ns1:description "The time at which the entity was invalidated." ;
+            ns1:maxCount 1 ;
+            ns1:name "At time" ;
+            ns1:path <http://www.w3.org/ns/prov#atTime> ],
+        [ ns1:class <http://www.w3.org/ns/prov#Activity> ;
+            ns1:description "The activity that invalidates the entity." ;
+            ns1:maxCount 1 ;
+            ns1:name "Activity" ;
+            ns1:nodeKind ns1:IRI ;
+            ns1:path <http://www.w3.org/ns/prov#activity> ] .
+

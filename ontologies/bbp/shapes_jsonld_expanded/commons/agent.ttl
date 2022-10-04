@@ -1,0 +1,15 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://provshapes.org/commons/agent> a ns3:Schema ;
+    ns2:wasDerivedFrom "https://github.com/BlueBrain/nexus-prov/blob/v1.2.0/modules/prov/src/main/resources/schemas/nexus/provsh/agent/v1.0.0.json" ;
+    ns3:shapes <https://provshapes.org/commons/agent/shapes/Agent> .
+
+<https://provshapes.org/commons/agent/shapes/Agent> a ns1:NodeShape ;
+    rdfs:label "Agent shape"^^xsd:string ;
+    rdfs:comment "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity."^^xsd:string ;
+    ns1:nodeKind ns1:BlankNodeOrIRI .
+

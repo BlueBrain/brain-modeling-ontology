@@ -1,0 +1,76 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/minds> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/annotation>,
+        <https://neuroshapes.org/commons/brainlocation>,
+        <https://neuroshapes.org/commons/distribution>,
+        <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/subject>,
+        <https://neuroshapes.org/commons/typedlabeledontologyterm> ;
+    ns3:shapes <https://neuroshapes.org/commons/minds/shapes/MINDSShape> .
+
+<https://neuroshapes.org/commons/minds/shapes/MINDSShape> a ns1:NodeShape ;
+    rdfs:label "Minimum Information about a Neuroscience DataSet"^^xsd:string ;
+    rdfs:seeAlso <https://schema.org>,
+        <https://www.w3.org/TR/prov-o>,
+        <https://www.w3.org/TR/vocab-dcat> ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/BrainLocation> ;
+                        ns1:description "The Brain location object." ;
+                        ns1:minCount 1 ;
+                        ns1:name "Brain Location" ;
+                        ns1:node <https://neuroshapes.org/commons/brainlocation/shapes/BrainLocationShape> ;
+                        ns1:path <https://neuroshapes.org/brainLocation> ],
+                    [ ns1:description "The dataset release date." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Release date" ;
+                        ns1:path <http://schema.org/releaseDate> ],
+                    [ ns1:maxCount 1 ;
+                        ns1:nodeKind ns1:IRI ;
+                        ns1:path <https://neuroshapes.org/atlasRelease> ],
+                    [ ns1:class <https://neuroshapes.org/Annotation> ;
+                        ns1:description "Annotations of the dataset." ;
+                        ns1:name "Annotation" ;
+                        ns1:node <https://neuroshapes.org/commons/annotation/shapes/AnnotationShape> ;
+                        ns1:path <https://neuroshapes.org/annotation> ],
+                    [ ns1:class <https://neuroshapes.org/BrainAtlasSpatialReferenceSystem> ;
+                        ns1:maxCount 1 ;
+                        ns1:path <https://neuroshapes.org/isRegisteredIn> ],
+                    [ rdfs:seeAlso <https://neuroshapes.org/commons/subject/shapes/SubjectShape> ;
+                        ns2:editorialNote "Asserted subject entity. It may differ from the subject from the provenance."^^xsd:string ;
+                        ns1:class <https://neuroshapes.org/Subject> ;
+                        ns1:description "The subject of the study. This data represent an observation of this subject." ;
+                        ns1:minCount 1 ;
+                        ns1:name "Subject" ;
+                        ns1:path <https://neuroshapes.org/subject> ],
+                    [ rdfs:seeAlso <https://neuroshapes.org/commons/contribution/shapes/ContributionShape> ;
+                        ns1:class <https://neuroshapes.org/Contribution> ;
+                        ns1:description "Information about the contribution of an agent during the generation of this dataset." ;
+                        ns1:minCount 1 ;
+                        ns1:name "Qualified Contribution" ;
+                        ns1:nodeKind ns1:BlankNodeOrIRI ;
+                        ns1:path <https://neuroshapes.org/contribution> ],
+                    [ ns1:description "The dataset type." ;
+                        ns1:minCount 1 ;
+                        ns1:name "Type" ;
+                        ns1:nodeKind ns1:IRI ;
+                        ns1:path rdf:type ],
+                    [ ns2:editorialNote "The object of study "^^xsd:string ;
+                        ns1:class <https://neuroshapes.org/ObjectOfStudy> ;
+                        ns1:description "Object of Study" ;
+                        ns1:name "Object of Study" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/ObjectOfStudyOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/objectOfStudy> ],
+                    [ ns1:class <http://schema.org/DataDownload> ;
+                        ns1:description "A dataset in downloadable form. The downloadable form has a specific format and is located at a specific location." ;
+                        ns1:minCount 1 ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) ;
+    ns1:nodeKind ns1:IRI .
+

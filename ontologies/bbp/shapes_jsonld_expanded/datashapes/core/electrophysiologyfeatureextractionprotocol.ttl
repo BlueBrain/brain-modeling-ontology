@@ -1,0 +1,45 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/electrophysiologyfeatureextractionprotocol> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/labeledontologyentity>,
+        <https://neuroshapes.org/commons/subject> ;
+    ns2:shapes <https://neuroshapes.org/dash/electrophysiologyfeatureextractionprotocol/shapes/ElectrophysiologyFeatureExtractionProtocolShape> .
+
+<https://neuroshapes.org/dash/electrophysiologyfeatureextractionprotocol/shapes/ElectrophysiologyFeatureExtractionProtocolShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "The shape of the stimulus" ;
+                        ns1:name "Stimulus" ;
+                        ns1:node <https://neuroshapes.org/dash/electrophysiologyfeatureextractionprotocol/shapes/StimulusShape> ;
+                        ns1:path <https://neuroshapes.org/stimulus> ],
+                    [ ns1:class <https://neuroshapes.org/Subject> ;
+                        ns1:description "The subject information (e.g. species)." ;
+                        ns1:name "Subject" ;
+                        ns1:path <https://neuroshapes.org/subject> ],
+                    [ ns1:description "E-model feature protocol definition" ;
+                        ns1:name "Protocol definition" ;
+                        ns1:nodeKind ns1:BlankNode ;
+                        ns1:path <https://neuroshapes.org/protocolDefinition> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "The e-model" ;
+                        ns1:name "E-model" ;
+                        ns1:path <https://neuroshapes.org/eModel> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "E-model feature protocol path" ;
+                        ns1:name "Path" ;
+                        ns1:path <https://neuroshapes.org/path> ] ] <https://neuroshapes.org/dash/electrophysiologyfeatureextractionprotocol/shapes/StimulusShape> ) ;
+    ns1:nodeKind ns1:IRI ;
+    ns1:targetClass <https://neuroshapes.org/ElectrophysiologyFeatureExtractionProtocol> .
+
+<https://neuroshapes.org/dash/electrophysiologyfeatureextractionprotocol/shapes/StimulusShape> a ns1:NodeShape ;
+    rdfs:label "Stimulus shape definition"^^xsd:string ;
+    ns1:property [ ns1:name "Stimulus target" ;
+            ns1:path <https://neuroshapes.org/stimulusTarget> ],
+        [ ns1:name "Stimulus type" ;
+            ns1:node <https://neuroshapes.org/commons/labeledontologyentity/shapes/LabeledOntologyEntityShape> ;
+            ns1:path <https://neuroshapes.org/stimulusType> ] .
+

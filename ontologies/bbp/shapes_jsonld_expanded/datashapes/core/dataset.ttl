@@ -1,0 +1,15 @@
+@prefix ns1: <http://www.w3.org/ns/prov#> .
+@prefix ns2: <http://www.w3.org/ns/shacl#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://neuroshapes.org/dash/dataset> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/minds> ;
+    ns1:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/dataset/v0.1.0.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/dataset/shapes/DatasetShape> .
+
+<https://neuroshapes.org/dash/dataset/shapes/DatasetShape> a ns2:NodeShape ;
+    ns2:node <https://neuroshapes.org/commons/minds/shapes/MINDSShape> ;
+    ns2:nodeKind ns2:BlankNodeOrIRI ;
+    ns2:targetClass <http://schema.org/Dataset> .
+

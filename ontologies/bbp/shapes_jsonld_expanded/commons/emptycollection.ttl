@@ -1,0 +1,26 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/emptycollection> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity>,
+        <https://provshapes.org/commons/emptycollection> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/emptycollection/v0.1.0.json" ;
+    ns3:shapes <https://neuroshapes.org/commons/emptycollection/shapes/EmptyCollectionShape> .
+
+<https://neuroshapes.org/commons/emptycollection/shapes/EmptyCollectionShape> a ns1:NodeShape ;
+    rdfs:label "An empty collection shape."^^xsd:string ;
+    rdfs:comment "A size should be provided."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://provshapes.org/commons/emptycollection/shapes/EmptyCollectionShape> ] [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:datatype xsd:integer ;
+                        ns1:description "Collection size. The collection can be empty but the size must be greater than 0." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:minExclusive 0 ;
+                        ns1:name "Size" ;
+                        ns1:path <http://schema.org/size> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI .
+

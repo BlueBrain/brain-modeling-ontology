@@ -1,0 +1,65 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns4: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/volumetricdatalayer> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/brainlocation>,
+        <https://neuroshapes.org/commons/typedlabeledontologyterm>,
+        <https://neuroshapes.org/dash/ndraster> ;
+    ns4:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/volumetricdatalayer/v1.0.0.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/volumetricdatalayer/shapes/BrainLocationShape>,
+        <https://neuroshapes.org/dash/volumetricdatalayer/shapes/VolumetricDataLayerShape> .
+
+<https://neuroshapes.org/dash/volumetricdatalayer/shapes/VolumetricDataLayerShape> a ns1:NodeShape ;
+    rdfs:label "Data shape definition for volumetric brain data"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/ndraster/shapes/NdRasterShape> ] [ ns1:property [ ns1:description "Resolution of the voxel." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Resolution" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/resolution> ],
+                    [ ns1:class <https://neuroshapes.org/BrainAtlasSpatialReferenceSystem> ;
+                        ns1:maxCount 1 ;
+                        ns1:path <https://neuroshapes.org/isRegisteredIn> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "The modality of data capture (MRI, fMRI, EM, etc.)" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Image modality" ;
+                        ns1:path <https://neuroshapes.org/imageModality> ],
+                    [ ns1:description "Brain Location (brain region, atlas space)." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "brain location" ;
+                        ns1:node <https://neuroshapes.org/dash/volumetricdatalayer/shapes/BrainLocationShape> ;
+                        ns1:path <https://neuroshapes.org/brainLocation> ],
+                    [ ns3:editorialNote "Need the cell type for class restriction."^^xsd:string ;
+                        ns1:description "The morphology type of the reconstructed cell." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Morphology type" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/mType> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/BrainParcellationDataLayer>,
+        <https://neuroshapes.org/BrainTemplateDataLayer>,
+        <https://neuroshapes.org/CellDensityDataLayer>,
+        <https://neuroshapes.org/GeneExpressionVolumetricDataLayer>,
+        <https://neuroshapes.org/MorphologyOrientationDataLayer>,
+        <https://neuroshapes.org/NISSLImageDataLayer>,
+        <https://neuroshapes.org/NdRaster>,
+        <https://neuroshapes.org/PHDataLayer>,
+        <https://neuroshapes.org/TwoPhotonImageDataLayer>,
+        <https://neuroshapes.org/VolumetricDataLayer> .
+
+<https://neuroshapes.org/dash/volumetricdatalayer/shapes/BrainLocationShape> a ns1:NodeShape ;
+    rdfs:label "A morphology release distribution shape."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/brainlocation/shapes/BrainLocationShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/BrainAtlasSpatialReferenceSystem> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Atlas Spatial Reference System" ;
+                        ns1:path <https://neuroshapes.org/atlasSpatialReferenceSystem> ] ] ) .
+

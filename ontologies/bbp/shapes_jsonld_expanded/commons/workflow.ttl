@@ -1,0 +1,23 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<https://bbp.epfl.ch/shapes/commons/workflow> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity> ;
+    ns2:shapes <https://bbp.epfl.ch/shapes/commons/workflow/shapes/WorkflowShape> .
+
+<https://bbp.epfl.ch/shapes/commons/workflow/shapes/WorkflowShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:class <http://www.w3.org/ns/prov#Entity> ;
+                        ns1:description "What the workflow will uses" ;
+                        ns1:name "Generates" ;
+                        ns1:path <https://bbp.epfl.ch/ontologies/core/bmo/uses> ],
+                    [ ns1:class <http://www.w3.org/ns/prov#Entity> ;
+                        ns1:description "What the workflow will generate" ;
+                        ns1:name "Generates" ;
+                        ns1:path <https://bbp.epfl.ch/ontologies/core/bmo/generates> ],
+                    [ ns1:class <http://www.w3.org/ns/prov#Entity> ;
+                        ns1:description "What the workflow is about" ;
+                        ns1:name "About" ;
+                        ns1:path <http://schema.org/about> ] ] ) .
+

@@ -1,0 +1,19 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/language> a ns2:Schema ;
+    ns2:shapes <https://neuroshapes.org/commons/language/shapes/LanguageShape> .
+
+<https://neuroshapes.org/commons/language/shapes/LanguageShape> a ns1:NodeShape ;
+    rdfs:comment "A shape to represent natural languages."^^xsd:string ;
+    ns1:property [ ns1:datatype xsd:string ;
+            ns1:description "An alias for the language name (e.g English => en)." ;
+            ns1:name "Alias" ;
+            ns1:path <http://schema.org/alternateName> ],
+        [ ns1:datatype xsd:string ;
+            ns1:description "The Language name (e.g English)." ;
+            ns1:name "Name" ;
+            ns1:path <http://schema.org/name> ] .
+

@@ -1,0 +1,60 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/intrasharprecordedcell> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/brainlocation>,
+        <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/quantitativevalue>,
+        <https://neuroshapes.org/commons/typedlabeledontologyterm> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/intrasharprecordedcell/v0.1.0.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/intrasharprecordedcell/shapes/IntraCellularSharpElectrodeRecordedCellShape> .
+
+<https://neuroshapes.org/dash/intrasharprecordedcell/shapes/IntraCellularSharpElectrodeRecordedCellShape> a ns1:NodeShape ;
+    rdfs:label "Intracellular sharp electrode-recorded cell shape definition"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "The e-type of the recorded cell" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "E-type" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/eType> ],
+                    [ ns1:description "The putative e-type of the recorded cell" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Putative e-type" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/putativeEtype> ],
+                    [ ns1:description "Membrane potential of recorded cell at beginning" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Start membrane potential" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/startMembranePotential> ],
+                    [ ns1:description "Membrane potential of recorded cell at the end" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "End membrane potential" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/endMembranePotential> ],
+                    [ ns1:description "Liquid junction potential of electrode" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Liquid junction potential" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/liquidJunctionPotential> ],
+                    [ ns1:description "Resistance of electrode used" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Electrode resistance" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/electrodeResistance> ],
+                    [ ns1:description "Brain location information of the recorded cell" ;
+                        ns1:name "Brain location" ;
+                        ns1:node <https://neuroshapes.org/commons/brainlocation/shapes/BrainLocationShape> ;
+                        ns1:path <https://neuroshapes.org/brainLocation> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Number of electrode used" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Electrode number" ;
+                        ns1:path <https://neuroshapes.org/electrodeNumber> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/IntraCellularSharpElectrodeRecordedCell> .
+

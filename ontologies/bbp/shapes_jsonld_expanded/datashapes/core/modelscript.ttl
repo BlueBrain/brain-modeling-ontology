@@ -1,0 +1,44 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/modelscript> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/modelscript/v0.1.1.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/modelscript/shapes/EModelScriptDistributionShape>,
+        <https://neuroshapes.org/dash/modelscript/shapes/EModelScriptShape>,
+        <https://neuroshapes.org/dash/modelscript/shapes/SubCellularModelScriptDistributionShape>,
+        <https://neuroshapes.org/dash/modelscript/shapes/SubCellularModelScriptShape> .
+
+<https://neuroshapes.org/dash/modelscript/shapes/EModelScriptShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Distribution." ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/dash/modelscript/shapes/EModelScriptDistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) .
+
+<https://neuroshapes.org/dash/modelscript/shapes/SubCellularModelScriptShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "SubCellular modelScript distribution." ;
+                        ns1:name "Distribution" ;
+                        ns1:node <https://neuroshapes.org/dash/modelscript/shapes/SubCellularModelScriptDistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) .
+
+<https://neuroshapes.org/dash/modelscript/shapes/EModelScriptDistributionShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ] [ ns1:property [ ns1:description "Emodel script media types" ;
+                        ns1:in ( "application/neuron-hoc" "application/neuroml" ) ;
+                        ns1:name "Media type" ;
+                        ns1:path <http://schema.org/encodingFormat> ] ] ) .
+
+<https://neuroshapes.org/dash/modelscript/shapes/SubCellularModelScriptDistributionShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ] [ ns1:property [ ns1:description "Subcellular model script media type(s)" ;
+                        ns1:in ( "application/neuron-mod" ) ;
+                        ns1:name "Media type" ;
+                        ns1:path <http://schema.org/encodingFormat> ] ] ) .
+

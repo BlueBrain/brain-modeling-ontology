@@ -1,0 +1,46 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/protocol> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/identifier>,
+        <https://neuroshapes.org/commons/organization>,
+        <https://neuroshapes.org/commons/person> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/protocol/v0.1.5.json" ;
+    ns3:shapes <https://neuroshapes.org/commons/protocol/shapes/HadProtocolValueShape>,
+        <https://neuroshapes.org/commons/protocol/shapes/ProtocolShape> .
+
+<https://neuroshapes.org/commons/protocol/shapes/HadProtocolValueShape> a ns1:PropertyShape ;
+    rdfs:seeAlso <https://neuroshapes.org/commons/protocol/shapes/ProtocolShape> ;
+    ns1:class <https://neuroshapes.org/Protocol> ;
+    ns1:description "The value of nsg:hadProtocol should be of type nsg:Protocol." ;
+    ns1:name "Protocol" ;
+    ns1:path <https://neuroshapes.org/hadProtocol> .
+
+<https://neuroshapes.org/commons/protocol/shapes/ProtocolShape> a ns1:NodeShape ;
+    rdfs:label "Protocol shape definition."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "The identifier of protocol such as a DOI, ISBN,..." ;
+                        ns1:name "Identifier" ;
+                        ns1:node <https://neuroshapes.org/commons/identifier/shapes/IdentifierShape> ;
+                        ns1:path <http://schema.org/identifier> ],
+                    [ ns1:description "Author of the protocol" ;
+                        ns1:name "Author" ;
+                        ns1:nodeKind ns1:IRI ;
+                        ns1:path <http://schema.org/author> ;
+                        ns1:xone ( [ ns1:class <http://schema.org/Person> ] [ ns1:class <http://schema.org/Organization> ] ) ],
+                    [ rdfs:seeAlso <https://neuroshapes.org/Protocol> ;
+                        ns1:description "Sub-protocols of the protocol." ;
+                        ns1:name "Has part" ;
+                        ns1:path <http://schema.org/hasPart> ],
+                    [ ns1:datatype xsd:dateTime ;
+                        ns1:description "Publishing date of protocol." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "date published" ;
+                        ns1:path <http://schema.org/datePublished> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI .
+

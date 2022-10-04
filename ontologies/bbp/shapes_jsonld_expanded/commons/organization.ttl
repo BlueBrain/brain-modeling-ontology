@@ -1,0 +1,57 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/organization> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/identifier> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/organization/v0.1.0.json" ;
+    ns2:shapes <https://neuroshapes.org/commons/organization/shapes/OrganizationShape>,
+        <https://neuroshapes.org/commons/organization/shapes/PostalAddressShape> .
+
+<https://neuroshapes.org/commons/organization/shapes/OrganizationShape> a ns1:NodeShape ;
+    rdfs:label "A shape for describing an organization based on http://schema.org/Organization."^^xsd:string ;
+    rdfs:comment "A schema:Organization can have a GRID identifier."^^xsd:string ;
+    rdfs:seeAlso <http://schema.org/Organization>,
+        <https://www.grid.ac> ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ rdfs:comment "Removed class or node constraints to avoid recursivity error when validating and when framing with a '@embed':'@link'"^^xsd:string ;
+            ns1:name "Parent Organization" ;
+            ns1:path <http://schema.org/parentOrganization> ],
+        [ ns1:datatype xsd:string ;
+            ns1:description "Name of the organization" ;
+            ns1:name "Name" ;
+            ns1:path <http://schema.org/name> ],
+        [ ns1:description "Physical address of the organization." ;
+            ns1:name "Address" ;
+            ns1:or ( [ ns1:node <https://neuroshapes.org/commons/organization/shapes/PostalAddressShape> ] [ ns1:datatype xsd:string ] ) ;
+            ns1:path <http://schema.org/address> ],
+        [ ns1:datatype xsd:string ;
+            ns1:name "Email" ;
+            ns1:path <http://schema.org/email> ;
+            ns1:pattern "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$" ],
+        <https://neuroshapes.org/commons/identifier/shapes/WithGridIdentifierPropertyShape> .
+
+<https://neuroshapes.org/commons/organization/shapes/PostalAddressShape> a ns1:NodeShape ;
+    ns1:property [ ns1:datatype xsd:string ;
+            ns1:name "Fax" ;
+            ns1:path <http://schema.org/faxNumber> ],
+        [ ns1:datatype xsd:string ;
+            ns1:name "Telephone" ;
+            ns1:path <http://schema.org/telephone> ],
+        [ ns1:datatype xsd:string ;
+            ns1:name "Locality" ;
+            ns1:path <http://schema.org/addressLocality> ],
+        [ ns1:datatype xsd:string ;
+            ns1:name "Street" ;
+            ns1:path <http://schema.org/streetAddress> ],
+        [ ns1:datatype xsd:string ;
+            ns1:name "Postal Code" ;
+            ns1:path <http://schema.org/postalCode> ],
+        [ ns1:datatype xsd:string ;
+            ns1:name "Country" ;
+            ns1:path <http://schema.org/addressCountry> ] .
+

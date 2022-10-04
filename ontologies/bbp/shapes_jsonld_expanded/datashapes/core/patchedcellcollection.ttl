@@ -1,0 +1,22 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/patchedcellcollection> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/dash/collection> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/patchedcellcollection/v0.1.0.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/patchedcellcollection/shapes/PatchedCellCollectionShape> .
+
+<https://neuroshapes.org/dash/patchedcellcollection/shapes/PatchedCellCollectionShape> a ns1:NodeShape ;
+    rdfs:label "Patched cell collection shape"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/collection/shapes/CollectionShape> ] [ ns1:property [ rdfs:seeAlso <https://neuroshapes.org/dash/patchedcell/shapes/PatchedCellShape> ;
+                        ns1:class <https://neuroshapes.org/PatchedCell> ;
+                        ns1:description "The patchedCell member(s) of the collection" ;
+                        ns1:name "Member" ;
+                        ns1:path ns3:hadMember ] ] ) ;
+    ns1:targetClass <https://neuroshapes.org/PatchedCellCollection> .
+

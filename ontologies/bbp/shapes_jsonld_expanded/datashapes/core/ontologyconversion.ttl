@@ -1,0 +1,25 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/ontologyconversion> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/activity> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/ontologyconversion/v0.1.0.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/ontologyconversion/shapes/OntologyConversionShape> .
+
+<https://neuroshapes.org/dash/ontologyconversion/shapes/OntologyConversionShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/activity/shapes/ActivityShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/ParcellationOntology> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:path ns2:generated ],
+                    [ ns1:class <https://neuroshapes.org/ParcellationLabel> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:path ns2:used ] ] ) ;
+    ns1:description "Ontology conversion activity description." ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/OntologyConversion> .
+

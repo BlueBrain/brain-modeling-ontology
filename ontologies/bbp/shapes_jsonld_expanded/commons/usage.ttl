@@ -1,0 +1,31 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://provshapes.org/commons/usage> a ns2:Schema ;
+    ns3:wasDerivedFrom "https://github.com/BlueBrain/nexus-prov/blob/v1.2.0/modules/prov/src/main/resources/schemas/nexus/provsh/usage/v1.0.0.json" ;
+    ns2:shapes <https://provshapes.org/commons/usage/shapes/UsageShape> .
+
+<https://provshapes.org/commons/usage/shapes/UsageShape> a ns1:NodeShape ;
+    rdfs:label "Usage shape"^^xsd:string ;
+    rdfs:comment "Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity."^^xsd:string ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ ns1:datatype xsd:dateTime ;
+            ns1:description "The time at which the entity was used." ;
+            ns1:maxCount 1 ;
+            ns1:name "At time" ;
+            ns1:path ns3:atTime ],
+        [ ns1:description "A role is the function of an entity or agent with respect to an activity, in the context of a usage, generation, invalidation, association, start, and end." ;
+            ns1:name "Role" ;
+            ns1:nodeKind ns1:IRI ;
+            ns1:path ns3:hadRole ],
+        [ ns1:class ns3:Entity ;
+            ns1:description "The used entity." ;
+            ns1:maxCount 1 ;
+            ns1:minCount 1 ;
+            ns1:name "Used entity" ;
+            ns1:nodeKind ns1:IRI ;
+            ns1:path ns3:entity ] .
+

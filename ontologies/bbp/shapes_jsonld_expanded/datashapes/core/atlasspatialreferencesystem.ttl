@@ -1,0 +1,42 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/atlasspatialreferencesystem> a ns2:Schema ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/atlasspatialreferencesystem/v0.1.0.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/atlasspatialreferencesystem/shapes/AtlasSpatialReferenceSystemShape> .
+
+<https://neuroshapes.org/dash/atlasspatialreferencesystem/shapes/AtlasSpatialReferenceSystemShape> a ns1:NodeShape ;
+    rdfs:label "Atlas spatial reference system"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/BoundingBox> ;
+                        ns1:description "Bounding box of the image data" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Bounding box" ;
+                        ns1:node <https://neuroshapes.org/commons/boundingbox/shapes/BoundingBoxShape> ;
+                        ns1:path <https://neuroshapes.org/boundingBox> ],
+                    [ ns1:description "3x3 rotational matrix" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Roatational matrix" ;
+                        ns1:node <https://neuroshapes.org/dash/rotationalmatrix/shapes/RotationalMatrixShape> ;
+                        ns1:path <https://neuroshapes.org/orientation> ],
+                    [ ns1:description "Space dimension unit" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Unit" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/UnitOntologyTermShape> ;
+                        ns1:path <http://schema.org/unitCode> ],
+                    [ ns1:description "Origin of the reference system" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Origin" ;
+                        ns1:node <https://neuroshapes.org/commons/vector3d/shapes/Vector3DShape> ;
+                        ns1:path <https://neuroshapes.org/origin> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/AtlasSpatialReferenceSystem>,
+        <https://neuroshapes.org/BrainAtlasSpatialReferenceSystem> .
+

@@ -1,0 +1,15 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://neuroshapes.org/dash/brainlocation> a ns2:Schema ;
+    rdfs:label "Brain Location Schema" ;
+    owl:imports <https://neuroshapes.org/commons/brainlocation> ;
+    ns2:shapes <https://neuroshapes.org/dash/brainlocation/shapes/BrainLocationShape> .
+
+<https://neuroshapes.org/dash/brainlocation/shapes/BrainLocationShape> a ns1:NodeShape ;
+    rdfs:label "Brain location shape definition" ;
+    ns1:node <https://neuroshapes.org/commons/brainlocation/shapes/BrainLocationShape> ;
+    ns1:targetClass <https://neuroshapes.org/BrainLocation> .
+

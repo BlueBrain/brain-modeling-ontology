@@ -1,0 +1,26 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://provshapes.org/commons/generation> a ns2:Schema ;
+    ns3:wasDerivedFrom "https://github.com/BlueBrain/nexus-prov/blob/v1.2.0/modules/prov/src/main/resources/schemas/nexus/provsh/generation/v1.0.0.json" ;
+    ns2:shapes <https://provshapes.org/commons/generation/shapes/GenerationShape> .
+
+<https://provshapes.org/commons/generation/shapes/GenerationShape> a ns1:NodeShape ;
+    rdfs:label "Entity generation shape"^^xsd:string ;
+    rdfs:comment "An instance of prov:Generation provides additional descriptions about the binary prov:wasGeneratedBy relation from a generated prov:Entity to the prov:Activity that generated it. For example, :cake prov:wasGeneratedBy :baking; prov:qualifiedGeneration [ a prov:Generation; prov:activity :baking; :foo :bar ]. Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation."^^xsd:string ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ ns1:datatype xsd:dateTime ;
+            ns1:description "The time at which the entity was generated." ;
+            ns1:maxCount 1 ;
+            ns1:name "At time" ;
+            ns1:path ns3:atTime ],
+        [ ns1:class ns3:Activity ;
+            ns1:description "The activity that generates the entity." ;
+            ns1:maxCount 1 ;
+            ns1:name "Activity" ;
+            ns1:nodeKind ns1:IRI ;
+            ns1:path ns3:activity ] .
+

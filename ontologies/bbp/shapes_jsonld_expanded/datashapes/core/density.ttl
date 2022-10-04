@@ -1,0 +1,43 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/density> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/brainlocation>,
+        <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/quantitativevalue>,
+        <https://neuroshapes.org/commons/typedlabeledontologyterm> ;
+    ns2:shapes <https://neuroshapes.org/dash/density/shapes/DensityQuantitativeValueShape>,
+        <https://neuroshapes.org/dash/density/shapes/DensityShape> .
+
+<https://neuroshapes.org/dash/density/shapes/DensityShape> a ns1:NodeShape ;
+    rdfs:label "Density shape definition"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Density of a neuroscience object such as cells, neurons or synaptic boutons." ;
+                        ns1:minCount 1 ;
+                        ns1:name "Density" ;
+                        ns1:node <https://neuroshapes.org/dash/density/shapes/DensityQuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/density> ],
+                    [ ns1:description "The morphology type of the neurons for which the density was measured." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Morphology type" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/mType> ],
+                    [ ns1:description "Brain location information of the density (e.g. a specific cortical layer)." ;
+                        ns1:name "Brain location" ;
+                        ns1:node <https://neuroshapes.org/commons/brainlocation/shapes/BrainLocationShape> ;
+                        ns1:path <https://neuroshapes.org/brainLocation> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/BoutonDensity>,
+        <https://neuroshapes.org/CellDensity>,
+        <https://neuroshapes.org/Density>,
+        <https://neuroshapes.org/NeuronDensity> .
+
+<https://neuroshapes.org/dash/density/shapes/DensityQuantitativeValueShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ] [ ns1:property [ ns1:datatype xsd:string ;
+                        ns1:description "Statistic of the density (e.g. mean)." ;
+                        ns1:name "Statistic" ;
+                        ns1:path <https://neuroshapes.org/statistic> ] ] ) .
+

@@ -1,0 +1,14 @@
+@prefix ns1: <http://www.w3.org/ns/prov#> .
+@prefix ns2: <http://www.w3.org/ns/shacl#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://neuroshapes.org/dash/annotation> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/annotation> ;
+    ns1:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/annotation/v0.2.0.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/annotation/shapes/AnnotationShape> .
+
+<https://neuroshapes.org/dash/annotation/shapes/AnnotationShape> a ns2:NodeShape ;
+    ns2:node <https://neuroshapes.org/commons/annotation/shapes/AnnotationShape> ;
+    ns2:targetClass <https://neuroshapes.org/Annotation> .
+

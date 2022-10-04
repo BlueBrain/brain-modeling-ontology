@@ -1,0 +1,26 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/subcellularmodel> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/modelinstance> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/subcellularmodel/v0.1.3.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/subcellularmodel/shapes/SubCellularModelShape> .
+
+<https://neuroshapes.org/dash/subcellularmodel/shapes/SubCellularModelShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/modelinstance/shapes/ModelInstanceShape> ] [ ns1:property [ ns1:description "The synapse/ion channel release this model is part of." ;
+                        ns1:name "Part of" ;
+                        ns1:or ( [ ns1:class <https://neuroshapes.org/IonChannelMechanismRelease> ] [ ns1:class <https://neuroshapes.org/SynapseRelease> ] ) ;
+                        ns1:path <http://schema.org/isPartOf> ],
+                    [ rdfs:seeAlso <https://neuroshapes.org/dash/subcellularmodelscript/shapes/SubCellularModelScriptShape> ;
+                        ns1:class <https://neuroshapes.org/SubCellularModelScript> ;
+                        ns1:description "Model script as mod file." ;
+                        ns1:name "Model script" ;
+                        ns1:path <https://neuroshapes.org/modelScript> ] ] ) ;
+    ns1:targetClass <https://neuroshapes.org/SubCellularModel> .
+

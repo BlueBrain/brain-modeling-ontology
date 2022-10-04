@@ -1,0 +1,31 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://provshapes.org/commons/derivation> a ns3:Schema ;
+    ns2:wasDerivedFrom "https://github.com/BlueBrain/nexus-prov/blob/v1.2.0/modules/prov/src/main/resources/schemas/nexus/provsh/derivation/v1.0.0.json" ;
+    ns3:shapes <https://provshapes.org/commons/derivation/shapes/DerivationShape> .
+
+<https://provshapes.org/commons/derivation/shapes/DerivationShape> a ns1:NodeShape ;
+    rdfs:label "Entity derivation shape"^^xsd:string ;
+    rdfs:comment "A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity."^^xsd:string ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:property [ ns1:class ns2:Activity ;
+            ns1:description "The optional activity that used the entity from which the current one derived from." ;
+            ns1:maxCount 1 ;
+            ns1:name "Activity" ;
+            ns1:path ns2:hadActivity ],
+        [ ns1:class ns2:Entity ;
+            ns1:description "An entity from which the current one derived from." ;
+            ns1:maxCount 1 ;
+            ns1:minCount 1 ;
+            ns1:name "Entity" ;
+            ns1:path ns2:entity ],
+        [ ns1:class ns2:Usage ;
+            ns1:description "Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.." ;
+            ns1:maxCount 1 ;
+            ns1:name "Usage" ;
+            ns1:path ns2:hadUsage ] .
+

@@ -1,0 +1,55 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/scholarlyarticle> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/organization>,
+        <https://neuroshapes.org/commons/person> ;
+    ns2:shapes <https://neuroshapes.org/dash/scholarlyarticle/shapes/ScholarlyArticleShape> .
+
+<https://neuroshapes.org/dash/scholarlyarticle/shapes/ScholarlyArticleShape> a ns1:NodeShape ;
+    rdfs:label "Scholarly article"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:datatype xsd:string ;
+                        ns1:description "Article Body." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Article Body" ;
+                        ns1:path <http://schema.org/articleBody> ],
+                    [ ns1:description "Has Part." ;
+                        ns1:name "Has Part" ;
+                        ns1:path <http://schema.org/hasPart> ],
+                    [ ns1:description "The Creative Work publisher." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Publisher" ;
+                        ns1:or ( [ ns1:class <http://schema.org/Person> ;
+                                    ns1:node <https://neuroshapes.org/commons/person/shapes/PersonShape> ] [ ns1:class <http://schema.org/Organization> ;
+                                    ns1:node <https://neuroshapes.org/commons/organization/shapes/OrganizationShape> ] ) ;
+                        ns1:path <http://schema.org/publisher> ],
+                    [ ns1:description "Is Part Of" ;
+                        ns1:name "Is Part Of" ;
+                        ns1:path <http://schema.org/isPartOf> ],
+                    [ ns1:description "The date of publishing." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Published date" ;
+                        ns1:path <http://schema.org/datePublished> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Article abstract." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Abstract" ;
+                        ns1:path <http://schema.org/abstract> ],
+                    [ ns1:description "The Creative Work author." ;
+                        ns1:name "Author" ;
+                        ns1:or ( [ ns1:class <http://schema.org/Person> ;
+                                    ns1:node <https://neuroshapes.org/commons/person/shapes/PersonShape> ] [ ns1:class <http://schema.org/Organization> ;
+                                    ns1:node <https://neuroshapes.org/commons/organization/shapes/OrganizationShape> ] ) ;
+                        ns1:path <http://schema.org/author> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "The article title." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Title" ;
+                        ns1:path <http://schema.org/title> ] ] ) ;
+    ns1:targetClass <http://schema.org/ScholarlyArticle> .
+

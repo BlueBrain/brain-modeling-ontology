@@ -1,0 +1,18 @@
+@prefix ns1: <http://www.w3.org/ns/prov#> .
+@prefix ns2: <http://www.w3.org/ns/shacl#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/labeledontologyentity> a ns3:Schema ;
+    ns1:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/labeledontologyentity/v0.1.1.json" ;
+    ns3:shapes <https://neuroshapes.org/commons/labeledontologyentity/shapes/LabeledOntologyEntityShape> .
+
+<https://neuroshapes.org/commons/labeledontologyentity/shapes/LabeledOntologyEntityShape> a ns2:NodeShape ;
+    ns2:nodeKind ns2:IRI ;
+    ns2:property [ ns2:datatype xsd:string ;
+            ns2:description "Human readable label." ;
+            ns2:minCount 1 ;
+            ns2:name "Label" ;
+            ns2:path rdfs:label ] .
+

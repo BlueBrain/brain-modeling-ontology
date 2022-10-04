@@ -1,0 +1,38 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/cellrecordseries> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/brainlocation>,
+        <https://neuroshapes.org/commons/typedlabeledontologyterm>,
+        <https://neuroshapes.org/dash/recordseries> ;
+    ns3:shapes <https://neuroshapes.org/dash/cellrecordseries/shapes/BrainLocationShape>,
+        <https://neuroshapes.org/dash/cellrecordseries/shapes/CellRecordSeriesShape> .
+
+<https://neuroshapes.org/dash/cellrecordseries/shapes/BrainLocationShape> a ns1:NodeShape ;
+    rdfs:label "A morphology release distribution shape."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/brainlocation/shapes/BrainLocationShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/BrainAtlasSpatialReferenceSystem> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Atlas Spatial Reference System" ;
+                        ns1:path <https://neuroshapes.org/atlasSpatialReferenceSystem> ] ] ) .
+
+<https://neuroshapes.org/dash/cellrecordseries/shapes/CellRecordSeriesShape> a ns1:NodeShape ;
+    rdfs:label "A Record Series for cells"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/recordseries/shapes/RecordSeriesShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/BrainAtlasSpatialReferenceSystem> ;
+                        ns1:maxCount 1 ;
+                        ns1:path <https://neuroshapes.org/isRegisteredIn> ],
+                    [ ns2:editorialNote "Need the cell type for class restriction."^^xsd:string ;
+                        ns1:description "The morphology type of the reconstructed cell." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Morphology type" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/mType> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/CellRecordSeries>,
+        <https://neuroshapes.org/RecordSeries> .
+

@@ -1,0 +1,28 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/variablereport> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/variablereport/v0.1.1.json" ;
+    ns2:shapes <https://neuroshapes.org/dash/variablereport/shapes/VariableReportShape> .
+
+<https://neuroshapes.org/dash/variablereport/shapes/VariableReportShape> a ns1:NodeShape ;
+    rdfs:label "Validation report shape"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:datatype xsd:string ;
+                        ns1:description "The variable report target." ;
+                        ns1:in ( "compartment" "soma" "summation" "extra cellular recording" ) ;
+                        ns1:minCount 1 ;
+                        ns1:name "Target" ;
+                        ns1:path <https://neuroshapes.org/target> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Variable shape (e.g: voltage, curent)." ;
+                        ns1:minCount 1 ;
+                        ns1:name "Variable" ;
+                        ns1:path <https://neuroshapes.org/variable> ] ] ) ;
+    ns1:targetClass <https://neuroshapes.org/VariableReport> .
+

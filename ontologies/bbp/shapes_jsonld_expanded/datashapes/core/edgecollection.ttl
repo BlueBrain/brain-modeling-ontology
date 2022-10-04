@@ -1,0 +1,34 @@
+@prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns2: <http://www.w3.org/ns/shacl#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns4: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/edgecollection> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity> ;
+    ns4:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/edgecollection/v0.1.2.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/edgecollection/shapes/EdgeCollectionShape> .
+
+<https://neuroshapes.org/dash/edgecollection/shapes/EdgeCollectionShape> a ns2:NodeShape ;
+    rdfs:label " Elements of the collection defined like Location of nrn synapse file and additional circuit description files: start.ncs and start.target"^^xsd:string ;
+    rdfs:comment " Elements of the collection defined like Location of nrn synapse file and additional circuit description files: start.ncs and start.target"^^xsd:string ;
+    ns2:and ( [ ns2:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns2:property [ rdfs:seeAlso <https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseShape> ;
+                        ns1:editorialNote "Add media type constraint: application/neuron-mod."^^xsd:string ;
+                        ns2:class <https://neuroshapes.org/SynapseRelease> ;
+                        ns2:description "Collection of synapse mod files identified by git hash." ;
+                        ns2:maxCount 1 ;
+                        ns2:minCount 1 ;
+                        ns2:name "Synapse release" ;
+                        ns2:path <https://neuroshapes.org/synapseRelease> ],
+                    [ rdfs:seeAlso <https://neuroshapes.org/commons/entity/shapes/EntityShape> ;
+                        ns1:editorialNote "Add media type constraint: application/nrn."^^xsd:string ;
+                        ns2:class ns4:Entity ;
+                        ns2:description "Collection of nrn files or syn2." ;
+                        ns2:minCount 1 ;
+                        ns2:name "Properties" ;
+                        ns2:path <https://neuroshapes.org/edgePopulation> ] ] ) ;
+    ns2:targetClass <https://neuroshapes.org/EdgeCollection> .
+

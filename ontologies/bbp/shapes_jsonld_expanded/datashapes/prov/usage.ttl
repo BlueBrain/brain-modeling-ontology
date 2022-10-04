@@ -1,0 +1,16 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://provshapes.org/dash/usage> a ns2:Schema ;
+    owl:imports <https://provshapes.org/commons/usage> ;
+    ns2:shapes <https://provshapes.org/dash/usage/shapes/UsageShape> .
+
+<https://provshapes.org/dash/usage/shapes/UsageShape> a ns1:NodeShape ;
+    rdfs:label "Usage shape"^^xsd:string ;
+    rdfs:comment "Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity."^^xsd:string ;
+    ns1:node <https://provshapes.org/commons/usage/shapes/UsageShape> ;
+    ns1:targetClass <http://www.w3.org/ns/prov#Usage> .
+

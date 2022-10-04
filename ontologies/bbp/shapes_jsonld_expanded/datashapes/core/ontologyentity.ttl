@@ -1,0 +1,34 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/ontologyentity> a ns2:Schema ;
+    ns2:shapes <https://neuroshapes.org/dash/ontologyentity/shapes/OntologyEntityShape> .
+
+<https://neuroshapes.org/dash/ontologyentity/shapes/OntologyEntityShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/labeledontologyentity/shapes/LabeledOntologyEntityShape> ] [ ns1:property [ ns1:datatype xsd:string ;
+                        ns1:description "Concepts can be created and used as stand-alone entities. However, especially in indexing practice, concepts usually come in carefully compiled vocabularies, such as thesauri or classification schemes. SKOS offers the means of representing such KOSs using the skos:ConceptScheme class." ;
+                        ns1:name "Resource's scheme" ;
+                        ns1:path <http://www.w3.org/2004/02/skos/core#inScheme> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "skos:definition supplies a complete explanation of the intended meaning of a resource." ;
+                        ns1:name "Definition" ;
+                        ns1:path <http://www.w3.org/2004/02/skos/core#definition> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "The skos:prefLabel property makes it possible to assign a preferred lexical label to a resource." ;
+                        ns1:name "Preferred label" ;
+                        ns1:path <http://www.w3.org/2004/02/skos/core#prefLabel> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "The skos:altLabel property makes it possible to assign an alternative lexical label to a resource. This is especially helpful when assigning labels beyond the one that is preferred for the concept, for instance when synonyms need to be represented." ;
+                        ns1:name "Preferred label" ;
+                        ns1:path <http://www.w3.org/2004/02/skos/core#altLabel> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "This property allows one to link a concept to the concept scheme containing it." ;
+                        ns1:name "Top concept Of" ;
+                        ns1:path <http://www.w3.org/2004/02/skos/core#topConceptOf> ] ] ) ;
+    ns1:nodeKind ns1:IRI ;
+    ns1:targetClass owl:Class,
+        <http://www.w3.org/2004/02/skos/core#Concept> .
+

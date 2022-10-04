@@ -1,0 +1,20 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/invitrowholebrainreconstructedneuronmorphology> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/dash/reconstructedcell> ;
+    ns2:shapes <https://neuroshapes.org/dash/invitrowholebrainreconstructedneuronmorphology/shapes/InVitroWholeBrainReconstructedNeuronMorphologyShape> .
+
+<https://neuroshapes.org/dash/invitrowholebrainreconstructedneuronmorphology/shapes/InVitroWholeBrainReconstructedNeuronMorphologyShape> a ns1:NodeShape ;
+    rdfs:label "In Vitro Whole Brain Reconstructed Neuron Morphology shape definition"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/reconstructedcell/shapes/ReconstructedCellShape> ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/InVitroWholeBrainReconstructedNeuronMorphology>,
+        <https://neuroshapes.org/ReconstructedCell>,
+        <https://neuroshapes.org/ReconstructedNeuronMorphology>,
+        <https://neuroshapes.org/ReconstructedWholeBrainCell> .
+

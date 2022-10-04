@@ -1,0 +1,85 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/patchedcell> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/brainlocation>,
+        <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/quantitativevalue>,
+        <https://neuroshapes.org/commons/typedlabeledontologyterm> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/patchedcell/v0.2.1.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/patchedcell/shapes/PatchedCellShape> .
+
+<https://neuroshapes.org/dash/patchedcell/shapes/PatchedCellShape> a ns1:NodeShape ;
+    rdfs:label "Patched cell shape definition"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "The chloride reversal potential calculated from the intracellular solution of the pipette" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Chloride reversal potential" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/chlorideReversalPotential> ],
+                    [ ns1:description "Membrane potential of patched cell at the end" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "End membrane potential" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/endMembranePotential> ],
+                    [ ns1:description "Seal resistance of patch" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Seal resistance" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/sealResistance> ],
+                    [ ns1:description "The e-type of the patched cell" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "E-type" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/eType> ],
+                    [ ns1:description "Liquid junction potential of patch" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Liquid junction potential" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/liquidJunctionPotential> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Solution used to fill the pipette" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Pipette solution" ;
+                        ns1:path <https://neuroshapes.org/solution> ],
+                    [ ns1:description "Resistance of pipette used" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Pipette resistance" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/pipetteResistance> ],
+                    [ ns1:description "Brain location information of the patchedcell" ;
+                        ns1:name "Brain location" ;
+                        ns1:node <https://neuroshapes.org/commons/brainlocation/shapes/BrainLocationShape> ;
+                        ns1:path <https://neuroshapes.org/brainLocation> ],
+                    [ ns1:description "The morphology type of the patched cell" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Morphology type" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/mType> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Number of pipettes used" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Pipette number" ;
+                        ns1:path <https://neuroshapes.org/pipetteNumber> ],
+                    [ ns1:description "The compound used in the pipette to label the cell" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Labeling compound" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/LabelingCompoundOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/labelingCompound> ],
+                    [ ns1:description "The putative e-type of the patched cell" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Putative e-type" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/putativeEtype> ],
+                    [ ns1:description "Membrane potential of patched cell at beginning" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Start membrane potential" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/startMembranePotential> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/PatchedCell> .
+

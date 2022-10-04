@@ -1,0 +1,90 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/subject> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/commons/quantitativevalue>,
+        <https://neuroshapes.org/commons/typedlabeledontologyterm> ;
+    ns3:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/subject/v0.1.0.json" ;
+    ns2:shapes <https://neuroshapes.org/commons/subject/shapes/AgeShape>,
+        <https://neuroshapes.org/commons/subject/shapes/SubjectShape> .
+
+<https://neuroshapes.org/commons/subject/shapes/SubjectShape> a ns1:NodeShape ;
+    rdfs:label "Subject shape definition"^^xsd:string ;
+    rdfs:comment "Subject used in experiment"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:datatype xsd:dateTime ;
+                        ns1:description "Date of surgery of subject." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Date of surgery" ;
+                        ns1:path <https://neuroshapes.org/dateOfSurgery> ],
+                    [ ns1:description "The species of the subject" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Species" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/SpeciesOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/species> ],
+                    [ ns1:description "Weight of the subject." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Weight" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <http://schema.org/weight> ],
+                    [ ns1:description "Transgenic modification of subject" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Transgenic" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/TransgenicOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/transgenic> ],
+                    [ ns1:datatype xsd:dateTime ;
+                        ns1:description "Date of sacrifice of subject." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Date of sacrifice" ;
+                        ns1:path <http://schema.org/deathDate> ],
+                    [ ns1:description "Disease of subject." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Disease" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/DiseaseOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/disease> ],
+                    [ ns1:description "The sex of the subject" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Sex" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/SexOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/sex> ],
+                    [ ns1:datatype xsd:dateTime ;
+                        ns1:description "Date of birth of subject." ;
+                        ns1:lessThan <http://schema.org/deathDate> ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Date of birth" ;
+                        ns1:path <http://schema.org/birthDate> ],
+                    [ ns1:description "Disease modeled in subject." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Disease" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/DiseaseModelOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/diseaseModel> ],
+                    [ ns1:description "Treatment of the subject." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Treatment" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/TreatmentOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/treatment> ],
+                    [ ns1:description "The age of the subject." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Age" ;
+                        ns1:node <https://neuroshapes.org/commons/subject/shapes/AgeShape> ;
+                        ns1:path <https://neuroshapes.org/age> ],
+                    [ ns1:description "Subject strain" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Strain" ;
+                        ns1:node <https://neuroshapes.org/commons/typedlabeledontologyterm/shapes/StrainOntologyTermShape> ;
+                        ns1:path <https://neuroshapes.org/strain> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI .
+
+<https://neuroshapes.org/commons/subject/shapes/AgeShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ] [ ns1:property [ ns1:in ( "Pre-natal" "Post-natal" ) ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Period" ;
+                        ns1:path <https://neuroshapes.org/period> ] ] ) .
+

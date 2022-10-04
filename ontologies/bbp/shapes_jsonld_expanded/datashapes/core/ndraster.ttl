@@ -1,0 +1,86 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/ndraster> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity> ;
+    ns2:shapes <https://neuroshapes.org/dash/ndraster/shapes/ComponentDimensionShape>,
+        <https://neuroshapes.org/dash/ndraster/shapes/DimensionShape>,
+        <https://neuroshapes.org/dash/ndraster/shapes/NdRasterShape>,
+        <https://neuroshapes.org/dash/ndraster/shapes/SpaceDimensionShape>,
+        <https://neuroshapes.org/dash/ndraster/shapes/TimeDimensionShape> .
+
+<https://neuroshapes.org/dash/ndraster/shapes/ComponentDimensionShape> a ns1:NodeShape ;
+    rdfs:label "Component Dimension shape"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/ndraster/shapes/DimensionShape> ] [ ns1:property [ ns1:datatype xsd:string ;
+                        ns1:description "The name of the component (whether it's a color, a vector, a quaternion, etc.)" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Name" ;
+                        ns1:path <http://schema.org/name> ] ] ) ;
+    ns1:class <https://neuroshapes.org/ComponentDimension> .
+
+<https://neuroshapes.org/dash/ndraster/shapes/NdRasterShape> a ns1:NodeShape ;
+    rdfs:label "Definition of n-dimensional raster dataset"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:description "Description of what kind of element a sample (pixel or voxel) represent. It can be an intensity, a RGB color, a vector 2D or 3D, a quaternio, a label, a binary mask, etc." ;
+                        ns1:in ( "intensity" "multispectralIntensity" "label" "mask" "vector" ) ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Sample type" ;
+                        ns1:path <https://neuroshapes.org/sampleType> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Format of the file, by its extension ('nrrd', 'png', etc.)" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "File Extension" ;
+                        ns1:path <https://neuroshapes.org/fileExtension> ],
+                    [ ns1:description "Encoding of the data part of the dataset (not the header)" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Buffer Encoding" ;
+                        ns1:or ( [ ns1:in ( "ascii" "raw" "gzip" "bzip2" ) ] [ ns1:datatype xsd:string ] ) ;
+                        ns1:path <https://neuroshapes.org/bufferEncoding> ],
+                    [ ns1:description "Column major matrix to perform the affine transformation from voxel position to world position. In world position, the measurement unit is 'spatialUnit'. The size of this matrix is numberOfSpatialDimensions x numberOfSpatialDimensions." ;
+                        ns1:name "World matrix" ;
+                        ns1:path <https://neuroshapes.org/worldMatrix> ],
+                    [ ns1:description "List of dimensions, spectral (components), spatial or temporal, in the order of encoding in the buffer, from the fastest axis to the slowest axis." ;
+                        ns1:minCount 1 ;
+                        ns1:name "Dimensions" ;
+                        ns1:path <https://neuroshapes.org/dimension> ],
+                    [ ns1:description "Endianness of the encoding, applicable for all componentDataType but not usefull for uint8 int8 and ascii" ;
+                        ns1:in ( "little" "big" ) ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Endianness" ;
+                        ns1:path <https://neuroshapes.org/endianness> ],
+                    [ ns1:description "Encoding type of each component within a sample (pixels or voxels), if we have multiple components such as in RGB, vectors or quaternions, the componentDataType is applicable to each component. Ex: 'uint8', 'float32'" ;
+                        ns1:in ( "ascii" "uint8" "int8" "uint16" "int16" "uint32" "int32" "uint64" "int64" "float16" "float32" "float64" ) ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Component Encoding" ;
+                        ns1:path <https://neuroshapes.org/componentEncoding> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/NdRaster> .
+
+<https://neuroshapes.org/dash/ndraster/shapes/SpaceDimensionShape> a ns1:NodeShape ;
+    rdfs:label "Space Dimension shape"^^xsd:string ;
+    rdfs:seeAlso <http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes> ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/ndraster/shapes/DimensionShape> ] [ ns1:property [ ns1:description "Unit of space used to qualify the sampling." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Space Unit" ;
+                        ns1:or ( [ ns1:node <https://neuroshapes.org/commons/labeledontologyentity/shapes/LabeledOntologyEntityShape> ] [ ns1:datatype xsd:string ] ) ;
+                        ns1:path <http://schema.org/unitCode> ] ] ) ;
+    ns1:class <https://neuroshapes.org/SpaceDimension> .
+
+<https://neuroshapes.org/dash/ndraster/shapes/TimeDimensionShape> a ns1:NodeShape ;
+    rdfs:label "Time Dimension shape"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/ndraster/shapes/DimensionShape> ] [ ] ) ;
+    ns1:class <https://neuroshapes.org/TimeDimension> .
+
+<https://neuroshapes.org/dash/ndraster/shapes/DimensionShape> a ns1:NodeShape ;
+    rdfs:label "Generic Dimension shape"^^xsd:string .
+

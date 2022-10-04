@@ -1,0 +1,58 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/brainslicing> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/activity>,
+        <https://neuroshapes.org/commons/brainlocation>,
+        <https://neuroshapes.org/commons/quantitativevalue> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/brainslicing/v1.0.0.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/brainslicing/shapes/BrainSlicingShape> .
+
+<https://neuroshapes.org/dash/brainslicing/shapes/BrainSlicingShape> a ns1:NodeShape ;
+    rdfs:label "Brain slicing shape definition"^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/activity/shapes/ActivityShape> ] [ ns1:property [ ns1:datatype xsd:string ;
+                        ns1:description "Slicing angle of brain" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Slicing angle" ;
+                        ns1:path <https://neuroshapes.org/slicingAngle> ],
+                    [ ns1:class <https://neuroshapes.org/Subject> ;
+                        ns1:description "The subject used" ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:path ns2:used ],
+                    [ ns1:description "Cutting thickness of brain slice" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Cutting thickness" ;
+                        ns1:node <https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape> ;
+                        ns1:path <https://neuroshapes.org/cuttingThickness> ],
+                    [ ns1:class <https://neuroshapes.org/SliceCollection> ;
+                        ns1:description "The slice or slice collection generated" ;
+                        ns1:minCount 1 ;
+                        ns1:path ns2:generated ],
+                    [ ns1:description "Brain location information" ;
+                        ns1:name "Brain location" ;
+                        ns1:node <https://neuroshapes.org/commons/brainlocation/shapes/BrainLocationShape> ;
+                        ns1:path <https://neuroshapes.org/brainLocation> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Solution in which the brain was sliced (e.g. Ringer's solution)" ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Solution" ;
+                        ns1:path <https://neuroshapes.org/solution> ],
+                    [ ns1:description "Slicing plane of the brain" ;
+                        ns1:in ( "Sagittal" "Para-sagittal" "Coronal" "Horizontal" ) ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Slicing plane" ;
+                        ns1:path <https://neuroshapes.org/slicingPlane> ],
+                    [ ns1:description "Brain hemisphere that was sliced" ;
+                        ns1:in ( "Left" "Right" ) ;
+                        ns1:maxCount 2 ;
+                        ns1:name "Hemisphere" ;
+                        ns1:path <https://neuroshapes.org/hemisphere> ] ] ) ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/BrainSlicing> .
+

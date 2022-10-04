@@ -1,0 +1,51 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/workflowengine> a ns2:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity>,
+        <https://neuroshapes.org/dash/softwareagent> ;
+    ns2:shapes <https://neuroshapes.org/dash/workflowengine/shapes/WorkflowEngineShape> .
+
+<https://neuroshapes.org/dash/workflowengine/shapes/WorkflowEngineShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/softwareagent/shapes/SoftwareAgentShape> ] [ ns1:property [ ns1:datatype xsd:string ;
+                        ns1:description "Parameters which were used to run the workflow." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Parameter." ;
+                        ns1:path <https://neuroshapes.org/parameter> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Version of the workflow engine." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Version." ;
+                        ns1:path <http://schema.org/version> ],
+                    [ ns1:class <http://www.w3.org/ns/prov#Entity> ;
+                        ns1:description "Workflow tasks definition file." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Task file." ;
+                        ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ;
+                        ns1:path <https://neuroshapes.org/task> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Name of the workflow that engine was running." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Name." ;
+                        ns1:path <http://schema.org/name> ],
+                    [ ns1:class <https://neuroshapes.org/Configuration> ;
+                        ns1:description "Workflow configuration file." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Workflow Engine Configuration file." ;
+                        ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ;
+                        ns1:path <https://neuroshapes.org/configuration> ],
+                    [ ns1:datatype xsd:string ;
+                        ns1:description "Optional description of the workflow." ;
+                        ns1:maxCount 1 ;
+                        ns1:name "Description." ;
+                        ns1:path <http://schema.org/description> ] ] ) ;
+    ns1:description "Software agent which executes automated workflows." ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/WorkflowEngine> .
+

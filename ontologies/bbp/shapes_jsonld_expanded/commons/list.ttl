@@ -1,0 +1,134 @@
+@prefix ns1: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix ns2: <http://www.w3.org/ns/shacl#> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/commons/list> a ns1:Schema ;
+    ns1:shapes <https://neuroshapes.org/commons/list/shapes/DataNode>,
+        <https://neuroshapes.org/commons/list/shapes/DoubleNode>,
+        <https://neuroshapes.org/commons/list/shapes/EmptyNode>,
+        <https://neuroshapes.org/commons/list/shapes/IntegerNode>,
+        <https://neuroshapes.org/commons/list/shapes/ListNodeShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfDoublesNodeShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfDoublesShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfIntegersNodeShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfIntegersShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfOneOrMoreDoublesShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfOneOrMoreIntegersShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfOneOrMoreItemsShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfOneOrMoreStringsShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfStringsNodeShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListOfStringsShape>,
+        <https://neuroshapes.org/commons/list/shapes/ListShape>,
+        <https://neuroshapes.org/commons/list/shapes/StringNode> .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfOneOrMoreDoublesShape> a ns2:NodeShape ;
+    ns2:node <https://neuroshapes.org/commons/list/shapes/ListOfDoublesShape> ;
+    ns2:property [ ns2:minCount 1 ;
+            ns2:path [ ] ] .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfOneOrMoreIntegersShape> a ns2:NodeShape ;
+    ns2:node <https://neuroshapes.org/commons/list/shapes/ListOfIntegersShape> ;
+    ns2:property [ ns2:minCount 1 ;
+            ns2:path [ ] ] .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfOneOrMoreItemsShape> a ns2:NodeShape ;
+    ns2:node <https://neuroshapes.org/commons/list/shapes/ListShape> ;
+    ns2:property [ ns2:minCount 1 ;
+            ns2:path [ ] ] .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfOneOrMoreStringsShape> a ns2:NodeShape ;
+    ns2:node <https://neuroshapes.org/commons/list/shapes/ListOfStringsShape> ;
+    ns2:property [ ns2:minCount 1 ;
+            ns2:path [ ] ] .
+
+<https://neuroshapes.org/commons/list/shapes/DataNode> ns2:not ( [ ns2:hasValue () ] ) ;
+    ns2:property [ ns2:maxCount 1 ;
+            ns2:minCount 1 ;
+            ns2:path rdf:rest ],
+        [ ns2:maxCount 1 ;
+            ns2:minCount 1 ;
+            ns2:path rdf:first ] .
+
+<https://neuroshapes.org/commons/list/shapes/DoubleNode> ns2:not ( [ ns2:hasValue () ] ) ;
+    ns2:property [ ns2:datatype xsd:double ;
+            ns2:maxCount 1 ;
+            ns2:minCount 1 ;
+            ns2:path rdf:first ],
+        [ ns2:maxCount 1 ;
+            ns2:minCount 1 ;
+            ns2:path rdf:rest ] .
+
+<https://neuroshapes.org/commons/list/shapes/IntegerNode> ns2:not ( [ ns2:hasValue () ] ) ;
+    ns2:property [ ns2:maxCount 1 ;
+            ns2:minCount 1 ;
+            ns2:path rdf:rest ],
+        [ ns2:datatype xsd:integer ;
+            ns2:maxCount 1 ;
+            ns2:minCount 1 ;
+            ns2:path rdf:first ] .
+
+<https://neuroshapes.org/commons/list/shapes/ListNodeShape> a ns2:NodeShape ;
+    rdfs:label "List node shape"^^xsd:string ;
+    rdfs:comment "Defines constraints on what it means for a node to be a node within a well-formed RDF list. Note that this does not check whether the rdf:rest items are also well-formed lists as this would lead to unsupported recursion."^^xsd:string ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/#syntax-rule-SHACL-list> ;
+    ns3:wasDerivedFrom "https://www.w3.org/ns/shacl-shacl#ListNodeShape" ;
+    ns2:or ( <https://neuroshapes.org/commons/list/shapes/EmptyNode> <https://neuroshapes.org/commons/list/shapes/DataNode> ) .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfDoublesNodeShape> a ns2:NodeShape ;
+    rdfs:label "List of doubles node shape" ;
+    ns2:or ( <https://neuroshapes.org/commons/list/shapes/EmptyNode> <https://neuroshapes.org/commons/list/shapes/DoubleNode> ) .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfDoublesShape> a ns2:NodeShape ;
+    rdfs:label "List of doubles" ;
+    ns2:property [ ns2:hasValue () ;
+            ns2:node <https://neuroshapes.org/commons/list/shapes/ListOfDoublesNodeShape> ;
+            ns2:path [ ] ] .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfIntegersNodeShape> a ns2:NodeShape ;
+    rdfs:label "List of integers node shape" ;
+    ns2:or ( <https://neuroshapes.org/commons/list/shapes/EmptyNode> <https://neuroshapes.org/commons/list/shapes/IntegerNode> ) .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfIntegersShape> a ns2:NodeShape ;
+    rdfs:label "List of integers" ;
+    ns2:property [ ns2:hasValue () ;
+            ns2:node <https://neuroshapes.org/commons/list/shapes/ListOfIntegersNodeShape> ;
+            ns2:path [ ] ] .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfStringsNodeShape> a ns2:NodeShape ;
+    rdfs:label "List of string node shape" ;
+    ns2:or ( <https://neuroshapes.org/commons/list/shapes/EmptyNode> <https://neuroshapes.org/commons/list/shapes/StringNode> ) .
+
+<https://neuroshapes.org/commons/list/shapes/ListOfStringsShape> a ns2:NodeShape ;
+    rdfs:label "List of strings" ;
+    ns2:property [ ns2:hasValue () ;
+            ns2:node <https://neuroshapes.org/commons/list/shapes/ListOfStringsNodeShape> ;
+            ns2:path [ ] ] .
+
+<https://neuroshapes.org/commons/list/shapes/ListShape> a ns2:NodeShape ;
+    rdfs:label "List shape"^^xsd:string ;
+    rdfs:comment "A shape describing well-formed RDF lists. Currently does not check for non-recursion. This could be expressed using SHACL-SPARQL." ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/#syntax-rule-SHACL-list> ;
+    ns3:wasDerivedFrom "https://www.w3.org/ns/shacl-shacl#ListShape" ;
+    ns2:property [ rdfs:comment "Each list member (including this node) must be have the shape this:ListNodeShape." ;
+            ns2:hasValue () ;
+            ns2:node <https://neuroshapes.org/commons/list/shapes/ListNodeShape> ;
+            ns2:path [ ] ] .
+
+<https://neuroshapes.org/commons/list/shapes/StringNode> ns2:not ( [ ns2:hasValue () ] ) ;
+    ns2:property [ ns2:datatype xsd:string ;
+            ns2:maxCount 1 ;
+            ns2:minCount 1 ;
+            ns2:path rdf:first ],
+        [ ns2:maxCount 1 ;
+            ns2:minCount 1 ;
+            ns2:path rdf:rest ] .
+
+<https://neuroshapes.org/commons/list/shapes/EmptyNode> ns2:hasValue () ;
+    ns2:property [ ns2:maxCount 0 ;
+            ns2:path rdf:first ],
+        [ ns2:maxCount 0 ;
+            ns2:path rdf:rest ] .
+

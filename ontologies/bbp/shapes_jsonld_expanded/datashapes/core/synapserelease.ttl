@@ -1,0 +1,30 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/synapserelease> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/distribution>,
+        <https://neuroshapes.org/dash/modelrelease> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/synapserelease/v0.1.2.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseDistributionShape>,
+        <https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseShape> .
+
+<https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/dash/modelrelease/shapes/ModelReleaseShape> ] [ ns1:property [ ns1:description "Synapse release data location." ;
+                        ns1:name "Synapse release data location" ;
+                        ns1:node <https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseDistributionShape> ;
+                        ns1:path <http://schema.org/distribution> ] ] ) ;
+    ns1:targetClass <https://neuroshapes.org/SynapseRelease> .
+
+<https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseDistributionShape> a ns1:NodeShape ;
+    rdfs:label "This shape is for..."^^xsd:string ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/distribution/shapes/DistributionShape> ] [ ns1:property [ ns1:description "" ;
+                        ns1:in ( "application/mod" ) ;
+                        ns1:name "Media type" ;
+                        ns1:path <http://schema.org/encodingFormat> ] ] ) .
+

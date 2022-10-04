@@ -1,0 +1,38 @@
+@prefix ns1: <http://www.w3.org/ns/shacl#> .
+@prefix ns2: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://neuroshapes.org/dash/atlasrelease> a ns3:Schema ;
+    owl:imports <https://neuroshapes.org/commons/entity> ;
+    ns2:wasDerivedFrom "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/atlasrelease/v0.1.0.json" ;
+    ns3:shapes <https://neuroshapes.org/dash/atlasrelease/shapes/AtlasReleaseShape> .
+
+<https://neuroshapes.org/dash/atlasrelease/shapes/AtlasReleaseShape> a ns1:NodeShape ;
+    ns1:and ( [ ns1:node <https://neuroshapes.org/commons/entity/shapes/EntityShape> ] [ ns1:property [ ns1:class <https://neuroshapes.org/AtlasSpatialReferenceSystem> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:path <https://neuroshapes.org/spatialReferenceSystem> ],
+                    [ ns1:class <https://neuroshapes.org/BrainParcellationDataLayer> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:path <https://neuroshapes.org/parcellationVolume> ],
+                    [ ns1:class <https://neuroshapes.org/ParcellationOntology> ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:path <https://neuroshapes.org/parcellationOntology> ],
+                    [ ns1:class <https://neuroshapes.org/BrainTemplateDataLayer> ;
+                        ns1:path <https://neuroshapes.org/brainTemplateDataLayer> ],
+                    [ ns1:datatype xsd:date ;
+                        ns1:description "atlas release date." ;
+                        ns1:maxCount 1 ;
+                        ns1:minCount 1 ;
+                        ns1:name "Release Date" ;
+                        ns1:path <http://schema.org/releaseDate> ] ] ) ;
+    ns1:description "Atlas release description." ;
+    ns1:nodeKind ns1:BlankNodeOrIRI ;
+    ns1:targetClass <https://neuroshapes.org/AtlasRelease>,
+        <https://neuroshapes.org/BrainAtlasRelease> .
+
