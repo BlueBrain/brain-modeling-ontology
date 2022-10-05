@@ -132,7 +132,7 @@ deploy-ontodocs-in-staging-openshift:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success
   variables:
-    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization"
+    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization --single-snapshot"
     CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/ontodocs-staging
     KUBERNETES_MEMORY_LIMIT: 8Gi
     KUBERNETES_MEMORY_REQUEST: 8Gi
