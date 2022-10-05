@@ -134,8 +134,8 @@ deploy-ontodocs-in-staging-openshift:
   variables:
     KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization"
     CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/ontodocs-staging
-    KUBERNETES_MEMORY_LIMIT: 4Gi
-    KUBERNETES_MEMORY_REQUEST: 4Gi
+    KUBERNETES_MEMORY_LIMIT: 8Gi
+    KUBERNETES_MEMORY_REQUEST: 8Gi
 
 
 # Executes deployment of project documentation to bbp-dke-staging Openshift
