@@ -38,7 +38,7 @@ Resolvers:
       searchendpoints:
         sparql:
           endpoint: "https://bluebrain.github.io/nexus/vocabulary/defaultSparqlIndex"
-      result_resource_mapping: ./nexus-resolver/term-to-resource-mapping.hjson
+      result_resource_mapping: ./term-to-resource-mapping.hjson
   agent:
     - resolver: AgentResolver
       origin: store
