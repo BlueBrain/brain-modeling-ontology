@@ -1530,7 +1530,7 @@
       "@id": "schema:Organization"
     },
     "Other": {
-      "@id": "https://bbp.epfl.ch/ontologies/core/efeatures/Other"
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Other"
     },
     "PHDataLayer": {
       "@id": "nsg:PHDataLayer"
