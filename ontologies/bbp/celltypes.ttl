@@ -37,8 +37,8 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/L23_PTPC> a owl:Class ;
     rdfs:label "L23_PTPC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasInstanceInSpecies ;
-            owl:someValuesFrom obo:NCBITaxon_9606 ],
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
@@ -46,8 +46,8 @@
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
+            owl:onProperty nsg:hasInstanceInSpecies ;
+            owl:someValuesFrom obo:NCBITaxon_9606 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -58,17 +58,17 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/L23_STPC> a owl:Class ;
     rdfs:label "L23_STPC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
+            owl:onProperty nsg:hasInstanceInSpecies ;
+            owl:someValuesFrom obo:NCBITaxon_9606 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasInstanceInSpecies ;
-            owl:someValuesFrom obo:NCBITaxon_9606 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -85,17 +85,17 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/L2_ChC> a owl:Class ;
     rdfs:label "L2_ChC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:ChandelierPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
         <http://uri.interlex.org/base/ilx_0107356> ;
     skos:notation "L2_ChC"^^xsd:string ;
     skos:prefLabel "Layer 2 Chandelier Cell"@en .
@@ -103,14 +103,14 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/L2_MC> a owl:Class ;
     rdfs:label "L2_MC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:MartinottiPhenotype ],
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005391 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:MartinottiPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -121,20 +121,20 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/L3_MC> a owl:Class ;
     rdfs:label "L3_MC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:MartinottiPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:MartinottiPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005392 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:MartinottiPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:MartinottiPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         <http://uri.interlex.org/base/ilx_0107375> ;
     skos:notation "L3_MC"^^xsd:string ;
     skos:prefLabel "Layer 3 Martinotti Cell"@en .
@@ -142,14 +142,14 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/L3_TPC_C> a owl:Class ;
     rdfs:label "L3_TPC:C"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NarrowTuftedPyramidalPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:142_L2_3_IT_PAR ],
@@ -251,11 +251,11 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SLM_PPA> a owl:Class ;
     rdfs:label "SLM_PPA"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:PerforantPathwayAssociatedPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:PerforantPathwayAssociatedPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0007640 ],
@@ -296,12 +296,6 @@
     rdfs:label "SO_BP"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005371 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005371 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
@@ -310,8 +304,14 @@
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005371 ],
         [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005371 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:BipolarPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005371 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/BipolarCell>,
         <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType> ;
     skos:notation "SO_BP"^^xsd:string ;
@@ -326,7 +326,7 @@
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005371 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
@@ -335,7 +335,7 @@
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:BistratifiedPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0005371 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
@@ -351,19 +351,19 @@
             owl:someValuesFrom obo:UBERON_0005371 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005371 ],
+            owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005371 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0005371 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005371 ],
         ct:OriensLacunosumMoleculareCell ;
     skos:notation "SO_OLM"^^xsd:string ;
     skos:prefLabel "Stratum Oriens Oriens-Lacunosum Moleculare Cell"@en .
@@ -372,13 +372,13 @@
     rdfs:label "SO_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005371 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005371 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005371 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005371 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
@@ -397,13 +397,13 @@
             owl:someValuesFrom obo:UBERON_0005371 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005371 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005371 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005371 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005371 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
@@ -415,19 +415,19 @@
     rdfs:label "SP_AA"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
+            owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
+            owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
+            owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
+            owl:someValuesFrom obo:UBERON_0002313 ],
         ct:AxoAxonicCell ;
     skos:notation "SP_AA"^^xsd:string ;
     skos:prefLabel "Pyramidal layer Axo-Axonic Cell"@en .
@@ -439,10 +439,10 @@
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
+            owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
+            owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
@@ -454,29 +454,29 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_BS> a owl:Class ;
     rdfs:label "SP_BS"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BistratifiedPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:BistratifiedPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BistratifiedPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
         ct:HippocampusBistratifiedCell ;
     skos:notation "SP_BS"^^xsd:string ;
     skos:prefLabel "Pyramidal Layer Bistratified Cell"@en .
@@ -485,22 +485,22 @@
     rdfs:label "SP_CCKBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
         ct:CCKBC ;
     skos:notation "SP_CCKBC"^^xsd:string ;
     skos:prefLabel "SP_CCKBC"@en .
@@ -509,18 +509,18 @@
     rdfs:label "SP_Ivy"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
@@ -536,10 +536,10 @@
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
+            owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
+            owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0002313 ],
@@ -552,16 +552,7 @@
     rdfs:label "SP_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:PyramidalPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0002313 ],
@@ -570,7 +561,16 @@
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:PyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:382 ],
@@ -584,22 +584,22 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_PVBC> a owl:Class ;
     rdfs:label "SP_PVBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0002313 ],
         ct:PVBC ;
     skos:notation "SP_PVBC"^^xsd:string ;
@@ -631,7 +631,7 @@
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
+            owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
@@ -640,14 +640,14 @@
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
+            owl:someValuesFrom mba:1089 ],
         ct:HippocampusBasketCell .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_WATri> a owl:Class ;
     rdfs:label "SP_WATri"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
+            owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
@@ -656,7 +656,7 @@
             owl:someValuesFrom obo:UBERON_0002313 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
+            owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0002313 ],
@@ -669,10 +669,10 @@
             owl:someValuesFrom obo:UBERON_0005372 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005372 ],
+            owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
+            owl:someValuesFrom obo:UBERON_0005372 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
@@ -686,19 +686,19 @@
             owl:someValuesFrom obo:UBERON_0005372 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005372 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005372 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005372 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005372 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005372 ],
         bmo:InterneuronSpecificCell ;
     skos:notation "SR_IS1"^^xsd:string ;
     skos:prefLabel "SR_IS1"@en .
@@ -706,26 +706,26 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_SCA> a owl:Class ;
     rdfs:label "SR_SCA"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005372 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom obo:UBERON_0005372 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom <https://neuroshapes.org/GO:1990021Phenotype> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005372 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0005372 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005372 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0005372 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:382 ],
@@ -1153,14 +1153,14 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:EarlyBifurcatingTuftedPyramidalPhenotype ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005394 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:EarlyBifurcatingTuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:257_L5_PT_CTX ],
@@ -1381,14 +1381,14 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0381365> a owl:Class ;
     rdfs:label "L5_TPC:A"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005394 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LateBifurcatingTuftedPyramidalPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005394 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -1612,14 +1612,14 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0381366> a owl:Class ;
     rdfs:label "L3_TPC:A"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LateBifurcatingTuftedPyramidalPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LateBifurcatingTuftedPyramidalPhenotype ],
@@ -1726,8 +1726,8 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:EarlyBifurcatingTuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -1735,8 +1735,8 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:EarlyBifurcatingTuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005391 ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:129_L2_3_IT_POST-PRE ],
@@ -1834,17 +1834,17 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0381368> a owl:Class ;
     rdfs:label "L3_TPC:B"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:EarlyBifurcatingTuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005392 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:EarlyBifurcatingTuftedPyramidalPhenotype ],
@@ -1855,20 +1855,20 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0381370> a owl:Class ;
     rdfs:label "L5_TPC:C"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NarrowTuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:NarrowTuftedPyramidalPhenotype ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005394 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:NarrowTuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:182_L4_5_IT_CTX ],
@@ -2092,11 +2092,11 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:UntuftedPyramidalPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005394 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:UntuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -2320,8 +2320,8 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0381373> a owl:Class ;
     rdfs:label "L6_IPC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005395 ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -2329,8 +2329,8 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:InvertedPyramidalPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005395 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:203_L5_6_IT_CTX ],
@@ -2566,8 +2566,8 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0381375> a owl:Class ;
     rdfs:label "L6_TPC:A"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:LateBifurcatingTuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LateBifurcatingTuftedPyramidalPhenotype ],
@@ -2578,8 +2578,8 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:LateBifurcatingTuftedPyramidalPhenotype ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:203_L5_6_IT_CTX ],
@@ -2815,20 +2815,20 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0381376> a owl:Class ;
     rdfs:label "L6_TPC:C"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:NarrowTuftedPyramidalPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:NarrowTuftedPyramidalPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:NarrowTuftedPyramidalPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:NarrowTuftedPyramidalPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:203_L5_6_IT_CTX ],
@@ -3064,12 +3064,6 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0381377> a owl:Class ;
     rdfs:label "L6_UPC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:UntuftedPyramidalPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:UntuftedPyramidalPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
@@ -3078,6 +3072,12 @@ schema1:title a owl:AnnotationProperty ;
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:UntuftedPyramidalPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:UntuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:203_L5_6_IT_CTX ],
@@ -3313,11 +3313,11 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0383207> a owl:Class ;
     rdfs:label "L2_IPC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:InvertedPyramidalPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
@@ -3430,11 +3430,11 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LateBifurcatingTuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005391 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -3535,20 +3535,20 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0383211> a owl:Class ;
     rdfs:label "L4_ChC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:ChandelierPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:ChandelierPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005393 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:ChandelierPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:ChandelierPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         <http://uri.interlex.org/base/ilx_0107356> ;
     skos:notation "L4_ChC"^^xsd:string ;
     skos:prefLabel "Layer 4 Chandelier Cell"@en .
@@ -3556,6 +3556,12 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0383216> a owl:Class ;
     rdfs:label "L4_NGC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:NeurogliaformPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005393 ],
         [ a owl:Restriction ;
@@ -3564,12 +3570,6 @@ schema1:title a owl:AnnotationProperty ;
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NeurogliaformPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:NeurogliaformPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
         <http://uri.interlex.org/base/ilx_0777218> ;
     skos:notation "L4_NGC"^^xsd:string ;
     skos:prefLabel "Layer 4 Neurogliaform Cell"@en .
@@ -3577,17 +3577,17 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0383218> a owl:Class ;
     rdfs:label "L4_SSC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:SpinyStellatePhenotype ],
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005393 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005393 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom obo:PATO_0070013 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:SpinyStellatePhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -3724,11 +3724,11 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:UntuftedPyramidalPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005393 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:UntuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:178_L4_IT_CTX ],
@@ -3784,17 +3784,17 @@ schema1:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0383228> a owl:Class ;
     rdfs:label "L6_BPC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005395 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:BiopolarPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005395 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:203_L5_6_IT_CTX ],
@@ -4034,14 +4034,14 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:HorizontalPyramidalPhenotype ],
         [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:203_L5_6_IT_CTX ],
@@ -4283,14 +4283,14 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NeurogliaformPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005394 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NeurogliaformPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005394 ],
         <http://uri.interlex.org/base/ilx_0777218> ;
     skos:notation "L5_NGC"^^xsd:string ;
     skos:prefLabel "Layer 5 Neurogliaform Cell"@en .
@@ -4301,17 +4301,17 @@ schema1:title a owl:AnnotationProperty ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BipolarPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BipolarPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BipolarPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BipolarPhenotype ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/BipolarCell> ;
     skos:notation "L6_BP"^^xsd:string ;
     skos:prefLabel "Layer 6 Bipolar Cell"@en .
@@ -4820,13 +4820,13 @@ skos:prefLabel a owl:AnnotationProperty .
     rdfs:label "SR_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1089 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0005372 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1089 ],
         ct:HippocampusPyramidalCell ;
     skos:notation "SR_PC"^^xsd:string .
 
@@ -5078,9 +5078,6 @@ bmo:ModulatoryNeurotransmitterType a owl:Class ;
     rdfs:subClassOf bmo:NeurotransmitterType ;
     skos:altLabel "Modulatory Neurotransmitter Type"@en ;
     skos:prefLabel "Modulatory neuron"^^xsd:string .
-
-bmo:Muus a owl:Class ;
-    rdfs:label "Muus"@en .
 
 bmo:NeocortexBurstAccommodatingElectricalType a owl:Class ;
     rdfs:label "NCx_bAC"@en ;
@@ -8935,6 +8932,11 @@ bmo:NeuronProjectionType a owl:Class ;
     rdfs:label "Neuron Projection Type"@en ;
     rdfs:subClassOf bmo:NeuronType .
 
+bmo:Other a owl:Class ;
+    rdfs:label "Other"@en ;
+    rdfs:subClassOf bmo:NewNeuronType ;
+    skos:altLabel "Other"@en .
+
 bmo:PALv_ChIN_etype a owl:Class ;
     rdfs:label "PALv_ChIN_etype"@en ;
     rdfs:subClassOf bmo:PallidumVentralRegionNeuronEType ;
@@ -9418,27 +9420,6 @@ ct:1_CR a owl:Class ;
     ns1:cell_set_alias "1_CR"^^xsd:string ;
     ns1:taxonomy_id "CCN202106160"^^xsd:string .
 
-ct:ACB_HFN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:56 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:56 ] .
-
-ct:ACB_PN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:56 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:56 ] .
-
-ct:ACB_TAN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:56 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:56 ] .
-
 ct:AmygdalaBasolateralNucleusPyramidalNeuron a owl:Class ;
     rdfs:label "Amygdala Basolateral Nucleus Pyramidal Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
@@ -9503,55 +9484,6 @@ ct:Bergmann_2 a owl:Class ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:512 ],
         bmo:GliaTranscriptomeType .
-
-ct:CP_CR rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ] .
-
-ct:CP_ChIN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ] .
-
-ct:CP_FS rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ] .
-
-ct:CP_LTS rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ] .
-
-ct:CP_NGF rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ] .
-
-ct:CP_PN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ] .
-
-ct:CP_THIN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ] .
 
 ct:CerebellarNucleusCell a owl:Class ;
     rdfs:label "Cerebellar Nucleus Cell"@en ;
@@ -9807,10 +9739,6 @@ ct:DorsalRootGanglionCell a owl:Class ;
         bmo:NewNeuronType ;
     skos:definition "Large cell located in the dorsal root ganglion with a single process that extends into the periphery and into the spinal cord.  These neurons convey sensory information from the body."^^xsd:string .
 
-ct:ETC rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:698 ] .
-
 ct:Endothelial_mural a owl:Class ;
     rdfs:label "Endothelial_mural"@en ;
     rdfs:seeAlso <https://www.nature.com/articles/s41586-021-03220-z> ;
@@ -9863,31 +9791,6 @@ ct:Fibroblast a owl:Class ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:512 ],
         bmo:BrainCellTranscriptomeType .
-
-ct:GC rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:220 ] .
-
-ct:GPe_ChIN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1022 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1022 ] .
-
-ct:GPe_GaPN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1022 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1022 ] .
-
-ct:GPi_GaPN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1031 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1031 ] .
 
 ct:Gaba1 a owl:Class ;
     rdfs:label "Gaba 1"@en ;
@@ -10253,10 +10156,6 @@ ct:LateralAmygdalaProjectionNeuron a owl:Class ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Lateral amygdala projection neuron"@en .
 
-ct:MC rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:244 ] .
-
 ct:MLI1_1 a owl:Class ;
     rdfs:label "MLI1_1"@en ;
     rdfs:seeAlso <https://www.nature.com/articles/s41586-021-03220-z> ;
@@ -10436,11 +10335,11 @@ ct:NeostriatumSOM-NOSCell a owl:Class ;
         bmo:NewNeuronType ;
     skos:altLabel "Neostriatum SOM/NOS cell"^^xsd:string .
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/NeostriatumTH_plus_Cell> a owl:Class ;
-    rdfs:label "Neostriatum TH+ Cell"@en ;
-    rdfs:prefLabel "Neostriatum TH+ Cell"@en ;
+ct:NeostriatumTH_plus_Cell a owl:Class ;
+    rdfs:label "NeostriatumTH_plus_Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
-    skos:altLabel "Neostriatum TH+ cell"@en .
+    skos:altLabel "Neostriatum TH+ Cell"@en ;
+    skos:prefLabel "Neostriatum TH+ cell"@en .
 
 ct:NucleusAccumbensMediumSpinyNeuron a owl:Class ;
     rdfs:label "Nucleus Accumbens Medium Spiny Neuron"@en ;
@@ -10535,13 +10434,6 @@ ct:OPC_4 a owl:Class ;
             owl:someValuesFrom mba:512 ],
         bmo:GliaTranscriptomeType .
 
-ct:OSN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:698 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:698 ] .
-
 ct:OlfactoryCortexPyramidalCell a owl:Class ;
     rdfs:label "Olfactory Cortex Pyramidal Cell"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -10556,36 +10448,6 @@ ct:Oligo a owl:Class ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:477 ],
         ns1:Oligodendrocytes .
-
-bmo:Other a owl:Class ;
-    rdfs:label "Other"@en ;
-    rdfs:subClassOf bmo:NewNeuronType ;
-    skos:altLabel "Other"@en .
-
-ct:PALv_ChIN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:835 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:835 ] .
-
-ct:PALv_GaPN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:835 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:835 ] .
-
-ct:PALv_GlPN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:835 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:835 ] .
-
-ct:PGC rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:212 ] .
 
 ct:PLI_1 a owl:Class ;
     rdfs:label "PLI_1"@en ;
@@ -10709,37 +10571,9 @@ ct:Purkinje_Anti_Aldoc_2 a owl:Class ;
         bmo:NeuronsTranscriptomeType,
         ct:NeuronTranscriptomicType .
 
-ct:SNc_DPN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:374 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:374 ] .
-
-ct:SNc_GaIN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:374 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:374 ] .
-
-ct:SNr_GaPN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:381 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:381 ] .
-
 ct:SST_plus a owl:Class ;
     rdfs:label "SST+"@en ;
     rdfs:subClassOf bmo:NeuronMolecularType .
-
-ct:STN_GlPN rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:470 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:470 ] .
 
 ct:SubthalamicNucleusNeuron a owl:Class ;
     rdfs:label "Subthalamic Nucleus Neuron"@en ;
@@ -10830,13 +10664,6 @@ ct:Vascular a owl:Class ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:477 ],
         ns1:Immune__Vasculature .
-
-ct:mTC rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:244 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:244 ] .
 
 ns1:124_L2_IT_APr a owl:Class ;
     rdfs:label "124_L2 IT APr"^^xsd:string ;
@@ -12087,11 +11914,7 @@ nsg:layer a owl:ObjectProperty ;
     rdfs:label "Cell Types Ontology"^^xsd:string ;
     vann:preferredNamespacePrefix "celltypes"^^xsd:string ;
     schema1:title "Cell Types Ontology"^^xsd:string ;
-    owl:versionInfo "R1438"^^xsd:string .
-
-mba:212 a owl:Class .
-
-mba:220 a owl:Class .
+    owl:versionInfo "R1454"^^xsd:string .
 
 mba:262 a owl:Class .
 
@@ -12121,11 +11944,11 @@ obo:PATO_0070021 a owl:Class .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005390 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005390 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -12579,9 +12402,33 @@ nsg:SmallAxonPhenotype a owl:Class .
 
 nsg:SpinyStellatePhenotype a owl:Class .
 
+mba:1022 a owl:Class ;
+    rdfs:label "Globus pallidus, external segment"@en .
+
+mba:1031 a owl:Class ;
+    rdfs:label "Globus pallidus, internal segment"@en .
+
 mba:19 a owl:Class .
 
+mba:374 a owl:Class ;
+    rdfs:label "Substantia nigra, compact part"@en .
+
+mba:381 a owl:Class ;
+    rdfs:label "Substantia nigra, reticular part"@en .
+
 mba:423 a owl:Class .
+
+mba:470 a owl:Class ;
+    rdfs:label "Subthalamic nucleus"@en .
+
+mba:56 a owl:Class ;
+    rdfs:label "Nucleus accumbens"@en .
+
+mba:672 a owl:Class ;
+    rdfs:label "Caudoputamen"@en .
+
+mba:835 a owl:Class ;
+    rdfs:label "Pallidum, ventral region"@en .
 
 mba:886 a owl:Class .
 
@@ -12775,20 +12622,20 @@ obo:NCBITaxon_10116 a owl:Class ;
 <http://uri.interlex.org/base/ilx_0738210> a owl:Class ;
     rdfs:label "L6_TPC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:TuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:TuftedPyramidalPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:TuftedPyramidalPhenotype ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/TuftedPyramidalNeuron> ;
     skos:notation "L6_TPC"^^xsd:string ;
     skos:prefLabel "Layer 6 Tufted Pyramidal Cell"@en .
@@ -12797,10 +12644,10 @@ obo:NCBITaxon_10116 a owl:Class ;
     rdfs:label "Rt_RC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:262 ],
+            owl:someValuesFrom mba:549 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:262 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:549 ],
@@ -12826,14 +12673,14 @@ obo:NCBITaxon_10116 a owl:Class ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:TuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005391 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:TuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -12976,10 +12823,6 @@ nsg:MType a owl:Class ;
     rdfs:label "Brain Cell Morphological Type"@en ;
     rdfs:subClassOf bmo:BrainCellType .
 
-mba:244 a owl:Class .
-
-mba:698 a owl:Class .
-
 mba:822 a owl:Class .
 
 obo:NCBITaxon_9606 a owl:Class ;
@@ -13009,14 +12852,14 @@ obo:UBERON_0007640 a owl:Class .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:HorizontalAxonPhenotype ],
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005390 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005390 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:HorizontalAxonPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:34_Sncg ],
@@ -13321,17 +13164,17 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383194> a owl:Class ;
     rdfs:label "L1_LAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LargeAxonPhenotype ],
         [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005390 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005390 ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -13637,17 +13480,17 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383197> a owl:Class ;
     rdfs:label "L1_SAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:SmallAxonPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005390 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -13953,23 +13796,23 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383200> a owl:Class ;
     rdfs:label "L23_ChC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:ChandelierPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005392 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:ChandelierPhenotype ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:ChandelierPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:ChandelierPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -14274,17 +14117,17 @@ obo:UBERON_0007640 a owl:Class .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:SmallBasketPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -14628,17 +14471,17 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383217> a owl:Class ;
     rdfs:label "L4_SBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:SmallBasketPhenotype ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005393 ],
         [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:SmallBasketPhenotype ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:SmallBasketPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:SmallBasketPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -14943,20 +14786,20 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383222> a owl:Class ;
     rdfs:label "L5_BTC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BituftedPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BituftedPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005394 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BituftedPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BituftedPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -15300,20 +15143,20 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383223> a owl:Class ;
     rdfs:label "L5_ChC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:ChandelierPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005394 ],
         [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:ChandelierPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:ChandelierPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:100_Sst ],
@@ -15546,12 +15389,6 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383227> a owl:Class ;
     rdfs:label "L5_SBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:SmallBasketPhenotype ],
         [ a owl:Restriction ;
@@ -15560,6 +15397,12 @@ obo:UBERON_0007640 a owl:Class .
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:SmallBasketPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:100_Sst ],
@@ -15861,20 +15704,20 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383229> a owl:Class ;
     rdfs:label "L6_BTC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BituftedPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:BituftedPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BituftedPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:100_Sst ],
@@ -16065,11 +15908,11 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383230> a owl:Class ;
     rdfs:label "L6_ChC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:ChandelierPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:ChandelierPhenotype ],
@@ -16269,8 +16112,11 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383236> a owl:Class ;
     rdfs:label "L6_SBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:SmallBasketPhenotype ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
@@ -16278,11 +16124,8 @@ obo:UBERON_0007640 a owl:Class .
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:SmallBasketPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:SmallBasketPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:100_Sst ],
@@ -16584,17 +16427,17 @@ obo:UBERON_0007640 a owl:Class .
 <http://uri.interlex.org/base/ilx_0738209> a owl:Class ;
     rdfs:label "L5_TPC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:TuftedPyramidalPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005394 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:TuftedPyramidalPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:TuftedPyramidalPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -16611,14 +16454,14 @@ obo:UBERON_0007640 a owl:Class .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:TuftedPyramidalPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/TuftedPyramidalNeuron> ;
     skos:notation "L3_TPC"^^xsd:string ;
     skos:prefLabel "Layer 3 Tufted Pyramidal Cell"@en .
@@ -16868,15 +16711,6 @@ nsg:Glia a owl:Class ;
 
 nsg:InvertedPyramidalPhenotype a owl:Class .
 
-mba:1031 a owl:Class ;
-    rdfs:label "Globus pallidus, internal segment"@en .
-
-mba:381 a owl:Class ;
-    rdfs:label "Substantia nigra, reticular part"@en .
-
-mba:470 a owl:Class ;
-    rdfs:label "Subthalamic nucleus"@en .
-
 mba:589508447 a owl:Class .
 
 mba:726 a owl:Class .
@@ -16887,11 +16721,11 @@ mba:726 a owl:Class .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005390 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005390 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -17194,9 +17028,6 @@ mba:726 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383201> a owl:Class ;
     rdfs:label "L23_DBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
@@ -17208,6 +17039,9 @@ mba:726 a owl:Class .
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -17509,6 +17343,9 @@ mba:726 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383205> a owl:Class ;
     rdfs:label "L23_NGC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:NeurogliaformPhenotype ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
@@ -17517,9 +17354,6 @@ mba:726 a owl:Class .
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:NeurogliaformPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
@@ -17578,20 +17412,20 @@ mba:726 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383215> a owl:Class ;
     rdfs:label "L4_NBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:NestBasketPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005393 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NestBasketPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:NestBasketPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -17935,14 +17769,14 @@ mba:726 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383235> a owl:Class ;
     rdfs:label "L6_NGC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:NeurogliaformPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:NeurogliaformPhenotype ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:NeurogliaformPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:NeurogliaformPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -18679,9 +18513,6 @@ mba:997 a owl:Class ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
@@ -18690,6 +18521,9 @@ mba:997 a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -19039,17 +18873,17 @@ mba:997 a owl:Class ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:MartinottiPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:MartinottiPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:MartinottiPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:MartinottiPhenotype ],
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -19360,11 +19194,11 @@ mba:997 a owl:Class ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005393 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:LargeBasketPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:LargeBasketPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -19708,6 +19542,12 @@ mba:997 a owl:Class ;
 <http://uri.interlex.org/base/ilx_0383214> a owl:Class ;
     rdfs:label "L4_MC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:MartinottiPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:MartinottiPhenotype ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
@@ -19716,12 +19556,6 @@ mba:997 a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:MartinottiPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:MartinottiPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -20473,12 +20307,6 @@ nsg:NarrowTuftedPyramidalPhenotype a owl:Class .
 
 nsg:UntuftedPyramidalPhenotype a owl:Class .
 
-mba:1022 a owl:Class ;
-    rdfs:label "Globus pallidus, external segment"@en .
-
-mba:374 a owl:Class ;
-    rdfs:label "Substantia nigra, compact part"@en .
-
 mba:477 a owl:Class .
 
 obo:UBERON_0005390 a owl:Class .
@@ -20502,20 +20330,20 @@ obo:UBERON_0005390 a owl:Class .
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:BipolarPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:BipolarPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:100_Sst ],
@@ -20820,14 +20648,14 @@ obo:UBERON_0005390 a owl:Class .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005392 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LargeBasketPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005392 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005391 ],
@@ -21174,8 +21002,8 @@ obo:UBERON_0005390 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383204> a owl:Class ;
     rdfs:label "L23_NBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005391 ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -21183,11 +21011,11 @@ obo:UBERON_0005390 a owl:Class .
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005392 ],
         [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005391 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NestBasketPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:108_Pvalb ],
@@ -21312,11 +21140,11 @@ obo:UBERON_0005390 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383209> a owl:Class ;
     rdfs:label "L4_BP"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BipolarPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005393 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BipolarPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -21669,20 +21497,20 @@ obo:UBERON_0005390 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383210> a owl:Class ;
     rdfs:label "L4_BTC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BituftedPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BituftedPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005393 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BituftedPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BituftedPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -22026,14 +21854,14 @@ obo:UBERON_0005390 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383221> a owl:Class ;
     rdfs:label "L5_BP"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005394 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:BipolarPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:BipolarPhenotype ],
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005394 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:BipolarPhenotype ],
@@ -22272,17 +22100,17 @@ obo:UBERON_0005390 a owl:Class .
 <http://uri.interlex.org/base/ilx_0383233> a owl:Class ;
     rdfs:label "L6_LBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LargeBasketPhenotype ],
         [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005395 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005395 ],
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LargeBasketPhenotype ],
@@ -23273,17 +23101,17 @@ ns1:L3_IT_ENT a owl:Class ;
 <http://uri.interlex.org/base/ilx_0381369> a owl:Class ;
     rdfs:label "L5_MC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:MartinottiPhenotype ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005394 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:MartinottiPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005394 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:MartinottiPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -23630,20 +23458,20 @@ ns1:L3_IT_ENT a owl:Class ;
 <http://uri.interlex.org/base/ilx_0381374> a owl:Class ;
     rdfs:label "L6_MC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:MartinottiPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:MartinottiPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:MartinottiPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -23990,14 +23818,14 @@ ns1:L3_IT_ENT a owl:Class ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
-            owl:someValuesFrom obo:UBERON_0005393 ],
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:DoubleBouquetPhenotype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:DoubleBouquetPhenotype ],
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0005393 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:DoubleBouquetPhenotype ],
@@ -24344,20 +24172,20 @@ ns1:L3_IT_ENT a owl:Class ;
 <http://uri.interlex.org/base/ilx_0383224> a owl:Class ;
     rdfs:label "L5_DBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:DoubleBouquetPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasMorphologicalPhenotype ;
+            owl:someValuesFrom nsg:DoubleBouquetPhenotype ],
+        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005394 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:DoubleBouquetPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasMorphologicalPhenotype ;
-            owl:someValuesFrom nsg:DoubleBouquetPhenotype ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:10_Lamp5 ],
@@ -24707,11 +24535,11 @@ ns1:L3_IT_ENT a owl:Class ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005394 ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LargeBasketPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LargeBasketPhenotype ],
@@ -25058,11 +24886,11 @@ ns1:L3_IT_ENT a owl:Class ;
 <http://uri.interlex.org/base/ilx_0383231> a owl:Class ;
     rdfs:label "L6_DBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:DoubleBouquetPhenotype ],
@@ -25494,18 +25322,9 @@ nsg:SmallBasketPhenotype a owl:Class .
 
 mba:463 a owl:Class .
 
-mba:56 a owl:Class ;
-    rdfs:label "Nucleus accumbens"@en .
-
-mba:835 a owl:Class ;
-    rdfs:label "Pallidum, ventral region"@en .
-
 <http://uri.interlex.org/base/ilx_0383226> a owl:Class ;
     rdfs:label "L5_NBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005394 ],
         [ a owl:Restriction ;
@@ -25517,6 +25336,9 @@ mba:835 a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NestBasketPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:100_Sst ],
@@ -25824,14 +25646,14 @@ mba:835 a owl:Class ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NestBasketPhenotype ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0005395 ],
         [ a owl:Restriction ;
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:NestBasketPhenotype ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom ns1:100_Sst ],
@@ -26359,9 +26181,6 @@ bmo:NeuronMorphologicalType a owl:Class ;
     rdfs:label "Neuron Morphological Type"@en ;
     rdfs:subClassOf bmo:NeuronType,
         nsg:MType .
-
-mba:672 a owl:Class ;
-    rdfs:label "Caudoputamen"@en .
 
 obo:UBERON_0005395 a owl:Class .
 
