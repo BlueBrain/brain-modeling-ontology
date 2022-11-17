@@ -79,25 +79,45 @@ register-on-production-environment:
 # Building documentation for sphinx and ontodocs
 # The docs are generated and stored in artifacts in order to be used in the deploy stage
 
-# Generate ontodocs documentation and stores the artifact under /visualization
+# Generate ontodocs documentation files and store them in
 generate-ontodocs-documentation:
   stage: generate
   image: python:3.7
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success
+      variables:
+        CLUSTER_NAME: dev_cluster
+        K8S_SERVER: https://kubernetesdev.bbp.epfl.ch:6443
+        SA_TOKEN: $SA_TOKEN_DEVELOPMENT
+        K8S_CA: ".kube/ca-dev.crt"
     - if: $CI_COMMIT_TAG
       when: on_success
-  script:
+      variables:
+        CLUSTER_NAME: prod_cluster
+        K8S_SERVER: https://kubernetes.bbp.epfl.ch:6443/
+        SA_TOKEN: $SA_TOKEN_PRODUCTION
+        K8S_CA: ".kube/ca-prod.crt"
+  before_script:
+    - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    - chmod +x kubectl
+    - mkdir -p ~/.local/bin
+    - mv ./kubectl ~/.local/bin/kubectl
     - pip install git+https://$GITLAB_DEPLOY_TOKEN:$GITLAB_DEPLOY_PASSWORD@bbpgitlab.epfl.ch/dke/apps/ontodocs.git
+  script:
     - mkdir visualization
     - ontospy gendocs ./ontologies/bbp --theme lumen --outputpath ./visualization --title "Brain Modeling Ontology" --preflabel "label" -v
-  artifacts:
-    paths:
-      - visualization
+    - ~/.local/bin/kubectl config set-cluster $CLUSTER_NAME --server=$K8S_SERVER --certificate-authority=$K8S_CA
+    - ~/.local/bin/kubectl config set-context $CLUSTER_NAME --cluster=$CLUSTER_NAME
+    - ~/.local/bin/kubectl config set-credentials pod-creator-ci --token=$SA_TOKEN
+    - ~/.local/bin/kubectl config set-context $CLUSTER_NAME --user=pod-creator-ci
+    - ~/.local/bin/kubectl config use-context $CLUSTER_NAME
+    - POD=$(~/.local/bin/kubectl get pods -n bbp-ou-dke --selector=app=bmo-ontodocs -o=jsonpath="{.items[*].metadata.name}" | cut -d ' ' -f 1)
+    - ~/.local/bin/kubectl cp ./visualization/. "$POD:/usr/share/nginx/html/" -n bbp-ou-dke --no-preserve
   variables:
     KUBERNETES_MEMORY_LIMIT: 4Gi
     KUBERNETES_MEMORY_REQUEST: 4Gi
+
 
 # Generate sphinx documentation and stores the artifact under /generated/html
 generate-sphinx-documentation:
@@ -120,23 +140,6 @@ generate-sphinx-documentation:
 
 # DEPLOY STAGE
 
-# Deploys the documentation to Openshift using Kaniko
-
-# Executes deployment of ontodocs documentation to bbp-dke-staging Openshift
-deploy-ontodocs-in-staging-openshift:
-  stage: deploy
-  extends: .build-image-using-kaniko
-  dependencies:
-    - generate-ontodocs-documentation
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
-      when: on_success
-  variables:
-    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization --single-snapshot"
-    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/ontodocs-staging
-    KUBERNETES_MEMORY_LIMIT: 8Gi
-    KUBERNETES_MEMORY_REQUEST: 8Gi
-
 
 # Executes deployment of project documentation to bbp-dke-staging Openshift
 deploy-sphinx-documentation-in-staging-openshift:
@@ -153,18 +156,6 @@ deploy-sphinx-documentation-in-staging-openshift:
     KUBERNETES_MEMORY_LIMIT: 4Gi
     KUBERNETES_MEMORY_REQUEST: 4Gi
 
-# Executes deployment of ontodocs documentation to bbp-dke-production Openshift
-deploy-ontodocs-in-production-openshift:
-  stage: deploy
-  extends: .build-image-using-kaniko
-  dependencies:
-    - generate-ontodocs-documentation
-  rules:
-    - if: $CI_COMMIT_TAG
-      when: on_success
-  variables:
-    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=visualization"
-    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/ontodocs-production
 
 # Executes deployment of project documentation to bbp-dke-staging Openshift
 deploy-sphinx-documentation-in-production-openshift:
