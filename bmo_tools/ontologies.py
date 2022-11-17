@@ -9,14 +9,28 @@ from collections import OrderedDict
 
 import rdflib
 from pyshacl.rdfutil import clone_graph
-from rdflib import OWL, RDF, RDFS, XSD
-from rdflib.paths import OneOrMore, ZeroOrMore
+from rdflib import OWL, RDF, RDFS, XSD, PROV, Namespace
+from rdflib.paths import OneOrMore, ZeroOrMore, inv_path
 
 from bmo_tools.utils import SHACL, NXV
 
 TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
 ALREADY_EXISTS_ERROR = " already exists in project"
+BMO = Namespace("https://bbp.epfl.ch/ontologies/core/bmo/")
+SCHEMAORG = Namespace("http://schema.org/")
 
+GENERIC_CELL_TYPES = {
+        "https://bbp.epfl.ch/ontologies/core/bmo/GenericInhibitoryNeuronMType":BMO.NeuronMorphologicalType,
+        "https://bbp.epfl.ch/ontologies/core/bmo/GenericExcitatoryNeuronMType":BMO.NeuronMorphologicalType,
+        "https://bbp.epfl.ch/ontologies/core/bmo/GenericInhibitoryNeuronEType":BMO.NeuronElectricalType,
+        "https://bbp.epfl.ch/ontologies/core/bmo/GenericExcitatoryNeuronEType":BMO.NeuronElectricalType
+    }
+
+ROOT_BRAIN_REGION = "http://api.brain-map.org/api/v2/data/Structure/997"
+
+
+BASE_CELL_TYPE_CLASSES = {str(BMO.NeuronMorphologicalType):BMO.NeuronMorphologicalType,
+                          str(BMO.NeuronElectricalType):BMO.NeuronElectricalType}
 
 def graph_free_jsonld(jsonld_doc, context=None):
     if "@graph" in jsonld_doc and len(jsonld_doc["@graph"]) > 0:
@@ -440,6 +454,15 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
             cls["subClassOf"], list) \
             else ([context.expand(cls["subClassOf"])] if isinstance(cls["subClassOf"], str) else [
             context.expand(cls["subClassOf"]["@id"])])
+        for sub_c in cls["subClassOf"]:
+            if str(BMO.NeuronMorphologicalType) not in cls["subClassOf"] and str(BMO.NeuronElectricalType) not in cls["subClassOf"] and sub_c not in BASE_CELL_TYPE_CLASSES:
+                neuron_morph_ancestors = list(ontology_graph.triples((rdflib.term.URIRef(sub_c), RDFS.subClassOf*ZeroOrMore, BMO.NeuronMorphologicalType)))
+                if neuron_morph_ancestors and len(neuron_morph_ancestors) > 0:
+                    cls["subClassOf"].append(str(BMO.NeuronMorphologicalType))
+
+                neuron_elect_ancestors = list(ontology_graph.triples((rdflib.term.URIRef(sub_c), RDFS.subClassOf*ZeroOrMore, BMO.NeuronElectricalType)))
+                if neuron_elect_ancestors and len(neuron_elect_ancestors) > 0:
+                    cls["subClassOf"].append(str(BMO.NeuronElectricalType))
 
     rels, _ = _collect_ancestors_restrictions(ontology_graph, rdflib.term.URIRef(cls["@id"]), restrictions_only=True)
 
@@ -460,6 +483,24 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
         cls["isPartOf"] = list(context.expand(s) for s in cls["isPartOf"]) if isinstance(cls["isPartOf"], list) \
             else ([context.expand(cls["isPartOf"])] if isinstance(cls["isPartOf"], str) else [
             context.expand(cls["isPartOf"]["@id"])])
+
+    if "contribution" in cls and cls["contribution"] and cls["contribution"] != {}:
+
+        cls["contribution"] = list({context.expand(s) if isinstance(s, str) else context.expand(s["@id"]) for s in cls["contribution"]}) if isinstance(cls["contribution"], list) \
+            else ([context.expand(cls["contribution"])] if isinstance(cls["contribution"], str) else [
+            context.expand(cls["contribution"]["@id"])])
+        contribution_with_agent = []
+        for i, contrib_uri in enumerate(cls["contribution"]):
+            contribution_agent = ontology_graph.objects(rdflib.term.URIRef(contrib_uri), PROV.agent)
+            if contribution_agent:
+                contribution_agent = list(contribution_agent)[0]
+                contribution_agent_type = list(ontology_graph.objects(rdflib.term.URIRef(contribution_agent), RDF.type))
+                contribution_agent_type  = [context.to_symbol(t) for t in contribution_agent_type]
+                contribution_with_agent.insert(i, {"agent":{"@id":contribution_agent, "@type":contribution_agent_type}})
+            else:
+                contribution_with_agent.insert(i, contrib_uri)
+        cls["contribution"] = contribution_with_agent
+
 
     if "schema:isPartOf" in cls and cls["schema:isPartOf"]:
         ip = cls.pop("schema:isPartOf", None)
@@ -528,6 +569,27 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
         ct = cls.pop("bmo:hasWorkflowDefinition", None)
         if ct:
             cls["hasWorkflowDefinition"] = ct if isinstance(ct, list) else [ct]
+
+    if "bmo:hasLayerLocationPhenotype" in cls and cls["bmo:hasLayerLocationPhenotype"]:
+        ct = cls.pop("bmo:hasLayerLocationPhenotype", None)
+        if ct:
+            cls["hasLayerLocationPhenotype"] = ct if isinstance(ct, list) else [ct]
+
+    if "nsg:hasLayerLocationPhenotype" in cls and cls["nsg:hasLayerLocationPhenotype"]:
+        ct = cls.pop("nsg:hasLayerLocationPhenotype", None)
+        if ct:
+            cls["hasLayerLocationPhenotype"] = ct if isinstance(ct, list) else [ct]
+
+    if "bmo:hasMorphologicalPhenotype" in cls and cls["bmo:hasMorphologicalPhenotype"]:
+        ct = cls.pop("bmo:hasMorphologicalPhenotype", None)
+        if ct:
+            cls["hasMorphologicalPhenotype"] = ct if isinstance(ct, list) else [ct]
+
+    if "nsg:hasMorphologicalPhenotype" in cls and cls["nsg:hasMorphologicalPhenotype"]:
+        ct = cls.pop("nsg:hasMorphologicalPhenotype", None)
+        if ct:
+            cls["hasMorphologicalPhenotype"] = ct if isinstance(ct, list) else [ct]
+
     if "bmo:hasType" in cls and cls["bmo:hasType"]:
         ct = cls.pop("bmo:hasType", None)
         if ct:
@@ -540,6 +602,11 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
         ct = cls.pop("bmo:canHaveBrainRegion", None)
         if ct:
             cls["canHaveBrainRegion"] = ct if isinstance(ct, list) else [ct]
+    if "bmo:canBeLocatedInBrainRegion" in cls and cls["bmo:canBeLocatedInBrainRegion"]:
+        ct = cls.pop("bmo:canBeLocatedInBrainRegion", None)
+        if ct:
+            cls["canBeLocatedInBrainRegion"] = ct if isinstance(ct, list) else [ct]
+
     if "bmo:canHaveMType" in cls and cls["bmo:canHaveMType"]:
         ct = cls.pop("bmo:canHaveMType", None)
         if ct:
@@ -552,6 +619,12 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
         ct = cls.pop("bmo:sourceType", None)
         if ct:
             cls["sourceType"] = ct if isinstance(ct, list) else [ct]
+
+    if "nsg:hasInstanceInSpecies" in cls and cls["nsg:hasInstanceInSpecies"]:
+        ct = cls.pop("nsg:hasInstanceInSpecies", None)
+        if ct:
+            cls["hasInstanceInSpecies"] = ct if isinstance(ct, list) else [ct]
+
     if "bmo:targetType" in cls and cls["bmo:targetType"]:
         ct = cls.pop("bmo:targetType", None)
         if ct:
@@ -578,7 +651,25 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
     if "isDefinedBy" in cls and cls["isDefinedBy"] and isinstance(cls["isDefinedBy"], list):
         cls["isDefinedBy"] = cls["isDefinedBy"][0]
 
+    if cls["@id"] in GENERIC_CELL_TYPES:
+        propagated_brain_regions = _propagate_generic_metype(ontology_graph, ROOT_BRAIN_REGION, GENERIC_CELL_TYPES[cls["@id"]])
+        cls["canBeLocatedInBrainRegion"].extend(propagated_brain_regions)
+
+    if "atlas_id" in cls and cls["atlas_id"] == "None":
+        cls["atlas_id"]=None
+
     return cls
+
+def _propagate_generic_metype(ontology_graph, from_brain_region, cell_type):
+    propagated_brain_regions = []
+    sub_brain_regions = ontology_graph.objects(rdflib.term.URIRef(from_brain_region), SCHEMAORG.hasPart)
+    # Do MTypes located in the sub_brain_regions ?
+    for sub_brain_region in sub_brain_regions:
+        if not ((sub_brain_region, ~OWL.someValuesFrom/~RDFS.subClassOf/RDFS.subClassOf/OWL.someValuesFrom, BMO.BBP_contribution) in ontology_graph and \
+                (sub_brain_region, ~OWL.someValuesFrom/~RDFS.subClassOf/RDFS.subClassOf*ZeroOrMore, cell_type) in ontology_graph): # missing the canBeLocatedInBrainRegion
+            propagated_brain_regions.append(str(sub_brain_region))
+            propagated_brain_regions.extend(_propagate_generic_metype( ontology_graph, str(sub_brain_region), cell_type))
+    return propagated_brain_regions
 
 
 def register_classes(forge, class_resources_jsons, tag=None):

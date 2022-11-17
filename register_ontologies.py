@@ -150,7 +150,6 @@ def parse_and_register_ontologies(arguments):
     forge = KnowledgeGraphForge("config/forge-config.yml", endpoint=endpoint, bucket=BUCKET, token=token, debug=True)
     forge_schema = KnowledgeGraphForge("config/forge-schema-config.yml", endpoint=endpoint, bucket=BUCKET, token=token, debug=True)
 
-
     print(f"Loading the ontologies")
     all_ontology_graphs = initialise_graph()
     ontology_graphs_dict = load_ontologies(ontology_dir, all_ontology_graphs)
@@ -249,10 +248,12 @@ def parse_and_register_ontologies(arguments):
 
     print(f"Registering {len(list(schema_graphs_dict.keys()))} schemas")
     already_registered = []
+    
     for schema_file, schema_content in schema_graphs_dict.items():
         register_schemas(forge_schema, schema_file, schema_content, schema_graphs_dict, schema_id_to_filepath_dict,
                          all_schema_graphs, new_jsonld_schema_context,tag=tag,
                          already_registered=already_registered)
+    
     print(f"Registration finished for all schemas.")
 
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
