@@ -37,7 +37,7 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> rdf:type owl:Ontology ;
                                                                     schema:title "Brain Region Ontology"^^xsd:string ;
                                                                     rdfs:label "Brain Region Ontology"^^xsd:string ;
-                                                                    owl:versionInfo "R102"^^xsd:string .
+                                                                    owl:versionInfo "R103"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -23633,9 +23633,10 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
                                                                     <http://api.brain-map.org/api/v2/data/Structure/8> ;
                                                      schema:identifier 997 ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
-                                                     rdfs:label "root" ;
+                                                     rdfs:label "Whole mouse brain" ;
                                                      skos:notation "root" ;
-                                                     skos:prefLabel "root" ;
+                                                     skos:prefLabel "Whole mouse brain" ;
+                                                     skos:altLabel "root" ;
                                                      bmo:delineatedBy <http://purl.obolibrary.org/obo/UBERON_0000955> .
 
 
