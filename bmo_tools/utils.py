@@ -11,6 +11,10 @@ MAPPING = {
 SH = Namespace("http://www.w3.org/ns/shacl#")
 NXV = Namespace("https://bluebrain.github.io/nexus/vocabulary/")
 SHACL = Namespace('http://www.w3.org/ns/shacl#')
+BMO = Namespace("https://bbp.epfl.ch/ontologies/core/bmo/")
+NSG = Namespace("https://neuroshapes.org/")
+SCHEMAORG = Namespace("http://schema.org/")
+
 PREFIX_MAPPINGS = {
     "mso": "https://bbp.epfl.ch/ontologies/core/molecular-systems/",
     "GO": "http://purl.obolibrary.org/obo/GO_",
