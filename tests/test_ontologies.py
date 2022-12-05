@@ -3,11 +3,13 @@ import json
 import pytest
 import rdflib
 from kgforge.core.commons import Context
-from rdflib import Graph, Namespace, RDF, OWL, SH
+from kgforge.core.commons.strategies import ResolvingStrategy
+from rdflib import RDFS, Graph, Namespace, RDF, OWL, SH
 from rdflib.plugins.parsers.notation3 import BadSyntax
 import glob
 import bmo_tools.ontologies as bmo
 from register_ontologies import JSONLD_CONTEXT_IRI
+from rdflib.paths import OneOrMore, ZeroOrMore, inv_path, neg_path
 
 
 
@@ -53,8 +55,6 @@ def test_object_annotation_properties_are_disjoint(forge, all_ontology_graphs):
         if (obj_prop, RDF.type, OWL.AnnotationProperty) in all_ontology_graphs[0]:
             obj_prop_instances.append(obj_prop)
     assert len(obj_prop_instances) == 0
-
-
 
 def test_no_topObjectProperty_instances(forge, all_ontology_graphs):
     topobj_prop_instances = all_ontology_graphs[0].subjects(RDF.type, OWL.topObjectProperty)
@@ -107,6 +107,16 @@ def test_one_type_one_schema(all_schema_graphs):
             targeted_classes[str(t[0])].append(str(t[2]))
     all_t = [len(v) == 1 for k, v in targeted_classes.items()]
     assert all(all_t)
+
+def test_metype_correctedly_propagated(all_ontology_graphs, forge):
+    ontology_graph = all_ontology_graphs[0]
+    forge._debug=True
+    brain_region = "http://api.brain-map.org/api/v2/data/Structure/315" # Try forge.resolve("Isocortex", scope="ontology", target="terms", strategy=ResolvingStrategy.EXACT_MATCH)
+    propagated_brain_regions = bmo._get_sub_regions_to_propagate_metype_to(ontology_graph, brain_region, bmo.BMO.NeuronMorphologicalType)
+    expected_propagated_brain_regions  = ontology_graph.objects(rdflib.term.URIRef(brain_region), bmo.SCHEMAORG.hasPart*OneOrMore)
+    expected_propagated_brain_regions = {str(br) for br in expected_propagated_brain_regions}
+    assert set(propagated_brain_regions)  == expected_propagated_brain_regions
+    
 
 
 """

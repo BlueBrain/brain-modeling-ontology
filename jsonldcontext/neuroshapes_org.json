@@ -1003,6 +1003,10 @@
     "LeafRegions": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/LeafRegions"
     },
+    "hasLeafRegionPart": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/hasLeafRegionPart",
+      "@type":"@id"
+    },
     "License": {
       "@id": "nsg:License"
     },
