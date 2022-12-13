@@ -9,7 +9,7 @@
 @base <http://bbp.epfl.ch/neurosciencegraph/ontologies/datatype> .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/datatype> rdf:type owl:Ontology ;
-                                                            owl:versionInfo "R181"^^xsd:string ;
+                                                            owl:versionInfo "R192"^^xsd:string ;
                                                             rdfs:label "Dataset Type Ontology"@en .
 
 #################################################################
@@ -43,6 +43,32 @@ schema:Dataset rdf:type owl:Class ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Dataset"@en .
 
 
+###  http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class ;
+                                   rdfs:label "Entity"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/CellComposition
+<https://bbp.epfl.ch/ontologies/core/bmo/CellComposition> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                                          rdfs:label "CellComposition"@en ;
+                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "CellComposition"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionSummary
+<https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionSummary> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf schema:Dataset ;
+                                                                 rdfs:label "CellCompositionSummary"@en ;
+                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "CellCompositionSummary"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionVolume
+<https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionVolume> rdf:type owl:Class ;
+                                                                rdfs:subClassOf schema:Dataset ;
+                                                                rdfs:label "CellCompositionVolume"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "CellCompositionVolume"^^xsd:string .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/METypeDensity
 <https://bbp.epfl.ch/ontologies/core/bmo/METypeDensity> rdf:type owl:Class ;
                                                         rdfs:subClassOf nsg:CellDensityDataLayer ;
@@ -50,10 +76,10 @@ schema:Dataset rdf:type owl:Class ;
                                                         <http://www.w3.org/2004/02/skos/core#prefLabel> "ME-type density volume"^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/ETypeRatio
-<https://bbp.epfl.ch/ontologies/core/bmo/ETypeRatio> rdf:type owl:Class ;
-                                                      rdfs:label "ETypeRatio"@en ;
-                                                      <http://www.w3.org/2004/02/skos/core#prefLabel> "EType ratio"@en .
+###  https://bbp.epfl.ch/ontologies/core/bmo/METypeRatio
+<https://bbp.epfl.ch/ontologies/core/bmo/METypeRatio> rdf:type owl:Class ;
+                                                      rdfs:label "METypeRatio"@en ;
+                                                      <http://www.w3.org/2004/02/skos/core#prefLabel> "METype ratio"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/MTypeDensity
