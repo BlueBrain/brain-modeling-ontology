@@ -9,10 +9,10 @@ from collections import OrderedDict
 
 import rdflib
 from pyshacl.rdfutil import clone_graph
-from rdflib import OWL, RDF, RDFS, XSD, PROV, Namespace
+from rdflib import OWL, RDF, RDFS, SKOS, XSD, PROV, Literal, Namespace
 from rdflib.paths import OneOrMore, ZeroOrMore, neg_path
 
-from bmo_tools.utils import BMO, NSG, SCHEMAORG, SHACL, NXV
+from bmo_tools.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
 
 TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
 ALREADY_EXISTS_ERROR = " already exists in project"
@@ -382,11 +382,25 @@ def frame_classes(ontology_graph, forge_context, context):
 
     # Consider removing the restrictions
     cls = ontology_graph.subjects(RDF.type, OWL.Class)
-
     cls_int = [(c, RDFS.subClassOf) for c in cls]
-    inst = ontology_graph.subjects(RDF.type, OWL.NamedIndividual)
 
+    ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), BMO.hasHierarchyView, BMO.BrainLayer))
+    ontology_graph.add((BMO.BrainLayer, BMO.hasIsPartOfHierarchyProperty, BMO.isLayerPartOf))
+    ontology_graph.add((BMO.BrainLayer, BMO.hasHasPartOfHierarchyProperty, BMO.hasLayerPart))
+
+    new_classes = []
+    for current_class, restrictions_property in cls_int:
+        if (current_class, RDFS.subClassOf, NSG.BrainRegion) in ontology_graph and (current_class, NSG.hasLayerLocationPhenotype, None) in ontology_graph:
+            current_class_layers = list(ontology_graph.objects(current_class, NSG.hasLayerLocationPhenotype))
+            classes_relevant_for_layer = set()
+            for layer in current_class_layers:
+                classes_relevant_for_layer = set(ontology_graph.objects(rdflib.term.URIRef(layer), RDFS.subClassOf*OneOrMore/SCHEMAORG.about))
+            new_classes.extend(_create_property_based_hierarchy(ontology_graph, current_class, current_class_layers, classes_relevant_for_layer, SCHEMAORG.isPartOf))
+    cls_int.extend({(rdflib.term.URIRef(c), RDFS.subClassOf) for c in new_classes})
+
+    inst = ontology_graph.subjects(RDF.type, OWL.NamedIndividual)
     cls_int.extend([(i, RDF.type) for i in inst])
+
     for current_class, restrictions_property in cls_int:
         current_class_graph = rdflib.Graph()
         # consider collecting transitive ancestors' restrictions only for argument provided classes
@@ -409,8 +423,8 @@ def frame_classes(ontology_graph, forge_context, context):
         class_jsons.append(new_current_class_framed)
         class_ids.append(identifier)
         all_blank_node_triples.append(blank_node_triples)
+    
     return class_ids, class_jsons, all_blank_node_triples
-
 
 def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
 
@@ -692,6 +706,81 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
         cls["atlas_id"]=None
 
     return cls
+
+def _create_property_based_hierarchy(ontology_graph, cls_uriref, layer_urirefs, classes_relevant_for_layer, isPartOf_property_uriref):
+    new_classes = []
+    grand_parents = list(ontology_graph.objects(cls_uriref, isPartOf_property_uriref/SCHEMAORG.isPartOf))
+    relevant_grand_parents = set()
+    for c in classes_relevant_for_layer:
+        s= {grand_parent for grand_parent in grand_parents if (grand_parent, SCHEMAORG.isPartOf*ZeroOrMore, c) in ontology_graph}
+        relevant_grand_parents.update(s)
+
+    for grand_parent in relevant_grand_parents:
+        grandParent_uncle_without_layer = []
+        uncle_with_layer = []
+        for layer in layer_urirefs:
+            grandParent_uncle_without_layer.extend([(grand_parent, NSG.hasLayerLocationPhenotype, layer) not in ontology_graph,
+                                                    (grand_parent, SCHEMAORG.hasPart/NSG.hasLayerLocationPhenotype, layer) not in ontology_graph])
+            
+            uncle_with_layer.append((grand_parent, SCHEMAORG.hasPart/NSG.hasLayerLocationPhenotype, layer) in ontology_graph)
+        
+        if all(grandParent_uncle_without_layer): # if the grand parent class does not have a layer and uncle does not have the layer 
+            # then create a corresponding layer location class with 
+            # label == the grand parent label, layer altLabel, 
+            # is part of (isLayerPartOf) of the grand parent which (contains it - hasLayerPart),
+            # add the newly created class is parent of current class which contains it 
+            grand_parent_label = ontology_graph.value(subject=grand_parent, predicate=RDFS.label)
+            grand_parent_notation = ontology_graph.value(subject=grand_parent, predicate=SKOS.notation)
+            layer_altLabels = [grand_parent_label]
+            layer_notations = [grand_parent_notation]
+            for layer in layer_urirefs: 
+                layer_altLabel = ontology_graph.value(subject=layer, predicate=SKOS.altLabel)
+                layer_notation = ontology_graph.value(subject=layer, predicate=SKOS.notation)
+                layer_altLabels.append(layer_altLabel)
+                layer_notations.append(layer_notation)
+
+            new_class_label    = ",".join(layer_altLabels)
+            new_class_notation = "_".join(layer_notations)
+
+            new_class_uri = "/".join([BRAIN_REGION_ONTOLOGY_URI, new_class_notation])
+            ontology_graph.add((rdflib.term.URIRef(new_class_uri), RDF.type, OWL.Class))
+            ontology_graph.add((rdflib.term.URIRef(new_class_uri), RDFS.subClassOf, NSG.BRAINREGION))
+            ontology_graph.add((rdflib.term.URIRef(new_class_uri), RDFS.label, Literal(new_class_label, lang= "en")))
+            ontology_graph.add((rdflib.term.URIRef(new_class_uri), SKOS.notation, Literal(new_class_notation)))
+            
+            ontology_graph.add((rdflib.term.URIRef(new_class_uri), BMO.isLayerPartOf, grand_parent))
+            ontology_graph.add((grand_parent, BMO.hasLayerPart, rdflib.term.URIRef(new_class_uri)))
+            ontology_graph.add((rdflib.term.URIRef(new_class_uri), BMO.hasLayerPart, cls_uriref))
+            ontology_graph.add((cls_uriref, BMO.isLayerPartOf, rdflib.term.URIRef(new_class_uri)))
+            ontology_graph.add((grand_parent, BMO.hasHierarchyView, BMO.BrainLayer))
+            ontology_graph.add((rdflib.term.URIRef(new_class_uri), BMO.hasHierarchyView, BMO.BrainLayer))
+            for layer in layer_urirefs: 
+                ontology_graph.add((rdflib.term.URIRef(new_class_uri), NSG.hasLayerLocationPhenotype, layer))
+            new_classes.append(new_class_uri)
+            next_cls_urirefs = [rdflib.term.URIRef(new_class_uri)]
+            new_isPartOf_property_uriref = BMO.isLayerPartOf
+        elif (all(uncle_with_layer)): # current class should be part of the uncle with same layer. No need to create a new one
+            next_cls_urirefs = []
+            for uncle in ontology_graph.objects(grand_parent, SCHEMAORG.hasPart):
+                uncle_layers = list(ontology_graph.objects(uncle, NSG.hasLayerLocationPhenotype))
+                if set(layer_urirefs).issubset(uncle_layers):#(uncle, NSG.hasLayerLocationPhenotype, rdflib.term.URIRef(layer)) in ontology_graph:
+                    ontology_graph.add((uncle, BMO.hasLayerPart, cls_uriref))
+                    ontology_graph.add((cls_uriref, BMO.isLayerPartOf, uncle))
+                    ontology_graph.add((uncle, BMO.hasHierarchyView, BMO.BrainLayer))
+                    new_isPartOf_property_uriref = SCHEMAORG.isPartOf
+                    next_cls_urirefs.append(uncle)
+        else:# i.e (grand_parent, NSG.hasLayerLocationPhenotype, rdflib.term.URIRef(layer)) in ontology_graph
+            ontology_graph.add((grand_parent, BMO.hasLayerPart, cls_uriref))
+            ontology_graph.add((cls_uriref, BMO.isLayerPartOf, grand_parent))
+            ontology_graph.add((grand_parent, BMO.hasHierarchyView, BMO.BrainLayer))
+            next_cls_urirefs = [grand_parent]
+            new_isPartOf_property_uriref = BMO.isLayerPartOf
+        
+        for next_cls_uriref in next_cls_urirefs:
+            new_classes.extend(_create_property_based_hierarchy(ontology_graph, next_cls_uriref, layer_urirefs, classes_relevant_for_layer, new_isPartOf_property_uriref))   
+    
+    return new_classes
+
 
 def _get_sub_regions_to_propagate_metype_to(ontology_graph, from_brain_region, cell_type):
     propagated_brain_regions = []

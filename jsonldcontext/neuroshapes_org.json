@@ -2871,6 +2871,15 @@
     "generated": {
       "@id": "prov:generated"
     },
+    "hasHierarchyView": {
+      "@id": "bmo:hasHierarchyView"
+    },
+    "hasIsPartOfHierarchyProperty": {
+      "@id": "bmo:hasIsPartOfHierarchyProperty"
+    },
+    "hasHasPartOfHierarchyProperty": {
+      "@id": "bmo:hasHasPartOfHierarchyProperty"
+    },
     "generates": {
       "@id": "bmo:generates"
     },
@@ -2970,6 +2979,14 @@
     },
     "hasLayerLocationPhenotype": {
       "@id": "https://neuroshapes.org/hasLayerLocationPhenotype",
+      "@type": "@id"
+    },
+    "hasLayerPart": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/hasLayerPart",
+      "@type": "@id"
+    },
+    "isLayerPartOf": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/isLayerPartOf",
       "@type": "@id"
     },
     "hasMEType": {
