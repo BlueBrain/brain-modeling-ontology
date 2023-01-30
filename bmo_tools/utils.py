@@ -14,6 +14,9 @@ SHACL = Namespace('http://www.w3.org/ns/shacl#')
 BMO = Namespace("https://bbp.epfl.ch/ontologies/core/bmo/")
 NSG = Namespace("https://neuroshapes.org/")
 SCHEMAORG = Namespace("http://schema.org/")
+SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
+
+BRAIN_REGION_ONTOLOGY_URI = "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion"
 
 PREFIX_MAPPINGS = {
     "mso": "https://bbp.epfl.ch/ontologies/core/molecular-systems/",

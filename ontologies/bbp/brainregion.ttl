@@ -4959,22 +4959,6 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      bmo:delineatedBy <http://purl.obolibrary.org/obo/UBERON_0002266> .
 
 
-###  http://api.brain-map.org/api/v2/data/Structure/16
-<http://api.brain-map.org/api/v2/data/Structure/16> rdf:type owl:Class ;
-                                                    rdfs:subClassOf nsg:BrainRegion ;
-                                                    <http://api.brain-map.org/api/v2/data/Structure/atlas_id> 1 ;
-                                                    <http://api.brain-map.org/api/v2/data/Structure/color_hex_triplet> "8ADA87" ;
-                                                    <http://api.brain-map.org/api/v2/data/Structure/graph_order> 556 ;
-                                                    <http://api.brain-map.org/api/v2/data/Structure/hemisphere_id> 3 ;
-                                                    <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
-                                                    schema:identifier 16 ;
-                                                    schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/703> ;
-                                                    rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
-                                                    rdfs:label "Layer 6b, isocortex" ;
-                                                    skos:notation "6b" ;
-                                                    skos:prefLabel "Layer 6b, isocortex" .
-
-
 ###  http://api.brain-map.org/api/v2/data/Structure/160
 <http://api.brain-map.org/api/v2/data/Structure/160> rdf:type owl:Class ;
                                                      rdfs:subClassOf nsg:BrainRegion ;
@@ -10089,6 +10073,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 391 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/382> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0007640> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA1, stratum lacunosum-moleculare" ;
                                                      skos:notation "CA1slm" ;
@@ -10239,6 +10224,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
                                                      schema:identifier 399 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/382> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005371> ;
                                                      rdfs:label "Field CA1, stratum oriens" ;
                                                      skos:notation "CA1so" ;
                                                      skos:prefLabel "Field CA1, stratum oriens" ;
@@ -10407,6 +10393,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 407 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/382> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0002313> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA1, pyramidal layer" ;
                                                      skos:notation "CA1sp" ;
@@ -10564,6 +10551,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 415 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/382> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005372> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA1, stratum radiatum" ;
                                                      skos:notation "CA1sr" ;
@@ -10883,6 +10871,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 431 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/423> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0007640> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA2, stratum lacunosum-moleculare" ;
                                                      skos:notation "CA2slm" ;
@@ -11006,6 +10995,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 438 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/423> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005371> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA2, stratum oriens" ;
                                                      skos:notation "CA2so" ;
@@ -11171,6 +11161,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 446 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/423> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0002313> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA2, pyramidal layer" ;
                                                      skos:notation "CA2sp" ;
@@ -11329,6 +11320,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 454 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/423> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005372> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA2, stratum radiatum" ;
                                                      skos:notation "CA2sr" ;
@@ -11665,6 +11657,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 471 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/463> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0007640> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA3, stratum lacunosum-moleculare" ;
                                                      skos:notation "CA3slm" ;
@@ -11805,6 +11798,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 479 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/463> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0007637> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA3, stratum lucidum" ;
                                                      skos:notation "CA3slu" ;
@@ -12818,6 +12812,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 486 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/463> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005371> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA3, stratum oriens" ;
                                                      skos:notation "CA3so" ;
@@ -12996,6 +12991,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 495 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/463> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0002313> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA3, pyramidal layer" ;
                                                      skos:notation "CA3sp" ;
@@ -13220,6 +13216,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
                                                      schema:identifier 504 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/463> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005372> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Field CA3, stratum radiatum" ;
                                                      skos:notation "CA3sr" ;
@@ -17756,7 +17753,6 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      <http://api.brain-map.org/api/v2/data/Structure/hemisphere_id> 3 ;
                                                      <http://api.brain-map.org/api/v2/data/Structure/st_level> 5 ;
                                                      schema:hasPart <http://api.brain-map.org/api/v2/data/Structure/131> ,
-                                                                    <http://api.brain-map.org/api/v2/data/Structure/16> ,
                                                                     <http://api.brain-map.org/api/v2/data/Structure/295> ,
                                                                     <http://api.brain-map.org/api/v2/data/Structure/319> ,
                                                                     <http://api.brain-map.org/api/v2/data/Structure/583> ,
@@ -19277,6 +19273,22 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      skos:prefLabel "Posterior amygdalar nucleus" ;
                                                      bmo:delineatedBy <http://purl.obolibrary.org/obo/UBERON_0022229> .
 
+###  http://api.brain-map.org/api/v2/data/Structure/16
+<http://api.brain-map.org/api/v2/data/Structure/16> rdf:type owl:Class ;
+                                                     rdfs:subClassOf nsg:BrainRegion ;
+                                                     <http://api.brain-map.org/api/v2/data/Structure/atlas_id> 1 ;
+                                                     <http://api.brain-map.org/api/v2/data/Structure/color_hex_triplet> "8ADA87" ;
+                                                     <http://api.brain-map.org/api/v2/data/Structure/graph_order> 556 ;
+                                                     <http://api.brain-map.org/api/v2/data/Structure/hemisphere_id> 3 ;
+                                                     <http://api.brain-map.org/api/v2/data/Structure/st_level> 11 ;
+                                                     schema:identifier 16 ;
+                                                     schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/315> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_8440003> ;
+                                                     rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
+                                                     rdfs:label "Layer 6b, isocortex" ;
+                                                     skos:notation "6b" ;
+                                                     skos:prefLabel "Layer 6b, isocortex" .
+
 
 ###  http://api.brain-map.org/api/v2/data/Structure/781
 <http://api.brain-map.org/api/v2/data/Structure/781> rdf:type owl:Class ;
@@ -20403,6 +20415,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> ,
                                                      schema:identifier 837 ;
                                                      schema:isPartOf <http://api.brain-map.org/api/v2/data/Structure/509> ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
+                                                     nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005372> ;
                                                      rdfs:label "Subiculum, dorsal part, stratum radiatum" ;
                                                      skos:notation "SUBd-sr" ;
                                                      skos:prefLabel "Subiculum, dorsal part, stratum radiatum" .
@@ -23677,12 +23690,14 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
 ###  http://purl.obolibrary.org/obo/UBERON_0002301
 <http://purl.obolibrary.org/obo/UBERON_0002301> rdf:type owl:Class ;
                                                 rdfs:subClassOf <https://neuroshapes.org/BrainRegion> ;
+                                                schema:about <http://api.brain-map.org/api/v2/data/Structure/315> ;                                                
                                                 rdfs:label "layer of neocortex"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#definition> "One of the layers of the neocortex. These layers are defined by distinctive populations of cells based on somata size, shape, or density, that are aligned into sheets."^^xsd:string .
 
 ###  http://purl.obolibrary.org/obo/UBERON_0002305
 <http://purl.obolibrary.org/obo/UBERON_0002305> rdf:type owl:Class ;
                                                 rdfs:subClassOf <https://neuroshapes.org/BrainRegion> ;
+                                                schema:about <http://api.brain-map.org/api/v2/data/Structure/1080> ;
                                                 rdfs:label "layer of hippocampus"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#definition> "The layers of the laminar structure of the hippocampus."^^xsd:string .
 
@@ -23705,6 +23720,15 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
                                                 <http://www.w3.org/2004/02/skos/core#definition> "Layer that is part of the CA fields of the hippocampus consisting of a narrow relatively cell free layer located deep to the pyramidal cell layer extending through areas CA1, CA2 and CA3. (adapted from Paxinos The rat central nervous system, 2nd ed, Academic Press, San Diego, 1995)."^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#notation> "SO"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "SO"^^xsd:string .
+
+###  http://purl.obolibrary.org/obo/UBERON_0007637
+<http://purl.obolibrary.org/obo/UBERON_0007637> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/UBERON_0002305> ;
+                                                rdfs:label "SO"^^xsd:string ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "hippocampus stratum lucidum"^^xsd:string ;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "Layer of hippocampus area CA3 lying superficial to the pyramidal cell layer that contains mossy fiber axons projecting from the dentate gyrus. A slight thickening in this layer marks the border in some species between areas CA2 and CA3. dapted from Paxinos, G. The rat central nervous system, 2nd ed, Academic Press, San Diego, 1995, pg. 460)."^^xsd:string ;
+                                                <http://www.w3.org/2004/02/skos/core#notation> "SLU"^^xsd:string ;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "SLU"^^xsd:string .
 
 
 ###  http://purl.obolibrary.org/obo/UBERON_0005372
@@ -23755,6 +23779,11 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
 <http://purl.obolibrary.org/obo/UBERON_0005395> rdf:type owl:Class ;
                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/UBERON_0002301> .
 
+###  http://purl.obolibrary.org/obo/UBERON_8440003
+<http://purl.obolibrary.org/obo/UBERON_8440003> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://purl.obolibrary.org/obo/UBERON_0002301> .
+
+
 
 ###  https://neuroshapes.org/BrainRegion
 nsg:BrainRegion rdf:type owl:Class .
@@ -23799,6 +23828,13 @@ nsg:BrainRegion rdf:type owl:Class .
                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "layer 6"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "L6"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#notation> "L6"^^xsd:string .
+
+<http://purl.obolibrary.org/obo/UBERON_8440003> rdfs:label "L6b"^^xsd:string ;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "The deepest layer of the neocortex. While layer 6b is considered part of layer 6, it is distinct morphologically, genetically, and developmentally from the rest of layer 6. Neurons in L6b project to cortical targets and higher-order thalamus and develop from a precursor population that arises from the subplate."^^xsd:string ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "layer 6b"^^xsd:string ;
+                                                <http://www.w3.org/2004/02/skos/core#altLabel> "neocortex layer 6b"^^xsd:string  ;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "L6b"^^xsd:string ;
+                                                <http://www.w3.org/2004/02/skos/core#notation> "L6b"^^xsd:string .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

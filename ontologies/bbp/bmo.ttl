@@ -1208,7 +1208,10 @@ bmo:BrainLayer rdf:type owl:Class ;
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty owl:equivalentClass ;
                                  owl:someValuesFrom obo:UBERON_0022303
-                               ] .
+                               ] ;
+               rdfs:label "Brain Layer"@en ;
+               skos:prefLabel "Brain Layer"@en;
+               skos:altLabel "Brain Layer"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BrainModelingActivity
