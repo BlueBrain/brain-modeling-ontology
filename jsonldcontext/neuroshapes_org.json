@@ -1533,6 +1533,9 @@
     "Organization": {
       "@id": "schema:Organization"
     },
+    "OrganizationalUnit": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/OrganizationalUnit"
+    },
     "Other": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Other"
     },

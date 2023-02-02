@@ -876,6 +876,14 @@ schema:Organization rdf:type owl:Class ;
                     skos:definition "An organization is a social or legal institution such as a company, society, etc."^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/OrganizationalUnit
+bmo:OrganizationalUnit rdf:type owl:Class ;
+                   rdfs:subClassOf bmo:Organization ;
+                   rdfs:label "Organizational Unit"@en ;
+                   skos:altLabel "OU"@en ;
+                   skos:definition "A unit is one of several organizational groups that accomplish a specific function"^^xsd:string .
+
+
 ###  http://schema.org/Person
 schema:Person rdf:type owl:Class ;
               rdfs:subClassOf bmo:BrainModelingAgent ;
