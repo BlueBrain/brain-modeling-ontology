@@ -661,6 +661,11 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
         ct = cls.pop("nsg:hasInstanceInSpecies", None)
         if ct:
             cls["hasInstanceInSpecies"] = ct if isinstance(ct, list) else [ct]
+    
+    if "hasHierarchyView" in cls:
+        ct = cls.pop("hasHierarchyView", None)
+        if ct:
+            cls["hasHierarchyView"] = ct if isinstance(ct, list) else [ct]
 
     if "bmo:targetType" in cls and cls["bmo:targetType"]:
         ct = cls.pop("bmo:targetType", None)

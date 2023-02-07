@@ -2875,7 +2875,8 @@
       "@id": "prov:generated"
     },
     "hasHierarchyView": {
-      "@id": "bmo:hasHierarchyView"
+      "@id": "bmo:hasHierarchyView",
+      "@type":"@id"
     },
     "hasIsPartOfHierarchyProperty": {
       "@id": "bmo:hasIsPartOfHierarchyProperty"
