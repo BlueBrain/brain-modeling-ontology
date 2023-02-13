@@ -2399,6 +2399,9 @@
     "addressLocality": {
       "@id": "schema:addressLocality"
     },
+    "adjacentTo": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/adjacentTo"
+    },
     "affiliation": {
       "@id": "schema:affiliation"
     },
@@ -2623,6 +2626,9 @@
     "contentUrl": {
       "@id": "schema:contentUrl",
       "@type": "@id"
+    },
+    "continuousWith": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/continuousWith"
     },
     "contribution": {
       "@id": "nsg:contribution"
@@ -3538,6 +3544,12 @@
     "recordingLocation": {
       "@id": "nsg:recordingLocation"
     },
+    "regionVolume": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/regionVolume"
+    },
+    "regionVolumeRatioToWholeBrain": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/regionVolumeRatioToWholeBrain"
+    },
     "relatedTo": {
       "@id": "https://neuroshapes.org/relatedTo",
       "@type": "@id"
@@ -3550,6 +3562,9 @@
     },
     "repetitions": {
       "@id": "schema:repetitions"
+    },
+    "representedInAnnotation": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/representedInAnnotation"
     },
     "resolution": {
       "@id": "nsg:resolution"
