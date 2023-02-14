@@ -237,7 +237,7 @@ def register_ontology(forge, ontology_graph, context, context_json, path,  class
         # 'defines', relationships otherwise the payload explodes
         remove_defines_relation(ontology_graph)
         # Retry registering after the `define` rels are removed
-        ontology_json = frame_ontology(ontology_graph, context, context_json)
+        ontology_json = frame_ontology(ontology_graph, context, context_json, class_resources_framed)
         print("Retrying registration...\n")
         ontology_resource = _register_ontology_resource(
             forge, ontology_json, path, ontology_graph, class_resources_mapped, class_resources_framed)
