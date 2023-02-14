@@ -44,7 +44,7 @@ def graph_free_jsonld(jsonld_doc, context=None):
         return jsonld_doc
 
 
-def frame_ontology(ontology_graph, context, context_json):
+def frame_ontology(ontology_graph, context, context_json, class_resources_framed):
     """Frame ontology into a JSON-LD payload."""
 
     frame_json = {
@@ -85,6 +85,13 @@ def frame_ontology(ontology_graph, context, context_json):
            "@embed": True
         }]
     }
+    ontology_uri = find_ontology_resource(ontology_graph)
+    if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
+        ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), BMO.hasHierarchyView, BMO.BrainLayer))
+        ontology_graph.add((BMO.BrainLayer, BMO.hasParentHierarchyProperty, Literal("isLayerPartOf")))
+        ontology_graph.add((BMO.BrainLayer, BMO.hasChildrenHierarchyProperty, Literal("hasLayerPart")))
+        ontology_graph.add((BMO.BrainLayer, BMO.hasLeafHierarchyProperty, Literal("hasLayerLeafRegionPart")))
+
     new_ontology_graph = ontology_graph
     # handle OWL.NamedIndividual with blank node type
     for indiv in ontology_graph.subjects(RDF.type, OWL.NamedIndividual):
@@ -103,15 +110,21 @@ def frame_ontology(ontology_graph, context, context_json):
     if "skos:prefLabel" in framed_onto_json and framed_onto_json["skos:prefLabel"]:
         framed_onto_json["prefLabel"] = framed_onto_json.pop("skos:prefLabel", None)
     if "rdfs:label" in framed_onto_json and framed_onto_json["rdfs:label"]:
-        framed_onto_json["label"] = framed_onto_json.pop("rdfs:label", None)
-
-    to_remove = []
-    for i, cls in enumerate(framed_onto_json["defines"]):
-        if isinstance(cls, dict):
-            _frame_class(cls, context, ontology_graph)
-
-    framed_onto_json["defines"][:] = (val for val in framed_onto_json["defines"] if val not in to_remove)
+        framed_onto_json["label"] = framed_onto_json.pop("rdfs:label", None)    
+    framed_onto_json["defines"][:] = (val for val in class_resources_framed)
     framed_onto_json["@context"] = context.iri
+
+    if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
+        if "hasHierarchyView" in framed_onto_json:
+            hasHierarchyView = framed_onto_json["hasHierarchyView"]
+            hasHierarchyView["@id"] = str(BMO.BrainLayer)
+            ch = hasHierarchyView.pop("bmo:hasChildrenHierarchyProperty", None)
+            if ch:
+                hasHierarchyView["hasChildrenHierarchyProperty"] = ch
+            ph = hasHierarchyView.pop("bmo:hasParentHierarchyProperty", None)
+            if ph:
+                hasHierarchyView["hasParentHierarchyProperty"] = ph
+            framed_onto_json["hasHierarchyView"] = [hasHierarchyView]
     return framed_onto_json
 
 
@@ -203,7 +216,7 @@ def _register_ontology_resource(forge, ontology_json, ontology_path, ontology_gr
     return ontology_resource
 
 
-def register_ontology(forge, ontology_graph, context, context_json, path, tag=None, class_resources_mapped=None):
+def register_ontology(forge, ontology_graph, context, context_json, path,  class_resources_mapped, class_resources_framed, tag=None):
     """Register ontology resource to the store.
 
 
@@ -212,7 +225,7 @@ def register_ontology(forge, ontology_graph, context, context_json, path, tag=No
     to classes and retry registering. If ontology exists, update it.
     """
     # Frame ontology given the provided context
-    ontology_json = frame_ontology(ontology_graph, context, context_json)
+    ontology_json = frame_ontology(ontology_graph, context, context_json, class_resources_framed)
 
     # Register ontology as is
     ontology_resource = _register_ontology_resource(forge, ontology_json, path, ontology_graph, class_resources_mapped)
@@ -227,7 +240,7 @@ def register_ontology(forge, ontology_graph, context, context_json, path, tag=No
         ontology_json = frame_ontology(ontology_graph, context, context_json)
         print("Retrying registration...\n")
         ontology_resource = _register_ontology_resource(
-            forge, ontology_json, path, ontology_graph, class_resources_mapped)
+            forge, ontology_json, path, ontology_graph, class_resources_mapped, class_resources_framed)
 
     if ontology_resource._last_action and not ontology_resource._last_action.succeeded and\
        ALREADY_EXISTS_ERROR in ontology_resource._last_action.message:
@@ -384,17 +397,13 @@ def frame_classes(ontology_graph, forge_context, context):
     cls = ontology_graph.subjects(RDF.type, OWL.Class)
     cls_int = [(c, RDFS.subClassOf) for c in cls]
 
-    ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), BMO.hasHierarchyView, BMO.BrainLayer))
-    ontology_graph.add((BMO.BrainLayer, BMO.hasIsPartOfHierarchyProperty, BMO.isLayerPartOf))
-    ontology_graph.add((BMO.BrainLayer, BMO.hasHasPartOfHierarchyProperty, BMO.hasLayerPart))
-
     new_classes = []
     for current_class, restrictions_property in cls_int:
         if (current_class, RDFS.subClassOf, NSG.BrainRegion) in ontology_graph and (current_class, NSG.hasLayerLocationPhenotype, None) in ontology_graph:
             current_class_layers = list(ontology_graph.objects(current_class, NSG.hasLayerLocationPhenotype))
             classes_relevant_for_layer = set()
             for layer in current_class_layers:
-                classes_relevant_for_layer = set(ontology_graph.objects(rdflib.term.URIRef(layer), RDFS.subClassOf*OneOrMore/SCHEMAORG.about))
+                classes_relevant_for_layer = set(ontology_graph.objects(rdflib.term.URIRef(layer), RDFS.subClassOf*OneOrMore/SCHEMAORG.about)) # every group of layers (e.g. the Neorcotex layer class or the hippocampus layer) should link to its brain region scope (i.e the highest brain regions it applies to) through SCHEMAORG.about
             new_classes.extend(_create_property_based_hierarchy(ontology_graph, current_class, current_class_layers, classes_relevant_for_layer, SCHEMAORG.isPartOf))
     cls_int.extend({(rdflib.term.URIRef(c), RDFS.subClassOf) for c in new_classes})
 
@@ -424,7 +433,27 @@ def frame_classes(ontology_graph, forge_context, context):
         class_ids.append(identifier)
         all_blank_node_triples.append(blank_node_triples)
     
-    return class_ids, class_jsons, all_blank_node_triples
+    return class_ids, class_jsons, all_blank_node_triples, new_classes
+
+def _get_leaf_regions(uri, children_hierarchy_property, ontology_graph):
+
+    query = """
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX schema: <http://schema.org/>
+            PREFIX bmo: <https://bbp.epfl.ch/ontologies/core/bmo/>
+            
+            SELECT DISTINCT ?leaf_region
+            WHERE{{
+            <{0}> {1}+ ?leaf_region .
+            FILTER NOT EXISTS {{?leaf_region {1} ?a}}
+            
+            }}
+            LIMIT 2000
+            """.format(uri, children_hierarchy_property)
+    leaf_regions = {str(l_br[0]) for l_br in list(ontology_graph.query(query))}
+
+    return leaf_regions
+
 
 def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
 
@@ -486,21 +515,13 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
                 cls["subClassOf"].append(str(NSG.BrainLayer))
 
         if str(NSG.BrainRegion) in cls["subClassOf"]: # this is a brain region, then collect all of it's leaf brain regions (to move out of here). Find a rdflib.Path to replace sparql
-            query = """
-                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-                    PREFIX schema: <http://schema.org/>
-                    
-                    SELECT DISTINCT ?leaf_region
-                    WHERE{{
-                    <{0}> schema:hasPart+ ?leaf_region .
-                    FILTER NOT EXISTS {{?leaf_region schema:hasPart ?a}}
-                    
-                    }}
-                    LIMIT 2000
-                    """.format(cls["@id"])
-            leaf_regions = {str(l_br[0]) for l_br in list(ontology_graph.query(query))}
+            leaf_regions = _get_leaf_regions(cls["@id"], "schema:hasPart", ontology_graph)
             if len(leaf_regions) > 0: 
                 cls["hasLeafRegionPart"] = list(leaf_regions)
+
+            layer_leaf_regions = _get_leaf_regions(cls["@id"], "bmo:hasLayerPart", ontology_graph)
+            if len(layer_leaf_regions) > 0: 
+                cls["hasLayerLeafRegionPart"] = list(layer_leaf_regions)
 
     rels, _ = _collect_ancestors_restrictions(ontology_graph, rdflib.term.URIRef(cls["@id"]), restrictions_only=True)
 
@@ -675,6 +696,10 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
         ct = cls.pop("bmo:constraints", None)
         if ct:
             cls["constraints"] = ct if isinstance(ct, list) else [ct]
+    if "owl:equivalentClass" in cls and cls["owl:equivalentClass"]:
+        ct = cls.pop("owl:equivalentClass", None)
+        if ct:
+            cls["equivalentClass"] = ct if isinstance(ct, list) else [ct]
 
     if "skos:prefLabel" in cls and cls["skos:prefLabel"]:
         cls["prefLabel"] = cls.pop("skos:prefLabel", None)
@@ -751,6 +776,7 @@ def _create_property_based_hierarchy(ontology_graph, cls_uriref, layer_urirefs, 
             ontology_graph.add((rdflib.term.URIRef(new_class_uri), RDF.type, OWL.Class))
             ontology_graph.add((rdflib.term.URIRef(new_class_uri), RDFS.subClassOf, NSG.BRAINREGION))
             ontology_graph.add((rdflib.term.URIRef(new_class_uri), RDFS.label, Literal(new_class_label, lang= "en")))
+            ontology_graph.add((rdflib.term.URIRef(new_class_uri), SKOS.prefLabel, Literal(new_class_label, lang= "en")))
             ontology_graph.add((rdflib.term.URIRef(new_class_uri), SKOS.notation, Literal(new_class_notation)))
             
             ontology_graph.add((rdflib.term.URIRef(new_class_uri), BMO.isLayerPartOf, grand_parent))
@@ -764,7 +790,7 @@ def _create_property_based_hierarchy(ontology_graph, cls_uriref, layer_urirefs, 
             new_classes.append(new_class_uri)
             next_cls_urirefs = [rdflib.term.URIRef(new_class_uri)]
             new_isPartOf_property_uriref = BMO.isLayerPartOf
-        elif (all(uncle_with_layer)): # current class should be part of the uncle with same layer. No need to create a new one
+        elif (all(uncle_with_layer)): # current class should be part of the uncle with same layer if the uncle is not a leaf node with data. No need to create a new one
             next_cls_urirefs = []
             for uncle in ontology_graph.objects(grand_parent, SCHEMAORG.hasPart):
                 uncle_layers = list(ontology_graph.objects(uncle, NSG.hasLayerLocationPhenotype))

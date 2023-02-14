@@ -3,6 +3,7 @@ import glob
 import json
 import os
 from copy import deepcopy
+from typing import Dict
 
 import rdflib
 from kgforge.core.commons import Context
@@ -15,7 +16,7 @@ from kgforge.specializations.mappings import DictionaryMapping
 
 from rdflib import Namespace, RDF, OWL, RDFS
 
-from bmo_tools.utils import remove_non_ascii, PREFIX_MAPPINGS
+from bmo_tools.utils import BRAIN_REGION_ONTOLOGY_URI, remove_non_ascii, PREFIX_MAPPINGS
 
 import nexussdk as nexus
 
@@ -83,7 +84,7 @@ def define_arguments():
     return parser
 
 
-def execute_registration(forge, ontology_path, ontology_graph, all_class_resources_mapped_dict, new_forge_context, new_jsonld_context_dict, tag=None):
+def execute_registration(forge, ontology_path, ontology_graph, all_class_resources_mapped_dict, all_class_resources_framed_dict, new_forge_context, new_jsonld_context_dict, brain_region_generated_classes, tag=None):
     """
     Executes the registration process
 
@@ -113,14 +114,18 @@ def execute_registration(forge, ontology_path, ontology_graph, all_class_resourc
     #bmo.restrictions_to_triples(ontology_graph)
     ontology = bmo.replace_is_defined_by_uris(ontology_graph, WEBPROTEGE_TO_NEXUS, str(ontology))
 
-    class_resources_mapped = _get_classes_in_ontology(ontology_graph, all_class_resources_mapped_dict)
+    class_resources_mapped = _get_classes_in_ontology(all_class_resources_mapped_dict, ontology_graph.subjects(RDF.type, OWL.Class))
+    class_resources_framed = _get_classes_in_ontology(all_class_resources_framed_dict, ontology_graph.subjects(RDF.type, OWL.Class))
 
-    bmo.register_ontology(forge, ontology_graph, new_forge_context, new_jsonld_context_dict, ontology_path, tag, class_resources_mapped)
+    if str(ontology) == BRAIN_REGION_ONTOLOGY_URI:
+        class_resources_framed.extend(_get_classes_in_ontology( all_class_resources_framed_dict, brain_region_generated_classes))
+
+    bmo.register_ontology(forge, ontology_graph, new_forge_context, new_jsonld_context_dict, ontology_path, class_resources_mapped, class_resources_framed, tag)
     #bmo.remove_defines_relation(ontology_graph, ontology)
 
 
-def _get_classes_in_ontology(ontology_graph, all_class_resources_mapped_dict):
-    return [all_class_resources_mapped_dict.get(str(cls)) for cls in ontology_graph.subjects(RDF.type, OWL.Class)]
+def _get_classes_in_ontology(all_class_resources_dict, uriref_iterator):
+    return [all_class_resources_dict.get(str(cls)) for cls in uriref_iterator]
 
 
 def parse_and_register_ontologies(arguments):
@@ -232,13 +237,13 @@ def parse_and_register_ontologies(arguments):
     }
 
     bmo.replace_is_defined_by_uris(all_ontology_graphs, WEBPROTEGE_TO_NEXUS)
-    class_ids, class_jsons, all_blank_node_triples = bmo.frame_classes(all_ontology_graphs, new_jsonld_context, new_jsonld_context_dict)
+    class_ids, class_jsons, all_blank_node_triples, brain_region_generated_classes = bmo.frame_classes(all_ontology_graphs, new_jsonld_context, new_jsonld_context_dict)
     print(f"Got {len(class_jsons)} non mapped classes")
-    print(class_jsons[15])
+    
+    all_class_resources_framed_dict = dict(zip(class_ids, class_jsons))
     class_resources_mapped = forge.map(data=class_jsons,
                                        mapping=DictionaryMapping.load("./config/mappings/term-to-resource-mapping.hjson"),
                                        na=None)
-    print(class_resources_mapped[15])
     print(f"Got {len(class_resources_mapped)} mapped classes")
     all_class_resources_mapped_dict = dict(zip(class_ids, class_resources_mapped))
     print(f"Finished preparing {len(class_resources_mapped)} ontology classes")
@@ -258,7 +263,7 @@ def parse_and_register_ontologies(arguments):
 
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
         print(f"Registering ontology: {ontology_path}")
-        execute_registration(forge, ontology_path, ontology_graph, all_class_resources_mapped_dict, new_jsonld_context, new_jsonld_context_dict, tag)
+        execute_registration(forge, ontology_path, ontology_graph, all_class_resources_mapped_dict, all_class_resources_framed_dict, new_jsonld_context, new_jsonld_context_dict, brain_region_generated_classes, tag)
         print(f"Registration finished for ontology: {ontology_path}")
     
     print(f"Registering {len(class_jsons)} classes")
