@@ -64,7 +64,7 @@ def test_no_topObjectProperty_instances(forge, all_ontology_graphs):
 def test_all_classes_are_extracted(data_jsonld_context, all_ontology_graphs):
     new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
 
-    class_ids, class_jsons, all_blank_node_triples = bmo.frame_classes(all_ontology_graphs[0], new_jsonld_context,
+    class_ids, class_jsons, all_blank_node_triples, new_classes = bmo.frame_classes(all_ontology_graphs[0], new_jsonld_context,
                                                                        new_jsonld_context.document)
     assert len(class_ids) == len(class_jsons)
 

@@ -2999,6 +2999,22 @@
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/isLayerPartOf",
       "@type": "@id"
     },
+    "hasLayerLeafRegionPart": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/hasLayerLeafRegionPart",
+      "@type": "@id"
+    },
+    "hasParentHierarchyProperty": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/hasParentHierarchyProperty",
+      "@type": "@id"
+    },
+    "hasChildrenHierarchyProperty": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/hasChildrenHierarchyProperty",
+      "@type": "@id"
+    },
+    "hasLeafHierarchyProperty": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/hasLeafHierarchyProperty",
+      "@type": "@id"
+    },
     "hasMEType": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/hasMEType",
       "@type": "@id"
