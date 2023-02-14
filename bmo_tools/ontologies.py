@@ -88,7 +88,7 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
     ontology_uri = find_ontology_resource(ontology_graph)
     if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
         ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), BMO.hasHierarchyView, BMO.BrainLayer))
-        ontology_graph.add((BMO.BrainLayer, RDFS.label, "Layer based Hierarchy"))
+        ontology_graph.add((BMO.BrainLayer, RDFS.label, Literal("Layer based Hierarchy")))
         ontology_graph.add((BMO.BrainLayer, BMO.hasParentHierarchyProperty, Literal("isLayerPartOf")))
         ontology_graph.add((BMO.BrainLayer, BMO.hasChildrenHierarchyProperty, Literal("hasLayerPart")))
         ontology_graph.add((BMO.BrainLayer, BMO.hasLeafHierarchyProperty, Literal("hasLayerLeafRegionPart")))
