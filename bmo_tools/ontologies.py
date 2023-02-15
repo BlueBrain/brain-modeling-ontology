@@ -248,7 +248,7 @@ def register_ontology(forge, ontology_graph, context, context_json, path,  class
         ontology_json = frame_ontology(ontology_graph, context, context_json, class_resources_framed)
         print("Retrying registration...\n")
         ontology_resource = _register_ontology_resource(
-            forge, ontology_json, path, ontology_graph, class_resources_mapped, class_resources_framed)
+            forge, ontology_json, path, ontology_graph, class_resources_mapped)
 
     if ontology_resource._last_action and not ontology_resource._last_action.succeeded and\
        ALREADY_EXISTS_ERROR in ontology_resource._last_action.message:
