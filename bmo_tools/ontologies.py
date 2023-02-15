@@ -112,7 +112,8 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
         framed_onto_json["prefLabel"] = framed_onto_json.pop("skos:prefLabel", None)
     if "rdfs:label" in framed_onto_json and framed_onto_json["rdfs:label"]:
         framed_onto_json["label"] = framed_onto_json.pop("rdfs:label", None)    
-    framed_onto_json["defines"][:] = (val for val in class_resources_framed)
+
+    framed_onto_json["defines"]= class_resources_framed
     framed_onto_json["@context"] = context.iri
 
     if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
@@ -125,6 +126,12 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
             ph = hasHierarchyView.pop("bmo:hasParentHierarchyProperty", None)
             if ph:
                 hasHierarchyView["hasParentHierarchyProperty"] = ph
+            if "bmo:hasLeafHierarchyProperty" in hasHierarchyView and hasHierarchyView["bmo:hasLeafHierarchyProperty"]:
+                    ct = hasHierarchyView.pop("bmo:hasLeafHierarchyProperty", None)
+                    if ct:
+                        hasHierarchyView["hasLeafHierarchyProperty"] = ct
+            if "rdfs:label" in hasHierarchyView and hasHierarchyView["rdfs:label"]:
+                hasHierarchyView["label"] = hasHierarchyView.pop("rdfs:label", None)
             framed_onto_json["hasHierarchyView"] = [hasHierarchyView]
     return framed_onto_json
 
