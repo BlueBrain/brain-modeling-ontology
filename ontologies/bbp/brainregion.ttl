@@ -1099,7 +1099,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
                                                       rdfs:label "Anteromedial visual area, layer 6a" ;
                                                       skos:notation "VISam6a" ;
                                                       skos:prefLabel "Anteromedial visual area, layer 6a" ;
-                                                      nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                      nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/1047
@@ -1257,7 +1257,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005393> .
                                                       rdfs:label "Infralimbic area, layer 6a" ;
                                                       skos:notation "ILA6a" ;
                                                       skos:prefLabel "Infralimbic area, layer 6a" ;
-                                                      nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                      nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/1055
@@ -3309,7 +3309,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                       rdfs:label "Primary somatosensory area, mouth, layer 6a" ;
                                                       skos:notation "SSp-m6a" ;
                                                       skos:prefLabel "Primary somatosensory area, mouth, layer 6a" ;
-                                                      nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                      nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/1103
@@ -4354,7 +4354,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                        rdfs:label "Somatosensory areas, layer 6a" ;
                                                        skos:notation "SS6a" ;
                                                        skos:prefLabel "Somatosensory areas, layer 6a" ;
-                                                       nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                       nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/12998
@@ -5465,7 +5465,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                            rdfs:label "Primary somatosensory area, unassigned, layer 6a" ;
                                                            skos:notation "SSp-un6a" ;
                                                            skos:prefLabel "Primary somatosensory area, unassigned, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/182305713
@@ -8052,7 +8052,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
                                                            rdfs:label "Anterior area, layer 6a" ;
                                                            skos:notation "VISa6a" ;
                                                            skos:prefLabel "Anterior area, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/312782570
@@ -8177,7 +8177,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
                                                            rdfs:label "Laterointermediate area, layer 6a" ;
                                                            skos:notation "VISli6a" ;
                                                            skos:prefLabel "Laterointermediate area, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/312782598
@@ -8281,7 +8281,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
                                                            rdfs:label "Rostrolateral visual area, layer 6a" ;
                                                            skos:notation "VISrl6a" ;
                                                            skos:prefLabel "Rostrolateral visual area, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/312782624
@@ -8409,7 +8409,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005393> .
                                                            rdfs:label "Postrhinal area, layer 6a" ;
                                                            skos:notation "VISpor6a" ;
                                                            skos:prefLabel "Postrhinal area, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/312782652
@@ -11948,7 +11948,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                            rdfs:label "Rostrolateral lateral visual area, layer 6a" ;
                                                            skos:notation "VISrll6a" ;
                                                            skos:prefLabel "Rostrolateral lateral visual area, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/480149226
@@ -12073,7 +12073,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                            rdfs:label "Laterolateral anterior visual area, layer 6a" ;
                                                            skos:notation "VISlla6a" ;
                                                            skos:prefLabel "Laterolateral anterior visual area, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/480149254
@@ -12198,7 +12198,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                            rdfs:label "Mediomedial anterior visual area, layer 6a" ;
                                                            skos:notation "VISmma6a" ;
                                                            skos:prefLabel "Mediomedial anterior visual area, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/480149282
@@ -12323,7 +12323,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                            rdfs:label "Mediomedial posterior visual area, layer 6a" ;
                                                            skos:notation "VISmmp6a" ;
                                                            skos:prefLabel "Mediomedial posterior visual area, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/480149310
@@ -12448,7 +12448,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                            rdfs:label "Medial visual area, layer 6a" ;
                                                            skos:notation "VISm6a" ;
                                                            skos:prefLabel "Medial visual area, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/480149338
@@ -13690,7 +13690,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                            rdfs:label "Frontal pole, layer 6a" ;
                                                            skos:notation "FRP6a" ;
                                                            skos:prefLabel "Frontal pole, layer 6a" ;
-                                                           nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005395> .
+                                                           nsg:hasLayerLocationPhenotype <https://bbp.epfl.ch/ontologies/core/bmo/neocortex_layer_6a> .
 
 
 ###  http://api.brain-map.org/api/v2/data/Structure/526322264

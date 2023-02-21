@@ -43,6 +43,27 @@ def graph_free_jsonld(jsonld_doc, context=None):
     else:
         return jsonld_doc
 
+def _create_hierarchy_view(uri_having_view, view_uri, view_label, view_description, 
+                           parent_hierarchy_property, children_hierarchy_property, leaf_hierarchy_property):
+    triples = []
+    json_object = {}
+    triples.append((rdflib.term.URIRef(uri_having_view), BMO.hasHierarchyView, rdflib.term.URIRef(view_uri)))
+    triples.append((rdflib.term.URIRef(view_uri), RDFS.label, Literal(view_label)))
+    triples.append((rdflib.term.URIRef(view_uri), SCHEMAORG.description, Literal(view_description)))
+    triples.append((rdflib.term.URIRef(view_uri), BMO.hasParentHierarchyProperty, Literal(parent_hierarchy_property)))
+    triples.append((rdflib.term.URIRef(view_uri), BMO.hasChildrenHierarchyProperty, Literal(children_hierarchy_property)))
+    triples.append((rdflib.term.URIRef(view_uri), BMO.hasLeafHierarchyProperty, Literal(leaf_hierarchy_property)))
+
+    json_object["hasHierarchyView"]={
+            "@id":view_uri,
+            "label":view_label,
+            "description":view_description,
+            "hasParentHierarchyProperty":parent_hierarchy_property,
+            "hasChildrenHierarchyProperty":children_hierarchy_property,
+            "hasLeafHierarchyProperty":leaf_hierarchy_property
+    }
+    return triples, json_object
+
 
 def frame_ontology(ontology_graph, context, context_json, class_resources_framed):
     """Frame ontology into a JSON-LD payload."""
@@ -55,20 +76,16 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
             "subClassOf":[
                 {
                     "@embed": False
-                    #"@id":{},
-                   #"@explicit": True
                 }
             ],
             "equivalentClass":[
                 {
                     "@embed": False
-
                 }
             ],
             "sameAs": [
                 {
                     "@embed": False
-
                 }
             ],
             "hasPart": [
@@ -81,17 +98,20 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
                     "@embed": False
                 }
             ],
-            #,
            "@embed": True
         }]
     }
     ontology_uri = find_ontology_resource(ontology_graph)
     if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
-        ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), BMO.hasHierarchyView, BMO.BrainLayer))
-        ontology_graph.add((BMO.BrainLayer, RDFS.label, Literal("Layer based Hierarchy")))
-        ontology_graph.add((BMO.BrainLayer, BMO.hasParentHierarchyProperty, Literal("isLayerPartOf")))
-        ontology_graph.add((BMO.BrainLayer, BMO.hasChildrenHierarchyProperty, Literal("hasLayerPart")))
-        ontology_graph.add((BMO.BrainLayer, BMO.hasLeafHierarchyProperty, Literal("hasLayerLeafRegionPart")))
+        layer_view_triples, layer_view_json  = _create_hierarchy_view(BRAIN_REGION_ONTOLOGY_URI, str(BMO.BrainLayer), "Layer", "Layer based hierarchy", 
+                           "isLayerPartOf", "hasLayerPart", "hasLayerLeafRegionPart")
+        
+        brain_region_view_triples, brain_region_view_json  = _create_hierarchy_view(BRAIN_REGION_ONTOLOGY_URI, str(NSG.BrainRegion), "BrainRegion", "Atlas default brain region hierarchy", 
+                           "isPartOf", "hasPart", "hasLeafRegionPart")
+        view_triples = layer_view_triples + brain_region_view_triples
+
+        for t in view_triples:
+            ontology_graph.add(t)
 
     new_ontology_graph = ontology_graph
     # handle OWL.NamedIndividual with blank node type
@@ -117,22 +137,7 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
     framed_onto_json["@context"] = context.iri
 
     if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
-        if "hasHierarchyView" in framed_onto_json:
-            hasHierarchyView = framed_onto_json["hasHierarchyView"]
-            hasHierarchyView["@id"] = str(BMO.BrainLayer)
-            ch = hasHierarchyView.pop("bmo:hasChildrenHierarchyProperty", None)
-            if ch:
-                hasHierarchyView["hasChildrenHierarchyProperty"] = ch
-            ph = hasHierarchyView.pop("bmo:hasParentHierarchyProperty", None)
-            if ph:
-                hasHierarchyView["hasParentHierarchyProperty"] = ph
-            if "bmo:hasLeafHierarchyProperty" in hasHierarchyView and hasHierarchyView["bmo:hasLeafHierarchyProperty"]:
-                    ct = hasHierarchyView.pop("bmo:hasLeafHierarchyProperty", None)
-                    if ct:
-                        hasHierarchyView["hasLeafHierarchyProperty"] = ct
-            if "rdfs:label" in hasHierarchyView and hasHierarchyView["rdfs:label"]:
-                hasHierarchyView["label"] = hasHierarchyView.pop("rdfs:label", None)
-            framed_onto_json["hasHierarchyView"] = [hasHierarchyView]
+        framed_onto_json["hasHierarchyView"] = [layer_view_json["hasHierarchyView"], brain_region_view_json["hasHierarchyView"]]
     return framed_onto_json
 
 
@@ -405,6 +410,7 @@ def frame_classes(ontology_graph, forge_context, context):
     cls = ontology_graph.subjects(RDF.type, OWL.Class)
     cls_int = [(c, RDFS.subClassOf) for c in cls]
 
+    #add views
     new_classes = []
     for current_class, restrictions_property in cls_int:
         if (current_class, RDFS.subClassOf, NSG.BrainRegion) in ontology_graph and (current_class, NSG.hasLayerLocationPhenotype, None) in ontology_graph:
@@ -421,7 +427,7 @@ def frame_classes(ontology_graph, forge_context, context):
     for current_class, restrictions_property in cls_int:
         current_class_graph = rdflib.Graph()
         # consider collecting transitive ancestors' restrictions only for argument provided classes
-
+        ontology_graph.add((current_class, BMO.hasHierarchyView, NSG.BrainRegion))
         rels, blank_node_triples = _collect_ancestors_restrictions(ontology_graph, current_class, restrictions_property=restrictions_property)
 
         for p, o in rels:
@@ -777,7 +783,7 @@ def _create_property_based_hierarchy(ontology_graph, cls_uriref, layer_urirefs, 
                 layer_altLabels.append(layer_altLabel)
                 layer_notations.append(layer_notation)
 
-            new_class_label    = ",".join(layer_altLabels)
+            new_class_label    = ", ".join(layer_altLabels)
             new_class_notation = "_".join(layer_notations)
 
             new_class_uri = "/".join([BRAIN_REGION_ONTOLOGY_URI, new_class_notation])
