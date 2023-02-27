@@ -88,6 +88,13 @@ bmo:canBeLocatedInBrainRegion rdf:type owl:ObjectProperty ;
                               rdfs:label "canBeLocatedInBrainRegion"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/inferredCanBeLocatedInBrainRegion
+bmo:inferredCanBeLocatedInBrainRegion rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf owl:topObjectProperty ;
+                              rdfs:label "inferredCanBeLocatedInBrainRegion"@en ;
+                              <http://www.w3.org/2004/02/skos/core##definition> "Brain region location assigned by an expert scientist as the best match to the location of a cell type."@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/canHaveMType
 bmo:canHaveMType rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
@@ -98,6 +105,13 @@ bmo:canHaveMType rdf:type owl:ObjectProperty ;
 bmo:canHaveTType rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  rdfs:label "canHaveTType"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/inferredCanHaveMType
+bmo:inferredCanHaveMType rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:label "inferredCanHaveMType"@en ;
+                 <http://www.w3.org/2004/02/skos/core##definition> "MType assigned by an expert scientist as the best match to the observed MType of a cell when the True MType is was found."@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/hasEType
@@ -1672,18 +1686,30 @@ schema:Organization rdf:type owl:Class ;
 
 ###  http://uri.interlex.org/base/ilx_0107930
 <http://uri.interlex.org/base/ilx_0107930> rdf:type owl:Class ;
-                                           rdfs:subClassOf bmo:NewNeuronType ;
-                                           rdfs:label "Olfactory Bulb Main Granule Cell"@en ;
+                                           rdfs:label "AOB_GC"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Olfactory Bulb Main Granule Cell"@en ;
                                            <http://www.w3.org/2004/02/skos/core#altLabel> "GC (MOB)"@en ;
-                                           <http://www.w3.org/2004/02/skos/core#definition> "The main intrinsic neuron in the vertebrate olfactory bulb.  It lacks an axon.  Each cell gives rise to short central dendrites and a single long apical dendrite that traverses the granule cell layer, pierces the mitral cell body layer, and branches and terminates within the external plexiform layer among the lateral dendrites of mitral and tufted cells.  The dendrites receive synaptic input from mitral and tufted cell lateral dendrites, and have synaptic outputs on those dendrites through reciprocal dendrodendritic synapses.  Shepherd, Chen & Greer.  Olfactory Bulb.  The Synaptic Organization of the Brain, ed 5. New York: Oxford University Press, 2004."@en .
+                                           <http://www.w3.org/2004/02/skos/core#notation> "AOB_GC"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#definition> "The main intrinsic neuron in the vertebrate olfactory bulb.  It lacks an axon.  Each cell gives rise to short central dendrites and a single long apical dendrite that traverses the granule cell layer, pierces the mitral cell body layer, and branches and terminates within the external plexiform layer among the lateral dendrites of mitral and tufted cells.  The dendrites receive synaptic input from mitral and tufted cell lateral dendrites, and have synaptic outputs on those dendrites through reciprocal dendrodendritic synapses.  Shepherd, Chen & Greer.  Olfactory Bulb.  The Synaptic Organization of the Brain, ed 5. New York: Oxford University Press, 2004."@en ;
+                                           rdfs:subClassOf bmo:NeuronMorphologicalType ,
+                                                           [  rdf:type owl:Restriction ;
+                                                              owl:onProperty bmo:canBeLocatedInBrainRegion ;
+                                                              owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/151>
+                                                           ].
 
 
 ###  http://uri.interlex.org/base/ilx_0107933
 <http://uri.interlex.org/base/ilx_0107933> rdf:type owl:Class ;
-                                           rdfs:subClassOf bmo:NewNeuronType ;
-                                           rdfs:label "Olfactory Bulb Main Mitral Cell"@en ;
+                                           rdfs:label "AOB_MC"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Olfactory Bulb Main Mitral Cell"@en ;
                                            <http://www.w3.org/2004/02/skos/core#altLabel> "MC"@en ;
-                                           <http://www.w3.org/2004/02/skos/core#definition> "Principal neuron located in the olfactory bulb in the mammalian central nervous system. The cell bodies are arranged in a thin layer between the granule cell layer and the external plexiform layer.  Each mitral cell is usually characterized in the mammal by a single primary dendrite that traverses the external plexiform layer and terminates within an olfactory glomerulus in a tuft of branches which receives input from the axons of olfactory receptor neurons.  Axons of the mitral cells project to a number of areas in the brain, including the piriform cortex, entorhinal cortex, olfactory tubercle, and amygdala."@en .
+                                           <http://www.w3.org/2004/02/skos/core#notation> "AOB_MC"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#definition> "Principal neuron located in the olfactory bulb in the mammalian central nervous system. The cell bodies are arranged in a thin layer between the granule cell layer and the external plexiform layer.  Each mitral cell is usually characterized in the mammal by a single primary dendrite that traverses the external plexiform layer and terminates within an olfactory glomerulus in a tuft of branches which receives input from the axons of olfactory receptor neurons.  Axons of the mitral cells project to a number of areas in the brain, including the piriform cortex, entorhinal cortex, olfactory tubercle, and amygdala."@en ;
+                                           rdfs:subClassOf bmo:NeuronMorphologicalType ,
+                                                           [  rdf:type owl:Restriction ;
+                                                              owl:onProperty bmo:canBeLocatedInBrainRegion ;
+                                                              owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/151>
+                                                           ].
 
 
 ###  http://uri.interlex.org/base/ilx_0107934
