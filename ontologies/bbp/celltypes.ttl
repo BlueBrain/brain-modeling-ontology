@@ -1329,35 +1329,59 @@ schema:Organization rdf:type owl:Class ;
                                            <http://www.w3.org/2004/02/skos/core#altLabel> "Bed nucleus of the stria terminalis small pyramidal neuron"@en .
 
 
-###  http://uri.interlex.org/base/ilx_0101966
+##  http://uri.interlex.org/base/ilx_0101966
 <http://uri.interlex.org/base/ilx_0101966> rdf:type owl:Class ;
-                                           rdfs:subClassOf bmo:NewNeuronType ;
-                                           rdfs:label "Cerebellum Golgi Cell"@en ;
+                                           rdfs:label "CBXgr_GoC" ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Cerebellum Golgi Cell"@en ;
                                            <http://www.w3.org/2004/02/skos/core#altLabel> "Cerebellar Golgi neuron"@en ;
-                                           <http://www.w3.org/2004/02/skos/core#definition> "Large intrinsic neuron located in the granule layer of the cerebellar cortex that extends its dendrites into the molecular layer where they receive contact from parallel fibers.  The axon of the Golgi cell enters ramifies densely in the granule layer and enters into a complex arrangement with mossy fiber terminals and granule cell dendrites to form the cerebellar glomerulus. Llinas, Walton and Lang. In The Synaptic Organization of the Brain. 5th ed. 2004."@en .
+                                           <http://www.w3.org/2004/02/skos/core#notation> "CBXgr_GoC" ;
+                                           <http://www.w3.org/2004/02/skos/core#definition> "Large intrinsic neuron located in the granule layer of the cerebellar cortex that extends its dendrites into the molecular layer where they receive contact from parallel fibers.  The axon of the Golgi cell enters ramifies densely in the granule layer and enters into a complex arrangement with mossy fiber terminals and granule cell dendrites to form the cerebellar glomerulus. Llinas, Walton and Lang. In The Synaptic Organization of the Brain. 5th ed. 2004."@en ;
+                                           rdfs:subClassOf bmo:NeuronMorphologicalType ,
+                                                           [  rdf:type owl:Restriction ;
+                                                              owl:onProperty bmo:canBeLocatedInBrainRegion ;
+                                                              owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/1143>
+                                                           ].
 
 
 ###  http://uri.interlex.org/base/ilx_0101967
 <http://uri.interlex.org/base/ilx_0101967> rdf:type owl:Class ;
-                                           rdfs:subClassOf bmo:NewNeuronType ;
-                                           rdfs:label "Cerebellum Granule Cell"@en ;
+                                           rdfs:label "CBXgr_GrC" ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel>"Cerebellum Granule Cell"@en ;
                                            <http://www.w3.org/2004/02/skos/core#altLabel> "Cerebellar granule neuron"@en ;
-                                           <http://www.w3.org/2004/02/skos/core#definition> "Small, numerous neuron in the granule cell layer of the vertebrate cerebellar cortex, characterized by a very small soma and several short dendrites which terminate with claw-shaped endings.  In the transmission electron microscope, these cells are characterized by a darkly stained nucleus surrounded by a thin rim of cytoplasm.  The axon ascends into the molecular layer where it bifurcates to form parallel fibers which run parallel to the long axis of the folium.  Llinas, Walton and Lang. Cerebellum. In The Synaptic Organization of the Brain. 5th ed. 2004."@en .
+                                           <http://www.w3.org/2004/02/skos/core#notation> "CBXgr_GrC" ;
+                                           <http://www.w3.org/2004/02/skos/core#definition> "Small, numerous neuron in the granule cell layer of the vertebrate cerebellar cortex, characterized by a very small soma and several short dendrites which terminate with claw-shaped endings.  In the transmission electron microscope, these cells are characterized by a darkly stained nucleus surrounded by a thin rim of cytoplasm.  The axon ascends into the molecular layer where it bifurcates to form parallel fibers which run parallel to the long axis of the folium.  Llinas, Walton and Lang. Cerebellum. In The Synaptic Organization of the Brain. 5th ed. 2004."@en ;
+                                           rdfs:subClassOf bmo:NeuronMorphologicalType ,
+                                                           [  rdf:type owl:Restriction ;
+                                                              owl:onProperty bmo:canBeLocatedInBrainRegion ;
+                                                              owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/1143>
+                                                           ].
 
 
 ###  http://uri.interlex.org/base/ilx_0101969
 <http://uri.interlex.org/base/ilx_0101969> rdf:type owl:Class ;
-                                           rdfs:subClassOf bmo:NewNeuronType ;
-                                           rdfs:label "Cerebellum Lugaro Cell"@en ;
-                                           <http://www.w3.org/2004/02/skos/core#definition> "Type of neuron found in cerebellar granule cell layer characterized by a fusiform cell body with thick, horizontally oriented dendrites. Lugaro cells are located in or slightly below the Purkinje cell layer outermost edge of the granular layer."@en .
+                                           rdfs:label "CBXgr_LuC"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Cerebellum Lugaro Cell"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "CBXgr_LuC" ;
+                                           <http://www.w3.org/2004/02/skos/core#definition> "Type of neuron found in cerebellar granule cell layer characterized by a fusiform cell body with thick, horizontally oriented dendrites. Lugaro cells are located in or slightly below the Purkinje cell layer outermost edge of the granular layer."@en ;
+                                           rdfs:subClassOf bmo:NeuronMorphologicalType ,
+                                                           [  rdf:type owl:Restriction ;
+                                                              owl:onProperty bmo:canBeLocatedInBrainRegion ;
+                                                              owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/1143>
+                                                           ].
 
 
 ###  http://uri.interlex.org/base/ilx_0101974
 <http://uri.interlex.org/base/ilx_0101974> rdf:type owl:Class ;
-                                           rdfs:subClassOf bmo:NewNeuronType ;
-                                           rdfs:label "Cerebellum Purkinje Cell"@en ;
+                                           rdfs:label "CBXpu_PuC";
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Cerebellum Purkinje Cell"@en ;
                                            <http://www.w3.org/2004/02/skos/core#altLabel> "Purkinje neuron"@en ;
-                                           <http://www.w3.org/2004/02/skos/core#definition> "Principal neuron (projection neuron) of the cerebellar cortex; cell bodies arranged in a single layer; characterized by a pear-shaped cell body, 1 (rarely 2) primary dendrites and an elaborate dendritic tree heavily invested with dendritic spines."@en .
+                                           <http://www.w3.org/2004/02/skos/core#notation> "CBXpu_PuC";
+                                           <http://www.w3.org/2004/02/skos/core#definition> "Principal neuron (projection neuron) of the cerebellar cortex; cell bodies arranged in a single layer; characterized by a pear-shaped cell body, 1 (rarely 2) primary dendrites and an elaborate dendritic tree heavily invested with dendritic spines."@en ;
+                                           rdfs:subClassOf bmo:NeuronMorphologicalType ,
+                                                           [  rdf:type owl:Restriction ;
+                                                              owl:onProperty bmo:canBeLocatedInBrainRegion ;
+                                                              owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/1145>
+                                                           ].
 
 
 ###  http://uri.interlex.org/base/ilx_0102306
