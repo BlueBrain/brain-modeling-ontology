@@ -498,6 +498,22 @@ owl:equivalentClass rdf:type owl:DatatypeProperty ;
                                                                                 ] .
 
 
+###  http://uri.interlex.org/base/ilx_0739290
+<http://uri.interlex.org/base/ilx_0739290> rdf:type owl:Class;
+                                           rdfs:label "cACpyr"@en ;
+                                           <http://www.w3.org/2004/02/skos/core#notation> "cACpyr"^^xsd:string ;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Continuous Accommodating Pyramidal Cell"@en ;
+                                           rdfs:subClassOf bmo:NeuronElectricalType ,
+                                                           [ rdf:type owl:Restriction ;
+                                                               owl:onProperty owl:equivalentClass ;
+                                                               owl:hasValue <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/cADpyr>
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+                                                             owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure/382>
+                                                           ] .
+
+
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/GCL_GC
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/GCL_GC> rdf:type owl:Class ;
                                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType> ,
