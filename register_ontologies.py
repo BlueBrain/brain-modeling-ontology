@@ -16,7 +16,7 @@ from kgforge.specializations.mappings import DictionaryMapping
 
 from rdflib import Namespace, RDF, OWL, RDFS
 
-from bmo_tools.utils import BRAIN_REGION_ONTOLOGY_URI, remove_non_ascii, PREFIX_MAPPINGS
+from bmo_tools.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, SCHEMAORG, remove_non_ascii, PREFIX_MAPPINGS
 
 import nexussdk as nexus
 
@@ -80,6 +80,15 @@ def define_arguments():
     parser.add_argument(
         "--transformed_schema_path", help="The path to write and load schemas transformed for use by ontodocs.",
         default="./ontologies/bbp/shapes_jsonld_expanded", type=str)
+    
+    parser.add_argument(
+        "--atlas_parcellation_ontology", help="The atlas parcellation ontology.",
+        default=None, type=str, required=True)
+
+    parser.add_argument(
+        "--atlas_parcellation_ontology_bucket", help="The atlas parcellation ontology bucket.",
+        default=None, type=str, required=True)
+    
 
     return parser
 
@@ -118,14 +127,16 @@ def execute_registration(forge, ontology_path, ontology_graph, all_class_resourc
     class_resources_framed = _get_classes_in_ontology(all_class_resources_framed_dict, ontology_graph.subjects(RDF.type, OWL.Class))
 
     if str(ontology) == BRAIN_REGION_ONTOLOGY_URI:
-        class_resources_framed.extend(_get_classes_in_ontology( all_class_resources_framed_dict, brain_region_generated_classes))
+        brain_region_generated_classes_resources_framed  = _get_classes_in_ontology(all_class_resources_framed_dict, brain_region_generated_classes)
+        class_resources_framed.update({k:v for k,v in brain_region_generated_classes_resources_framed.items() if k not in class_resources_framed})
 
-    bmo.register_ontology(forge, ontology_graph, new_forge_context, new_jsonld_context_dict, ontology_path, class_resources_mapped, class_resources_framed, tag)
+    bmo.register_ontology(forge, ontology_graph, new_forge_context, new_jsonld_context_dict, ontology_path, list(class_resources_mapped.values()),
+                           list(class_resources_framed.values()), tag)
     #bmo.remove_defines_relation(ontology_graph, ontology)
 
 
 def _get_classes_in_ontology(all_class_resources_dict, uriref_iterator):
-    return [all_class_resources_dict.get(str(cls)) for cls in uriref_iterator]
+    return {cls:all_class_resources_dict.get(str(cls)) for cls in uriref_iterator if str(cls) in all_class_resources_dict }
 
 
 def parse_and_register_ontologies(arguments):
@@ -143,6 +154,8 @@ def parse_and_register_ontologies(arguments):
     BUCKET = arguments.bucket
     schema_dir = arguments.schema_dir
     transformed_schema_path = arguments.transformed_schema_path
+    atlas_parcellation_ontology = arguments.atlas_parcellation_ontology
+    atlas_parcellation_ontology_bucket = arguments.atlas_parcellation_ontology_bucket
 
     if environment == "staging":
         endpoint = "https://staging.nise.bbp.epfl.ch/nexus/v1"
@@ -237,9 +250,24 @@ def parse_and_register_ontologies(arguments):
     }
 
     bmo.replace_is_defined_by_uris(all_ontology_graphs, WEBPROTEGE_TO_NEXUS)
+    
+    print("Merging brain region ontology with atlas hierarchy")
+    forge_atlas = KnowledgeGraphForge("config/forge-config.yml", endpoint=endpoint, bucket=atlas_parcellation_ontology_bucket, token=token, debug=True)
+    atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology)
+    atlas_hierarchy_jsonld_distribution = [distrib for distrib in atlas_hierarchy.distribution if distrib.encodingFormat=="application/ld+json"]
+    atlas_hierarchy_jsonld_distribution = atlas_hierarchy_jsonld_distribution[0]
+    forge_atlas.download(atlas_hierarchy_jsonld_distribution, follow="contentUrl", path=".", overwrite=True)
+    
+    atlas_hierarchy_ontology_graph = rdflib.Graph().parse(atlas_hierarchy_jsonld_distribution.name, format="json-ld")
+
+    triples_to_add, triples_to_remove = _merge_ontology(atlas_hierarchy_ontology_graph, ontology_graphs_dict["./ontologies/bbp/brainregion.ttl"], all_ontology_graphs, [SCHEMAORG.hasPart, SCHEMAORG.isPartOf, RDFS.label, MBA.atlas_id, MBA.color_hex_triplet,
+                                                                        MBA.graph_order, MBA.hemisphere_id, MBA.st_level, SCHEMAORG.identifier, BMO.representedInAnnotation])
+
+    print(f"Finished merging brain region ontology with atlas hierarchy: {len(triples_to_add)} triples were added to the brain region ontology from the atlas hierarchy while {len(triples_to_remove)} triples were removed from the brain region ontology.")
+    
     class_ids, class_jsons, all_blank_node_triples, brain_region_generated_classes = bmo.frame_classes(all_ontology_graphs, new_jsonld_context, new_jsonld_context_dict)
     print(f"Got {len(class_jsons)} non mapped classes")
-    
+
     all_class_resources_framed_dict = dict(zip(class_ids, class_jsons))
     class_resources_mapped = forge.map(data=class_jsons,
                                        mapping=DictionaryMapping.load("./config/mappings/term-to-resource-mapping.hjson"),
@@ -250,9 +278,10 @@ def parse_and_register_ontologies(arguments):
 
     with open("./class_json.json", "w") as f:
         json.dump(class_jsons, f)
-
+    
     print(f"Registering {len(list(schema_graphs_dict.keys()))} schemas")
     already_registered = []
+    
     
     for schema_file, schema_content in schema_graphs_dict.items():
         register_schemas(forge_schema, schema_file, schema_content, schema_graphs_dict, schema_id_to_filepath_dict,
@@ -270,6 +299,41 @@ def parse_and_register_ontologies(arguments):
     class_errors = bmo.register_classes(forge, class_jsons, tag)
     print(f"Registering finished for all {len(class_jsons)} classes with errors: {class_errors}")
 
+def _merge_ontology(from_ontology_graph, to_ontology_graph, to_another_graph, what_property_to_merge):
+    # merge hierarchy from atlas with this brain region: make sure altas hierarchy, labels, notation, identifier, ... is fully included in bmo
+   
+    triples_to_add = []
+    triples_to_remove = []
+    brain_regions = []
+    for prop in what_property_to_merge:
+        for from_s, from_p, from_o in from_ontology_graph.triples((None,prop, None)):
+            triples = to_ontology_graph.triples((from_s,from_p, None))
+            if len(list(triples)) > 0:
+                for to_s, to_p, to_o in triples:
+                    if from_p != SCHEMAORG.identifier:
+                        triples_to_add.append((from_s, from_p, from_o))
+                        triples_to_remove.append((to_s, to_p, to_o))
+                    brain_regions.append(from_s)
+            else:
+                triples_to_add.append((from_s, from_p, from_o))
+                brain_regions.append(from_s)
+                if isinstance(from_o, rdflib.term.URIRef):
+                    for from_o_s, from_o_p, from_o_o in from_ontology_graph.triples((from_o, None, None)):
+                        if from_o_p not in [BMO.regionVolume, BMO.regionVolumeRatioToWholeBrain, BMO.layers, BMO.adjacentTo,
+                                            BMO.continuousWith, BMO.hasLayerLocationPhenotype]: # will be merged once the data format is okay
+                            triples_to_add.append((from_o_s, from_o_p, from_o_o))
+
+    for t in triples_to_remove:
+        to_ontology_graph.remove(t)
+        to_another_graph.remove(t)
+    for t in triples_to_add:
+        to_ontology_graph.add(t)
+        to_another_graph.add(t)
+    for br in brain_regions:
+        to_ontology_graph.add((br, RDFS.subClassOf, NSG.BrainRegion))
+        to_another_graph.add((br, RDFS.subClassOf, NSG.BrainRegion))
+
+    return triples_to_add, triples_to_remove
 
 def register_schemas(forge, schema_file, schema_content, schema_graphs_dict, schema_id_to_filepath_dict, all_schema_graph, jsonld_schema_context, tag, already_registered=[]):
     if schema_content["resource"].id not in already_registered:

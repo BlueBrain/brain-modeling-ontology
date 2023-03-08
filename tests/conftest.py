@@ -13,7 +13,10 @@ from register_ontologies import load_ontologies, load_schemas, initialise_graph
 def pytest_addoption(parser):
     parser.addoption("--environment", action="store", default="https://staging.nise.bbp.epfl.ch/nexus/v1")
     parser.addoption("--bucket", action="store", default="neurosciencegraph/datamodels")
+    parser.addoption("--atlas_parcellation_ontology", action="store", default="https://bbp.epfl.ch/neurosciencegraph/data/e1118b0a-cc7a-41e1-8f94-df2837df7bb2")
+    parser.addoption("--atlas_parcellation_ontology_bucket", action="store", default="bbp/atlas")
     parser.addoption("--token", action="store")
+    
 
 
 PREFIX_MAPPINGS = {

@@ -1,4 +1,5 @@
 import json
+from bmo_tools.utils import BMO, NSG, SCHEMAORG
 
 import pytest
 import rdflib
@@ -118,7 +119,61 @@ def test_metype_correctedly_propagated(all_ontology_graphs, forge):
     assert set(propagated_brain_regions)  == expected_propagated_brain_regions
     
 
+def test_brain_region_same_leaves_in_all_hierarchy(all_ontology_graphs, data_jsonld_context):
+    ontology_graph = all_ontology_graphs[0]
+    new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
 
+    ammons_horn_brain_region_uri = "http://api.brain-map.org/api/v2/data/Structure/375"
+    field_CA1_so_brain_region_uri = "http://api.brain-map.org/api/v2/data/Structure/182305693"
+    anterior_cingulate_area_dorsal_part_layer_6b = "http://api.brain-map.org/api/v2/data/Structure/927"
+
+
+    current_class_layers = list(ontology_graph.objects(rdflib.term.URIRef(anterior_cingulate_area_dorsal_part_layer_6b), NSG.hasLayerLocationPhenotype))
+    classes_relevant_for_layer = set()
+    for layer in current_class_layers:
+        classes_relevant_for_layer = set(ontology_graph.objects(rdflib.term.URIRef(layer), RDFS.subClassOf*OneOrMore/SCHEMAORG.about))
+
+
+    new_classes = bmo._create_property_based_hierarchy(ontology_graph, rdflib.term.URIRef(anterior_cingulate_area_dorsal_part_layer_6b), 
+                                                    current_class_layers, classes_relevant_for_layer, SCHEMAORG.isPartOf)
+    assert len(new_classes) == 0
+
+
+    ammons_horn_brain_region_layer_leaves = set(ontology_graph.objects(rdflib.term.URIRef(ammons_horn_brain_region_uri), BMO.hasLayerLeafRegionPart))
+    ammons_horn_brain_region_default_leaves = set(ontology_graph.objects(rdflib.term.URIRef(ammons_horn_brain_region_uri), BMO.hasLeafRegionPart))
+    assert len(ammons_horn_brain_region_layer_leaves) == len(ammons_horn_brain_region_default_leaves)
+
+    
+def test_layered_child_has_same_parent_layer(all_ontology_graphs, data_jsonld_context):
+    
+    ontology_graph = all_ontology_graphs[0]
+    new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
+
+    class_ids, class_jsons, all_blank_node_triples, new_classes = bmo.frame_classes(ontology_graph, new_jsonld_context,
+                                                                       new_jsonld_context.document)
+    for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
+        if (cls, NSG.hasLayerLocationPhenotype, None) in ontology_graph:
+            grand_parents = list(ontology_graph.objects(cls, BMO.isLayerPartOf/SCHEMAORG.isPartOf))
+            relevant_grand_parents = set()
+            
+            current_class_layers = list(ontology_graph.objects(cls, NSG.hasLayerLocationPhenotype))
+            for layer in current_class_layers:
+                classes_relevant_for_layer = set(ontology_graph.objects(layer, RDFS.subClassOf*OneOrMore/SCHEMAORG.about)) 
+                relevant_grand_parents = set()
+                for c in classes_relevant_for_layer:
+                    s= {grand_parent for grand_parent in grand_parents if (grand_parent, BMO.isLayerPartOf*OneOrMore, c) in ontology_graph}
+                    relevant_grand_parents.update(s)
+                assert len(classes_relevant_for_layer) > 0
+                for rg in relevant_grand_parents:
+
+                    assert (rg, NSG.hasLayerLocationPhenotype, layer) in ontology_graph
+        #is_layer_part_ofs = set(ontology_graph.objects(cls, BMO.isLayerPartOf)) # waiting for representedInAnnotation to be merged
+        is_part_ofs = set(ontology_graph.objects(cls, SCHEMAORG.isPartOf)) 
+        #assert len (is_layer_part_ofs) in [0,1]
+        assert len (is_part_ofs) in [0,1]
+
+
+   
 """
 def test_all_schema_are_valid(forge_schema, all_schema_graphs):
     schema_graphs, schema_graphs_dict, schema_id_to_filepath_dict = all_schema_graphs

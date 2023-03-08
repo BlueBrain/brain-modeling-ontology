@@ -15,6 +15,7 @@ BMO = Namespace("https://bbp.epfl.ch/ontologies/core/bmo/")
 NSG = Namespace("https://neuroshapes.org/")
 SCHEMAORG = Namespace("http://schema.org/")
 SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
+MBA = Namespace("http://api.brain-map.org/api/v2/data/Structure/")
 
 BRAIN_REGION_ONTOLOGY_URI = "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion"
 
