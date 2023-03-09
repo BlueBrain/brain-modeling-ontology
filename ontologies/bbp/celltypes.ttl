@@ -28806,6 +28806,68 @@ bmo:InhibitoryNeurotransmitterType a owl:Class ;
     skos:prefLabel "Inhibitory neuron"^^xsd:string ;
     nsg:color "#ff2222"^^xsd:string .
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/GlutamateNeurotransmitterType
+bmo:GlutamateNeurotransmitterType a owl:Class ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    rdfs:label "Glutamate Neurotransmitter"@en ;
+    skos:prefLabel "Glutamate Neurotransmitter Type" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/GABANeurotransmitterType
+bmo:GABANeurotransmitterType a owl:Class ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    rdfs:label "GABA Neurotransmitter"@en ;
+    skos:prefLabel "GABA Neurotransmitter Type" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/NitricOxideNeurotransmitterType
+bmo:NitricOxideNeurotransmitterType a owl:Class ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    rdfs:label "Nitric Oxide Neurotransmitter"@en ;
+    skos:prefLabel "Nitric Oxide Neurotransmitter Type" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/OxytocinNeurotransmitterType
+bmo:OxytocinNeurotransmitterType a owl:Class ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    rdfs:label "Oxytocin Neurotransmitter"@en ;
+    skos:prefLabel "Oxytocin Neurotransmitter Type" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/DopamineNeurotransmitterType
+bmo:DopamineNeurotransmitterType a owl:Class ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    rdfs:label "Dopamine Neurotransmitter"@en ;
+    skos:prefLabel "Dopamine Neurotransmitter Type" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/SerotoninNeurotransmitterType
+bmo:SerotoninNeurotransmitterType a owl:Class ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    rdfs:label "Serotonin Neurotransmitter"@en ;
+    skos:prefLabel "Serotonin Neurotransmitter Type" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/AcetylcholineNeurotransmitterType
+bmo:AcetylcholineNeurotransmitterType a owl:Class ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    rdfs:label "Acetylcholine Neurotransmitter"@en ;
+    skos:prefLabel "Acetylcholine Neurotransmitter Type" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/HistamineNeurotransmitterType
+bmo:HistamineNeurotransmitterType a owl:Class ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    rdfs:label "Histamine Neurotransmitter"@en ;
+    skos:prefLabel "Histamine Neurotransmitter Type" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/NorepinephrineNeurotransmitterType
+bmo:NorepinephrineNeurotransmitterType a owl:Class ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    rdfs:label "Norepinephrine Neurotransmitter"@en ;
+    skos:prefLabel "Norepinephrine Neurotransmitter Type" .
+
 tts:Glutamatergic_neurons a owl:Class ;
     rdfs:label "Glutamatergic Neurons Transcriptome Type"^^xsd:string ;
     rdfs:subClassOf bmo:NeuronsTranscriptomeType,
