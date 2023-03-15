@@ -436,13 +436,13 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_PVBC> a owl:Class ;
     rdfs:label "SP_PVBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty nsg:hasLayerLocationPhenotype ;
+            owl:someValuesFrom obo:UBERON_0002313 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1089 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom obo:UBERON_0002313 ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0002313 ],
         ct:PVBC ;
     skos:notation "SP_PVBC"^^xsd:string ;
@@ -557,13 +557,13 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Basalis Nucleus Cholinergic Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Cholinergic nucleus basalis cell"@en ;
-    skos:definition "Large multipolar neuron (also described as polyhedral) found in the nucleus basalis of Meynert in the basal forebrain that uses acetylcholine as a neurotransmitter.  Most of the dendrites are very long giving a thick network of secondary and tertiary dendritic branches in a radial three dimensional arrangement in the neuropil space. The secondary and tertiary dendritic branches are studded with long fusiform or triangular spines (Baloyannis, S. J., Costa, V., Psaroulis, V., Arzoglou, L. Papsotiriou (1994) The nucleus basalis of Meynert of the human brain:  a Golgi and electron microscope study) Int J Neurosci., 78:  33-41."@en .
+    skos:definition "Large multipolar neuron (also described as polyhedral) found in the nucleus basalis of Meynert in the basal forebrain that uses acetylcholine as a neurotransmitter. Most of the dendrites are very long giving a thick network of secondary and tertiary dendritic branches in a radial three dimensional arrangement in the neuropil space. The secondary and tertiary dendritic branches are studded with long fusiform or triangular spines (Baloyannis, S. J., Costa, V., Psaroulis, V., Arzoglou, L. Papsotiriou (1994) The nucleus basalis of Meynert of the human brain: a Golgi and electron microscope study) Int J Neurosci., 78: 33-41."@en .
 
 <http://uri.interlex.org/base/ilx_0101184> a owl:Class ;
     rdfs:label "BNST Beaded Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Bed nucleus of the stria terminalis beaded neuron"@en ;
-    skos:definition "Neuron located within the core of the nucleus (BSTov) that is termed a beaded neuron (BN) because of its rounded soma and numerous spherules along both dendrites and axon (Fig. 11). The soma measures from 12 to 17 micrometers in its widest axis and is nearly spherical, having a rather smooth profile. The soma issues two or three short primary dendrites, which usually run horizontally. After a short distance (10 to 40 micrometers), these proximal branches give rise to sets of two to five long, secondary dendrites. The occurrence of third to order dendrites is variable, as is their length (20 to 150 micrometers). A defining characteristic of BN dendrites is the presence of distinct varicosities that are virtually devoid of dendritic spines.  The BN axon and its collaterals also exhibit a series of small spherules (0.3-0.5 um) united by thin axonal bridges (Lariva-Sahd, 2006, as reported in  http://brancusi.usc.edu/bkms)."@en .
+    skos:definition "Neuron located within the core of the nucleus (BSTov) that is termed a beaded neuron (BN) because of its rounded soma and numerous spherules along both dendrites and axon (Fig. 11). The soma measures from 12 to 17 micrometers in its widest axis and is nearly spherical, having a rather smooth profile. The soma issues two or three short primary dendrites, which usually run horizontally. After a short distance (10 to 40 micrometers), these proximal branches give rise to sets of two to five long, secondary dendrites. The occurrence of third to order dendrites is variable, as is their length (20 to 150 micrometers). A defining characteristic of BN dendrites is the presence of distinct varicosities that are virtually devoid of dendritic spines. The BN axon and its collaterals also exhibit a series of small spherules (0.3-0.5 um) united by thin axonal bridges (Lariva-Sahd, 2006, as reported in http://brancusi.usc.edu/bkms)."@en .
 
 <http://uri.interlex.org/base/ilx_0101188> a owl:Class ;
     rdfs:label "BNST Small Pyramidal Neuron"@en ;
@@ -577,7 +577,7 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom mba:1143 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Cerebellar Golgi neuron"@en ;
-    skos:definition "Large intrinsic neuron located in the granule layer of the cerebellar cortex that extends its dendrites into the molecular layer where they receive contact from parallel fibers.  The axon of the Golgi cell enters ramifies densely in the granule layer and enters into a complex arrangement with mossy fiber terminals and granule cell dendrites to form the cerebellar glomerulus. Llinas, Walton and Lang. In The Synaptic Organization of the Brain. 5th ed. 2004."@en ;
+    skos:definition "Large intrinsic neuron located in the granule layer of the cerebellar cortex that extends its dendrites into the molecular layer where they receive contact from parallel fibers. The axon of the Golgi cell enters ramifies densely in the granule layer and enters into a complex arrangement with mossy fiber terminals and granule cell dendrites to form the cerebellar glomerulus. Llinas, Walton and Lang. In The Synaptic Organization of the Brain. 5th ed. 2004."@en ;
     skos:notation "CBXgr_GoC" ;
     skos:prefLabel "Cerebellum Golgi Cell"@en .
 
@@ -588,7 +588,7 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom mba:1143 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Cerebellar granule neuron"@en ;
-    skos:definition "Small, numerous neuron in the granule cell layer of the vertebrate cerebellar cortex, characterized by a very small soma and several short dendrites which terminate with claw-shaped endings.  In the transmission electron microscope, these cells are characterized by a darkly stained nucleus surrounded by a thin rim of cytoplasm.  The axon ascends into the molecular layer where it bifurcates to form parallel fibers which run parallel to the long axis of the folium.  Llinas, Walton and Lang. Cerebellum. In The Synaptic Organization of the Brain. 5th ed. 2004."@en ;
+    skos:definition "Small, numerous neuron in the granule cell layer of the vertebrate cerebellar cortex, characterized by a very small soma and several short dendrites which terminate with claw-shaped endings. In the transmission electron microscope, these cells are characterized by a darkly stained nucleus surrounded by a thin rim of cytoplasm. The axon ascends into the molecular layer where it bifurcates to form parallel fibers which run parallel to the long axis of the folium. Llinas, Walton and Lang. Cerebellum. In The Synaptic Organization of the Brain. 5th ed. 2004."@en ;
     skos:notation "CBXgr_GrC" ;
     skos:prefLabel "Cerebellum Granule Cell"@en .
 
@@ -617,7 +617,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Cochlea Hair Cell Inner"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Cochlea inner hair cell"@en ;
-    skos:definition "A pear-shaped epithelial cell that is medially placed re: the inner pillar and forms a single row within the organ of Corti. Resting potential is modulated by perturbations in stereocilia located at the apical pole of the cell. In contrast to outer hair cells, the inner hair cells are fewer in number, have fewer stereocilia, and are less differentiated. They do, however, receive ~95% of the auditory-nerve dendrites.  Although a single auditory nerve fiber innervates several outer hair cells, each inner hair cell receives several more heavily myelinated, auditory-nerve dendrites.  Neurotransmitter release activates the auditory nerve, which leads to the cochlear nucleus within the central auditory pathway.(MSH)"@en .
+    skos:definition "A pear-shaped epithelial cell that is medially placed re: the inner pillar and forms a single row within the organ of Corti. Resting potential is modulated by perturbations in stereocilia located at the apical pole of the cell. In contrast to outer hair cells, the inner hair cells are fewer in number, have fewer stereocilia, and are less differentiated. They do, however, receive 95 of the auditory-nerve dendrites. Although a single auditory nerve fiber innervates several outer hair cells, each inner hair cell receives several more heavily myelinated, auditory-nerve dendrites. Neurotransmitter release activates the auditory nerve, which leads to the cochlear nucleus within the central auditory pathway.(MSH)"@en .
 
 <http://uri.interlex.org/base/ilx_0102311> a owl:Class ;
     rdfs:label "Cochlear Nucleus Dorsal Cartwheel Cell"@en ;
@@ -629,7 +629,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Cochlear Nucleus Dorsal Pyramidal Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "py"@en ;
-    skos:definition "Bipolar neuron in dorsal cochlear nucleus, whose cell bodies form a band in the pyramidal cell layer.  Characterized by a spiny apical dendritic tree in the molecular layer and a smooth basal dendritic tree in the deep layer.  The apical dendrites have many branches which are contacted by parallel fibers from granule cells, whereas the basal dendrites have few branches and receive inputs from the auditory nerve."@en .
+    skos:definition "Bipolar neuron in dorsal cochlear nucleus, whose cell bodies form a band in the pyramidal cell layer. Characterized by a spiny apical dendritic tree in the molecular layer and a smooth basal dendritic tree in the deep layer. The apical dendrites have many branches which are contacted by parallel fibers from granule cells, whereas the basal dendrites have few branches and receive inputs from the auditory nerve."@en .
 
 <http://uri.interlex.org/base/ilx_0102322> a owl:Class ;
     rdfs:label "Cochlear Nucleus Ventral Octopus Cell"@en ;
@@ -641,7 +641,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Colliculus Inferior GABAergic Principal Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "large GABAergic (LG) neurons"@en ;
-    skos:definition "Winer and colleagues (1996) first described that GABAergic neurons project to the medial geniculate body in cat. Peruzzi et al. (1997) showed that the cell type is also found in rats, and  sends action potentials more rapidly than glutamatergic IC neurons. Ito and colleagues (2009) showed that the cell type is the largest neuron in the IC and receives dense VGLUT2-positive axosomatic terminals on the cell body. Other cell types such as glutamatergic neurons and small GABAergic neurons do not have such endings."@en .
+    skos:definition "Winer and colleagues (1996) first described that GABAergic neurons project to the medial geniculate body in cat. Peruzzi et al. (1997) showed that the cell type is also found in rats, and sends action potentials more rapidly than glutamatergic IC neurons. Ito and colleagues (2009) showed that the cell type is the largest neuron in the IC and receives dense VGLUT2-positive axosomatic terminals on the cell body. Other cell types such as glutamatergic neurons and small GABAergic neurons do not have such endings."@en .
 
 <http://uri.interlex.org/base/ilx_0103049> a owl:Class ;
     rdfs:label "Dentate Gyrus Axo-Axonic Cell"@en ;
@@ -703,7 +703,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Hippocampus CA1 Ivy Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "CA1 ivy cell"@en ;
-    skos:definition "Ivy cells are highly abundant GABAergic interneurons when compared to basket, bistratified, or axo-axonic cells. \"Ivy\" cells are named after their dense and fine axons innervating mostly basal and oblique pyramidal cell dendrites. They express nitric oxide synthase, neuropeptide Y, and high levels of GABAa receptor aplha1 subunit and they are also identified as slow-spiking interneurons that regulate the excitability of pyramidal cell dendrites through slowly rising and decaying GABAergic inputs."@en .
+    skos:definition "Ivy cells are highly abundant GABAergic interneurons when compared to basket, bistratified, or axo-axonic cells. Ivy cells are named after their dense and fine axons innervating mostly basal and oblique pyramidal cell dendrites. They express nitric oxide synthase, neuropeptide Y, and high levels of GABAa receptor aplha1 subunit and they are also identified as slow-spiking interneurons that regulate the excitability of pyramidal cell dendrites through slowly rising and decaying GABAergic inputs."@en .
 
 <http://uri.interlex.org/base/ilx_0105029> a owl:Class ;
     rdfs:label "Hippocampus CA1 Neurogliaform Cell"@en ;
@@ -721,7 +721,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Hippocampus CA1 Pyramidal Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Hippocampal CA1 Pyramidal Neuron"@en ;
-    skos:definition "Pyramidal neuron with a soma located in hippocampal area CA1.  It receives input from Schaffer collaterals of CA3 pyramidal neurons, and sends its axon to the subiculum and entorhinal cortex."@en .
+    skos:definition "Pyramidal neuron with a soma located in hippocampal area CA1. It receives input from Schaffer collaterals of CA3 pyramidal neurons, and sends its axon to the subiculum and entorhinal cortex."@en .
 
 <http://uri.interlex.org/base/ilx_0105034> a owl:Class ;
     rdfs:label "Hippocampus CA2 Basket Cell Broad"@en ;
@@ -739,7 +739,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Hippocampus CA3 Basket Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "CA3 pyramidal basket cell"@en ;
-    skos:definition "The CA3 basket cell is an interneuron located in hippocampus area CA3 characterized by a triangular or fusiform soma, with one to three dendrites extending from the cell soma.  One of the three dendrites originate from the apical pole of soma, which then branch profusely, ascend through stratum radiatum, and often penetrate stratum lacunosum-moelculare. Primary basal dendrites are more numerous. They also branch close to soma and fan out toward the alveus, spanning the entire depth of stratum oriens."@en .
+    skos:definition "The CA3 basket cell is an interneuron located in hippocampus area CA3 characterized by a triangular or fusiform soma, with one to three dendrites extending from the cell soma. One of the three dendrites originate from the apical pole of soma, which then branch profusely, ascend through stratum radiatum, and often penetrate stratum lacunosum-moelculare. Primary basal dendrites are more numerous. They also branch close to soma and fan out toward the alveus, spanning the entire depth of stratum oriens."@en .
 
 <http://uri.interlex.org/base/ilx_0105043> a owl:Class ;
     rdfs:label "Hippocampus CA3 Lacunosum Moleculare Neuron"@en ;
@@ -757,7 +757,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Hippocampus CA3 Pyramidal Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Hippocampal CA3 Pyramidal Neuron"@en ;
-    skos:definition "This is the major output neuron in area CA3 of the hippocampus.  It receives input from mossy fibers of the dentate gyrus.  Its axon projects to the contralateral hippocampus and subcortically to the septal nucleus, and sends axon collaterals called Shaffer collaterals to the nearby CA1 region."@en .
+    skos:definition "This is the major output neuron in area CA3 of the hippocampus. It receives input from mossy fibers of the dentate gyrus. Its axon projects to the contralateral hippocampus and subcortically to the septal nucleus, and sends axon collaterals called Shaffer collaterals to the nearby CA1 region."@en .
 
 <http://uri.interlex.org/base/ilx_0105169> a owl:Class ;
     rdfs:label "Hypoglossal Nucleus Motor Neuron"@en ;
@@ -778,7 +778,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Neocortex Pyramidal Cell Layer 5-6"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "TL5"@en ;
-    skos:definition "The pyramidal cell of layer 5 of the neocortex has a pyramidal-shaped cell body which gives off a number of laterally-directed basal dendrites and usually a single apical dendrite which ascends to branch and terminate in layer 1; these dendrites are covered in dendritic spines.  The axon descends through the internal capsule, giving off collaterals to the thalamus, to the medullary pyramids, where most of the axons cross controlaterally to descend and innervate the ventral horn of the spinal cord."@en .
+    skos:definition "The pyramidal cell of layer 5 of the neocortex has a pyramidal-shaped cell body which gives off a number of laterally-directed basal dendrites and usually a single apical dendrite which ascends to branch and terminate in layer 1; these dendrites are covered in dendritic spines. The axon descends through the internal capsule, giving off collaterals to the thalamus, to the medullary pyramids, where most of the axons cross controlaterally to descend and innervate the ventral horn of the spinal cord."@en .
 
 <http://uri.interlex.org/base/ilx_0107388> a owl:Class ;
     rdfs:label "Neocortex Stellate Cell"@en ;
@@ -820,7 +820,7 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom mba:151 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "GC (MOB)"@en ;
-    skos:definition "The main intrinsic neuron in the vertebrate olfactory bulb.  It lacks an axon.  Each cell gives rise to short central dendrites and a single long apical dendrite that traverses the granule cell layer, pierces the mitral cell body layer, and branches and terminates within the external plexiform layer among the lateral dendrites of mitral and tufted cells.  The dendrites receive synaptic input from mitral and tufted cell lateral dendrites, and have synaptic outputs on those dendrites through reciprocal dendrodendritic synapses.  Shepherd, Chen & Greer.  Olfactory Bulb.  The Synaptic Organization of the Brain, ed 5. New York: Oxford University Press, 2004."@en ;
+    skos:definition "The main intrinsic neuron in the vertebrate olfactory bulb. It lacks an axon. Each cell gives rise to short central dendrites and a single long apical dendrite that traverses the granule cell layer, pierces the mitral cell body layer, and branches and terminates within the external plexiform layer among the lateral dendrites of mitral and tufted cells. The dendrites receive synaptic input from mitral and tufted cell lateral dendrites, and have synaptic outputs on those dendrites through reciprocal dendrodendritic synapses. Shepherd, Chen Greer. Olfactory Bulb. The Synaptic Organization of the Brain, ed 5. New York: Oxford University Press, 2004."@en ;
     skos:notation "AOB_GC"^^xsd:string ;
     skos:prefLabel "Olfactory Bulb Main Granule Cell"@en .
 
@@ -831,7 +831,7 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom mba:151 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "MC"@en ;
-    skos:definition "Principal neuron located in the olfactory bulb in the mammalian central nervous system. The cell bodies are arranged in a thin layer between the granule cell layer and the external plexiform layer.  Each mitral cell is usually characterized in the mammal by a single primary dendrite that traverses the external plexiform layer and terminates within an olfactory glomerulus in a tuft of branches which receives input from the axons of olfactory receptor neurons.  Axons of the mitral cells project to a number of areas in the brain, including the piriform cortex, entorhinal cortex, olfactory tubercle, and amygdala."@en ;
+    skos:definition "Principal neuron located in the olfactory bulb in the mammalian central nervous system. The cell bodies are arranged in a thin layer between the granule cell layer and the external plexiform layer. Each mitral cell is usually characterized in the mammal by a single primary dendrite that traverses the external plexiform layer and terminates within an olfactory glomerulus in a tuft of branches which receives input from the axons of olfactory receptor neurons. Axons of the mitral cells project to a number of areas in the brain, including the piriform cortex, entorhinal cortex, olfactory tubercle, and amygdala."@en ;
     skos:notation "AOB_MC"^^xsd:string ;
     skos:prefLabel "Olfactory Bulb Main Mitral Cell"@en .
 
@@ -839,13 +839,13 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Olfactory Bulb Main Periglomerular Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "PG cell: PGC"@en ;
-    skos:definition "Small intrinsic neuron in the glomerular layer of the olfactory bulb, with cell bodies surrounding the olfactory glomerulus.  The cell body is 6-8 um in diameter, from which arises a short bushy dendrite that arborizes within a glomerulus, where it receives synaptic input from olfactory receptor cell axon terminals, and engages in dendrodendritic interactions with mitral/tufted cell dendrites.  Occasionally, bitufted PG cells connected to two glomeruli are seen.  The axon distributes laterally within the extraglomerular region, extending as far as 5-10 glomeruli away.  Some PG cells appear to lack axons.  Subtypes may be identified based on their biochemical constituents."@en .
+    skos:definition "Small intrinsic neuron in the glomerular layer of the olfactory bulb, with cell bodies surrounding the olfactory glomerulus. The cell body is 6-8 um in diameter, from which arises a short bushy dendrite that arborizes within a glomerulus, where it receives synaptic input from olfactory receptor cell axon terminals, and engages in dendrodendritic interactions with mitral/tufted cell dendrites. Occasionally, bitufted PG cells connected to two glomeruli are seen. The axon distributes laterally within the extraglomerular region, extending as far as 5-10 glomeruli away. Some PG cells appear to lack axons. Subtypes may be identified based on their biochemical constituents."@en .
 
 <http://uri.interlex.org/base/ilx_0107935> a owl:Class ;
     rdfs:label "Olfactory Bulb Main Tufted Cell Middle"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "TC"@en ;
-    skos:definition "Principal neuron located in the outer third of the external plexiform layer of the olfactory bulb in the mammalian central nervous system. Each tufted cell is characterized by usually a single short primary dendrite that traverses the outer external plexiform layer and terminates within an olfactory glomerulus in a tuft of branches, where it receives the input from olfactory receptor neuron axon terminals. Differentiated from external tufted cells.  Axons of the tufted cells transfer information to a number of areas in the brain, including the piriform cortex, entorhinal cortex, olfactory tubercle, and amygdala. Shepherd, Shen, Greer.  Olfactory bulb.  In The synaptic organization of the brain, ed 5 New York: Oxford University Press, 2004."@en .
+    skos:definition "Principal neuron located in the outer third of the external plexiform layer of the olfactory bulb in the mammalian central nervous system. Each tufted cell is characterized by usually a single short primary dendrite that traverses the outer external plexiform layer and terminates within an olfactory glomerulus in a tuft of branches, where it receives the input from olfactory receptor neuron axon terminals. Differentiated from external tufted cells. Axons of the tufted cells transfer information to a number of areas in the brain, including the piriform cortex, entorhinal cortex, olfactory tubercle, and amygdala. Shepherd, Shen, Greer. Olfactory bulb. In The synaptic organization of the brain, ed 5 New York: Oxford University Press, 2004."@en .
 
 <http://uri.interlex.org/base/ilx_0107943> a owl:Class ;
     rdfs:label "Olfactory Bulb Main External Tufted Cell"@en ;
@@ -856,13 +856,13 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Olfactory Cortex Large Multipolar Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Olfactory cortex multipolar cell"@en ;
-    skos:definition "A type of intrinsic neuron found in the deep part of layer III of the olfactory cortex and the subjacent endopiriform nucleus.   Several subpopulations of deep multipolar cells may be distinguished based on morphology and physiology.  The one described here has pyramidal cell-like spiny dendrites."@en .
+    skos:definition "A type of intrinsic neuron found in the deep part of layer III of the olfactory cortex and the subjacent endopiriform nucleus. Several subpopulations of deep multipolar cells may be distinguished based on morphology and physiology. The one described here has pyramidal cell-like spiny dendrites."@en .
 
 <http://uri.interlex.org/base/ilx_0107954> a owl:Class ;
     rdfs:label "Olfactory Cortex Semilunar Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "semilunar cell"@en ;
-    skos:definition "Projection neuron found in the superficial border of layer II (IIa) of piriform cortex similar in characteristics to a pyramidal cell and also resembling the granule cell of the dentate gyrus.  It has an apical but no basilar dendrites.  They project to other cortical areas but, in contrast to pyramidal cells, they do not project back to the olfactory bulb."@en .
+    skos:definition "Projection neuron found in the superficial border of layer II (IIa) of piriform cortex similar in characteristics to a pyramidal cell and also resembling the granule cell of the dentate gyrus. It has an apical but no basilar dendrites. They project to other cortical areas but, in contrast to pyramidal cells, they do not project back to the olfactory bulb."@en .
 
 <http://uri.interlex.org/base/ilx_0107983> a owl:Class ;
     rdfs:label "Olfactory Tubercle Islets Of Calleja Spiny Granule Neuron"@en ;
@@ -874,7 +874,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Retina Bipolar Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "BPC"@en ;
-    skos:definition "Small cell in the retina with one peripheral process connecting to terminals of photoreceptors and horizontal cells and the other process connecting to dendrites of ganglion cells and amacrine cells.  It provides the straight-through pathway for visual responses from photoreceptors to ganglion cells.  Several varieties are related to specific processing pathways.  O"@en .
+    skos:definition "Small cell in the retina with one peripheral process connecting to terminals of photoreceptors and horizontal cells and the other process connecting to dendrites of ganglion cells and amacrine cells. It provides the straight-through pathway for visual responses from photoreceptors to ganglion cells. Several varieties are related to specific processing pathways. O"@en .
 
 <http://uri.interlex.org/base/ilx_0110024> a owl:Class ;
     rdfs:label "Retina Photoreceptor Cone Cell"@en ;
@@ -923,7 +923,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "Spinal Cord Ventral Horn Motor Neuron Gamma"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "fusimotor neuron"@en ;
-    skos:definition "Motor neurons which activate the contractile regions of intrafusal muscle fibers, thus adjusting the sensitivity of the muscle spindles to stretch. Gamma motor neurons may be \"static\" or \"dynamic\" according to which aspect of responsiveness (or which fiber types) they regulate. The alpha and gamma motor neurons are often activated together (alpha gamma coactivation) which allows the spindles to contribute to the control of movement trajectories despite changes in muscle length (MSH)."@en .
+    skos:definition "Motor neurons which activate the contractile regions of intrafusal muscle fibers, thus adjusting the sensitivity of the muscle spindles to stretch. Gamma motor neurons may be static or dynamic according to which aspect of responsiveness (or which fiber types) they regulate. The alpha and gamma motor neurons are often activated together (alpha gamma coactivation) which allows the spindles to contribute to the control of movement trajectories despite changes in muscle length (MSH)."@en .
 
 <http://uri.interlex.org/base/ilx_0111179> a owl:Class ;
     rdfs:label "Subiculum Pyramidal Cell"@en ;
@@ -2174,7 +2174,7 @@ schema:title a owl:AnnotationProperty ;
         nsg:PyramidalNeuron ;
     skos:altLabel "L2/3 PC"^^xsd:string,
         "Neocortex Pyramidal Cell Layer 2-3"^^xsd:string ;
-    skos:definition "A layer 2/3 pyramidal cell"^^xsd:string ;
+    skos:definition "A layer 2/3 pyramidal cell"@en ;
     skos:notation "L23_PC"^^xsd:string ;
     skos:prefLabel "Layer 2/3 Pyramidal Cell"@en .
 
@@ -2218,7 +2218,7 @@ bmo:ACB_HFN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:ACB_HFN_mtype ],
         bmo:NucleusAccumbensNeuronEType ;
-    skos:definition "High-firing neurons etype" ;
+    skos:definition "High-firing neurons etype"@en ;
     skos:notation "ACB_HFN_etype"@en ;
     skos:prefLabel "ACB_HFN_etype"@en .
 
@@ -2228,7 +2228,7 @@ bmo:ACB_PN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:ACB_PN_mtype ],
         bmo:NucleusAccumbensNeuronEType ;
-    skos:definition "Projection neurons etype" ;
+    skos:definition "Projection neurons etype"@en ;
     skos:notation "ACB_PN_etype"@en ;
     skos:prefLabel "ACB_PN_etype"@en .
 
@@ -2238,9 +2238,14 @@ bmo:ACB_TAN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:ACB_TAN_mtype ],
         bmo:NucleusAccumbensNeuronEType ;
-    skos:definition "Tonically active neurons etype" ;
+    skos:definition "Tonically active neurons etype"@en ;
     skos:notation "ACB_TAN_etype"@en ;
     skos:prefLabel "ACB_TAN_etype"@en .
+
+bmo:AcetylcholineNeurotransmitterType a owl:Class ;
+    rdfs:label "Acetylcholine Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "Acetylcholine Neurotransmitter Type" .
 
 bmo:AstrocyteElectricalType a owl:Class ;
     rdfs:label "Astrocyte Electrical Type"@en ;
@@ -2258,7 +2263,7 @@ bmo:CP_CR_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:CP_CR_mtype ],
         bmo:CaudoputamenNeuronEType ;
-    skos:definition "Calretinin-positive neurons etype" ;
+    skos:definition "Calretinin-positive neurons etype"@en ;
     skos:notation "CP_CR_etype"@en ;
     skos:prefLabel "CP_CR_etype"@en .
 
@@ -2268,7 +2273,7 @@ bmo:CP_ChIN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:CP_ChIN_mtype ],
         bmo:CaudoputamenNeuronEType ;
-    skos:definition "Cholingeric interneurons etype" ;
+    skos:definition "Cholingeric interneurons etype"@en ;
     skos:notation "CP_ChIN_etype"@en ;
     skos:prefLabel "CP_ChIN_etype"@en .
 
@@ -2278,7 +2283,7 @@ bmo:CP_FS_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:CP_FS_mtype ],
         bmo:CaudoputamenNeuronEType ;
-    skos:definition "PV+ fast-spiking neurons etype" ;
+    skos:definition "PV+ fast-spiking neurons etype"@en ;
     skos:notation "CP_FS_etype"@en ;
     skos:prefLabel "CP_FS_etype"@en .
 
@@ -2288,7 +2293,7 @@ bmo:CP_LTS_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:CP_LTS_mtype ],
         bmo:CaudoputamenNeuronEType ;
-    skos:definition "NPY/SOM+ low-threshold spiking interneurons etype" ;
+    skos:definition "NPY/SOM+ low-threshold spiking interneurons etype"@en ;
     skos:notation "CP_LTS_etype"@en ;
     skos:prefLabel "CP_LTS_etype"@en .
 
@@ -2298,7 +2303,7 @@ bmo:CP_NGF_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:CP_NGF_mtype ],
         bmo:CaudoputamenNeuronEType ;
-    skos:definition "NPY/SOM- neurogliaform neurons etype" ;
+    skos:definition "NPY/SOM- neurogliaform neurons etype"@en ;
     skos:notation "CP_NGF_etype"@en ;
     skos:prefLabel "CP_NGF_etype"@en .
 
@@ -2308,7 +2313,7 @@ bmo:CP_PN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:CP_PN_mtype ],
         bmo:CaudoputamenNeuronEType ;
-    skos:definition "Projection neurons etype" ;
+    skos:definition "Projection neurons etype"@en ;
     skos:notation "CP_PN_etype"@en ;
     skos:prefLabel "CP_PN_etype"@en .
 
@@ -2318,9 +2323,19 @@ bmo:CP_THIN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:CP_THIN_mtype ],
         bmo:CaudoputamenNeuronEType ;
-    skos:definition "TH+ interneurons etype" ;
+    skos:definition "TH+ interneurons etype"@en ;
     skos:notation "CP_THIN_etype"@en ;
     skos:prefLabel "CP_THIN_etype"@en .
+
+bmo:DopamineNeurotransmitterType a owl:Class ;
+    rdfs:label "Dopamine Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "Dopamine Neurotransmitter Type" .
+
+bmo:GABANeurotransmitterType a owl:Class ;
+    rdfs:label "GABA Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "GABA Neurotransmitter Type" .
 
 bmo:GPe_ChIN_etype a owl:Class ;
     rdfs:label "GPe_ChIN_etype"@en ;
@@ -2328,7 +2343,7 @@ bmo:GPe_ChIN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:GPe_ChIN_mtype ],
         bmo:GlobusPallidusExternalSegmentNeuronElectricalType ;
-    skos:definition "Cholingeric interneurons etype" ;
+    skos:definition "Cholingeric interneurons etype"@en ;
     skos:notation "GPe_ChIN_etype"@en ;
     skos:prefLabel "GPe_ChIN_etype"@en .
 
@@ -2338,7 +2353,7 @@ bmo:GPe_GaPN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:GPe_GaPN_mtype ],
         bmo:GlobusPallidusExternalSegmentNeuronElectricalType ;
-    skos:definition "GABAergic projection neurons etype" ;
+    skos:definition "GABAergic projection neurons etype"@en ;
     skos:notation "GPe_GaPN_etype"@en ;
     skos:prefLabel "GPe_GaPN_etype"@en .
 
@@ -2348,7 +2363,7 @@ bmo:GPi_GaPN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:GPi_GaPN_mtype ],
         bmo:GlobusPallidusInternalSegmentNeuronElectricalType ;
-    skos:definition "GABAergic projection neurons etype" ;
+    skos:definition "GABAergic projection neurons etype"@en ;
     skos:notation "GPi_GaPN_etype"@en ;
     skos:prefLabel "GPi_GaPN_etype"@en .
 
@@ -2404,6 +2419,16 @@ bmo:GenericNeuronTType a owl:Class ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:997 ],
         ct:NeuronTranscriptomicType .
+
+bmo:GlutamateNeurotransmitterType a owl:Class ;
+    rdfs:label "Glutamate Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "Glutamate Neurotransmitter Type" .
+
+bmo:HistamineNeurotransmitterType a owl:Class ;
+    rdfs:label "Histamine Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "Histamine Neurotransmitter Type" .
 
 bmo:ModulatoryNeurotransmitterType a owl:Class ;
     rdfs:label "Modulatory"^^xsd:string ;
@@ -4068,45 +4093,6 @@ bmo:NeocortexContinuousAccommodatingElectricalType a owl:Class ;
     rdfs:label "NCx_cAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381369> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381374> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383194> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383195> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383206> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
@@ -4519,6 +4505,45 @@ bmo:NeocortexContinuousAccommodatingElectricalType a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:99_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381369> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381374> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383194> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383195> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
     skos:notation "NCx_cAC"@en ;
     skos:prefLabel "Neocortex continuous accommodating electrical type"@en .
@@ -6486,10 +6511,25 @@ bmo:NeuronProjectionType a owl:Class ;
     rdfs:label "Neuron Projection Type"@en ;
     rdfs:subClassOf bmo:NeuronType .
 
+bmo:NitricOxideNeurotransmitterType a owl:Class ;
+    rdfs:label "Nitric Oxide Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "Nitric Oxide Neurotransmitter Type" .
+
+bmo:NorepinephrineNeurotransmitterType a owl:Class ;
+    rdfs:label "Norepinephrine Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "Norepinephrine Neurotransmitter Type" .
+
 bmo:Other a owl:Class ;
     rdfs:label "Other"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Other"@en .
+
+bmo:OxytocinNeurotransmitterType a owl:Class ;
+    rdfs:label "Oxytocin Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "Oxytocin Neurotransmitter Type" .
 
 bmo:PALv_ChIN_etype a owl:Class ;
     rdfs:label "PALv_ChIN_etype"@en ;
@@ -6497,7 +6537,7 @@ bmo:PALv_ChIN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:PALv_ChIN_mtype ],
         bmo:PallidumVentralRegionNeuronEType ;
-    skos:definition "Cholingeric interneurons etype" ;
+    skos:definition "Cholingeric interneurons etype"@en ;
     skos:notation "PALv_ChIN_etype"@en ;
     skos:prefLabel "PALv_ChIN_etype"@en .
 
@@ -6507,7 +6547,7 @@ bmo:PALv_GaPN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:PALv_GaPN_mtype ],
         bmo:PallidumVentralRegionNeuronEType ;
-    skos:definition "GABAergic projection neurons etype" ;
+    skos:definition "GABAergic projection neurons etype"@en ;
     skos:notation "PALv_GaPN_etype"@en ;
     skos:prefLabel "PALv_GaPN_etype"@en .
 
@@ -6517,7 +6557,7 @@ bmo:PALv_GlPN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:PALv_GlPN_mtype ],
         bmo:PallidumVentralRegionNeuronEType ;
-    skos:definition "Glutamatergic projection neurons etype" ;
+    skos:definition "Glutamatergic projection neurons etype"@en ;
     skos:notation "PALv_GlPN_etype"@en ;
     skos:prefLabel "PALv_GlPN_etype"@en .
 
@@ -6555,7 +6595,7 @@ bmo:SNc_DPN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:SNc_DPN_mtype ],
         bmo:SubstantiaNigraCompactPartNeuronEType ;
-    skos:definition "Dopaminergic projection neurons etype" ;
+    skos:definition "Dopaminergic projection neurons etype"@en ;
     skos:notation "SNc_DPN_etype"@en ;
     skos:prefLabel "SNc_DPN_etype"@en .
 
@@ -6565,7 +6605,7 @@ bmo:SNc_GaIN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:SNc_GaIN_mtype ],
         bmo:SubstantiaNigraCompactPartNeuronEType ;
-    skos:definition "GABAergic interneurons etype" ;
+    skos:definition "GABAergic interneurons etype"@en ;
     skos:notation "SNc_GaIN_etype"@en ;
     skos:prefLabel "SNc_GaIN_etype"@en .
 
@@ -6575,7 +6615,7 @@ bmo:SNr_GaPN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:SNr_GaPN_mtype ],
         bmo:SubstantiaNigraReticularPartNeuronElectricalType ;
-    skos:definition "GABAergic projection neurons etype" ;
+    skos:definition "GABAergic projection neurons etype"@en ;
     skos:notation "SNr_GaPN_etype"@en ;
     skos:prefLabel "SNr_GaPN_etype"@en .
 
@@ -6763,9 +6803,14 @@ bmo:STN_GlPN_etype a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom bmo:STN_GlPN_mtype ],
         bmo:SubthalamicNucleusNeuronEType ;
-    skos:definition "Glutamatergic projection neurons etype" ;
+    skos:definition "Glutamatergic projection neurons etype"@en ;
     skos:notation "STN_GlPN_etype"@en ;
     skos:prefLabel "STN_GlPN_etype"@en .
+
+bmo:SerotoninNeurotransmitterType a owl:Class ;
+    rdfs:label "Serotonin Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "Serotonin Neurotransmitter Type" .
 
 bmo:Serpinf1_plus a owl:Class ;
     rdfs:label "Serpinf1+"@en ;
@@ -6977,7 +7022,7 @@ ct:AmygdaloidNucleusParacapsularIntercalatedCell a owl:Class ;
             owl:hasValue "http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Cell.owl#nlx_cell_100202"^^xsd:string ;
             owl:onProperty owl:equivalentClass ],
         bmo:NewNeuronType ;
-    skos:definition "GABA containing interneuron that occur in densely packed clusters located in and around the border of the basolateral amygdaloid nucleus and the external capsule. These cells are characterized by a small soma and a poorly developed short dendrite and their occurrence in tightly packed groups. Two distinct subtypes have been proposed by Marowsky et al (Neuron 48:1025, 2005) based on location and morphology."^^xsd:string .
+    skos:definition "GABA containing interneuron that occur in densely packed clusters located in and around the border of the basolateral amygdaloid nucleus and the external capsule. These cells are characterized by a small soma and a poorly developed short dendrite and their occurrence in tightly packed groups. Two distinct subtypes have been proposed by Marowsky et al (Neuron 48:1025, 2005) based on location and morphology."@en .
 
 ct:Astrocyte_1 a owl:Class ;
     rdfs:label "Astrocyte_1"@en ;
@@ -7259,7 +7304,7 @@ ct:CochlearNucleusVentralBushyCell a owl:Class ;
             owl:onProperty owl:equivalentClass ],
         bmo:NewNeuronType ;
     skos:altLabel "Cochlear nucleus (ventral) bushy cell"^^xsd:string ;
-    skos:definition "Type of neuron in the anteroventral cochlear nucleus characterized by two to four primary dendrites which branch profusely, giving the cell a \"bushy\" appearance. The cell somas of these neurons have been described as \"spherical\" in the anterior division of the AVDC and \"globular\" in the posterior division of the AVDC. The principle inputs are from the auditory ganglio cells via the end bulbs of Held."^^xsd:string .
+    skos:definition "Type of neuron in the anteroventral cochlear nucleus characterized by two to four primary dendrites which branch profusely, giving the cell a bushy appearance. The cell somas of these neurons have been described as spherical in the anterior division of the AVDC and globular in the posterior division of the AVDC. The principle inputs are from the auditory ganglio cells via the end bulbs of Held."@en .
 
 ct:CochlearNucleusVentralMultipolarTCell a owl:Class ;
     rdfs:label "Cochlear Nucleus Ventral Multipolar T Cell"@en ;
@@ -7275,7 +7320,7 @@ ct:DorsalRootGanglionCell a owl:Class ;
             owl:hasValue "http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Cell.owl#nifext_84"^^xsd:string ;
             owl:onProperty owl:equivalentClass ],
         bmo:NewNeuronType ;
-    skos:definition "Large cell located in the dorsal root ganglion with a single process that extends into the periphery and into the spinal cord.  These neurons convey sensory information from the body."^^xsd:string .
+    skos:definition "Large cell located in the dorsal root ganglion with a single process that extends into the periphery and into the spinal cord. These neurons convey sensory information from the body."@en .
 
 ct:Endothelial_mural a owl:Class ;
     rdfs:label "Endothelial_mural"@en ;
@@ -9567,21 +9612,21 @@ prov:Agent a owl:Class ;
 bmo:ACB_HFN_mtype a owl:Class ;
     rdfs:label "ACB_HFN_mtype"@en ;
     rdfs:subClassOf bmo:NucleusAccumbensNeuronMType ;
-    skos:definition "High-firing neurons mtype" ;
+    skos:definition "High-firing neurons mtype"@en ;
     skos:notation "ACB_HFN_mtype"@en ;
     skos:prefLabel "ACB_HFN_mtype"@en .
 
 bmo:ACB_PN_mtype a owl:Class ;
     rdfs:label "ACB_PN_mtype"@en ;
     rdfs:subClassOf bmo:NucleusAccumbensNeuronMType ;
-    skos:definition "Projection neurons mtype" ;
+    skos:definition "Projection neurons mtype"@en ;
     skos:notation "ACB_PN_mtype"@en ;
     skos:prefLabel "ACB_PN_mtype"@en .
 
 bmo:ACB_TAN_mtype a owl:Class ;
     rdfs:label "ACB_TAN_mtype"@en ;
     rdfs:subClassOf bmo:NucleusAccumbensNeuronMType ;
-    skos:definition "Tonically active neurons mtype" ;
+    skos:definition "Tonically active neurons mtype"@en ;
     skos:notation "ACB_TAN_mtype"@en ;
     skos:prefLabel "ACB_TAN_mtype"@en .
 
@@ -9598,7 +9643,7 @@ bmo:BrainComponentType a owl:Class ;
 bmo:CP_CR_mtype a owl:Class ;
     rdfs:label "CP_CR_mtype"@en ;
     rdfs:subClassOf bmo:CaudoputamenNeuronMType ;
-    skos:definition "Calretinin-positive neurons mtype" ;
+    skos:definition "Calretinin-positive neurons mtype"@en ;
     skos:notation "CP_CR_mtype"@en ;
     skos:prefLabel "CP_CR_mtype"@en .
 
@@ -9606,14 +9651,14 @@ bmo:CP_ChIN_mtype a owl:Class ;
     rdfs:label "CP_ChIN_mtype"@en ;
     rdfs:subClassOf bmo:CaudoputamenNeuronMType,
         nsg:Interneuron ;
-    skos:definition "Cholingeric interneurons mtype" ;
+    skos:definition "Cholingeric interneurons mtype"@en ;
     skos:notation "CP_ChIN_mtype"@en ;
     skos:prefLabel "CP_ChIN_mtype"@en .
 
 bmo:CP_FS_mtype a owl:Class ;
     rdfs:label "CP_FS_mtype"@en ;
     rdfs:subClassOf bmo:CaudoputamenNeuronMType ;
-    skos:definition "PV+ fast-spiking neurons mtype" ;
+    skos:definition "PV+ fast-spiking neurons mtype"@en ;
     skos:notation "CP_FS_mtype"@en ;
     skos:prefLabel "CP_FS_mtype"@en .
 
@@ -9621,21 +9666,21 @@ bmo:CP_LTS_mtype a owl:Class ;
     rdfs:label "CP_LTS_mtype"@en ;
     rdfs:subClassOf bmo:CaudoputamenNeuronMType,
         nsg:Interneuron ;
-    skos:definition "NPY/SOM+ low-threshold spiking interneurons mtype" ;
+    skos:definition "NPY/SOM+ low-threshold spiking interneurons mtype"@en ;
     skos:notation "CP_LTS_mtype"@en ;
     skos:prefLabel "CP_LTS_mtype"@en .
 
 bmo:CP_NGF_mtype a owl:Class ;
     rdfs:label "CP_NGF_mtype"@en ;
     rdfs:subClassOf bmo:CaudoputamenNeuronMType ;
-    skos:definition "NPY/SOM- neurogliaform neurons mtype" ;
+    skos:definition "NPY/SOM- neurogliaform neurons mtype"@en ;
     skos:notation "CP_NGF_mtype"@en ;
     skos:prefLabel "CP_NGF_mtype"@en .
 
 bmo:CP_PN_mtype a owl:Class ;
     rdfs:label "CP_PN_mtype"@en ;
     rdfs:subClassOf bmo:CaudoputamenNeuronMType ;
-    skos:definition "Projection neurons mtype" ;
+    skos:definition "Projection neurons mtype"@en ;
     skos:notation "CP_PN_mtype"@en ;
     skos:prefLabel "CP_PN_mtype"@en .
 
@@ -9643,7 +9688,7 @@ bmo:CP_THIN_mtype a owl:Class ;
     rdfs:label "CP_THIN_mtype"@en ;
     rdfs:subClassOf bmo:CaudoputamenNeuronMType,
         nsg:Interneuron ;
-    skos:definition "TH+ interneurons mtype" ;
+    skos:definition "TH+ interneurons mtype"@en ;
     skos:notation "CP_THIN_mtype"@en ;
     skos:prefLabel "CP_THIN_mtype"@en .
 
@@ -9658,21 +9703,21 @@ bmo:GPe_ChIN_mtype a owl:Class ;
     rdfs:label "GPe_ChIN_mtype"@en ;
     rdfs:subClassOf bmo:GlobusPallidusExternalSegmentNeuronMType,
         nsg:Interneuron ;
-    skos:definition "Cholingeric interneurons mtype" ;
+    skos:definition "Cholingeric interneurons mtype"@en ;
     skos:notation "GPe_ChIN_mtype"@en ;
     skos:prefLabel "GPe_ChIN_mtype"@en .
 
 bmo:GPe_GaPN_mtype a owl:Class ;
     rdfs:label "GPe_GaPN_mtype"@en ;
     rdfs:subClassOf bmo:GlobusPallidusExternalSegmentNeuronMType ;
-    skos:definition "GABAergic projection neurons mtype" ;
+    skos:definition "GABAergic projection neurons mtype"@en ;
     skos:notation "GPe_GaPN_mtype"@en ;
     skos:prefLabel "GPe_GaPN_mtype"@en .
 
 bmo:GPi_GaPN_mtype a owl:Class ;
     rdfs:label "GPi_GaPN_mtype"@en ;
     rdfs:subClassOf bmo:GlobusPallidusInternalSegmentNeuronMType ;
-    skos:definition "GABAergic projection neurons mtype" ;
+    skos:definition "GABAergic projection neurons mtype"@en ;
     skos:notation "GPi_GaPN_mtype"@en ;
     skos:prefLabel "GPi_GaPN_mtype"@en .
 
@@ -9766,21 +9811,21 @@ bmo:PALv_ChIN_mtype a owl:Class ;
     rdfs:label "PALv_ChIN_mtype"@en ;
     rdfs:subClassOf bmo:PallidumVentralRegionNeuronMType,
         nsg:Interneuron ;
-    skos:definition "Cholingeric interneurons mtype" ;
+    skos:definition "Cholingeric interneurons mtype"@en ;
     skos:notation "PALv_ChIN_mtype"@en ;
     skos:prefLabel "PALv_ChIN_mtype"@en .
 
 bmo:PALv_GaPN_mtype a owl:Class ;
     rdfs:label "PALv_GaPN_mtype"@en ;
     rdfs:subClassOf bmo:PallidumVentralRegionNeuronMType ;
-    skos:definition "GABAergic projection neurons mtype" ;
+    skos:definition "GABAergic projection neurons mtype"@en ;
     skos:notation "PALv_GaPN_mtype"@en ;
     skos:prefLabel "PALv_GaPN_mtype"@en .
 
 bmo:PALv_GlPN_mtype a owl:Class ;
     rdfs:label "PALv_GlPN_mtype"@en ;
     rdfs:subClassOf bmo:PallidumVentralRegionNeuronMType ;
-    skos:definition "Glutamatergic projection neurons mtype" ;
+    skos:definition "Glutamatergic projection neurons mtype"@en ;
     skos:notation "PALv_GlPN_mtype"@en ;
     skos:prefLabel "PALv_GlPN_mtype"@en .
 
@@ -9795,7 +9840,7 @@ bmo:SAC a owl:Class ;
 bmo:SNc_DPN_mtype a owl:Class ;
     rdfs:label "SNc_DPN_mtype"@en ;
     rdfs:subClassOf bmo:SubstantiaNigraCompactPartNeuronMType ;
-    skos:definition "Dopaminergic projection neurons mtype" ;
+    skos:definition "Dopaminergic projection neurons mtype"@en ;
     skos:notation "SNc_DPN_mtype"@en ;
     skos:prefLabel "SNc_DPN_mtype"@en .
 
@@ -9803,21 +9848,21 @@ bmo:SNc_GaIN_mtype a owl:Class ;
     rdfs:label "SNc_GaIN_mtype"@en ;
     rdfs:subClassOf bmo:SubstantiaNigraCompactPartNeuronMType,
         nsg:Interneuron ;
-    skos:definition "GABAergic interneurons mtype" ;
+    skos:definition "GABAergic interneurons mtype"@en ;
     skos:notation "SNc_GaIN_mtype"@en ;
     skos:prefLabel "SNc_GaIN_mtype"@en .
 
 bmo:SNr_GaPN_mtype a owl:Class ;
     rdfs:label "SNr_GaPN_mtype"@en ;
     rdfs:subClassOf bmo:SubstantiaNigraReticularPartNeuronMType ;
-    skos:definition "GABAergic projection neurons mtype" ;
+    skos:definition "GABAergic projection neurons mtype"@en ;
     skos:notation "SNr_GaPN_mtype"@en ;
     skos:prefLabel "SNr_GaPN_mtype"@en .
 
 bmo:STN_GlPN_mtype a owl:Class ;
     rdfs:label "STN_GlPN_mtype"@en ;
     rdfs:subClassOf bmo:SubthalamicNucleusNeuronMType ;
-    skos:definition "Glutamatergic projection neurons mtype" ;
+    skos:definition "Glutamatergic projection neurons mtype"@en ;
     skos:notation "STN_GlPN_mtype"@en ;
     skos:prefLabel "STN_GlPN_mtype"@en .
 
@@ -11651,9 +11696,9 @@ obo:UBERON_0007640 a owl:Class .
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LateBifurcatingTuftedPyramidalPhenotype ],
         <http://uri.interlex.org/base/ilx_0738210> ;
-    skos:notation "L6_TPC:A"^^xsd:string ;
     skos:altLabel "L6_TPC_A"^^xsd:string ;
-    skos:definition """L6_TPC_A (tufted PC) have a vertically projecting apical dendrite with a small distal tuft and multiple oblique dendrites."""@en ;
+    skos:definition "L6_TPC_A (tufted PC) have a vertically projecting apical dendrite with a small distal tuft and multiple oblique dendrites."@en ;
+    skos:notation "L6_TPC:A"^^xsd:string ;
     skos:prefLabel "Layer 6 Late Bifurcating Tufted Pyramidal Cell"@en .
 
 <http://uri.interlex.org/base/ilx_0381376> a owl:Class ;
@@ -11905,9 +11950,9 @@ obo:UBERON_0007640 a owl:Class .
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:290_L6_CT_CTX ],
         <http://uri.interlex.org/base/ilx_0738210> ;
-    skos:notation "L6_TPC:C"^^xsd:string ;
     skos:altLabel "L6_TPC_C"^^xsd:string ;
-    skos:definition """L6_TPC_C (narrow PC) have a narrow, vertically projecting apical dendrite, with a small distal tuft and often more oblique dendrites than other PC types."""@en ;
+    skos:definition "L6_TPC_C (narrow PC) have a narrow, vertically projecting apical dendrite, with a small distal tuft and often more oblique dendrites than other PC types."@en ;
+    skos:notation "L6_TPC:C"^^xsd:string ;
     skos:prefLabel "Layer 6 Narrow Tufted Pyramidal Cell"@en .
 
 <http://uri.interlex.org/base/ilx_0381377> a owl:Class ;
@@ -12476,11 +12521,7 @@ obo:UBERON_0007640 a owl:Class .
             owl:someValuesFrom obo:UBERON_0005390 ],
         bmo:L1_NGC,
         bmo:NGC-SA ;
-    skos:definition """Neurogliaform Cell with slender axonal arborization: Visually, NGC-SAs appeared as a sparser
-variation of NGC-DAs. They displayed similar axonal branching patterns in terms of segment length, tortuosity,
-and branch angles. However, NGC-SAs differ from NGC-DAs in that they displayed significantly smaller
-vertical arborizations with fewer and shorter axon collaterals. On the other hand, the dendritic arborization
-extended further horizontally with longer dendritic segments and smaller branching angles."""@en ;
+    skos:definition "Neurogliaform Cell with slender axonal arborization: Visually, NGC-SAs appeared as a sparser variation of NGC-DAs. They displayed similar axonal branching patterns in terms of segment length, tortuosity, and branch angles. However, NGC-SAs differ from NGC-DAs in that they displayed significantly smaller vertical arborizations with fewer and shorter axon collaterals. On the other hand, the dendritic arborization extended further horizontally with longer dendritic segments and smaller branching angles."@en ;
     skos:notation "L1_NGC-SA"^^xsd:string ;
     skos:prefLabel "Layer 1 Neurogliaform Cell_sparse axon"@en .
 
@@ -12595,7 +12636,7 @@ extended further horizontally with longer dendritic segments and smaller branchi
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:InvertedPyramidalPhenotype ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/InvertedPyramidalCell> ;
-    skos:definition "L2_IPCs  are directed towards white matter, have apical trees that project in the direction opposite to the pia."@en ;
+    skos:definition "L2_IPCs are directed towards white matter, have apical trees that project in the direction opposite to the pia."@en ;
     skos:notation "L2_IPC"^^xsd:string ;
     skos:prefLabel "Layer 2 Inverted Pyramidal Cell"@en .
 
@@ -13576,7 +13617,7 @@ bmo:SubstantiaNigraCompactPartNeuronMType a owl:Class ;
 ct:TrilaminarCell a owl:Class ;
     rdfs:label "Trilaminar cell"@en ;
     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType> ;
-    skos:definition "The trilaminar cell is a neuron that innervates three layers."^^xsd:string ;
+    skos:definition "The trilaminar cell is a neuron that innervates three layers."@en ;
     skos:notation "Tri"^^xsd:string ;
     skos:prefLabel "Trilaminar cell"^^xsd:string .
 
@@ -13695,11 +13736,6 @@ bmo:HippocampalSeptalCell a owl:Class ;
         <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType>,
         nsg:Interneuron .
 
-bmo:NeurotransmitterType a owl:Class ;
-    rdfs:label "Neurotransmitter Type"@en ;
-    rdfs:subClassOf bmo:NeuronType ;
-    skos:prefLabel "Neurotransmitter Type" .
-
 bmo:NucleusAccumbensNeuronEType a owl:Class ;
     rdfs:label "Nucleus Accumbens EType"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -13753,7 +13789,7 @@ ct:AxoAxonicCell a owl:Class ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType>,
         nsg:Interneuron ;
-    skos:definition "Axo-axonic cells are also known as Chandelier cells.  They possess radially oriented dendrites spanning all layers."^^xsd:string ;
+    skos:definition "Axo-axonic cells are also known as Chandelier cells. They possess radially oriented dendrites spanning all layers."@en ;
     skos:notation "AA"^^xsd:string ;
     skos:prefLabel "Axo-axonic cell"^^xsd:string .
 
@@ -13794,7 +13830,7 @@ ct:IvyCell a owl:Class ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType>,
         nsg:Interneuron ;
-    skos:definition "Ivy cells are highly abundant GABAergic interneurons compared to basket, bistratified, or axo-axonic cells. \"Ivy\" cells are named after their dense and fine axons innervating mostly basal and oblique pyramidal cell dendrites. They express nitric oxide synthase, neuropeptide Y, and high levels of GABAa receptor aplha1 subunit and they are also identified as slow-spiking interneurons that regulate the excitability of pyramidal cell dendrites through slowly rising and decaying GABAergic inputs. See also: http://uri.interlex.org/base/ilx_0105026"^^xsd:string ;
+    skos:definition "Ivy cells are highly abundant GABAergic interneurons compared to basket, bistratified, or axo-axonic cells. Ivy cells are named after their dense and fine axons innervating mostly basal and oblique pyramidal cell dendrites. They express nitric oxide synthase, neuropeptide Y, and high levels of GABAa receptor aplha1 subunit and they are also identified as slow-spiking interneurons that regulate the excitability of pyramidal cell dendrites through slowly rising and decaying GABAergic inputs. See also: http://uri.interlex.org/base/ilx_0105026"@en ;
     skos:notation "Ivy"^^xsd:string ;
     skos:prefLabel "Ivy cell"^^xsd:string .
 
@@ -13811,7 +13847,7 @@ ct:OriensLacunosumMoleculareCell a owl:Class ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType>,
         nsg:Interneuron ;
-    skos:definition "Oriens Lacunosum Moleculare (O-LM) cells are interneurons mostly immunoreactive to GABAergic markers."^^xsd:string ;
+    skos:definition "Oriens Lacunosum Moleculare (O-LM) cells are interneurons mostly immunoreactive to GABAergic markers."@en ;
     skos:notation "OLM"^^xsd:string ;
     skos:prefLabel "Oriens lacunosum moleculare cell"^^xsd:string .
 
@@ -14112,21 +14148,12 @@ mba:726 a owl:Class .
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:DescendingAxonPhenotype ],
         bmo:DAC ;
-    skos:definition """Decending Axon Cell: DACs were easily distinguished due to the presence of one to a few
-descending axon collaterals that reached layers 4, 5, and occasionally 6 (Hestrin and Armstrong, 1996). Their
-other striking distinguishing feature was the large horizontal (often > 1 mm) and vertical (often > 0.5 mm)
-extents of their axonal arborization, which was the largest of any m-type in layer 1."""@en ;
+    skos:definition "Decending Axon Cell: DACs were easily distinguished due to the presence of one to a few descending axon collaterals that reached layers 4, 5, and occasionally 6 (Hestrin and Armstrong, 1996). Their other striking distinguishing feature was the large horizontal (often 1 mm) and vertical (often 0.5 mm) extents of their axonal arborization, which was the largest of any m-type in layer 1."@en ;
     skos:notation "L1_DAC"^^xsd:string ;
     skos:prefLabel "Layer 1 Descending Axon Cell"@en .
 
 <http://uri.interlex.org/base/ilx_0383194> a owl:Class ;
     rdfs:label "L1_LAC"@en ;
-    skos:definition """DLACs appeared visually similar to the HACs. On closer inspection, however, the
-axonal segments were shorter and projected more radially compared with HACs. Particularly, many short
-branches emerged from long axonal collaterals. They displayed the longest total length of axon, the highest
-number of segments, and the highest maximum branch order among layer 1 m-types. The axonal collaterals
-of more than 50% of LACs were often seen to project vertically into layers 2 and 3. Their dendrites also
-displayed the highest segment number indicating frequent branching."""@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -14441,6 +14468,7 @@ displayed the highest segment number indicating frequent branching."""@en ;
             owl:someValuesFrom nsg:LargeAxonPhenotype ],
         bmo:LAC ;
     skos:altLabel "L1_DLAC"^^xsd:string ;
+    skos:definition "DLACs appeared visually similar to the HACs. On closer inspection, however, the axonal segments were shorter and projected more radially compared with HACs. Particularly, many short branches emerged from long axonal collaterals. They displayed the longest total length of axon, the highest number of segments, and the highest maximum branch order among layer 1 m-types. The axonal collaterals of more than 50 of LACs were often seen to project vertically into layers 2 and 3. Their dendrites also displayed the highest segment number indicating frequent branching."@en ;
     skos:notation "L1_LAC"^^xsd:string ;
     skos:prefLabel "Layer 1 Large Axon Cell"@en .
 
@@ -15006,7 +15034,7 @@ ct:HippocampusBasketCell a owl:Class ;
             owl:someValuesFrom obo:PATO_0070002 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType>,
         nsg:Interneuron ;
-    skos:definition "Hippocampus basket cells are interneurons with 1-3 dendrites extending from the soma."^^xsd:string ;
+    skos:definition "Hippocampus basket cells are interneurons with 1-3 dendrites extending from the soma."@en ;
     skos:notation "BC"^^xsd:string ;
     skos:prefLabel "Hippocampus basket cell"^^xsd:string .
 
@@ -15727,9 +15755,7 @@ obo:UBERON_0005390 a owl:Class .
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:HorizontalAxonPhenotype ],
         bmo:HAC ;
-    skos:definition """Horizontal Axon Cell: HACs were characterized by extensive horizontal axonal arborizations as
-compared to vertical extents, with long axonal segment lengths. Their horizontal/vertical extent ratio (often > 4
-fold) was the highest among all other m-types in layer 1."""@en ;
+    skos:definition "Horizontal Axon Cell: HACs were characterized by extensive horizontal axonal arborizations as compared to vertical extents, with long axonal segment lengths. Their horizontal/vertical extent ratio (often 4 fold) was the highest among all other m-types in layer 1."@en ;
     skos:notation "L1_HAC"^^xsd:string ;
     skos:prefLabel "Layer 1 Horizontal Axon Cell"@en .
 
@@ -16049,10 +16075,7 @@ fold) was the highest among all other m-types in layer 1."""@en ;
             owl:someValuesFrom nsg:SmallAxonPhenotype ],
         bmo:SAC ;
     skos:altLabel "L1_SLAC"^^xsd:string ;
-    skos:definition """SLACs had the smallest axonal arborization reflected in the lowest total axonal
-lengths among layer 1 m-types. The axonal arbor also displayed the lowest number of axonal segments and
-the lowest maximum axonal branch order. The axons, however, had the largest axonal branch angles with
-straight axonal segments. About a third of SACs projected one or two axonal collaterals into layers 2 and 3."""@en ;
+    skos:definition "SLACs had the smallest axonal arborization reflected in the lowest total axonal lengths among layer 1 m-types. The axonal arbor also displayed the lowest number of axonal segments and the lowest maximum axonal branch order. The axons, however, had the largest axonal branch angles with straight axonal segments. About a third of SACs projected one or two axonal collaterals into layers 2 and 3."@en ;
     skos:notation "L1_SAC"^^xsd:string ;
     skos:prefLabel "Layer 1 Small Axon Cell"@en .
 
@@ -19969,10 +19992,7 @@ mba:463 a owl:Class .
             owl:someValuesFrom obo:UBERON_0005390 ],
         bmo:L1_NGC,
         bmo:NGC-DA ;
-    skos:definition """Neurogliaform Cell with dense axonal arborization: NGC-DAs were very similar to the NGC cells
-reported in other cortical layers showing small compact axonal arborization (Kawaguchi and Kubota, 1997;
-Kisvárday et al., 1990; Szabadics et al., 2007). These neurons also typically displayed the shortest dendritic
-segments among all layer I neurons."""@en ;
+    skos:definition "Neurogliaform Cell with dense axonal arborization: NGC-DAs were very similar to the NGC cells reported in other cortical layers showing small compact axonal arborization (Kawaguchi and Kubota, 1997; Kisv rday et al., 1990; Szabadics et al., 2007). These neurons also typically displayed the shortest dendritic segments among all layer I neurons."@en ;
     skos:notation "L1_NGC-DA"^^xsd:string ;
     skos:prefLabel "Layer 1 Neurogliaform Cell_dense axon"@en .
 
@@ -20633,7 +20653,7 @@ nsg:PyramidalNeuron a owl:Class ;
             owl:someValuesFrom obo:PATO_0070017 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Pyramidal cell"^^xsd:string ;
-    skos:definition "A neuron with a pyramidal shaped soma and two distinct dendritic trees. The basal dendrites emerge from the base and the apical dendrites from the apex of the pyramidal cell body."^^xsd:string ;
+    skos:definition "A neuron with a pyramidal shaped soma and two distinct dendritic trees. The basal dendrites emerge from the base and the apical dendrites from the apex of the pyramidal cell body."@en ;
     skos:notation "Pyr"^^xsd:string ;
     skos:prefLabel "Pyramidal neuron"^^xsd:string .
 
@@ -21839,6 +21859,11 @@ obo:UBERON_0005393 a owl:Class .
     skos:definition "Bipolar Cell: BPs had bipolar dendrites that emerged from the two poles of a small vertical spindle like soma. A few BPs could have a third dendrite emerging from the middle of the soma. Their axonal clusters were narrow and vertically oriented."@en ;
     skos:notation "L4_BP"^^xsd:string ;
     skos:prefLabel "Layer 4 Bipolar Cell"@en .
+
+bmo:NeurotransmitterType a owl:Class ;
+    rdfs:label "Neurotransmitter Type"@en ;
+    rdfs:subClassOf bmo:NeuronType ;
+    skos:prefLabel "Neurotransmitter Type" .
 
 tts:Oligodendrocytes a owl:Class ;
     rdfs:label "Oligodendrocytes Transcriptome Type"^^xsd:string ;
@@ -26197,7 +26222,7 @@ obo:UBERON_0005391 a owl:Class .
             owl:onProperty nsg:hasMorphologicalPhenotype ;
             owl:someValuesFrom nsg:LargeBasketPhenotype ],
         <http://uri.interlex.org/base/ilx_0777215> ;
-    skos:definition "Large Basket Cell: LBCs had multipolar or bitufted dendrites, an axonal cluster characterized by straight and long axonal segments with low density of boutons, and long collaterals giving branches from both sides. Layers 5 and 6  LBCs often had ascending axonal collaterals reaching layer 2/3 or even layer 1."@en ;
+    skos:definition "Large Basket Cell: LBCs had multipolar or bitufted dendrites, an axonal cluster characterized by straight and long axonal segments with low density of boutons, and long collaterals giving branches from both sides. Layers 5 and 6 LBCs often had ascending axonal collaterals reaching layer 2/3 or even layer 1."@en ;
     skos:notation "L6_LBC"^^xsd:string ;
     skos:prefLabel "Layer 6 Large Basket Cell"@en .
 
@@ -28805,68 +28830,6 @@ bmo:InhibitoryNeurotransmitterType a owl:Class ;
     skos:notation "Inh"^^xsd:string ;
     skos:prefLabel "Inhibitory neuron"^^xsd:string ;
     nsg:color "#ff2222"^^xsd:string .
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/GlutamateNeurotransmitterType
-bmo:GlutamateNeurotransmitterType a owl:Class ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    rdfs:label "Glutamate Neurotransmitter"@en ;
-    skos:prefLabel "Glutamate Neurotransmitter Type" .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/GABANeurotransmitterType
-bmo:GABANeurotransmitterType a owl:Class ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    rdfs:label "GABA Neurotransmitter"@en ;
-    skos:prefLabel "GABA Neurotransmitter Type" .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/NitricOxideNeurotransmitterType
-bmo:NitricOxideNeurotransmitterType a owl:Class ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    rdfs:label "Nitric Oxide Neurotransmitter"@en ;
-    skos:prefLabel "Nitric Oxide Neurotransmitter Type" .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/OxytocinNeurotransmitterType
-bmo:OxytocinNeurotransmitterType a owl:Class ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    rdfs:label "Oxytocin Neurotransmitter"@en ;
-    skos:prefLabel "Oxytocin Neurotransmitter Type" .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/DopamineNeurotransmitterType
-bmo:DopamineNeurotransmitterType a owl:Class ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    rdfs:label "Dopamine Neurotransmitter"@en ;
-    skos:prefLabel "Dopamine Neurotransmitter Type" .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/SerotoninNeurotransmitterType
-bmo:SerotoninNeurotransmitterType a owl:Class ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    rdfs:label "Serotonin Neurotransmitter"@en ;
-    skos:prefLabel "Serotonin Neurotransmitter Type" .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/AcetylcholineNeurotransmitterType
-bmo:AcetylcholineNeurotransmitterType a owl:Class ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    rdfs:label "Acetylcholine Neurotransmitter"@en ;
-    skos:prefLabel "Acetylcholine Neurotransmitter Type" .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/HistamineNeurotransmitterType
-bmo:HistamineNeurotransmitterType a owl:Class ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    rdfs:label "Histamine Neurotransmitter"@en ;
-    skos:prefLabel "Histamine Neurotransmitter Type" .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/NorepinephrineNeurotransmitterType
-bmo:NorepinephrineNeurotransmitterType a owl:Class ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    rdfs:label "Norepinephrine Neurotransmitter"@en ;
-    skos:prefLabel "Norepinephrine Neurotransmitter Type" .
 
 tts:Glutamatergic_neurons a owl:Class ;
     rdfs:label "Glutamatergic Neurons Transcriptome Type"^^xsd:string ;
