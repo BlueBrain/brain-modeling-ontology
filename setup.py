@@ -26,7 +26,7 @@ setup(
         "setuptools_scm",
     ],
     install_requires=[
-        "rdflib",
+        "rdflib==6.2.0",
         "pyld",
         "ontospy",
         "numpy",
