@@ -23701,6 +23701,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
 ###  http://purl.obolibrary.org/obo/UBERON_0002305
 <http://purl.obolibrary.org/obo/UBERON_0002305> rdf:type owl:Class ;
                                                 rdfs:subClassOf <https://neuroshapes.org/BrainRegion> ;
+                                                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer> ;
                                                 schema:about <http://api.brain-map.org/api/v2/data/Structure/375> ;
                                                 rdfs:label "layer of hippocampus"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#definition> "The layers of the laminar structure of the hippocampus."^^xsd:string .

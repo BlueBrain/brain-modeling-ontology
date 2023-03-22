@@ -1,15 +1,15 @@
 import json
-from bmo_tools.utils import BMO, NSG, SCHEMAORG
+from bmo_tools.utils import BMO, MBA, NSG, SCHEMAORG
 
 import pytest
 import rdflib
 from kgforge.core.commons import Context
 from kgforge.core.commons.strategies import ResolvingStrategy
-from rdflib import RDFS, Graph, Namespace, RDF, OWL, SH
+from rdflib import RDFS, XSD, Graph, Literal, Namespace, RDF, OWL, SH
 from rdflib.plugins.parsers.notation3 import BadSyntax
 import glob
 import bmo_tools.ontologies as bmo
-from register_ontologies import JSONLD_CONTEXT_IRI
+from register_ontologies import JSONLD_CONTEXT_IRI, _merge_ontology
 from rdflib.paths import OneOrMore, ZeroOrMore, inv_path, neg_path
 
 
@@ -62,16 +62,19 @@ def test_no_topObjectProperty_instances(forge, all_ontology_graphs):
     assert len(list(topobj_prop_instances)) == 0
 
 
-def test_all_classes_are_extracted(data_jsonld_context, all_ontology_graphs):
-    new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
+def test_all_classes_are_extracted(framed_classes):
 
-    class_ids, class_jsons, all_blank_node_triples, new_classes = bmo.frame_classes(all_ontology_graphs[0], new_jsonld_context,
-                                                                       new_jsonld_context.document)
+    class_ids   = framed_classes[0] 
+    class_jsons = framed_classes[1]
+    all_ontology_graph = framed_classes[2]
+    triples_to_add = framed_classes[3]
+    triples_to_remove = framed_classes[4]
+
     assert len(class_ids) == len(class_jsons)
 
-    classes = all_ontology_graphs[0].subjects(RDF.type, OWL.Class)
+    classes = all_ontology_graph.subjects(RDF.type, OWL.Class)
     classes = [str(c) for c in classes]
-    instances = all_ontology_graphs[0].subjects(RDF.type, OWL.NamedIndividual)
+    instances = all_ontology_graph.subjects(RDF.type, OWL.NamedIndividual)
     instances = [str(i) for i in instances]
     cls_int = []
     cls_int.extend(classes)
@@ -119,58 +122,85 @@ def test_metype_correctedly_propagated(all_ontology_graphs, forge):
     assert set(propagated_brain_regions)  == expected_propagated_brain_regions
     
 
-def test_brain_region_same_leaves_in_all_hierarchy(all_ontology_graphs, data_jsonld_context):
+def test_brain_region_same_leaves_in_all_hierarchy(all_ontology_graphs):
     ontology_graph = all_ontology_graphs[0]
-    new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
 
+    isocortex_brain_region_uri = "http://api.brain-map.org/api/v2/data/Structure/315"
     ammons_horn_brain_region_uri = "http://api.brain-map.org/api/v2/data/Structure/375"
-    field_CA1_so_brain_region_uri = "http://api.brain-map.org/api/v2/data/Structure/182305693"
     anterior_cingulate_area_dorsal_part_layer_6b = "http://api.brain-map.org/api/v2/data/Structure/927"
-
 
     current_class_layers = list(ontology_graph.objects(rdflib.term.URIRef(anterior_cingulate_area_dorsal_part_layer_6b), NSG.hasLayerLocationPhenotype))
     classes_relevant_for_layer = set()
     for layer in current_class_layers:
         classes_relevant_for_layer = set(ontology_graph.objects(rdflib.term.URIRef(layer), RDFS.subClassOf*OneOrMore/SCHEMAORG.about))
 
-
     new_classes = bmo._create_property_based_hierarchy(ontology_graph, rdflib.term.URIRef(anterior_cingulate_area_dorsal_part_layer_6b), 
                                                     current_class_layers, classes_relevant_for_layer, SCHEMAORG.isPartOf)
     assert len(new_classes) == 0
 
-
     ammons_horn_brain_region_layer_leaves = set(ontology_graph.objects(rdflib.term.URIRef(ammons_horn_brain_region_uri), BMO.hasLayerLeafRegionPart))
     ammons_horn_brain_region_default_leaves = set(ontology_graph.objects(rdflib.term.URIRef(ammons_horn_brain_region_uri), BMO.hasLeafRegionPart))
-    assert len(ammons_horn_brain_region_layer_leaves) == len(ammons_horn_brain_region_default_leaves)
+    assert ammons_horn_brain_region_layer_leaves == ammons_horn_brain_region_default_leaves
 
+    isocortex_brain_region_layer_in_annotation_leaves = _get_in_annotation_leaves(isocortex_brain_region_uri, ontology_graph, BMO.hasLayerLeafRegionPart)
+    isocortex_brain_region_default_in_annotation_leaves =  _get_in_annotation_leaves(isocortex_brain_region_uri, ontology_graph, BMO.hasLeafRegionPart)
+    assert isocortex_brain_region_layer_in_annotation_leaves == isocortex_brain_region_default_in_annotation_leaves
     
-def test_layered_child_has_same_parent_layer(all_ontology_graphs, data_jsonld_context):
-    
-    ontology_graph = all_ontology_graphs[0]
-    new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
 
-    class_ids, class_jsons, all_blank_node_triples, new_classes = bmo.frame_classes(ontology_graph, new_jsonld_context,
-                                                                       new_jsonld_context.document)
+def test_layered_child_has_same_parent_layer(framed_classes):
+    class_ids   = framed_classes[0] 
+    class_jsons = framed_classes[1]
+    ontology_graph = framed_classes[2]
+    triples_to_add = framed_classes[3]
+    triples_to_remove = framed_classes[4]
+
+    assert len(triples_to_remove) > 0
+    assert len(triples_to_add) >  0
+    
+    framed_class_json_dict = dict(zip(class_ids, class_jsons))
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
-        if (cls, NSG.hasLayerLocationPhenotype, None) in ontology_graph:
-            grand_parents = list(ontology_graph.objects(cls, BMO.isLayerPartOf/SCHEMAORG.isPartOf))
-            relevant_grand_parents = set()
-            
-            current_class_layers = list(ontology_graph.objects(cls, NSG.hasLayerLocationPhenotype))
-            for layer in current_class_layers:
-                classes_relevant_for_layer = set(ontology_graph.objects(layer, RDFS.subClassOf*OneOrMore/SCHEMAORG.about)) 
-                relevant_grand_parents = set()
-                for c in classes_relevant_for_layer:
-                    s= {grand_parent for grand_parent in grand_parents if (grand_parent, BMO.isLayerPartOf*OneOrMore, c) in ontology_graph}
-                    relevant_grand_parents.update(s)
-                assert len(classes_relevant_for_layer) > 0
-                for rg in relevant_grand_parents:
-
-                    assert (rg, NSG.hasLayerLocationPhenotype, layer) in ontology_graph
-        #is_layer_part_ofs = set(ontology_graph.objects(cls, BMO.isLayerPartOf)) # waiting for representedInAnnotation to be merged
-        is_part_ofs = set(ontology_graph.objects(cls, SCHEMAORG.isPartOf)) 
-        #assert len (is_layer_part_ofs) in [0,1]
-        assert len (is_part_ofs) in [0,1]
+        assert str(cls) in framed_class_json_dict
+        cls_json = framed_class_json_dict[str(cls)]
+        if (cls, RDFS.subClassOf*ZeroOrMore, BMO.BrainLayer) not in ontology_graph: 
+            assert (cls, BMO.representedInAnnotation, None) in ontology_graph
+            assert "representedInAnnotation" in cls_json
+            is_represented_in_annotation = list(ontology_graph.objects(cls, BMO.representedInAnnotation))
+            assert len(is_represented_in_annotation) == 1
+            is_represented_in_annotation = is_represented_in_annotation[0]
+            assert isinstance(is_represented_in_annotation, Literal)
+            assert isinstance(cls_json["representedInAnnotation"], bool)
+            assert str(is_represented_in_annotation) in ["true", "false"]
+            assert cls_json["representedInAnnotation"] in [True, False]
+            if cls_json["representedInAnnotation"]:
+                assert (cls, BMO.regionVolume, None) in ontology_graph
+                assert (cls, BMO.regionVolumeRatioToWholeBrain, None) in ontology_graph
+                assert "regionVolume" in cls_json
+                assert "regionVolumeRatioToWholeBrain" in cls_json
+                assert cls_json["regionVolume"]["unitCode"] == "cubic micrometer"
+                assert cls_json["regionVolumeRatioToWholeBrain"]["unitCode"] == "cubic micrometer"
+                assert isinstance(cls_json["regionVolume"]["value"], float)
+                assert isinstance(cls_json["regionVolumeRatioToWholeBrain"]["value"], float)
+            else:
+                assert (cls, BMO.regionVolume, None) not in ontology_graph
+                assert (cls, BMO.regionVolumeRatioToWholeBrain, None) not in ontology_graph
+                assert "regionVolume" not in cls_json
+                assert "regionVolumeRatioToWholeBrain" not in cls_json
+            if (cls, NSG.hasLayerLocationPhenotype, None) in ontology_graph:
+                grand_parents = list(ontology_graph.objects(cls, BMO.isLayerPartOf/SCHEMAORG.isPartOf))
+                current_class_layers = list(ontology_graph.objects(cls, NSG.hasLayerLocationPhenotype))
+                for layer in current_class_layers:
+                    classes_relevant_for_layer = set(ontology_graph.objects(layer, RDFS.subClassOf*OneOrMore/SCHEMAORG.about)) 
+                    relevant_grand_parents = set()
+                    for c in classes_relevant_for_layer:
+                        s= {grand_parent for grand_parent in grand_parents if (grand_parent, BMO.isLayerPartOf*OneOrMore, c) in ontology_graph}
+                        relevant_grand_parents.update(s)
+                    assert len(classes_relevant_for_layer) > 0
+                    for rg in relevant_grand_parents:
+                        assert (rg, NSG.hasLayerLocationPhenotype, layer) in ontology_graph
+            #is_layer_part_ofs = set(ontology_graph.objects(cls, BMO.isLayerPartOf)) # waiting to clarify if to enforce at most a single parent for layer based hierarchy
+            is_part_ofs = set(ontology_graph.objects(cls, SCHEMAORG.isPartOf)) 
+            #assert len (is_layer_part_ofs) in [0,1]
+            assert len(is_part_ofs) in [0,1]
 
 
    
@@ -186,6 +216,10 @@ def test_all_schema_are_valid(forge_schema, all_schema_graphs):
     # https://incf.github.io/neuroshapes/contexts/schema.json is in
     pass
 """
+
+def _get_in_annotation_leaves(uri, ontology_graph, view_leaf_property_uri_ref):
+    leaves = set(ontology_graph.objects(rdflib.term.URIRef(uri), view_leaf_property_uri_ref))
+    return {l for l in leaves if (l, BMO.representedInAnnotation, Literal(True, datatype=XSD.boolean)) in ontology_graph}
 
 
 
