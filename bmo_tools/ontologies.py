@@ -321,44 +321,28 @@ def remove_defines_relation(graph):
         graph.remove((None, defines_rel, c))
 
 
-def _process_blank_nodes(ontology_graph, source, blank_node):
+def _process_blank_nodes(ontology_graph, blank_node, process_restriction=True):
     blank_node_triples = []
 
     rel = None
     target = None
-    for oo in ontology_graph.objects(blank_node, OWL.onProperty):
-        rel = oo
-    for oo in ontology_graph.objects(blank_node, OWL.someValuesFrom):
-        target = oo
-    if target is None:
-        for oo in ontology_graph.objects(blank_node, OWL.hasValue):
+    if process_restriction:
+        for oo in ontology_graph.objects(blank_node, OWL.onProperty):
+            rel = oo
+        for oo in ontology_graph.objects(blank_node, OWL.someValuesFrom):
             target = oo
-    if target is None:
-        for oo in ontology_graph.objects(blank_node, OWL.allValuesFrom):
-            target = oo
-    blank_node_triples.append((blank_node, rel, target))
+        if target is None:
+            for oo in ontology_graph.objects(blank_node, OWL.hasValue):
+                target = oo
+        if target is None:
+            for oo in ontology_graph.objects(blank_node, OWL.allValuesFrom):
+                target = oo
+        blank_node_triples.append((blank_node, rel, target))
+    else:
+         for t in ontology_graph.triples((blank_node, None, None)):
+            blank_node_triples.append(t)
+
     return rel, target, blank_node_triples
-
-
-def restrictions_to_triples(ontology_graph):
-    """Convert restrictions on relationships to simple RDF triples."""
-    # Consider keeping restrictions in ontology and remove them in classes
-    triples_to_remove = []
-    for c in ontology_graph.subjects(RDF.type, OWL.Class):
-        if isinstance(c, rdflib.term.BNode):
-            for o in ontology_graph.objects(c, RDFS.subClassOf):
-                _process_blank_nodes(ontology_graph, c, o, triples_to_remove)
-                triples_to_remove.append((c, RDFS.subClassOf, o))
-
-    for individual in ontology_graph.subjects(RDF.type, OWL.NamedIndividual):
-        for o in ontology_graph.objects(individual, RDF.type):
-            if isinstance(o, rdflib.term.BNode):
-                _process_blank_nodes(
-                    ontology_graph, individual, o, triples_to_remove)
-                triples_to_remove.append((individual, RDF.type, o))
-
-    for n in triples_to_remove:
-        ontology_graph.remove(n)
 
 
 def add_ontology_label(ontology_graph, ontology, label=None):
@@ -383,15 +367,14 @@ def _collect_ancestors_restrictions(ontology_graph, _class, restrictions_propert
     all_blank_node_triples = []
     for p, o in ontology_graph.predicate_objects(_class):
         if p == restrictions_property and isinstance(o, rdflib.term.BNode):
-            rel, target, blank_node_triples = _process_blank_nodes(ontology_graph, _class, o)
+            rel, target, blank_node_triples = _process_blank_nodes(ontology_graph, o)
             rels.append((rel, target))
             all_blank_node_triples.extend(blank_node_triples)
         elif not restrictions_only:
+            if isinstance(o, rdflib.term.BNode):
+                _, _, blank_node_triples = _process_blank_nodes(ontology_graph, o, process_restriction=False)
+                all_blank_node_triples.extend(blank_node_triples)
             rels.append((p,o))
-        """
-        elif p == RDFS.subClassOf:
-            rels.extend(_collect_ancestors_restrictions(ontology_graph, o))
-        """
     return rels, all_blank_node_triples
 
 
@@ -420,7 +403,10 @@ def frame_classes(ontology_graph, forge_context, context):
                 classes_relevant_for_layer = set()
                 for layer in current_class_layers:
                     classes_relevant_for_layer = set(ontology_graph.objects(rdflib.term.URIRef(layer), RDFS.subClassOf*OneOrMore/SCHEMAORG.about)) # every group of layers (e.g. the Neorcotex layer class or the hippocampus layer) should link to its brain region scope (i.e the highest brain regions it applies to) through SCHEMAORG.about
-                new_classes.extend(_create_property_based_hierarchy(ontology_graph, current_class, current_class_layers, classes_relevant_for_layer, SCHEMAORG.isPartOf))
+                new_layered_classes = _create_property_based_hierarchy(ontology_graph, current_class, current_class_layers, classes_relevant_for_layer, SCHEMAORG.isPartOf)
+                for new_c in new_layered_classes:
+                    ontology_graph.add((rdflib.term.URIRef(new_c),BMO.representedInAnnotation, Literal(False, datatype=XSD.boolean)))
+                new_classes.extend(new_layered_classes)
     cls_int.extend({(rdflib.term.URIRef(c), RDFS.subClassOf) for c in new_classes})
 
     inst = ontology_graph.subjects(RDF.type, OWL.NamedIndividual)
@@ -433,6 +419,8 @@ def frame_classes(ontology_graph, forge_context, context):
 
         for p, o in rels:
             current_class_graph.add((current_class, p, o))
+        for t in blank_node_triples:
+            current_class_graph.add(t)
 
         current_class_string = current_class_graph.serialize(
             format="json-ld", auto_compact=True, indent=2)
@@ -1047,10 +1035,9 @@ def build_context_from_ontology(ontology_graph, forge_context, vocab=None, bindi
             errors.append(f"Failed to build context from {cls} defined in the ontology {str(list(defining_ontology))}: {e}")
 
     for obj_prop in ontology_graph.subjects(RDF.type, OWL.ObjectProperty):
-
         try:
             name, idref = _build_context_item(obj_prop, new_forge_context)
-            if name is not None and idref is not None:
+            if name is not None and idref is not None and _is_property_to_include_in_context(idref):
                 new_forge_context.add_term(name, idref, "@id")
                 new_forge_context.document["@context"][name] = {"@id": idref, "@type":"@id"}
 
@@ -1061,7 +1048,7 @@ def build_context_from_ontology(ontology_graph, forge_context, vocab=None, bindi
     for annot_prop in ontology_graph.subjects(RDF.type, OWL.AnnotationProperty):
         try:
             name, idref = _build_context_item(annot_prop, new_forge_context)
-            if name is not None and idref is not None:
+            if name is not None and idref is not None and _is_property_to_include_in_context(idref):
                 new_forge_context.add_term(name, idref)
                 new_forge_context.document["@context"][name] = {"@id": idref}
         except Exception as e:
@@ -1069,6 +1056,14 @@ def build_context_from_ontology(ontology_graph, forge_context, vocab=None, bindi
             errors.append(
                 f"Failed to build context from {annot_prop} defined in the ontology {str(list(defining_ontology))}: {e}")
     return new_forge_context, errors
+
+
+def _is_property_to_include_in_context(uri_ref):
+    ns, fragment = _split_uri(str(uri_ref))
+    return  str(ns) not in ["http://www.geneontology.org/formats/oboInOwl#", "http://purl.obolibrary.org/obo/pato#","http://purl.obolibrary.org/obo/ro/subsets#", "http://purl.obolibrary.org/obo/go#"] \
+                and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/IAO_") \
+                and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/RO_") \
+                and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/BFO_")
 
 
 def build_context_from_schema(schema_graph, forge_context, vocab=None, binding=None):
@@ -1123,7 +1118,7 @@ def _initialise_new_context(forge_context, vocab, binding):
 def _build_context_item(uri_ref, forge_context):
 
     try:
-        ns, fragment = rdflib.namespace.split_uri(str(uri_ref))
+        ns, fragment = _split_uri(str(uri_ref))
     except ValueError as ve:
         raise ValueError(f"Error splitting URI {uri_ref}: {ve}")
 
@@ -1142,6 +1137,12 @@ def _build_context_item(uri_ref, forge_context):
             name, idref = fragment, str(uri_ref) # a new context term can be created
     return name, idref
 
+def _split_uri(uri):
+    try:
+        ns, fragment = rdflib.namespace.split_uri(uri)
+        return ns, fragment
+    except ValueError as ve:
+        raise ValueError(f"Error splitting URI {uri}: {ve}") 
 
 def replace_is_defined_by_uris(graph, uri_mapping, ontology_uri=None):
     """
