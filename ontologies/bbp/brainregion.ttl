@@ -6661,8 +6661,9 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005394> .
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
                                                      rdfs:label "Main olfactory bulb, outer plexiform layer" ;
                                                      skos:notation "MOBopl" ;
-                                                     skos:prefLabel "Main olfactory bulb, outer plexiform layer" .
-
+                                                     skos:prefLabel "Main olfactory bulb, outer plexiform layer" ;
+                                                     skos:altLabel "External plexiform layer of the olfactory bulb" ;
+                                                     skos:altLabel "EPL" .
 
 ###  http://api.brain-map.org/api/v2/data/Structure/245
 <http://api.brain-map.org/api/v2/data/Structure/245> rdf:type owl:Class ;
