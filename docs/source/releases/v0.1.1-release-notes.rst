@@ -74,9 +74,9 @@ Gene Ontology (:code:`ontologies/external/go.ttl`) collects the representation o
 :code:`bmo_tools` package
 -------------------------
 
-- :code:`bmo_tools.ontologies` contains a set of utils for processing and registering ontologies;
-- :code:`bmo_tools.neo4j` contains a set of utils for transforming ontologies to property graphs and loading them into Neo4j;
-- :code:`bmo_tools.kbs` contains a set of utils for querying various knowledge bases (Reactome, GO, Gene Annotations);
+- :code:`bmo.ontologies` contains a set of utils for processing and registering ontologies;
+- :code:`bmo.neo4j` contains a set of utils for transforming ontologies to property graphs and loading them into Neo4j;
+- :code:`bmo.kbs` contains a set of utils for querying various knowledge bases (Reactome, GO, Gene Annotations);
 - :code:`examples.notebooks` collects a set of notebooks providing example of use for all the above-mentioned modules.
 
 

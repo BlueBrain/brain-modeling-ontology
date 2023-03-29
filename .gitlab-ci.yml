@@ -1,4 +1,4 @@
-image: python:3.7
+image: python:3.8
 
 include:
   - project: cs/gitlabci-templates
@@ -51,8 +51,8 @@ register-on-staging-environment:
           - jsonldcontext/*.json
           - texts/*.json
           - register_ontologies.py
-          - bmo_tools/ontologies.py
-          - bmo_tools/utils.py
+          - bmo/ontologies.py
+          - bmo/utils.py
       when: on_success
   script:
     - CA_BUNDLE=$(python3 -c "import certifi; print(certifi.where())")
@@ -82,7 +82,7 @@ register-on-production-environment:
 # Generate ontodocs documentation files and store them in
 generate-ontodocs-documentation:
   stage: generate
-  image: python:3.7
+  image: python:3.8
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success
@@ -122,7 +122,7 @@ generate-ontodocs-documentation:
 # Generate sphinx documentation and stores the artifact under /generated/html
 generate-sphinx-documentation:
   stage: generate
-  image: python:3.7
+  image: python:3.8
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success

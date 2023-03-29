@@ -8,7 +8,7 @@ from typing import Dict
 import rdflib
 from kgforge.core.commons import Context
 
-import bmo_tools.ontologies as bmo
+import bmo.ontologies as bmo
 
 from kgforge.core import KnowledgeGraphForge
 
@@ -16,7 +16,7 @@ from kgforge.specializations.mappings import DictionaryMapping
 
 from rdflib import Literal, Namespace, RDF, OWL, RDFS
 
-from bmo_tools.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, SCHEMAORG, remove_non_ascii, PREFIX_MAPPINGS
+from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, SCHEMAORG, remove_non_ascii, PREFIX_MAPPINGS
 
 import nexussdk as nexus
 
