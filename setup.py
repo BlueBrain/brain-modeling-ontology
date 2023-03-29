@@ -9,11 +9,11 @@ with open(os.path.join(HERE, "README.rst"), encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="bmo_tools",
+    name="bmo",
     author="Blue Brain Project, EPFL",
     use_scm_version={
         "relative_to": __file__,
-        "write_to": "bmo_tools/version.py",
+        "write_to": "bmo/version.py",
         "write_to_template": "__version__ = '{version}'\n",
     },
     description="Tools for processing Brain Modeling Ontology .",
@@ -21,7 +21,7 @@ setup(
     long_description_content_type="text/x-rst",
     keywords="ontology knowledge graph data science",
     packages=find_packages(),
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     setup_requires=[
         "setuptools_scm",
     ],

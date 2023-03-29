@@ -5,8 +5,8 @@ import rdflib
 from kgforge.core import KnowledgeGraphForge, Resource
 from rdflib import RDFS, Namespace, RDF, OWL
 from rdflib.plugins.parsers.notation3 import BadSyntax
-import bmo_tools.ontologies as bmo
-from bmo_tools.utils import BMO, MBA, NXV, SCHEMAORG
+import bmo.ontologies as bmo
+from bmo.utils import BMO, MBA, NXV, SCHEMAORG
 from register_ontologies import _merge_ontology, load_ontologies, load_schemas, initialise_graph
 
 

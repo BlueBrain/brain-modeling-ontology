@@ -12,7 +12,7 @@ from pyshacl.rdfutil import clone_graph
 from rdflib import OWL, RDF, RDFS, SKOS, XSD, PROV, Literal, Namespace
 from rdflib.paths import OneOrMore, ZeroOrMore, neg_path
 
-from bmo_tools.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
+from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
 
 TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
 ALREADY_EXISTS_ERROR = " already exists in project"

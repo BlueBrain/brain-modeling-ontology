@@ -1,14 +1,12 @@
 import json
-from bmo_tools.utils import BMO, MBA, NSG, SCHEMAORG
+from bmo.utils import BMO, NSG, SCHEMAORG
 
 import pytest
 import rdflib
 from kgforge.core.commons import Context
 from kgforge.core.commons.strategies import ResolvingStrategy
-from rdflib import RDFS, XSD, Graph, Literal, Namespace, RDF, OWL, SH
-from rdflib.plugins.parsers.notation3 import BadSyntax
-import glob
-import bmo_tools.ontologies as bmo
+from rdflib import RDFS, XSD, Literal, RDF, OWL, SH
+import bmo.ontologies as bmo
 from register_ontologies import JSONLD_CONTEXT_IRI, _merge_ontology
 from rdflib.paths import OneOrMore, ZeroOrMore, inv_path, neg_path
 
@@ -146,7 +144,6 @@ def test_brain_region_same_leaves_in_all_hierarchy(all_ontology_graphs):
     isocortex_brain_region_default_in_annotation_leaves =  _get_in_annotation_leaves(isocortex_brain_region_uri, ontology_graph, BMO.hasLeafRegionPart)
     assert isocortex_brain_region_layer_in_annotation_leaves == isocortex_brain_region_default_in_annotation_leaves
     
-
 def test_layered_child_has_same_parent_layer(framed_classes):
     class_ids   = framed_classes[0] 
     class_jsons = framed_classes[1]
@@ -220,8 +217,4 @@ def test_all_schema_are_valid(forge_schema, all_schema_graphs):
 def _get_in_annotation_leaves(uri, ontology_graph, view_leaf_property_uri_ref):
     leaves = set(ontology_graph.objects(rdflib.term.URIRef(uri), view_leaf_property_uri_ref))
     return {l for l in leaves if (l, BMO.representedInAnnotation, Literal(True, datatype=XSD.boolean)) in ontology_graph}
-
-
-
-
-
+ 
