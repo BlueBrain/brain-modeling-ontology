@@ -315,20 +315,20 @@ def _merge_ontology(from_ontology_graph, to_ontology_graph, to_another_graph, wh
             if (from_s, from_p, None) in to_ontology_graph:
                 for to_s, to_p, to_o in to_ontology_graph.triples((from_s,from_p, None)):
                     if from_p != SCHEMAORG.identifier:
-                        if (from_p == BMO.regionVolume or from_p == BMO.regionVolumeRatioToWholeBrain) and str(from_o) !="None":
+                        if (from_p == BMO.regionVolume or from_p == BMO.regionVolumeRatioToWholeBrain) and str(from_o) !="":
                             bNode, triples = _create_bnode_triples_from_value({SCHEMAORG.value:from_o, SCHEMAORG.unitCode:Literal("cubic micrometer")})
                             triples_to_add[str(from_s)].update(triples)
                             triples_to_add[str(from_s)].add((from_s, from_p, bNode))
                             triples_to_remove[str(from_s)].update((to_s, to_p, to_o))
-                        elif str(from_o) !="None":
+                        elif str(from_o) !="":
                             triples_to_add[str(from_s)].add((from_s, from_p, from_o))
                             triples_to_remove[str(from_s)].add((to_s, to_p, to_o))
             else:
-                if (from_p == BMO.regionVolume or from_p == BMO.regionVolumeRatioToWholeBrain) and str(from_o) !="None": # check atlas pipeline value when the brain region is not in the volume (currently 'None' is used)
+                if (from_p == BMO.regionVolume or from_p == BMO.regionVolumeRatioToWholeBrain) and str(from_o) !="": # check atlas pipeline value when the brain region is not in the volume (currently '' is used)
                     bNode, triples = _create_bnode_triples_from_value({SCHEMAORG.value:from_o, SCHEMAORG.unitCode:Literal("cubic micrometer")})
                     triples_to_add[str(from_s)].update(triples)
                     triples_to_add[str(from_s)].add((from_s, from_p, bNode))
-                elif str(from_o) !="None":
+                elif str(from_o) !="":
                     triples_to_add[str(from_s)].add((from_s, from_p, from_o))
                 
                 if isinstance(from_o, rdflib.term.URIRef):
