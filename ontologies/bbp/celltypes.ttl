@@ -6743,6 +6743,12 @@ bmo:NeuronProjectionType a owl:Class ;
     rdfs:label "Neuron Projection Type"@en ;
     rdfs:subClassOf bmo:NeuronType .
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronSynapticType
+bmo:NeuronSynapticType a owl:Class ;
+                       rdfs:subClassOf bmo:BrainCellSynapticType ,
+                                       bmo:NeuronType ;
+                       rdfs:label "Neuron Synaptic Type"@en .
+
 bmo:NitricOxideNeurotransmitterType a owl:Class ;
     rdfs:label "Nitric Oxide Neurotransmitter"@en ;
     rdfs:subClassOf bmo:NeurotransmitterType ;
@@ -8586,6 +8592,24 @@ ct:DorsomedialNucleusOfTheHypothalamusProjectionCell a owl:Class ;
     skos:definition "Projection neuron in Dorsomedial nucleus of the hypothalamus"@en ;
     skos:notation "DMH_PT" .
 
+###  https://bbp.epfl.ch/ontologies/core/celltypes/E1
+ct:E1 a owl:Class ;
+      rdfs:subClassOf bmo:NeuronSynapticType ;
+      skos:prefLabel "Excitatory type 1"@en ;
+      rdfs:label "E1"@en .
+
+###  https://bbp.epfl.ch/ontologies/core/celltypes/E2
+ct:E2 a owl:Class ;
+      rdfs:subClassOf bmo:NeuronSynapticType ;
+      skos:prefLabel "Excitatory type 2"@en ;
+      rdfs:label "E2"@en .
+
+###  https://bbp.epfl.ch/ontologies/core/celltypes/E3
+ct:E3 a owl:Class ;
+      rdfs:subClassOf bmo:NeuronSynapticType ;
+      skos:prefLabel "Excitatory type 3"@en ;
+      rdfs:label "E3"@en .
+
 ct:Edinger-WestphalNucleusPrincipalCell a owl:Class ;
     rdfs:label "EW_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -9228,6 +9252,24 @@ ct:HypothalamusProjectionCell a owl:Class ;
     skos:altLabel "Hypothalamus Projection Cell" ;
     skos:definition "Projection  neuron in hypothalamus"@en ;
     skos:notation "HY_PT" .
+
+###  https://bbp.epfl.ch/ontologies/core/celltypes/I1
+ct:I1 a owl:Class ;
+      rdfs:subClassOf bmo:NeuronSynapticType ;
+      skos:prefLabel "Inhibitory type 1"@en ;
+      rdfs:label "I1"@en .
+
+###  https://bbp.epfl.ch/ontologies/core/celltypes/I2
+ct:I2 a owl:Class ;
+      rdfs:subClassOf bmo:NeuronSynapticType ;
+      skos:prefLabel "Inhibitory type 2"@en ;
+      rdfs:label "I2"@en .
+
+###  https://bbp.epfl.ch/ontologies/core/celltypes/I3
+ct:I3 a owl:Class ;
+      rdfs:subClassOf bmo:NeuronSynapticType ;
+      skos:prefLabel "Inhibitory type 3"@en ;
+      rdfs:label "I3"@en .
 
 ct:InferiorColliculusAuditoryThalamus-Projecting a owl:Class ;
     rdfs:label "IC_AT-PT"@en ;
@@ -18757,6 +18799,11 @@ mba:997 a owl:Class ;
 bmo:BrainCellType a owl:Class ;
     rdfs:label "Brain Cell Type"@en ;
     rdfs:subClassOf bmo:BrainComponentType .
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainCellSynapticType
+bmo:BrainCellSynapticType a owl:Class ;
+    rdfs:subClassOf bmo:BrainCellType ;  
+    rdfs:label "Brain Cell Synaptic Type"@en .
 
 ct:HippocampusBasketCell a owl:Class ;
     rdfs:label "Hippocampus basket cell"@en ;
