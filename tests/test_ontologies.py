@@ -150,6 +150,8 @@ def test_layered_child_has_same_parent_layer(framed_classes):
     ontology_graph = framed_classes[2]
     triples_to_add = framed_classes[3]
     triples_to_remove = framed_classes[4]
+    atlasRelease_id = framed_classes[5]
+    atlasRelease_version = framed_classes[6]
 
     assert len(triples_to_remove) > 0
     assert len(triples_to_add) >  0
@@ -158,6 +160,9 @@ def test_layered_child_has_same_parent_layer(framed_classes):
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
         assert str(cls) in framed_class_json_dict
         cls_json = framed_class_json_dict[str(cls)]
+        assert "atlasRelease" in cls_json
+        assert cls_json["atlasRelease"]["@id"] ==  atlasRelease_id
+        assert cls_json["atlasRelease"]["_rev"] ==  atlasRelease_version
         if (cls, RDFS.subClassOf*ZeroOrMore, BMO.BrainLayer) not in ontology_graph: 
             assert (cls, BMO.representedInAnnotation, None) in ontology_graph
             assert "representedInAnnotation" in cls_json

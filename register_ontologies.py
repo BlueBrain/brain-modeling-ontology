@@ -14,9 +14,9 @@ from kgforge.core import KnowledgeGraphForge
 
 from kgforge.specializations.mappings import DictionaryMapping
 
-from rdflib import Literal, Namespace, RDF, OWL, RDFS
+from rdflib import PROV, Literal, Namespace, RDF, OWL, RDFS
 
-from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, SCHEMAORG, remove_non_ascii, PREFIX_MAPPINGS
+from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, remove_non_ascii, PREFIX_MAPPINGS
 
 import nexussdk as nexus
 
@@ -84,7 +84,11 @@ def define_arguments():
     parser.add_argument(
         "--atlas_parcellation_ontology", help="The atlas parcellation ontology.",
         default=None, type=str, required=True)
-
+    
+    parser.add_argument(
+        "--atlas_parcellation_ontology_version", help="The atlas parcellation ontology version.",
+        default=None, type=str, required=True)
+    
     parser.add_argument(
         "--atlas_parcellation_ontology_bucket", help="The atlas parcellation ontology bucket.",
         default=None, type=str, required=True)
@@ -93,7 +97,8 @@ def define_arguments():
     return parser
 
 
-def execute_registration(forge, ontology_path, ontology_graph, all_class_resources_mapped_dict, all_class_resources_framed_dict, new_forge_context, new_jsonld_context_dict, brain_region_generated_classes, tag=None):
+def execute_registration(forge, ontology_path, ontology_graph, all_class_resources_mapped_dict, all_class_resources_framed_dict, 
+                         new_forge_context, new_jsonld_context_dict, brain_region_generated_classes, atlasRelease_id, atlasRelease_version, atlas_parcellation_ontology_id, tag=None):
     """
     Executes the registration process
 
@@ -129,6 +134,16 @@ def execute_registration(forge, ontology_path, ontology_graph, all_class_resourc
     if str(ontology) == BRAIN_REGION_ONTOLOGY_URI:
         brain_region_generated_classes_resources_framed  = _get_classes_in_ontology(all_class_resources_framed_dict, brain_region_generated_classes)
         class_resources_framed.update({k:v for k,v in brain_region_generated_classes_resources_framed.items() if k not in class_resources_framed})
+        ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.atlasRelease, rdflib.term.URIRef(atlasRelease_id)))
+        ontology_graph.add((rdflib.term.URIRef(atlasRelease_id), NXV.rev, atlasRelease_version))
+        ontology_graph.add((rdflib.term.URIRef(atlasRelease_id), RDF.type, NSG.BrainAtlasRelease))
+
+        atlas_parcellation_ontology_derivation_bNode = _create_bnode_triples_from_value({RDF.type:PROV.Derivation, PROV.entity:rdflib.term.URIRef(atlas_parcellation_ontology_id)})
+        ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation, atlas_parcellation_ontology_derivation_bNode))
+        ontology_graph.add((rdflib.term.URIRef(atlas_parcellation_ontology_id), RDF.type, NSG.ParcellationOntology))
+
+        atlasRelease_derivation_bNode = _create_bnode_triples_from_value({RDF.type:PROV.Derivation, PROV.entity:rdflib.term.URIRef(atlasRelease_id)})
+        ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation, atlasRelease_derivation_bNode))
 
     bmo.register_ontology(forge, ontology_graph, new_forge_context, new_jsonld_context_dict, ontology_path, list(class_resources_mapped.values()),
                            list(class_resources_framed.values()), tag)
@@ -155,6 +170,7 @@ def parse_and_register_ontologies(arguments):
     schema_dir = arguments.schema_dir
     transformed_schema_path = arguments.transformed_schema_path
     atlas_parcellation_ontology = arguments.atlas_parcellation_ontology
+    atlas_parcellation_ontology_version = arguments.atlas_parcellation_ontology_version
     atlas_parcellation_ontology_bucket = arguments.atlas_parcellation_ontology_bucket
 
     if environment == "staging":
@@ -251,7 +267,9 @@ def parse_and_register_ontologies(arguments):
     
     print("Merging brain region ontology with atlas hierarchy")
     forge_atlas = KnowledgeGraphForge("config/forge-config-new.yml", endpoint=endpoint, bucket=atlas_parcellation_ontology_bucket, token=token, debug=True)
-    atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology)
+    # Waiting for a single version (tag) accross all the atlas dataset to be made available, _rev will be used.
+    version = int(atlas_parcellation_ontology_version) if atlas_parcellation_ontology_version is not None else atlas_parcellation_ontology_version
+    atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology, version=version)
     atlas_hierarchy_jsonld_distribution = [distrib for distrib in atlas_hierarchy.distribution if distrib.encodingFormat=="application/ld+json"]
     atlas_hierarchy_jsonld_distribution = atlas_hierarchy_jsonld_distribution[0]
     forge_atlas.download(atlas_hierarchy_jsonld_distribution, follow="contentUrl", path=".", overwrite=True)
@@ -264,7 +282,7 @@ def parse_and_register_ontologies(arguments):
 
     print(f"Finished merging brain region ontology with atlas hierarchy: {len(triples_to_add.values())} triples were added to the brain region ontology for {len(triples_to_add)} brain regions and from the atlas hierarchy while {len(triples_to_remove.values())} triples were removed from the brain region ontology for {len(triples_to_remove)} brain regions.")
     
-    class_ids, class_jsons, all_blank_node_triples, brain_region_generated_classes = bmo.frame_classes(all_ontology_graphs, new_jsonld_context, new_jsonld_context_dict)
+    class_ids, class_jsons, all_blank_node_triples, brain_region_generated_classes = bmo.frame_classes(all_ontology_graphs, new_jsonld_context, new_jsonld_context_dict, atlas_hierarchy.atlasRelease.id, atlas_hierarchy.atlasRelease._rev)
     print(f"Got {len(class_jsons)} non mapped classes")
 
     all_class_resources_framed_dict = dict(zip(class_ids, class_jsons))
@@ -292,7 +310,8 @@ def parse_and_register_ontologies(arguments):
     """
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
         print(f"Registering ontology: {ontology_path}")
-        execute_registration(forge, ontology_path, ontology_graph, all_class_resources_mapped_dict, all_class_resources_framed_dict, new_jsonld_context, new_jsonld_context_dict, brain_region_generated_classes, tag)
+        execute_registration(forge, ontology_path, ontology_graph, all_class_resources_mapped_dict, all_class_resources_framed_dict, new_jsonld_context, new_jsonld_context_dict, brain_region_generated_classes,
+                             atlas_hierarchy.atlasRelease.id, atlas_hierarchy.atlasRelease._rev, atlas_parcellation_ontology, tag)
         print(f"Registration finished for ontology: {ontology_path}")
     
     print(f"Registering {len(class_jsons)} classes")

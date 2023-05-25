@@ -14,6 +14,7 @@ def pytest_addoption(parser):
     parser.addoption("--environment", action="store", default="https://staging.nise.bbp.epfl.ch/nexus/v1")
     parser.addoption("--bucket", action="store", default="neurosciencegraph/datamodels")
     parser.addoption("--atlas_parcellation_ontology", action="store", default="https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e")
+    parser.addoption("--atlas_parcellation_ontology_version", action="store", default=None)
     parser.addoption("--atlas_parcellation_ontology_bucket", action="store", default="bbp/atlas")
     parser.addoption("--token", action="store")
     
@@ -77,6 +78,9 @@ def bucket(pytestconfig):
 def atlas_parcellation_ontology(pytestconfig):
     return pytestconfig.getoption("atlas_parcellation_ontology")
 
+@pytest.fixture(scope="session")
+def atlas_parcellation_ontology_version(pytestconfig):
+    return pytestconfig.getoption("atlas_parcellation_ontology_version")
 
 @pytest.fixture(scope="session")
 def atlas_parcellation_ontology_bucket(pytestconfig):
@@ -149,27 +153,35 @@ def framed_classes(data_jsonld_context, all_ontology_graphs, atlas_hierarchy_ont
 
     ontology_graph = all_ontology_graphs[0]
     ontology_graphs_dict =  all_ontology_graphs[1]
+    
     brain_region_graph = ontology_graphs_dict["./ontologies/bbp/brainregion.ttl"]
-    triples_to_add, triples_to_remove = _merge_ontology(atlas_hierarchy_ontology_graph, brain_region_graph, 
+
+    atlas_ontology_graph = atlas_hierarchy_ontology_graph[0]
+    atlas_hierarchy = atlas_hierarchy_ontology_graph[1]
+
+    triples_to_add, triples_to_remove = _merge_ontology(atlas_ontology_graph, brain_region_graph, 
                                                         ontology_graph, [SCHEMAORG.hasPart, SCHEMAORG.isPartOf, RDFS.label, MBA.atlas_id, MBA.color_hex_triplet,
                                                                         MBA.graph_order, MBA.hemisphere_id, MBA.st_level, SCHEMAORG.identifier, BMO.representedInAnnotation,
                                                                         BMO.regionVolumeRatioToWholeBrain, BMO.regionVolume]
                                                         )
-    class_ids, class_jsons, all_blank_node_triples, new_classes = bmo.frame_classes(ontology_graph, new_jsonld_context,
-                                                                    new_jsonld_context.document)
-    return class_ids, class_jsons, ontology_graph, triples_to_add, triples_to_remove
+    class_ids, class_jsons, all_blank_node_triples, new_classes = bmo.frame_classes(ontology_graph, new_jsonld_context, new_jsonld_context.document,
+                                                                                    atlas_hierarchy.atlasRelease.id, atlas_hierarchy.atlasRelease._rev)
+    return class_ids, class_jsons, ontology_graph, triples_to_add, triples_to_remove, atlas_hierarchy.atlasRelease.id, atlas_hierarchy.atlasRelease._rev
 
 
 @pytest.fixture(scope="session")
-def atlas_hierarchy_ontology_graph(atlas_parcellation_ontology, forge_atlas):
+def atlas_hierarchy_ontology_graph(atlas_parcellation_ontology, atlas_parcellation_ontology_version, forge_atlas):
     try:
-        atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology)
+        version = int(atlas_parcellation_ontology_version) if atlas_parcellation_ontology_version is not None else atlas_parcellation_ontology_version
+        atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology, version=version)
+        assert hasattr(atlas_hierarchy,"atlasRelease")
+        assert hasattr(atlas_hierarchy.atlasRelease, "_rev")
         atlas_hierarchy_jsonld_distribution = [distrib for distrib in atlas_hierarchy.distribution if distrib.encodingFormat=="application/ld+json"]
         atlas_hierarchy_jsonld_distribution = atlas_hierarchy_jsonld_distribution[0]
         forge_atlas.download(atlas_hierarchy_jsonld_distribution, follow="contentUrl", path=".", overwrite=True)
         atlas_hierarchy_ontology_graph = rdflib.Graph().parse(atlas_hierarchy_jsonld_distribution.name, format="json-ld")
         assert len(atlas_hierarchy_ontology_graph) > 0
-        return atlas_hierarchy_ontology_graph
+        return atlas_hierarchy_ontology_graph, atlas_hierarchy
     except Exception as e:
         pytest.fail(f"Failed to load {atlas_parcellation_ontology}: {e}")
 
