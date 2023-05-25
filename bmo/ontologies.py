@@ -378,7 +378,7 @@ def _collect_ancestors_restrictions(ontology_graph, _class, restrictions_propert
     return rels, all_blank_node_triples
 
 
-def frame_classes(ontology_graph, forge_context, context):
+def frame_classes(ontology_graph, forge_context, context, atlasRelease_id, atlasRelease_version):
     """Frame ontology classes into JSON-LD payloads."""
     class_jsons = []
     class_ids= []
@@ -430,7 +430,7 @@ def frame_classes(ontology_graph, forge_context, context):
         identifier = str(current_class)
         current_class_framed["@id"] = str(identifier)
         del current_class_framed["@context"]
-        new_current_class_framed = _frame_class(current_class_framed, forge_context, ontology_graph)
+        new_current_class_framed = _frame_class(current_class_framed, forge_context, ontology_graph, atlasRelease_id, atlasRelease_version)
         new_current_class_framed.pop("bmo:canHaveTType", None)
         class_jsons.append(new_current_class_framed)
         class_ids.append(identifier)
@@ -458,7 +458,7 @@ def _get_leaf_regions(uri, children_hierarchy_property, ontology_graph):
     return leaf_regions
 
 
-def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
+def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph, atlasRelease_id, atlasRelease_version):
 
     to_pop = []
     for k, v in cls.items():
@@ -737,7 +737,8 @@ def _frame_class(cls:Dict, context:Context, ontology_graph:rdflib.Graph):
 
     if "atlas_id" in cls and cls["atlas_id"] == "None":
         cls["atlas_id"]=None
-
+    if atlasRelease_id and atlasRelease_version:
+        cls["atlasRelease"]  = {"@id":atlasRelease_id, "_rev":atlasRelease_version}
     return cls
 
 def _create_property_based_hierarchy(ontology_graph, cls_uriref, layer_urirefs, classes_relevant_for_layer, isPartOf_property_uriref):
