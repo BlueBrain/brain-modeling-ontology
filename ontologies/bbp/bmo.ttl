@@ -834,6 +834,13 @@ obo:UBERON_0022319 rdf:type owl:Class ;
                    rdfs:label "lateral geniculate nucleus parvocellular layer"^^xsd:string .
 
 
+###  http://schema.org/DataCatalog
+schema:DataCatalog rdf:type owl:Class ;
+                    rdfs:subClassOf prov:Entity ;
+                    rdfs:label "Data Catalog"@en ;
+                    skos:definition "A collection of datasets."@en .
+
+
 ###  http://schema.org/DataDownload
 schema:DataDownload rdf:type owl:Class ;
                     rdfs:subClassOf prov:Entity ,
