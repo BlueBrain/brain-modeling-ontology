@@ -138,11 +138,11 @@ def execute_registration(forge, ontology_path, ontology_graph, all_class_resourc
         ontology_graph.add((rdflib.term.URIRef(atlasRelease_id), NXV.rev, Literal(atlasRelease_version)))
         ontology_graph.add((rdflib.term.URIRef(atlasRelease_id), RDF.type, NSG.BrainAtlasRelease))
 
-        atlas_parcellation_ontology_derivation_bNode = _create_bnode_triples_from_value({RDF.type:PROV.Derivation, PROV.entity:rdflib.term.URIRef(atlas_parcellation_ontology_id)})
+        atlas_parcellation_ontology_derivation_bNode, atlas_parcellation_ontology_derivation_triples = _create_bnode_triples_from_value({RDF.type:PROV.Derivation, PROV.entity:rdflib.term.URIRef(atlas_parcellation_ontology_id)})
         ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation, atlas_parcellation_ontology_derivation_bNode))
         ontology_graph.add((rdflib.term.URIRef(atlas_parcellation_ontology_id), RDF.type, NSG.ParcellationOntology))
 
-        atlasRelease_derivation_bNode = _create_bnode_triples_from_value({RDF.type:PROV.Derivation, PROV.entity:rdflib.term.URIRef(atlasRelease_id)})
+        atlasRelease_derivation_bNode, atlasRelease_derivation_triples = _create_bnode_triples_from_value({RDF.type:PROV.Derivation, PROV.entity:rdflib.term.URIRef(atlasRelease_id)})
         ontology_graph.add((rdflib.term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation, atlasRelease_derivation_bNode))
 
     bmo.register_ontology(forge, ontology_graph, new_forge_context, new_jsonld_context_dict, ontology_path, list(class_resources_mapped.values()),
