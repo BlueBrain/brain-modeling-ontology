@@ -19,7 +19,7 @@ from pkg_resources import get_distribution
 # -- Project information -----------------------------------------------------
 
 project = 'Brain Modeling Ontology'
-version = get_distribution("bmo_tools").version
+version = get_distribution("bmo").version
 release = version
 
 # -- General configuration ---------------------------------------------------
