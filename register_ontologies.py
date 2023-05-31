@@ -440,7 +440,7 @@ def load_schemas(schema_dir, transformed_schema_path, forge, all_schema_graphs, 
 
 
 def load_ontologies(ontology_dir, all_ontology_graphs):
-    ontology_files = glob.glob(ontology_dir)
+    # ontology_files = glob.glob(ontology_dir)
     ontology_files = [
         "./ontologies/bbp/bmo.ttl",
         "./ontologies/bbp/speciestaxonomy.ttl",
@@ -451,6 +451,7 @@ def load_ontologies(ontology_dir, all_ontology_graphs):
         "./ontologies/bbp/mfeatures.ttl",
         "./ontologies/bbp/molecular-systems.ttl",
         "./ontologies/bbp/data-types.ttl",
+        "./ontologies/bbp/parameters.ttl",
         "./ontologies/bbp/pato.ttl"
     ]
     ontology_graphs_dict={}

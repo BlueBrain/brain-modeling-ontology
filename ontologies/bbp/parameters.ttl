@@ -1,0 +1,366 @@
+@prefix : <https://bbp.epfl.ch/ontologies/core/parameters/> .
+@prefix ct: <https://bbp.epfl.ch/ontologies/core/celltypes/> .
+@prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
+@prefix ilx: <http://uri.interlex.org/base/ilx_> .
+@prefix mba: <http://api.brain-map.org/api/v2/data/Structure/> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ror: <https://ror.org/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix grid: <https://www.grid.ac/institutes/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix parms: <https://bbp.epfl.ch/ontologies/core/parameters/> .
+@prefix schema: <http://schema.org/> .
+@base <https://bbp.epfl.ch/ontologies/core/parameters> .
+
+<https://bbp.epfl.ch/ontologies/core/parameters> rdf:type owl:Ontology ;
+                                                 <http://purl.org/vocab/vann/preferredNamespacePrefix> "parms"^^xsd:string ;
+                                                 schema:title "Brain Modeling Parameter Ontology"^^xsd:string ;
+                                                 rdfs:label "Brain Modeling Parameter Ontology"^^xsd:string ;
+                                                 owl:versionInfo "R3"^^xsd:string .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/name
+schema:name rdf:type owl:AnnotationProperty ;
+            rdfs:label "name"@en ;
+            skos:altLabel "name"@en .
+
+
+
+###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
+rdfs:isDefinedBy rdfs:label "isDefinedBy"@en .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdfs:label "label"@en .
+
+
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:AnnotationProperty ;
+                    rdfs:label "equivalentClass"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty ;
+              skos:altLabel "altLabel"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty ;
+                         rdfs:label "definition"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+skos:example rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+skos:notation rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty ;
+               rdfs:label "prefLabel"@en .
+
+
+###  https://neuroshapes.org/units
+schema:unitCode rdf:type owl:AnnotationProperty ;
+          rdfs:label "unitCode"@en ;
+          skos:altLabel "units"@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://schema.org/sameAs
+schema:sameAs rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:label "sameAs"@en .
+
+
+###  http://schema.org/value
+schema:value rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:label "value"@en ;
+             skos:altLabel "value"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/constraints
+bmo:constraints rdf:type owl:ObjectProperty ;
+                rdfs:label "constraints"@en ;
+                skos:altLabel "constraint"@en .
+
+
+###  https://neuroshapes.org/hasConstraint
+nsg:hasConstraint rdf:type owl:ObjectProperty ;
+                  rdfs:label "hasConstraint"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://schema.org/Dataset
+schema:Dataset rdf:type owl:Class .
+
+
+###  http://schema.org/QuantitativeValue
+schema:QuantitativeValue rdf:type owl:Class ;
+                         rdfs:subClassOf prov:Entity ;
+                         rdfs:label "Quantitative Value"@en .
+
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class ;
+            rdfs:label "Entity"@en ;
+            skos:prefLabel "Entity"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/AtlasDistanceToLayer
+bmo:AtlasDistanceToLayer rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:ModelBrainParameter ;
+                         rdfs:label "AtlasDistanceToLayer"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/AtlasETypeRatio
+bmo:AtlasETypeRatio rdf:type owl:Class ;
+                    rdfs:subClassOf bmo:ModelBrainParameter ;
+                    rdfs:label "AtlasETypeRatio"@en ;
+                    skos:altLabel "Atlas e-type ratio"@en ;
+                    skos:prefLabel "Atlas EType Ratio"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainVolumeParameter
+bmo:BrainVolumeParameter rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:ModelBrainParameter ;
+                         rdfs:label "Model Brain Volume Parameter"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ConductanceDensity
+bmo:ConductanceDensity rdf:type owl:Class ;
+                       rdfs:subClassOf bmo:EModelParameter ,
+                                       bmo:NeuronPartFeature ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty bmo:compartment ;
+                                         owl:someValuesFrom bmo:NeuronPart
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty nsg:ion ;
+                                         owl:someValuesFrom bmo:Ion
+                                       ] ;
+                       rdfs:label "Conductance Density"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ConnectivityModelCoefficient
+bmo:ConnectivityModelCoefficient rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:ModelConnectivityParameter ;
+                                 rdfs:label "Connectivity Model Coefficient"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/DendriteSynapseDensity
+bmo:DendriteSynapseDensity rdf:type owl:Class ;
+                           rdfs:subClassOf bmo:ModelBrainParameter ;
+                           rdfs:label "DendriteSynapseDensity"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/EModelParameter
+bmo:EModelParameter rdf:type owl:Class ;
+                    rdfs:subClassOf bmo:ModelBrainParameter ;
+                    rdfs:label "EModel Parameter"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/EModelParameterConstraint
+bmo:EModelParameterConstraint rdf:type owl:Class ;
+                              rdfs:subClassOf bmo:ModelBrainParameterConstraint ;
+                              rdfs:label "EModel Parameter Constraint"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ETypeRatio
+bmo:ETypeRatio rdf:type owl:Class ;
+               rdfs:subClassOf bmo:ModelBrainParameter ;
+               rdfs:label "E-TypeRatio"@en ;
+               rdfs:seeAlso <https://bbpgitlab.epfl.ch/circuits/CircuitBuildRecipe/-/blob/circuits-SSCX-BioM/inputs/1_cell_placement/cell_composition.yaml> ;
+               skos:definition "The E-type ratio is the ratio of an e-type for a given m-type, brain region and layer. For a given m-type, all e-type ratios add up to 1."^^xsd:string ;
+               skos:prefLabel "E-Type Ratio"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus
+bmo:ElectricalStimulus rdf:type owl:Class ;
+                       rdfs:subClassOf bmo:ModelBrainParameter ;
+                       rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/ea484e60-5a27-4790-8f2a-e2975897f407/edit/Classes?selection=Class(%3Chttps://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus%3E)> ;
+                       rdfs:label "Electrical Stimulus"@en ;
+                       rdfs:seeAlso <https://bbpteam.epfl.ch/project/spaces/pages/viewpage.action?spaceKey=CELLS&title=Input+required+by+BluePyEModel+for+e-model+building> ;
+                       skos:editorialNote "How is this related to 'Protocol' in BluePyEModel"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/Ion
+bmo:Ion rdf:type owl:Class .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/METypeRatio
+bmo:METypeRatio rdf:type owl:Class ;
+                rdfs:subClassOf bmo:ModelBrainParameter ;
+                rdfs:label "ME-Type Ratio"@en ;
+                skos:prefLabel "ME-Type Ratio"^^xsd:string .
+
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBiochemicalReactionParameter
+bmo:ModelBiochemicalReactionParameter rdf:type owl:Class ;
+                                      rdfs:subClassOf bmo:ModelBrainParameter ;
+                                      rdfs:label "Model Biochemical Reaction Parameter"@en ;
+                                      skos:definition "Parameter used to represent a specific biological or theoretical value that is used in the modeling of biochemical reactions."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBrainParameter
+bmo:ModelBrainParameter rdf:type owl:Class ;
+                        rdfs:subClassOf prov:Entity ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty schema:value ;
+                                          owl:someValuesFrom schema:QuantitativeValue
+                                        ] ;
+                        rdfs:label "Model Brain Parameter"@en ;
+                        skos:definition "A brain parameter is a parameter used to represent a specific biological or theoretical value that is used in the construction of a brain model."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBrainParameterConstraint
+bmo:ModelBrainParameterConstraint rdf:type owl:Class ;
+                                  rdfs:subClassOf prov:Entity ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty bmo:constraints ;
+                                                    owl:someValuesFrom bmo:ModelBrainParameter
+                                                  ] ;
+                                  rdfs:label "Model Brain Parameter Constraint"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelConnectivityParameter
+bmo:ModelConnectivityParameter rdf:type owl:Class ;
+                               rdfs:subClassOf bmo:ModelBrainParameter ;
+                               rdfs:label "Model Connectivity Parameter"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronPart
+bmo:NeuronPart rdf:type owl:Class .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronPartFeature
+bmo:NeuronPartFeature rdf:type owl:Class .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/Dep
+parms:Dep rdf:type owl:Class ;
+          rdfs:subClassOf bmo:ModelBrainParameter ;
+          rdfs:label "Dep"@en ;
+          skos:definition "Relaxation time constant for depression, as measured by fitting the TM model to electrophysiological traces."@en ;
+          schema:unitCode "ms" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/Fac
+parms:Fac rdf:type owl:Class ;
+          rdfs:subClassOf bmo:ModelBrainParameter ;
+          rdfs:label "Fac"@en ;
+          skos:definition "Relaxation time constant for facilitation, as measured by fitting the TM model to electrophysiological traces."@en ;
+          schema:unitCode "ms" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/NMDA_ratio
+parms:NMDA_ratio rdf:type owl:Class ;
+                 rdfs:subClassOf bmo:ModelBrainParameter ;
+                 rdfs:label "NMDA_ratio"@en ;
+                 skos:definition "Synaptic conductance of NMDA proportional to the value for AMPA."@en ;
+                 schema:unitCode 1 .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/Nrrp
+parms:Nrrp rdf:type owl:Class ;
+           rdfs:subClassOf bmo:ModelBrainParameter ;
+           rdfs:label "Nrrp"@en ;
+           skos:definition "Number of tital release sites for given contact."@en ;
+           schema:unitCode 1 .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/Use
+parms:Use rdf:type owl:Class ;
+          rdfs:subClassOf bmo:ModelBrainParameter ;
+          rdfs:label "Use"@en ;
+          skos:definition "Utilization of synaptic efficiency as measured by fitting the TM model to electrophysiological traces."@en ;
+          schema:unitCode "ms" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/conductance
+parms:conductance rdf:type owl:Class ;
+                  rdfs:subClassOf bmo:ModelBrainParameter ;
+                  rdfs:label "conductance"@en ;
+                  skos:definition "Synaptic conductance."@en ;
+                  schema:unitCode "uS" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/tau_d_AMPA
+parms:tau_d_AMPA rdf:type owl:Class ;
+                 rdfs:subClassOf bmo:ModelBrainParameter ;
+                 rdfs:label "tau_d_AMPA"@en ;
+                 skos:definition "Decay time for AMPA currents."@en ;
+                 schema:unitCode "ms" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/tau_d_NMDA
+parms:tau_d_NMDA rdf:type owl:Class ;
+                 rdfs:subClassOf bmo:ModelBrainParameter ;
+                 rdfs:label "tau_d_NMDA"@en ;
+                 skos:definition "Decay time for NMDA currents."@en ;
+                 schema:unitCode "ms" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/tau_r_AMPA
+parms:tau_r_AMPA rdf:type owl:Class ;
+                 rdfs:subClassOf bmo:ModelBrainParameter ;
+                 rdfs:label "tau_r_AMPA"@en ;
+                 skos:definition "Rise time for AMPA currents."@en ;
+                 schema:unitCode "ms" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/parameters/tau_r_NMDA
+parms:tau_r_NMDA rdf:type owl:Class ;
+                 rdfs:subClassOf bmo:ModelBrainParameter ;
+                 rdfs:label "tau_r_NMDA"@en ;
+                 skos:definition "Rise time for NMDA currents."@en ;
+                 schema:unitCode "ms" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+owl:topDataProperty rdfs:label "Attributes"@en .
+
+
+nsg:hasBaselDendriteFeature rdfs:label "hasBaselDendriteFeature"@en .
+
+
+nsg:hasLayerLocation rdfs:label "hasLayerLocation"@en .
+
+
+nsg:hasObliqDendrite rdfs:label "hasObliqDendrite"@en .
+
+
+nsg:hasTuftDendriteFeature rdfs:label "hasTuftDendriteFeature"@en .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

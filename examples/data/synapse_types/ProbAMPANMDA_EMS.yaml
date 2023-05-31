@@ -1,0 +1,175 @@
+
+
+# * Introduction
+# We develop configs and methods that define the models that we want to assign to the synapses of a circuit. Synapse parameters are found in the ~.mod~ file that provides a ~mechanism~ for ~NEURON~. These parameters may be either ~global~ or ~range~ variables. A ~.mod~ file can be configured as a /model-template/. Thus we can define a ~synapse-type~ that uses a model-template. Each ~SynapseType~ will describe its ~parameters~ with experimental statistical summaries that a ~functionalizer~ such as ~spykfunc~ can use to compute and populate their values for each synapse in the circuit.
+
+# While we have use ~spykfunc~ and ~neurodamus~ to configure circuits and simulations, the relationships between ~.mod~ and the data used and produced by these packages have been implicit. Going forward with the SBO we will have to make these relationships explicit, and this recipe is an attempt to do so.
+
+# In the recipe we will have a section ~functionalize~ where we will provide the name of the package to use, its inputs in terms of the experimental values, and the name of the column we want as ~output~. We have used the existing terms in ~spykfunc~ and ~neurodamus~. This limits the ~.mod~ parameters that we can generate. Once these configs work, we can follow up by updating these two packages to accommodate a more general recipe where we might want to distribute random populations of other ~.mod~ parameters as well.
+
+
+# * ProbAMPANMDA_EMS
+# We will define excitatory pathways' ~synapse-types~ using ~ProbAMPANMDA_EMS.mod~. These will apply at least to cortical synapses, and should generalize to excitatory pathways in other regions as well. Each section in the recipe can be described, providing what the parameter is and how its value was generated, /i.e/ it's provenance. In a future version we can device an explicit ~provenance~ section for each listed ~parameter~.
+
+# #+name: config-synapse-type-AMPANMDA
+# #+header: :comments both :exports both :padline false
+
+# [[file:../recipe.org::config-synapse-type-AMPANMDA][config-synapse-type-AMPANMDA]]
+synapse_type: null
+model_template: ProbAMPANMDA_EMS
+
+description: >-
+  Synapse model template based on dual-exponential dynamics.
+
+parameters:
+  - name: tau_r_AMPA
+    description: >-
+      Rise time for AMPA currents.
+    units: ms
+    value: null
+    scope: GLOBAL
+    functionalize: false
+  - name: tau_d_AMPA
+    description: >-
+      Decay time for AMPA currents.
+    units: ms
+    value:
+      distbn: null
+      mean: null
+      std: null
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        dtcDIST: [value, distbn]
+        dtc: [value, mean]
+        dtcSD: [value, std]
+      output: Synapse.DTC
+    sonata:
+      edge_property: "decay_time"
+      dtype: float32
+  - name: tau_r_NMDA
+    description: >-
+      Rise time for NMDA currents.
+    units: ms
+    value: null
+    scope: GLOBAL
+    functionalize: false
+  - name: tau_d_NMDA
+    description: >-
+      Decay time for NMDA currents.
+    units: ms
+    value: null
+    scope: GLOBAL
+    functionalize: false
+  - name: Use
+    description: >-
+      Utilization of synaptic efficiency as measured by fitting the TM model to
+      electrophysiological traces.
+    units: 1
+    value:
+      distbn: null
+      mean: null
+      std: null
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        uDIST: [value, distbn]
+        u: [value, mean]
+        uSD: [value, std]
+      output: Synapse.U
+    sonata:
+      edge_property: "u_syn"
+      dtype: float32
+  - name: Dep
+    description: >-
+      Relaxation time constant for depression, as measured by fitting the TM model to
+      electrophysiological traces.
+    units: ms
+    value:
+      distbn: null
+      mean: null
+      std: null
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        dDIST: [value, distbn]
+        d: [value, mean]
+        dSD: [value, std]
+      output: Synapse.D
+    sonata:
+      edge_property: "depression_time"
+      dtype: float32
+  - name: Fac
+    description: >-
+      Relaxation time constant for facilitation, as measured by fitting the TM model to
+      electrophysiological traces.
+    units: ms
+    value:
+      distbn: null
+      mean: null
+      std: null
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        fDIST: [value, distbn]
+        f: [value, mean]
+        fSD: [value, std]
+      output: Synapse.F
+    sonata:
+      edge_property: "facilitation_time"
+      dtype: float32
+  - name: Nrrp
+    description: >-
+      Number of total release sites for given contact.
+    units: 1
+    value:
+      distbn: null
+      mean: null
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        nrrpDIST: [value, distbn]
+        nrrp: [value, mean]
+      output: Synapse.Nrrp
+    sonata:
+      edge_property: "n_rrp_vesicles"
+      dtype: float32
+  - name: conductance
+    description: >-
+      Synaptic conductance.
+    units: uS
+    value:
+      distbn: null
+      mean: null
+      std: null
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        gsynDIST: [value, distbn]
+        gsyn: [value, mean]
+        gsynSD: [value, std]
+      output: Synapse.G_SYNX
+    sonata:
+      edge_property: "conductance"
+      dtype: float32
+  - name: NMDA_ratio
+    description: >-
+      Synaptic conductance of NMDA proportional to the value for AMPA.
+    units: 1
+    value: null
+    scope: PATHWAY
+    functionalize:
+      use: spykfunc
+      inputs:
+        gsynSRSF: value
+      output: Synapse.CONDUCTANCE_RATIO
+    sonata:
+      edge_property: "conductance_ratio"
+      dtype: float32
+# config-synapse-type-AMPANMDA ends here
