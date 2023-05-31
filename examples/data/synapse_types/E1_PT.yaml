@@ -1,0 +1,168 @@
+
+# where only a float ~value~ in the config, with ~scope=PATHWAY~ the same value of 0.71 should be used for all synapses of a given ~pathway~ to which the config applies.
+
+# * SBO MMB Synapse Types
+
+# We use a hierarchical organization of synapse types. A ~synapse-type~ is based on a ~model-template~. A ~model-template~ should resolve to a ~.mod~ file. With a respect to a directory that is known, we can just use the name of the mechanism /i.e/ the filename without ~.mod~. The model-template provides the list of parameters that can be configured (a default value is always provided in the ~.mod~). The values of the parameters listed in a ~SynapseType~ config determine it's type. Each ~SynapseType~ will also correspond to a group of ~pathways~ according to rules set by the scientists. Using the ~SynapseType~ config template for [[*ProbAMPANMDA_EMS]] we will have the following ~SynapseTypes~,
+
+# ** E1_PT
+# We will define excitatory pathways' ~synapse-types~ using ~ProbAMPANMDA_EMS.mod~. These will apply at least to cortical synapses, and should generalize to excitatory pathways in other regions as well.
+
+# #+name: config-synapse-type-AMPANMDA
+# #+header: :comments both :exports both :padline false
+
+# [[file:../recipe.org::config-synapse-type-AMPANMDA][config-synapse-type-AMPANMDA]]
+model_template: ProbAMPANMDA_EMS
+synapse_type: E1_PT
+name: "Excitatory proximal targeting."
+description: >-
+  Rare facilitating EXC - INH synapses: USE, D, F from Wang et al. 2006,
+  dtc from Hausser and Roth 1997,  Hill coefs. from Rozov et al. 2001, NMDA ratio from Wang and Gao 2009,
+  g_syns and NRRP: same as E2_NBC (for _PT) and E1_MC (for _DT).
+  The GUDF parameters were set to the parameters of a TM model for electrophysiological traces.
+
+parameters:
+  - name: tau_r_NMDA
+    description: >-
+      Rise time for NMDA currents.
+    units: ms
+    value: 0.29
+    scope: GLOBAL
+    functionalize: false
+  
+  - name: tau_d_NMDA
+    description: >-
+      Decay time for NMDA currents.
+    units: ms
+    value: 43.0
+    scope: GLOBAL
+    functionalize: false
+  
+  - name: tau_r_AMPA
+    description: >-
+      Rise time for AMPA currents.
+    units: ms
+    value: 0.2
+    scope: GLOBAL
+    functionalize: false
+  
+  - name: tau_d_AMPA
+    description: >-
+      Decay time for AMPA currents.
+    units: ms
+    value:
+      distbn: truncated_normal
+      mean: 1.74
+      std: 0.18
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        dtcDIST: [value, distbn]
+        dtc: [value, mean]
+        dtcSD: [value, std]
+      output: Synapse.DTC
+      sonata:
+        edge_property: "decay_time"
+        dtype: float32
+  - name: Use
+    description: >-
+      Utilization of synaptic efficiency as measured by fitting the TM model to
+      electrophysiological traces.
+    units: ms
+    value:
+      distbn: truncated_normal
+      mean: 0.02
+      std: 0.001
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        uDIST: [value, distbn]
+        u: [value, mean]
+        uSD: [value, std]
+      output: Synapse.U
+    sonata:
+      edge_property: "u_syn"
+      dtype: float32
+  
+  - name: Fac
+    description: >-
+      Relaxation time constant for facilitation, as measured by fitting the TM model to
+      electrophysiological traces.
+    units: ms
+    value:
+      distbn: gamma
+      mean: 507.0
+      std: 37.0
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        fDIST: [value, distbn]
+        f: [value, mean]
+        fSD: [value, std]
+      output: Synapse.F
+    sonata:
+      edge_property: "facilitation_time"
+      dtype: float32
+  
+  - name: Dep
+    description: >-
+      Relaxation time constant for depression, as measured by fitting the TM model to
+      electrophysiological traces.
+    units: ms
+    value:
+      distbn: gamma
+      mean: 194.0
+      std: 18.0
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        dDIST: [value, distbn]
+        d: [value, mean]
+        dSD: [value, std]
+      output: Synapse.D
+    sonata:
+      edge_property: "depression_time"
+      dtype: float32
+  
+  - name: Nrrp
+    description: >-
+      Number of tital release sites for given contact.
+    units: 1
+    value:
+      distbn: poisson
+      mean: 4.5
+    scope: SYNAPSE
+    functionalize:
+      use: spykfunc
+      inputs:
+        nrrpDIST: [value, distbn]
+        nrrp: [value, mean]
+      output: Synapse.Nrrp
+    sonata:
+      edge_property: "n_rrp_vesicles"
+      dtype: float32
+  
+  
+
+pathways:
+  - fromSClass: "EXC"
+    toMType: "L*_LBC"
+    toEtype:
+      - "cACint"
+      - "cIR"
+      - "bAC"
+      - "bIR"
+      - "cNAC"
+  
+  - fromSClass: "EXC"
+    toMType: "L*_NBC"
+    toEtype:
+      - "cACint"
+      - "cIR"
+      - "bAC"
+      - "bIR"
+# config-synapse-type-AMPANMDA ends here

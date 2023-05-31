@@ -1836,6 +1836,9 @@
     "STrueNoise": {
       "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/STrueNoise"
     },
+    "STypeAnnotation": {
+      "@id": "nsg:STypeAnnotation"
+    },
     "SagAmplitude": {
       "@id": "https://bbp.epfl.ch/ontologies/core/efeatures/SagAmplitude"
     },

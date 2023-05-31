@@ -39,7 +39,7 @@
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
                                            schema:title "Brain Modeling Ontology"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
-                                           owl:versionInfo "R777"^^xsd:string .
+                                           owl:versionInfo "R829"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -789,15 +789,6 @@ obo:UBERON_0000955 rdf:type owl:Class ;
                    rdfs:subClassOf bmo:Mapping .
 
 
-###  http://purl.obolibrary.org/obo/UBERON_0002301
-obo:UBERON_0002301 rdf:type owl:Class ;
-                   rdfs:subClassOf bmo:BrainLayer ;
-                   rdfs:label "Neocortical Layer"^^xsd:string ;
-                   skos:altLabel "layer of neocortex"^^xsd:string ;
-                   skos:definition "One of the layers of the neocortex."^^xsd:string ;
-                   skos:prefLabel "Neocortical Layer"^^xsd:string .
-
-
 ###  http://purl.obolibrary.org/obo/UBERON_0002616
 obo:UBERON_0002616 rdf:type owl:Class ;
                    owl:equivalentClass nsg:BrainRegion ;
@@ -1315,12 +1306,6 @@ bmo:BrainVolumeFeature rdf:type owl:Class ;
                        rdfs:label "Brain Volume Feature"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/BrainVolumeParameter
-bmo:BrainVolumeParameter rdf:type owl:Class ;
-                         rdfs:subClassOf bmo:ModelBrainParameter ;
-                         rdfs:label "Model Brain Volume Parameter"@en .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/CaDynamicsModel
 bmo:CaDynamicsModel rdf:type owl:Class ;
                     rdfs:subClassOf bmo:IntraCellularConcentrationModel ,
@@ -1434,28 +1419,6 @@ bmo:CircuitConnectivityBlueprintBuildingWorkflow rdf:type owl:Class ;
                                                                    owl:someValuesFrom nsg:BoutonDensity
                                                                  ] ;
                                                  rdfs:label "Circuit Connectivity Blueprint Building Workflow"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/ConductanceDensity
-bmo:ConductanceDensity rdf:type owl:Class ;
-                       rdfs:subClassOf bmo:EModelParameter ,
-                                       bmo:NeuronPartFeature ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty bmo:compartment ;
-                                         owl:someValuesFrom bmo:NeuronPart
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty nsg:ion ;
-                                         owl:someValuesFrom bmo:Ion
-                                       ] ;
-                       rdfs:label "Conductance Density"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/ConnectivityModelCoefficient
-bmo:ConnectivityModelCoefficient rdf:type owl:Class ;
-                                 rdfs:subClassOf bmo:ModelConnectivityParameter ;
-                                 rdfs:label "Connectivity Model Coefficient"@en .
-
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ConnectivityModelCoefficientGenerator
 bmo:ConnectivityModelCoefficientGenerator rdf:type owl:Class ;
@@ -1577,10 +1540,7 @@ bmo:DefaultIonChannelDensityConstraintGenerationWorkflow rdf:type owl:Class ;
                                                          rdfs:label "Default Ion Channel Density Constraint Generation Workflow"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/DendriteSynapseDensity
-bmo:DendriteSynapseDensity rdf:type owl:Class ;
-                           rdfs:subClassOf prov:Entity ;
-                           rdfs:label "DendriteSynapseDensity"@en .
+
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/DepressingSynapseType
@@ -1706,18 +1666,6 @@ bmo:EModelOptimizer rdf:type owl:Class ;
                     rdfs:subClassOf bmo:EModelHyperparameter ;
                     rdfs:label "EModel Parameter Optimizer"@en ;
                     skos:definition "Algorithm used for optimization."^^xsd:string .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/EModelParameter
-bmo:EModelParameter rdf:type owl:Class ;
-                    rdfs:subClassOf bmo:ModelBrainParameter ;
-                    rdfs:label "EModel Parameter"^^xsd:string .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/EModelParameterConstraint
-bmo:EModelParameterConstraint rdf:type owl:Class ;
-                              rdfs:subClassOf bmo:ModelBrainParameterConstraint ;
-                              rdfs:label "EModel Parameter Constraint"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/EModelParameterConstraintGenerationWorkflow
@@ -2289,6 +2237,13 @@ bmo:METypeCircuitProperty rdf:type owl:Class ;
                           skos:prefLabel "METype circuit property"^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/MTypeDensity
+bmo:MTypeDensity rdf:type owl:Class ;
+                 rdfs:subClassOf schema:Dataset ;
+                 rdfs:label "M-Type Density"@en ;
+                 skos:prefLabel "M-Type Density"^^xsd:string .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/METypePropertyGenerator
 bmo:METypePropertyGenerator rdf:type owl:Class ;
                             rdfs:subClassOf bmo:ModelCircuitPropertyGenerator ,
@@ -2383,13 +2338,6 @@ bmo:ModelBiochemicalReaction rdf:type owl:Class ;
                              skos:definition "A computational model of a biochemical reaction, a chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBiochemicalReactionParameter
-bmo:ModelBiochemicalReactionParameter rdf:type owl:Class ;
-                                      rdfs:subClassOf bmo:ModelBrainParameter ;
-                                      rdfs:label "Model Biochemical Reaction Parameter"@en ;
-                                      skos:definition "Parameter used to represent a specific biological or theoretical value that is used in the modeling of biochemical reactions."^^xsd:string .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBlueprint
 bmo:ModelBlueprint rdf:type owl:Class ;
                    rdfs:subClassOf prov:Entity ,
@@ -2450,7 +2398,7 @@ bmo:ModelBrainParameter rdf:type owl:Class ;
                                           owl:someValuesFrom schema:QuantitativeValue
                                         ] ;
                         rdfs:label "Model Brain Parameter"@en ;
-                        skos:definition "A brain parameter is a parameter used to represent a specific biological or theoretical value that is used in the construction of a brain model."^^xsd:string .
+                        <http://www.w3.org/2004/02/skos/core#definition> "A brain parameter is a parameter used to represent a specific biological or theoretical value that is used in the construction of a brain model."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBrainParameterConstraint
@@ -2634,12 +2582,6 @@ bmo:ModelCircuitPropertyGeneratorVariant rdf:type owl:Class ;
                                          rdfs:subClassOf bmo:GeneratorVariant ,
                                                          bmo:ModelBuildingWorkflow ;
                                          rdfs:label "ModelCircuitPropertyGeneratorVariant"@en .
-
-
-###  https://bbp.epfl.ch/ontologies/core/bmo/ModelConnectivityParameter
-bmo:ModelConnectivityParameter rdf:type owl:Class ;
-                               rdfs:subClassOf bmo:ModelBrainParameter ;
-                               rdfs:label "Model Connectivity Parameter"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelCytosolMetabolism
