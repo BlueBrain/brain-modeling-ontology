@@ -13234,7 +13234,7 @@ schema:Organization a owl:Class ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:151 ],
         bmo:NeuronMorphologicalType ;
-    skos:altLabel "MC"@en ;
+    skos:altLabel "Mitral neuron"@en ;
     skos:definition "Principal neuron located in the olfactory bulb in the mammalian central nervous system. The cell bodies are arranged in a thin layer between the granule cell layer and the external plexiform layer. Each mitral cell is usually characterized in the mammal by a single primary dendrite that traverses the external plexiform layer and terminates within an olfactory glomerulus in a tuft of branches which receives input from the axons of olfactory receptor neurons. Axons of the mitral cells project to a number of areas in the brain, including the piriform cortex, entorhinal cortex, olfactory tubercle, and amygdala."@en ;
     skos:notation "AOB_MC"^^xsd:string ;
     skos:prefLabel "Olfactory Bulb Main Mitral Cell"@en .
