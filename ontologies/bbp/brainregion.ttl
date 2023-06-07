@@ -23791,9 +23791,25 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/UBERON_0002301> .
 
 
-
 ###  https://neuroshapes.org/BrainRegion
 nsg:BrainRegion rdf:type owl:Class .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainHemisphere
+bmo:BrainHemisphere rdf:type owl:Class .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainHemisphereLeft
+bmo:BrainHemisphereLeft rdf:type owl:Class ;
+              rdfs:subClassOf bmo:BrainHemisphere ;
+              rdfs:label "Brain Hemisphere Left side"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainHemisphereRight
+bmo:BrainHemisphereRight rdf:type owl:Class ;
+              rdfs:subClassOf bmo:BrainHemisphere ;
+              rdfs:label "Brain Hemisphere Right Side"@en .
+
 
 <http://purl.obolibrary.org/obo/UBERON_0005390> <http://www.w3.org/2004/02/skos/core#prefLabel> "L1"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#definition> "The most superficial layer of the neocortex characterized by a paucity of cell bodies."^^xsd:string ;

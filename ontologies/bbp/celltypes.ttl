@@ -32631,11 +32631,10 @@ nsg:hasInstanceInSpecies a owl:ObjectProperty ;
     rdfs:subPropertyOf owl:topObjectProperty .
 
 bmo:InhibitoryNeurotransmitterType a owl:Class ;
-    rdfs:label "Inhibitory"@en ;
+    rdfs:label "Inhibitory Neurotransmitter Type"@en ;
     rdfs:subClassOf bmo:NeurotransmitterType ;
-    skos:altLabel "Inhibitory Neurotransmitter Type" ;
     skos:notation "Inh"^^xsd:string ;
-    skos:prefLabel "Inhibitory neuron"^^xsd:string ;
+    skos:prefLabel "Inhibitory neurotransmitter type"^^xsd:string ;
     nsg:color "#ff2222"^^xsd:string .
 
 bmo:inferredCanHaveMType a owl:ObjectProperty ;
@@ -32644,11 +32643,10 @@ bmo:inferredCanHaveMType a owl:ObjectProperty ;
     skos:definition "MType assigned by an expert scientist as the best match to the observed MType of a cell when the True MType is was found."@en .
 
 bmo:ExcitatoryNeurotransmitterType a owl:Class ;
-    rdfs:label "Excitatory"@en ;
+    rdfs:label "Excitatory Neurotransmitter Type"@en ;
     rdfs:subClassOf bmo:NeurotransmitterType ;
-    skos:altLabel "Excitatory Neurotransmitter Type" ;
     skos:notation "Exc"^^xsd:string ;
-    skos:prefLabel "Excitatory neuron"^^xsd:string ;
+    skos:prefLabel "Excitatory neurotransmitter type"^^xsd:string ;
     nsg:color "#6666ff"^^xsd:string .
 
 bmo:NeuronMorphologicalType a owl:Class ;
