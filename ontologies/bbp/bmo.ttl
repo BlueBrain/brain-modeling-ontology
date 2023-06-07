@@ -1199,6 +1199,13 @@ bmo:BrainComponentType rdf:type owl:Class ;
                        skos:definition "Classification of Brain Components whether biological or model."@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainHemisphere
+bmo:BrainHemisphere rdf:type owl:Class ;
+              rdfs:subClassOf bmo:BiologicalBrainComponent ,
+                              bmo:BrainVolume ;
+              rdfs:label "Brain Hemisphere"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer
 bmo:BrainLayer rdf:type owl:Class ;
                rdfs:subClassOf bmo:BiologicalBrainComponent ,

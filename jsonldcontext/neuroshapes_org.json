@@ -3924,6 +3924,9 @@
     "value": {
       "@id": "schema:value"
     },
+    "valuePattern": {
+      "@id": "schema:valuePattern"
+    },
     "valueX": {
       "@id": "nsg:valueX"
     },
