@@ -399,6 +399,9 @@
     "CellSurfaceArea": {
       "@id": "https://bbp.epfl.ch/ontologies/core/efeatures/CellSurfaceArea"
     },
+    "CellTypeAssignmentAnnotation": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/CellTypeAssignmentAnnotation"
+    },
     "CellTypeMapping": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/CellTypeMapping"
     },
@@ -2172,8 +2175,20 @@
     "SynapticPathwayType": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticPathwayType"
     },
+    "SynapticParameter": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticParameter"
+    },
+    "SynapticParameterAnnotation": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticParameterAnnotation"
+    },
+    "SynapticParameterAssignment": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticParameteAssignment"
+    },
     "SynapticStrength": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticStrength"
+    },
+    "SynapticTypeMapping": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticTypeMapping"
     },
     "SynthesizedAstrocyteMorphology": {
       "@id": "nsg:SynthesizedAstrocyteMorphology"
@@ -3818,6 +3833,12 @@
     },
     "synapseRelease": {
       "@id": "nsg:synapseRelease"
+    },
+    "synapticConnection": {
+      "@id": "bmo:synapticConnection"
+    },
+    "synapticPathway": {
+      "@id": "bmo:synapticPathway"
     },
     "target": {
       "@id": "nsg:target"

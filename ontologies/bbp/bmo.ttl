@@ -39,7 +39,7 @@
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
                                            schema:title "Brain Modeling Ontology"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
-                                           owl:versionInfo "R829"^^xsd:string .
+                                           owl:versionInfo "R831"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -4100,6 +4100,20 @@ nsg:CellOrientationField rdf:type owl:Class ;
                          rdfs:label "CellOrientationField"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/ChemicalSynapse
+bmo:ChemicalSynapse rdf:type owl:Class ;
+                    rdfs:subClassOf bmo:Synapse ;
+                    skos:definition "A type of synapse where information is transferred through the release of a neurotransmitter from one neuron and its detection by an adjacent cell." ;
+                    rdfs:label "Chemical Synapse"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ChemicalSynapticConnection
+bmo:ChemicalSynapticConnection rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:SynapticConnection ;
+                                 skos:definition "A set of chemical synapses." ;
+                                 rdfs:label "Chemical Synaptic Connection"@en .
+
+
 ###  https://neuroshapes.org/ChlorideChannel
 nsg:ChlorideChannel rdf:type owl:Class ;
                     rdfs:subClassOf bmo:IonChannel ,
@@ -4173,6 +4187,20 @@ nsg:EType rdf:type owl:Class ;
 nsg:ElectricalSeries rdf:type owl:Class ;
                      rdfs:subClassOf nsg:TimeSeries ;
                      rdfs:label "Electrical Series"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ElectricalSynapse
+bmo:ElectricalSynapse rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:Synapse ;
+                                 skos:definition "A type of synapse, where a mechanical and electrically condictive link between two adjacent cells is formed at a narrow gap. Also known as gap jonction." ;
+                                 rdfs:label "Electrical Synapse"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ElectricalSynapticConnection
+bmo:ElectricalSynapticConnection rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:SynapticConnection ;
+                                 skos:definition "A set of electrical synapses." ;
+                                 rdfs:label "Electrical Synaptic Connection"@en .
 
 
 ###  https://neuroshapes.org/Estrogen
