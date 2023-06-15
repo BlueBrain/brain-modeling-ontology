@@ -39,9 +39,9 @@
             {
               "description": "Density of a neuroscience object such as cells, neurons or synaptic boutons.",
               "minCount": 1,
-              "name": "Density",
-              "node": "this:DensityQuantitativeValueShape",
-              "path": "nsg:density"
+              "name": "Density value",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:series"
             }
           ]
         }
@@ -53,25 +53,6 @@
         "nsg:BoutonDensity",
         "nsg:CellDensity",
         "nsg:NeuronDensity"
-      ]
-    },
-    {
-      "@id": "https://neuroshapes.org/dash/density/shapes/DensityQuantitativeValueShape",
-      "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape"
-        },
-        {
-          "property": [
-            {
-              "datatype": "xsd:string",
-              "description": "Statistic of the density (e.g. mean).",
-              "name": "Statistic",
-              "path": "nsg:statistic"
-            }
-          ]
-        }
       ]
     }
   ]

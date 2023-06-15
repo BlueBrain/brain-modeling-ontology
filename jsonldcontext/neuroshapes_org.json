@@ -2809,7 +2809,8 @@
       "@id": "nsg:endTime"
     },
     "endedAtTime": {
-      "@id": "prov:endedAtTime"
+      "@id": "prov:endedAtTime",
+      "@type": "xsd:dateTime"
     },
     "endianness": {
       "@id": "nsg:endianness"
@@ -3768,7 +3769,8 @@
       "@id": "nsg:startMembranePotential"
     },
     "startedAtTime": {
-      "@id": "prov:startedAtTime"
+      "@id": "prov:startedAtTime",
+      "@type": "xsd:dateTime"
     },
     "statistic": {
       "@id": "nsg:statistic"

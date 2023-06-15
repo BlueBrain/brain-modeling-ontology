@@ -31,9 +31,9 @@
             {
               "description": "Thickness of a neuroscience object such as a brain region layer.",
               "minCount": 1,
-              "name": "Thickness",
-              "node": "this:ThicknessQuantitativeValueShape",
-              "path": "nsg:thickness"
+              "name": "Thickness value",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:series"
             }
           ]
         }
@@ -43,25 +43,6 @@
       "targetClass": [
         "nsg:Thickness",
         "nsg:LayerThickness"
-      ]
-    },
-    {
-      "@id": "https://neuroshapes.org/dash/thickness/shapes/ThicknessQuantitativeValueShape",
-      "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape"
-        },
-        {
-          "property": [
-            {
-              "datatype": "xsd:string",
-              "description": "Statistic of the thickness (e.g. mean).",
-              "name": "Statistic",
-              "path": "nsg:statistic"
-            }
-          ]
-        }
       ]
     }
   ]
