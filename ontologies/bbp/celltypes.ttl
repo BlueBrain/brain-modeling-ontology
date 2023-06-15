@@ -726,58 +726,58 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "cAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/LocusCoeruleusGABAergicCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/LocusCoeruleusGABAergicCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107933> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
@@ -930,16 +930,16 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "cSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom <file:///ontologies/core/celltypes/AmygdalaBasketCell> ],
@@ -1011,112 +1011,112 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "bAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/ClaustrumSpinyProjectionCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumSpinyProjectionCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/ClaustrumSpinyProjectionCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumSpinyProjectionCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/ClaustrumAspinyPV-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumAspinyPV-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SLM_PPA> ],
@@ -1227,28 +1227,28 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "bSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -1320,109 +1320,109 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "cNAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaHorizontalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaHorizontalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/LateralHabenulaProjectionCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/LateralHabenulaProjectionCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaHorizontalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaHorizontalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/MedullaNoncatecholaminergicCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/MedullaNoncatecholaminergicCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaHorizontalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaHorizontalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaHorizontalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaHorizontalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/MedullaCatecholaminergicCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/MedullaCatecholaminergicCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/LateralHabenulaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/LateralHabenulaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107930> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/SolitaryNucleusMyelinatedBaroreceptorNeuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/SolitaryNucleusMyelinatedBaroreceptorNeuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom <file:///ontologies/core/celltypes/MedullaCatecholaminergicCell> ],
@@ -1563,16 +1563,16 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "dSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom <file:///ontologies/core/celltypes/AmygdalaBasketCell> ],
@@ -1623,22 +1623,22 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "bNAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/ClaustrumAspinyPV-Negative> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumAspinyPV-Negative> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/ClaustrumAspinyPV-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumAspinyPV-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom <file:///ontologies/core/celltypes/AmygdalaPrincipalCell> ],
@@ -1752,16 +1752,16 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "cIR"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom <file:///ontologies/core/celltypes/AmygdalaBasketCell> ],
@@ -1836,85 +1836,85 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "dNAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/HypothalamusOxytocinergicNeuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/HypothalamusOxytocinergicNeuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom </ontologies/core/celltypes/BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <file:///ontologies/core/celltypes/HypothalamusOxytocinergicNeuron> ],
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/HypothalamusOxytocinergicNeuron> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
