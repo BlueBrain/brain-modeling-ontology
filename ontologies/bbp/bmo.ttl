@@ -3720,7 +3720,7 @@ bmo:SynapticPathway rdf:type owl:Class ;
                                       owl:someValuesFrom bmo:SynapticPathwayFeature
                                     ] ;
                     rdfs:label "Synaptic Pathway"@en ;
-                    skos:definition "A set of synaptic connections from one cell type to another cell type."^^xsd:string .
+                    skos:definition "A set of synaptic connections from one cell group to another cell group. The group is not constrained to one cell type, it could contain a combination of cell types from different categories (electrical, morphological or neurotransmitter)."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SynapticPathwayFeature
