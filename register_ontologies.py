@@ -4,21 +4,16 @@ import json
 import os
 from copy import deepcopy
 from typing import Dict
-
+import nexussdk as nexus
 import rdflib
+from rdflib import PROV, Literal, Namespace, RDF, OWL, RDFS
 from kgforge.core.commons import Context
-
-import bmo.ontologies as bmo
-
 from kgforge.core import KnowledgeGraphForge
-
 from kgforge.specializations.mappings import DictionaryMapping
 
-from rdflib import PROV, Literal, Namespace, RDF, OWL, RDFS
-
+import bmo.ontologies as bmo
 from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, remove_non_ascii, PREFIX_MAPPINGS
 
-import nexussdk as nexus
 
 WEBPROTEGE_TO_NEXUS = {
     # Target ontology ID's to define
@@ -213,7 +208,7 @@ def parse_and_register_ontologies(arguments):
     forge_model_context = Context(document=forge_model_context_document["@context"], iri=forge_model_context_document['@id'])
 
     new_jsonld_context, ontology_errors = bmo.build_context_from_ontology(all_ontology_graphs, forge_model_context)
-    new_jsonld_context, schema_errors = bmo.build_context_from_schema(all_schema_graphs, new_jsonld_context)
+    new_jsonld_schema_context, schema_errors = bmo.build_context_from_schema(all_schema_graphs, new_jsonld_context)
     errors = []
     errors.extend(ontology_errors)
     errors.extend(schema_errors)
@@ -296,10 +291,8 @@ def parse_and_register_ontologies(arguments):
     with open("./class_json.json", "w") as f:
         json.dump(class_jsons, f)
     
-    """
     print(f"Registering {len(list(schema_graphs_dict.keys()))} schemas")
     already_registered = []
-    
     
     for schema_file, schema_content in schema_graphs_dict.items():
         register_schemas(forge_schema, schema_file, schema_content, schema_graphs_dict, schema_id_to_filepath_dict,
@@ -307,7 +300,7 @@ def parse_and_register_ontologies(arguments):
                          already_registered=already_registered)
     
     print(f"Registration finished for all schemas.")
-    """
+
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
         print(f"Registering ontology: {ontology_path}")
         execute_registration(forge, ontology_path, ontology_graph, all_class_resources_mapped_dict, all_class_resources_framed_dict, new_jsonld_context, new_jsonld_context_dict, brain_region_generated_classes,
