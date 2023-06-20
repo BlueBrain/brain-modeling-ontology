@@ -2187,6 +2187,9 @@
     "SynapticStrength": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticStrength"
     },
+    "SynapticTypeAssignment": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticTypeAssignment"
+    },
     "SynapticTypeMapping": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticTypeMapping"
     },
