@@ -1968,6 +1968,9 @@
     "SoftwareAgent": {
       "@id": "prov:SoftwareAgent"
     },
+    "SoftwareApplication": {
+      "@id": "schema:SoftwareApplication"
+    },
     "SoftwareSourceCode": {
       "@id": "schema:SoftwareSourceCode"
     },
@@ -2456,6 +2459,9 @@
     "annotatorComment": {
       "@id": "nsg:annotatorComment"
     },
+    "application": {
+      "@id": "bmo:application"
+    },
     "associatedIon": {
       "@id": "https://neuroshapes.org/associatedIon",
       "@type": "@id"
@@ -2888,6 +2894,9 @@
     },
     "function": {
       "@id": "nsg:function"
+    },
+    "functionalizedWith": {
+      "@id": "bmo:functionilizedWith"
     },
     "gain": {
       "@id": "nsg:gain"
