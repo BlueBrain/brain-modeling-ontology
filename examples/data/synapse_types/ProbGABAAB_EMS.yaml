@@ -1,20 +1,20 @@
-synapse_type: Excitatory
-model_template: ProbAMPANMDA_EMS
+synapse_type: Inhibitory
+model_template: ProbGABAAB_EMS
 
 description: >-
   Synapse model template based on dual-exponential dynamics.
 
 parameters:
-  - name: tau_r_AMPA
+  - name: tau_r_GABAA
     description: >-
-      AMPA-R synaptic conductance rise time constant
+      GABAA-R synaptic conductance rise time constant
     units: ms
     value: null
     scope: GLOBAL
     functionalize: false
-  - name: tau_d_AMPA
+  - name: tau_d_GABAA
     description: >-
-      AMPA-R synaptic conductance decay time constant
+      GABAA-R synaptic conductance decay time constant
     units: ms
     value:
       distbn: "truncated_normal"
@@ -31,16 +31,16 @@ parameters:
       edge_property: "decay_time"
       dtype: float32
 
-  - name: tau_r_NMDA
+  - name: tau_r_GABAB
     description: >-
-      NMDA-R synaptic conductance rise time constant
+      GABAB-R synaptic conductance rise time constant
     units: ms
     value: null
     scope: GLOBAL
     functionalize: false
-  - name: tau_d_NMDA
+  - name: tau_d_GABAB
     description: >-
-      NMDA-R synaptic conductance decay time constant
+      GABAB-R synaptic conductance decay time constant
     units: ms
     value: null
     scope: GLOBAL
@@ -99,31 +99,17 @@ parameters:
     sonata:
       edge_property: "facilitation_time"
       dtype: float32
-  - name: e
+  - name: e_GABAA
     description: >-
-      Synaptic reversal potential
+      GABAA reversal potential
     units: mV
     value: null
     scope: GLOBAL
     functionalize: false
-  - name: mg
+  - name: e_GABAB
     description: >-
-      Initial concentration of mg2+
-    units: mM
-    value: null
-    scope: GLOBAL
-    functionalize: false
-  - name: slope_mg
-    description: >-
-      Slope parameter for determining mg concentration
-    units: /mV
-    value: null
-    scope: GLOBAL
-    functionalize: false
-  - name: scale_mg
-    description: >-
-      Scale parameter for determining mg concentration
-    units: mM
+      GABAB reversal potential
+    units: mV
     value: null
     scope: GLOBAL
     functionalize: false
@@ -175,9 +161,9 @@ parameters:
     sonata:
       edge_property: "conductance"
       dtype: float32
-  - name: NMDA_ratio
+  - name: GABAB_ratio
     description: >-
-      Synaptic conductance of NMDA proportional to the value for AMPA.
+      Synaptic conductance of GABAB proportional to the value for GABAA.
     units: 1
     value: null
     scope: SYNAPSE

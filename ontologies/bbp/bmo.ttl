@@ -3747,6 +3747,12 @@ bmo:SynapticPathwayType rdf:type owl:Class ;
                         rdfs:label "Synaptic Pathway Type"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/SynapsePhysiologyModel
+bmo:SynapsePhysiologyModel rdf:type owl:Class ;
+                    rdfs:label "Synapse Physiology Model"@en ;
+                    rdfs:subClassOf bmo:ModelSynapse .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SynapticStrength
 bmo:SynapticStrength rdf:type owl:Class ;
                      rdfs:subClassOf bmo:SynapsePhenotypicFeature ;
