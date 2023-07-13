@@ -2292,6 +2292,9 @@
     "TraceCollection": {
       "@id": "nsg:TraceCollection"
     },
+    "TraceDataWebContainer": {
+      "@id": "bmo:TraceDataWebContainer"
+    },
     "TraceFeature": {
       "@id": "nsg:TraceFeature"
     },
