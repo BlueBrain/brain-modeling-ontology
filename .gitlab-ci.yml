@@ -136,9 +136,8 @@ generate-sphinx-documentation:
 
 # DEPLOY STAGE
 
-
 # Executes deployment of project documentation to bbp-dke-staging Openshift
-deploy-sphinx-documentation-in-staging-openshift:
+deploy-sphinx-documentation-openshift:
   stage: deploy
   extends: .build-image-using-kaniko
   dependencies:
@@ -146,24 +145,15 @@ deploy-sphinx-documentation-in-staging-openshift:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: on_success
-  variables:
-    KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=generated/html"
-    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/sphinx-documentation-staging
-    KUBERNETES_MEMORY_LIMIT: 4Gi
-    KUBERNETES_MEMORY_REQUEST: 4Gi
-
-
-# Executes deployment of project documentation to bbp-dke-staging Openshift
-deploy-sphinx-documentation-in-production-openshift:
-  stage: deploy
-  extends: .build-image-using-kaniko
-  dependencies:
-    - generate-sphinx-documentation
-  rules:
+      variables:
+        CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/sphinx-documentation-staging
     - if: $CI_COMMIT_TAG
       when: on_success
+      variables:
+        CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/sphinx-documentation-production
   variables:
     KANIKO_EXTRA_ARGS: "--build-arg GENERATED_DOCS_PATH=generated/html"
-    CI_REGISTRY_IMAGE: $CI_REGISTRY_IMAGE/sphinx-documentation-production
+    CI_COMMIT_SHORT_SHA: $CI_COMMIT_SHORT_SHA
+    REGISTRY_IMAGE_TAG: $CI_COMMIT_SHORT_SHA-$(date +%s)
     KUBERNETES_MEMORY_LIMIT: 4Gi
     KUBERNETES_MEMORY_REQUEST: 4Gi
