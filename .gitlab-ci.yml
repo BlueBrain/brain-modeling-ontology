@@ -136,8 +136,8 @@ generate-sphinx-documentation:
 
 # DEPLOY STAGE
 
-# Executes deployment of project documentation to bbp-dke-staging Openshift
-deploy-sphinx-documentation-openshift:
+# Executes deployment of project documentation
+deploy-sphinx-documentation:
   stage: deploy
   extends: .build-image-using-kaniko
   dependencies:
