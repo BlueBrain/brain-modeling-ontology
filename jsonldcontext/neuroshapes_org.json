@@ -696,6 +696,9 @@
     "ExperimentalData": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/ExperimentalData"
     },
+    "ExperimentalDensity": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/ExperimentalDensity"
+    },
     "ExperimentalProtocol": {
       "@id": "nsg:ExperimentalProtocol"
     },
@@ -1931,6 +1934,9 @@
     "SimulationCampaign": {
       "@id": "nsg:SimulationCampaign",
       "@type": "@id"
+    },
+    "SimulationDensity": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SimulationDensity"
     },
     "SimulationTrace": {
       "@id": "nsg:SimulationTrace"
