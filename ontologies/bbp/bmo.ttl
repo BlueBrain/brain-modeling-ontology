@@ -4077,6 +4077,40 @@ nsg:CalciumChannel rdf:type owl:Class ;
                                      owl:someValuesFrom nsg:Ca
                                    ] .
 
+###   https://bbp.epfl.ch/ontologies/core/bmo/CalculatedBoutonDensity
+bmo:CalculatedBoutonDensity rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:BoutonDensity ;
+                  rdfs:label "Calculated Bouton Density"@en ;
+                  skos:definition "Bouton density estimated using a model."^^xsd:string .
+
+
+###   https://bbp.epfl.ch/ontologies/core/bmo/CalculatedNeuronDensity
+bmo:CalculatedNeuronDensity rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:NeuronDensity ;
+                  rdfs:label "Calculated Neuron Density"@en ;
+                  skos:definition "Neuron density estimated using a model."^^xsd:string .
+
+
+###   https://bbp.epfl.ch/ontologies/core/bmo/CalculatedLayerThickness
+bmo:CalculatedLayerThickness rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:LayerThickness ;
+                  rdfs:label "Calculated Layer Thickness"@en ;
+                  skos:definition "Thickness of a brain layer estimated using a model."^^xsd:string .
+
+
+###   https://bbp.epfl.ch/ontologies/core/bmo/CalculatedSynapseDensity
+bmo:CalculatedSynapseDensity rdf:type owl:Class ;
+                  rdfs:subClassOf bmo:SynapseDensity ;
+                  rdfs:label "Calculated Synapse Density"@en ;
+                  skos:definition "Synapse density estimated using a model."^^xsd:string .
+
+
+###   https://bbp.epfl.ch/ontologies/core/bmo/CalculatedNeuronDensity
+bmo:CalculatedNeuronDensity rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:NeuronDensity ;
+                  rdfs:label "Calculated Neuron Density"@en ;
+                  skos:definition "Neuron density estimated using a model."^^xsd:string .
+
 
 ###  https://neuroshapes.org/CellDensity
 nsg:CellDensity rdf:type owl:Class ;
@@ -4244,6 +4278,41 @@ nsg:ExperimentalActivity rdf:type owl:Class ;
                          skos:definition "An experimental activity is any activity associated with generating data from a biological brain in a lab or a digital tissue in silico."^^xsd:string .
 
 
+###   https://bbp.epfl.ch/ontologies/core/bmo/ExperimentalBoutonDensity
+bmo:ExperimentalBoutonDensity rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:BoutonDensity ;
+                  rdfs:label "Experimental Bouton Density"@en ;
+                  skos:definition "Bouton density measured experimentally."^^xsd:string .
+
+
+###   https://bbp.epfl.ch/ontologies/core/bmo/ExperimentalLayerThickness
+bmo:ExperimentalLayerThickness rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:LayerThickness ;
+                  rdfs:label "Experimental Layer Thickness"@en ;
+                  skos:definition "Thickness of a brain layer measured experimentally."^^xsd:string .
+
+
+###   https://bbp.epfl.ch/ontologies/core/bmo/ExperimentalNeuronDensity
+bmo:ExperimentalNeuronDensity rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:NeuronDensity ;
+                  rdfs:label "Experimental Neuron Density"@en ;
+                  skos:definition "Neuron density measured experimentally."^^xsd:string .
+
+
+###   https://bbp.epfl.ch/ontologies/core/bmo/ExperimentalSynapseDensity
+bmo:ExperimentalSynapseDensity rdf:type owl:Class ;
+                  rdfs:subClassOf bmo:SynapseDensity ;
+                  rdfs:label "Experimental Synapse Density"@en ;
+                  skos:definition "Synapse density measured experimentally."^^xsd:string .
+
+
+###   https://bbp.epfl.ch/ontologies/core/bmo/ExperimentalTrace
+bmo:ExperimentalTrace rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:Trace ;
+                  rdfs:label "Experimental Trace"@en ;
+                  skos:definition "Trace measured experimentally."^^xsd:string .
+
+
 ###  https://neuroshapes.org/GABA
 nsg:GABA rdf:type owl:Class ;
          rdfs:subClassOf nsg:ClassicalNeurotransmitter ,
@@ -4323,6 +4392,13 @@ nsg:Kv11 rdf:type owl:Class ;
 nsg:Kv31 rdf:type owl:Class ;
          rdfs:subClassOf nsg:PotassiumChannel ;
          rdfs:label "Kv31"@en .
+
+
+###   https://neuroshapes.org/LayerThickness
+nsg:LayerThickness rdf:type owl:Class ;
+                   rdfs:subClassOf bmo:BrainVolumeFeature ;
+                   rdfs:label "Layer Thickness"@en ;
+                   skos:definition "Thickness of the volume delimeted as a brain layer."^^xsd:string .
 
 
 ###  https://neuroshapes.org/MEModel
@@ -4408,6 +4484,13 @@ nsg:Neuron rdf:type owl:Class ;
                              owl:someValuesFrom bmo:NeuronFeature
                            ] ;
            rdfs:label "Neuron"@en .
+
+
+###   https://neuroshapes.org/NeuronDensity
+nsg:NeuronDensity rdf:type owl:Class ;
+                  rdfs:subClassOf bmo:BrainVolumeFeature ;
+                  rdfs:label "Neuron Density"@en ;
+                  skos:definition "Number of neurons per unit of volume."^^xsd:string .
 
 
 ###  https://neuroshapes.org/NeuronMorphology
@@ -4524,6 +4607,13 @@ nsg:Subject rdf:type owl:Class ;
                               owl:someValuesFrom nsg:Species
                             ] ;
             rdfs:label "Subject"@en .
+
+
+###   https://bbp.epfl.ch/ontologies/core/bmo/SynapseDensity
+bmo:SynapseDensity rdf:type owl:Class ;
+                   rdfs:subClassOf bmo:BrainVolumeFeature ;
+                   rdfs:label "Synapse Density"@en ;
+                   skos:definition "Number of synapsis per unit of volume."^^xsd:string .
 
 
 ###  https://neuroshapes.org/SynthesizedNeuronMorphology

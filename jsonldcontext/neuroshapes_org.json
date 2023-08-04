@@ -552,6 +552,12 @@
     "EModelBuildingWorkflow": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelBuildingWorkflow"
     },
+    "EModelChannelDistribution": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelChannelDistrubution"
+    },
+    "EModelConfig": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelConfig"
+    },
     "EModelHyperparameter": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelHyperparameter"
     },
@@ -585,6 +591,9 @@
     "EModelParameterOptimizationWorkflow": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelParameterOptimizationWorkflow"
     },
+    "EModelPipelineSettings": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelPipelineSettings"
+    },
     "EModelRelease": {
       "@id": "nsg:EModelRelease"
     },
@@ -599,6 +608,9 @@
     },
     "EModelValidationWorkflow": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelValidationWorkflow"
+    },
+    "EModelWorkflow": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelWorkflow"
     },
     "EType": {
       "@id": "nsg:EType"
@@ -711,6 +723,9 @@
     "ExtracellularPartMetabolismBuildingWorkflow": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPartMetabolismBuildingWorkflow"
     },
+    "ExtractionTargetsConfig": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/ExtractionTargetsConfig"
+    },
     "FISlope": {
       "@id": "https://bbp.epfl.ch/ontologies/core/efeatures/FISlope"
     },
@@ -740,6 +755,9 @@
     },
     "FirstSpikeLatency": {
       "@id": "https://bbp.epfl.ch/ontologies/core/efeatures/FirstSpikeLatency"
+    },
+    "FitnessCalculatorConfig": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/FitnessCalculationConfig"
     },
     "FixationStainingMounting": {
       "@id": "nsg:FixationStainingMounting"
@@ -1406,6 +1424,9 @@
     },
     "NeuronMetabolismBuildingWorkflow": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/NeuronMetabolismBuildingWorkflow"
+    },
+    "NeuronModelConfig": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/NeuronModelConfig"
     },
     "NeuronModelInSpaceGenerator": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/NeuronModelInSpaceGenerator"
