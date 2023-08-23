@@ -16,17 +16,14 @@ from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
 
 TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
 ALREADY_EXISTS_ERROR = " already exists in project"
-
 GENERIC_CELL_TYPES = {
         "https://bbp.epfl.ch/ontologies/core/bmo/GenericInhibitoryNeuronMType":BMO.NeuronMorphologicalType,
         "https://bbp.epfl.ch/ontologies/core/bmo/GenericExcitatoryNeuronMType":BMO.NeuronMorphologicalType,
         "https://bbp.epfl.ch/ontologies/core/bmo/GenericInhibitoryNeuronEType":BMO.NeuronElectricalType,
         "https://bbp.epfl.ch/ontologies/core/bmo/GenericExcitatoryNeuronEType":BMO.NeuronElectricalType
     }
-
+SHACL_SCHEMA_ID = "https://bluebrain.github.io/nexus/schemas/shacl-20170720.ttl"
 ROOT_BRAIN_REGION = "http://api.brain-map.org/api/v2/data/Structure/997"
-
-
 BASE_CELL_TYPE_CLASSES = {str(BMO.NeuronMorphologicalType):BMO.NeuronMorphologicalType,
                           str(BMO.NeuronElectricalType):BMO.NeuronElectricalType}
 
@@ -174,7 +171,7 @@ SYNTHETIC_SENTENCES = {
 
 def _register_schema(forge, schema_file, schema_resource, all_schema_graph, jsonld_schema_context_resource, tag):
 
-    forge.register(schema_resource, schema_id="https://bluebrain.github.io/nexus/schemas/shacl-20170720.ttl")
+    forge.register(schema_resource, schema_id=SHACL_SCHEMA_ID)
     if schema_resource._last_action and not schema_resource._last_action.succeeded and\
        ALREADY_EXISTS_ERROR not in schema_resource._last_action.message:
         raise Exception(f"Registration of the schema with id '{schema_resource.id}' located in '{schema_file}' failed: {schema_resource._last_action.message}...\n")
@@ -184,7 +181,7 @@ def _register_schema(forge, schema_file, schema_resource, all_schema_graph, json
         # Update and tag if 'already exists' error was encountered
         print("Schema already exists, updating...\n")
         schema_updated = _process_already_existing_resource(forge, schema_resource)
-        forge.update(schema_updated, schema_id="https://bluebrain.github.io/nexus/schemas/shacl-20170720.ttl")
+        forge.update(schema_updated)
         if schema_updated._last_action and schema_updated._last_action.succeeded is True and tag:
             forge.tag(schema_updated, tag)
             pass
