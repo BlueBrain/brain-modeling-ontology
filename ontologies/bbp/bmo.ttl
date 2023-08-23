@@ -977,6 +977,14 @@ bmo:AtlasETypeRatio rdf:type owl:Class ;
                     skos:prefLabel "Atlas EType Ratio"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/AxonalBoutonDensity
+bmo:AxonalBoutonDensity rdf:type owl:Class ;
+                  rdfs:subClassOf bmo:ModelConnectivityParameter ;
+                  owl:equivalentClass nsg:BoutonDensity ;
+                  rdfs:label "Axonal Bouton Density"@en ;
+                  skos:definition "Number of axonal boutons per unit length of axon."@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/AxonGraftingPlusPHNeuronMorphologyGenerator
 bmo:AxonGraftingPlusPHNeuronMorphologyGenerator rdf:type owl:Class ;
                                                 rdfs:subClassOf bmo:ModelCircuitPropertyGeneratorVariant ,
@@ -3669,6 +3677,14 @@ bmo:SynapsePlasticityType rdf:type owl:Class ;
                           rdfs:label "Synapse Plasticity Type"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/SynapsesPerConnection
+bmo:SynapsesPerConnection rdf:type owl:Class ;
+    rdfs:subClassOf bmo:ModelConnectivityParameter ,
+                    bmo:SynapticConnectionFeature ;
+                    skos:definition "The number of synapses per connection."@en ;
+                    rdfs:label "Synapses Per Connection"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SynapseType
 bmo:SynapseType rdf:type owl:Class ;
                 rdfs:subClassOf bmo:BrainComponentType ,
@@ -3999,8 +4015,7 @@ nsg:BasalDendrite rdf:type owl:Class ;
 
 ###  https://neuroshapes.org/BoutonDensity
 nsg:BoutonDensity rdf:type owl:Class ;
-                  rdfs:subClassOf bmo:BrainVolumeFeature ,
-                                  bmo:ModelConnectivityParameter ,
+                  rdfs:subClassOf bmo:ModelConnectivityParameter ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty nsg:brainLocation ;
                                     owl:someValuesFrom nsg:BrainLocation
@@ -4009,7 +4024,9 @@ nsg:BoutonDensity rdf:type owl:Class ;
                                     owl:onProperty nsg:cellType ;
                                     owl:someValuesFrom bmo:BrainCellType
                                   ] ;
+                  owl:equivalentClass bmo:AxonalBoutonDensity ;
                   rdfs:label "Bouton Density"@en ;
+                  skos:definition "Number of boutons per unit length of a segment."@en ;
                   skos:altLabel "Bouton Density"@en .
 
 
@@ -4613,7 +4630,7 @@ nsg:Subject rdf:type owl:Class ;
 bmo:SynapseDensity rdf:type owl:Class ;
                    rdfs:subClassOf bmo:BrainVolumeFeature ;
                    rdfs:label "Synapse Density"@en ;
-                   skos:definition "Number of synapsis per unit of volume."^^xsd:string .
+                   skos:definition "Number of synapses per unit volume of brain tissue (e.g. syn/mm^3) based on sample synapse counts."^^xsd:string .
 
 
 ###  https://neuroshapes.org/SynthesizedNeuronMorphology
