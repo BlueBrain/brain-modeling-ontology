@@ -125,6 +125,9 @@
     "AnalysisResult": {
       "@id": "nsg:AnalysisResult"
     },
+    "AnalysisSoftwareSourceCode": {
+      "@id": "bmo:AnalysisSoftwareSourceCode"
+    },
     "Angiotensin": {
       "@id": "https://neuroshapes.org/Angiotensin"
     },
@@ -449,6 +452,9 @@
     },
     "Configuration": {
       "@id": "nsg:Configuration"
+    },
+    "ConfigurationTemplate": {
+      "@id": "bmo:ConfigurationTemplate"
     },
     "ConnectivityModelCoefficient": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/ConnectivityModelCoefficient"
@@ -2643,6 +2649,9 @@
     "column": {
       "@id": "nsg:column"
     },
+    "command": {
+      "@id": "bmo:command"
+    },
     "comment": {
       "@id": "rdfs:comment"
     },
@@ -2669,6 +2678,9 @@
     },
     "configuration": {
       "@id": "nsg:configuration"
+    },
+    "configurationTemplate": {
+      "@id": "bmo:configurationTemplate"
     },
     "conformsTo": {
       "@id": "nsg:conformsTo"
@@ -3861,6 +3873,9 @@
     "subClassOf": {
       "@id": "rdfs:subClassOf",
       "@type": "@id"
+    },
+    "subdirectory": {
+      "@id": "bmo:subdirectory"
     },
     "subject": {
       "@id": "nsg:subject"
