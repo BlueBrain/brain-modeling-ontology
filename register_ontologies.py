@@ -10,6 +10,7 @@ from rdflib import PROV, Literal, Namespace, RDF, OWL, RDFS
 from kgforge.core.commons import Context
 from kgforge.core import KnowledgeGraphForge
 from kgforge.specializations.mappings import DictionaryMapping
+from kgforge.core.wrappings.dict import wrap_dict
 
 import bmo.ontologies as bmo
 from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, remove_non_ascii, PREFIX_MAPPINGS
@@ -148,6 +149,12 @@ def execute_registration(forge, ontology_path, ontology_graph, all_class_resourc
 def _get_classes_in_ontology(all_class_resources_dict, uriref_iterator):
     return {cls:all_class_resources_dict.get(str(cls)) for cls in uriref_iterator if str(cls) in all_class_resources_dict }
 
+def prepare_update_jsonld_context(forge, new_jsonld_context_json, jsonld_context_iri):
+    new_jsonld_context_resource = forge.from_jsonld(new_jsonld_context_json)
+    existing_jsonld_context_resource = forge.retrieve(jsonld_context_iri)
+    new_jsonld_context_resource._store_metadata = wrap_dict({"_rev":existing_jsonld_context_resource._store_metadata._rev})
+    return new_jsonld_context_resource
+
 
 def parse_and_register_ontologies(arguments):
     """
@@ -189,10 +196,8 @@ def parse_and_register_ontologies(arguments):
     with open ("./jsonldcontext/schema.json", "r") as f:
         new_jsonld_schema_context_document = json.load(f)
 
-    new_jsonld_schema_context_resource = forge_schema.from_json(new_jsonld_schema_context_document)
-    schema_context = forge_schema.retrieve(JSONLD_SCHEMA_CONTEXT_IRI)
-    new_jsonld_schema_context_resource._self = schema_context._store_metadata._self
-    nexus.resources.update(forge.as_json(new_jsonld_schema_context_resource), schema_context._store_metadata._rev)
+    new_jsonld_schema_context_resource = prepare_update_jsonld_context(forge_schema, new_jsonld_schema_context_document, JSONLD_SCHEMA_CONTEXT_IRI)
+    forge_schema.update(new_jsonld_schema_context_resource)
     print(f"Finished updating JSON-LD schema context {new_jsonld_schema_context_document['@id']}")
 
     all_schema_graphs = initialise_graph()
@@ -217,18 +222,15 @@ def parse_and_register_ontologies(arguments):
 
     print(f"Finished collecting JSON-LD data context from ontologies in {ontology_dir}  and schemas in {schema_dir}.")
 
-
     new_jsonld_context_document = new_jsonld_context.document
     new_jsonld_context_document["@id"] = JSONLD_CONTEXT_IRI
     new_jsonld_context.iri = JSONLD_CONTEXT_IRI
-    new_jsonld_context_resource = forge.from_json(new_jsonld_context_document)
     print(f"Updating JSON-LD context {new_jsonld_context_document['@id']}")
+    new_jsonld_context_resource = prepare_update_jsonld_context(forge, new_jsonld_context_document, JSONLD_CONTEXT_IRI)
     with open("./new_jsonld_context_resource.json", "w") as f:
         json.dump(forge.as_json(new_jsonld_context_resource), f)
+    forge.update(new_jsonld_context_resource)
 
-    context = forge.retrieve(JSONLD_CONTEXT_IRI)
-    new_jsonld_context_resource._self = context._store_metadata._self
-    nexus.resources.update(forge.as_json(new_jsonld_context_resource), context._store_metadata._rev)
     print(f"Finished updating JSON-LD context {new_jsonld_context_document['@id']}")
 
     print("Preparing ontology classes")
