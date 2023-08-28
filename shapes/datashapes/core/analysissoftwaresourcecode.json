@@ -5,7 +5,7 @@
       "this": "https://bbp.epfl.ch/shapes/dash/analysissoftwaresourcecode/shapes/"
     }
   ],
-  "@id": " https://bbp.epfl.ch/shapes/dash/analysissoftwaresourcecode",
+  "@id": "https://bbp.epfl.ch/shapes/dash/analysissoftwaresourcecode",
   "@type": "Schema",
   "imports": [
     "nsg:commons/softwaresourcecode"
