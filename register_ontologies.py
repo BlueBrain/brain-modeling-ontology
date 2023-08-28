@@ -152,7 +152,7 @@ def _get_classes_in_ontology(all_class_resources_dict, uriref_iterator):
 def prepare_update_jsonld_context(forge, new_jsonld_context_json, jsonld_context_iri):
     new_jsonld_context_resource = forge.from_jsonld(new_jsonld_context_json)
     existing_jsonld_context_resource = forge.retrieve(jsonld_context_iri)
-    new_jsonld_context_resource._store_metadata = wrap_dict({"_rev":existing_jsonld_context_resource._store_metadata._rev})
+    new_jsonld_context_resource._store_metadata = existing_jsonld_context_resource._store_metadata
     return new_jsonld_context_resource
 
 
@@ -414,7 +414,6 @@ def load_schemas(schema_dir, transformed_schema_path, forge, all_schema_graphs, 
 
         schema_resource = forge.from_jsonld(schema_jsonld)
         schema_jsonld_expanded = forge.as_jsonld(schema_resource, form="expanded")
-        #schema_jsonld_compacted = forge.as_jsonld(schema_resource, form="compacted")
         schema_subdir = schema_file_path_parts[-2]
         schema_subdir_parent = schema_file_path_parts[-3]
         schema_jsonld_expanded_graph = rdflib.Graph().parse(data=schema_jsonld_expanded, format="json-ld")
