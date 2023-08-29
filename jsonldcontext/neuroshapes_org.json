@@ -2568,6 +2568,9 @@
     "brainTemplateDataLayer": {
       "@id": "nsg:brainTemplateDataLayer"
     },
+    "branch": {
+      "@id": "bmo:branch"
+    },
     "bufferEncoding": {
       "@id": "nsg:bufferEncoding"
     },
@@ -2654,6 +2657,9 @@
     },
     "comment": {
       "@id": "rdfs:comment"
+    },
+    "commit": {
+      "@id": "bmo:commit"
     },
     "commonshapes": "https://neuroshapes.org/commons/",
     "compartment": {
@@ -3898,6 +3904,9 @@
     },
     "synapticPathway": {
       "@id": "bmo:synapticPathway"
+    },
+    "tag": {
+      "@id": "bmo:tag"
     },
     "target": {
       "@id": "nsg:target"

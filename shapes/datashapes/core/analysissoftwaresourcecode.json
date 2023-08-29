@@ -33,10 +33,6 @@
               "path": "bmo:command"
             },
             {
-              "minCount": 1,
-              "path": "schema:identifier"
-            },
-            {
               "datatype": "xsd:string",
               "description": "The name of the folder or subdirectory used, in the case in which the same git repository may contain the code for different analysis.",
               "name": "Subdirectory",
