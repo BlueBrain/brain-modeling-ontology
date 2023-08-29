@@ -43,10 +43,22 @@
             "path": "bmo:command"
         },
         {
-          "datatype": "xsd:string",
-          "description": "The identifier of a branch, tag, or commit, provided to ensure reproducibility.",
-          "name": "Identifier",
-          "path": "schema:identifier"
+            "datatype": "xsd:string",
+            "description": "Name of a branch to fetch.",
+            "name": "Branch",
+            "path": "bmo:branch"
+        },
+        {
+            "datatype": "xsd:string",
+            "description": "SHA hash (or PREFIX) of a commit to fetch.",
+            "name": "Commit",
+            "path": "bmo:commit"
+        },
+        {
+            "datatype": "xsd:string",
+            "description": "Name of tag to fetch.",
+            "name": "Tag",
+            "path": "bmo:tag"
         }
       ]
     }
