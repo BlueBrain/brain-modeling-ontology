@@ -168,6 +168,24 @@
           "name": "Distribution",
           "node": "https://neuroshapes.org/commons/distribution/shapes/DistributionShape",
           "path": "schema:distribution"
+        },
+        {
+            "description": "Sub-parts of the entity.",
+            "name": "Has Part",
+            "path": "schema:hasPart",
+            "nodeKind": "sh:BlankNodeOrIRI"
+        },
+        {
+            "description": "What the entity is a part of.",
+            "name": "Is Part Of",
+            "path": "schema:isPartOf",
+            "nodeKind": "sh:BlankNodeOrIRI"
+        },
+        {
+            "nodeKind": "sh:IRI",
+            "description": "What the entity is about.",
+            "name": "About",
+            "path": "schema:about"
         }
       ]
     }
