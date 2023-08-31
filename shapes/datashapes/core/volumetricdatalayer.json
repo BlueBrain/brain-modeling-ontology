@@ -74,7 +74,13 @@
         "nsg:NISSLImageDataLayer",
         "nsg:TwoPhotonImageDataLayer",
         "nsg:BrainTemplateDataLayer",
-        "nsg:GeneExpressionVolumetricDataLayer"
+        "nsg:GeneExpressionVolumetricDataLayer",
+        "bmo:METypeDensity",
+        "nsg:GliaCellDensity",
+        "bmo:DirectionVectorsField",
+        "nsg:CellOrientationField",
+        "bmo:BrainParcellationMask",
+        "nsg:PlacementHintsDataLayer"
       ]
     },
     {

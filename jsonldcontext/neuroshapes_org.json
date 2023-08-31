@@ -1572,6 +1572,12 @@
     "Other": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Other"
     },
+    "PlacementHintsDataLayer": {
+      "@id": "nsg:PlacementHintsDataLayer"
+    },
+    "PlacementHintsDataLayerCatalog": {
+      "@id": "bmo:PlacementHintsDataLayerCatalog"
+    },
     "PHDataLayer": {
       "@id": "nsg:PHDataLayer"
     },
