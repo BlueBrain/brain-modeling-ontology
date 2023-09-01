@@ -14,7 +14,10 @@
     "https://provshapes.org/commons/generation",
     "https://neuroshapes.org/commons/distribution",
     "https://provshapes.org/commons/invalidation",
-    "https://provshapes.org/commons/derivation"
+    "https://provshapes.org/commons/derivation",
+    "https://neuroshapes.org/commons/subject",
+    "https://neuroshapes.org/commons/brainlocation",
+    "https://neuroshapes.org/commons/annotation"
   ],
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/entity/v1.0.0.json",
   "shapes": [
@@ -182,10 +185,35 @@
             "nodeKind": "sh:BlankNodeOrIRI"
         },
         {
-            "nodeKind": "sh:IRI",
-            "description": "What the entity is about.",
-            "name": "About",
-            "path": "schema:about"
+          "class": "nsg:ObjectOfStudy",
+          "description": "Object of Study",
+          "editorialNote": "The object of study ",
+          "name": "Object of Study",
+          "node": "nsg:commons/typedlabeledontologyterm/shapes/ObjectOfStudyOntologyTermShape",
+          "path": "nsg:objectOfStudy"
+        },
+        {
+          "class": "nsg:Annotation",
+          "description": "Annotations of the dataset.",
+          "name": "Annotation",
+          "node": "nsg:commons/annotation/shapes/AnnotationShape",
+          "path": "nsg:annotation"
+        },
+        {
+          "name": "Atlas Release",
+          "nodeKind": "sh:IRI",
+          "path": "nsg:atlasRelease"
+        },
+        {
+          "class": "nsg:BrainAtlasSpatialReferenceSystem",
+          "nodeKind": "sh:IRI",
+          "path": "nsg:isRegisteredIn"
+        },
+        {
+          "name": "About",
+          "description": "The subject matter of the content.",
+          "nodeKind": "sh:IRI",
+          "path": "schema:about"
         }
       ]
     }

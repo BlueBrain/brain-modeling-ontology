@@ -1372,6 +1372,12 @@ bmo:CalciumDynamics rdf:type owl:Class ;
                     skos:definition "Kinetics of the conductance mechanism of calcium ion."^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/CanonicalMorphologyModel
+bmo:CanonicalMorphologyModel rdf:type owl:Class ;
+                    rdfs:label "Canonical Morphology Model"@en ;
+                    skos:definition "Model used for the synthesis of brain cell morphologies."^^xsd:string .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Capillary
 bmo:Capillary rdf:type owl:Class ;
               rdfs:subClassOf bmo:BloodVessel ;
@@ -2972,6 +2978,18 @@ bmo:MorphologyGenerator rdf:type owl:Class ;
                                         ] ;
                         rdfs:label "Neuron Morphology in space generator"@en ;
                         skos:prefLabel "Neuron Morphology in space generator"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/MorphologyModelDistribution
+bmo:MorphologyModelDistribution rdf:type owl:Class ;
+             rdfs:label "Morphology Model Distribution"@en ;
+             skos:definition "Part of a Canonical Morphology Model that contains the distributions of topological and statistical properties extracted from a morphology release."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/MorphologyModelParameter
+bmo:MorphologyModelParameter rdf:type owl:Class ;
+             rdfs:label "Morphology Model Parameter"@en ;
+             skos:definition "Part of a Canonical Morphology Model that contains the parameters to tune the synthesis of morphologies."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/NGVUnit

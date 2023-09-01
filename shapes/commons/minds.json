@@ -39,63 +39,29 @@
               "path": "rdf:type"
             },
             {
-              "class": "nsg:BrainAtlasSpatialReferenceSystem",
               "maxCount": 1,
               "path": "nsg:isRegisteredIn"
             },
             {
               "maxCount": 1,
-              "nodeKind": "sh:IRI",
               "path": "nsg:atlasRelease"
             },
             {
-              "class": "nsg:Subject",
-              "description": "The subject of the study. This data represent an observation of this subject.",
-              "editorialNote": "Asserted subject entity. It may differ from the subject from the provenance.",
               "minCount": 1,
-              "name": "Subject",
-              "path": "nsg:subject",
-              "seeAlso": "nsg:commons/subject/shapes/SubjectShape"
+              "path": "nsg:subject"
             },
             {
-              "class": "nsg:BrainLocation",
-              "description": "The Brain location object.",
               "minCount": 1,
-              "name": "Brain Location",
-              "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
               "path": "nsg:brainLocation"
             },
             {
-              "class": "nsg:ObjectOfStudy",
-              "description": "Object of Study",
-              "editorialNote": "The object of study ",
-              "name": "Object of Study",
-              "node": "nsg:commons/typedlabeledontologyterm/shapes/ObjectOfStudyOntologyTermShape",
-              "path": "nsg:objectOfStudy"
-            },
-            {
               "class": "nsg:Contribution",
-              "description": "Information about the contribution of an agent during the generation of this dataset.",
               "minCount": 1,
-              "name": "Qualified Contribution",
-              "nodeKind": "sh:BlankNodeOrIRI",
-              "path": "nsg:contribution",
-              "seeAlso": "nsg:commons/contribution/shapes/ContributionShape"
+              "path": "nsg:contribution"
             },
             {
-              "class": "schema:DataDownload",
-              "description": "A dataset in downloadable form. The downloadable form has a specific format and is located at a specific location.",
               "minCount": 1,
-              "name": "Distribution",
-              "node": "nsg:commons/distribution/shapes/DistributionShape",
               "path": "schema:distribution"
-            },
-            {
-              "class": "nsg:Annotation",
-              "description": "Annotations of the dataset.",
-              "name": "Annotation",
-              "node": "nsg:commons/annotation/shapes/AnnotationShape",
-              "path": "nsg:annotation"
             }
           ]
         }
