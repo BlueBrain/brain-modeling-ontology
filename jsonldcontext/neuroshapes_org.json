@@ -2343,6 +2343,9 @@
     "TraceGeneration": {
       "@id": "nsg:TraceGeneration"
     },
+    "TraceWebDataContainer": {
+      "@id": "bmo:TraceWebDataContainer"
+    },
     "Transfection": {
       "@id": "nsg:Transfection"
     },
@@ -3397,6 +3400,12 @@
     },
     "morphology": {
       "@id": "nsg:morphology"
+    },
+    "morphologyModelDistribution": {
+      "@id": "bmo:morphologyModelDistribution"
+    },
+    "morphologyModelParameter": {
+      "@id": "bmo:morphologyModelParameter"
     },
     "morphologyIndex": {
       "@id": "nsg:morphologyIndex"
