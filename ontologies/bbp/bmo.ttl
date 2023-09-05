@@ -504,6 +504,11 @@ nsg:generation rdf:type owl:ObjectProperty ;
                rdfs:label "generation"@en .
 
 
+###  https://neuroshapes.org/generator
+nsg:generator rdf:type owl:ObjectProperty ;
+               rdfs:label "generator"@en .
+
+
 ###  https://neuroshapes.org/generationModality
 nsg:generationModality rdf:type owl:ObjectProperty ;
                        rdfs:label "generationModality"@en .
@@ -690,6 +695,11 @@ nsg:propertyID rdf:type owl:DatatypeProperty ;
 ###  https://neuroshapes.org/std
 nsg:std rdf:type owl:DatatypeProperty ;
         rdfs:label "std"@en .
+
+
+###  https://neuroshapes.org/std
+nsg:variant rdf:type owl:DatatypeProperty ;
+        rdfs:label "variant"@en .
 
 
 #################################################################
@@ -1495,6 +1505,18 @@ bmo:ConnectivityModelCoefficientGeneratorUsingErdos-RenyiAlgorithm rdf:type owl:
                                                                                      owl:someValuesFrom bmo:NeuronIdCircuitProperty
                                                                                    ] ;
                                                                    rdfs:label "Connectivity Model Coefficient Generator Using Erdos-Renyi Algorithm"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ConnectomeData
+bmo:ConnectomeData rdf:type owl:Class ;
+                                 rdfs:subClassOf schema:Dataset ;
+                                 rdfs:label "Connectome Data"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/BrainConnectomeStrength
+bmo:BrainConnectomeStrength rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:ConnectomeStrength ;
+                                 rdfs:label "Brain Connectome Strength"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Cytosol
@@ -2330,6 +2352,18 @@ bmo:Microcircuit rdf:type owl:Class ;
                  skos:altLabel "Neuronal Microcircuit"^^xsd:string ;
                  skos:definition "A microcircuit is a minimal volume of brain tissue where the cell numbers are sufficient to saturate the volume of the dendritic neuropil. A number of microcircuits make up a Brain Area."^^xsd:string ;
                  skos:prefLabel "Microcircuit"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/MicroConnectomeData
+bmo:MicroConnectomeData rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:ConnectomeData ;
+                                 rdfs:label "Micro-Connectome data"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/MicroConnectomeVariantSelection
+bmo:MicroConnectomeVariantSelection rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:ConnectomeData ;
+                                 rdfs:label "Micro-Connectome variant selection"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Mitochondrion
@@ -3881,6 +3915,13 @@ bmo:Vein rdf:type owl:Class ;
          rdfs:label "Vein"@en ;
          rdfs:seeAlso <https://en.wikipedia.org/wiki/Vein> ;
          skos:definition "Veins are blood vessels that carry blood towards the heart."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/Variant
+bmo:Variant rdf:type owl:Class ;
+         rdfs:subClassOf prov:Entity ;
+         rdfs:label "Variant"@en ;
+         skos:definition "A form or version of something that differs in some respect from other forms of the same thing or from a standard."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/WholeBrain
