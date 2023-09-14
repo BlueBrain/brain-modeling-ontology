@@ -37,7 +37,7 @@
           "class": "schema:SoftwareSourceCode",
           "description": "The software source code.",
           "name": "Software source code",
-          "node": "nsg:commons/shapes/SoftwareSourceCodeShape",
+          "node": "nsg:commons/softwaresourcecode/shapes/SoftwareSourceCodeShape",
           "path": "nsg:softwareSourceCode"
         }
       ],
