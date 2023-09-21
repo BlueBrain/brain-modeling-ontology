@@ -352,6 +352,7 @@ def _merge_ontology(from_ontology_graph, to_ontology_graph, to_another_graph, wh
                         if from_o_p not in [BMO.layers, BMO.adjacentTo,BMO.continuousWith, BMO.hasLayerLocationPhenotype] and from_o_p not in what_property_to_merge: # will be merged once the data format is okay
                             triples_to_add[str(from_o_s)].add((from_o_s, from_o_p, from_o_o))
             triples_to_add[str(from_s)].add((from_s, RDFS.subClassOf, NSG.BrainRegion))
+            triples_to_add[str(from_s)].add((from_s, RDF.type, OWL.Class))
 
     for k,v in triples_to_remove.items():
         for t in v: 

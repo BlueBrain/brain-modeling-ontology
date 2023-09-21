@@ -200,9 +200,10 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
         assert len(schema_graphs_dict) == len(schema_files)
         assert len(schema_graphs_dict) == len(list(all_schema_graphs.subjects(RDF.type, NXV.Schema)))
         all_imported_schemas = all_schema_graphs.objects(None, OWL.imports)
-        all_imported_schemas = [str(r) for r in all_imported_schemas]
-        assert len(set(schema_id_to_filepath_dict.keys())) >= len(set(all_imported_schemas))
-        assert set(all_imported_schemas).issubset(set(schema_id_to_filepath_dict.keys())) #sorted(set(schema_id_to_filepath_dict.keys())) == sorted(set(all_imported_schemas))
+        all_imported_schemas = {str(r) for r in all_imported_schemas}
+        loaded_schema = set(schema_id_to_filepath_dict.keys())
+        assert len(loaded_schema) >= len(set(all_imported_schemas))
+        assert all_imported_schemas.issubset(loaded_schema), f"Imported schemas are missing: {all_imported_schemas - loaded_schema}"
         schema_id_to_filepath_dict_values = list(schema_id_to_filepath_dict.values())
         for k, v in schema_graphs_dict.items():
             assert k in schema_files
@@ -217,4 +218,4 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
             assert "jsonld" in v
         return all_schema_graphs, schema_graphs_dict, schema_id_to_filepath_dict
     except Exception as e:
-        pytest.fail(f"Failed to load all schemas in {schema_dir}. Not loaded schemas are {set([filepath.split('/')[-1] for filepath in schema_files]) - set([filepath.split('/')[-1] for filepath in schema_graphs_dict.keys()])}: {e}")
+        pytest.fail(f"Failed to load all schemas in {schema_dir}. Not loaded schemas are {set([filepath.split('/')[-1] for filepath in schema_files]) - set([filepath.split('/')[-1] for filepath in schema_graphs_dict.keys()])}. {e}")

@@ -7,6 +7,11 @@
   ],
   "@id": "https://neuroshapes.org/dash/imagevolume",
   "@type": "Schema",
+  "imports":[
+    "https://neuroshapes.org/commons/entity",
+    "https://neuroshapes.org/commons/vector3d",
+    "https://neuroshapes.org/dash/rotationalmatrix"
+  ],
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/imagevolume/v1.0.0.json",
   "shapes": [
     {
@@ -14,7 +19,7 @@
       "@type": "NodeShape",
       "and": [
         {
-          "node": "nsg:commons/transformableobject/shapes/EntityShape"
+          "node": "nsg:commons/entity/shapes/EntityShape"
         },
         {
           "property": [
@@ -60,7 +65,7 @@
               "description": "Direction of the image volume represented as a rotational matrix",
               "maxCount": 1,
               "name": "Image direction",
-              "node": "nsg:commons/vector3d/shapes/RotationalMatrixShape",
+              "node": "https://neuroshapes.org/dash/rotationalmatrix/shapes/RotationalMatrixShape",
               "path": "nsg:imageDirection"
             }
           ]

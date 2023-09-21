@@ -8,7 +8,6 @@
   "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureextractionprotocol",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/subject",
     "nsg:commons/entity",
     "nsg:commons/labeledontologyentity"
   ],
@@ -22,12 +21,6 @@
         },
         {
           "property": [
-            {
-              "class": "nsg:Subject",
-              "description": "The subject information (e.g. species).",
-              "name": "Subject",
-              "path": "nsg:subject"
-            },
             {
               "datatype": "xsd:string",
               "description": "The e-model",

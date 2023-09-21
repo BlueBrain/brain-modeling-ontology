@@ -425,7 +425,7 @@ def frame_classes(ontology_graph, forge_context, context, atlasRelease_id, atlas
             json.loads(current_class_string), frame_json_class)
         current_class_framed = graph_free_jsonld(current_class_framed)
         identifier = str(current_class)
-        current_class_framed["@id"] = str(identifier)
+        current_class_framed["@id"] = identifier
         del current_class_framed["@context"]
         new_current_class_framed = _frame_class(current_class_framed, forge_context, ontology_graph, atlasRelease_id, atlasRelease_version)
         new_current_class_framed.pop("bmo:canHaveTType", None)

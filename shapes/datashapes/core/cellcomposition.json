@@ -6,9 +6,7 @@
     "@type": "Schema",
     "imports": [
       "nsg:commons/entity",
-      "nsg:commons/brainlocation",
-      "nsg:commons/contribution",
-      "nsg:commons/distribution"
+      "nsg:commons/brainlocation"
     ],
     "shapes": [
       {

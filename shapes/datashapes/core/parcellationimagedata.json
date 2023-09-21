@@ -7,6 +7,11 @@
   ],
   "@id": "https://neuroshapes.org/dash/parcellationimagedata",
   "@type": "Schema",
+  "imports":[
+    "https://neuroshapes.org/dash/imagestack",
+    "https://neuroshapes.org/dash/imagevolume",
+    "https://neuroshapes.org/commons/entity"
+  ],
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/parcellationimagedata/v1.0.0.json",
   "shapes": [
     {

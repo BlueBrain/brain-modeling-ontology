@@ -2,17 +2,16 @@
   "@context": [
     "https://incf.github.io/neuroshapes/contexts/schema.json",
     {
-      "this": "https://neuroshapes.org/commons/entity/shapes/"
+      "this": "https://neuroshapes.org/commons/entitywithoutannotation/shapes/"
     }
   ],
-  "@id": "https://neuroshapes.org/commons/entity",
+  "@id": "https://neuroshapes.org/commons/entitywithoutannotation",
   "@type": "nxv:Schema",
+  "editorialNote": "This is a helper schema to avoid recursive imports of annoation and entity: an annotation is an entity while an entity can have an annotation.",
   "imports": [
-    "https://neuroshapes.org/commons/subject",
-    "https://neuroshapes.org/commons/annotation",
-    "https://neuroshapes.org/commons/entitywithoutannotationsubject"
+    "https://neuroshapes.org/commons/entitywithoutannotationsubject",
+    "nsg:commons/subject"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/entity/v1.0.0.json",
   "shapes": [
     {
       "@id": "this:EntityShape",
@@ -25,13 +24,6 @@
         },
         {
           "property": [
-            {
-              "class": "nsg:Annotation",
-              "description": "Annotations of the dataset.",
-              "name": "Annotation",
-              "node": "nsg:commons/annotation/shapes/AnnotationShape",
-              "path": "nsg:annotation"
-            },
             {
               "class": "nsg:Subject",
               "description": "The subject of the study. This data represent an observation of this subject.",

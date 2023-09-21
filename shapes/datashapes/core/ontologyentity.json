@@ -7,6 +7,9 @@
   ],
   "@id": "https://neuroshapes.org/dash/ontologyentity",
   "@type": "Schema",
+  "imports":[
+    "https://neuroshapes.org/commons/labeledontologyentity"
+  ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/ontologyentity/shapes/OntologyEntityShape",

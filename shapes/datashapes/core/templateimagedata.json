@@ -7,6 +7,10 @@
   ],
   "@id": "https://neuroshapes.org/dash/templateimagedata",
   "@type": "Schema",
+  "imports":[
+    "https://neuroshapes.org/dash/imagestack",
+    "https://neuroshapes.org/dash/imagevolume"
+  ],
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/templateimagedata/v0.1.0.json",
   "shapes": [
     {

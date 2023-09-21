@@ -16,7 +16,7 @@
       "@type": "NodeShape",
       "and": [
         {
-          "node": "nsg:dash/reconstructedcell/shapes/ReconstructedPatchedCellShape"
+          "node": "nsg:dash/reconstructedpatchedcell/shapes/ReconstructedPatchedCellShape"
         },
         {
           "property": [

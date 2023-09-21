@@ -274,7 +274,6 @@
               "maxCount": 1,
               "minCount": 1,
               "name": "",
-              "node": "this:MEModelReleaseShape",
               "path": "nsg:memodelRelease"
             },
             {

@@ -10,7 +10,6 @@
   "imports": [
     "nsg:commons/entity",
     "nsg:commons/quantitativevalue",
-    "nsg:commons/typedlabeledontologyterm",
     "nsg:commons/unit"
   ],
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/electrophysiology/src/main/resources/schemas/neurosciencegraph/electrophysiology/trace/v1.0.0.json",

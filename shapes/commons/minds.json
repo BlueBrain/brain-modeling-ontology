@@ -8,12 +8,7 @@
   "@id": "https://neuroshapes.org/commons/minds",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/subject",
-    "nsg:commons/brainlocation",
-    "nsg:commons/distribution",
-    "nsg:commons/typedlabeledontologyterm",
-    "nsg:commons/entity",
-    "nsg:commons/annotation"
+    "nsg:commons/entity"
   ],
   "shapes": [
     {

@@ -8,7 +8,6 @@
   "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureextractiontarget",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/subject",
     "nsg:commons/entity",
     "nsg:commons/labeledontologyentity",
     "nsg:commons/quantitativevalue"
