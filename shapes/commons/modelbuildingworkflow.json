@@ -16,7 +16,7 @@
       "@type": "NodeShape",
       "and": [
         {
-          "node": "nsg:commons/workflow/shapes/WorkflowShape"
+          "node": "https://bbp.epfl.ch/shapes/commons/workflow/shapes/WorkflowShape"
         },
         {
           "property": [

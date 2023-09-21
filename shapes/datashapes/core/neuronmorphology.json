@@ -10,8 +10,6 @@
   "imports": [
     "nsg:commons/minds",
     "nsg:commons/quantitativevalue",
-    "nsg:commons/brainlocation",
-    "nsg:commons/typedlabeledontologyterm",
     "nsg:commons/collection"
   ],
   "shapes": [

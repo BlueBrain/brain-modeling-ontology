@@ -8,7 +8,8 @@
   "@id": "https://neuroshapes.org/dash/geneexpressionvolumetricdatalayer",
   "@type": "Schema",
   "imports": [
-    "nsg:dash/volumetricdatalayer"
+    "nsg:dash/volumetricdatalayer",
+    "https://neuroshapes.org/commons/labeledontologyentity"
   ],
   "shapes": [
     {
@@ -16,7 +17,7 @@
       "@type": "NodeShape",
       "and": [
         {
-          "node": "nsg:dash/volumetricdatalayer/shapes/VolumetricDataLayer"
+          "node": "nsg:dash/volumetricdatalayer/shapes/VolumetricDataLayerShape"
         },
         {
           "property": [

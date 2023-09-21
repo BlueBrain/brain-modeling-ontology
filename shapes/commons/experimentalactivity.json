@@ -2,7 +2,7 @@
   "@context": [
     "https://incf.github.io/neuroshapes/contexts/schema.json",
     {
-      "@base": "https://neuroshapes.org/commons/experimentalactivity/shapes/"
+      "this": "https://neuroshapes.org/commons/experimentalactivity/shapes/"
     }
   ],
   "@id": "https://neuroshapes.org/commons/experimentalactivity",
@@ -14,7 +14,7 @@
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/experimentalactivity/v0.1.0.json",
   "shapes": [
     {
-      "@id": "ExperimentalActivityShape",
+      "@id": "this:ExperimentalActivityShape",
       "@type": "NodeShape",
       "and": [
         {
