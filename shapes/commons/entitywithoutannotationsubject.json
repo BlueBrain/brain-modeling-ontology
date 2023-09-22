@@ -204,7 +204,6 @@
           "path": "nsg:isRegisteredIn"
         },
         {
-          "class": "nsg:BrainLocation",
           "description": "The Brain location object.",
           "name": "Brain Location",
           "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
