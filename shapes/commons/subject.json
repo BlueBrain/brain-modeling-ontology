@@ -8,7 +8,6 @@
   "@id": "https://neuroshapes.org/commons/subject",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/entitywithoutsubject",
     "nsg:commons/labeledontologyentity",
     "nsg:commons/quantitativevalue"
   ],
@@ -17,99 +16,92 @@
     {
       "@id": "https://neuroshapes.org/commons/subject/shapes/SubjectShape",
       "@type": "NodeShape",
-      "and": [
+      "property": [
         {
-          "node": "nsg:commons/entitywithoutsubject/shapes/EntityShape"
+          "description": "The species of the subject",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Species",
+          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
+          "path": "nsg:species"
         },
         {
-          "property": [
-            {
-              "description": "The species of the subject",
-              "maxCount": 1,
-              "minCount": 1,
-              "name": "Species",
-              "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-              "path": "nsg:species"
-            },
-            {
-              "description": "Subject strain",
-              "maxCount": 1,
-              "name": "Strain",
-              "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-              "path": "nsg:strain"
-            },
-            {
-              "description": "Transgenic modification of subject",
-              "maxCount": 1,
-              "name": "Transgenic",
-              "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-              "path": "nsg:transgenic"
-            },
-            {
-              "description": "The sex of the subject",
-              "maxCount": 1,
-              "name": "Sex",
-              "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-              "path": "nsg:sex"
-            },
-            {
-              "description": "The age of the subject.",
-              "maxCount": 1,
-              "name": "Age",
-              "node": "this:AgeShape",
-              "path": "nsg:age"
-            },
-            {
-              "datatype": "xsd:dateTime",
-              "description": "Date of birth of subject.",
-              "lessThan": "schema:deathDate",
-              "maxCount": 1,
-              "name": "Date of birth",
-              "path": "schema:birthDate"
-            },
-            {
-              "datatype": "xsd:dateTime",
-              "description": "Date of sacrifice of subject.",
-              "maxCount": 1,
-              "name": "Date of sacrifice",
-              "path": "schema:deathDate"
-            },
-            {
-              "datatype": "xsd:dateTime",
-              "description": "Date of surgery of subject.",
-              "maxCount": 1,
-              "name": "Date of surgery",
-              "path": "nsg:dateOfSurgery"
-            },
-            {
-              "description": "Disease modeled in subject.",
-              "maxCount": 1,
-              "name": "Disease",
-              "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-              "path": "nsg:diseaseModel"
-            },
-            {
-              "description": "Disease of subject.",
-              "maxCount": 1,
-              "name": "Disease",
-              "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-              "path": "nsg:disease"
-            },
-            {
-              "description": "Treatment of the subject.",
-              "maxCount": 1,
-              "name": "Treatment",
-              "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-              "path": "nsg:treatment"
-            },
-            {
-              "description": "Weight of the subject.",
-              "maxCount": 1,
-              "name": "Weight",
-              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
-              "path": "schema:weight"
-            }
-          ]
+          "description": "Subject strain",
+          "maxCount": 1,
+          "name": "Strain",
+          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
+          "path": "nsg:strain"
+        },
+        {
+          "description": "Transgenic modification of subject",
+          "maxCount": 1,
+          "name": "Transgenic",
+          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
+          "path": "nsg:transgenic"
+        },
+        {
+          "description": "The sex of the subject",
+          "maxCount": 1,
+          "name": "Sex",
+          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
+          "path": "nsg:sex"
+        },
+        {
+          "description": "The age of the subject.",
+          "maxCount": 1,
+          "name": "Age",
+          "node": "this:AgeShape",
+          "path": "nsg:age"
+        },
+        {
+          "datatype": "xsd:dateTime",
+          "description": "Date of birth of subject.",
+          "lessThan": "schema:deathDate",
+          "maxCount": 1,
+          "name": "Date of birth",
+          "path": "schema:birthDate"
+        },
+        {
+          "datatype": "xsd:dateTime",
+          "description": "Date of sacrifice of subject.",
+          "maxCount": 1,
+          "name": "Date of sacrifice",
+          "path": "schema:deathDate"
+        },
+        {
+          "datatype": "xsd:dateTime",
+          "description": "Date of surgery of subject.",
+          "maxCount": 1,
+          "name": "Date of surgery",
+          "path": "nsg:dateOfSurgery"
+        },
+        {
+          "description": "Disease modeled in subject.",
+          "maxCount": 1,
+          "name": "Disease",
+          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
+          "path": "nsg:diseaseModel"
+        },
+        {
+          "description": "Disease of subject.",
+          "maxCount": 1,
+          "name": "Disease",
+          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
+          "path": "nsg:disease"
+        },
+        {
+          "description": "Treatment of the subject.",
+          "maxCount": 1,
+          "name": "Treatment",
+          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
+          "path": "nsg:treatment"
+        },
+        {
+          "description": "Weight of the subject.",
+          "maxCount": 1,
+          "name": "Weight",
+          "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+          "path": "schema:weight"
         }
       ],
       "comment": "Subject used in experiment",
