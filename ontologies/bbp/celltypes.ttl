@@ -17,7 +17,8 @@
     rdfs:label "cACint"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:notation "cACint"^^xsd:string ;
-    skos:prefLabel "Continuous accommodating interneuron electrical type"^^xsd:string .
+    skos:prefLabel "Continuous accommodating interneuron electrical type"^^xsd:string ;
+    nsg:color "#108b8b" .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/GCL_GC> a owl:Class ;
     rdfs:label "GCL_GC"@en ;
@@ -726,58 +727,76 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "cAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICOnsetEType ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICOn-typeEtype ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICAdaptingEType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383206> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383209> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383211> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom ct:AmygdalaChandelierCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/LocusCoeruleusGABAergicCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKkinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107933> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
@@ -805,6 +824,9 @@ schema:title a owl:AnnotationProperty ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383223> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383224> ],
@@ -855,7 +877,7 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <file:///ontologies/core/celltypes/LocusCoeruleusGABAergicCell> ],
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_BP> ],
@@ -883,45 +905,6 @@ schema:title a owl:AnnotationProperty ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383195> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383206> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383209> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383211> ],
         bmo:NeuronElectricalType ;
     skos:notation "cAC"^^xsd:string ;
     skos:prefLabel "Continuous accommodating electrical type"@en .
@@ -930,19 +913,7 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "cSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <file:///ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -1005,118 +976,62 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
     skos:notation "cSTUT"^^xsd:string ;
-    skos:prefLabel "Continuous stuttering electrical type"@en .
+    skos:prefLabel "Continuous stuttering electrical type"@en ;
+    nsg:color "#40cd73" .
 
 <http://uri.interlex.org/base/ilx_0738199> a owl:Class ;
     rdfs:label "bAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
+            owl:someValuesFrom ct:MOBMI_MCI ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
+            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:HYDepolarizationBlockEType ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:HYphasicEType ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
+            owl:someValuesFrom ct:MOBMI_MCI ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaEntorhinalCortexEC-ProjectingCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom ct:AmygdalaSuperficialNeurogliaformCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
+            owl:someValuesFrom ct:AmygdalaInterneuron ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
+            owl:someValuesFrom ct:AmygdalaRegular-SpikingMultipolarCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom ct:AmygdalaPyramidalCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
+            owl:someValuesFrom ct:AmygdalaCasalForebrain-ProjectingCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
+            owl:someValuesFrom ct:ClaustrumSpinyProjectionCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumSpinyProjectionCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaRegular-SpikingMultipolarCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaCasalForebrain-ProjectingCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSuperficialNeurogliaformCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaEntorhinalCortexEC-ProjectingCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumSpinyProjectionCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumAspinyPV-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom ct:ClaustrumAspinyPV-Positive ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SLM_PPA> ],
@@ -1221,34 +1136,29 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
     skos:notation "bAC"^^xsd:string ;
-    skos:prefLabel "Burst accommodating electrical type"@en .
+    skos:prefLabel "Burst accommodating electrical type"@en ;
+    nsg:color "#3431e4" .
 
 <http://uri.interlex.org/base/ilx_0738200> a owl:Class ;
     rdfs:label "bSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom ct:MOBOPL_MTC ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:LC-vHC ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom ct:MOBOPL_MTC ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:LC-mPFC ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom ct:AmygdalaInterneuron ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPyramidalCell> ],
+            owl:someValuesFrom ct:AmygdalaPyramidalCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -1314,118 +1224,77 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
     skos:notation "bSTUT"^^xsd:string ;
-    skos:prefLabel "Burst stuttering electrical type"@en .
+    skos:prefLabel "Burst stuttering electrical type"@en ;
+    nsg:color "#2ff7af" .
 
 <http://uri.interlex.org/base/ilx_0738201> a owl:Class ;
     rdfs:label "cNAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
+            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICBuildupPauserEtype ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICSustainedEType ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaHorizontalCell> ],
+            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:BSTalType1 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom ct:AmygdalaDeepNeurogliaformCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom ct:AmygdalaHorizontalCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
+            owl:someValuesFrom ct:AmygdalaChandelierCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/LateralHabenulaProjectionCell> ],
+            owl:someValuesFrom ct:AmygdalaDeepNeurogliaformCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaHorizontalCell> ],
+            owl:someValuesFrom ct:LateralHabenulaProjectionCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/MedullaNoncatecholaminergicCell> ],
+            owl:someValuesFrom ct:MedullaNoncatecholaminergicCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
+            owl:someValuesFrom ct:AmygdalaFast-SpikingMultipolarCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaProteinKinaseCdeltaPKCdelta-Positive ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaHorizontalCell> ],
+            owl:someValuesFrom ct:AmygdalaSomatostatinSOM-Positive ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom ct:MedullaCatecholaminergicCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom ct:AmygdalaDeepNeurogliaformCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
+            owl:someValuesFrom ct:LateralHabenulaPrincipalCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaHorizontalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/MedullaCatecholaminergicCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaDeepNeurogliaformCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/LateralHabenulaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaFast-SpikingMultipolarCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107930> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/SolitaryNucleusMyelinatedBaroreceptorNeuron> ],
+            owl:someValuesFrom ct:SolitaryNucleusMyelinatedBaroreceptorNeuron ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <file:///ontologies/core/celltypes/MedullaCatecholaminergicCell> ],
+            owl:someValuesFrom ct:MedullaCatecholaminergicCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_Ivy> ],
@@ -1557,25 +1426,14 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
     skos:notation "cNAC"^^xsd:string ;
-    skos:prefLabel "Continuous non-accommodating electrical type"@en .
+    skos:prefLabel "Continuous non-accommodating electrical type"@en ;
+    nsg:color "#4d683e" .
 
 <http://uri.interlex.org/base/ilx_0738202> a owl:Class ;
     rdfs:label "dSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <file:///ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -1617,31 +1475,26 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
     skos:notation "dSTUT"^^xsd:string ;
-    skos:prefLabel "Delayed stuttering electrical type"@en .
+    skos:prefLabel "Delayed stuttering electrical type"@en ;
+    nsg:color "#323c07" .
 
 <http://uri.interlex.org/base/ilx_0738203> a owl:Class ;
     rdfs:label "bNAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumAspinyPV-Negative> ],
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICReboundEType ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:BSTalType2 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom ct:ClaustrumAspinyPV-Negative ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/ClaustrumAspinyPV-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <file:///ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom ct:ClaustrumAspinyPV-Positive ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -1746,25 +1599,14 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
     skos:notation "bNAC"^^xsd:string ;
-    skos:prefLabel "Burst non-accommodating electrical type"@en .
+    skos:prefLabel "Burst non-accommodating electrical type"@en ;
+    nsg:color "#383733" .
 
 <http://uri.interlex.org/base/ilx_0738204> a owl:Class ;
     rdfs:label "cIR"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <file:///ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -1830,91 +1672,74 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
     skos:notation "cIR"^^xsd:string ;
-    skos:prefLabel "Continuous irregular electrical type"@en .
+    skos:prefLabel "Continuous irregular electrical type"@en ;
+    nsg:color "#b1bccb" .
 
 <http://uri.interlex.org/base/ilx_0738205> a owl:Class ;
     rdfs:label "dNAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom ct:MOBGR_DGC ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom ct:MOBGR_SGC ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom ct:HypothalamusOxytocinergicNeuron ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICBuilduppauserEtype ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom ct:HypothalamusOxytocinergicNeuron ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom ct:MOBGR_SGC ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom ct:MOBGR_DGC ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:EPVGLUT1PlusOxtrEType ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:BSTalType3 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
+            owl:someValuesFrom ct:AmygdalaSomatostatinSOM-Positive ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaProteinKinaseCdeltaPKCdelta-Positive> ],
+            owl:someValuesFrom ct:AmygdalaChandelierCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom ct:AmygdalaProteinKinaseCdeltaPKCdelta-Positive ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
+            owl:someValuesFrom ct:AmygdalaInterneuron ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaChandelierCell> ],
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom ct:HypothalamusOxytocinergicNeuron ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
+            owl:someValuesFrom ct:AmygdalaSomatostatinSOM-Positive ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
+            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaInterneuron> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaPrincipalCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/HypothalamusOxytocinergicNeuron> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaBasketCell> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/AmygdalaSomatostatinSOM-Positive> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/HypothalamusOxytocinergicNeuron> ],
+            owl:someValuesFrom ct:HypothalamusOxytocinergicNeuron ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
@@ -1983,11 +1808,15 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
     skos:notation "dNAC"^^xsd:string ;
-    skos:prefLabel "Delayed non-accommodating electrical type"@en .
+    skos:prefLabel "Delayed non-accommodating electrical type"@en ;
+    nsg:color "#cb59d3" .
 
 <http://uri.interlex.org/base/ilx_0738206> a owl:Class ;
     rdfs:label "bIR"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICReboundEType ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:315 ],
         [ a owl:Restriction ;
@@ -2064,7 +1893,8 @@ schema:title a owl:AnnotationProperty ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
     skos:notation "bIR"^^xsd:string ;
-    skos:prefLabel "Burst irregular electrical type"@en .
+    skos:prefLabel "Burst irregular electrical type"@en ;
+    nsg:color "#b9f700" .
 
 <http://uri.interlex.org/base/ilx_0738207> a owl:Class ;
     rdfs:label "cAD"@en ;
@@ -2418,7 +2248,8 @@ schema:title a owl:AnnotationProperty ;
         "Neocortex Pyramidal Cell Layer 2-3"^^xsd:string ;
     skos:definition "A layer 2/3 pyramidal cell"@en ;
     skos:notation "L23_PC"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Pyramidal Cell"@en .
+    skos:prefLabel "Layer 2/3 Pyramidal Cell"@en ;
+    nsg:color "#ffffff" .
 
 <http://uri.interlex.org/base/ilx_0739290> a owl:Class ;
     rdfs:label "cACpyr"@en ;
@@ -3929,39 +3760,6 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
     rdfs:label "NCx_bSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:8_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:80_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:81_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:82_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:83_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:84_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:85_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:86_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:87_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:88_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:89_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:9_Lamp5_Lhx6 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
@@ -4317,6 +4115,39 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:79_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:8_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:80_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:81_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:82_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:83_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:84_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:85_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:86_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:87_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:88_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:89_Sst ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
     skos:notation "NCx_bSTUT"@en ;
     skos:prefLabel "Neocortex burst stuttering electrical type"@en .
@@ -6739,11 +6570,9 @@ bmo:NeocortexDelayedStutteringElectricalType a owl:Class ;
     skos:notation "NCx_dSTUT"@en ;
     skos:prefLabel "Neocortex delayed stuttering electrical type"@en .
 
-
 bmo:NeuronProjectionType a owl:Class ;
     rdfs:label "Neuron Projection Type"@en ;
     rdfs:subClassOf bmo:NeuronType .
-
 
 bmo:NitricOxideNeurotransmitterType a owl:Class ;
     rdfs:label "Nitric Oxide Neurotransmitter"@en ;
@@ -7251,76 +7080,10 @@ ct:1_CR a owl:Class ;
     tts:cell_set_alias "1_CR"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
-ct:AmygdalaBasketCell a owl:Class ;
-    rdfs:label "A_BC"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Basket Cell" ;
-    skos:definition "Basket cell in amygdala"@en ;
-    skos:notation "A_BC" .
-
 ct:AmygdalaBasolateralNucleusPyramidalNeuron a owl:Class ;
     rdfs:label "Amygdala Basolateral Nucleus Pyramidal Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Amygdala basolateral nucleus pyramidal neuron"@en .
-
-ct:AmygdalaCasalForebrain-ProjectingCell a owl:Class ;
-    rdfs:label "A_BFP"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Casal Forebrain-Projecting Cell" ;
-    skos:definition "Basal forebrain-projecting cell in amygdala"@en ;
-    skos:notation "A_BFP" .
-
-ct:AmygdalaChandelierCell a owl:Class ;
-    rdfs:label "A_CC"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Chandelier Cell" ;
-    skos:definition "Chandelier cell in amygdala"@en ;
-    skos:notation "A_CC" .
 
 ct:AmygdalaCorticomedialNucleusPyramidalCell a owl:Class ;
     rdfs:label "Amygdala Corticomedial Nucleus Pyramidal Cell"@en ;
@@ -7329,116 +7092,6 @@ ct:AmygdalaCorticomedialNucleusPyramidalCell a owl:Class ;
             owl:onProperty owl:equivalentClass ],
         bmo:NewNeuronType ;
     skos:altLabel "Amygdala corticomedial nucleus pyramidal cell"^^xsd:string .
-
-ct:AmygdalaDeepNeurogliaformCell a owl:Class ;
-    rdfs:label "A_NGF"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Deep Neurogliaform Cell" ;
-    skos:definition "Deep neurogliaform cell in amygdala"@en ;
-    skos:notation "A_NGF" .
-
-ct:AmygdalaEntorhinalCortexEC-ProjectingCell a owl:Class ;
-    rdfs:label "A_ECP"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Entorhinal Cortex EC-Projecting Cell" ;
-    skos:definition "Entorhinal cortex (EC)-projecting cell in amygdala"@en ;
-    skos:notation "A_ECP" .
-
-ct:AmygdalaFast-SpikingMultipolarCell a owl:Class ;
-    rdfs:label "A_FSMC"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Fast-Spiking Multipolar Cell" ;
-    skos:definition "Fast-spiking multipolar cell in amygdala"@en ;
-    skos:notation "A_FSMC" .
-
-ct:AmygdalaHorizontalCell a owl:Class ;
-    rdfs:label "A_HC"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Horizontal Cell" ;
-    skos:definition "Horizontal cell in amygdala"@en ;
-    skos:notation "A_HC" .
-
-ct:AmygdalaInterneuron a owl:Class ;
-    rdfs:label "A_IN"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Interneuron" ;
-    skos:definition "Interneuron in amygdala"@en ;
-    skos:notation "A_IN" .
 
 ct:AmygdalaParvalbuminPV-Positive a owl:Class ;
     rdfs:label "A_PV+"@en ;
@@ -7461,154 +7114,6 @@ ct:AmygdalaParvalbuminPV-Positive a owl:Class ;
     skos:altLabel "Amygdala Parvalbumin PV-Positive" ;
     skos:definition "Parvalbumin (PV)-positive cell in amygdala"@en ;
     skos:notation "A_PV+" .
-
-ct:AmygdalaPrincipalCell a owl:Class ;
-    rdfs:label "A_PrC"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Principal Cell" ;
-    skos:definition "Principal cell in amygdala"@en ;
-    skos:notation "A_PrC" .
-
-ct:AmygdalaProteinKinaseCdeltaPKCdelta-Positive a owl:Class ;
-    rdfs:label "A_PKCd+"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Protein Kinase Cdelta PKCdelta-Positive" ;
-    skos:definition "Protein kinase Cdelta (PKCdelta)-positive cell in amygdala"@en ;
-    skos:notation "A_PKCd+" .
-
-ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ] .
-
-ct:AmygdalaPyramidalCell a owl:Class ;
-    rdfs:label "A_PC"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Pyramidal Cell" ;
-    skos:definition "Pyramidal cell in amygdala"@en ;
-    skos:notation "A_PC" .
-
-ct:AmygdalaRegular-SpikingMultipolarCell a owl:Class ;
-    rdfs:label "A_RSMC"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Regular-Spiking Multipolar Cell" ;
-    skos:definition "Negular-spiking multipolar cell in amygdala"@en ;
-    skos:notation "A_RSMC" .
-
-ct:AmygdalaSomatostatinSOM-Positive a owl:Class ;
-    rdfs:label "A_SOM+"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Somatostatin SOM-Positive" ;
-    skos:definition "Somatostatin (SOM)-positive cell in amygdala"@en ;
-    skos:notation "A_SOM+" .
-
-ct:AmygdalaSuperficialNeurogliaformCell a owl:Class ;
-    rdfs:label "A_SNGF"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:780 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:319 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:295 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:131 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Amygdala Superficial Neurogliaform Cell" ;
-    skos:definition "Superficial neurogliaform cell in amygdala"@en ;
-    skos:notation "A_SNGF" .
 
 ct:AmygdalaVasoactiveIntestinalPeptideVIP-Positive a owl:Class ;
     rdfs:label "A_VIP+"@en ;
@@ -7882,19 +7387,15 @@ ct:BasomedialAmygdalarNucleusPyramidalCell a owl:Class ;
     skos:definition "Pyramidal cell in Basomedial amygdalar nucleus"@en ;
     skos:notation "BMA_PC" .
 
-ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 a owl:Class ;
-    rdfs:label "BST_GLP-1"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:351 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Bed Nucleus Of The Stria Terminalis Glucagon-Like Peptide-1 GLP-1 " ;
-    skos:definition "Glucagon-like peptide-1 (GLP-1)  neuron"@en ;
-    skos:notation "BST_GLP-1" .
-
 ct:BedNucleusOfTheStriaTerminalisPrincipalCell a owl:Class ;
     rdfs:label "BST_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/351> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:351 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:351 ],
         [ a owl:Restriction ;
@@ -7907,6 +7408,12 @@ ct:BedNucleusOfTheStriaTerminalisPrincipalCell a owl:Class ;
 ct:BedNucleusOfTheStriaTerminalisProjectionCell a owl:Class ;
     rdfs:label "BST_PN"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/351> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:351 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:351 ],
         [ a owl:Restriction ;
@@ -8109,32 +7616,6 @@ ct:Choroid a owl:Class ;
             owl:someValuesFrom mba:512 ],
         bmo:GliaTranscriptomeType .
 
-ct:ClaustrumAspinyPV-Negative a owl:Class ;
-    rdfs:label "CLA_APV-"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:583 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Claustrum Aspiny PV-" ;
-    skos:definition "Aspiny PV-"@en ;
-    skos:notation "CLA_APV-" .
-
-ct:ClaustrumAspinyPV-Positive a owl:Class ;
-    rdfs:label "CLA_APV+"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:583 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Claustrum Aspiny PV+" ;
-    skos:definition "Aspiny PV+"@en ;
-    skos:notation "CLA_APV+" .
-
 ct:ClaustrumIntratelencephalicCell a owl:Class ;
     rdfs:label "CLA_IT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -8173,19 +7654,6 @@ ct:ClaustrumPyramidalCell a owl:Class ;
     skos:altLabel "Claustrum Pyramidal Cell" ;
     skos:definition "Pyramidal neuron in claustrum"@en ;
     skos:notation "CLA_PC" .
-
-ct:ClaustrumSpinyProjectionCell a owl:Class ;
-    rdfs:label "CLA_SPT"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:583 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Claustrum Spiny Projection Cell" ;
-    skos:definition "Projection neuron in claustrum"@en ;
-    skos:notation "CLA_SPT" .
 
 ct:Cluster1 a owl:Class ;
     rdfs:label "Cluster 1"@en ;
@@ -8536,6 +8004,12 @@ ct:DorsomedialNucleusOfTheHypothalamusGlia a owl:Class ;
     rdfs:label "DMH_Glia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:830 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:830 ],
         bmo:NeuronElectricalType ;
     skos:altLabel "Dorsomedial Nucleus Of The Hypothalamus Glia" ;
@@ -8545,6 +8019,12 @@ ct:DorsomedialNucleusOfTheHypothalamusGlia a owl:Class ;
 ct:DorsomedialNucleusOfTheHypothalamusIba1-PositiveCell a owl:Class ;
     rdfs:label "DMH_lba1+"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:830 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:830 ],
         bmo:NeuronMorphologicalType ;
@@ -8556,6 +8036,12 @@ ct:DorsomedialNucleusOfTheHypothalamusMicroglia a owl:Class ;
     rdfs:label "DMH_Microglia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:830 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:830 ],
         bmo:NeuronElectricalType ;
     skos:altLabel "Dorsomedial Nucleus Of The Hypothalamus Microglia" ;
@@ -8565,6 +8051,12 @@ ct:DorsomedialNucleusOfTheHypothalamusMicroglia a owl:Class ;
 ct:DorsomedialNucleusOfTheHypothalamusPrincipalCell a owl:Class ;
     rdfs:label "DMH_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:830 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:830 ],
         [ a owl:Restriction ;
@@ -8578,6 +8070,12 @@ ct:DorsomedialNucleusOfTheHypothalamusPrincipalCell a owl:Class ;
 ct:DorsomedialNucleusOfTheHypothalamusProjectionCell a owl:Class ;
     rdfs:label "DMH_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:830 ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -8587,7 +8085,6 @@ ct:DorsomedialNucleusOfTheHypothalamusProjectionCell a owl:Class ;
     skos:altLabel "Dorsomedial Nucleus Of The Hypothalamus Projection Cell" ;
     skos:definition "Projection neuron in Dorsomedial nucleus of the hypothalamus"@en ;
     skos:notation "DMH_PT" .
-
 
 ct:Edinger-WestphalNucleusPrincipalCell a owl:Class ;
     rdfs:label "EW_PT"@en ;
@@ -8619,6 +8116,12 @@ ct:EndopiriformNucleusPrincipalCell a owl:Class ;
     rdfs:label "EP_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/942> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:942 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:942 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -8631,6 +8134,12 @@ ct:EndopiriformNucleusPrincipalCell a owl:Class ;
 ct:EndopiriformNucleusProjectionCell a owl:Class ;
     rdfs:label "EP_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/942> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:942 ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -9153,6 +8662,12 @@ ct:HypothalamusCorticotropin-ReleasingHormoneCRH-Expressing a owl:Class ;
     rdfs:label "HY_CRH"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1097 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Hypothalamus Corticotropin-Releasing Hormone CRH-Expressing" ;
@@ -9162,6 +8677,12 @@ ct:HypothalamusCorticotropin-ReleasingHormoneCRH-Expressing a owl:Class ;
 ct:HypothalamusDopaminergicCell a owl:Class ;
     rdfs:label "HY_DA"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1097 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
@@ -9173,6 +8694,12 @@ ct:HypothalamusLow-ThresholdCalciumSpikingCell a owl:Class ;
     rdfs:label "HY_LTCaS"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1097 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Hypothalamus Low-Threshold Calcium Spiking Cell" ;
@@ -9182,6 +8709,12 @@ ct:HypothalamusLow-ThresholdCalciumSpikingCell a owl:Class ;
 ct:HypothalamusNonLow-ThresholdCalciumSpikingCell a owl:Class ;
     rdfs:label "HY_NLTCaS"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1097 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
@@ -9193,25 +8726,27 @@ ct:HypothalamusNoradrenaline-Inhibited a owl:Class ;
     rdfs:label "HY_NAI"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1097 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Hypothalamus Noradrenaline-Inhibited" ;
     skos:definition "Noradrenaline-inhibited neuron in hypothalamus"@en ;
     skos:notation "HY_NAI" .
 
-ct:HypothalamusOxytocinergicNeuron a owl:Class ;
-    rdfs:label "HY_OXT"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1097 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Hypothalamus Oxytocinergic Neuron" ;
-    skos:definition "Oxytocinergic neuron (OXT) in hypothalamus"@en ;
-    skos:notation "HY_OXT" .
-
 ct:HypothalamusPro-OpiomelanocortinPOMC-Positive a owl:Class ;
     rdfs:label "HY_POMC+"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1097 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
@@ -9222,6 +8757,12 @@ ct:HypothalamusPro-OpiomelanocortinPOMC-Positive a owl:Class ;
 ct:HypothalamusProjectionCell a owl:Class ;
     rdfs:label "HY_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1097 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         [ a owl:Restriction ;
@@ -9235,6 +8776,9 @@ ct:HypothalamusProjectionCell a owl:Class ;
 ct:InferiorColliculusAuditoryThalamus-Projecting a owl:Class ;
     rdfs:label "IC_AT-PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -9248,6 +8792,9 @@ ct:InferiorColliculusAuditoryThalamus-Projecting a owl:Class ;
 ct:InferiorColliculusInterneuron a owl:Class ;
     rdfs:label "IC_GABAergic"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:4 ],
         [ a owl:Restriction ;
@@ -9267,6 +8814,9 @@ ct:InferiorColliculusNeuropeptideYNPY-PositiveCell a owl:Class ;
     rdfs:label "IC_NPY+"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:4 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Inferior Colliculus Neuropeptide Y NPY-Positive Cell" ;
@@ -9276,6 +8826,9 @@ ct:InferiorColliculusNeuropeptideYNPY-PositiveCell a owl:Class ;
 ct:InferiorColliculusPrincipalCell a owl:Class ;
     rdfs:label "IC_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -9290,6 +8843,9 @@ ct:InferiorColliculusProjectionCell a owl:Class ;
     rdfs:label "IC_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:4 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -9302,6 +8858,9 @@ ct:InferiorColliculusProjectionCell a owl:Class ;
 ct:InferiorColliculusPyramidalCell a owl:Class ;
     rdfs:label "IC_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:4 ],
         [ a owl:Restriction ;
@@ -9378,35 +8937,15 @@ ct:LateralAmygdalarNucleusSomatostatinSOM-PositiveCell a owl:Class ;
     skos:definition "Somatostatin (SOM)-positive cell in lateral amygdalar nucleus"@en ;
     skos:notation "LA_SOM+" .
 
-ct:LateralHabenulaPrincipalCell a owl:Class ;
-    rdfs:label "LH_PrC"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:186 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Lateral Habenula Principal Cell" ;
-    skos:definition "Principal cell in lateral habenula"@en ;
-    skos:notation "LH_PrC" .
-
-ct:LateralHabenulaProjectionCell a owl:Class ;
-    rdfs:label "LH_PT"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:186 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Lateral Habenula Projection Cell" ;
-    skos:definition "Projection neuron in lateral habenula"@en ;
-    skos:notation "LH_PT" .
-
 ct:LateralSeptumGlia a owl:Class ;
     rdfs:label "LSX_Glia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:275 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         bmo:NeuronElectricalType ;
@@ -9418,6 +8957,12 @@ ct:LateralSeptumIba1-Positive a owl:Class ;
     rdfs:label "LSX_lb1+Microglia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:275 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         bmo:NeuronElectricalType ;
     skos:altLabel "Lateral Septum Iba1-Positive" ;
@@ -9428,6 +8973,12 @@ ct:LateralSeptumMicroglia a owl:Class ;
     rdfs:label "LSX_Microglia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:275 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         bmo:NeuronElectricalType ;
     skos:altLabel "Lateral Septum Microglia" ;
@@ -9437,6 +8988,12 @@ ct:LateralSeptumMicroglia a owl:Class ;
 ct:LateralSeptumPrincipalCell a owl:Class ;
     rdfs:label "LSX_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:275 ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -9451,6 +9008,12 @@ ct:LateralSeptumProjectionCell a owl:Class ;
     rdfs:label "LSX_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:275 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -9463,6 +9026,12 @@ ct:LateralSeptumProjectionCell a owl:Class ;
 ct:LateralSeptumPyramidalCell a owl:Class ;
     rdfs:label "LSX_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:275 ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -9490,6 +9059,12 @@ ct:LocusCoeruleusCA1-ProjectingCell a owl:Class ;
     rdfs:label "LC_CA1-PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:147 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:147 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -9499,18 +9074,15 @@ ct:LocusCoeruleusCA1-ProjectingCell a owl:Class ;
     skos:definition "CA1-projecting neuron in locus coeruleus"@en ;
     skos:notation "LC_CA1-PT" .
 
-ct:LocusCoeruleusGABAergicCell a owl:Class ;
-    rdfs:label "LC_GABA"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:147 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Locus Coeruleus GABAergic Cell" ;
-    skos:notation "LC_GABA" .
-
 ct:LocusCoeruleusMPFC-A24-ProjectingCell a owl:Class ;
     rdfs:label "LC_mPFC-A24-PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:147 ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -9525,6 +9097,12 @@ ct:LocusCoeruleusNoradrenergicCell a owl:Class ;
     rdfs:label "LC_NA"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:147 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:147 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -9537,6 +9115,12 @@ ct:LocusCoeruleusNoradrenergicCell a owl:Class ;
 ct:LocusCoeruleusPrincipalCell a owl:Class ;
     rdfs:label "LC_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:147 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:147 ],
         [ a owl:Restriction ;
@@ -9710,26 +9294,6 @@ ct:MedialVestibularNucleusNeuron a owl:Class ;
     rdfs:label "Medial Vestibular Nucleus Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Medial vestibular nucleus neuron"@en .
-
-ct:MedullaCatecholaminergicCell a owl:Class ;
-    rdfs:label "MY_CATH"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:354 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Medulla Catecholaminergic Cell" ;
-    skos:definition "Catecholaminergic neuron in medulla"@en ;
-    skos:notation "MY_CATH" .
-
-ct:MedullaNoncatecholaminergicCell a owl:Class ;
-    rdfs:label "MY_NCATH"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:354 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Medulla Noncatecholaminergic Cell" ;
-    skos:definition "Noncatecholaminergic neuron in medulla"@en ;
-    skos:notation "MY_NCATH" .
 
 ct:MesencephalonContralateralProjectingCell a owl:Class ;
     rdfs:label "MB_IN"@en ;
@@ -9994,6 +9558,9 @@ ct:NucleusAccumbensMediumSpinyNeuron a owl:Class ;
 ct:NucleusOfTheBrachiumPrincipalCell a owl:Class ;
     rdfs:label "NB_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/580> ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -10007,6 +9574,9 @@ ct:NucleusOfTheBrachiumPrincipalCell a owl:Class ;
 ct:NucleusOfTheBrachiumProjectionCell a owl:Class ;
     rdfs:label "NB_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/580> ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -10020,6 +9590,9 @@ ct:NucleusOfTheBrachiumProjectionCell a owl:Class ;
 ct:NucleusOfTheBrachiumPyramidalCell a owl:Class ;
     rdfs:label "NB_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/580> ],
+        [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
@@ -10526,28 +10099,28 @@ ct:PremammillaryNucleusGlutamatergicCell a owl:Class ;
     rdfs:label "PM_Gl"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structured/980> ],
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structured/980> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1004> ],
+            owl:someValuesFrom mba:1004 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/980> ],
+            owl:someValuesFrom mba:980 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1004> ],
+            owl:someValuesFrom mba:1004 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/980> ],
+            owl:someValuesFrom mba:980 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/980> ],
+            owl:someValuesFrom mba:980 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1004> ],
+            owl:someValuesFrom mba:1004 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Premammillary Nucleus Glutamatergic Cell" ;
     skos:definition "Glutamatergic neuron in premammillary nucleus"@en ;
@@ -10557,25 +10130,25 @@ ct:PremammillaryNucleusPrincipalCell a owl:Class ;
     rdfs:label "PM_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/980> ],
+            owl:someValuesFrom mba:980 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/980> ],
+            owl:someValuesFrom mba:980 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/980> ],
+            owl:someValuesFrom mba:980 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1004> ],
+            owl:someValuesFrom mba:1004 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1004> ],
+            owl:someValuesFrom mba:1004 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1004> ],
+            owl:someValuesFrom mba:1004 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Premammillary Nucleus Principal Cell" ;
     skos:definition "Principal cell in premammillary nucleus"@en ;
@@ -10976,16 +10549,6 @@ ct:SolitaryNucleusGustatoryCell a owl:Class ;
     skos:definition "Gustatory neuron in solitary nucleus"@en ;
     skos:notation "NTS_GuC" .
 
-ct:SolitaryNucleusMyelinatedBaroreceptorNeuron a owl:Class ;
-    rdfs:label "NTS_BRN"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:651 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "Solitary Nucleus Myelinated Baroreceptor Neuron" ;
-    skos:definition "Myelinated baroreceptor neurons (BRNs) in solitary nucleus"@en ;
-    skos:notation "NTS_BRN" .
-
 ct:SolitaryNucleusRelayCell a owl:Class ;
     rdfs:label "NTS_RC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -11317,6 +10880,19 @@ ct:SubthalamicNucleusNeuron a owl:Class ;
     rdfs:label "Subthalamic Nucleus Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Subthalamic nucleus neuron"@en .
+
+ct:SubventricularZone-DerivedVZ-SVZCells a owl:Class ;
+    rdfs:label "SEZ_VZ-SVZ"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/98> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:98 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Subventricular Zone-Derived VZ-SVZ Cells" ;
+    skos:definition "Subventricular zone-derived (VZ/SVZ) cells"@en ;
+    skos:notation "SEZ_VZ-SVZ" .
 
 ct:SuperiorColliculusContralateralProjecting a owl:Class ;
     rdfs:label "SCs_CL-PT"@en ;
@@ -12856,7 +12432,7 @@ nsg:layer a owl:ObjectProperty ;
     rdfs:label "Cell Types Ontology"^^xsd:string ;
     vann:preferredNamespacePrefix "celltypes"^^xsd:string ;
     schema:title "Cell Types Ontology"^^xsd:string ;
-    owl:versionInfo "R1622"^^xsd:string .
+    owl:versionInfo "R1658"^^xsd:string .
 
 mba:262 a owl:Class .
 
@@ -12933,7 +12509,8 @@ mba:262 a owl:Class .
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381366> ],
         bmo:NeuronElectricalType ;
     skos:notation "cADpyr"^^xsd:string ;
-    skos:prefLabel "Continuous adapting pyramidal cell electrical type"^^xsd:string .
+    skos:prefLabel "Continuous adapting pyramidal cell electrical type"^^xsd:string ;
+    nsg:color "#abb228" .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SLM_PPA> a owl:Class ;
     rdfs:label "SLM_PPA"@en ;
@@ -13500,11 +13077,285 @@ bmo:SubthalamicNucleusNeuronMType a owl:Class ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronMorphologicalType .
 
+ct:AmygdalaCasalForebrain-ProjectingCell a owl:Class ;
+    rdfs:label "A_BFP"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Casal Forebrain-Projecting Cell" ;
+    skos:definition "Basal forebrain-projecting cell in amygdala"@en ;
+    skos:notation "A_BFP" .
+
+ct:AmygdalaEntorhinalCortexEC-ProjectingCell a owl:Class ;
+    rdfs:label "A_ECP"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Entorhinal Cortex EC-Projecting Cell" ;
+    skos:definition "Entorhinal cortex (EC)-projecting cell in amygdala"@en ;
+    skos:notation "A_ECP" .
+
+ct:AmygdalaFast-SpikingMultipolarCell a owl:Class ;
+    rdfs:label "A_FSMC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Fast-Spiking Multipolar Cell" ;
+    skos:definition "Fast-spiking multipolar cell in amygdala"@en ;
+    skos:notation "A_FSMC" .
+
+ct:AmygdalaHorizontalCell a owl:Class ;
+    rdfs:label "A_HC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Horizontal Cell" ;
+    skos:definition "Horizontal cell in amygdala"@en ;
+    skos:notation "A_HC" .
+
+ct:AmygdalaRegular-SpikingMultipolarCell a owl:Class ;
+    rdfs:label "A_RSMC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Regular-Spiking Multipolar Cell" ;
+    skos:definition "Negular-spiking multipolar cell in amygdala"@en ;
+    skos:notation "A_RSMC" .
+
+ct:AmygdalaSuperficialNeurogliaformCell a owl:Class ;
+    rdfs:label "A_SNGF"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Superficial Neurogliaform Cell" ;
+    skos:definition "Superficial neurogliaform cell in amygdala"@en ;
+    skos:notation "A_SNGF" .
+
+ct:BSTalType1 a owl:Class ;
+    rdfs:label "BSTal Type 1"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "BSTal_Type1" .
+
+ct:BSTalType2 a owl:Class ;
+    rdfs:label "BSTal Type 2"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "BSTal_Type2" .
+
+ct:BSTalType3 a owl:Class ;
+    rdfs:label "BSTal Type 3"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "BSTal_Type3" .
+
+ct:ClaustrumAspinyPV-Negative a owl:Class ;
+    rdfs:label "CLA_APV-"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:583 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Claustrum Aspiny PV-" ;
+    skos:definition "Aspiny PV-"@en ;
+    skos:notation "CLA_APV-" .
+
+ct:ClaustrumSpinyProjectionCell a owl:Class ;
+    rdfs:label "CLA_SPT"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:583 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Claustrum Spiny Projection Cell" ;
+    skos:definition "Projection neuron in claustrum"@en ;
+    skos:notation "CLA_SPT" .
+
+ct:EPVGLUT1PlusOxtrEType a owl:Class ;
+    rdfs:label "EP VGLUT1 + Oxtr EType"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "EP_VGLUT1+Oxtr" .
+
+ct:HYDepolarizationBlockEType a owl:Class ;
+    rdfs:label "HY Depolarization Block EType"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "HY_DPB" .
+
+ct:HYphasicEType a owl:Class ;
+    rdfs:label "HY phasic EType"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "HY_Phasic" .
+
+ct:ICAdaptingEType a owl:Class ;
+    rdfs:label "IC Adapting EType"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "IC_Adapting" .
+
+ct:ICBuildupPauserEtype a owl:Class ;
+    rdfs:label "IC Buildup Pauser Etype"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "IC_BUP" .
+
+ct:ICBuilduppauserEtype a owl:Class ;
+    rdfs:label "IC Buildup pauser Etype"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "IC_BUP" .
+
+ct:ICOn-typeEtype a owl:Class ;
+    rdfs:label "IC On-type Etype"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "IC_OT" .
+
+ct:ICOnsetEType a owl:Class ;
+    rdfs:label "IC Onset EType"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "IC_OS" .
+
+ct:ICSustainedEType a owl:Class ;
+    rdfs:label "IC Sustained EType"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "IC_Sustained" .
+
+ct:LC-mPFC a owl:Class ;
+    rdfs:label "LC-mPFC"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "LC_mPFC " .
+
+ct:LC-vHC a owl:Class ;
+    rdfs:label "LC-vHC"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "LC_vHC" .
+
+ct:LateralHabenulaPrincipalCell a owl:Class ;
+    rdfs:label "LH_PrC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:186 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Lateral Habenula Principal Cell" ;
+    skos:definition "Principal cell in lateral habenula"@en ;
+    skos:notation "LH_PrC" .
+
+ct:LateralHabenulaProjectionCell a owl:Class ;
+    rdfs:label "LH_PT"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:186 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Lateral Habenula Projection Cell" ;
+    skos:definition "Projection neuron in lateral habenula"@en ;
+    skos:notation "LH_PT" .
+
+ct:MedullaNoncatecholaminergicCell a owl:Class ;
+    rdfs:label "MY_NCATH"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:354 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Medulla Noncatecholaminergic Cell" ;
+    skos:definition "Noncatecholaminergic neuron in medulla"@en ;
+    skos:notation "MY_NCATH" .
+
 ct:SchafferCollateralAssociatedCell a owl:Class ;
     rdfs:label "Schaffer collateral associated cell"@en ;
     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType> ;
     skos:notation "SCA"^^xsd:string ;
     skos:prefLabel "Schaffer collateral associated cell"^^xsd:string .
+
+ct:SolitaryNucleusMyelinatedBaroreceptorNeuron a owl:Class ;
+    rdfs:label "NTS_BRN"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:651 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Solitary Nucleus Myelinated Baroreceptor Neuron" ;
+    skos:definition "Myelinated baroreceptor neurons (BRNs) in solitary nucleus"@en ;
+    skos:notation "NTS_BRN" .
 
 <https://bbp.epfl.ch/ontologies/core/mtypes/HorizontalPyramidalCell> a owl:Class ;
     rdfs:label "HPC"^^xsd:string ;
@@ -15126,7 +14977,8 @@ obo:UBERON_0007640 a owl:Class .
         <https://bbp.epfl.ch/ontologies/core/mtypes/InvertedPyramidalCell> ;
     skos:definition "L6_IPC (inverted PC) have a vertically inverted apical dendrite projecting towards the white matter with a small distal tuft and multiple oblique dendrites."@en ;
     skos:notation "L6_IPC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Inverted Pyramidal Cell"@en .
+    skos:prefLabel "Layer 6 Inverted Pyramidal Cell"@en ;
+    nsg:color "#ffffff" .
 
 <http://uri.interlex.org/base/ilx_0381375> a owl:Class ;
     rdfs:label "L6_TPC:A"@en ;
@@ -16204,7 +16056,8 @@ obo:UBERON_0007640 a owl:Class .
         bmo:NGC-SA ;
     skos:definition "Neurogliaform Cell with slender axonal arborization: Visually, NGC-SAs appeared as a sparser variation of NGC-DAs. They displayed similar axonal branching patterns in terms of segment length, tortuosity, and branch angles. However, NGC-SAs differ from NGC-DAs in that they displayed significantly smaller vertical arborizations with fewer and shorter axon collaterals. On the other hand, the dendritic arborization extended further horizontally with longer dendritic segments and smaller branching angles."@en ;
     skos:notation "L1_NGC-SA"^^xsd:string ;
-    skos:prefLabel "Layer 1 Neurogliaform Cell_sparse axon"@en .
+    skos:prefLabel "Layer 1 Neurogliaform Cell_sparse axon"@en ;
+    nsg:color "#99ff00" .
 
 <http://uri.interlex.org/base/ilx_0383207> a owl:Class ;
     rdfs:label "L2_IPC"@en ;
@@ -16910,7 +16763,8 @@ obo:UBERON_0007640 a owl:Class .
         nsg:PyramidalNeuron ;
     skos:definition "L6_BPC (bitufted PC) have 2 vertically projecting apical dendrites: one oriented toward the pia with a small distal tuft that forms multiple oblique dendrites and one inverted, projecting towards the white matter with a small distal tuft and multiple oblique dendrites"@en ;
     skos:notation "L6_BPC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Biopolar Pyramidal Cell"@en .
+    skos:prefLabel "Layer 6 Biopolar Pyramidal Cell"@en ;
+    nsg:color "#ffffff" .
 
 <http://uri.interlex.org/base/ilx_0383232> a owl:Class ;
     rdfs:label "L6_HPC"@en ;
@@ -17301,6 +17155,165 @@ bmo:SubstantiaNigraCompactPartNeuronMType a owl:Class ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronMorphologicalType .
 
+ct:AmygdalaProteinKinaseCdeltaPKCdelta-Positive a owl:Class ;
+    rdfs:label "A_PKCd+"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Protein Kinase Cdelta PKCdelta-Positive" ;
+    skos:definition "Protein kinase Cdelta (PKCdelta)-positive cell in amygdala"@en ;
+    skos:notation "A_PKCd+" .
+
+ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ] .
+
+ct:AmygdalaPyramidalCell a owl:Class ;
+    rdfs:label "A_PC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Pyramidal Cell" ;
+    skos:definition "Pyramidal cell in amygdala"@en ;
+    skos:notation "A_PC" .
+
+ct:ClaustrumAspinyPV-Positive a owl:Class ;
+    rdfs:label "CLA_APV+"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:583 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Claustrum Aspiny PV+" ;
+    skos:definition "Aspiny PV+"@en ;
+    skos:notation "CLA_APV+" .
+
+ct:ICReboundEType a owl:Class ;
+    rdfs:label "IC Rebound EType"@en ;
+    rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:notation "IC_Rebound" .
+
+ct:MOBGR_DGC a owl:Class ;
+    rdfs:label "MOBgr_dGC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/220> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:220 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "MOBGR_DGC" ;
+    skos:definition """dGC have spheroidal soma of 6-8µm diameter.
+Their dendrites extend from the soma (in the deep MOBgr) to the deep MOBopl (target MCs).Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length.
+They are axonless."""@en ;
+    skos:notation "MOBgr_dGC" .
+
+ct:MOBGR_SGC a owl:Class ;
+    rdfs:label "MOBgr_sGC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/220> ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:220 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "MOBGR_SGC" ;
+    skos:definition """sGC have spheroidal soma of 6-8µm diameter.
+Their dendrites extend from the soma (in the deep MOBgr) to the superficial MOBopl (target mTCs). Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length.
+They are axonless."""@en ;
+    skos:notation "MOBgr_sGC" .
+
+ct:MOBMI_MCI a owl:Class ;
+    rdfs:label "MOBmi_MC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/236> ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:236 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "MOBMI_MCI" ;
+    skos:definition """MC have spheroidal soma of 20µm diameter or more.
+The apical dendrite have a diameter of 4µm for a length of 400µm.
+It branches in 4 small tufts dendrites of 0.8µm diameter each.
+Lateral dendrites have a diameter of 3µm for a length of 800µm."""@en ;
+    skos:notation "MOBmi_MC" .
+
+ct:MOBOPL_MTC a owl:Class ;
+    rdfs:label "MOBopl_mTC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/244> ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:244 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "MOBOPL_MTC" ;
+    skos:definition "mTC have spheroidal soma of 15-20µm diameter. The apical dendrite have a diameter of 4µm for a length of 250µm. It branches in 4 small tufts dendrites of 0.8µm diameter each. Lateral dendrites have a diameter of 2.5µm for a length of 600µm."@en ;
+    skos:notation "MOBopl_mTC" .
+
+ct:MedullaCatecholaminergicCell a owl:Class ;
+    rdfs:label "MY_CATH"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:354 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Medulla Catecholaminergic Cell" ;
+    skos:definition "Catecholaminergic neuron in medulla"@en ;
+    skos:notation "MY_CATH" .
+
 ct:TrilaminarCell a owl:Class ;
     rdfs:label "Trilaminar cell"@en ;
     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType> ;
@@ -17467,6 +17480,94 @@ bmo:PallidumVentralRegionNeuronMType a owl:Class ;
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronMorphologicalType .
+
+ct:AmygdalaChandelierCell a owl:Class ;
+    rdfs:label "A_CC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Chandelier Cell" ;
+    skos:definition "Chandelier cell in amygdala"@en ;
+    skos:notation "A_CC" .
+
+ct:AmygdalaDeepNeurogliaformCell a owl:Class ;
+    rdfs:label "A_NGF"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Deep Neurogliaform Cell" ;
+    skos:definition "Deep neurogliaform cell in amygdala"@en ;
+    skos:notation "A_NGF" .
+
+ct:AmygdalaInterneuron a owl:Class ;
+    rdfs:label "A_IN"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Interneuron" ;
+    skos:definition "Interneuron in amygdala"@en ;
+    skos:notation "A_IN" .
+
+ct:AmygdalaSomatostatinSOM-Positive a owl:Class ;
+    rdfs:label "A_SOM+"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Somatostatin SOM-Positive" ;
+    skos:definition "Somatostatin (SOM)-positive cell in amygdala"@en ;
+    skos:notation "A_SOM+" .
 
 ct:AxoAxonicCell a owl:Class ;
     rdfs:label "Axo-axonic cell"@en ;
@@ -17842,7 +17943,8 @@ mba:726 a owl:Class .
         bmo:DAC ;
     skos:definition "Decending Axon Cell: DACs were easily distinguished due to the presence of one to a few descending axon collaterals that reached layers 4, 5, and occasionally 6 (Hestrin and Armstrong, 1996). Their other striking distinguishing feature was the large horizontal (often 1 mm) and vertical (often 0.5 mm) extents of their axonal arborization, which was the largest of any m-type in layer 1."@en ;
     skos:notation "L1_DAC"^^xsd:string ;
-    skos:prefLabel "Layer 1 Descending Axon Cell"@en .
+    skos:prefLabel "Layer 1 Descending Axon Cell"@en ;
+    nsg:color "#00ffff" .
 
 <http://uri.interlex.org/base/ilx_0383194> a owl:Class ;
     rdfs:label "L1_LAC"@en ;
@@ -18254,6 +18356,28 @@ bmo:DopamineNeurotransmitterType a owl:Class ;
     rdfs:subClassOf bmo:NeurotransmitterType ;
     skos:prefLabel "Dopamine Neurotransmitter Type" .
 
+ct:AmygdalaPrincipalCell a owl:Class ;
+    rdfs:label "A_PrC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Principal Cell" ;
+    skos:definition "Principal cell in amygdala"@en ;
+    skos:notation "A_PrC" .
+
 ct:CCKBC a owl:Class ;
     rdfs:label "CCK-positive basket cell"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -18268,6 +18392,37 @@ ct:CCKBC a owl:Class ;
         ct:HippocampusBasketCell ;
     skos:notation "CCKBC"^^xsd:string ;
     skos:prefLabel "CCK-positive basket cell"^^xsd:string .
+
+ct:HypothalamusOxytocinergicNeuron a owl:Class ;
+    rdfs:label "HY_OXT"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1097 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1097 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Hypothalamus Oxytocinergic Neuron" ;
+    skos:definition "Oxytocinergic neuron (OXT) in hypothalamus"@en ;
+    skos:notation "HY_OXT" .
+
+ct:LocusCoeruleusGABAergicCell a owl:Class ;
+    rdfs:label "LC_GABA"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:147 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:147 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Locus Coeruleus GABAergic Cell" ;
+    skos:notation "LC_GABA" .
 
 tts:194_L5_IT_RSP-ACA a owl:Class ;
     rdfs:label "194_L5 IT RSP-ACA"^^xsd:string ;
@@ -19491,7 +19646,8 @@ obo:UBERON_0005390 a owl:Class .
         bmo:HAC ;
     skos:definition "Horizontal Axon Cell: HACs were characterized by extensive horizontal axonal arborizations as compared to vertical extents, with long axonal segment lengths. Their horizontal/vertical extent ratio (often 4 fold) was the highest among all other m-types in layer 1."@en ;
     skos:notation "L1_HAC"^^xsd:string ;
-    skos:prefLabel "Layer 1 Horizontal Axon Cell"@en .
+    skos:prefLabel "Layer 1 Horizontal Axon Cell"@en ;
+    nsg:color "#ffff00" .
 
 <http://uri.interlex.org/base/ilx_0383197> a owl:Class ;
     rdfs:label "L1_SAC"@en ;
@@ -20133,7 +20289,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0107356> ;
     skos:definition "Chandelier Cell: ChCs had multipolar or bitufted dendrites, and were distinguished by pre-terminal axon branches that form short vertical rows of boutons resembling candlesticks. These interneurons were also referred to as axo-axonic cells as they form synaptic contacts on the axon initial segment of target PCs (Somogyi et al., 1982)."@en ;
     skos:notation "L23_ChC"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Chandelier Cell"@en .
+    skos:prefLabel "Layer 2/3 Chandelier Cell"@en ;
+    nsg:color "#999900" .
 
 <http://uri.interlex.org/base/ilx_0383205> a owl:Class ;
     rdfs:label "L23_NGC"@en ;
@@ -20209,7 +20366,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777218> ;
     skos:definition "Neurogliaform Cell: NGCs had multipolar dendrites and were characterized by very small and dense local axonal arborization around the soma, and short axonal segments bearing a high density of small boutons."@en ;
     skos:notation "L23_NGC"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Neurogliaform Cell"@en .
+    skos:prefLabel "Layer 2/3 Neurogliaform Cell"@en ;
+    nsg:color "#00ff00" .
 
 <http://uri.interlex.org/base/ilx_0383206> a owl:Class ;
     rdfs:label "L23_SBC"@en ;
@@ -20573,7 +20731,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777219> ;
     skos:definition "Small Basket Cell: SBCs had multipolar or bitufted dendrites and axon collaterals with numerous curved or straight short axonal segments. The axon collaterals contained a high density of boutons and formed a dense local axonal cluster around the soma."@en ;
     skos:notation "L23_SBC"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Small Basket Cell"@en .
+    skos:prefLabel "Layer 2/3 Small Basket Cell"@en ;
+    nsg:color "#9900ff" .
 
 <http://uri.interlex.org/base/ilx_0383211> a owl:Class ;
     rdfs:label "L4_ChC"@en ;
@@ -20598,7 +20757,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0107356> ;
     skos:definition "Chandelier Cell: ChCs had multipolar or bitufted dendrites, and were distinguished by pre-terminal axon branches that form short vertical rows of boutons resembling candlesticks. These interneurons were also referred to as axo-axonic cells as they form synaptic contacts on the axon initial segment of target PCs (Somogyi et al., 1982)."@en ;
     skos:notation "L4_ChC"^^xsd:string ;
-    skos:prefLabel "Layer 4 Chandelier Cell"@en .
+    skos:prefLabel "Layer 4 Chandelier Cell"@en ;
+    nsg:color "#999900" .
 
 <http://uri.interlex.org/base/ilx_0383217> a owl:Class ;
     rdfs:label "L4_SBC"@en ;
@@ -20917,7 +21077,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777219> ;
     skos:definition "Small Basket Cell: SBCs had multipolar or bitufted dendrites and axon collaterals with numerous curved or straight short axonal segments. The axon collaterals contained a high density of boutons and formed a dense local axonal cluster around the soma."@en ;
     skos:notation "L4_SBC"^^xsd:string ;
-    skos:prefLabel "Layer 4 Small Basket Cell"@en .
+    skos:prefLabel "Layer 4 Small Basket Cell"@en ;
+    nsg:color "#9900ff" .
 
 <http://uri.interlex.org/base/ilx_0383222> a owl:Class ;
     rdfs:label "L5_BTC"@en ;
@@ -21278,7 +21439,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777212> ;
     skos:definition "Bitufted Cell: BTCs had bitufted dendrites and were characterized by long axonal segments, typically forming a large translaminar or transcolumnar axonal cluster."@en ;
     skos:notation "L5_BTC"^^xsd:string ;
-    skos:prefLabel "Layer 5 Bitufted Cell"@en .
+    skos:prefLabel "Layer 5 Bitufted Cell"@en ;
+    nsg:color "#990000" .
 
 <http://uri.interlex.org/base/ilx_0383223> a owl:Class ;
     rdfs:label "L5_ChC"@en ;
@@ -21528,7 +21690,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0107356> ;
     skos:definition "Chandelier Cell: ChCs had multipolar or bitufted dendrites, and were distinguished by pre-terminal axon branches that form short vertical rows of boutons resembling candlesticks. These interneurons were also referred to as axo-axonic cells as they form synaptic contacts on the axon initial segment of target PCs (Somogyi et al., 1982)."@en ;
     skos:notation "L5_ChC"^^xsd:string ;
-    skos:prefLabel "Layer 5 Chandelier Cell"@en .
+    skos:prefLabel "Layer 5 Chandelier Cell"@en ;
+    nsg:color "#999900" .
 
 <http://uri.interlex.org/base/ilx_0383227> a owl:Class ;
     rdfs:label "L5_SBC"@en ;
@@ -21847,7 +22010,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777219> ;
     skos:definition "Small Basket Cell: SBCs had multipolar or bitufted dendrites and axon collaterals with numerous curved or straight short axonal segments. The axon collaterals contained a high density of boutons and formed a dense local axonal cluster around the soma."@en ;
     skos:notation "L5_SBC"^^xsd:string ;
-    skos:prefLabel "Layer 5 Small Basket Cell"@en .
+    skos:prefLabel "Layer 5 Small Basket Cell"@en ;
+    nsg:color "#9900ff" .
 
 <http://uri.interlex.org/base/ilx_0383229> a owl:Class ;
     rdfs:label "L6_BTC"@en ;
@@ -22055,7 +22219,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777212> ;
     skos:definition "Bitufted Cell: BTCs had bitufted dendrites and were characterized by long axonal segments, typically forming a large translaminar or transcolumnar axonal cluster."@en ;
     skos:notation "L6_BTC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Bitufted Cell"@en .
+    skos:prefLabel "Layer 6 Bitufted Cell"@en ;
+    nsg:color "#990000" .
 
 <http://uri.interlex.org/base/ilx_0383230> a owl:Class ;
     rdfs:label "L6_ChC"@en ;
@@ -22263,7 +22428,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0107356> ;
     skos:definition "Chandelier Cell: ChCs had multipolar or bitufted dendrites, and were distinguished by pre-terminal axon branches that form short vertical rows of boutons resembling candlesticks. These interneurons were also referred to as axo-axonic cells as they form synaptic contacts on the axon initial segment of target PCs (Somogyi et al., 1982)."@en ;
     skos:notation "L6_ChC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Chandelier Cell"@en .
+    skos:prefLabel "Layer 6 Chandelier Cell"@en ;
+    nsg:color "#999900" .
 
 <http://uri.interlex.org/base/ilx_0383236> a owl:Class ;
     rdfs:label "L6_SBC"@en ;
@@ -22582,7 +22748,8 @@ obo:UBERON_0005390 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777219> ;
     skos:definition "Small Basket Cell: SBCs had multipolar or bitufted dendrites and axon collaterals with numerous curved or straight short axonal segments. The axon collaterals contained a high density of boutons and formed a dense local axonal cluster around the soma."@en ;
     skos:notation "L6_SBC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Small Basket Cell"@en .
+    skos:prefLabel "Layer 6 Small Basket Cell"@en ;
+    nsg:color "#9900ff" .
 
 bmo:NeuronMolecularType a owl:Class ;
     rdfs:label "Neuron Molecular Type"@en ;
@@ -23278,6 +23445,28 @@ bmo:NeuronType a owl:Class ;
     rdfs:subClassOf bmo:BrainCellType ;
     skos:prefLabel "Neuron Type"@en .
 
+ct:AmygdalaBasketCell a owl:Class ;
+    rdfs:label "A_BC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:780 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:319 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:295 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:131 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Amygdala Basket Cell" ;
+    skos:definition "Basket cell in amygdala"@en ;
+    skos:notation "A_BC" .
+
 tts:182_L4_5_IT_CTX a owl:Class ;
     rdfs:label "182_L4/5 IT CTX"^^xsd:string ;
     rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
@@ -23735,7 +23924,8 @@ mba:843 a owl:Class .
         bmo:NGC-DA ;
     skos:definition "Neurogliaform Cell with dense axonal arborization: NGC-DAs were very similar to the NGC cells reported in other cortical layers showing small compact axonal arborization (Kawaguchi and Kubota, 1997; Kisv rday et al., 1990; Szabadics et al., 2007). These neurons also typically displayed the shortest dendritic segments among all layer I neurons."@en ;
     skos:notation "L1_NGC-DA"^^xsd:string ;
-    skos:prefLabel "Layer 1 Neurogliaform Cell_dense axon"@en .
+    skos:prefLabel "Layer 1 Neurogliaform Cell_dense axon"@en ;
+    nsg:color "#009900" .
 
 <http://uri.interlex.org/base/ilx_0383216> a owl:Class ;
     rdfs:label "L4_NGC"@en ;
@@ -23760,7 +23950,8 @@ mba:843 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777218> ;
     skos:definition "Neurogliaform Cell: NGCs had multipolar dendrites and were characterized by very small and dense local axonal arborization around the soma, and short axonal segments bearing a high density of small boutons."@en ;
     skos:notation "L4_NGC"^^xsd:string ;
-    skos:prefLabel "Layer 4 Neurogliaform Cell"@en .
+    skos:prefLabel "Layer 4 Neurogliaform Cell"@en ;
+    nsg:color "#00ff00" .
 
 <http://uri.interlex.org/base/ilx_0383235> a owl:Class ;
     rdfs:label "L6_NGC"@en ;
@@ -23968,7 +24159,8 @@ mba:843 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777218> ;
     skos:definition "Neurogliaform Cell: NGCs had multipolar dendrites and were characterized by very small and dense local axonal arborization around the soma, and short axonal segments bearing a high density of small boutons."@en ;
     skos:notation "L6_NGC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Neurogliaform Cell"@en .
+    skos:prefLabel "Layer 6 Neurogliaform Cell"@en ;
+    nsg:color "#00ff00" .
 
 <http://uri.interlex.org/base/ilx_0383239> a owl:Class ;
     rdfs:label "L5_NGC"@en ;
@@ -23993,7 +24185,8 @@ mba:843 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777218> ;
     skos:definition "Neurogliaform Cell: NGCs had multipolar dendrites and were characterized by very small and dense local axonal arborization around the soma, and short axonal segments bearing a high density of small boutons."@en ;
     skos:notation "L5_NGC"^^xsd:string ;
-    skos:prefLabel "Layer 5 Neurogliaform Cell"@en .
+    skos:prefLabel "Layer 5 Neurogliaform Cell"@en ;
+    nsg:color "#00ff00" .
 
 <http://uri.interlex.org/base/ilx_0383240> a owl:Class ;
     rdfs:label "L6_BP"@en ;
@@ -24017,7 +24210,8 @@ mba:843 a owl:Class .
             owl:someValuesFrom nsg:BipolarPhenotype ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/BipolarCell> ;
     skos:notation "L6_BP"^^xsd:string ;
-    skos:prefLabel "Layer 6 Bipolar Cell"@en .
+    skos:prefLabel "Layer 6 Bipolar Cell"@en ;
+    nsg:color "#ff0099" .
 
 mba:926 a owl:Class .
 
@@ -24382,7 +24576,24 @@ obo:UBERON_0005371 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777212> ;
     skos:definition "Bitufted Cell: BTCs had bitufted dendrites and were characterized by long axonal segments, typically forming a large translaminar or transcolumnar axonal cluster."@en ;
     skos:notation "L4_BTC"^^xsd:string ;
-    skos:prefLabel "Layer 4 Bitufted Cell"@en .
+    skos:prefLabel "Layer 4 Bitufted Cell"@en ;
+    nsg:color "#990000" .
+
+ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 a owl:Class ;
+    rdfs:label "BST_GLP-1"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/351> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:351 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:351 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Bed Nucleus Of The Stria Terminalis Glucagon-Like Peptide-1 GLP-1 " ;
+    skos:definition "Glucagon-like peptide-1 (GLP-1)  neuron"@en ;
+    skos:notation "BST_GLP-1" .
 
 nsg:PyramidalNeuron a owl:Class ;
     rdfs:label "Pyramidal Neuron"@en ;
@@ -24648,7 +24859,8 @@ mba:1037 a owl:Class .
         <https://bbp.epfl.ch/ontologies/core/mtypes/BipolarCell> ;
     skos:definition "Bipolar Cell: BPs had bipolar dendrites that emerged from the two poles of a small vertical spindle like soma. A few BPs could have a third dendrite emerging from the middle of the soma. Their axonal clusters were narrow and vertically oriented."@en ;
     skos:notation "L5_BP"^^xsd:string ;
-    skos:prefLabel "Layer 5 Bipolar Cell"@en .
+    skos:prefLabel "Layer 5 Bipolar Cell"@en ;
+    nsg:color "#ff0099" .
 
 tts:203_L5_6_IT_CTX a owl:Class ;
     rdfs:label "203_L5/6 IT CTX"^^xsd:string ;
@@ -25238,7 +25450,8 @@ obo:UBERON_0005393 a owl:Class .
         <https://bbp.epfl.ch/ontologies/core/mtypes/BipolarCell> ;
     skos:definition "Bipolar Cell: BPs had bipolar dendrites that emerged from the two poles of a small vertical spindle like soma. A few BPs could have a third dendrite emerging from the middle of the soma. Their axonal clusters were narrow and vertically oriented."@en ;
     skos:notation "L23_BP"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Bipolar Cell"@en .
+    skos:prefLabel "Layer 2/3 Bipolar Cell"@en ;
+    nsg:color "#ff0099" .
 
 <http://uri.interlex.org/base/ilx_0383209> a owl:Class ;
     rdfs:label "L4_BP"@en ;
@@ -25599,7 +25812,8 @@ obo:UBERON_0005393 a owl:Class .
         <https://bbp.epfl.ch/ontologies/core/mtypes/BipolarCell> ;
     skos:definition "Bipolar Cell: BPs had bipolar dendrites that emerged from the two poles of a small vertical spindle like soma. A few BPs could have a third dendrite emerging from the middle of the soma. Their axonal clusters were narrow and vertically oriented."@en ;
     skos:notation "L4_BP"^^xsd:string ;
-    skos:prefLabel "Layer 4 Bipolar Cell"@en .
+    skos:prefLabel "Layer 4 Bipolar Cell"@en ;
+    nsg:color "#ff0099" .
 
 bmo:NeurotransmitterType a owl:Class ;
     rdfs:label "Neurotransmitter Type"@en ;
@@ -25631,9 +25845,6 @@ mba:381 a owl:Class ;
             owl:someValuesFrom obo:NCBITaxon_10116 ],
         bmo:NeuronElectricalType ;
     skos:altLabel "Isocortex EType"^^xsd:string .
-
-owl:equivalentClass a owl:DatatypeProperty ;
-    rdfs:label "equivalentClass"@en .
 
 mba:1084 a owl:Class .
 
@@ -26003,7 +26214,8 @@ obo:UBERON_0005394 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777212> ;
     skos:definition "Bitufted Cell: BTCs had bitufted dendrites and were characterized by long axonal segments, typically forming a large translaminar or transcolumnar axonal cluster."@en ;
     skos:notation "L23_BTC"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Bitufted Cell"@en .
+    skos:prefLabel "Layer 2/3 Bitufted Cell"@en ;
+    nsg:color "#990000" .
 
 <http://uri.interlex.org/base/ilx_0383201> a owl:Class ;
     rdfs:label "L23_DBC"@en ;
@@ -26325,7 +26537,8 @@ obo:UBERON_0005394 a owl:Class .
         <http://uri.interlex.org/base/ilx_0784350> ;
     skos:definition "Double Bouquet Cell: DBCs had multipolar or bitufted dendrites, and were distinguished by a horse-tail like axon bundle. The axon bundle consisted of one to few long descending/ascending vertical axonal collaterals from which many short branches emerged, or by tightly intertwined bundles of long descending vertical collaterals (corresponding to horse-tail like neurons; (Somogyi and Cowey, 1981)). Layer 2/3 DBCs commonly had descending axonal collaterals."@en ;
     skos:notation "L23_DBC"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Double Bouquet Cell"@en .
+    skos:prefLabel "Layer 2/3 Double Bouquet Cell"@en ;
+    nsg:color "#ff9900" .
 
 <http://uri.interlex.org/base/ilx_0383212> a owl:Class ;
     rdfs:label "L4_DBC"@en ;
@@ -26686,7 +26899,8 @@ obo:UBERON_0005394 a owl:Class .
         <http://uri.interlex.org/base/ilx_0784350> ;
     skos:definition "Double Bouquet Cell: DBCs had multipolar or bitufted dendrites, and were distinguished by a horse-tail like axon bundle. The axon bundle consisted of one to few long descending/ascending vertical axonal collaterals from which many short branches emerged, or by tightly intertwined bundles of long descending vertical collaterals (corresponding to horse-tail like neurons; (Somogyi and Cowey, 1981))."@en ;
     skos:notation "L4_DBC"^^xsd:string ;
-    skos:prefLabel "Layer 4 Double Bouquet Cell"@en .
+    skos:prefLabel "Layer 4 Double Bouquet Cell"@en ;
+    nsg:color "#ff9900" .
 
 <http://uri.interlex.org/base/ilx_0383224> a owl:Class ;
     rdfs:label "L5_DBC"@en ;
@@ -27047,7 +27261,8 @@ obo:UBERON_0005394 a owl:Class .
         <http://uri.interlex.org/base/ilx_0784350> ;
     skos:definition "Double Bouquet Cell: DBCs had multipolar or bitufted dendrites, and were distinguished by a horse-tail like axon bundle. The axon bundle consisted of one to few long descending/ascending vertical axonal collaterals from which many short branches emerged, or by tightly intertwined bundles of long descending vertical collaterals (corresponding to horse-tail like neurons; (Somogyi and Cowey, 1981)). Layers 5 and 6 DBCs often had ascending axonal collaterals reaching layer 2/3 or even layer 1."@en ;
     skos:notation "L5_DBC"^^xsd:string ;
-    skos:prefLabel "Layer 5 Double Bouquet Cell"@en .
+    skos:prefLabel "Layer 5 Double Bouquet Cell"@en ;
+    nsg:color "#ff9900" .
 
 <http://uri.interlex.org/base/ilx_0383231> a owl:Class ;
     rdfs:label "L6_DBC"@en ;
@@ -27297,7 +27512,8 @@ obo:UBERON_0005394 a owl:Class .
         <http://uri.interlex.org/base/ilx_0784350> ;
     skos:definition "Double Bouquet Cell: DBCs had multipolar or bitufted dendrites, and were distinguished by a horse-tail like axon bundle. The axon bundle consisted of one to few long descending/ascending vertical axonal collaterals from which many short branches emerged, or by tightly intertwined bundles of long descending vertical collaterals (corresponding to horse-tail like neurons; (Somogyi and Cowey, 1981)). Layers 5 and 6 DBCs often had ascending axonal collaterals reaching layer 2/3 or even layer 1."@en ;
     skos:notation "L6_DBC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Double Bouquet Cell"@en .
+    skos:prefLabel "Layer 6 Double Bouquet Cell"@en ;
+    nsg:color "#ff9900" .
 
 mba:484682470 a owl:Class .
 
@@ -27622,7 +27838,8 @@ obo:UBERON_0005395 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777217> ;
     skos:definition "Nested Basket Cell: These cells correspond to Arcade or Willow cells, having multipolar or bitufted dendrites without long collaterals. NBCs in supragranular layers were in general smaller in size than those in infragranular layers."@en ;
     skos:notation "L5_NBC"^^xsd:string ;
-    skos:prefLabel "Layer 5 Nest Basket Cell"@en .
+    skos:prefLabel "Layer 5 Nest Basket Cell"@en ;
+    nsg:color "#ff00ff" .
 
 <http://uri.interlex.org/base/ilx_0383234> a owl:Class ;
     rdfs:label "L6_NBC"@en ;
@@ -27830,7 +28047,8 @@ obo:UBERON_0005395 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777217> ;
     skos:definition "Nested Basket Cell: These cells correspond to Arcade or Willow cells, having multipolar or bitufted dendrites without long collaterals. NBCs in supragranular layers were in general smaller in size than those in infragranular layers."@en ;
     skos:notation "L6_NBC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Nest Basket Cell"@en .
+    skos:prefLabel "Layer 6 Nest Basket Cell"@en ;
+    nsg:color "#ff00ff" .
 
 tts:L6_CT_CTX a owl:Class ;
     rdfs:label "L6 CT CTX"^^xsd:string ;
@@ -28207,7 +28425,8 @@ obo:UBERON_0005391 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777217> ;
     skos:definition "Nested Basket Cell: These cells correspond to Arcade or Willow cells, having multipolar or bitufted dendrites without long collaterals. NBCs in supragranular layers were in general smaller in size than those in infragranular layers."@en ;
     skos:notation "L4_NBC"^^xsd:string ;
-    skos:prefLabel "Layer 4 Nest Basket Cell"@en .
+    skos:prefLabel "Layer 4 Nest Basket Cell"@en ;
+    nsg:color "#ff00ff" .
 
 <http://uri.interlex.org/base/ilx_0381369> a owl:Class ;
     rdfs:label "L5_MC"@en ;
@@ -28568,7 +28787,8 @@ obo:UBERON_0005391 a owl:Class .
         <http://uri.interlex.org/base/ilx_0107375> ;
     skos:definition "Martinotti Cell : MCs had multipolar, bitufted, or bipolar dendrites, and were distinguished by ascending axons that commonly gave rise to two axonal arbors, one near the cell body and another in layer 1. The second axonal plexus of MCs were very dense (axonal tuft) or diffused. Axonal collaterals of MCs were characterized by spiny boutons while dendrites contained sparsely distributed spines that were uncommon for other interneuron types."@en ;
     skos:notation "L5_MC"^^xsd:string ;
-    skos:prefLabel "Layer 5 Martinotti Cell"@en .
+    skos:prefLabel "Layer 5 Martinotti Cell"@en ;
+    nsg:color "#990099" .
 
 <http://uri.interlex.org/base/ilx_0381374> a owl:Class ;
     rdfs:label "L6_MC"@en ;
@@ -28929,7 +29149,8 @@ obo:UBERON_0005391 a owl:Class .
         <http://uri.interlex.org/base/ilx_0107375> ;
     skos:definition "Martinotti Cell : MCs had multipolar, bitufted, or bipolar dendrites, and were distinguished by ascending axons that commonly gave rise to two axonal arbors, one near the cell body and another below layer 1 for layer 6 MCs. The second axonal plexus of MCs were very dense (axonal tuft) or diffused. Axonal collaterals of MCs were characterized by spiny boutons while dendrites contained sparsely distributed spines that were uncommon for other interneuron types."@en ;
     skos:notation "L6_MC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Martinotti Cell"@en .
+    skos:prefLabel "Layer 6 Martinotti Cell"@en ;
+    nsg:color "#990099" .
 
 <http://uri.interlex.org/base/ilx_0383203> a owl:Class ;
     rdfs:label "L23_MC"@en ;
@@ -29251,7 +29472,8 @@ obo:UBERON_0005391 a owl:Class .
         <http://uri.interlex.org/base/ilx_0107375> ;
     skos:definition "Martinotti Cell : MCs had multipolar, bitufted, or bipolar dendrites, and were distinguished by ascending axons that commonly gave rise to two axonal arbors, one near the cell body and another in layer 1. The second axonal plexus of MCs were very dense (axonal tuft) or diffused. Axonal collaterals of MCs were characterized by spiny boutons while dendrites contained sparsely distributed spines that were uncommon for other interneuron types."@en ;
     skos:notation "L23_MC"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Martinotti Cell"@en .
+    skos:prefLabel "Layer 2/3 Martinotti Cell"@en ;
+    nsg:color "#990099" .
 
 <http://uri.interlex.org/base/ilx_0383214> a owl:Class ;
     rdfs:label "L4_MC"@en ;
@@ -29612,7 +29834,8 @@ obo:UBERON_0005391 a owl:Class .
         <http://uri.interlex.org/base/ilx_0107375> ;
     skos:definition "Martinotti Cell : MCs had multipolar, bitufted, or bipolar dendrites, and were distinguished by ascending axons that commonly gave rise to two axonal arbors, one near the cell body and another in layer 1. The second axonal plexus of MCs were very dense (axonal tuft) or diffused. Axonal collaterals of MCs were characterized by spiny boutons while dendrites contained sparsely distributed spines that were uncommon for other interneuron types."@en ;
     skos:notation "L4_MC"^^xsd:string ;
-    skos:prefLabel "Layer 4 Martinotti Cell"@en .
+    skos:prefLabel "Layer 4 Martinotti Cell"@en ;
+    nsg:color "#990099" .
 
 <http://uri.interlex.org/base/ilx_0383233> a owl:Class ;
     rdfs:label "L6_LBC"@en ;
@@ -29973,7 +30196,8 @@ obo:UBERON_0005391 a owl:Class .
         <http://uri.interlex.org/base/ilx_0777215> ;
     skos:definition "Large Basket Cell: LBCs had multipolar or bitufted dendrites, an axonal cluster characterized by straight and long axonal segments with low density of boutons, and long collaterals giving branches from both sides. Layers 5 and 6 LBCs often had ascending axonal collaterals reaching layer 2/3 or even layer 1."@en ;
     skos:notation "L6_LBC"^^xsd:string ;
-    skos:prefLabel "Layer 6 Large Basket Cell"@en .
+    skos:prefLabel "Layer 6 Large Basket Cell"@en ;
+    nsg:color "#ff0000" .
 
 <https://bbp.epfl.ch/ontologies/core/mtypes/NeocortexMType> a owl:Class ;
     rdfs:label "Neocortex MType"@en ;
@@ -30357,7 +30581,8 @@ bmo:GliaTranscriptomeType a owl:Class ;
         <http://uri.interlex.org/base/ilx_0777215> ;
     skos:definition "Large Basket Cell: LBCs had multipolar or bitufted dendrites, an axonal cluster characterized by straight and long axonal segments with low density of boutons, and long collaterals giving branches from both sides. Layer 2/3 LBCs commonly had descending axonal collaterals."@en ;
     skos:notation "L23_LBC"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Large Basket Cell"@en .
+    skos:prefLabel "Layer 2/3 Large Basket Cell"@en ;
+    nsg:color "#ff0000" .
 
 <http://uri.interlex.org/base/ilx_0383204> a owl:Class ;
     rdfs:label "L23_NBC"@en ;
@@ -30502,7 +30727,8 @@ bmo:GliaTranscriptomeType a owl:Class ;
         <http://uri.interlex.org/base/ilx_0777217> ;
     skos:definition "Nested Basket Cell: These cells correspond to Arcade or Willow cells, having multipolar or bitufted dendrites without long collaterals. NBCs in supragranular layers were in general smaller in size than those in infragranular layers."@en ;
     skos:notation "L23_NBC"^^xsd:string ;
-    skos:prefLabel "Layer 2/3 Nest Basket Cell"@en .
+    skos:prefLabel "Layer 2/3 Nest Basket Cell"@en ;
+    nsg:color "#ff00ff" .
 
 <http://uri.interlex.org/base/ilx_0383213> a owl:Class ;
     rdfs:label "L4_LBC"@en ;
@@ -30863,7 +31089,8 @@ bmo:GliaTranscriptomeType a owl:Class ;
         <http://uri.interlex.org/base/ilx_0777215> ;
     skos:definition "Large Basket Cell: LBCs had multipolar or bitufted dendrites, an axonal cluster characterized by straight and long axonal segments with low density of boutons, and long collaterals giving branches from both sides."@en ;
     skos:notation "L4_LBC"^^xsd:string ;
-    skos:prefLabel "Layer 4 Large Basket Cell"@en .
+    skos:prefLabel "Layer 4 Large Basket Cell"@en ;
+    nsg:color "#ff0000" .
 
 <http://uri.interlex.org/base/ilx_0383225> a owl:Class ;
     rdfs:label "L5_LBC"@en ;
@@ -31224,7 +31451,8 @@ bmo:GliaTranscriptomeType a owl:Class ;
         <http://uri.interlex.org/base/ilx_0777215> ;
     skos:definition "Large Basket Cell: LBCs had multipolar or bitufted dendrites, an axonal cluster characterized by straight and long axonal segments with low density of boutons, and long collaterals giving branches from both sides. Layers 5 and 6 LBCs often had ascending axonal collaterals reaching layer 2/3 or even layer 1."@en ;
     skos:notation "L5_LBC"^^xsd:string ;
-    skos:prefLabel "Layer 5 Large Basket Cell"@en .
+    skos:prefLabel "Layer 5 Large Basket Cell"@en ;
+    nsg:color "#ff0000" .
 
 <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType> a owl:Class ;
     rdfs:label "Hippocampus MType"@en ;
@@ -31275,6 +31503,9 @@ tts:NP_CT_L6b a owl:Class ;
     rdfs:subClassOf tts:Glutamatergic_neurons ;
     tts:cell_set_alias "CS202106160_536"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
+
+owl:equivalentClass a owl:DatatypeProperty ;
+    rdfs:label "equivalentClass"@en .
 
 nsg:Interneuron a owl:Class ;
     rdfs:label "Interneuron"@en ;
@@ -32531,8 +32762,6 @@ tts:123_Pvalb_Vipr2 a owl:Class ;
     tts:cell_set_alias "CS202106160_123"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
-mba:1097 a owl:Class .
-
 mba:549 a owl:Class .
 
 tts:CGE a owl:Class ;
@@ -32546,6 +32775,13 @@ tts:L4_5_6_IT_Car3 a owl:Class ;
     rdfs:subClassOf tts:Glutamatergic_neurons ;
     tts:cell_set_alias "CS202106160_502"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
+
+mba:1097 a owl:Class .
+
+bmo:inferredCanHaveMType a owl:ObjectProperty ;
+    rdfs:label "inferredCanHaveMType"@en ;
+    rdfs:subPropertyOf owl:topObjectProperty ;
+    skos:definition "MType assigned by an expert scientist as the best match to the observed MType of a cell when the True MType is was found."@en .
 
 bmo:NeuronElectricalType a owl:Class ;
     rdfs:label "Neuron Electrical Type"@en ;
@@ -32593,11 +32829,6 @@ bmo:InhibitoryNeurotransmitterType a owl:Class ;
     skos:prefLabel "Inhibitory neurotransmitter type"^^xsd:string ;
     nsg:color "#ff2222"^^xsd:string .
 
-bmo:inferredCanHaveMType a owl:ObjectProperty ;
-    rdfs:label "inferredCanHaveMType"@en ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    skos:definition "MType assigned by an expert scientist as the best match to the observed MType of a cell when the True MType is was found."@en .
-
 bmo:ExcitatoryNeurotransmitterType a owl:Class ;
     rdfs:label "Excitatory Neurotransmitter Type"@en ;
     rdfs:subClassOf bmo:NeurotransmitterType ;
@@ -32605,12 +32836,12 @@ bmo:ExcitatoryNeurotransmitterType a owl:Class ;
     skos:prefLabel "Excitatory neurotransmitter type"^^xsd:string ;
     nsg:color "#6666ff"^^xsd:string .
 
+mba:688 a owl:Class .
+
 bmo:NeuronMorphologicalType a owl:Class ;
     rdfs:label "Neuron Morphological Type"@en ;
     rdfs:subClassOf bmo:NeuronType,
         nsg:MType .
-
-mba:688 a owl:Class .
 
 ct:NeuronTranscriptomicType a owl:Class ;
     rdfs:label "Neuron Transcriptomic Type"@en ;
