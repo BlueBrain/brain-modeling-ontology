@@ -22,7 +22,6 @@
           "path": "prov:hadPlan"
         },
         {
-          "class": "prov:Role",
           "node": "nsg:commons/typedlabeledontologyterm/shapes/RoleOntologyTermShape",
           "path": "prov:hadRole"
         },

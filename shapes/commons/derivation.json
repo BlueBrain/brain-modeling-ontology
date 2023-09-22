@@ -17,7 +17,6 @@
       "nodeKind": "sh:BlankNodeOrIRI",
       "property": [
         {
-          "class": "prov:Entity",
           "description": "An entity from which the current one derived from.",
           "maxCount": 1,
           "minCount": 1,
