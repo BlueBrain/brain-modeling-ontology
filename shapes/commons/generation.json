@@ -28,7 +28,7 @@
           "description": "The activity that generates the entity.",
           "maxCount": 1,
           "name": "Activity",
-          "nodeKind": "sh:IRI",
+          "nodeKind": "sh:BlankNodeOrIRI",
           "path": "prov:activity"
         }
       ]
