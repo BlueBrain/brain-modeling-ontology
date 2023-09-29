@@ -3,7 +3,7 @@ import copy
 import json
 from typing import Dict, Tuple, Any, List, Set
 
-from kgforge.core import KnowledgeGraphForge
+from kgforge.core import KnowledgeGraphForge, Resource
 from pyld import jsonld
 from kgforge.core.commons.context import Context
 from collections import OrderedDict
@@ -46,38 +46,29 @@ def _create_hierarchy_view(
         uri_having_view: str, view_uri: str, view_label: str, view_description: str,
         parent_hierarchy_property: str, children_hierarchy_property: str,
         leaf_hierarchy_property: str
-):
-    triples = []
-    json_object = {}
-
-    triples.append(
-        (term.URIRef(uri_having_view), BMO.hasHierarchyView, term.URIRef(view_uri))
-    )
-    triples.append(
-        (term.URIRef(view_uri), RDFS.label, Literal(view_label))
-    )
-    triples.append(
-        (term.URIRef(view_uri), SCHEMAORG.description, Literal(view_description))
-    )
-    triples.append(
-        (term.URIRef(view_uri), BMO.hasParentHierarchyProperty, Literal(parent_hierarchy_property))
-    )
-    triples.append(
+) -> Tuple[List[Tuple], Dict[str, Dict]]:
+    triples = [
+        (term.URIRef(uri_having_view), BMO.hasHierarchyView, term.URIRef(view_uri)),
+        (term.URIRef(view_uri), RDFS.label, Literal(view_label)),
+        (term.URIRef(view_uri), SCHEMAORG.description, Literal(view_description)),
+        (term.URIRef(view_uri), BMO.hasParentHierarchyProperty, Literal(parent_hierarchy_property)),
         (term.URIRef(view_uri), BMO.hasChildrenHierarchyProperty, Literal(
-            children_hierarchy_property))
-    )
-    triples.append(
+            children_hierarchy_property)),
         (term.URIRef(view_uri), BMO.hasLeafHierarchyProperty, Literal(leaf_hierarchy_property))
-    )
 
-    json_object["hasHierarchyView"] = {
-        "@id": view_uri,
-        "label": view_label,
-        "description": view_description,
-        "hasParentHierarchyProperty": parent_hierarchy_property,
-        "hasChildrenHierarchyProperty": children_hierarchy_property,
-        "hasLeafHierarchyProperty": leaf_hierarchy_property
+    ]
+
+    json_object = {
+        "hasHierarchyView": {
+            "@id": view_uri,
+            "label": view_label,
+            "description": view_description,
+            "hasParentHierarchyProperty": parent_hierarchy_property,
+            "hasChildrenHierarchyProperty": children_hierarchy_property,
+            "hasLeafHierarchyProperty": leaf_hierarchy_property
+        }
     }
+
     return triples, json_object
 
 
@@ -153,9 +144,13 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
     onto_string = new_ontology_graph.serialize(format="json-ld", auto_compact=True, indent=2)
     onto_json = json.loads(onto_string)
 
-    framed = jsonld.frame(onto_json, frame_json, options={"expandContext": context_json,
-                                                          "pruneBlankNodeIdentifiers": True})
+    framed = jsonld.frame(
+        onto_json, frame_json,
+        options={"expandContext": context_json, "pruneBlankNodeIdentifiers": True}
+    )
+
     framed_onto_json = graph_free_jsonld(framed)
+
     if "skos:prefLabel" in framed_onto_json and framed_onto_json["skos:prefLabel"]:
         framed_onto_json["prefLabel"] = framed_onto_json.pop("skos:prefLabel", None)
     if "rdfs:label" in framed_onto_json and framed_onto_json["rdfs:label"]:
@@ -165,8 +160,11 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
     framed_onto_json["@context"] = context.iri
 
     if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
-        framed_onto_json["hasHierarchyView"] = [layer_view_json["hasHierarchyView"],
-                                                brain_region_view_json["hasHierarchyView"]]
+        framed_onto_json["hasHierarchyView"] = [
+            layer_view_json["hasHierarchyView"],
+            brain_region_view_json["hasHierarchyView"]
+        ]
+
     return framed_onto_json
 
 
@@ -203,36 +201,38 @@ SYNTHETIC_SENTENCES = {
 
 
 def _register_schema(
-        forge, schema_file, schema_resource, all_schema_graph,
+        forge: KnowledgeGraphForge, schema_file, schema_resource, all_schema_graph,
         jsonld_schema_context_resource, tag
 ):
     forge.register(schema_resource, schema_id=SHACL_SCHEMA_ID)
-    if schema_resource._last_action and not schema_resource._last_action.succeeded and \
-            ALREADY_EXISTS_ERROR not in schema_resource._last_action.message:
-        raise Exception(
-            f"Registration of the schema with id '{schema_resource.id}' "
-            f"located in '{schema_file}' failed: {schema_resource._last_action.message}...\n"
-        )
-
-    if schema_resource._last_action and not schema_resource._last_action.succeeded and \
-            ALREADY_EXISTS_ERROR in schema_resource._last_action.message:
-        # Update and tag if 'already exists' error was encountered
-        print("Schema already exists, updating...\n")
-        schema_updated = _process_already_existing_resource(forge, schema_resource)
-        forge.update(schema_updated)
-        if schema_updated._last_action and schema_updated._last_action.succeeded is True and tag:
-            forge.tag(schema_updated, tag)
-            pass
-
-    # Tag if the registration was successful
-    if schema_resource._last_action and schema_resource._last_action.succeeded is True and tag:
-        print("Schema registration successful, tagging...\n")
-        forge.tag(schema_resource, tag)
-        pass
+    if schema_resource._last_action:
+        last_action = schema_resource._last_action
+        
+        if not last_action.succeeded: 
+            if ALREADY_EXISTS_ERROR not in last_action.message:
+                raise Exception(
+                    f"Registration of the schema with id '{schema_resource.id}' "
+                    f"located in '{schema_file}' failed: {schema_resource._last_action.message}...\n"
+                )
+            else:
+                # Update and tag if 'already exists' error was encountered
+                print("Schema already exists, updating...\n")
+                schema_updated = _process_already_existing_resource(forge, schema_resource)
+                forge.update(schema_updated)
+                if schema_updated._last_action and schema_updated._last_action.succeeded and tag:
+                    forge.tag(schema_updated, tag)
+                    pass
+        else: 
+            # Tag if the registration was successful
+            if tag is not None:
+                print("Schema registration successful, tagging...\n")
+                forge.tag(schema_resource, tag)
+                pass
 
 
 def _register_ontology_resource(forge, ontology_json, ontology_path, ontology_graph,
                                 class_resources_mapped=None):
+
     ontology_json = copy.deepcopy(ontology_json)
     # del ontology_json["@context"]
     ontology_resource = forge.from_json(ontology_json)
@@ -289,34 +289,38 @@ def register_ontology(
     ontology_resource = _register_ontology_resource(forge, ontology_json, path, ontology_graph,
                                                     class_resources_mapped)
 
-    if ontology_resource._last_action and not ontology_resource._last_action.succeeded and \
-            ALREADY_EXISTS_ERROR not in ontology_resource._last_action.message:
-        print("Ontology registration failed, removing 'defines' relationships...\n")
-        # If ontology is too large (too many classes), we need to remove
-        # 'defines', relationships otherwise the payload explodes
-        remove_defines_relation(ontology_graph)
-        # Retry registering after the `define` rels are removed
-        ontology_json = frame_ontology(ontology_graph, context, context_json,
-                                       class_resources_framed)
-        print("Retrying registration...\n")
-        ontology_resource = _register_ontology_resource(
-            forge, ontology_json, path, ontology_graph, class_resources_mapped)
+    if ontology_resource._last_action:
+        last_action = ontology_resource._last_action
 
-    if ontology_resource._last_action and not ontology_resource._last_action.succeeded and \
-            ALREADY_EXISTS_ERROR in ontology_resource._last_action.message:
-        # Update and tag if 'already exists' error was encountered
-        print("Ontology already exists, updating...\n")
-        ontology_updated = _process_already_existing_resource(forge, ontology_resource)
-        forge.update(ontology_updated)
-        if tag:
-            print("Registration successful, tagging...\n")
-            forge.tag(ontology_updated, tag)
-            pass
-    # Tag if the registration was successful
-    if ontology_resource._last_action and ontology_resource._last_action.succeeded is True and tag:
-        print("Registration successful, tagging...\n")
-        forge.tag(ontology_resource, tag)
-        pass
+        if not last_action.succeeded:
+            if ALREADY_EXISTS_ERROR not in last_action.message:
+                print("Ontology registration failed, removing 'defines' relationships...\n")
+                # If ontology is too large (too many classes), we need to remove
+                # 'defines', relationships otherwise the payload explodes
+                remove_defines_relation(ontology_graph)
+                # Retry registering after the `define` rels are removed
+                ontology_json = frame_ontology(
+                    ontology_graph, context, context_json, class_resources_framed
+                )
+                print("Retrying registration...\n")
+                ontology_resource = _register_ontology_resource(
+                    forge, ontology_json, path, ontology_graph, class_resources_mapped
+                )
+            else:
+                # Update and tag if 'already exists' error was encountered
+                print("Ontology already exists, updating...\n")
+                ontology_updated = _process_already_existing_resource(forge, ontology_resource)
+                forge.update(ontology_updated)
+                if tag is not None:
+                    print("Registration successful, tagging...\n")
+                    forge.tag(ontology_updated, tag)
+                    pass
+        else:
+            # Tag if the registration was successful
+            if tag is not None:
+                print("Registration successful, tagging...\n")
+                forge.tag(ontology_resource, tag)
+                pass
 
 
 def _process_already_existing_resource(forge, resource):
@@ -507,14 +511,25 @@ def frame_classes(
         identifier = str(current_class)
         current_class_framed["@id"] = identifier
         del current_class_framed["@context"]
-        new_current_class_framed = _frame_class(current_class_framed, forge_context, ontology_graph,
-                                                atlas_release_id, atlas_release_version)
+        new_current_class_framed = _frame_class(
+            current_class_framed, forge_context, ontology_graph,
+            atlas_release_id, atlas_release_version
+        )
+
         new_current_class_framed.pop("bmo:canHaveTType", None)
         class_jsons.append(new_current_class_framed)
         class_ids.append(identifier)
         all_blank_node_triples.append(blank_node_triples)
 
     return class_ids, class_jsons, all_blank_node_triples, new_classes
+
+
+def _to_list(e):
+    return e if isinstance(e, list) else [e]
+
+
+def _id_if_dict(e):
+    return e["@id"] if isinstance(e, dict) else e
 
 
 def _get_leaf_regions(uri, children_hierarchy_property, ontology_graph) -> Set[str]:
@@ -548,30 +563,14 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
             if k_term and k_term.type == "@id":
                 res = [
                     context.expand(s)
-                    if "uberon:" not in s else
-                    str(s).replace("uberon:", context.expand('uberon'))
-                    for s in v
-                ] if isinstance(v, list) \
-                    else (
-                    [
-                        context.expand(v)
-                        if "uberon:" not in v
-                        else str(v).replace("uberon:", context.expand('uberon'))
-                    ] if isinstance(v, str)
-                    else [context.expand(v["@id"])]
-                )
+                    if "uberon:" not in s else str(s).replace("uberon:", context.expand('uberon'))
+                    for s in _to_list(v)
+                ] if not isinstance(v, dict) else [context.expand(v["@id"])]
+
                 ns, fragment = namespace.split_uri(k_expanded)
 
                 if fragment in cls and fragment != k:
-                    if isinstance(cls[fragment], list):
-                        cls[fragment].extend(res)
-                    elif isinstance(cls[fragment], Dict):
-                        cls[fragment] = [cls[fragment]]
-                        cls[fragment].extend(res)
-                    elif isinstance(cls[fragment], str):
-                        cls[fragment] = [cls[fragment]]
-                        cls[fragment].extend(res)
-
+                    cls[fragment].extend(_to_list(cls[fragment]))
                     to_pop.append(k)
                 else:
                     cls[k] = res
@@ -584,13 +583,10 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
         cls["@id"] = context.expand(cls["@id"])
     if "subClassOf" in cls and cls["subClassOf"] and cls["subClassOf"] != {}:
 
-        cls["subClassOf"] = list(context.expand(s) for s in cls["subClassOf"] if s != {}) \
-            if isinstance(cls["subClassOf"], list) \
-            else (
-            [context.expand(cls["subClassOf"])]
-            if isinstance(cls["subClassOf"], str)
-            else [context.expand(cls["subClassOf"]["@id"])]
+        cls["subClassOf"] = list(
+            context.expand(_id_if_dict(s)) for s in _to_list(cls["subClassOf"]) if s != {}
         )
+
         for sub_c in cls["subClassOf"]:
             # bring in cls["subClassOf"] some parent classes for quick look up
 
@@ -644,39 +640,18 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
         if p_symbol not in cls:
             cls[p_symbol] = []
         else:
-            if isinstance(cls[p_symbol], Dict) or isinstance(cls[p_symbol], str):
-                cls[p_symbol] = [cls[p_symbol]]
+            cls[p_symbol] = _to_list(cls[p_symbol])
         cls[p_symbol].append(context.expand(str(o)))
 
     if "hasPart" in cls and cls["hasPart"] and cls["hasPart"] != {}:
-        cls["hasPart"] = list(context.expand(s) for s in cls["hasPart"]) \
-            if isinstance(cls["hasPart"], list) \
-            else (
-            [context.expand(cls["hasPart"])]
-            if isinstance(cls["hasPart"], str)
-            else [context.expand(cls["hasPart"]["@id"])]
-        )
+        cls["hasPart"] = [context.expand(_id_if_dict(s)) for s in _to_list(cls["hasPart"])]
 
     if "isPartOf" in cls and cls["isPartOf"] and cls["isPartOf"] != {}:
-        cls["isPartOf"] = list(context.expand(s) for s in cls["isPartOf"]) \
-            if isinstance(cls["isPartOf"], list) \
-            else (
-            [context.expand(cls["isPartOf"])]
-            if isinstance(cls["isPartOf"], str)
-            else [context.expand(cls["isPartOf"]["@id"])]
-        )
+        cls["isPartOf"] = [context.expand(_id_if_dict(s)) for s in _to_list(cls["isPartOf"])]
 
     if "contribution" in cls and cls["contribution"] and cls["contribution"] != {}:
-
         cls["contribution"] = list(
-            {context.expand(s) if isinstance(s, str) else context.expand(s["@id"]) for s in
-             cls["contribution"]}
-        ) \
-            if isinstance(cls["contribution"], list) \
-            else (
-            [context.expand(cls["contribution"])]
-            if isinstance(cls["contribution"], str)
-            else [context.expand(cls["contribution"]["@id"])]
+            {context.expand(_id_if_dict(s)) for s in _to_list(cls["contribution"])}
         )
 
         contribution_with_agent = []
@@ -696,143 +671,145 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
     if "schema:isPartOf" in cls and cls["schema:isPartOf"]:
         ip = cls.pop("schema:isPartOf", None)
         if ip:
-            cls["isPartOf"] = ip if isinstance(ip, list) else [ip]
+            cls["isPartOf"] = _to_list(ip)
     if "rdfs:seeAlso" in cls and cls["rdfs:seeAlso"]:
         sa = cls.pop("rdfs:seeAlso", None)
         if sa:
-            cls["seeAlso"] = sa if isinstance(sa, list) else [sa]
+            cls["seeAlso"] = _to_list(sa)
     if "schema:about" in cls and cls["schema:about"]:
         ab = cls.pop("schema:about", None)
         if ab:
-            cls["about"] = ab if isinstance(ab, list) else [ab]
+            cls["about"] = _to_list(ab)
+
+
 
     if "bmo:usesCircuitWithProperty" in cls and cls["bmo:usesCircuitWithProperty"]:
         uc = cls.pop("bmo:usesCircuitWithProperty", None)
         if uc:
-            cls["usesCircuitWithProperty"] = uc if isinstance(uc, list) else [uc]
+            cls["usesCircuitWithProperty"] = _to_list(uc)
 
     if "bmo:generatesCircuitWithProperty" in cls and cls["bmo:generatesCircuitWithProperty"]:
         gc = cls.pop("bmo:generatesCircuitWithProperty", None)
         if gc:
-            cls["generatesCircuitWithProperty"] = gc if isinstance(gc, list) else [gc]
+            cls["generatesCircuitWithProperty"] = _to_list(gc)
 
     if "bmo:canHaveTType" in cls and cls["bmo:canHaveTType"]:
         ct = cls.pop("bmo:canHaveTType", None)
         if ct:
-            cls["canHaveTType"] = ct if isinstance(ct, list) else [ct]
+            cls["canHaveTType"] = _to_list(ct)
     if "bmo:canHaveBrainRegion" in cls and cls["bmo:canHaveBrainRegion"]:
         ct = cls.pop("bmo:canHaveBrainRegion", None)
         if ct:
-            cls["canHaveBrainRegion"] = ct if isinstance(ct, list) else [ct]
+            cls["canHaveBrainRegion"] = _to_list(ct)
     if "bmo:hasParameter" in cls and cls["bmo:hasParameter"]:
         ct = cls.pop("bmo:hasParameter", None)
         if ct:
-            cls["hasParameter"] = ct if isinstance(ct, list) else [ct]
+            cls["hasParameter"] = _to_list(ct)
     if "bmo:isAssociatedWith" in cls and cls["bmo:isAssociatedWith"]:
         ct = cls.pop("bmo:isAssociatedWith", None)
         if ct:
-            cls["isAssociatedWith"] = ct if isinstance(ct, list) else [ct]
+            cls["isAssociatedWith"] = _to_list(ct)
     if "bmo:expressionProfile" in cls and cls["bmo:expressionProfile"]:
         ct = cls.pop("bmo:expressionProfile", None)
         if ct:
-            cls["expressionProfile"] = ct if isinstance(ct, list) else [ct]
+            cls["expressionProfile"] = _to_list(ct)
     if "bmo:isBasedOn" in cls and cls["bmo:isBasedOn"]:
         ct = cls.pop("bmo:isBasedOn", None)
         if ct:
-            cls["isBasedOn"] = ct if isinstance(ct, list) else [ct]
+            cls["isBasedOn"] = _to_list(ct)
     if "bmo:molecule" in cls and cls["bmo:molecule"]:
         ct = cls.pop("bmo:molecule", None)
         if ct:
-            cls["molecule"] = ct if isinstance(ct, list) else [ct]
+            cls["molecule"] = _to_list(ct)
     if "bmo:postsynapticNeuron" in cls and cls["bmo:postsynapticNeuron"]:
         ct = cls.pop("bmo:postsynapticNeuron", None)
         if ct:
-            cls["postsynapticNeuron"] = ct if isinstance(ct, list) else [ct]
+            cls["postsynapticNeuron"] = _to_list(ct)
     if "bmo:presynapticNeuron" in cls and cls["bmo:presynapticNeuron"]:
         ct = cls.pop("bmo:presynapticNeuron", None)
         if ct:
-            cls["presynapticNeuron"] = ct if isinstance(ct, list) else [ct]
+            cls["presynapticNeuron"] = _to_list(ct)
     if "nsg:hasFeature" in cls and cls["nsg:hasFeature"]:
         ct = cls.pop("nsg:hasFeature", None)
         if ct:
-            cls["hasFeature"] = ct if isinstance(ct, list) else [ct]
+            cls["hasFeature"] = _to_list(ct)
     if "bmo:hasWorkflowDefinition" in cls and cls["bmo:hasWorkflowDefinition"]:
         ct = cls.pop("bmo:hasWorkflowDefinition", None)
         if ct:
-            cls["hasWorkflowDefinition"] = ct if isinstance(ct, list) else [ct]
+            cls["hasWorkflowDefinition"] = _to_list(ct)
 
     if "bmo:hasLayerLocationPhenotype" in cls and cls["bmo:hasLayerLocationPhenotype"]:
         ct = cls.pop("bmo:hasLayerLocationPhenotype", None)
         if ct:
-            cls["hasLayerLocationPhenotype"] = ct if isinstance(ct, list) else [ct]
+            cls["hasLayerLocationPhenotype"] = _to_list(ct)
 
     if "nsg:hasLayerLocationPhenotype" in cls and cls["nsg:hasLayerLocationPhenotype"]:
         ct = cls.pop("nsg:hasLayerLocationPhenotype", None)
         if ct:
-            cls["hasLayerLocationPhenotype"] = ct if isinstance(ct, list) else [ct]
+            cls["hasLayerLocationPhenotype"] = _to_list(ct)
 
     if "bmo:hasMorphologicalPhenotype" in cls and cls["bmo:hasMorphologicalPhenotype"]:
         ct = cls.pop("bmo:hasMorphologicalPhenotype", None)
         if ct:
-            cls["hasMorphologicalPhenotype"] = ct if isinstance(ct, list) else [ct]
+            cls["hasMorphologicalPhenotype"] = _to_list(ct)
 
     if "nsg:hasMorphologicalPhenotype" in cls and cls["nsg:hasMorphologicalPhenotype"]:
         ct = cls.pop("nsg:hasMorphologicalPhenotype", None)
         if ct:
-            cls["hasMorphologicalPhenotype"] = ct if isinstance(ct, list) else [ct]
+            cls["hasMorphologicalPhenotype"] = _to_list(ct)
 
     if "bmo:hasType" in cls and cls["bmo:hasType"]:
         ct = cls.pop("bmo:hasType", None)
         if ct:
-            cls["hasType"] = ct if isinstance(ct, list) else [ct]
+            cls["hasType"] = _to_list(ct)
     if "bmo:hasMType" in cls and cls["bmo:hasMType"]:
         ct = cls.pop("bmo:hasMType", None)
         if ct:
-            cls["hasMType"] = ct if isinstance(ct, list) else [ct]
+            cls["hasMType"] = _to_list(ct)
     if "bmo:canHaveBrainRegion" in cls and cls["bmo:canHaveBrainRegion"]:
         ct = cls.pop("bmo:canHaveBrainRegion", None)
         if ct:
-            cls["canHaveBrainRegion"] = ct if isinstance(ct, list) else [ct]
+            cls["canHaveBrainRegion"] = _to_list(ct)
     if "bmo:canBeLocatedInBrainRegion" in cls and cls["bmo:canBeLocatedInBrainRegion"]:
         ct = cls.pop("bmo:canBeLocatedInBrainRegion", None)
         if ct:
-            cls["canBeLocatedInBrainRegion"] = ct if isinstance(ct, list) else [ct]
+            cls["canBeLocatedInBrainRegion"] = _to_list(ct)
 
     if "bmo:canHaveMType" in cls and cls["bmo:canHaveMType"]:
         ct = cls.pop("bmo:canHaveMType", None)
         if ct:
-            cls["canHaveMType"] = ct if isinstance(ct, list) else [ct]
+            cls["canHaveMType"] = _to_list(ct)
     if "bmo:exposesParameter" in cls and cls["bmo:exposesParameter"]:
         ct = cls.pop("bmo:exposesParameter", None)
         if ct:
-            cls["exposesParameter"] = ct if isinstance(ct, list) else [ct]
+            cls["exposesParameter"] = _to_list(ct)
     if "bmo:sourceType" in cls and cls["bmo:sourceType"]:
         ct = cls.pop("bmo:sourceType", None)
         if ct:
-            cls["sourceType"] = ct if isinstance(ct, list) else [ct]
+            cls["sourceType"] = _to_list(ct)
 
     if "nsg:hasInstanceInSpecies" in cls and cls["nsg:hasInstanceInSpecies"]:
         ct = cls.pop("nsg:hasInstanceInSpecies", None)
         if ct:
-            cls["hasInstanceInSpecies"] = ct if isinstance(ct, list) else [ct]
+            cls["hasInstanceInSpecies"] = _to_list(ct)
 
     if "hasHierarchyView" in cls:
         ct = cls.pop("hasHierarchyView", None)
         if ct:
-            cls["hasHierarchyView"] = ct if isinstance(ct, list) else [ct]
+            cls["hasHierarchyView"] = _to_list(ct)
 
     if "bmo:targetType" in cls and cls["bmo:targetType"]:
         ct = cls.pop("bmo:targetType", None)
         if ct:
-            cls["targetType"] = ct if isinstance(ct, list) else [ct]
+            cls["targetType"] = _to_list(ct)
     if "bmo:constraints" in cls and cls["bmo:constraints"]:
         ct = cls.pop("bmo:constraints", None)
         if ct:
-            cls["constraints"] = ct if isinstance(ct, list) else [ct]
+            cls["constraints"] = _to_list(ct)
     if "owl:equivalentClass" in cls and cls["owl:equivalentClass"]:
         ct = cls.pop("owl:equivalentClass", None)
         if ct:
-            cls["equivalentClass"] = ct if isinstance(ct, list) else [ct]
+            cls["equivalentClass"] = _to_list(ct)
 
     if "skos:prefLabel" in cls and cls["skos:prefLabel"]:
         cls["prefLabel"] = cls.pop("skos:prefLabel", None)
@@ -870,7 +847,8 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
                                                                                    BMO.NeuronElectricalType)
         if len(propagated_brain_regions) > 0:
             cls["canBeLocatedInBrainRegion"] = [cls["canBeLocatedInBrainRegion"]] if isinstance(
-                cls["canBeLocatedInBrainRegion"], str) else cls["canBeLocatedInBrainRegion"]
+                cls["canBeLocatedInBrainRegion"], str) else cls["canBeLocatedInBrainRegion"] #
+            # can it be a dict?
             cls["canBeLocatedInBrainRegion"].extend(propagated_brain_regions)
 
     if "atlas_id" in cls and cls["atlas_id"] == "None":
@@ -1016,39 +994,42 @@ def register_classes(forge, class_resources_jsons, tag=None):
         try:
             resource = forge.from_json(class_json)
             forge.register(resource, schema_id="datashapes:ontologyentity")
-            if resource._last_action and resource._last_action.succeeded is True and tag is not None:
-                forge.tag(resource, tag)
+            
+            if resource._last_action: 
+                last_action = resource._last_action
+                
+                if last_action.succeeded:
+                    if tag is not None:
+                        forge.tag(resource, tag)
+                    """
+                    if resource._last_action and resource._last_action.error == "RegistrationError":
+                        resource_updated = _process_already_existing_resource(forge, resource)
+                        forge.update(resource_updated)
+                        if tag is not None:
+                            forge.tag(resource_updated, tag)
+                    """
+                else: 
+                    if ALREADY_EXISTS_ERROR in last_action.message:
+                        resource_updated = _process_already_existing_resource(forge, resource)
+                        forge._debug = True
+                        forge.update(resource_updated)
+                        if tag is not None:
+                            forge.tag(resource_updated, tag)
 
-            """
-            if resource._last_action and resource._last_action.error == "RegistrationError":
-                resource_updated = _process_already_existing_resource(forge, resource)
-                forge.update(resource_updated)
-                if tag is not None:
-                    forge.tag(resource_updated, tag)
-            """
-            if resource._last_action and not resource._last_action.succeeded and \
-                    ALREADY_EXISTS_ERROR in resource._last_action.message:
-                resource_updated = _process_already_existing_resource(forge, resource)
-                forge._debug = True
-                forge.update(resource_updated)
-                if tag is not None:
-                    forge.tag(resource_updated, tag)
-                if not resource_updated._last_action.succeeded:
-                    raise Exception(
-                        f"Failed to register or update class:{json.dumps(class_json)}:"
-                        f" {resource_updated._last_action.message}"
-                    )
-
-            if resource._last_action and not resource._last_action.succeeded and \
-                    ALREADY_EXISTS_ERROR not in resource._last_action.message:
-                print(
-                    f"Failed to register or update class:{resource.id}: "
-                    f"{resource._last_action.message}"
-                )
-                raise Exception(
-                    f"Failed to register or update class:{json.dumps(class_json)}:"
-                    f" {resource._last_action.message}"
-                )
+                        if not resource_updated._last_action.succeeded:
+                            raise Exception(
+                                f"Failed to register or update class:{json.dumps(class_json)}:"
+                                f" {resource_updated._last_action.message}"
+                            )
+                    else: 
+                        print(
+                            f"Failed to register or update class:{resource.id}: "
+                            f"{last_action.message}"
+                        )
+                        raise Exception(
+                            f"Failed to register or update class:{json.dumps(class_json)}:"
+                            f" {last_action.message}"
+                        )
         except Exception as e:
             errors.append(e)
             pass
