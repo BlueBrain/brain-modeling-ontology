@@ -1,5 +1,4 @@
 pytest==6.2.4
-rdflib==6.2.0
+rdflib==6.3.2
 pyLD
-ontospy
 git+https://github.com/BlueBrain/nexus-forge
