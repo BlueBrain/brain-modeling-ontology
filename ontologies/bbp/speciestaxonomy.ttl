@@ -452,7 +452,9 @@
                                                  rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10088> ;
                                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
                                                  rdfs:label "Mus musculus"@en ;
-                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "house mouse"@en .
+                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "M. musculus"^^xsd:string ,
+                                                                                                "Mouse"^^xsd:string ,
+                                                                                                "house mouse"^^xsd:string .
 
 
 ###  http://purl.obolibrary.org/obo/NCBITaxon_10114
@@ -467,6 +469,7 @@
                                                  <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species> ;
                                                  rdfs:label "Rattus norvegicus"@en ;
                                                  <http://www.w3.org/2004/02/skos/core#altLabel> "Norway rat"@en ,
+                                                                                                "Rat"@en,
                                                                                                 "rat"@en .
 
 

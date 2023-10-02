@@ -143,7 +143,7 @@ def test_brain_region_same_leaves_in_all_hierarchy(all_ontology_graphs):
     isocortex_brain_region_layer_in_annotation_leaves = _get_in_annotation_leaves(isocortex_brain_region_uri, ontology_graph, BMO.hasLayerLeafRegionPart)
     isocortex_brain_region_default_in_annotation_leaves =  _get_in_annotation_leaves(isocortex_brain_region_uri, ontology_graph, BMO.hasLeafRegionPart)
     assert isocortex_brain_region_layer_in_annotation_leaves == isocortex_brain_region_default_in_annotation_leaves
-    
+
 def test_layered_child_has_same_parent_layer(framed_classes):
     class_ids   = framed_classes[0] 
     class_jsons = framed_classes[1]
@@ -157,6 +157,8 @@ def test_layered_child_has_same_parent_layer(framed_classes):
     assert len(triples_to_add) >  0
     
     framed_class_json_dict = dict(zip(class_ids, class_jsons))
+    mus_musculus_class_json = framed_class_json_dict["http://purl.obolibrary.org/obo/NCBITaxon_10090"]
+    assert mus_musculus_class_json["label"] == {'@language': 'en', '@value': 'Mus musculus'}
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
         assert str(cls) in framed_class_json_dict
         cls_json = framed_class_json_dict[str(cls)]

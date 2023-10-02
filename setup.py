@@ -26,9 +26,8 @@ setup(
         "setuptools_scm",
     ],
     install_requires=[
-        "rdflib==6.2.0",
+        "rdflib==6.3.2",
         "pyld",
-        "ontospy",
         "numpy",
         "neo4j",
         "nexusforge",
