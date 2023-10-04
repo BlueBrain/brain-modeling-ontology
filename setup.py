@@ -27,21 +27,24 @@ setup(
     ],
     install_requires=[
         "rdflib==6.3.2",
-        "pyld",
-        "numpy",
-        "neo4j",
-        "nexusforge",
-        "bluegraph",
-        "pyjwt"
+        "pyld==2.0.3",
+        "numpy==1.24.4",
+        "nexusforge@git+https://github.com/BlueBrain/nexus-forge",
+        "bluegraph[neo4j]@git+https://github.com/BlueBrain/BlueGraph"
     ],
     extras_require={
         "dev": [
-            "tox", "pytest", "pytest-bdd", "pytest-cov==2.10.1",
-            "pytest-mock==3.3.1", "codecov",
+            "tox==4.11.3",
+            "pytest==7.4.2",
+            "pytest-bdd==6.1.1",
+            "pytest-cov==2.10.1",
+            "pytest-mock==3.3.1",
+            "codecov==2.1.13"
         ],
         "docs": [
-            "sphinx", "sphinx-bluebrain-theme"
-        ],
+            "sphinx==7.1.2",
+            "sphinx-bluebrain-theme==0.4.2"
+        ]
     },
     classifiers=[
         "Intended Audience :: Information Technology",
