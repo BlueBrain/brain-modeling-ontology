@@ -35,7 +35,6 @@
       "label": "Data shape definition for volumetric brain data that characterizes gene expression",
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": [
-        "nsg:VolumetricDataLayer",
         "nsg:GeneExpressionVolumetricDataLayer"
       ]
     }
