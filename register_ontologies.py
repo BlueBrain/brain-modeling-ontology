@@ -11,7 +11,7 @@ from kgforge.specializations.mappings import DictionaryMapping
 
 import bmo.ontologies as bmo
 from bmo.utils import (
-    BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, PREFIX_MAPPINGS
+    BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, PREFIX_MAPPINGS, SKOS
 )
 
 WEBPROTEGE_TO_NEXUS = {
@@ -418,7 +418,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         ontology_graphs_dict["./ontologies/bbp/brainregion.ttl"],
         all_ontology_graphs,
         [SCHEMAORG.hasPart, SCHEMAORG.isPartOf,
-         RDFS.label, MBA.atlas_id,
+         RDFS.label, SKOS.prefLabel, SKOS.notation, SKOS.altLabel, MBA.atlas_id,
          MBA.color_hex_triplet,
          MBA.graph_order, MBA.hemisphere_id,
          MBA.st_level, SCHEMAORG.identifier,

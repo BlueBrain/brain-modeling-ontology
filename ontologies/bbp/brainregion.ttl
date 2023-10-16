@@ -23651,9 +23651,9 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
                                                                     <http://api.brain-map.org/api/v2/data/Structure/8> ;
                                                      schema:identifier 997 ;
                                                      rdfs:isDefinedBy <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> ;
-                                                     rdfs:label "Whole mouse brain" ;
+                                                     rdfs:label "root" ;
                                                      skos:notation "root" ;
-                                                     skos:prefLabel "Whole mouse brain" ;
+                                                     skos:prefLabel "root" ;
                                                      skos:altLabel "root" ;
                                                      bmo:delineatedBy <http://purl.obolibrary.org/obo/UBERON_0000955> .
 
