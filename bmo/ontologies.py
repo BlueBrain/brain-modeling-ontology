@@ -285,43 +285,11 @@ def register_ontology(
     # Frame ontology given the provided context
     ontology_json = frame_ontology(ontology_graph, context, context_json, class_resources_framed)
 
-    # Register ontology as is
     ontology_resource = _register_ontology_resource(forge, ontology_json, path, ontology_graph,
                                                     class_resources_mapped)
 
-    if ontology_resource._last_action:
-        last_action = ontology_resource._last_action
-
-        if not last_action.succeeded:
-            if ALREADY_EXISTS_ERROR not in last_action.message:
-                print("Ontology registration failed, removing 'defines' relationships...\n")
-                # If ontology is too large (too many classes), we need to remove
-                # 'defines', relationships otherwise the payload explodes
-                remove_defines_relation(ontology_graph)
-                # Retry registering after the `define` rels are removed
-                ontology_json = frame_ontology(
-                    ontology_graph, context, context_json, class_resources_framed
-                )
-                print("Retrying registration...\n")
-                ontology_resource = _register_ontology_resource(
-                    forge, ontology_json, path, ontology_graph, class_resources_mapped
-                )
-            else:
-                # Update and tag if 'already exists' error was encountered
-                print("Ontology already exists, updating...\n")
-                ontology_updated = _process_already_existing_resource(forge, ontology_resource)
-                forge.update(ontology_updated)
-                if tag is not None:
-                    print("Registration successful, tagging...\n")
-                    forge.tag(ontology_updated, tag)
-                    pass
-        else:
-            # Tag if the registration was successful
-            if tag is not None:
-                print("Registration successful, tagging...\n")
-                forge.tag(ontology_resource, tag)
-                pass
-
+    _registration_callback(forge, ontology_resource, tag=tag)
+                
 
 def _process_already_existing_resource(forge, resource):
     resource_json = forge.as_json(resource)
@@ -994,47 +962,39 @@ def register_classes(forge, class_resources_jsons, tag=None):
         try:
             resource = forge.from_json(class_json)
             forge.register(resource, schema_id="datashapes:ontologyentity")
-            
-            if resource._last_action: 
-                last_action = resource._last_action
-                
-                if last_action.succeeded:
-                    if tag is not None:
-                        forge.tag(resource, tag)
-                    """
-                    if resource._last_action and resource._last_action.error == "RegistrationError":
-                        resource_updated = _process_already_existing_resource(forge, resource)
-                        forge.update(resource_updated)
-                        if tag is not None:
-                            forge.tag(resource_updated, tag)
-                    """
-                else: 
-                    if ALREADY_EXISTS_ERROR in last_action.message:
-                        resource_updated = _process_already_existing_resource(forge, resource)
-                        forge._debug = True
-                        forge.update(resource_updated)
-                        if tag is not None:
-                            forge.tag(resource_updated, tag)
-
-                        if not resource_updated._last_action.succeeded:
-                            raise Exception(
-                                f"Failed to register or update class:{json.dumps(class_json)}:"
-                                f" {resource_updated._last_action.message}"
-                            )
-                    else: 
-                        print(
-                            f"Failed to register or update class:{resource.id}: "
-                            f"{last_action.message}"
-                        )
-                        raise Exception(
-                            f"Failed to register or update class:{json.dumps(class_json)}:"
-                            f" {last_action.message}"
-                        )
+            _registration_callback(forge, resource, tag=tag)
         except Exception as e:
             errors.append(e)
             pass
     return errors
 
+def _registration_callback(forge, resource, tag):
+
+    if resource._last_action: 
+        last_action = resource._last_action
+
+        if last_action.succeeded:
+            if tag is not None:
+                forge.tag(resource, tag)
+        else: 
+            if ALREADY_EXISTS_ERROR in last_action.message:
+                # Update and tag if 'already exists' error was encountered
+                print(f"Resource {resource.get_identifier()} already exists, updating...\n")
+                resource_updated = _process_already_existing_resource(forge, resource)
+                #forge.update(resource_updated)
+                if tag is not None:
+                    forge.tag(resource_updated, tag)
+
+                if not resource_updated._last_action.succeeded:
+                    raise Exception(
+                        f"Failed to update resource:{resource.get_identifier()}:"
+                        f" {resource_updated._last_action.message}"
+                    )
+            else: 
+                message = f"Failed to register resource:{resource.get_identifier()}: " \
+                            f"{last_action.message}"
+                raise Exception(message)
+   
 
 def normalize_uris(filename, prefix, new_filename, format="turtle"):
     """Normalize resource URIs to the provided prefix."""
