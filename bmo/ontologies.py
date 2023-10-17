@@ -981,11 +981,10 @@ def _registration_callback(forge, resource, tag):
                 # Update and tag if 'already exists' error was encountered
                 print(f"Resource {resource.get_identifier()} already exists, updating...\n")
                 resource_updated = _process_already_existing_resource(forge, resource)
-                #forge.update(resource_updated)
+                forge.update(resource_updated)
                 if tag is not None:
                     forge.tag(resource_updated, tag)
-
-                if not resource_updated._last_action.succeeded:
+                if resource_updated._last_action and not resource_updated._last_action.succeeded:
                     raise Exception(
                         f"Failed to update resource:{resource.get_identifier()}:"
                         f" {resource_updated._last_action.message}"
