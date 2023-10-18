@@ -18,6 +18,7 @@ SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 MBA = Namespace("http://api.brain-map.org/api/v2/data/Structure/")
 
 BRAIN_REGION_ONTOLOGY_URI = "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion"
+CELL_TYPE_ONTOLOGY_URI = "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/celltypes"
 
 PREFIX_MAPPINGS = {
     "mso": "https://bbp.epfl.ch/ontologies/core/molecular-systems/",

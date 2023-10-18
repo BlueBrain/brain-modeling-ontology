@@ -3,16 +3,16 @@ import copy
 import json
 from typing import Dict, Tuple, Any, List, Set
 
-from kgforge.core import KnowledgeGraphForge, Resource
+from kgforge.core import KnowledgeGraphForge
 from pyld import jsonld
 from kgforge.core.commons.context import Context
 from collections import OrderedDict
 
 from pyshacl.rdfutil import clone_graph
 from rdflib import OWL, RDF, RDFS, SKOS, XSD, PROV, Literal, term, Graph, URIRef, namespace
-from rdflib.paths import OneOrMore, ZeroOrMore, neg_path
+from rdflib.paths import OneOrMore, ZeroOrMore
 
-from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
+from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, CELL_TYPE_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
 
 TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
 ALREADY_EXISTS_ERROR = " already exists in project"
@@ -72,7 +72,8 @@ def _create_hierarchy_view(
     return triples, json_object
 
 
-def frame_ontology(ontology_graph, context, context_json, class_resources_framed):
+def frame_ontology(ontology_graph, context, context_json, class_resources_framed,
+                    include_defined_classes=True):
     """Frame ontology into a JSON-LD payload."""
 
     frame_json = {
@@ -155,8 +156,8 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
         framed_onto_json["prefLabel"] = framed_onto_json.pop("skos:prefLabel", None)
     if "rdfs:label" in framed_onto_json and framed_onto_json["rdfs:label"]:
         framed_onto_json["label"] = framed_onto_json.pop("rdfs:label", None)
-
-    framed_onto_json["defines"] = class_resources_framed
+    if include_defined_classes:
+        framed_onto_json["defines"] = class_resources_framed
     framed_onto_json["@context"] = context.iri
 
     if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
@@ -273,7 +274,9 @@ def register_ontology(
         context_json,
         path,
         class_resources_mapped: List,
-        class_resources_framed: List, tag=None
+        class_resources_framed: List,
+        ontology_id,
+        tag=None 
 ):
     """Register ontology resource to the store.
 
@@ -282,9 +285,13 @@ def register_ontology(
     if ontology is too large, remove `defines` relationships from the ontology
     to classes and retry registering. If ontology exists, update it.
     """
-    # Frame ontology given the provided context
-    ontology_json = frame_ontology(ontology_graph, context, context_json, class_resources_framed)
+    # the CELL_TYPE_ONTOLOGY_URI ontology is too big for having all its content into metadata
+    include_defined_classes = not ontology_id == CELL_TYPE_ONTOLOGY_URI
 
+    # Frame ontology given the provided context
+    ontology_json = frame_ontology(
+        ontology_graph, context, context_json, class_resources_framed, include_defined_classes
+    )
     ontology_resource = _register_ontology_resource(forge, ontology_json, path, ontology_graph,
                                                     class_resources_mapped)
 
