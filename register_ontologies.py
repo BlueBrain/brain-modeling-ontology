@@ -211,6 +211,7 @@ def execute_registration(
         ontology_path,
         list(class_resources_mapped.values()),
         list(class_resources_framed.values()),
+        str(ontology),
         tag
     )
     # bmo.remove_defines_relation(ontology_graph, ontology)
