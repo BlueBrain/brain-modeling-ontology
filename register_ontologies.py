@@ -684,16 +684,19 @@ def load_schemas(
 
         # This is needed for ontodocs to be able to generate doc web app
         if save_transformed_schema:
-            os.makedirs(transformed_schema_path, exist_ok=True)
 
-            shapes_jsonld_expanded_filename = os.path.join(
+            shapes_jsonld_expanded_directory = os.path.join(
                 transformed_schema_path,
                 schema_subdir_parent if schema_subdir != "commons" else "",
-                schema_subdir,
-                schema_name + ".ttl"
+                schema_subdir
             )
 
-            schema_jsonld_expanded_graph.serialize(shapes_jsonld_expanded_filename, format="ttl")
+            os.makedirs(shapes_jsonld_expanded_directory, exist_ok=True)
+
+            new_filename = schema_name + ".ttl"
+
+            schema_jsonld_expanded_graph.serialize(
+                os.path.join(shapes_jsonld_expanded_directory, new_filename), format="ttl")
 
         schema_resource.context = original_schema_context
         schema_jsonld["@context"] = original_schema_context
