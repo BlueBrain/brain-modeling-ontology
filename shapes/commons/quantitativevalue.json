@@ -122,22 +122,34 @@
           "node": "nsg:commons/unit/shapes/UnitShape"
         },
         {
+          "or":[
+            {
+              "property": [
+                {
+                  "description": "The minimum value of the quantitative value.",
+                  "lessThan": "schema:maxValue",
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "name": "Minimum value",
+                  "path": "schema:minValue"
+                }
+              ]
+            },
+            {
+              "property": [
+                {
+                  "description": "The maximum value of the quantitative value.",
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "name": "Maximum value",
+                  "path": "schema:maxValue"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "property": [
-            {
-              "description": "The minimum value of the quantitative value.",
-              "lessThan": "schema:maxValue",
-              "maxCount": 1,
-              "minCount": 1,
-              "name": "Minimum value",
-              "path": "schema:minValue"
-            },
-            {
-              "description": "The maximum value of the quantitative value.",
-              "maxCount": 1,
-              "minCount": 1,
-              "name": "Maximum value",
-              "path": "schema:maxValue"
-            },
             {
               "minCount": 0,
               "path": "schema:value"
