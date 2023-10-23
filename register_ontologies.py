@@ -661,10 +661,14 @@ def load_schemas(
     schema_id_to_filepath_dict = {}
 
     for schema_file in schemas_files:
-        schema_file_path_parts = schema_file.split("/")
 
         with open(schema_file, 'r') as sfr:
             schema_jsonld = json.load(sfr)
+
+        schema_file_path_parts = schema_file.split("/")
+        schema_subdir = schema_file_path_parts[-2]
+        schema_subdir_parent = schema_file_path_parts[-3]
+        schema_name, _ = os.path.splitext(schema_file_path_parts[-1])
 
         original_schema_context = deepcopy(schema_jsonld["@context"])
         dict_in_schema_context = [d for d in schema_jsonld["@context"] if isinstance(d, dict)]
@@ -674,21 +678,21 @@ def load_schemas(
 
         schema_resource: Resource = forge.from_jsonld(schema_jsonld)
         schema_jsonld_expanded: Dict = forge.as_jsonld(schema_resource, form="expanded")
-        schema_subdir = schema_file_path_parts[-2]
-        schema_subdir_parent = schema_file_path_parts[-3]
+
         schema_jsonld_expanded_graph = Graph().parse(data=schema_jsonld_expanded, format="json-ld")
         all_schema_graphs.parse(data=schema_jsonld_expanded, format="json-ld")
 
         # This is needed for ontodocs to be able to generate doc web app
         if save_transformed_schema:
-
-            schema_name, schema_file_extension = os.path.splitext(schema_file_path_parts[-1])
-            # os.path.splitext(schema_file)
+            os.makedirs(transformed_schema_path, exist_ok=True)
 
             shapes_jsonld_expanded_filename = os.path.join(
-                transformed_schema_path, schema_subdir_parent, schema_subdir, schema_name + ".ttl"
-            ) if schema_subdir != "commons" else \
-                os.path.join(transformed_schema_path, schema_subdir, schema_name + ".ttl")
+                transformed_schema_path,
+                schema_subdir_parent if schema_subdir != "commons" else "",
+                schema_subdir,
+                schema_name + ".ttl"
+            )
+
             schema_jsonld_expanded_graph.serialize(shapes_jsonld_expanded_filename, format="ttl")
 
         schema_resource.context = original_schema_context
