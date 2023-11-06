@@ -53,7 +53,7 @@ def register_class(
     """Register ontology class to the store."""
     return _register_update(
         forge=forge, resource=class_resource,
-        schema_id=CLASS_SCHEMA_ID, tag=tag, type_str="Class"
+        schema_id=CLASS_SCHEMA_ID, tag=tag, type_str="Class", raise_on_fail=False
     )
 
 
