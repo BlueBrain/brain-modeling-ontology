@@ -52,6 +52,9 @@ register-on-staging-environment:
           - texts/*.json
           - register_ontologies.py
           - bmo/ontologies.py
+          - bmo/registration.py
+          - bmo/loading.py
+          - bmo/argument_parsing.py
           - bmo/utils.py
           - .gitlab-ci.yml
       when: on_success
