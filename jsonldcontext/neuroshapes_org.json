@@ -648,30 +648,6 @@
     "ElectrophysiologyFeature": {
       "@id": "nsg:ElectrophysiologyFeature"
     },
-    "ElectrophysiologyFeatureExtractionProtocol": {
-      "@id": "nsg:ElectrophysiologyFeatureExtractionProtocol"
-    },
-    "ElectrophysiologyFeatureExtractionTarget": {
-      "@id": "nsg:ElectrophysiologyFeatureExtractionTarget"
-    },
-    "ElectrophysiologyFeatureExtractionTrace": {
-      "@id": "nsg:ElectrophysiologyFeatureExtractionTrace"
-    },
-    "ElectrophysiologyFeatureOptimisationChannelDistribution": {
-      "@id": "nsg:ElectrophysiologyFeatureOptimisationChannelDistribution"
-    },
-    "ElectrophysiologyFeatureOptimisationNeuronMorphology": {
-      "@id": "nsg:ElectrophysiologyFeatureOptimisationNeuronMorphology"
-    },
-    "ElectrophysiologyFeatureOptimisationParameter": {
-      "@id": "nsg:ElectrophysiologyFeatureOptimisationParameter"
-    },
-    "ElectrophysiologyFeatureOptimisationTarget": {
-      "@id": "nsg:ElectrophysiologyFeatureOptimisationTarget"
-    },
-    "ElectrophysiologyFeatureValidationTarget": {
-      "@id": "nsg:ElectrophysiologyFeatureValidationTarget"
-    },
     "Embedding": {
       "@id": "nsg:Embedding"
     },
