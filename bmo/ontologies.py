@@ -1,9 +1,7 @@
 """Utils for processing ontologies."""
-import copy
 import json
 from typing import Dict, Tuple, Any, List, Set
 
-from kgforge.core import KnowledgeGraphForge
 from pyld import jsonld
 from kgforge.core.commons.context import Context
 from collections import OrderedDict
@@ -12,20 +10,21 @@ from pyshacl.rdfutil import clone_graph
 from rdflib import OWL, RDF, RDFS, SKOS, XSD, PROV, Literal, term, Graph, URIRef, namespace
 from rdflib.paths import OneOrMore, ZeroOrMore
 
-from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, CELL_TYPE_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
+from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
 
-TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
-ALREADY_EXISTS_ERROR = " already exists in project"
+# TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
+
 GENERIC_CELL_TYPES = {
     "https://bbp.epfl.ch/ontologies/core/bmo/GenericInhibitoryNeuronMType": BMO.NeuronMorphologicalType,
     "https://bbp.epfl.ch/ontologies/core/bmo/GenericExcitatoryNeuronMType": BMO.NeuronMorphologicalType,
     "https://bbp.epfl.ch/ontologies/core/bmo/GenericInhibitoryNeuronEType": BMO.NeuronElectricalType,
     "https://bbp.epfl.ch/ontologies/core/bmo/GenericExcitatoryNeuronEType": BMO.NeuronElectricalType
 }
-SHACL_SCHEMA_ID = "https://bluebrain.github.io/nexus/schemas/shacl-20170720.ttl"
+
 ROOT_BRAIN_REGION = "http://api.brain-map.org/api/v2/data/Structure/997"
-BASE_CELL_TYPE_CLASSES = {str(BMO.NeuronMorphologicalType): BMO.NeuronMorphologicalType,
-                          str(BMO.NeuronElectricalType): BMO.NeuronElectricalType}
+
+# BASE_CELL_TYPE_CLASSES = {str(BMO.NeuronMorphologicalType): BMO.NeuronMorphologicalType,
+#                           str(BMO.NeuronElectricalType): BMO.NeuronElectricalType}
 
 
 def graph_free_jsonld(jsonld_doc, context=None):
@@ -38,8 +37,8 @@ def graph_free_jsonld(jsonld_doc, context=None):
         graph_free["@context"] = context
         graph_free.move_to_end("@context", last=False)
         return graph_free
-    else:
-        return jsonld_doc
+
+    return jsonld_doc
 
 
 def _create_hierarchy_view(
@@ -72,8 +71,10 @@ def _create_hierarchy_view(
     return triples, json_object
 
 
-def frame_ontology(ontology_graph, context, context_json, class_resources_framed,
-                    include_defined_classes=True):
+def frame_ontology(
+        ontology_graph, context, context_json, class_resources_framed,
+        include_defined_classes=True
+):
     """Frame ontology into a JSON-LD payload."""
 
     frame_json = {
@@ -169,156 +170,12 @@ def frame_ontology(ontology_graph, context, context_json, class_resources_framed
     return framed_onto_json
 
 
-SYNTHETIC_SENTENCES = {
-    "./ontologies/bbp/bmo.ttl": {
-        "synthetic": "./texts/synthetic_texts_bmo.json"
-    },
-    "./ontologies/bbp/data-types.ttl": {
-    },
-    "./ontologies/bbp/efeatures.ttl": {
-        "synthetic": "./texts/synthetic_texts_NeuronElectrophysiologicalFeature.json"
-    },
-    "./ontologies/bbp/mfeatures.ttl": {
-        "synthetic": "./texts/synthetic_texts_NeuronMorphologicalFeature.json"
-    },
-    "./ontologies/bbp/molecular-systems.ttl": {
-        "synthetic": "./texts/synthetic_texts_Molecular_systems.json"
-    },
-    "./ontologies/bbp/speciestaxonomy.ttl": {
-        "synthetic": "./texts/synthetic_texts_Species.json"
-    },
-    "./ontologies/bbp/stimulustypes.ttl": {
-        "synthetic": "./texts/synthetic_texts_ElectricalStimulus.json"
-    },
-    "./ontologies/bbp/celltypes.ttl": {
-        "synthetic": "./texts/synthetic_texts_BrainCellType.json"
-    },
-    "./ontologies/bbp/brainregion.ttl": {
-        "synthetic": "./texts/synthetic_texts_BrainRegion.json",
-        "wiki": "./texts/wiki_texts_BrainRegion.json"
-
-    }
-}
-
-
-def _register_schema(
-        forge: KnowledgeGraphForge, schema_file, schema_resource, all_schema_graph,
-        jsonld_schema_context_resource, tag
-):
-    forge.register(schema_resource, schema_id=SHACL_SCHEMA_ID)
-    if schema_resource._last_action:
-        last_action = schema_resource._last_action
-        
-        if not last_action.succeeded: 
-            if ALREADY_EXISTS_ERROR not in last_action.message:
-                raise Exception(
-                    f"Registration of the schema with id '{schema_resource.id}' "
-                    f"located in '{schema_file}' failed: {schema_resource._last_action.message}...\n"
-                )
-            else:
-                # Update and tag if 'already exists' error was encountered
-                print("Schema already exists, updating...\n")
-                schema_updated = _process_already_existing_resource(forge, schema_resource)
-                forge.update(schema_updated)
-                if schema_updated._last_action and schema_updated._last_action.succeeded and tag:
-                    forge.tag(schema_updated, tag)
-                    pass
-        else: 
-            # Tag if the registration was successful
-            if tag is not None:
-                print("Schema registration successful, tagging...\n")
-                forge.tag(schema_resource, tag)
-                pass
-
-
-def _register_ontology_resource(forge, ontology_json, ontology_path, ontology_graph,
-                                class_resources_mapped=None):
-
-    ontology_json = copy.deepcopy(ontology_json)
-    # del ontology_json["@context"]
-    ontology_resource = forge.from_json(ontology_json)
-    dirpath = f"./{ontology_path.split('/')[-1].split('.')[0]}"
-    dirpath_ttl = f"{dirpath}.ttl"
-    ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
-    ontology_resource.distribution = [forge.attach(
-        dirpath_ttl, content_type="text/turtle")]
-
-    dirpath_json = f"{dirpath}.json"
-    with open(dirpath_json, "w") as fp:
-        json.dump(ontology_json, fp)
-    ontology_resource.distribution.append(
-        forge.attach(dirpath_json, content_type="application/ld+json"))
-
-    if class_resources_mapped is not None:
-        defined_types_df = forge.as_dataframe(class_resources_mapped)
-        dirpath_csv = f"{dirpath}.csv"
-        defined_types_df.to_csv(dirpath_csv)
-        ontology_resource.distribution.append(forge.attach(dirpath_csv, content_type="text/csv"))
-
-    if ontology_path in SYNTHETIC_SENTENCES:
-        synthetic = SYNTHETIC_SENTENCES[ontology_path].get("synthetic", None)
-        wiki = SYNTHETIC_SENTENCES[ontology_path].get("wiki", None)
-        if synthetic:
-            ontology_resource.distribution.append(forge.attach(synthetic, content_type="text/json"))
-        if wiki:
-            ontology_resource.distribution.append(forge.attach(wiki, content_type="text/json"))
-
-    forge.register(ontology_resource, schema_id="https://neuroshapes.org/dash/ontology")
-    return ontology_resource
-
-
-def register_ontology(
-        forge: KnowledgeGraphForge,
-        ontology_graph,
-        context,
-        context_json,
-        path,
-        class_resources_mapped: List,
-        class_resources_framed: List,
-        ontology_id,
-        tag=None 
-):
-    """Register ontology resource to the store.
-
-
-    Try registering ontology to the store of the initialized forge.
-    if ontology is too large, remove `defines` relationships from the ontology
-    to classes and retry registering. If ontology exists, update it.
-    """
-    # the CELL_TYPE_ONTOLOGY_URI ontology is too big for having all its content into metadata
-    include_defined_classes = not ontology_id == CELL_TYPE_ONTOLOGY_URI
-
-    # Frame ontology given the provided context
-    ontology_json = frame_ontology(
-        ontology_graph, context, context_json, class_resources_framed, include_defined_classes
-    )
-    ontology_resource = _register_ontology_resource(forge, ontology_json, path, ontology_graph,
-                                                    class_resources_mapped)
-
-    _registration_callback(forge, ontology_resource, tag=tag)
-                
-
-def _process_already_existing_resource(forge, resource):
-    resource_json = forge.as_json(resource)
-    resource_id = resource_json.pop("@id", resource_json.pop("id", None))
-    resource_id = forge._model.context().expand(resource_id)
-    # resource_json.pop("@type", resource_json.pop("type", None))
-    resource_updated = forge.from_json(resource_json)
-    existing_resource = forge.retrieve(resource_id)
-    resource_updated.id = existing_resource.id
-    if hasattr(resource, "context"):
-        resource_updated.context = resource.context
-    # resource_updated.type = existing_resource.type
-    resource_updated._store_metadata = existing_resource._store_metadata
-    return resource_updated
-
-
 def find_ontology_resource(graph):
     """Find the ontology resource by type. The first one is returned"""
     for s in graph.subjects(RDF.type, OWL.Ontology):
         return s
-    else:
-        raise ValueError("No Ontology resource was found")
+
+    raise ValueError("No Ontology resource was found")
 
 
 def add_defines_relation(graph, ontology):
@@ -806,23 +663,22 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
     if "canBeLocatedInBrainRegion" in cls:
         propagated_brain_regions = []
         if cls["@id"] in GENERIC_CELL_TYPES:
-            propagated_brain_regions = _get_sub_regions_to_propagate_metype_to(ontology_graph,
-                                                                               ROOT_BRAIN_REGION,
-                                                                               GENERIC_CELL_TYPES[
-                                                                                   cls["@id"]])
+            propagated_brain_regions = _get_sub_regions_to_propagate_metype_to(
+                ontology_graph, ROOT_BRAIN_REGION,  GENERIC_CELL_TYPES[cls["@id"]]
+            )
         elif "subClassOf" in cls and str(BMO.NeuronMorphologicalType) in cls["subClassOf"]:
             for sr in cls["canBeLocatedInBrainRegion"]:
-                propagated_brain_regions = _get_sub_regions_to_propagate_metype_to(ontology_graph,
-                                                                                   sr,
-                                                                                   BMO.NeuronMorphologicalType)
+                propagated_brain_regions = _get_sub_regions_to_propagate_metype_to(
+                    ontology_graph, sr, BMO.NeuronMorphologicalType
+                )
         elif "subClassOf" in cls and str(BMO.NeuronElectricalType) in cls["subClassOf"]:
             for sr in cls["canBeLocatedInBrainRegion"]:
-                propagated_brain_regions = _get_sub_regions_to_propagate_metype_to(ontology_graph,
-                                                                                   sr,
-                                                                                   BMO.NeuronElectricalType)
+                propagated_brain_regions = _get_sub_regions_to_propagate_metype_to(
+                    ontology_graph, sr, BMO.NeuronElectricalType
+                )
         if len(propagated_brain_regions) > 0:
             cls["canBeLocatedInBrainRegion"] = [cls["canBeLocatedInBrainRegion"]] if isinstance(
-                cls["canBeLocatedInBrainRegion"], str) else cls["canBeLocatedInBrainRegion"] #
+                cls["canBeLocatedInBrainRegion"], str) else cls["canBeLocatedInBrainRegion"]
             # can it be a dict?
             cls["canBeLocatedInBrainRegion"].extend(propagated_brain_regions)
 
@@ -960,47 +816,6 @@ def _get_sub_regions_to_propagate_metype_to(
             )
     return propagated_brain_regions
 
-
-def register_classes(forge, class_resources_jsons, tag=None):
-    """Register ontology classes to the store."""
-    errors = []
-    for class_json in class_resources_jsons:
-        class_json["@context"] = "https://neuroshapes.org"
-        try:
-            resource = forge.from_json(class_json)
-            forge.register(resource, schema_id="datashapes:ontologyentity")
-            _registration_callback(forge, resource, tag=tag)
-        except Exception as e:
-            errors.append(e)
-            pass
-    return errors
-
-def _registration_callback(forge, resource, tag):
-
-    if resource._last_action: 
-        last_action = resource._last_action
-
-        if last_action.succeeded:
-            if tag is not None:
-                forge.tag(resource, tag)
-        else: 
-            if ALREADY_EXISTS_ERROR in last_action.message:
-                # Update and tag if 'already exists' error was encountered
-                print(f"Resource {resource.get_identifier()} already exists, updating...\n")
-                resource_updated = _process_already_existing_resource(forge, resource)
-                forge.update(resource_updated)
-                if tag is not None:
-                    forge.tag(resource_updated, tag)
-                if resource_updated._last_action and not resource_updated._last_action.succeeded:
-                    raise Exception(
-                        f"Failed to update resource:{resource.get_identifier()}:"
-                        f" {resource_updated._last_action.message}"
-                    )
-            else: 
-                message = f"Failed to register resource:{resource.get_identifier()}: " \
-                            f"{last_action.message}"
-                raise Exception(message)
-   
 
 def normalize_uris(filename, prefix, new_filename, format="turtle"):
     """Normalize resource URIs to the provided prefix."""
@@ -1257,41 +1072,38 @@ def _is_property_to_include_in_context(uri_ref):
         and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/BFO_")
 
 
-def build_context_from_schema(schema_graph, forge_context, vocab=None, binding=None):
+def build_context_from_schema(
+        schema_graph: Graph, forge_context: Context, vocab=None,
+        binding=None
+):
     new_forge_context = _initialise_new_context(forge_context, vocab, binding)
     errors = []
 
+    t = list(schema_graph.subject_objects(URIRef("http://www.w3.org/2002/07/owl#deprecated")))
+
+    if len(t) > 0:
+        deprecated = t[0][1] == Literal(
+            'true', datatype=URIRef('http://www.w3.org/2001/XMLSchema#boolean')
+        )
+        if deprecated:
+            return new_forge_context, errors
+
     for shape in schema_graph.subjects(RDF.type, SHACL.NodeShape):
-        defining_schema = schema_graph.subjects(NXV.shapes, shape)
-        for targetClass in schema_graph.objects(shape, SHACL.targetClass):
-            try:
-                name, idref = _build_context_item(targetClass, new_forge_context)
-                if name is not None and idref is not None:
-                    new_forge_context.add_term(name, idref)
-                    new_forge_context.document["@context"][name] = {"@id": idref}
-            except Exception as e:
-                errors.append(
-                    f"Failed to build context from {targetClass} targeted by the shape {shape} in the schema {str(list(defining_schema))}: {e}")
 
-        for targetObjects in schema_graph.objects(shape, SHACL.targetObjectsOf):
-            try:
-                name, idref = _build_context_item(targetObjects, new_forge_context)
-                if name is not None and idref is not None:
-                    new_forge_context.add_term(name, idref)
-                    new_forge_context.document["@context"][name] = {"@id": idref}
-            except Exception as e:
-                errors.append(
-                    f"Failed to build context from {targetObjects} targeted by the shape {shape} in the schema {str(list(defining_schema))}: {e}")
+        defining_schema = list(schema_graph.subjects(NXV.shapes, shape))
 
-        for targetSubjects in schema_graph.objects(shape, SHACL.targetSubjectsOf):
-            try:
-                name, idref = _build_context_item(targetSubjects, new_forge_context)
-                if name is not None and idref is not None:
-                    new_forge_context.add_term(name, idref)
-                    new_forge_context.document["@context"][name] = {"@id": idref}
-            except Exception as e:
-                errors.append(
-                    f"Failed to build context from {targetSubjects} targeted by the shape {shape} in the schema {str(list(defining_schema))}: {e}")
+        for predicate in [SHACL.targetClass, SHACL.targetObjectsOf, SHACL.targetSubjectsOf]:
+            for obj_value in schema_graph.objects(shape, predicate):
+                try:
+                    name, idref = _build_context_item(obj_value, new_forge_context)
+                    if name is not None and idref is not None:
+                        new_forge_context.add_term(name, idref)
+                        new_forge_context.document["@context"][name] = {"@id": idref}
+                except Exception as e:
+                    errors.append(
+                        f"Failed to build context from {obj_value} targeted by the shape {shape}"
+                        f" in the schema {str(defining_schema)}: {e}"
+                    )
 
     return new_forge_context, errors
 

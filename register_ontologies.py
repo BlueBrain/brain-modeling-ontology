@@ -1,18 +1,22 @@
 import argparse
-import glob
 import json
-import os
-from copy import deepcopy
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Tuple, Optional
 from rdflib import PROV, Literal, Namespace, RDF, OWL, RDFS, Graph, term
 from kgforge.core.commons import Context
 from kgforge.core import KnowledgeGraphForge, Resource
 from kgforge.specializations.mappings import DictionaryMapping
 
 import bmo.ontologies as bmo
+import bmo.registration as bmo_registration
+from bmo.argument_parsing import define_arguments
+from bmo.loading import load_ontologies, load_schemas
+
 from bmo.utils import (
-    BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, PREFIX_MAPPINGS, SKOS
+    BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, SKOS, CELL_TYPE_ONTOLOGY_URI
 )
+
+SCHEMA_JSONLD_CONTEXT_PATH = "./jsonldcontext/schema.json"
+DATA_JSONLD_CONTEXT_PATH = "./jsonldcontext/neuroshapes_org.json"
 
 WEBPROTEGE_TO_NEXUS = {
     # Target ontology ID's to define
@@ -36,75 +40,30 @@ WEBPROTEGE_TO_NEXUS = {
     "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Complex%3E)": "https://neuroshapes.org/Complex",
     "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Metabolite%3E)": "https://neuroshapes.org/Metabolite",
     "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Protein%3E)": "https://neuroshapes.org/Protein",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/ea484e60-5a27-4790-8f2a-e2975897f407/edit/Classes?selection=Class(%3Chttps://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus%3E)": "https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus"
 }
 
-JSONLD_CONTEXT_IRI = "https://neuroshapes.org"
+# "urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec/edit/Classes"
+# in none of the ontology files
+
+JSONLD_DATA_CONTEXT_IRI = "https://neuroshapes.org"
 JSONLD_SCHEMA_CONTEXT_IRI = "https://incf.github.io/neuroshapes/contexts/schema.json"
 
 
-def define_arguments():
-    """
-    Defines the arguments of the Python script
+def _initialize_forge_objects(endpoint, token, input_bucket, atlas_parcellation_ontology_bucket):
+    def get_forge_object(config_path, selected_bucket):
+        return KnowledgeGraphForge(
+            config_path, endpoint=endpoint, bucket=selected_bucket, token=token, debug=True
+        )
 
-    :return: the argument parser
-    :rtype: ArgumentParser
-    """
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '--environment',
-        choices=["production", "staging"],
-        help='In which Nexus environment should the script run?',
-        required=True
-    )
-    parser.add_argument(
-        "--token", help="The nexus token", type=str, required=True
-    )
-    parser.add_argument(
-        "--tag", help="The tag of the ontology. Defaults to None",
-        default=None, type=str
-    )
+    forge = get_forge_object("config/forge-config.yml", input_bucket)
+    forge_schema = get_forge_object("config/forge-schema-config.yml", input_bucket)
+    forge_atlas = get_forge_object("config/forge-config-new.yml",
+                                   atlas_parcellation_ontology_bucket)
 
-    parser.add_argument(
-        "--bucket", help="The Nexus org/project in which to push the ontologies and the schemas.",
-        default=None, type=str, required=True
-    )
-
-    parser.add_argument(
-        "--ontology_dir", help="The path to load ontologies from.",
-        default=None, type=str, required=True
-    )
-
-    parser.add_argument(
-        "--schema_dir", help="The path to load schemas from.",
-        default=None, type=str, required=True
-    )
-
-    parser.add_argument(
-        "--transformed_schema_path",
-        help="The path to write and load schemas transformed for use by ontodocs.",
-        default="./ontologies/bbp/shapes_jsonld_expanded", type=str
-    )
-
-    parser.add_argument(
-        "--atlas_parcellation_ontology", help="The atlas parcellation ontology.",
-        default=None, type=str, required=True
-    )
-
-    parser.add_argument(
-        "--atlas_parcellation_ontology_version", help="The atlas parcellation ontology version.",
-        default=None, type=str, required=True
-    )
-
-    parser.add_argument(
-        "--atlas_parcellation_ontology_bucket", help="The atlas parcellation ontology bucket.",
-        default=None, type=str, required=True
-    )
-
-    return parser
+    return forge, forge_schema, forge_atlas
 
 
-def execute_registration(
+def execute_ontology_registration(
         forge: KnowledgeGraphForge,
         ontology_path: str,
         ontology_graph: Graph,
@@ -116,6 +75,7 @@ def execute_registration(
         atlas_release_id: str,
         atlas_release_version: int,
         atlas_parcellation_ontology_id: str,
+        data_update: bool,
         tag=None
 ):
     """
@@ -135,6 +95,8 @@ def execute_registration(
     :param tag: optional tag
     :return:
     """
+
+    print(f"Registering ontology {ontology_path} - Start")
 
     ontology = bmo.find_ontology_resource(ontology_graph)
 
@@ -203,17 +165,26 @@ def execute_registration(
             (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation, atlasRelease_derivation_bNode)
         )
 
-    bmo.register_ontology(
-        forge,
-        ontology_graph,
-        new_forge_context,
-        new_jsonld_context_dict,
-        ontology_path,
-        list(class_resources_mapped.values()),
-        list(class_resources_framed.values()),
-        str(ontology),
-        tag
+    # if ontology is too large, remove `defines` relationships from the ontology
+
+    # the CELL_TYPE_ONTOLOGY_URI ontology is too big for having all its content into metadata
+    include_defined_classes = not str(ontology) == CELL_TYPE_ONTOLOGY_URI
+
+    # Frame ontology given the provided context
+    ontology_json = bmo.frame_ontology(
+        ontology_graph, new_forge_context, new_jsonld_context_dict, class_resources_framed,
+        include_defined_classes
     )
+
+    if data_update:
+        bmo_registration.register_ontology(
+            forge, ontology_json, ontology_path, ontology_graph,
+            tag, list(class_resources_mapped.values())
+        )
+        print(f"Registering ontology {ontology_path} - Finish")
+    else:
+        print(f"Registering ontology {ontology_path} - Ignored")
+    print()
     # bmo.remove_defines_relation(ontology_graph, ontology)
 
 
@@ -252,6 +223,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     atlas_parcellation_ontology = arguments.atlas_parcellation_ontology
     atlas_parcellation_ontology_version = arguments.atlas_parcellation_ontology_version
     atlas_parcellation_ontology_bucket = arguments.atlas_parcellation_ontology_bucket
+    data_update = not arguments.no_data_update
 
     if environment == "staging":
         endpoint = "https://staging.nise.bbp.epfl.ch/nexus/v1"
@@ -261,28 +233,22 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         raise ValueError(
             "Environment argument must be either \"staging\" or \"production\" ")
 
-    forge = KnowledgeGraphForge(
-        "config/forge-config.yml", endpoint=endpoint,
-        bucket=bucket, token=token, debug=True
+    forge, forge_schema, forge_atlas = _initialize_forge_objects(
+        endpoint=endpoint, token=token, input_bucket=bucket,
+        atlas_parcellation_ontology_bucket=atlas_parcellation_ontology_bucket
     )
 
-    forge_schema = KnowledgeGraphForge(
-        "config/forge-schema-config.yml", endpoint=endpoint,
-        bucket=bucket, token=token, debug=True
-    )
-
-    print(f"Loading the ontologies")
-    all_ontology_graphs: Graph = initialise_graph()
-    ontology_graphs_dict = load_ontologies(ontology_dir, all_ontology_graphs)
+    print("Loading ontologies - Start")
+    ontology_graphs_dict, all_ontology_graphs = load_ontologies(ontology_dir)
 
     print(
-        f"Finished loading {len(ontology_graphs_dict)} "
-        f"ontologies with {len(all_ontology_graphs)} triples"
+        f"Loading ontologies - Finished: {len(ontology_graphs_dict)} "
+        f"ontologies with {len(all_ontology_graphs)} triples\n"
     )
-    print(f"Loading the schema")
-    print(f"\t Updating the schema JSON-LD context because the schemas refer the JSONLD context")
 
-    with open("./jsonldcontext/schema.json", "r") as f:
+    print("Preparing schema JSON-LD context - Start ")
+
+    with open(SCHEMA_JSONLD_CONTEXT_PATH, "r") as f:
         new_jsonld_schema_context_document = json.load(f)
 
     new_jsonld_schema_context_resource = prepare_update_jsonld_context(
@@ -291,25 +257,34 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         JSONLD_SCHEMA_CONTEXT_IRI
     )
 
-    forge_schema.update(new_jsonld_schema_context_resource)
-    print(f"Finished updating JSON-LD schema context {new_jsonld_schema_context_document['@id']}")
+    print("Preparing schema JSON-LD context - Finish\n")
 
-    all_schema_graphs: Graph = initialise_graph()
-    schema_graphs_dict, schema_id_to_filepath_dict = load_schemas(
+    print("Updating schema JSON-LD context - Start "
+          "(because the schemas refer the JSONLD context)")
+
+    if data_update:
+        forge_schema.update(new_jsonld_schema_context_resource)
+
+    print(f"Updating schema JSON-LD context - {'Finish' if data_update else 'Ignored'}: "
+          f"{new_jsonld_schema_context_document['@id']} \n")
+
+    print("Loading schemas - Start")
+
+    schema_graphs_dict, schema_id_to_filepath_dict, all_schema_graphs = load_schemas(
         schema_dir,
         transformed_schema_path,
         forge_schema,
-        all_schema_graphs,
         recursive=True,
         save_transformed_schema=True
     )
 
     print(
-        f"Finished loading {len(schema_graphs_dict)} schemas with {len(all_schema_graphs)} triples")
+        f"Loading schemas - Finish: {len(schema_graphs_dict)} schemas with"
+        f" {len(all_schema_graphs)} triples\n")
 
-    print(f"Collecting JSON-LD data context from all ontologies and from all schemas")
+    print("Collecting JSON-LD data context from all ontologies and from all schemas - Start")
 
-    with open("./jsonldcontext/neuroshapes_org.json", "r") as f:
+    with open(DATA_JSONLD_CONTEXT_PATH, "r") as f:
         forge_model_context_document = json.load(f)
 
     forge_model_context = Context(
@@ -325,9 +300,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         all_schema_graphs, new_jsonld_context
     )
 
-    errors = []
-    errors.extend(ontology_errors)
-    errors.extend(schema_errors)
+    errors = ontology_errors + schema_errors
 
     if len(errors) > 0:
         raise ValueError(
@@ -336,26 +309,34 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         )
 
     print(
-        f"Finished collecting JSON-LD data context from ontologies "
-        f"in {ontology_dir} and schemas in {schema_dir}."
+        f"Collecting JSON-LD data context from all ontologies and from all schemas - Finish - "
+        f"Ontology dir: {ontology_dir}, Schema dir: {schema_dir}.\n"
     )
 
     new_jsonld_context_document: Dict = new_jsonld_context.document
-    new_jsonld_context_document["@id"] = JSONLD_CONTEXT_IRI
-    new_jsonld_context.iri = JSONLD_CONTEXT_IRI
+    new_jsonld_context_document["@id"] = JSONLD_DATA_CONTEXT_IRI
+    new_jsonld_context.iri = JSONLD_DATA_CONTEXT_IRI
 
-    print(f"Updating JSON-LD context {new_jsonld_context_document['@id']}")
+    print(f"Preparing data JSON-LD context {new_jsonld_context_document['@id']} - Start")
 
     new_jsonld_context_resource = prepare_update_jsonld_context(
-        forge, new_jsonld_context_document, JSONLD_CONTEXT_IRI
+        forge, new_jsonld_context_document, JSONLD_DATA_CONTEXT_IRI
     )
-    with open("./new_jsonld_context_resource.json", "w") as f:
-        json.dump(forge.as_json(new_jsonld_context_resource), f)
-    forge.update(new_jsonld_context_resource)
 
-    print(f"Finished updating JSON-LD context {new_jsonld_context_document['@id']}")
+    print(f"Preparing data JSON-LD context {new_jsonld_context_document['@id']} - Finish\n")
 
-    print("Preparing ontology classes")
+    # with open("./new_jsonld_context_resource.json", "w") as f:
+    #     json.dump(forge.as_json(new_jsonld_context_resource), f)
+
+    print(f"Updating data JSON-LD context {new_jsonld_context_document['@id']} - Start")
+
+    if data_update:
+        forge.update(new_jsonld_context_resource)
+
+    print(f"Updating data JSON-LD context {new_jsonld_context_document['@id']} - "
+          f"{'Finish' if data_update else 'Ignored'}\n")
+
+    print("Preparing ontology classes - Start")
     new_jsonld_context_dict = new_jsonld_context_document["@context"]
 
     new_jsonld_context_dict["label"] = {
@@ -385,12 +366,8 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     bmo.replace_is_defined_by_uris(all_ontology_graphs, WEBPROTEGE_TO_NEXUS)
 
-    print("Merging brain region ontology with atlas hierarchy")
+    print("Merging brain region ontology with atlas hierarchy - Start")
 
-    forge_atlas = KnowledgeGraphForge(
-        "config/forge-config-new.yml", endpoint=endpoint,
-        bucket=atlas_parcellation_ontology_bucket, token=token, debug=True
-    )
     # Waiting for a single version (tag) across all the atlas dataset to be
     # made available, _rev will be used.
     version = int(atlas_parcellation_ontology_version) \
@@ -429,7 +406,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     )
 
     print(
-        f"Finished merging brain region ontology with atlas hierarchy:"
+        f"Merging brain region ontology with atlas hierarchy - Finish -"
         f" {len(triples_to_add.values())} triples were added to the brain region ontology "
         f"for {len(triples_to_add)} brain regions and from the atlas hierarchy "
         f"while {len(triples_to_remove.values())} triples were removed from the brain "
@@ -444,9 +421,10 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             atlas_hierarchy.atlasRelease.id,
             atlas_hierarchy.atlasRelease._rev
         )
-    print(f"Got {len(class_jsons)} non mapped classes")
 
     all_class_resources_framed_dict = dict(zip(class_ids, class_jsons))
+
+    print(f"Got {len(all_class_resources_framed_dict)} non mapped classes")
 
     class_resources_mapped = forge.map(
         data=class_jsons,
@@ -454,14 +432,13 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         na=None
     )
 
-    print(f"Got {len(class_resources_mapped)} mapped classes")
     all_class_resources_mapped_dict = dict(zip(class_ids, class_resources_mapped))
-    print(f"Finished preparing {len(class_resources_mapped)} ontology classes")
 
-    with open("./class_json.json", "w") as f:
-        json.dump(class_jsons, f)
+    print(f"Got {len(class_resources_mapped)} mapped classes")
 
-    print(f"Registering {len(list(schema_graphs_dict.keys()))} schemas")
+    print(f"Preparing ontology classes - Finish - Class count: {len(class_resources_mapped)} \n")
+
+    print(f"Registering {len(list(schema_graphs_dict.keys()))} schemas - Start")
     already_registered = []
 
     for schema_file, schema_content in schema_graphs_dict.items():
@@ -474,15 +451,17 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             all_schema_graphs,
             new_jsonld_schema_context,
             tag=tag,
-            already_registered=already_registered
+            already_registered=already_registered,
+            data_update=data_update
         )
 
-    print(f"Registration finished for all schemas.")
+    print(f"Registering schemas - Finish - Schema count: {len(list(schema_graphs_dict.keys()))}\n")
+
+    print(f"Registering ontologies - Start - Ontology count: {len(ontology_graphs_dict)} ")
 
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
-        print(f"Registering ontology: {ontology_path}")
 
-        execute_registration(
+        execute_ontology_registration(
             forge=forge,
             ontology_path=ontology_path,
             ontology_graph=ontology_graph,
@@ -493,13 +472,35 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             brain_region_generated_classes=brain_region_generated_classes,
             atlas_release_id=atlas_hierarchy.atlasRelease.id,
             atlas_release_version=atlas_hierarchy.atlasRelease._rev,
-            atlas_parcellation_ontology_id=atlas_parcellation_ontology, tag=tag
+            atlas_parcellation_ontology_id=atlas_parcellation_ontology,
+            tag=tag,
+            data_update=data_update
         )
-        print(f"Registration finished for ontology: {ontology_path}")
 
-    print(f"Registering {len(class_jsons)} classes")
-    class_errors = bmo.register_classes(forge, class_jsons, tag)
-    print(f"Registering finished for all {len(class_jsons)} classes with errors: {class_errors}")
+    print(f"Registering ontologies - Finish - Ontology count: {len(ontology_graphs_dict)}\n")
+
+    print(f"Registering classes - Start: Class count:  {len(class_jsons)}")
+
+    if data_update:
+        class_errors = []
+
+        for class_json in class_jsons:
+            class_json["@context"] = JSONLD_DATA_CONTEXT_IRI
+
+            ex, res = bmo_registration.register_class(
+                forge, forge.from_json(class_json), tag
+            )
+            if ex is not None:
+                class_errors.append(ex)
+
+        print(f"Registering classes - Finish - Class count: {len(class_jsons)},"
+              f" {len(class_errors)} errors")
+
+        for e in class_errors:
+            print(e)
+
+    else:
+        print(f"Registering classes - Ignored - Class count: {len(class_jsons)}")
 
 
 def _merge_ontology(
@@ -596,15 +597,19 @@ def _create_bnode_triples_from_value(
 
 def register_schemas(
         forge: KnowledgeGraphForge,
-        schema_file,
-        schema_content,
-        schema_graphs_dict,
-        schema_id_to_filepath_dict,
-        all_schema_graph,
+        schema_filepath: str,
+        schema_content: Dict,
+        schema_graphs_dict: Dict[str, Dict],
+        schema_id_to_filepath_dict: Dict[str, str],
+        all_schema_graph: Graph,
         jsonld_schema_context,
-        tag,
-        already_registered=[]
+        tag: Optional[str],
+        already_registered: List,
+        data_update: bool
 ):
+
+    # TODO should there be a mechanism to raise errors/warn when importing deprecated schemas?
+
     if schema_content["resource"].id not in already_registered:
         if "imports" in schema_content:
             imported_schemas = [jsonld_schema_context.expand(i) for i in schema_content["imports"]]
@@ -614,139 +619,44 @@ def register_schemas(
                 else:
                     raise ValueError(
                         f"The schema {imported_schema} (imported from {schema_content['id']} "
-                        f"in {schema_file}) was not found."
+                        f"in {schema_filepath}) was not found."
                     )
                 imported_schema_content = schema_graphs_dict[imported_schema_file]
 
                 register_schemas(
                     forge,
-                    schema_file=imported_schema_file,
+                    schema_filepath=imported_schema_file,
                     schema_content=imported_schema_content,
                     schema_graphs_dict=schema_graphs_dict,
                     schema_id_to_filepath_dict=schema_id_to_filepath_dict,
                     all_schema_graph=all_schema_graph,
                     jsonld_schema_context=jsonld_schema_context, tag=tag,
-                    already_registered=already_registered
+                    already_registered=already_registered,
+                    data_update=data_update
                 )
 
                 already_registered.extend(imported_schema_content["resource"].id)
 
-        bmo._register_schema(
-            forge, schema_file, schema_content["resource"], all_schema_graph,
-            jsonld_schema_context, tag
-        )
-        already_registered.append(schema_content["resource"].id)
+        schema_resource = schema_content["resource"]
+        deprecated = schema_resource.__dict__.get("owl:deprecated", False)
 
-
-def initialise_graph() -> Graph:
-    graph = Graph()
-    for prefix, mapping in PREFIX_MAPPINGS.items():
-        graph.bind(prefix, Namespace(mapping))
-    return graph
-
-
-def load_schemas(
-        schema_dir: str,
-        transformed_schema_path: str,
-        forge: KnowledgeGraphForge,
-        all_schema_graphs: Graph,
-        recursive=False,
-        save_transformed_schema=False
-
-) -> Tuple[Dict[str, Dict], Dict[str, str]]:
-
-    schemas_files: List[str] = glob.glob(schema_dir, recursive=recursive)
-
-    schema_graphs_dict = {}
-    schema_id_to_filepath_dict = {}
-
-    for schema_file in schemas_files:
-
-        with open(schema_file, 'r') as sfr:
-            schema_jsonld = json.load(sfr)
-
-        schema_file_path_parts = schema_file.split("/")
-        schema_subdir = schema_file_path_parts[-2]
-        schema_subdir_parent = schema_file_path_parts[-3]
-        schema_name, _ = os.path.splitext(schema_file_path_parts[-1])
-
-        original_schema_context = deepcopy(schema_jsonld["@context"])
-        dict_in_schema_context = [d for d in schema_jsonld["@context"] if isinstance(d, dict)]
-        schema_context = ["./jsonldcontext/schema.json"]
-        schema_context.extend(dict_in_schema_context)
-        schema_jsonld["@context"] = schema_context
-
-        schema_resource: Resource = forge.from_jsonld(schema_jsonld)
-        schema_jsonld_expanded: Dict = forge.as_jsonld(schema_resource, form="expanded")
-
-        schema_jsonld_expanded_graph = Graph().parse(data=schema_jsonld_expanded, format="json-ld")
-        all_schema_graphs.parse(data=schema_jsonld_expanded, format="json-ld")
-
-        # This is needed for ontodocs to be able to generate doc web app
-        if save_transformed_schema:
-
-            shapes_jsonld_expanded_directory = os.path.join(
-                transformed_schema_path,
-                schema_subdir_parent if schema_subdir != "commons" else "",
-                schema_subdir
+        if data_update:
+            print(
+                f"Schema {schema_resource.get_identifier()} will be "
+                f"{'created/updated and tagged' if not deprecated else 'deprecated'}"
             )
-
-            os.makedirs(shapes_jsonld_expanded_directory, exist_ok=True)
-
-            new_filename = schema_name + ".ttl"
-
-            schema_jsonld_expanded_graph.serialize(
-                os.path.join(shapes_jsonld_expanded_directory, new_filename), format="ttl")
-
-        schema_resource.context = original_schema_context
-        schema_jsonld["@context"] = original_schema_context
-
-        owl_imports = schema_resource.imports if hasattr(schema_resource, "imports") else []
-
-        schema_graphs_dict[schema_file] = {
-            "resource": schema_resource,
-            "graph": schema_jsonld_expanded_graph,
-            "jsonld": schema_jsonld,
-            "imports": owl_imports,
-            "id": schema_resource.id
-        }
-        schema_id_to_filepath_dict[schema_resource.id] = schema_file
-
-    return schema_graphs_dict, schema_id_to_filepath_dict
-
-
-def load_ontologies(ontology_dir: str, all_ontology_graphs: Graph):
-    # ontology_files = glob.glob(ontology_dir)
-    ontology_files = [
-        "./ontologies/bbp/bmo.ttl",
-        "./ontologies/bbp/speciestaxonomy.ttl",
-        "./ontologies/bbp/brainregion.ttl",
-        "./ontologies/bbp/stimulustypes.ttl",
-        "./ontologies/bbp/celltypes.ttl",
-        "./ontologies/bbp/efeatures.ttl",
-        "./ontologies/bbp/mfeatures.ttl",
-        "./ontologies/bbp/molecular-systems.ttl",
-        "./ontologies/bbp/data-types.ttl",
-        "./ontologies/bbp/parameters.ttl",
-        "./ontologies/bbp/pato.ttl"
-    ]
-    ontology_graphs_dict = {}
-    errors = []
-    for ontology_path in ontology_files:
-        try:
-            # remove_non_ascii(ontology_path)
-            # read the ontology
-            ontology_graph = Graph()
-            for prefix, mapping in PREFIX_MAPPINGS.items():
-                ontology_graph.bind(prefix, Namespace(mapping))
-            ontology_graph.parse(ontology_path, format="turtle")
-            all_ontology_graphs.parse(ontology_path, format="turtle")
-            ontology_graphs_dict[ontology_path] = ontology_graph
-        except Exception as e:
-            errors.append(f"Failed to load ontology {ontology_path}: {e}")
-        if len(errors) > 0:
-            raise ValueError(f"Failed to load ontologies: {errors}")
-    return ontology_graphs_dict
+            if deprecated:
+                _, _ = bmo_registration.deprecate_schema(
+                    forge, schema_filepath, schema_resource
+                )
+            else:
+                _, _ = bmo_registration.register_schema(
+                    forge, schema_filepath, schema_resource, tag
+                )
+                already_registered.append(schema_resource.get_identifier())
+        else:
+            print(f"{'Creation/Update' if not deprecated else 'Deprecation'} of schema "
+                  f"{schema_resource.get_identifier()} - Ignored")
 
 
 if __name__ == "__main__":

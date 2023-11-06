@@ -7,14 +7,14 @@ from kgforge.core.commons import Context
 from kgforge.core.commons.strategies import ResolvingStrategy
 from rdflib import RDFS, XSD, Literal, RDF, OWL, SH
 import bmo.ontologies as bmo
-from register_ontologies import JSONLD_CONTEXT_IRI, _merge_ontology
+from register_ontologies import JSONLD_DATA_CONTEXT_IRI, _merge_ontology, DATA_JSONLD_CONTEXT_PATH
 from rdflib.paths import OneOrMore, ZeroOrMore, inv_path, neg_path
 
 
 
 def test_terms_aligned_with_context(forge, all_ontology_graphs, all_schema_graphs):
 
-    with open ("./jsonldcontext/neuroshapes_org.json", "r") as f:
+    with open(DATA_JSONLD_CONTEXT_PATH, "r") as f:
         previous_forge_context_json = json.load(f)
 
     forge_context = Context(previous_forge_context_json["@context"], previous_forge_context_json["@id"])
