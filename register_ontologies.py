@@ -170,6 +170,9 @@ def execute_ontology_registration(
     # the CELL_TYPE_ONTOLOGY_URI ontology is too big for having all its content into metadata
     include_defined_classes = not str(ontology) == CELL_TYPE_ONTOLOGY_URI
 
+    # make list of framed classes
+    class_resources_framed = list(class_resources_framed.values())
+    
     # Frame ontology given the provided context
     ontology_json = bmo.frame_ontology(
         ontology_graph, new_forge_context, new_jsonld_context_dict, class_resources_framed,
