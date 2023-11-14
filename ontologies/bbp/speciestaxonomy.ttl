@@ -111,7 +111,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R5onge4DcxhsWZwa37pMyj
 :R5onge4DcxhsWZwa37pMyj rdf:type owl:Class ;
                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                         rdfs:label "Fezf2-CreER"@en ;
                         <http://www.w3.org/2004/02/skos/core#altLabel> "Fezf2-CreER"^^xsd:string ;
                         <http://www.w3.org/2004/02/skos/core#definition> "In this strain, CreER was inserted in front of the Fezf2 open reading frame through homologous recombination. In Fezf2-CreER, the GCaMP6f (genetically encoded fluorescent Ca[2+] indicator) is strongly expressed in cortical layer 5 and some layer 6 as well as basolateral amygdala and scattered expression in pyramidal cell layers of hippocampus (Guo et al., 2013)."^^xsd:string .
@@ -120,7 +120,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R7JOvf1kHPmdwJuqPLEiyRA
 :R7JOvf1kHPmdwJuqPLEiyRA rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Slc6a4-CreERT2_EZ13;Ai166-369739"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Slc6a4-CreERT2_EZ13;Ai166-369739"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "The Slc6a4-CreERT2_EZ13;Ai166-369739 transgenic mouse has two genetic modifications: Slc6a4-CreERT2_EZ13 which involves the insertion of a modified serotonin transporter (Slc6a4) gene that codes for an enzyme called CreERT2, and Ai166-369739 which involves the insertion of a tdTomato (Ai166) fluorescent protein and a genetically encoded calcium indicator called GCaMP6s (369739) into the mouse genome (Ren et al., 2018)."^^xsd:string .
@@ -129,7 +129,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R7KpJxn18s2ZGxzwkvGg2nb
 :R7KpJxn18s2ZGxzwkvGg2nb rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Esr2-IRES2-Cre-D"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Esr2-IRES2-Cre-D"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "Esr2-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression/activity directed by the endogenous Esr2 promoter/enhancer sequences. In the brain, it is observed mainly in medial amygdalar nucleus, bed nuclei of the stria terminalis, paraventricular hypothalamic nucleus, cortical layer 6 and scattered neurons elsewhere in the brain (Daigle et al., 2018)."^^xsd:string .
@@ -138,7 +138,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R7Oi9skq7JQf4Fi0CgTOVjy
 :R7Oi9skq7JQf4Fi0CgTOVjy rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Cre +/-, Tom +/-"@en ;
                          <http://www.w3.org/2004/02/skos/core#definition> "This is a hemizygote mouse carrying an allele of the gene for the cre-recombinase as well as the cell membrane-localized tdTomato (mT)"^^xsd:string .
 
@@ -146,7 +146,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R7VSXBJ6dYm8vikkDPJqne8
 :R7VSXBJ6dYm8vikkDPJqne8 rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Tnnt1-IRES2-CreERT2"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tnnt1-IRES2-CreERT2"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "Created by inserting Cre into the C terminus of an endogenous gene via homologous recombination, with driver gene expression mediated by an internal ribosome entry site (IRES). Tnnt1 gene was chosen for making Cre driver line for sparse labelling of the thalamic cells (Daigle et al., 2018)."^^xsd:string .
@@ -155,7 +155,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R7W0jC5jLW97wVGcqzpUtT6
 :R7W0jC5jLW97wVGcqzpUtT6 rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "GFP +/-"@en ;
                          <http://www.w3.org/2004/02/skos/core#definition> "This is a hemizygote mouse carrying an allele of the gene for the green fluorescent protein (GFP)"^^xsd:string .
 
@@ -163,7 +163,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R7iITOp5KAC3EtDAI786GAO
 :R7iITOp5KAC3EtDAI786GAO rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Pdyn-T2A-CreERT2;Ai166-493297"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Pdyn-T2A-CreERT2;Ai166-493297"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "The Pdyn-T2A-CreERT2;Ai166-493297 mouse has two modificatoins: Pdyn-T2A-CreERT2 which involves the insertion of a modified prodynorphin (Pdyn) gene that codes for an enzyme called CreERT2. The enzyme is only produced in cells where the Pdyn gene is active, allowing for selective activation of CreERT2, and Ai166-493297 which involves the insertion of a fluorescent tdTomato (Ai166) protein and a genetically encoded calcium indicator GCaMP6f (493297) into the genome (Hrvatin et al., 2018)."^^xsd:string .
@@ -172,7 +172,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R84Ns0FKi8wdur9YF81jIBd
 :R84Ns0FKi8wdur9YF81jIBd rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Tg(Dbh-cre)KH212Gsat"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tg(Dbh-cre)KH212Gsat "^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "The Tg(Dbh-cre)KH212Gsat mouse expresses Cre recombinase under the control of the dopamine Beta Hydroxylase (Dbh) promoter. DBH is primarily expressed in the noradrenergic neurons of the central and peripheral nervous systems. In the brain, DBH is mainly found in noradrenergic neurons of the locus coeruleus (LC) and the lateral tegmental area (LTA) in the brainstem, which project to various regions of the brain including the prefrontal cortex, hippocampus, and amygdala. DBH is also expressed in the sympathetic ganglia and adrenal medulla, where it is involved in the synthesis of norepinephrine and epinephrine, respectively. Overall, the expression of DBH is highly specific to noradrenergic neurons and is essential for the synthesis of norepinephrine, which plays a crucial role in various physiological and behavioral processes including stress response, attention, and mood regulation (Eisenhofer et al., 2004)."^^xsd:string .
@@ -181,7 +181,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R8IQIkKuFhWqFB5Zht7qTkh
 :R8IQIkKuFhWqFB5Zht7qTkh rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Gnb4-IRES2-CreERT2"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Gnb4-Cre "^^xsd:string ,
                                                                         "Gnb4-IRES2-CreERT2"^^xsd:string ;
@@ -191,7 +191,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R8PX82kfbisMsLvrb95lDTE
 :R8PX82kfbisMsLvrb95lDTE rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "CAV-Cre;Ai139"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "CAV-Cre;Ai139 "^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "An E1-deleted, replication-defective, CAV-2 vector harbouring the CMV promoter that leads to Cre recombinase expression. The open frame is followed by an SV40 polyA signal. Following CAV-Cre injection at the putative target region, CAR expression promotes the uptake of CAV-2 into the fiber terminals and the retrograde axonal transport of CAV-2 back to the distally located soma and results in Are recombinase expression at the source region. In turn, the Cre recombinase inverts the DIO cassette, halting expression of mCAR and instead inducing expression of the ChR2 cargo. This approach has two important advantages: first, it allows for more robust and reliable expression of the inverted transgenes compared to strategies for expressing both proteins in series (e.g., IRES or 2A), and second, it circumvents concerns that sustained CAR expression might interfere with neuronal function (Li SJ et al., 2018)."^^xsd:string .
@@ -200,7 +200,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/R9tbIX7XgY3BAUNFCn35mcW
 :R9tbIX7XgY3BAUNFCn35mcW rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Chat-IRES-Cre;Ai166-501053"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Chat-IRES-Cre;Ai166-501053"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "This strain has Chat-IRES-Cre modification which involves the insertion of a modified gene for choline acetyltransferase (Chat) that codes for an enzyme called Cre. The enzyme is only produced in cells where the Chat gene is active, allowing for selective activation of Cre in certain cells. The strain has also Ai166-501053 modification which involves the insertion of a fluorescent protein - tdTomato (Ai166) and a genetically encoded calcium indicator - GCaMP6s (501053) into the mouse genome (Kim et al., 2017)."^^xsd:string .
@@ -209,14 +209,14 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RB1cHDJDESM94SO6duQxrM6
 :RB1cHDJDESM94SO6duQxrM6 rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "GAD67-eGFP"@en .
 
 
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RB2Q9UJLyRfCOk0ih1UFXG7
 :RB2Q9UJLyRfCOk0ih1UFXG7 rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Nos1-CreERT2;Sst-IRES-FlpO"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Nos1-CreERT2;Sst-IRES-FlpO"^^xsd:string .
 
@@ -224,7 +224,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RBAqL8lwvLPhEP5CMkt3zWa
 :RBAqL8lwvLPhEP5CMkt3zWa rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "SSt-Cre;Ai139"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Ai139"^^xsd:string ,
                                                                         "Ai139(TIT2L-GFP-ICL-TPT)-D"^^xsd:string ,
@@ -235,7 +235,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RBO79jv5U5EBpgwRbGixX4V
 :RBO79jv5U5EBpgwRbGixX4V rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Ai139-404922"@en ,
                                     "Ai139-404922"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Ai139-404922"^^xsd:string ;
@@ -245,7 +245,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RBS4I6tyfUBSDt1i0jXLpgN
 :RBS4I6tyfUBSDt1i0jXLpgN rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Cux2-CreERT2"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Cux2-CreERT2"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "Cux2-CreERT2 label radial glial cells (RGCs) that gave rise to neurons in the neocortex that predominantly resided in upper neocortical layers (Franco et al., 2012). Cux2-Cre also labels a subset of interneurons and a minor fraction of Ctip2+ projection neurons and neocortical astrocytes. Guo et al., 2013 and Eckler et al., 2018 showed that neurons in neocortical ventricular zone (VZ) can be labelled in this mouse strain but there is some polemics about it (Gil-Sanz et al., 2018)."^^xsd:string .
@@ -254,7 +254,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RBaSmZY6SAaWqkV7nrqyPQo
 :RBaSmZY6SAaWqkV7nrqyPQo rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Th-Cre_FI172;Ai166-387650"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Th-Cre_FI172;Ai166-387650"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "The Th-Cre_FI172;Ai166-387650 mouse line that is commonly used to study the role of dopaminergic neurons in the brain. This strain has two genetic modifications, Th-Cre_FI172, which involves the insertion of Cre recombinase under the control of the tyrosine hydroxylase (Th) promoter. Ai166-387650 modification involves the insertion of a genetically encoded calcium indicator - GCaMP6f into the mouse genome (Lerner et al., 2016)."^^xsd:string .
@@ -263,7 +263,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RBfFur5MbOXSzwXeR9WemV1
 :RBfFur5MbOXSzwXeR9WemV1 rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Nos1-CreERT2;Sst-IRES-FlpO;Ai188-hyg_408668-182726"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Nos1-CreERT2;Sst-IRES-FlpO;Ai188-hyg_408668-182726"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "The Nos1-CreERT2;Sst-IRES-FlpO;Ai188-hyg_408668-182726 mouse has following modifcations: Nos1-CreERT2 adding a tamoxifen-inducible Cre recombinase enzyme to neurons that express the nitric oxide synthase enzyme (Nos1), which is primarily expressed in interneurons in the brain; Sst-IRES-FlpO modificaton which adds a Flp recombinase to neurons that express somatostatin (Sst), and Ai188-hyg_408668-182726 which adds a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Sternson et al., 2021)."^^xsd:string .
@@ -272,7 +272,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RCIhpGlEct4tnqzSfzEVqIs
 :RCIhpGlEct4tnqzSfzEVqIs rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Vipr2-IRES2-Cre-neo"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Vipr2-IRES2-Cre-neo"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK–Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells (Daigle et al., 2018)."^^xsd:string .
@@ -281,7 +281,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RCdsmhhTCAVRU9NaRWZ4hyk
 :RCdsmhhTCAVRU9NaRWZ4hyk rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Esr2-IRES2-Cre"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Esr2-IRES2-Cre"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "Esr2-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression/activity directed by the endogenous Esr2 promoter/enhancer sequences. In the brain, it is observed mainly in medial amygdalar nucleus, bed nuclei of the stria terminalis, paraventricular hypothalamic nucleus, cortical layer 6 and scattered neurons elsewhere in the brain. These mice may be used to generate conditional mutations for studying gain-or-loss of function and/or fate mapping in ESR2-expressing cells."^^xsd:string .
@@ -290,7 +290,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RDjuVumDYYduZdovvTatpxb
 :RDjuVumDYYduZdovvTatpxb rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Tle4-CreER;Ai166_482503-194083"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Tle4-CreER;Ai166_482503-194083"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "The Tle4-CreER;Ai166_482503-194083 has two following modifications: Tle4-CreER which adds a tamoxifen-inducible Cre recombinase enzyme to neurons that express the transcriptional regulator Tle4, and Ai166_482503-194083 modification adding a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Singh et al., 2019)."^^xsd:string .
@@ -299,7 +299,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RDksiUqGFUuhwZaaSGoBO0V
 :RDksiUqGFUuhwZaaSGoBO0V rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Calb2-CreERT2;Ai166-497523"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Calb2-CreERT2;Ai166-497523"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "The Calb2-CreERT2;Ai166-497523 transgenic mouse has two genetic modifications: Calb2-CreERT2 whhch adds a tamoxifen-inducible Cre recombinase to neurons that express the Calbindin 2 (Calb2) calcium-binding protein and Ai166-497523 modification adding a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Tyan et al., 2021)."^^xsd:string .
@@ -308,7 +308,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RDz40iHkMzxTQxTUqlASfyX
 :RDz40iHkMzxTQxTUqlASfyX rdf:type owl:Class ;
                          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                         <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                          rdfs:label "Nxph4-T2A-CreERT2;Ai166_426124-191808"@en ;
                          <http://www.w3.org/2004/02/skos/core#altLabel> "Nxph4-T2A-CreERT2;Ai166_426124-191808"^^xsd:string ;
                          <http://www.w3.org/2004/02/skos/core#definition> "The Nxph4-T2A-CreERT2;Ai166_426124-191808 mouse was created by introducing two genetic modifications Nxph4-T2A-CreERT2 which involves the insertion of Nxph4 gene into the mouse genome, along with a special sequence called T2A-CreERT2 (Nxph4 gene is expressed specifically in a subset of neurons in the brain, while the T2A-CreERT2 sequence allows for the inducible expression of Cre recombinase in these neurons, and Ai166_426124-191808 modification involving the insertion of Ai166 reporter gene into the genome  (Li et al., 2021)."^^xsd:string .
@@ -317,7 +317,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RbgCce6FpZBH0tGFk6b88A
 :RbgCce6FpZBH0tGFk6b88A rdf:type owl:Class ;
                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                         rdfs:label "Tlx3-Cre_PL56"@en ;
                         <http://www.w3.org/2004/02/skos/core#altLabel> "Tlx3-Cre_PL56"^^xsd:string ;
                         <http://www.w3.org/2004/02/skos/core#definition> "Tlx3-Cre_PL56;Ai148 mice exhibit GCaMP6f primarily restricted to IT corticostriatal in layer 5 (de Vries et al., 2020)."^^xsd:string .
@@ -326,7 +326,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RwmHBM6UPYZQ8QDjr50L5u
 :RwmHBM6UPYZQ8QDjr50L5u rdf:type owl:Class ;
                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                         rdfs:label "Tacr1-T2A-Cre;Sst-IRES-FlpO;Ai188-hyg-436253"@en ;
                         <http://www.w3.org/2004/02/skos/core#altLabel> "Tacr1-T2A-Cre;Sst-IRES-FlpO;Ai188-hyg-436253"^^xsd:string ;
                         <http://www.w3.org/2004/02/skos/core#definition> "The Tacr1-T2A-Cre;Sst-IRES-FlpO;Ai188-hyg-436253 was created by combining three different genetic modifications: Tacr1-T2A-Cre which adds a Cre recombinase enzyme to neurons that express the Tacr1 gene; Sst-IRES-FlpO modification adding both the FlpO recombinase and an IRES element to neurons that express the Sst gene, and Ai188-hyg-436253 adding a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Zeng et al., 2018)."^^xsd:string .
@@ -335,7 +335,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RxoGvqCAmwBJS0E7RVI7qT
 :RxoGvqCAmwBJS0E7RVI7qT rdf:type owl:Class ;
                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                         rdfs:label "Pvalb-T2A-CreERT2"@en ;
                         <http://www.w3.org/2004/02/skos/core#altLabel> "Pvalb-2A-CreERT2-D"^^xsd:string ,
                                                                        "Pvalb-T2A-CreERT2"^^xsd:string ,
@@ -346,7 +346,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RyopyomzZDtQGWHX5lddmE
 :RyopyomzZDtQGWHX5lddmE rdf:type owl:Class ;
                         rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                        <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                         rdfs:label "Plxnd1-CreER"@en ;
                         <http://www.w3.org/2004/02/skos/core#altLabel> "Plxnd1-CreER"^^xsd:string ;
                         <http://www.w3.org/2004/02/skos/core#definition> "The PlxnD1-CreER driver recapitulates endogenous PlxnD1 expression and labeles projection neurons in the cerebral cortex, hippocampus, amygdala (BLA and LA), and medium spiny neurons of the striatum (Matho et al., 2021)."^^xsd:string .
@@ -355,7 +355,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RzIzImaHDkYWwbu1bGJmS
 :RzIzImaHDkYWwbu1bGJmS rdf:type owl:Class ;
                        rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                        rdfs:label "Npr3-IRES2-CreERT2-neo;Ai166-504501"@en ;
                        <http://www.w3.org/2004/02/skos/core#altLabel> "Npr3-IRES2-CreERT2-neo;Ai166-504501"^^xsd:string ;
                        <http://www.w3.org/2004/02/skos/core#definition> "The Npr3-IRES2-CreERT2-neo;Ai166-504501 mouse is a transgenic mouse line that is commonly used in neuroscience research to study the role of neurons that express the natriuretic peptide receptor 3 (NPR3) in the brain. This mouse line has two genetic modifications: Npr3-IRES2-CreERT2-neo which involves the insertion of Cre recombinase under the control of the Npr3 promoter. The Npr3 promoter is selectively active in a subset of neurons in the brain, including some neurons in the hippocampus and cortex, and Ai166-504501 which involves the insertion of a genetically encoded calcium indicator, GCaMP6s, into the mouse genome (O'Leary et al., 2021)."^^xsd:string .
@@ -364,7 +364,7 @@
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RzLZoF5tbH8jvs4MokBxQ
 :RzLZoF5tbH8jvs4MokBxQ rdf:type owl:Class ;
                        rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
-                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> "Strain Rank"^^xsd:string ;
+                       <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
                        rdfs:label "Chrna2-Cre_OE25;Sst-IRES-FlpO;Ai188-hyg-435222"^^xsd:string ;
                        <http://www.w3.org/2004/02/skos/core#altLabel> "Chrna2-Cre_OE25;Sst-IRES-FlpO;Ai188-hyg-435222"^^xsd:string ;
                        <http://www.w3.org/2004/02/skos/core#definition> "The Chrna2-Cre_OE25;Sst-IRES-FlpO;Ai188-hyg-435222 mouse strain has three modifications: Chrna2-Cre_OE25 which refers to the Cre recombinase enzyme, which is driven by the promoter for the Chrna2 gene. The CHRNA2 gene is a gene that encodes for a subunit of the nicotinic acetylcholine receptor; Sst-IRES-FlpO modification where Sst is the promoter for the somatostatin gene, which drives the expression of the IRES-FlpO cassette, and Ai188-hyg-435222 modification refering to a specific reporter gene that is expressed when Cre recombinase or FlpO recombinase removes a stop codon in the Ai188-hyg-435222 allele. This allows for the expression of a fluorescent protein (tdTomato) in the specific cells where the recombinase enzyme is active (Akerboom et al., 2013)."^^xsd:string .
@@ -965,6 +965,15 @@
                                        <http://www.w3.org/2004/02/skos/core#definition> "Sst-IRES-Cre is a mouse strain as described in Jackson Laboratory."@en .
 
 
+### https://www.alliancegenome.org/allele/MGI:3839912
+<https://www.alliancegenome.org/allele/MGI:3839912> rdf:type owl:Class;
+                                                    rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+                                                    <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+                                                    rdfs:label "Sim1-Cre"@en ;
+                                                    <http://www.w3.org/2004/02/skos/core#altLabel> "Sim1tm1.1(cre)Gld"@en ;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Sim1-Cre is a with a mouse strain as described by the Alliance Genome variant information."@en .
+
+
 ###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RorbCre1
 :RorbCre1 rdf:type owl:Class ;
           rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
@@ -972,6 +981,39 @@
           rdfs:label "Rorb-Cre-1"@en ;
           <http://www.w3.org/2004/02/skos/core#altLabel> "Rorb-IRES-Cre"@en ;
           <http://www.w3.org/2004/02/skos/core#definition> "Rorb-Cre-1 is a mouse strain from Mouselight."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/VgatCre
+:VgatCre rdf:type owl:Class ;
+          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+          rdfs:label "Vgat-Cre"@en ;
+          <http://www.w3.org/2004/02/skos/core#definition> "Vgat-Cre is a mouse strain from Mouselight."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/Vglut1Cre
+:Vglut1Cre rdf:type owl:Class ;
+          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+          rdfs:label "Vglut1-Cre"@en ;
+          <http://www.w3.org/2004/02/skos/core#altLabel> "Rorb-IRES-Cre"@en ;
+          <http://www.w3.org/2004/02/skos/core#definition> "Vglut1-Cre is a mouse strain from Mouselight."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/Vglut2Cre
+:Vglut2Cre rdf:type owl:Class ;
+          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+          rdfs:label "Vglut2-Cre"@en ;
+          <http://www.w3.org/2004/02/skos/core#definition> "Vglut2-Cre is a mouse strain from Mouselight."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/HSD2Cre
+:HSD2Cre rdf:type owl:Class ;
+          rdfs:subClassOf <http://purl.obolibrary.org/obo/NCBITaxon_10090> ;
+          <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain> ;
+          rdfs:label "HSD2-Cre"@en ;
+          <http://www.w3.org/2004/02/skos/core#definition> "HSD2-Cre is a mouse strain from Mouselight."@en .
 
 
 ###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi
