@@ -1,0 +1,378 @@
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
+@prefix mso: <https://bbp.epfl.ch/ontologies/core/molecular-systems/> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+CHEBI:24431 a owl:Class ;
+    rdfs:label "chemical entity"@en ;
+    rdfs:subClassOf bmo:Mapping ;
+    owl:equivalentClass nsg:Metabolite ;
+    skos:definition "A chemical entity is a physical entity of interest in chemistry including molecular entities, parts thereof, and chemical substances."@en .
+
+NCBITaxon:10090 a owl:Class ;
+    rdfs:label "Mus musculus"@en ;
+    rdfs:subClassOf nsg:Species .
+
+NCBITaxon:10116 a owl:Class ;
+    rdfs:label "Rattus norvegicus"@en ;
+    rdfs:subClassOf nsg:Species .
+
+NCBITaxon:9606 a owl:Class ;
+    rdfs:label "Homo sapiens"@en ;
+    rdfs:subClassOf nsg:Species .
+
+schema:sameAs a owl:ObjectProperty ;
+    rdfs:label "sameAs"@en ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+owl:equivalentClass a owl:AnnotationProperty .
+
+skos:altLabel a owl:AnnotationProperty .
+
+skos:definition a owl:AnnotationProperty ;
+    rdfs:label "definition"@en .
+
+bmo:Artery a owl:Class ;
+    rdfs:label "Artery"@en ;
+    rdfs:subClassOf bmo:BrainVascularComponent .
+
+bmo:BasalLamina a owl:Class ;
+    rdfs:label "Basal Lamina"@en ;
+    rdfs:subClassOf bmo:ExtracellularPart .
+
+bmo:Capillary a owl:Class ;
+    rdfs:label "Capillary"@en ;
+    rdfs:subClassOf bmo:BrainVascularComponent .
+
+bmo:Cytosol a owl:Class ;
+    rdfs:label "Cytosol"@en ;
+    rdfs:subClassOf bmo:SubcellularPart .
+
+bmo:EndoplasmicReticulum a owl:Class ;
+    rdfs:label "Endoplasmic Reticulum"@en ;
+    rdfs:subClassOf bmo:Organelle .
+
+bmo:Gene a owl:Class ;
+    rdfs:label "Gene"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mso:translatesInto ;
+            owl:someValuesFrom nsg:Protein ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:expressedIn ;
+            owl:someValuesFrom bmo:NeuronTranscriptomeType ],
+        owl:Thing ;
+    skos:definition "In biology, a gene is a basic unit of heredity and a sequence of nucleotides in DNA or RNA that encodes the synthesis of a gene product, either RNA or protein."^^xsd:string .
+
+bmo:InterstitialSpace a owl:Class ;
+    rdfs:label "Interstitial Space"@en ;
+    rdfs:subClassOf bmo:ExtracellularPart .
+
+bmo:Mitochondrion a owl:Class ;
+    rdfs:label "Mitochondrion"@en ;
+    rdfs:subClassOf bmo:Organelle .
+
+bmo:NGVUnit a owl:Class ;
+    rdfs:label "NGV Unit"@en ;
+    rdfs:subClassOf bmo:MolecularCompartment ;
+    skos:definition "A neuron + glia + vasculature unit"^^xsd:string .
+
+bmo:ProteinProteinInteraction a owl:Class ;
+    rdfs:label "ProteinProteinInteraction"@en ;
+    rdfs:subClassOf bmo:BiochemicalReaction ;
+    skos:altLabel "ProteinProteinInteraction"@en .
+
+bmo:SteadyStateMolecularConcentration a owl:Class ;
+    rdfs:label "Steady State Molecular Concentration"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:Molecule ;
+            owl:someValuesFrom bmo:Molecule ],
+        owl:Thing .
+
+bmo:compartment a owl:ObjectProperty ;
+    rdfs:label "compartment"@en .
+
+bmo:generates a owl:ObjectProperty ;
+    rdfs:label "generates"@en .
+
+bmo:hasParameter a owl:ObjectProperty ;
+    rdfs:label "hasParameter"@en .
+
+bmo:humanGene a owl:AnnotationProperty ;
+    rdfs:label "humanGene"@en .
+
+bmo:isAssociatedWith a owl:ObjectProperty ;
+    rdfs:label "isAssociatedWith"@en .
+
+bmo:mouseGene a owl:AnnotationProperty ;
+    rdfs:label "mouseGene"@en .
+
+bmo:ratGene a owl:AnnotationProperty ;
+    rdfs:label "ratGene"@en .
+
+bmo:uniprotID a owl:AnnotationProperty ;
+    rdfs:label "uniprotID"@en .
+
+bmo:uses a owl:ObjectProperty ;
+    rdfs:label "uses"@en .
+
+<https://bbp.epfl.ch/ontologies/core/molecular-systems> a owl:Ontology ;
+    rdfs:label "Molecular Systems Ontology"^^xsd:string ;
+    owl:versionInfo "R45"^^xsd:string .
+
+mso:VenousVolume a owl:Class ;
+    rdfs:label "Venous Volume"@en ;
+    rdfs:subClassOf bmo:BrainVascularComponent .
+
+mso:concentration a owl:ObjectProperty ;
+    rdfs:label "concentration"@en .
+
+nsg:Astrocyte a owl:Class ;
+    rdfs:label "Astrocyte"@en ;
+    rdfs:subClassOf nsg:Glia .
+
+nsg:Ki a owl:Class ;
+    rdfs:label "Ki"@en ;
+    rdfs:subClassOf bmo:ReactionKineticParameter ;
+    skos:definition "Inhibition constant."^^xsd:string .
+
+nsg:Km a owl:Class ;
+    rdfs:label "Km"@en ;
+    rdfs:subClassOf bmo:ReactionKineticParameter ;
+    skos:definition "Michaelis constant."^^xsd:string .
+
+nsg:Microglia a owl:Class ;
+    rdfs:label "Microglia"@en ;
+    rdfs:subClassOf nsg:Glia .
+
+nsg:Neuron a owl:Class ;
+    rdfs:label "Neuron"@en ;
+    rdfs:subClassOf bmo:BrainCell .
+
+nsg:Vmax a owl:Class ;
+    rdfs:label "Vmax"@en ;
+    rdfs:subClassOf bmo:ReactionKineticParameter ;
+    skos:definition "Maximum reaction rate."^^xsd:string .
+
+nsg:Vmax_f a owl:Class ;
+    rdfs:label "Vmax_f"@en ;
+    rdfs:subClassOf bmo:ReactionKineticParameter ;
+    skos:definition "Maximum reaction rate in forward direction (for reversible reactions)."^^xsd:string .
+
+nsg:Vmax_r a owl:Class ;
+    rdfs:label "Vmax_r"@en ;
+    rdfs:subClassOf bmo:ReactionKineticParameter ;
+    skos:definition "Maximum reaction rate in reverse direction (for reversible reactions)."^^xsd:string .
+
+nsg:cellType a owl:ObjectProperty ;
+    rdfs:label "cellType"@en .
+
+nsg:gene a owl:ObjectProperty ;
+    rdfs:label "gene"@en .
+
+nsg:hasTarget a owl:ObjectProperty ;
+    rdfs:label "hasTarget"@en .
+
+nsg:k_cat a owl:Class ;
+    rdfs:label "k_cat"@en ;
+    rdfs:subClassOf bmo:ReactionKineticParameter ;
+    skos:definition "Turnover number, catalytic constant (for the enzymes with single active site)."^^xsd:string .
+
+nsg:modelOf a owl:ObjectProperty ;
+    rdfs:label "modelOf"@en .
+
+bmo:BiochemicalReaction a owl:Class ;
+    rdfs:label "Biochemical Reaction"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty schema:isPartOf ;
+            owl:someValuesFrom mso:MetabolicNetwork ],
+        [ a owl:Restriction ;
+            owl:onProperty schema:isPartOf ;
+            owl:someValuesFrom mso:MetabolicPathway ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:catalizedBy ;
+            owl:someValuesFrom mso:ProteinComplex ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:catalizedBy ;
+            owl:someValuesFrom nsg:Protein ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:compartment ;
+            owl:someValuesFrom bmo:MolecularCompartment ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:hasRate ;
+            owl:someValuesFrom mso:ReactionRate ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:product ;
+            owl:someValuesFrom bmo:Molecule ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:substrate ;
+            owl:someValuesFrom bmo:Molecule ],
+        owl:Thing ;
+    skos:definition "A chemical process of transformation of some molecules (substrates) into the other molecules (products)."^^xsd:string .
+
+bmo:Mapping a owl:Class ;
+    rdfs:label "Mapping"@en .
+
+bmo:NeuronTranscriptomeType a owl:Class ;
+    rdfs:label "Neuron Transcriptome Type"@en ;
+    rdfs:subClassOf owl:Thing .
+
+bmo:ReactionRateEquation a owl:Class ;
+    rdfs:label "Reaction Rate Equation"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mso:hasParameter ;
+            owl:someValuesFrom bmo:ReactionKineticParameter ],
+        owl:Thing ;
+    skos:definition "A rate equation or rate law is a mathematical expression used in chemical kinetics to link the rate of a reaction to the concentration of each reactant."^^xsd:string .
+
+mso:MetabolicPathway a owl:Class ;
+    rdfs:label "Metabolic Pathway"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty schema:isPartOf ;
+            owl:someValuesFrom mso:MetabolicNetwork ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:compartment ;
+            owl:someValuesFrom bmo:MolecularCompartment ],
+        owl:Thing ;
+    skos:definition "In biochemistry, a metabolic pathway is a linked series of chemical reactions occurring within a cell."^^xsd:string .
+
+mso:ReactionRate a owl:Class ;
+    rdfs:label "Reaction Rate"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mso:isDescribedBy ;
+            owl:someValuesFrom bmo:ReactionRateEquation ],
+        owl:Thing ;
+    skos:definition "The reaction rate or rate of reaction is the speed at which a chemical reaction takes place, defined as proportional to the increase in the concentration of a product per unit time and to the decrease in the concentration of a reactant per unit time."^^xsd:string .
+
+mso:expressedIn a owl:ObjectProperty ;
+    rdfs:label "expressedIn"@en .
+
+mso:hasRate a owl:ObjectProperty ;
+    rdfs:label "hasRate"@en .
+
+mso:isDescribedBy a owl:ObjectProperty ;
+    rdfs:label "isDescribedBy"@en .
+
+mso:product a owl:ObjectProperty ;
+    rdfs:label "product"@en .
+
+mso:substrate a owl:ObjectProperty ;
+    rdfs:label "substrate"@en .
+
+mso:translatesInto a owl:ObjectProperty ;
+    rdfs:label "translatesInto"@en .
+
+nsg:Metabolite a owl:Class ;
+    rdfs:label "Metabolite"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty schema:isPartOf ;
+            owl:someValuesFrom mso:ProteinComplex ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:compartment ;
+            owl:someValuesFrom bmo:MolecularCompartment ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:species ;
+            owl:someValuesFrom nsg:Species ],
+        bmo:Molecule ;
+    skos:altLabel "Metabolite"@en ;
+    skos:definition "Molecule (usually small molecule) which participate in chemical reactions as intermediate, substrate or product. It can also participate in transport and diffusion processes."^^xsd:string .
+
+bmo:BrainCell a owl:Class ;
+    rdfs:label "Brain Cell"@en ;
+    rdfs:subClassOf bmo:MolecularCompartment .
+
+bmo:ExtracellularPart a owl:Class ;
+    rdfs:label "Extracellular Part"@en ;
+    rdfs:subClassOf bmo:MolecularCompartment ;
+    skos:definition "This compartment is used as location for metabolites, proteins, reactions and molecular diffusion that are taking place specifically in the extracellular space. This is the compartment where metabolites and proteins from some references are measured."^^xsd:string .
+
+bmo:Organelle a owl:Class ;
+    rdfs:label "Organelle"@en ;
+    rdfs:subClassOf bmo:SubcellularPart .
+
+bmo:SubcellularPart a owl:Class ;
+    rdfs:label "Subcellular Part"@en ;
+    rdfs:subClassOf bmo:MolecularCompartment .
+
+mso:MetabolicNetwork a owl:Class ;
+    rdfs:label "Metabolic Network"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mso:compartment ;
+            owl:someValuesFrom bmo:MolecularCompartment ],
+        owl:Thing ;
+    skos:definition "A set of metabolic reactions."^^xsd:string .
+
+mso:catalizedBy a owl:ObjectProperty ;
+    rdfs:label "catalizedBy"@en .
+
+nsg:Glia a owl:Class ;
+    rdfs:label "Glia"@en ;
+    rdfs:subClassOf bmo:BrainCell .
+
+nsg:Protein a owl:Class ;
+    rdfs:label "Protein"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty schema:isPartOf ;
+            owl:someValuesFrom mso:ProteinComplex ],
+        [ a owl:Restriction ;
+            owl:onProperty mso:compartment ;
+            owl:someValuesFrom bmo:MolecularCompartment ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:species ;
+            owl:someValuesFrom nsg:Species ],
+        bmo:Molecule ;
+    skos:altLabel "Protein"@en ;
+    skos:definition "Macromolecules that consist of amino acids. Enzymes that calatyze reactions in our model are proteins. Transporters in our model are proteins."^^xsd:string .
+
+bmo:BrainVascularComponent a owl:Class ;
+    rdfs:label "Brain Vascular Component"@en ;
+    rdfs:subClassOf bmo:MolecularCompartment .
+
+mso:ProteinComplex a owl:Class ;
+    rdfs:label "Protein Complex"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mso:compartment ;
+            owl:someValuesFrom bmo:MolecularCompartment ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:species ;
+            owl:someValuesFrom nsg:Species ],
+        bmo:Molecule ;
+    skos:definition "A protein complex or multiprotein complex is a group of two or more associated polypeptide chains."^^xsd:string .
+
+nsg:species a owl:ObjectProperty ;
+    rdfs:label "species"@en .
+
+schema:isPartOf a owl:ObjectProperty ;
+    rdfs:label "isPartOf"@en .
+
+bmo:Molecule a owl:Class,
+        owl:ObjectProperty ;
+    rdfs:label "Molecule"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mso:compartment ;
+            owl:someValuesFrom bmo:MolecularCompartment ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:species ;
+            owl:someValuesFrom nsg:Species ],
+        owl:Thing ;
+    skos:definition "A molecule is an electrically neutral group of two or more atoms held together by chemical bonds."^^xsd:string .
+
+bmo:ReactionKineticParameter a owl:Class ;
+    rdfs:label "Reaction Kinetic Parameter"@en ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "Kinetic parameter is a parameter in the rate equation of the chemical process (reaction, transport, diffusion)."^^xsd:string .
+
+nsg:Species a owl:Class ;
+    rdfs:label "Species"@en ;
+    rdfs:subClassOf owl:Thing .
+
+bmo:MolecularCompartment a owl:Class ;
+    rdfs:label "Molecular Compartment"@en ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "A compartment in which molecular species live and in which biochemical reactions can take place."^^xsd:string .
+
