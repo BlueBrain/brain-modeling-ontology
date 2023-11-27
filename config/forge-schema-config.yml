@@ -8,6 +8,8 @@ Model:
 
 Store:
   name: BlueBrainNexus
+  model:
+    name: RdfModel
   endpoint: https://staging.nexus.ocp.bbp.epfl.ch/v1
   searchendpoints:
     sparql:
