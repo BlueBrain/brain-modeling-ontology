@@ -1,23 +1,15 @@
 @prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
-@prefix ns1: <http://purl.org/vocab/vann/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix nsg: <https://neuroshapes.org/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix parms: <https://bbp.epfl.ch/ontologies/core/parameters/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix parms: <https://bbp.epfl.ch/ontologies/core/parameters/> .
 @prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-
-<https://bbp.epfl.ch/ontologies/core/parameters> rdf:type owl:Ontology ;
-                                                 <http://purl.org/vocab/vann/preferredNamespacePrefix> "parms"^^xsd:string ;
-                                                 schema:title "Brain Modeling Parameter Ontology"^^xsd:string ;
-                                                 rdfs:label "Brain Modeling Parameter Ontology"^^xsd:string ;
-                                                 owl:versionInfo "R4"^^xsd:string .
-
-ns1:preferredNamespacePrefix a owl:AnnotationProperty .
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 schema:Dataset a owl:Class .
 
@@ -120,9 +112,15 @@ bmo:ModelBiochemicalReactionParameter a owl:Class ;
 
 <https://bbp.epfl.ch/ontologies/core/parameters> a owl:Ontology ;
     rdfs:label "Brain Modeling Parameter Ontology"^^xsd:string ;
-    ns1:preferredNamespacePrefix "parms"^^xsd:string ;
+    vann:preferredNamespacePrefix "parms"^^xsd:string ;
     schema:title "Brain Modeling Parameter Ontology"^^xsd:string ;
     owl:versionInfo "R4"^^xsd:string .
+
+parms:DecayTimeConstant a owl:Class ;
+    rdfs:label "dtc"@en ;
+    schema:unitCode "ms" ;
+    rdfs:subClassOf bmo:ModelBrainParameter ;
+    skos:definition "decay time constant (in ms), following a truncated Normal distribution"@en .
 
 parms:Dep a owl:Class ;
     rdfs:label "Dep"@en ;
@@ -142,6 +140,12 @@ parms:GABAB_ratio a owl:Class ;
     rdfs:subClassOf bmo:ModelBrainParameter ;
     skos:definition "Synaptic conductance of GABAB proportional to the value for GABAA."@en .
 
+parms:InitialConcentrationOfMg a owl:Class ;
+    rdfs:label "mg"@en ;
+    schema:unitCode "mM" ;
+    rdfs:subClassOf bmo:ModelBrainParameter ;
+    skos:definition "Initial concentration of Mg2+"@en .
+
 parms:NMDA_ratio a owl:Class ;
     rdfs:label "NMDA_ratio"@en ;
     schema:unitCode "Unitless" ;
@@ -153,6 +157,30 @@ parms:Nrrp a owl:Class ;
     schema:unitCode "Unitless" ;
     rdfs:subClassOf bmo:ModelBrainParameter ;
     skos:definition "Number of tital release sites for given contact."@en .
+
+parms:SynapticConductanceWeight a owl:Class ;
+    rdfs:label "weight"@en ;
+    schema:unitCode "uS" ;
+    rdfs:subClassOf bmo:ModelBrainParameter ;
+    skos:definition "Synaptic conductance."@en .
+
+parms:SynapticReversalPotential a owl:Class ;
+    rdfs:label "e"@en ;
+    schema:unitCode "mV" ;
+    rdfs:subClassOf bmo:ModelBrainParameter ;
+    skos:definition "Synaptic reversal potential"@en .
+
+parms:TimeConstantInMsForRecoveryFromDepression a owl:Class ;
+    rdfs:label "d"@en ;
+    schema:unitCode "ms" ;
+    rdfs:subClassOf bmo:ModelBrainParameter ;
+    skos:definition "time constant (in ms) for recovery from depression, following a Gamma distribution"@en .
+
+parms:TimeConstantInMsForRecoveryFromFacilitation a owl:Class ;
+    rdfs:label "f"@en ;
+    schema:unitCode "ms" ;
+    rdfs:subClassOf bmo:ModelBrainParameter ;
+    skos:definition "time constant (in ms) for recovery from facilitation, following a Gamma distribution"@en .
 
 parms:Use a owl:Class ;
     rdfs:label "Use"@en ;
@@ -166,24 +194,6 @@ parms:conductance a owl:Class ;
     rdfs:subClassOf bmo:ModelBrainParameter ;
     skos:definition "Synaptic conductance."@en .
 
-parms:TimeConstantInMsForRecoveryFromDepression a owl:Class ;
-    rdfs:label "d"@en ;
-    schema:unitCode "ms" ;
-    rdfs:subClassOf bmo:ModelBrainParameter ;
-    skos:definition "time constant (in ms) for recovery from depression, following a Gamma distribution"@en .
-
-parms:DecayTimeConstant a owl:Class ;
-    rdfs:label "dtc"@en ;
-    schema:unitCode "ms" ;
-    rdfs:subClassOf bmo:ModelBrainParameter ;
-    skos:definition "decay time constant (in ms), following a truncated Normal distribution"@en .
-
-parms:SynapticReversalPotential a owl:Class ;
-    rdfs:label "e"@en ;
-    schema:unitCode "mV" ;
-    rdfs:subClassOf bmo:ModelBrainParameter ;
-    skos:definition "Synaptic reversal potential"@en .
-
 parms:e_GABAA a owl:Class ;
     rdfs:label "e_GABAA"@en ;
     schema:unitCode "mV" ;
@@ -195,12 +205,6 @@ parms:e_GABAB a owl:Class ;
     schema:unitCode "mV" ;
     rdfs:subClassOf bmo:ModelBrainParameter ;
     skos:definition "GABAB reversal potential"@en .
-
-parms:TimeConstantInMsForRecoveryFromFacilitation a owl:Class ;
-    rdfs:label "f"@en ;
-    schema:unitCode "ms" ;
-    rdfs:subClassOf bmo:ModelBrainParameter ;
-    skos:definition "time constant (in ms) for recovery from facilitation, following a Gamma distribution"@en .
 
 parms:gmax a owl:Class ;
     rdfs:label "gmax"@en ;
@@ -219,12 +223,6 @@ parms:gsynSRSF a owl:Class ;
     schema:unitCode "Unitless" ;
     rdfs:subClassOf bmo:ModelBrainParameter ;
     skos:definition "the scale factor for the conductance; SRSF: 'synaptic receptor scaling factor'"@en .
-
-parms:InitialConcentrationOfMg a owl:Class ;
-    rdfs:label "mg"@en ;
-    schema:unitCode "mM" ;
-    rdfs:subClassOf bmo:ModelBrainParameter ;
-    skos:definition "Initial concentration of Mg2+"@en .
 
 parms:nrrp a owl:Class ;
     rdfs:label "nrrp"@en ;
@@ -309,12 +307,6 @@ parms:uHillCoefficient a owl:Class ;
     schema:unitCode "Unitless" ;
     rdfs:subClassOf bmo:ModelBrainParameter ;
     skos:definition "A coefficient describing the scaling of u to be done by the simulator"@en .
-
-parms:SynapticConductanceWeight a owl:Class ;
-    rdfs:label "weight"@en ;
-    schema:unitCode "uS" ;
-    rdfs:subClassOf bmo:ModelBrainParameter ;
-    skos:definition "Synaptic conductance."@en .
 
 nsg:hasBaselDendriteFeature rdfs:label "hasBaselDendriteFeature"@en .
 
