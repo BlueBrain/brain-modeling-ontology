@@ -726,87 +726,6 @@ schema:title a owl:AnnotationProperty ;
 <http://uri.interlex.org/base/ilx_0738197> a owl:Class ;
     rdfs:label "cAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty owl:equivalentClass ;
-            owl:someValuesFrom ct:ICOnsetEType ],
-        [ a owl:Restriction ;
-            owl:onProperty owl:equivalentClass ;
-            owl:someValuesFrom ct:ICOn-typeEtype ],
-        [ a owl:Restriction ;
-            owl:onProperty owl:equivalentClass ;
-            owl:someValuesFrom ct:ICAdaptingEType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383206> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383209> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383211> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaBasketCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaChandelierCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107933> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383213> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383214> ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383215> ],
         [ a owl:Restriction ;
@@ -905,6 +824,87 @@ schema:title a owl:AnnotationProperty ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383195> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICOnsetEType ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICOn-typeEtype ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICAdaptingEType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383206> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383209> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383211> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaChandelierCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107933> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383213> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383214> ],
         bmo:NeuronElectricalType ;
     skos:notation "cAC"^^xsd:string ;
     skos:prefLabel "Continuous accommodating electrical type"@en .
@@ -3760,6 +3760,120 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
     rdfs:label "NCx_bSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:55_Vip_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:56_Vip_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:57_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:58_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:59_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:6_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:60_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:61_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:62_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:63_Sst_Chodl ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:64_Sst_Chodl ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:65_Sst_Chodl ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:66_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:67_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:68_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:69_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:7_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:70_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:71_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:72_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:73_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:74_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:75_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:76_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:77_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:78_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:79_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:8_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:80_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:81_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:82_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:83_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:84_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:85_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:86_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:87_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:88_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:89_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:9_Lamp5_Lhx6 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
@@ -4034,120 +4148,6 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:54_Vip_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:55_Vip_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:56_Vip_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:57_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:58_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:59_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:6_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:60_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:61_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:62_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:63_Sst_Chodl ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:64_Sst_Chodl ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:65_Sst_Chodl ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:66_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:67_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:68_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:69_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:7_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:70_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:71_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:72_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:73_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:74_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:75_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:76_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:77_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:78_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:79_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:8_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:80_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:81_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:82_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:83_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:84_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:85_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:86_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:87_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:88_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:89_Sst ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
     skos:notation "NCx_bSTUT"@en ;
     skos:prefLabel "Neocortex burst stuttering electrical type"@en .
@@ -7391,12 +7391,6 @@ ct:BedNucleusOfTheStriaTerminalisPrincipalCell a owl:Class ;
     rdfs:label "BST_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/351> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:351 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:351 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -7408,12 +7402,6 @@ ct:BedNucleusOfTheStriaTerminalisPrincipalCell a owl:Class ;
 ct:BedNucleusOfTheStriaTerminalisProjectionCell a owl:Class ;
     rdfs:label "BST_PN"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/351> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:351 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:351 ],
         [ a owl:Restriction ;
@@ -7593,13 +7581,13 @@ ct:BundleSystemProjectionCell a owl:Class ;
     skos:definition "Projection neuron in bundle system"@en ;
     skos:notation "mfbs_PT" .
 
-ct:BundleSystemPydamidalCell a owl:Class ;
+ct:BundleSystemPyramidalCell a owl:Class ;
     rdfs:label "mfbs_Pyr"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         bmo:NeuronMorphologicalType ;
-    skos:altLabel "Bundle System Pydamidal Cell" ;
+    skos:altLabel "Bundle System Pyramidal Cell" ;
     skos:definition "Pyramidal neuron in bundle system"@en ;
     skos:notation "mfbs_Pyr" .
 
@@ -8004,12 +7992,6 @@ ct:DorsomedialNucleusOfTheHypothalamusGlia a owl:Class ;
     rdfs:label "DMH_Glia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:830 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:830 ],
         bmo:NeuronElectricalType ;
     skos:altLabel "Dorsomedial Nucleus Of The Hypothalamus Glia" ;
@@ -8019,12 +8001,6 @@ ct:DorsomedialNucleusOfTheHypothalamusGlia a owl:Class ;
 ct:DorsomedialNucleusOfTheHypothalamusIba1-PositiveCell a owl:Class ;
     rdfs:label "DMH_lba1+"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:830 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:830 ],
         bmo:NeuronMorphologicalType ;
@@ -8036,12 +8012,6 @@ ct:DorsomedialNucleusOfTheHypothalamusMicroglia a owl:Class ;
     rdfs:label "DMH_Microglia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:830 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:830 ],
         bmo:NeuronElectricalType ;
     skos:altLabel "Dorsomedial Nucleus Of The Hypothalamus Microglia" ;
@@ -8051,12 +8021,6 @@ ct:DorsomedialNucleusOfTheHypothalamusMicroglia a owl:Class ;
 ct:DorsomedialNucleusOfTheHypothalamusPrincipalCell a owl:Class ;
     rdfs:label "DMH_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:830 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:830 ],
         [ a owl:Restriction ;
@@ -8071,16 +8035,10 @@ ct:DorsomedialNucleusOfTheHypothalamusProjectionCell a owl:Class ;
     rdfs:label "DMH_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/830> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:830 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:830 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Dorsomedial Nucleus Of The Hypothalamus Projection Cell" ;
     skos:definition "Projection neuron in Dorsomedial nucleus of the hypothalamus"@en ;
@@ -8116,12 +8074,6 @@ ct:EndopiriformNucleusPrincipalCell a owl:Class ;
     rdfs:label "EP_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/942> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:942 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:942 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -8135,16 +8087,10 @@ ct:EndopiriformNucleusProjectionCell a owl:Class ;
     rdfs:label "EP_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/942> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:942 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:942 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Endopiriform Nucleus Projection Cell" ;
     skos:definition "projection neuron in endopiriform nucleus"@en ;
@@ -8662,12 +8608,6 @@ ct:HypothalamusCorticotropin-ReleasingHormoneCRH-Expressing a owl:Class ;
     rdfs:label "HY_CRH"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1097 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Hypothalamus Corticotropin-Releasing Hormone CRH-Expressing" ;
@@ -8677,12 +8617,6 @@ ct:HypothalamusCorticotropin-ReleasingHormoneCRH-Expressing a owl:Class ;
 ct:HypothalamusDopaminergicCell a owl:Class ;
     rdfs:label "HY_DA"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1097 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
@@ -8694,12 +8628,6 @@ ct:HypothalamusLow-ThresholdCalciumSpikingCell a owl:Class ;
     rdfs:label "HY_LTCaS"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1097 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Hypothalamus Low-Threshold Calcium Spiking Cell" ;
@@ -8709,12 +8637,6 @@ ct:HypothalamusLow-ThresholdCalciumSpikingCell a owl:Class ;
 ct:HypothalamusNonLow-ThresholdCalciumSpikingCell a owl:Class ;
     rdfs:label "HY_NLTCaS"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1097 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
@@ -8726,12 +8648,6 @@ ct:HypothalamusNoradrenaline-Inhibited a owl:Class ;
     rdfs:label "HY_NAI"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1097 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Hypothalamus Noradrenaline-Inhibited" ;
@@ -8742,12 +8658,6 @@ ct:HypothalamusPro-OpiomelanocortinPOMC-Positive a owl:Class ;
     rdfs:label "HY_POMC+"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1097 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Hypothalamus Pro-Opiomelanocortin POMC-Positive" ;
@@ -8757,12 +8667,6 @@ ct:HypothalamusPro-OpiomelanocortinPOMC-Positive a owl:Class ;
 ct:HypothalamusProjectionCell a owl:Class ;
     rdfs:label "HY_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1097 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         [ a owl:Restriction ;
@@ -8777,13 +8681,10 @@ ct:InferiorColliculusAuditoryThalamus-Projecting a owl:Class ;
     rdfs:label "IC_AT-PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
+            owl:someValuesFrom mba:4 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:4 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Inferior Colliculus Auditory Thalamus-Projecting" ;
     skos:definition "Auditory thalamus-projecting neuron in inferior colliculus"@en ;
@@ -8792,9 +8693,6 @@ ct:InferiorColliculusAuditoryThalamus-Projecting a owl:Class ;
 ct:InferiorColliculusInterneuron a owl:Class ;
     rdfs:label "IC_GABAergic"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:4 ],
         [ a owl:Restriction ;
@@ -8814,9 +8712,6 @@ ct:InferiorColliculusNeuropeptideYNPY-PositiveCell a owl:Class ;
     rdfs:label "IC_NPY+"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:4 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Inferior Colliculus Neuropeptide Y NPY-Positive Cell" ;
@@ -8827,13 +8722,10 @@ ct:InferiorColliculusPrincipalCell a owl:Class ;
     rdfs:label "IC_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
+            owl:someValuesFrom mba:4 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:4 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Inferior Colliculus Principal Cell" ;
     skos:definition "Principal cell in inferior colliculus"@en ;
@@ -8842,9 +8734,6 @@ ct:InferiorColliculusPrincipalCell a owl:Class ;
 ct:InferiorColliculusProjectionCell a owl:Class ;
     rdfs:label "IC_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:4 ],
         [ a owl:Restriction ;
@@ -8858,9 +8747,6 @@ ct:InferiorColliculusProjectionCell a owl:Class ;
 ct:InferiorColliculusPyramidalCell a owl:Class ;
     rdfs:label "IC_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/4> ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:4 ],
         [ a owl:Restriction ;
@@ -8941,12 +8827,6 @@ ct:LateralSeptumGlia a owl:Class ;
     rdfs:label "LSX_Glia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:275 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         bmo:NeuronElectricalType ;
     skos:altLabel "Lateral Septum Glia" ;
@@ -8956,12 +8836,6 @@ ct:LateralSeptumGlia a owl:Class ;
 ct:LateralSeptumIba1-Positive a owl:Class ;
     rdfs:label "LSX_lb1+Microglia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:275 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         bmo:NeuronElectricalType ;
@@ -8973,12 +8847,6 @@ ct:LateralSeptumMicroglia a owl:Class ;
     rdfs:label "LSX_Microglia"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:275 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         bmo:NeuronElectricalType ;
     skos:altLabel "Lateral Septum Microglia" ;
@@ -8989,16 +8857,10 @@ ct:LateralSeptumPrincipalCell a owl:Class ;
     rdfs:label "LSX_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:275 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Lateral Septum Principal Cell" ;
     skos:definition "Principal cell in lateral septum"@en ;
@@ -9007,12 +8869,6 @@ ct:LateralSeptumPrincipalCell a owl:Class ;
 ct:LateralSeptumProjectionCell a owl:Class ;
     rdfs:label "LSX_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:275 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         [ a owl:Restriction ;
@@ -9027,16 +8883,10 @@ ct:LateralSeptumPyramidalCell a owl:Class ;
     rdfs:label "LSX_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/275> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:275 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:275 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Lateral Septum Pyramidal Cell" ;
     skos:definition "Pyramidal neuron in lateral septum"@en ;
@@ -9059,12 +8909,6 @@ ct:LocusCoeruleusCA1-ProjectingCell a owl:Class ;
     rdfs:label "LC_CA1-PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:147 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:147 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -9078,16 +8922,10 @@ ct:LocusCoeruleusMPFC-A24-ProjectingCell a owl:Class ;
     rdfs:label "LC_mPFC-A24-PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:147 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:147 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Locus Coeruleus MPFC-A24-Projecting Cell" ;
     skos:definition "mPFC/A24-projecting neuron in locus coeruleus"@en ;
@@ -9096,12 +8934,6 @@ ct:LocusCoeruleusMPFC-A24-ProjectingCell a owl:Class ;
 ct:LocusCoeruleusNoradrenergicCell a owl:Class ;
     rdfs:label "LC_NA"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:147 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:147 ],
         [ a owl:Restriction ;
@@ -9115,12 +8947,6 @@ ct:LocusCoeruleusNoradrenergicCell a owl:Class ;
 ct:LocusCoeruleusPrincipalCell a owl:Class ;
     rdfs:label "LC_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:147 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:147 ],
         [ a owl:Restriction ;
@@ -9559,13 +9385,10 @@ ct:NucleusOfTheBrachiumPrincipalCell a owl:Class ;
     rdfs:label "NB_PrC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/580> ],
+            owl:someValuesFrom mba:580 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:580 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Nucleus Of The Brachium Principal Cell" ;
     skos:definition "Principal cell in nucleus of the brachium"@en ;
@@ -9575,13 +9398,10 @@ ct:NucleusOfTheBrachiumProjectionCell a owl:Class ;
     rdfs:label "NB_PT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/580> ],
+            owl:someValuesFrom mba:580 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:580 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Nucleus Of The Brachium Projection Cell" ;
     skos:definition "Projection neuron in nucleus of the brachium"@en ;
@@ -9591,13 +9411,10 @@ ct:NucleusOfTheBrachiumPyramidalCell a owl:Class ;
     rdfs:label "NB_PC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/580> ],
+            owl:someValuesFrom mba:580 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:580 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Nucleus Of The Brachium Pyramidal Cell" ;
     skos:definition "Pyramidal neuron in nucleus of the brachium"@en ;
@@ -10099,9 +9916,6 @@ ct:PremammillaryNucleusGlutamatergicCell a owl:Class ;
     rdfs:label "PM_Gl"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structured/980> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1004 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -10109,18 +9923,6 @@ ct:PremammillaryNucleusGlutamatergicCell a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:980 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1004 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:980 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:980 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1004 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Premammillary Nucleus Glutamatergic Cell" ;
     skos:definition "Glutamatergic neuron in premammillary nucleus"@en ;
@@ -10679,6 +10481,81 @@ ct:SubplatePrincipalCell a owl:Class ;
     skos:definition "Principal cell in subplate"@en ;
     skos:notation "CTXsp_PrC" .
 
+ct:SubstantiaInnominataCholinergicCell a owl:Class ;
+    rdfs:label "SI_ChC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:342 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:AcetylcholineNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Substantia Innominata Cholinergic Cell" ;
+    skos:definition "Cholinergic neuron in substantia innominata"@en ;
+    skos:notation "SI_ChC" .
+
+ct:SubstantiaInnominataDeepLayerTargetingCell a owl:Class ;
+    rdfs:label "SI_DL-TC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:342 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Substantia Innominata Deep Layer Targeting Cell" ;
+    skos:definition "Deep layer targeting neuron in substantia innominata"@en ;
+    skos:notation "SI_DL-TC" .
+
+ct:SubstantiaInnominataInterneuron a owl:Class ;
+    rdfs:label "SI_IN"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:342 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Substantia Innominata Interneuron" ;
+    skos:definition "Interneuron in substantia innominata"@en ;
+    skos:notation "SI_IN" .
+
+ct:SubstantiaInnominataPrincipalCell a owl:Class ;
+    rdfs:label "SI_PrC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:342 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Substantia Innominata Principal Cell" ;
+    skos:definition "Principal cell in substantia innominata"@en ;
+    skos:notation "SI_PrC" .
+
+ct:SubstantiaInnominataProjectionCell a owl:Class ;
+    rdfs:label "SI_PT"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:342 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Substantia Innominata Projection Cell" ;
+    skos:definition "Projection neuron in substantia innominata"@en ;
+    skos:notation "SI_PT" .
+
+ct:SubstantiaInnominataSomatosensoryCortexTargetingCell a owl:Class ;
+    rdfs:label "SI_SSCx-TC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:342 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "Substantia Innominata Somatosensory Cortex Targeting Cell" ;
+    skos:definition "Somatosensory cortex targeting neuron in substantia innominata"@en ;
+    skos:notation "SI_SSCx-TC" .
+
 ct:SubstantiaNigraAldh1A1-Positive a owl:Class ;
     rdfs:label "SN_aldh1a1+"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -10884,9 +10761,6 @@ ct:SubthalamicNucleusNeuron a owl:Class ;
 ct:SubventricularZone-DerivedVZ-SVZCells a owl:Class ;
     rdfs:label "SEZ_VZ-SVZ"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/98> ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:98 ],
         bmo:NeuronMorphologicalType ;
@@ -17237,9 +17111,6 @@ ct:MOBGR_DGC a owl:Class ;
     rdfs:label "MOBgr_dGC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/220> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:220 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -17255,13 +17126,10 @@ ct:MOBGR_SGC a owl:Class ;
     rdfs:label "MOBgr_sGC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/220> ],
+            owl:someValuesFrom mba:220 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:220 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "MOBGR_SGC" ;
     skos:definition """sGC have spheroidal soma of 6-8µm diameter.
@@ -17273,13 +17141,10 @@ ct:MOBMI_MCI a owl:Class ;
     rdfs:label "MOBmi_MC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/236> ],
+            owl:someValuesFrom mba:236 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:236 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "MOBMI_MCI" ;
     skos:definition """MC have spheroidal soma of 20µm diameter or more.
@@ -17292,13 +17157,10 @@ ct:MOBOPL_MTC a owl:Class ;
     rdfs:label "MOBopl_mTC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/244> ],
+            owl:someValuesFrom mba:244 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:244 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "MOBOPL_MTC" ;
     skos:definition "mTC have spheroidal soma of 15-20µm diameter. The apical dendrite have a diameter of 4µm for a length of 250µm. It branches in 4 small tufts dendrites of 0.8µm diameter each. Lateral dendrites have a diameter of 2.5µm for a length of 600µm."@en ;
@@ -17421,11 +17283,6 @@ obo:NCBITaxon_9606 a owl:Class ;
         <https://bbp.epfl.ch/ontologies/core/mtypes/TuftedPyramidalNeuron> ;
     skos:notation "L3_TPC"^^xsd:string ;
     skos:prefLabel "Layer 3 Tufted Pyramidal Cell"@en .
-
-bmo:AcetylcholineNeurotransmitterType a owl:Class ;
-    rdfs:label "Acetylcholine Neurotransmitter"@en ;
-    rdfs:subClassOf bmo:NeurotransmitterType ;
-    skos:prefLabel "Acetylcholine Neurotransmitter Type" .
 
 bmo:HippocampalSeptalCell a owl:Class ;
     rdfs:label "Hippocampal-septal cell"@en ;
@@ -18351,6 +18208,11 @@ mba:726 a owl:Class .
     skos:notation "DBC"^^xsd:string ;
     skos:prefLabel "Neocortex Double Bouquet Cell"@en .
 
+bmo:AcetylcholineNeurotransmitterType a owl:Class ;
+    rdfs:label "Acetylcholine Neurotransmitter"@en ;
+    rdfs:subClassOf bmo:NeurotransmitterType ;
+    skos:prefLabel "Acetylcholine Neurotransmitter Type" .
+
 bmo:DopamineNeurotransmitterType a owl:Class ;
     rdfs:label "Dopamine Neurotransmitter"@en ;
     rdfs:subClassOf bmo:NeurotransmitterType ;
@@ -18397,12 +18259,6 @@ ct:HypothalamusOxytocinergicNeuron a owl:Class ;
     rdfs:label "HY_OXT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/1097> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1097 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1097 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Hypothalamus Oxytocinergic Neuron" ;
@@ -18412,12 +18268,6 @@ ct:HypothalamusOxytocinergicNeuron a owl:Class ;
 ct:LocusCoeruleusGABAergicCell a owl:Class ;
     rdfs:label "LC_GABA"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/147> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:147 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:147 ],
         bmo:NeuronMorphologicalType ;
@@ -24582,12 +24432,6 @@ obo:UBERON_0005371 a owl:Class .
 ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 a owl:Class ;
     rdfs:label "BST_GLP-1"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom <http://api.brain-map.org/api/v2/data/Structure///api.brain-map.org/api/v2/data/Structure/351> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:351 ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:351 ],
         bmo:NeuronMorphologicalType ;
