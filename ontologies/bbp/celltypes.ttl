@@ -727,87 +727,6 @@ schema:title a owl:AnnotationProperty ;
     rdfs:label "cAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383215> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383216> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383217> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383221> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383222> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383223> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383224> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383225> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383226> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383227> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383229> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383230> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383231> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383233> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383234> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383235> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383236> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383239> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383240> ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:contribution ;
-            owl:someValuesFrom bmo:BBP_contribution ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasInstanceInSpecies ;
-            owl:someValuesFrom obo:NCBITaxon_10090 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_BP> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_SCA> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_Tri> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_OLM> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
@@ -905,6 +824,87 @@ schema:title a owl:AnnotationProperty ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383214> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383215> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383216> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383217> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383221> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383222> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383223> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383224> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383225> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383226> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383227> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383229> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383230> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383231> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383233> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383234> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383235> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383236> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383239> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383240> ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:contribution ;
+            owl:someValuesFrom bmo:BBP_contribution ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasInstanceInSpecies ;
+            owl:someValuesFrom obo:NCBITaxon_10090 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_BP> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_SCA> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_Tri> ],
         bmo:NeuronElectricalType ;
     skos:notation "cAC"^^xsd:string ;
     skos:prefLabel "Continuous accommodating electrical type"@en .
@@ -2458,6 +2458,33 @@ bmo:GenericExcitatoryNeuronEType a owl:Class ;
 bmo:GenericInhibitoryNeuronEType a owl:Class ;
     rdfs:label "GIN_etype"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:PrototypicFast-SpikingProjectionNeurons ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:SpontaneouslyActiveBurstyInterneurons ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:MediumSpinyProjectionNeuronType3 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/SmallCR+UnipolarNeurons> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/Medium-SizedCR+MultipolarNeuron> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:CP_NGF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:Fast-AdaptingInterneurons ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:ArkypallidalSlow-SpikingProjectionNeurons ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:CP_THIN ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:997 ],
         [ a owl:Restriction ;
@@ -3760,6 +3787,120 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
     rdfs:label "NCx_bSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:122_Pvalb_Vipr2 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:123_Pvalb_Vipr2 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:13_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:14_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:15_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:16_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:17_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:18_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:21_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:22_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:23_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:24_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:25_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:31_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:32_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:33_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:34_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:35_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:36_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:37_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:38_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:39_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:40_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:41_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:42_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:43_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:44_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:45_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:46_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:47_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:48_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:49_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:5_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:50_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:51_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:52_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:53_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:54_Vip_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:55_Vip_HPF ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
@@ -4034,120 +4175,6 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:121_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:122_Pvalb_Vipr2 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:123_Pvalb_Vipr2 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:13_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:14_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:15_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:16_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:17_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:18_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:21_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:22_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:23_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:24_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:25_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:31_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:32_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:33_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:34_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:35_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:36_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:37_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:38_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:39_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:40_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:41_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:42_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:43_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:44_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:45_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:46_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:47_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:48_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:49_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:5_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:50_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:51_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:52_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:53_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:54_Vip_HPF ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
     skos:notation "NCx_bSTUT"@en ;
     skos:prefLabel "Neocortex burst stuttering electrical type"@en .
@@ -11057,6 +11084,68 @@ ct:ZonaIncertaPyramidalCell a owl:Class ;
     skos:definition "Pyramidal neuron in zona incerta"@en ;
     skos:notation "ZI_PC" .
 
+ct:bIR_dSTR a owl:Class ;
+    rdfs:label "bIR_dSTR"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:CholingericTonicallyActiveInterneurons ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:CholingericTonicallyActiveInterneurons ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:CholingericTonicallyActiveInterneurons ],
+        bmo:NeuronElectricalType ;
+    skos:definition "Tonically active neurons, irregular spiking, burst firing"@en,
+        "Tonically active, prolonged biphasic AHP, high input resistance"@en .
+
+ct:cNAD_ltb_dSTR a owl:Class ;
+    rdfs:label "cNAD_ltb_dSTR"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:CP_LTS ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:NO-ReleasingLow-ThresholdSpikingInterneurons ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/NPY-SOM+Low-ThresholdSpikingInterneurons> ],
+        bmo:NeuronElectricalType ;
+    skos:definition "Low-threshold spiking, tonically active, slow and regular firing,  characteristic \"notch\" in the membrane potential during the depolarizing phase of the action potential, depolarizing sag, high input resistance"@en .
+
+ct:cNAD_lts_dSTR a owl:Class ;
+    rdfs:label "cNAD_lts_dSTR"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:CP_FS ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/celltypes/PV+Fast-SpikingNeurons> ],
+        bmo:NeuronElectricalType ;
+    skos:definition "Fast-spiking, regular spiking, non-adapting, low-threshold spike "@en .
+
+ct:dAD_htp_dSTR a owl:Class ;
+    rdfs:label "dAD_htp_dSTR"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:MediumSpinyProjectionNeuronType2 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:MediumSpinyProjectionNeuronType2 ],
+        bmo:NeuronElectricalType ;
+    skos:definition "delayed spike, adapting or accelerating, input rectification, irregular spiking, high-threshold spike, pacemaker-like firing"@en .
+
+ct:dAD_ltb_dSTR a owl:Class ;
+    rdfs:label "dAD_ltb_dSTR"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:MediumSpinyProjectionNeuronType1 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom ct:MediumSpinyProjectionNeuronType1 ],
+        bmo:NeuronElectricalType ;
+    skos:definition "delayed spike, adapting or accelerating, input rectification, low resting potential, regular spiking, low-threshold spike, burst firing"@en .
+
 tts:124_L2_IT_APr a owl:Class ;
     rdfs:label "124_L2 IT APr"^^xsd:string ;
     rdfs:seeAlso <https://www.sciencedirect.com/science/article/pii/S0092867421005018?dgcid=rss_sd_all> ;
@@ -13083,6 +13172,16 @@ ct:AmygdalaSuperficialNeurogliaformCell a owl:Class ;
     skos:definition "Superficial neurogliaform cell in amygdala"@en ;
     skos:notation "A_SNGF" .
 
+ct:ArkypallidalSlow-SpikingProjectionNeurons a owl:Class ;
+    rdfs:label "GPe_ASP"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1022 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Small oval-shaped soma (14.9 x 10.5 μm), dendrites were predominantly varicose"@en ;
+    skos:notation "GPe_ASP" ;
+    skos:prefLabel "Arkypallidal Slow-Spiking Projection Neurons" .
+
 ct:BSTalType1 a owl:Class ;
     rdfs:label "BSTal Type 1"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
@@ -13097,6 +13196,46 @@ ct:BSTalType3 a owl:Class ;
     rdfs:label "BSTal Type 3"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:notation "BSTal_Type3" .
+
+ct:CP_FS a owl:Class ;
+    rdfs:label "CP_FS"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "At least two subtypes, medium to large soma, 5-8 principal dendrites higher order varicose dendrites forming 200-300 μm diameter field, very dense, highly branched axon, 1.5-2 times wider than the dendritic field"@en ;
+    skos:notation "CP_FS" ;
+    skos:prefLabel "CP_FS" .
+
+ct:CP_LTS a owl:Class ;
+    rdfs:label "CP_LTS"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Medium sized soma, 3-5 aspiny dendrites, with little branching, very long sparsely branching axon extending 600-1000 μm from soma forming infrequent bouquets with varicosities"@en ;
+    skos:notation "CP_LTS" ;
+    skos:prefLabel "CP_LTS" .
+
+ct:CP_NGF a owl:Class ;
+    rdfs:label "CP_NGF"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Medium sized soma, 5-9 aspiny primary dendrites, very dense and highly compact higher order dendritic field, very dense axonal arborization extending throughout and beyond dendritic field"@en ;
+    skos:notation "CP_NGF" ;
+    skos:prefLabel "CP_NGF" .
+
+ct:CP_THIN a owl:Class ;
+    rdfs:label "CP_THIN"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "One(Type I) principal and three less frequent subtypes, all with medium sized somata, Type I emits 2-4 primary dendrites, higher order dendrites sparsely spinous, modest, dense, highly branched axon studed with varicosities"@en ;
+    skos:notation "CP_THIN" ;
+    skos:prefLabel "CP_THIN" .
 
 ct:ClaustrumAspinyPV-Negative a owl:Class ;
     rdfs:label "CLA_APV-"@en ;
@@ -13128,6 +13267,16 @@ ct:EPVGLUT1PlusOxtrEType a owl:Class ;
     rdfs:label "EP VGLUT1 + Oxtr EType"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:notation "EP_VGLUT1+Oxtr" .
+
+ct:Fast-AdaptingInterneurons a owl:Class ;
+    rdfs:label "CP_FA"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Medium sized soma, 3-5 aspiny varicose dendrites, relatively dense axonal field"@en ;
+    skos:notation "CP_FA" ;
+    skos:prefLabel "Fast-Adapting Interneurons" .
 
 ct:HYDepolarizationBlockEType a owl:Class ;
     rdfs:label "HY Depolarization Block EType"@en ;
@@ -13205,6 +13354,32 @@ ct:LateralHabenulaProjectionCell a owl:Class ;
     skos:definition "Projection neuron in lateral habenula"@en ;
     skos:notation "LH_PT" .
 
+<https://bbp.epfl.ch/ontologies/core/celltypes/Medium-SizedCR+MultipolarNeuron> a owl:Class ;
+    rdfs:label "CP_MCR"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Bipolar or ovoid cell body, with a maximum diameter ranging between 15 and 20 μm, that typically gives rise to two long, slightly varicose and poorly branched dendrites."@en ;
+    skos:notation "CP_MCR" ;
+    skos:prefLabel "Medium-Sized CR+ Multipolar Neuron" .
+
+ct:MediumSpinyProjectionNeuronType3 a owl:Class ;
+    rdfs:label "ACB_MSN3"@en,
+        "CP_MSN3"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:56 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "D1/D2-MSN" ;
+    skos:definition "Mean diameter of the D1/D2 MSN perikarya (soma) is 12.5 ± 0.4 μm and mean total dendritic length for the D1/D2 MSNs is 0.75 ± 0.06 mm. The number of dendritic branching points are 9.5 ± 0.8 and spine density is 4.0 ± 0.2 spines/10 μm."@en ;
+    skos:notation "ACB_MSN3",
+        "CP_MSN3" ;
+    skos:prefLabel "Medium Spiny Projection Neuron Type 3" .
+
 ct:MedullaNoncatecholaminergicCell a owl:Class ;
     rdfs:label "MY_NCATH"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -13215,11 +13390,61 @@ ct:MedullaNoncatecholaminergicCell a owl:Class ;
     skos:definition "Noncatecholaminergic neuron in medulla"@en ;
     skos:notation "MY_NCATH" .
 
+ct:NO-ReleasingLow-ThresholdSpikingInterneurons a owl:Class ;
+    rdfs:label "CP_NOLTS"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Medium sized soma, 3-5 aspiny dendrites, with little branching, very long sparsely branching axon extending 600-1000 μm from soma forming infrequent bouquets with varicosities"@en ;
+    skos:notation "CP_NOLTS" ;
+    skos:prefLabel "NO-Releasing Low-Threshold Spiking Interneurons" .
+
+<https://bbp.epfl.ch/ontologies/core/celltypes/NPY-SOM+Low-ThresholdSpikingInterneurons> a owl:Class ;
+    rdfs:label "ACB_LTS"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:56 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Medium sized soma, 3-5 aspiny dendrites, with little branching, very long sparsely branching axon extending 600-1000 μm from soma forming infrequent bouquets with varicosities"@en ;
+    skos:notation "ACB_LTS" ;
+    skos:prefLabel "NPY-SOM+ Low-Threshold Spiking Interneurons" .
+
+<https://bbp.epfl.ch/ontologies/core/celltypes/PV+Fast-SpikingNeurons> a owl:Class ;
+    rdfs:label "ACB_FS"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:56 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "At least two subtypes, medium to large soma, 5-8 principal dendrites higher order varicose dendrites forming 200-300 μm diameter field, very dense, highly branched axon, 1.5-2 times wider than the dendritic field"@en ;
+    skos:notation "ACB_FS" ;
+    skos:prefLabel "PV+ Fast-Spiking Neurons" .
+
+ct:PrototypicFast-SpikingProjectionNeurons a owl:Class ;
+    rdfs:label "GPe_PFP"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1022 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Multipolar, medium sized soma (19.5 x 12.3 μm), extensive dendritic branching which were mainly varicose"@en ;
+    skos:notation "GPe_PFP" ;
+    skos:prefLabel "Prototypic Fast-Spiking Projection Neurons" .
+
 ct:SchafferCollateralAssociatedCell a owl:Class ;
     rdfs:label "Schaffer collateral associated cell"@en ;
     rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType> ;
     skos:notation "SCA"^^xsd:string ;
     skos:prefLabel "Schaffer collateral associated cell"^^xsd:string .
+
+<https://bbp.epfl.ch/ontologies/core/celltypes/SmallCR+UnipolarNeurons> a owl:Class ;
+    rdfs:label "CP_SCR"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Cell body is round or ovoid, with a maximal diameter that ranges from 9 to 12 μm. Single, slightly varicose and moderately arborized process that extends as far as 100 μm."@en ;
+    skos:notation "CP_SCR" ;
+    skos:prefLabel "Small CR+ Unipolar Neurons" .
 
 ct:SolitaryNucleusMyelinatedBaroreceptorNeuron a owl:Class ;
     rdfs:label "NTS_BRN"@en ;
@@ -13230,6 +13455,16 @@ ct:SolitaryNucleusMyelinatedBaroreceptorNeuron a owl:Class ;
     skos:altLabel "Solitary Nucleus Myelinated Baroreceptor Neuron" ;
     skos:definition "Myelinated baroreceptor neurons (BRNs) in solitary nucleus"@en ;
     skos:notation "NTS_BRN" .
+
+ct:SpontaneouslyActiveBurstyInterneurons a owl:Class ;
+    rdfs:label "CP_SABI"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Medium sized soma, 3-5 aspiny varicose dendrites, sparsely spiny, sparse axonal arborization"@en ;
+    skos:notation "CP_SABI" ;
+    skos:prefLabel "Spontaneously Active Bursty Interneurons" .
 
 <https://bbp.epfl.ch/ontologies/core/mtypes/HorizontalPyramidalCell> a owl:Class ;
     rdfs:label "HPC"^^xsd:string ;
@@ -13266,9 +13501,6 @@ grid:grid.5333.6 a schema:Organization,
         prov:Agent ;
     rdfs:label "École Polytechnique Fédérale de Lausanne"@en .
 
-mba:1022 a owl:Class ;
-    rdfs:label "Globus pallidus, external segment"@en .
-
 mba:1031 a owl:Class ;
     rdfs:label "Globus pallidus, internal segment"@en .
 
@@ -13278,12 +13510,6 @@ mba:423 a owl:Class .
 
 mba:470 a owl:Class ;
     rdfs:label "Subthalamic nucleus"@en .
-
-mba:56 a owl:Class ;
-    rdfs:label "Nucleus accumbens"@en .
-
-mba:672 a owl:Class ;
-    rdfs:label "Caudoputamen"@en .
 
 mba:835 a owl:Class ;
     rdfs:label "Pallidum, ventral region"@en .
@@ -17166,6 +17392,40 @@ ct:MOBOPL_MTC a owl:Class ;
     skos:definition "mTC have spheroidal soma of 15-20µm diameter. The apical dendrite have a diameter of 4µm for a length of 250µm. It branches in 4 small tufts dendrites of 0.8µm diameter each. Lateral dendrites have a diameter of 2.5µm for a length of 600µm."@en ;
     skos:notation "MOBopl_mTC" .
 
+ct:MediumSpinyProjectionNeuronType1 a owl:Class ;
+    rdfs:label "ACB_MSN1"@en,
+        "CP_MSN1"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:56 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "D1-MSN",
+        "dMSN" ;
+    skos:definition "Mean diameter of the D1 MSN perikarya (soma) is 14.3 ± 0.4 μm and mean total dendritic length for the D1 MSNs is 1.48 ± 0.13 mm. The number of dendritic branching points are 16.6 ± 1.5 and spine density is 6.4 ± 0.3 spines/10 μm."@en ;
+    skos:notation "ACB_MSN1",
+        "CP_MSN1" ;
+    skos:prefLabel "Medium Spiny Projection Neuron Type 1" .
+
+ct:MediumSpinyProjectionNeuronType2 a owl:Class ;
+    rdfs:label "ACB_MSN2"@en,
+        "CP_MSN2"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:56 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "D2-MSN",
+        "iMSN" ;
+    skos:definition "Mean diameter of the D2 MSN perikarya (soma) is 15.0 ± 0.5 μm and mean total dendritic length for the D2 MSNs is 1.08 ± 0.08 mm. The number of dendritic branching points are 15.0 ± 1.4 and spine density is 6.6 ± 0.2 spines/10 μm."@en ;
+    skos:notation "ACB_MSN2",
+        "CP_MSN2" ;
+    skos:prefLabel "Medium Spiny Projection Neuron Type 2" .
+
 ct:MedullaCatecholaminergicCell a owl:Class ;
     rdfs:label "MY_CATH"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -17442,6 +17702,29 @@ ct:AxoAxonicCell a owl:Class ;
     skos:definition "Axo-axonic cells are also known as Chandelier cells. They possess radially oriented dendrites spanning all layers."@en ;
     skos:notation "AA"^^xsd:string ;
     skos:prefLabel "Axo-axonic cell"^^xsd:string .
+
+ct:CholingericTonicallyActiveInterneurons a owl:Class ;
+    rdfs:label "ACB_CTAN"@en,
+        "CP_CTAN"@en,
+        "GPe_CTAN"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1022 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:56 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "CIN",
+        "ChIN" ;
+    skos:definition "Large multipolar cell body of 23-50 lm in diameter and widespread aspiny dendrites that arborize up to 1 mm with 3-6 primary dendrites that extend in a radial pattern"@en,
+        "Large pyramidal or oval-shaped soma (27 x 15 μm) with extensive dendritic trees"@en ;
+    skos:notation "ACB_CTAN",
+        "CP_CTAN",
+        "GPe_CTAN" ;
+    skos:prefLabel "Cholingeric Tonically Active Interneurons" .
 
 ct:HippocampusBistratifiedCell a owl:Class ;
     rdfs:label "Hippocampus bistratified cell"@en ;
@@ -18738,6 +19021,9 @@ nsg:NestBasketPhenotype a owl:Class .
 nsg:NeurogliaformPhenotype a owl:Class .
 
 nsg:SmallBasketPhenotype a owl:Class .
+
+mba:1022 a owl:Class ;
+    rdfs:label "Globus pallidus, external segment"@en .
 
 mba:254 a owl:Class .
 
@@ -23457,6 +23743,9 @@ tts:L5_6_NP_CTX a owl:Class ;
 
 mba:463 a owl:Class .
 
+mba:56 a owl:Class ;
+    rdfs:label "Nucleus accumbens"@en .
+
 mba:843 a owl:Class .
 
 <http://uri.interlex.org/base/ilx_0383195> a owl:Class ;
@@ -27358,6 +27647,9 @@ obo:UBERON_0005394 a owl:Class .
     skos:notation "L6_DBC"^^xsd:string ;
     skos:prefLabel "Layer 6 Double Bouquet Cell"@en ;
     nsg:color "#ff9900" .
+
+mba:672 a owl:Class ;
+    rdfs:label "Caudoputamen"@en .
 
 mba:484682470 a owl:Class .
 
@@ -32606,6 +32898,8 @@ tts:123_Pvalb_Vipr2 a owl:Class ;
     tts:cell_set_alias "CS202106160_123"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
+mba:1097 a owl:Class .
+
 mba:549 a owl:Class .
 
 tts:CGE a owl:Class ;
@@ -32620,17 +32914,10 @@ tts:L4_5_6_IT_Car3 a owl:Class ;
     tts:cell_set_alias "CS202106160_502"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
-mba:1097 a owl:Class .
-
 bmo:inferredCanHaveMType a owl:ObjectProperty ;
     rdfs:label "inferredCanHaveMType"@en ;
     rdfs:subPropertyOf owl:topObjectProperty ;
     skos:definition "MType assigned by an expert scientist as the best match to the observed MType of a cell when the True MType is was found."@en .
-
-bmo:NeuronElectricalType a owl:Class ;
-    rdfs:label "Neuron Electrical Type"@en ;
-    rdfs:subClassOf bmo:NeuronType,
-        nsg:EType .
 
 bmo:BBP_contribution a owl:NamedIndividual,
         nsg:Contribution ;
@@ -32640,6 +32927,11 @@ bmo:BBP_contribution a owl:NamedIndividual,
 nsg:contribution a owl:ObjectProperty ;
     rdfs:label "contribution"@en ;
     rdfs:subPropertyOf owl:topObjectProperty .
+
+bmo:NeuronElectricalType a owl:Class ;
+    rdfs:label "Neuron Electrical Type"@en ;
+    rdfs:subClassOf bmo:NeuronType,
+        nsg:EType .
 
 tts:Glutamatergic_neurons a owl:Class ;
     rdfs:label "Glutamatergic Neurons Transcriptome Type"^^xsd:string ;
