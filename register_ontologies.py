@@ -5,18 +5,16 @@ from rdflib import PROV, Literal, Namespace, RDF, OWL, RDFS, Graph, term
 from kgforge.core.commons import Context
 from kgforge.core import KnowledgeGraphForge, Resource
 from kgforge.specializations.mappings import DictionaryMapping
+import rdflib
 
 import bmo.ontologies as bmo
 import bmo.registration as bmo_registration
 from bmo.argument_parsing import define_arguments
-from bmo.loading import load_ontologies, load_schemas
+from bmo.loading import DATA_JSONLD_CONTEXT_PATH, SCHEMA_JSONLD_CONTEXT_PATH, load_ontologies, load_schemas
 
 from bmo.utils import (
-    BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, SKOS, CELL_TYPE_ONTOLOGY_URI
+    BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, SKOS, _get_ontology_annotation_lang_context, CELL_TYPE_ONTOLOGY_URI
 )
-
-SCHEMA_JSONLD_CONTEXT_PATH = "./jsonldcontext/schema.json"
-DATA_JSONLD_CONTEXT_PATH = "./jsonldcontext/neuroshapes_org.json"
 
 WEBPROTEGE_TO_NEXUS = {
     # Target ontology ID's to define
@@ -77,7 +75,7 @@ def execute_ontology_registration(
         atlas_parcellation_ontology_id: str,
         data_update: bool,
         tag=None
-):
+) -> Tuple[str, Dict]:
     """
     Executes the registration process
 
@@ -93,7 +91,7 @@ def execute_ontology_registration(
     :param atlas_release_version:
     :param atlas_parcellation_ontology_id:
     :param tag: optional tag
-    :return:
+    :return: A tuple (the ontology id, the framed JSON payload of the regstered ontology)
     """
 
     print(f"Registering ontology {ontology_path} - Start")
@@ -121,49 +119,8 @@ def execute_ontology_registration(
     )
 
     if str(ontology) == BRAIN_REGION_ONTOLOGY_URI:
-        brain_region_generated_classes_resources_framed = _get_classes_in_ontology(
-            all_class_resources_framed_dict, brain_region_generated_classes
-        )
-
-        class_resources_framed.update(
-            {k: v
-             for k, v in brain_region_generated_classes_resources_framed.items()
-             if k not in class_resources_framed}
-        )
-        ontology_graph.add(
-            (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.atlasRelease, term.URIRef(atlas_release_id))
-        )
-        ontology_graph.add(
-            (term.URIRef(atlas_release_id), NXV.rev, Literal(atlas_release_version))
-        )
-        ontology_graph.add(
-            (term.URIRef(atlas_release_id), RDF.type, NSG.BrainAtlasRelease)
-        )
-
-        atlas_parcellation_ontology_derivation_bNode, \
-            atlas_parcellation_ontology_derivation_triples = _create_bnode_triples_from_value(
-            {
-                RDF.type: PROV.Derivation,
-                PROV.entity: term.URIRef(atlas_parcellation_ontology_id)
-            }
-        )
-
-        ontology_graph.add(
-            (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation,
-             atlas_parcellation_ontology_derivation_bNode)
-        )
-
-        ontology_graph.add(
-            (term.URIRef(atlas_parcellation_ontology_id), RDF.type, NSG.ParcellationOntology)
-        )
-
-        atlasRelease_derivation_bNode, atlasRelease_derivation_triples = _create_bnode_triples_from_value(
-            {RDF.type: PROV.Derivation, PROV.entity: term.URIRef(atlas_release_id)}
-        )
-
-        ontology_graph.add(
-            (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation, atlasRelease_derivation_bNode)
-        )
+        _update_brainregion_graph(ontology_graph, class_resources_framed, all_class_resources_framed_dict, brain_region_generated_classes,
+                                  atlas_release_id, atlas_release_version, atlas_parcellation_ontology_id)
 
     # if ontology is too large, remove `defines` relationships from the ontology
 
@@ -187,9 +144,57 @@ def execute_ontology_registration(
         print(f"Registering ontology {ontology_path} - Finish")
     else:
         print(f"Registering ontology {ontology_path} - Ignored")
-    print()
+    return str(ontology), ontology_json
     # bmo.remove_defines_relation(ontology_graph, ontology)
 
+
+def _update_brainregion_graph(ontology_graph, class_resources_framed, all_class_resources_framed_dict, 
+                              brain_region_generated_classes, atlas_release_id, atlas_release_version,
+                              atlas_parcellation_ontology_id):
+
+    brain_region_generated_classes_resources_framed = _get_classes_in_ontology(
+            all_class_resources_framed_dict, brain_region_generated_classes
+    )
+
+    class_resources_framed.update(
+        {k: v
+            for k, v in brain_region_generated_classes_resources_framed.items()
+            if k not in class_resources_framed}
+    )
+    ontology_graph.add(
+        (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.atlasRelease, term.URIRef(atlas_release_id))
+    )
+    ontology_graph.add(
+        (term.URIRef(atlas_release_id), NXV.rev, Literal(atlas_release_version))
+    )
+    ontology_graph.add(
+        (term.URIRef(atlas_release_id), RDF.type, NSG.BrainAtlasRelease)
+    )
+
+    atlas_parcellation_ontology_derivation_bNode, \
+        atlas_parcellation_ontology_derivation_triples = _create_bnode_triples_from_value(
+        {
+            RDF.type: PROV.Derivation,
+            PROV.entity: term.URIRef(atlas_parcellation_ontology_id)
+        }
+    )
+
+    ontology_graph.add(
+        (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation,
+            atlas_parcellation_ontology_derivation_bNode)
+    )
+
+    ontology_graph.add(
+        (term.URIRef(atlas_parcellation_ontology_id), RDF.type, NSG.ParcellationOntology)
+    )
+
+    atlasRelease_derivation_bNode, atlasRelease_derivation_triples = _create_bnode_triples_from_value(
+        {RDF.type: PROV.Derivation, PROV.entity: term.URIRef(atlas_release_id)}
+    )
+
+    ontology_graph.add(
+        (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation, atlasRelease_derivation_bNode)
+    )
 
 def _get_classes_in_ontology(all_class_resources_dict, uriref_iterator):
     return {
@@ -341,31 +346,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     print("Preparing ontology classes - Start")
     new_jsonld_context_dict = new_jsonld_context_document["@context"]
-
-    new_jsonld_context_dict["label"] = {
-        "@id": "rdfs:label",
-        "@language": "en"
-    }
-
-    new_jsonld_context_dict["prefLabel"] = {
-        "@id": "skos:prefLabel",
-        "@language": "en"
-    }
-
-    new_jsonld_context_dict["altLabel"] = {
-        "@id": "skos:altLabel",
-        "@language": "en"
-    }
-
-    new_jsonld_context_dict["definition"] = {
-        "@id": "skos:definition",
-        "@language": "en"
-    }
-
-    new_jsonld_context_dict["notation"] = {
-        "@id": "skos:notation",
-        "@language": "en"
-    }
+    new_jsonld_context_dict.update(_get_ontology_annotation_lang_context())
 
     bmo.replace_is_defined_by_uris(all_ontology_graphs, WEBPROTEGE_TO_NEXUS)
 

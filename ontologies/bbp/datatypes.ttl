@@ -35,11 +35,11 @@ skos:prefLabel a owl:AnnotationProperty .
     skos:prefLabel "ME-type density volume"^^xsd:string .
 
 <https://bbp.epfl.ch/ontologies/core/bmo/METypeRatio> a owl:Class ;
-    rdfs:label "METypeRatio"@en ;
+    rdfs:label "METype Ratio"@en ;
     skos:prefLabel "METype ratio"@en .
 
 <https://bbp.epfl.ch/ontologies/core/bmo/MTypeDensity> a owl:Class ;
-    rdfs:label "MTypeDensity"@en ;
+    rdfs:label "MType Density"@en ;
     rdfs:subClassOf nsg:CellDensityDataLayer ;
     skos:prefLabel "MType Density volume"@en .
 
@@ -102,7 +102,7 @@ prov:Entity a owl:Class ;
     rdfs:label "Entity"@en .
 
 nsg:ElectricalSeries a owl:Class ;
-    rdfs:label "ElectricalSeries"@en ;
+    rdfs:label "Electrical Series"@en ;
     rdfs:subClassOf nsg:TimeSeries ;
     skos:prefLabel "Electrical Series"@en .
 
@@ -117,7 +117,7 @@ nsg:PointCloud a owl:Class ;
     skos:prefLabel "Point Cloud"@en .
 
 nsg:TimeSeries a owl:Class ;
-    rdfs:label "TimeSeries"@en ;
+    rdfs:label "Time Series"@en ;
     rdfs:subClassOf schema:Dataset ;
     skos:prefLabel "Time Series"@en .
 
@@ -127,7 +127,7 @@ nsg:CellDensityDataLayer a owl:Class ;
     skos:prefLabel "Cell Density Volume"@en .
 
 nsg:NeuronMorphology a owl:Class ;
-    rdfs:label "NeuronMorphology"@en ;
+    rdfs:label "Neuron Morphology"@en ;
     rdfs:subClassOf schema:Dataset ;
     skos:prefLabel "Neuron Morphology"@en .
 

@@ -153,12 +153,16 @@ def frame_ontology(
 
     framed_onto_json = graph_free_jsonld(framed)
 
+    if "@id" in framed_onto_json:
+        framed_onto_json["@id"] = context.expand(framed_onto_json["@id"]) 
     if "skos:prefLabel" in framed_onto_json and framed_onto_json["skos:prefLabel"]:
         framed_onto_json["prefLabel"] = framed_onto_json.pop("skos:prefLabel", None)
     if "rdfs:label" in framed_onto_json and framed_onto_json["rdfs:label"]:
         framed_onto_json["label"] = framed_onto_json.pop("rdfs:label", None)
     if include_defined_classes:
         framed_onto_json["defines"] = class_resources_framed
+    elif "defines" in frame_json:
+        framed_onto_json.pop("defines")
     framed_onto_json["@context"] = context.iri
 
     if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
@@ -685,7 +689,7 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
     if "atlas_id" in cls and cls["atlas_id"] == "None":
         cls["atlas_id"] = None
     if atlas_release_id and atlas_release_version:
-        cls["atlasRelease"] = {"@id": atlas_release_id, "_rev": atlas_release_version}
+        cls["atlasRelease"] = {"@id": atlas_release_id, "@type":"BrainAtlasRelease", "_rev": atlas_release_version}
     return cls
 
 

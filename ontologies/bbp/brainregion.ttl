@@ -35,7 +35,6 @@
 @base <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> rdf:type owl:Ontology ;
-                                                                    schema:title "Brain Region Ontology"^^xsd:string ;
                                                                     rdfs:label "Brain Region Ontology"^^xsd:string ;
                                                                     owl:versionInfo "R103"^^xsd:string .
 
@@ -61,10 +60,6 @@
 
 ###  http://api.brain-map.org/api/v2/data/Structure/st_level
 <http://api.brain-map.org/api/v2/data/Structure/st_level> rdf:type owl:AnnotationProperty .
-
-
-###  http://schema.org/title
-schema:title rdf:type owl:AnnotationProperty .
 
 
 ###  http://schema.org/hasPart
@@ -23698,6 +23693,8 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer> ;
                                                 schema:about <http://api.brain-map.org/api/v2/data/Structure/315> ;                                                
                                                 rdfs:label "layer of neocortex"^^xsd:string ;
+                                                skos:prefLabel "Layer of Isocortex"^^xsd:string ;
+                                                skos:notation "layer_of_isocortex"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#definition> "One of the layers of the neocortex. These layers are defined by distinctive populations of cells based on somata size, shape, or density, that are aligned into sheets."^^xsd:string .
 
 ###  http://purl.obolibrary.org/obo/UBERON_0002305
@@ -23706,6 +23703,8 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer> ;
                                                 schema:about <http://api.brain-map.org/api/v2/data/Structure/375> ;
                                                 rdfs:label "layer of hippocampus"^^xsd:string ;
+                                                skos:prefLabel "Layer of Hippocampus"^^xsd:string ;
+                                                skos:notation "layer_of_hippocampus"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#definition> "The layers of the laminar structure of the hippocampus."^^xsd:string .
 
 
@@ -23731,7 +23730,7 @@ nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005390> .
 ###  http://purl.obolibrary.org/obo/UBERON_0007637
 <http://purl.obolibrary.org/obo/UBERON_0007637> rdf:type owl:Class ;
                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/UBERON_0002305> ;
-                                                rdfs:label "SO"^^xsd:string ;
+                                                rdfs:label "SLU"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "hippocampus stratum lucidum"^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#definition> "Layer of hippocampus area CA3 lying superficial to the pyramidal cell layer that contains mossy fiber axons projecting from the dentate gyrus. A slight thickening in this layer marks the border in some species between areas CA2 and CA3. dapted from Paxinos, G. The rat central nervous system, 2nd ed, Academic Press, San Diego, 1995, pg. 460)."^^xsd:string ;
                                                 <http://www.w3.org/2004/02/skos/core#notation> "SLU"^^xsd:string ;
