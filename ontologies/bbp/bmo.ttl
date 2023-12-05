@@ -3890,6 +3890,13 @@ bmo:TemplatePropertyCircuitProperty rdf:type owl:Class ;
                                     rdfs:label "TemplatePropertyCircuitProperty"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/TypeToSchemaMapping
+bmo:TypeToSchemaMapping rdf:type owl:Class ;
+            rdfs:subClassOf prov:Entity ;
+            rdfs:label "Type to Schema Mapping"@en ;
+            skos:definition "Mapping between types (classes) and data schemas for SHACL validation"^^xsd:string .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Vein
 bmo:Vein rdf:type owl:Class ;
          rdfs:subClassOf bmo:BloodVessel ;
@@ -4591,6 +4598,13 @@ nsg:Oligodendrocyte rdf:type owl:Class ;
                     rdfs:label "Oligodendrocyte"@en ;
                     skos:prefLabel "Oligodendrocyte"^^xsd:string ;
                     nsg:color "#99cc00"^^xsd:string .
+
+
+### https://bbp.epfl.ch/ontologies/core/bmo/PlaceholderNeuronMorphology ;
+bmo:PlaceholderNeuronMorphology rdf:type owl:Class ;
+                                rdfs:subClassOf nsg:NeuronMorphology ;
+                                rdfs:label "Placeholder Neuron Morphology"@en ;
+                                skos:definition "Model of a neuron morphology obtained from simple geometrical shapes, such as cylinders and spheres."^^xsd:string .
 
 
 ###  https://neuroshapes.org/PotassiumChannel
