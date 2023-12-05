@@ -310,9 +310,6 @@
 
 vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
-schema:title a owl:AnnotationProperty ;
-    rdfs:label "title"@en .
-
 <http://uri.interlex.org/base/ilx_0100176> a owl:Class ;
     rdfs:label "Abducens Nucleus Motor Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
@@ -10870,8 +10867,7 @@ ct:SuprachiasmaticNucleusNeuron a owl:Class ;
     skos:altLabel "Suprachiasmatic nucleus neuron"@en .
 
 ct:SupratrigeminalNucleusInterneuron a owl:Class ;
-    rdfs:label "SUT_IN"@en,
-        "Supratrigeminal Nucleus Interneuron"@en ;
+    rdfs:label "Supratrigeminal Nucleus Interneuron"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
@@ -10920,8 +10916,7 @@ ct:ThalamusRelayCell a owl:Class ;
     skos:altLabel "Thalamic relay cell"^^xsd:string .
 
 ct:TrigeminalNucleusPrincipalCell a owl:Class ;
-    rdfs:label "MEV_PrC"@en,
-        "Trigeminal Nucleus Principal Cell"@en ;
+    rdfs:label "Trigeminal Nucleus Principal Cell"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
@@ -12375,7 +12370,6 @@ nsg:layer a owl:ObjectProperty ;
 <urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec> a owl:Ontology ;
     rdfs:label "Cell Types Ontology"^^xsd:string ;
     vann:preferredNamespacePrefix "celltypes"^^xsd:string ;
-    schema:title "Cell Types Ontology"^^xsd:string ;
     owl:versionInfo "R1658"^^xsd:string .
 
 mba:262 a owl:Class .
@@ -13252,7 +13246,7 @@ ct:CaudoputamenNO-ReleasingLow-ThresholdSpikingInterneuron a owl:Class ;
     skos:notation "CP_NOLTS" ;
     skos:prefLabel "Caudoputamen NO-Releasing Low-Threshold Spiking Interneuron" .
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/CaudoputamenNPY-SOM+Low-ThresholdSpikingInterneuron> a owl:Class ;
+<https://bbp.epfl.ch/ontologies/core/celltypes/CaudoputamenNPY-SOMPlusLow-ThresholdSpikingInterneuron> a owl:Class ;
     rdfs:label "CP_LTS"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
@@ -13500,7 +13494,7 @@ ct:NucleusAccumbensMediumSpinyProjectionNeuronType3 a owl:Class ;
     skos:notation "ACB_MSN3" ;
     skos:prefLabel "Nucleus Accumbens Medium Spiny Projection Neuron Type 3" .
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/NucleusAccumbensNPY-SOM+Low-ThresholdSpikingInterneuron> a owl:Class ;
+<https://bbp.epfl.ch/ontologies/core/celltypes/NucleusAccumbensNPY-SOMPlusLow-ThresholdSpikingInterneuron> a owl:Class ;
     rdfs:label "ACB_LTS"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
@@ -13543,28 +13537,38 @@ ct:SolitaryNucleusMyelinatedBaroreceptorNeuron a owl:Class ;
     skos:notation "HPC"^^xsd:string ;
     skos:prefLabel "Horizontal Pyramidal Neuron"@en .
 
-nsg:BiopolarPyramidalPhenotype a owl:Class .
+nsg:BiopolarPyramidalPhenotype a owl:Class ;
+    rdfs:label "Biopolar Pyramidal Phenotype"@en .
 
 nsg:Contribution a owl:Class ;
     rdfs:label "Contribution"@en .
 
-nsg:DescendingAxonPhenotype a owl:Class .
+nsg:DescendingAxonPhenotype a owl:Class   ;
+    rdfs:label "Descending Axon Phenotype"@en .
 
-<https://neuroshapes.org/GO:1990021Phenotype> a owl:Class .
+<https://neuroshapes.org/GO:1990021Phenotype> a owl:Class ;
+    rdfs:label "Schaffer axon collateral"@en .
 
-nsg:HorizontalAxonPhenotype a owl:Class .
+nsg:HorizontalAxonPhenotype a owl:Class  ;
+    rdfs:label "Horizontal Axon Phenotype"@en .
 
-nsg:HorizontalPyramidalPhenotype a owl:Class .
+nsg:HorizontalPyramidalPhenotype a owl:Class  ;
+    rdfs:label "Horizontal Pyramidal Phenotype"@en .
 
-nsg:LargeAxonPhenotype a owl:Class .
+nsg:LargeAxonPhenotype a owl:Class  ;
+    rdfs:label "Large Axon Phenotype"@en .
 
-nsg:PerforantPathwayAssociatedPhenotype a owl:Class .
+nsg:PerforantPathwayAssociatedPhenotype a owl:Class  ;
+    rdfs:label "Perforant Pathway Associated Phenotype"@en .
 
-nsg:PyramidalPhenotype a owl:Class .
+nsg:PyramidalPhenotype a owl:Class  ;
+    rdfs:label "Pyramidal Phenotype"@en .
 
-nsg:SmallAxonPhenotype a owl:Class .
+nsg:SmallAxonPhenotype a owl:Class  ;
+    rdfs:label "Small Axon Phenotype"@en .
 
-nsg:SpinyStellatePhenotype a owl:Class .
+nsg:SpinyStellatePhenotype a owl:Class  ;
+    rdfs:label "Spiny Stellate Phenotype"@en .
 
 grid:grid.5333.6 a schema:Organization,
         owl:NamedIndividual,
@@ -13578,8 +13582,7 @@ mba:19 a owl:Class .
 
 mba:423 a owl:Class .
 
-mba:470 a owl:Class ;
-    rdfs:label "Subthalamic nucleus"@en .
+mba:470 a owl:Class .
 
 mba:835 a owl:Class ;
     rdfs:label "Pallidum, ventral region"@en .
@@ -17512,13 +17515,15 @@ tts:PT a owl:Class ;
     tts:cell_set_alias "CS202106160_527"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
-nsg:BistratifiedPhenotype a owl:Class .
+nsg:BistratifiedPhenotype a owl:Class ;
+    rdfs:label "Bistratified Phenotype"@en .
 
 nsg:EType a owl:Class ;
     rdfs:label "Brain Cell Electrical Type"@en ;
     rdfs:subClassOf bmo:BrainCellType .
 
-nsg:InvertedPyramidalPhenotype a owl:Class .
+nsg:InvertedPyramidalPhenotype a owl:Class ;
+    rdfs:label "Inverted Pyramidal Phenotype"@en .
 
 nsg:MType a owl:Class ;
     rdfs:label "Brain Cell Morphological Type"@en ;
@@ -17892,16 +17897,20 @@ tts:VLMC a owl:Class ;
     tts:cell_set_alias "CS202106160_606"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
-nsg:EarlyBifurcatingTuftedPyramidalPhenotype a owl:Class .
+nsg:EarlyBifurcatingTuftedPyramidalPhenotype a owl:Class ;
+                                    rdfs:label "Early Bifurcating Tufted Pyramidal Phenotype"@en .
+
 
 nsg:Glia a owl:Class ;
     rdfs:label "Glia"@en ;
     rdfs:subClassOf bmo:BrainCell ;
     skos:prefLabel "Glia" .
 
-nsg:NarrowTuftedPyramidalPhenotype a owl:Class .
+nsg:NarrowTuftedPyramidalPhenotype a owl:Class ;
+                                    rdfs:label "Narrow Tufted Pyramidal Phenotype"@en .
 
-nsg:UntuftedPyramidalPhenotype a owl:Class .
+nsg:UntuftedPyramidalPhenotype a owl:Class ;
+                             rdfs:label "Untufted Pyramidal Phenotype"@en .
 
 mba:589508447 a owl:Class .
 
@@ -19014,19 +19023,26 @@ tts:NP_SUB a owl:Class ;
     tts:cell_set_alias "CS202106160_541"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
-nsg:BituftedPhenotype a owl:Class .
+nsg:BituftedPhenotype a owl:Class ;
+                    rdfs:label "Bitufted Phenotype"@en .
 
-nsg:DoubleBouquetPhenotype a owl:Class .
+nsg:DoubleBouquetPhenotype a owl:Class ;
+                    rdfs:label "Double Bouquet Phenotype"@en .
 
-nsg:LargeBasketPhenotype a owl:Class .
+nsg:LargeBasketPhenotype a owl:Class ;
+                    rdfs:label "Large Basket Phenotype"@en .
 
-nsg:LateBifurcatingTuftedPyramidalPhenotype a owl:Class .
+nsg:LateBifurcatingTuftedPyramidalPhenotype a owl:Class ;
+                    rdfs:label "Late Bifurcating Tufted Pyramidal Phenotype"@en .
 
-nsg:NestBasketPhenotype a owl:Class .
+nsg:NestBasketPhenotype a owl:Class ;
+                    rdfs:label "NestBasket Phenotype"@en .
 
-nsg:NeurogliaformPhenotype a owl:Class .
+nsg:NeurogliaformPhenotype a owl:Class ;
+                    rdfs:label "Neurogliaform Phenotype"@en .
 
-nsg:SmallBasketPhenotype a owl:Class .
+nsg:SmallBasketPhenotype a owl:Class ;
+                    rdfs:label "SmallBasket Phenotype"@en .
 
 mba:254 a owl:Class .
 
@@ -19443,11 +19459,14 @@ tts:L2_IT_ENTm a owl:Class ;
     tts:cell_set_alias "CS202106160_486"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
-nsg:BipolarPhenotype a owl:Class .
+nsg:BipolarPhenotype a owl:Class ;
+    rdfs:label "Bipolar Phenotype"^^xsd:string .
 
-nsg:ChandelierPhenotype a owl:Class .
+nsg:ChandelierPhenotype a owl:Class ;
+    rdfs:label "Chandelier Phenotype"^^xsd:string .
 
-nsg:TuftedPyramidalPhenotype a owl:Class .
+nsg:TuftedPyramidalPhenotype a owl:Class ;
+    rdfs:label "Tufted Pyramidal Phenotype"^^xsd:string .
 
 mba:477 a owl:Class .
 
@@ -23530,7 +23549,8 @@ tts:L3_IT_ENT a owl:Class ;
     tts:cell_set_alias "CS202106160_480"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
-nsg:MartinottiPhenotype a owl:Class .
+nsg:MartinottiPhenotype a owl:Class ;
+    rdfs:label "Martinotti Phenotype"^^xsd:string.
 
 <http://uri.interlex.org/base/ilx_0777218> a owl:Class ;
     rdfs:label "NGC"^^xsd:string ;
@@ -25962,11 +25982,9 @@ tts:Oligodendrocytes a owl:Class ;
     tts:cell_set_alias "CS202106160_589"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
-mba:374 a owl:Class ;
-    rdfs:label "Substantia nigra, compact part"@en .
+mba:374 a owl:Class .
 
-mba:381 a owl:Class ;
-    rdfs:label "Substantia nigra, reticular part"@en .
+mba:381 a owl:Class .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> a owl:Class ;
     rdfs:label "Neocortex EType"@en ;
@@ -31617,8 +31635,7 @@ tts:L5_PT_CTX a owl:Class ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
 <http://uri.interlex.org/base/ilx_0738230> a owl:Class ;
-    rdfs:label "TH_TC"@en,
-        "Thalamo-Cortical Cell"@en ;
+    rdfs:label "Thalamo-Cortical Cell"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:549 ],

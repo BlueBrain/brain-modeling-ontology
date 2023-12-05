@@ -101,9 +101,9 @@ bmo:ElectricalStimulus a owl:Class ;
     skos:editorialNote "How is this related to 'Protocol' in BluePyEModel"^^xsd:string .
 
 bmo:METypeRatio a owl:Class ;
-    rdfs:label "ME-Type Ratio"@en ;
+    rdfs:label "METype Ratio"@en ;
     rdfs:subClassOf bmo:ModelBrainParameter ;
-    skos:prefLabel "ME-Type Ratio"^^xsd:string .
+    skos:prefLabel "METype Ratio"^^xsd:string .
 
 bmo:ModelBiochemicalReactionParameter a owl:Class ;
     rdfs:label "Model Biochemical Reaction Parameter"@en ;
@@ -113,7 +113,6 @@ bmo:ModelBiochemicalReactionParameter a owl:Class ;
 <https://bbp.epfl.ch/ontologies/core/parameters> a owl:Ontology ;
     rdfs:label "Brain Modeling Parameter Ontology"^^xsd:string ;
     vann:preferredNamespacePrefix "parms"^^xsd:string ;
-    schema:title "Brain Modeling Parameter Ontology"^^xsd:string ;
     owl:versionInfo "R4"^^xsd:string .
 
 parms:DecayTimeConstant a owl:Class ;

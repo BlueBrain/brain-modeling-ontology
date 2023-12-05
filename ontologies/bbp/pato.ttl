@@ -674,7 +674,6 @@ obo:RO_0040042 a owl:AnnotationProperty ;
 obo:pato.owl a owl:Ontology ;
     rdfs:label "PATO - the Phenotype And Trait Ontology"^^xsd:string ;
     schema:description "An ontology of phenotypic qualities (properties, attributes or characteristics)."^^xsd:string ;
-    schema:title "PATO - the Phenotype And Trait Ontology"^^xsd:string ;
     oboInOwl:default-namespace "quality"^^xsd:string ;
     oboInOwl:hasOBOFormatVersion "1.2"^^xsd:string ;
     owl:versionIRI <http://purl.obolibrary.org/obo/pato/releases/2020-02-09/pato.owl> ;
@@ -695,8 +694,6 @@ obo:pato.owl a owl:Ontology ;
 dc:creator a owl:AnnotationProperty .
 
 dc:date a owl:AnnotationProperty .
-
-schema:title a owl:AnnotationProperty .
 
 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> a owl:AnnotationProperty .
 

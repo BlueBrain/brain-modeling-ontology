@@ -38,3 +38,33 @@ def remove_non_ascii(filepath):
 
         with open(filepath, "w") as f:
             f.write(content)
+
+
+def _get_ontology_annotation_lang_context():
+    context_dict = {}
+    context_dict["label"] = {
+        "@id": "rdfs:label",
+        "@language": "en"
+    }
+
+    context_dict["prefLabel"] = {
+        "@id": "skos:prefLabel",
+        "@language": "en"
+    }
+
+    context_dict["altLabel"] = {
+        "@id": "skos:altLabel",
+        "@language": "en"
+    }
+
+    context_dict["definition"] = {
+        "@id": "skos:definition",
+        "@language": "en"
+    }
+
+    context_dict["notation"] = {
+        "@id": "skos:notation",
+        "@language": "en"
+    }
+
+    return context_dict

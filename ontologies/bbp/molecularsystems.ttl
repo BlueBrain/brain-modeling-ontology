@@ -83,7 +83,7 @@ bmo:NGVUnit a owl:Class ;
     skos:definition "A neuron + glia + vasculature unit"^^xsd:string .
 
 bmo:ProteinProteinInteraction a owl:Class ;
-    rdfs:label "ProteinProteinInteraction"@en ;
+    rdfs:label "Protein Protein Interaction"@en ;
     rdfs:subClassOf bmo:BiochemicalReaction ;
     skos:altLabel "ProteinProteinInteraction"@en .
 

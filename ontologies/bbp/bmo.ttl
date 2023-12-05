@@ -37,7 +37,6 @@
 
 <https://bbp.epfl.ch/ontologies/core/bmo> rdf:type owl:Ontology ;
                                            vann:preferredNamespacePrefix "bmo"^^xsd:string ;
-                                           schema:title "Brain Modeling Ontology"^^xsd:string ;
                                            rdfs:label "Brain Modeling Ontology"^^xsd:string ;
                                            owl:versionInfo "R831"^^xsd:string .
 
@@ -53,11 +52,6 @@ vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 schema:name rdf:type owl:AnnotationProperty ;
             rdfs:label "name"@en ;
             skos:altLabel "name"@en .
-
-
-###  http://schema.org/title
-schema:title rdf:type owl:AnnotationProperty ;
-             rdfs:label "title"@en .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
@@ -718,60 +712,70 @@ obo:GO_0005575 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/GO_0005739
 obo:GO_0005739 rdf:type owl:Class ;
+               rdfs:label "mitochondrion"^^xsd:string ;
                owl:equivalentClass bmo:Mitochondrion ;
                rdfs:subClassOf bmo:Mapping .
 
 
 ###  http://purl.obolibrary.org/obo/GO_0005783
 obo:GO_0005783 rdf:type owl:Class ;
+               rdfs:label "endoplasmic reticulum"^^xsd:string ;
                owl:equivalentClass bmo:EndoplasmicReticulum ;
                rdfs:subClassOf bmo:Mapping .
 
 
 ###  http://purl.obolibrary.org/obo/GO_0005829
 obo:GO_0005829 rdf:type owl:Class ;
+               rdfs:label "cytosol"^^xsd:string ;
                owl:equivalentClass bmo:Cytosol ;
                rdfs:subClassOf bmo:Mapping .
 
 
 ###  http://purl.obolibrary.org/obo/GO_0030424
 obo:GO_0030424 rdf:type owl:Class ;
+               rdfs:label "axon"^^xsd:string ;
                owl:equivalentClass nsg:Axon ;
                rdfs:subClassOf bmo:Mapping .
 
 
 ###  http://purl.obolibrary.org/obo/GO_0030425
 obo:GO_0030425 rdf:type owl:Class ;
+               rdfs:label "dendrite"^^xsd:string ;
                owl:equivalentClass nsg:Dendrite ;
                rdfs:subClassOf bmo:Mapping .
 
 
 ###  http://purl.obolibrary.org/obo/GO_0043025
 obo:GO_0043025 rdf:type owl:Class ;
+               rdfs:label "neuronal cell body"^^xsd:string ;
                owl:equivalentClass bmo:Soma ;
                rdfs:subClassOf bmo:Mapping .
 
 
 ###  http://purl.obolibrary.org/obo/GO_0043226
 obo:GO_0043226 rdf:type owl:Class ;
+               rdfs:label "organelle"^^xsd:string ;
                owl:equivalentClass bmo:Organelle ;
                rdfs:subClassOf bmo:Mapping .
 
 
 ###  http://purl.obolibrary.org/obo/GO_0097440
 obo:GO_0097440 rdf:type owl:Class ;
+               rdfs:label "apical dendrite"^^xsd:string ;
                owl:equivalentClass nsg:ApicalDendrite ;
                rdfs:subClassOf bmo:Mapping .
 
 
 ###  http://purl.obolibrary.org/obo/GO_0097441
 obo:GO_0097441 rdf:type owl:Class ;
+               rdfs:label "basal dendrite"^^xsd:string ;
                owl:equivalentClass nsg:BasalDendrite ;
                rdfs:subClassOf bmo:Mapping .
 
 
 ###  http://purl.obolibrary.org/obo/UBERON_0000955
 obo:UBERON_0000955 rdf:type owl:Class ;
+                   rdfs:label "brain"^^xsd:string ;
                    owl:equivalentClass bmo:WholeBrain ;
                    rdfs:subClassOf bmo:Mapping .
 
@@ -1334,7 +1338,7 @@ bmo:Ca_HVA2 rdf:type owl:Class ;
                               owl:someValuesFrom nsg:Ca
                             ] ;
             rdfs:label "Ca_HVA2"@en ;
-            skos:definition "High-voltage-gaterd calcium current"^^xsd:string .
+            skos:definition "High-voltage-gated calcium current"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Ca_LVAst
@@ -1345,7 +1349,7 @@ bmo:Ca_LVAst rdf:type owl:Class ;
                                owl:someValuesFrom nsg:Ca
                              ] ;
              rdfs:label "Ca_LVAst"@en ;
-             skos:definition "Low-voltage-gaterd calcium current"^^xsd:string .
+             skos:definition "Low-voltage-gated calcium current"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/CalciumDynamics
@@ -2260,8 +2264,8 @@ bmo:METypeCircuitProperty rdf:type owl:Class ;
 ###  https://bbp.epfl.ch/ontologies/core/bmo/MTypeDensity
 bmo:MTypeDensity rdf:type owl:Class ;
                  rdfs:subClassOf schema:Dataset ;
-                 rdfs:label "M-Type Density"@en ;
-                 skos:prefLabel "M-Type Density"^^xsd:string .
+                 rdfs:label "MType Density"@en ;
+                 skos:prefLabel "MType Density volume"^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/METypePropertyGenerator
@@ -3946,8 +3950,8 @@ bmo:WorkflowDefinition rdf:type owl:Class ;
                        rdfs:label "WorkflowDefinition"@en .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/Ca2+ActivatedK+Current
-<https://bbp.epfl.ch/ontologies/core/bmo/Ca2+ActivatedK+Current> rdf:type owl:Class ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/Ca2PlusActivatedKPlusCurrent
+<https://bbp.epfl.ch/ontologies/core/bmo/Ca2PlusActivatedKPlusCurrent> rdf:type owl:Class ;
                                                                  rdfs:subClassOf bmo:IonCurrent ,
                                                                                  [ rdf:type owl:Restriction ;
                                                                                    owl:onProperty nsg:ion ;
@@ -3958,8 +3962,8 @@ bmo:WorkflowDefinition rdf:type owl:Class ;
                                                                  skos:definition "Small-conductance calcium-activated potassium current."^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/PersistentK+Current
-<https://bbp.epfl.ch/ontologies/core/bmo/PersistentK+Current> rdf:type owl:Class ;
+###  https://bbp.epfl.ch/ontologies/core/bmo/PersistentKPlusCurrent
+<https://bbp.epfl.ch/ontologies/core/bmo/PersistentKPlusCurrent> rdf:type owl:Class ;
                                                               rdfs:subClassOf bmo:IonCurrent ,
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty nsg:ion ;
@@ -3972,7 +3976,7 @@ bmo:WorkflowDefinition rdf:type owl:Class ;
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/PersistentNa+Current
-<https://bbp.epfl.ch/ontologies/core/bmo/PersistentNa+Current> rdf:type owl:Class ;
+<https://bbp.epfl.ch/ontologies/core/bmo/PersistentNaPlusCurrent> rdf:type owl:Class ;
                                                                rdfs:subClassOf bmo:IonCurrent ,
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty nsg:ion ;
@@ -3983,7 +3987,7 @@ bmo:WorkflowDefinition rdf:type owl:Class ;
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TransientK+Current
-<https://bbp.epfl.ch/ontologies/core/bmo/TransientK+Current> rdf:type owl:Class ;
+<https://bbp.epfl.ch/ontologies/core/bmo/TransientKPlusCurrent> rdf:type owl:Class ;
                                                              rdfs:subClassOf bmo:IonCurrent ,
                                                                              [ rdf:type owl:Restriction ;
                                                                                owl:onProperty nsg:ion ;
@@ -3996,7 +4000,7 @@ bmo:WorkflowDefinition rdf:type owl:Class ;
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/TransientNa+Current
-<https://bbp.epfl.ch/ontologies/core/bmo/TransientNa+Current> rdf:type owl:Class ;
+<https://bbp.epfl.ch/ontologies/core/bmo/TransientNaPlusCurrent> rdf:type owl:Class ;
                                                               rdfs:subClassOf bmo:IonCurrent ,
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty nsg:ion ;
@@ -4124,6 +4128,7 @@ nsg:Ca rdf:type owl:Class ;
 
 ###  https://neuroshapes.org/CalciumChannel
 nsg:CalciumChannel rdf:type owl:Class ;
+                   rdfs:label "Calcium Channel"^^xsd:string ;
                    rdfs:subClassOf bmo:IonChannel ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty nsg:associatedIon ;
@@ -4209,6 +4214,7 @@ bmo:ChemicalSynapticConnection rdf:type owl:Class ;
 
 ###  https://neuroshapes.org/ChlorideChannel
 nsg:ChlorideChannel rdf:type owl:Class ;
+                    rdfs:label "Chloride Channel"^^xsd:string ;
                     rdfs:subClassOf bmo:IonChannel ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty nsg:associatedIon ;
@@ -4589,6 +4595,7 @@ nsg:Oligodendrocyte rdf:type owl:Class ;
 
 ###  https://neuroshapes.org/PotassiumChannel
 nsg:PotassiumChannel rdf:type owl:Class ;
+                     rdfs:label "Potassium Channel"@en ;
                      rdfs:subClassOf bmo:IonChannel ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty nsg:associatedIon ;
