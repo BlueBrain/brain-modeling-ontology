@@ -1,11 +1,11 @@
 import argparse
 import json
+import copy
 from typing import Dict, Any, List, Tuple, Optional
-from rdflib import PROV, Literal, Namespace, RDF, OWL, RDFS, Graph, term
+from rdflib import PROV, Literal, RDF, OWL, RDFS, Graph, term
 from kgforge.core.commons import Context
 from kgforge.core import KnowledgeGraphForge, Resource
 from kgforge.specializations.mappings import DictionaryMapping
-import rdflib
 
 import bmo.ontologies as bmo
 import bmo.registration as bmo_registration
@@ -129,21 +129,18 @@ def execute_ontology_registration(
 
     # make list of framed classes
     class_resources_framed = list(class_resources_framed.values())
-    
+
     # Frame ontology given the provided context
     ontology_json = bmo.frame_ontology(
         ontology_graph, new_forge_context, new_jsonld_context_dict, class_resources_framed,
         include_defined_classes
     )
 
-    if data_update:
-        bmo_registration.register_ontology(
-            forge, ontology_json, ontology_path, ontology_graph,
-            tag, list(class_resources_mapped.values())
-        )
-        print(f"Registering ontology {ontology_path} - Finish")
-    else:
-        print(f"Registering ontology {ontology_path} - Ignored")
+    register_ontology(
+        forge, ontology_json, ontology_path, ontology_graph,
+        tag, class_resources_mapped=list(class_resources_mapped.values()), data_update=data_update
+    )
+
     return str(ontology), ontology_json
     # bmo.remove_defines_relation(ontology_graph, ontology)
 
@@ -232,6 +229,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     atlas_parcellation_ontology_version = arguments.atlas_parcellation_ontology_version
     atlas_parcellation_ontology_bucket = arguments.atlas_parcellation_ontology_bucket
     data_update = not arguments.no_data_update
+    exclude_deprecated_from_context = arguments.exclude_deprecated_from_context
 
     if environment == "staging":
         endpoint = "https://staging.nise.bbp.epfl.ch/nexus/v1"
@@ -301,11 +299,11 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     )
 
     new_jsonld_context, ontology_errors = bmo.build_context_from_ontology(
-        all_ontology_graphs, forge_model_context
+        all_ontology_graphs, forge_model_context, exclude_deprecated=exclude_deprecated_from_context
     )
 
     new_jsonld_schema_context, schema_errors = bmo.build_context_from_schema(
-        all_schema_graphs, new_jsonld_context
+        all_schema_graphs, new_jsonld_context, exclude_deprecated=exclude_deprecated_from_context
     )
 
     errors = ontology_errors + schema_errors
@@ -465,26 +463,39 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     print(f"Registering classes - Start: Class count:  {len(class_jsons)}")
 
-    if data_update:
-        class_errors = []
+    class_errors = []
 
-        for class_json in class_jsons:
-            class_json["@context"] = JSONLD_DATA_CONTEXT_IRI
+    for class_json in class_jsons:
+        class_json["@context"] = JSONLD_DATA_CONTEXT_IRI
 
-            ex, res = bmo_registration.register_class(
-                forge, forge.from_json(class_json), tag
+        class_resource = forge.from_json(class_json)
+        deprecated = class_resource.__dict__.get("owl:deprecated", False)
+
+        if data_update:
+            print(
+                f"""Class {class_resource.get_identifier()} will be
+                {'created/updated and tagged if a tag is provided' 
+                if not deprecated else 'deprecated'}"""
             )
+            if deprecated:
+                ex, _ = bmo_registration.deprecate_class(forge=forge, class_resource=class_resource)
+            else:
+                ex, _ = bmo_registration.register_class(
+                    forge=forge, class_resource=class_resource, tag=tag
+                )
+
             if ex is not None:
                 class_errors.append(ex)
 
-        print(f"Registering classes - Finish - Class count: {len(class_jsons)},"
-              f" {len(class_errors)} errors")
+        else:
+            print(f"{'Creation/Update' if not deprecated else 'Deprecation'} of class "
+                  f"{class_resource.get_identifier()} - Ignored")
 
-        for e in class_errors:
-            print(e)
+    print(f"Registering classes - Finish - Class count: {len(class_jsons)},"
+          f" {len(class_errors)} errors")
 
-    else:
-        print(f"Registering classes - Ignored - Class count: {len(class_jsons)}")
+    for e in class_errors:
+        print(e)
 
 
 def _merge_ontology(
@@ -579,6 +590,65 @@ def _create_bnode_triples_from_value(
     return bNode, triples
 
 
+def register_ontology(
+        forge: KnowledgeGraphForge, ontology_json: Dict, ontology_filepath: str,
+        ontology_graph: Graph, tag: Optional[str],
+        class_resources_mapped: Optional[List], data_update: bool,
+) -> Tuple[Optional[Exception], Resource]:
+
+    ontology_json = copy.deepcopy(ontology_json)
+    # del ontology_json["@context"]
+    ontology_resource = forge.from_json(ontology_json)
+    dirpath = f"./{ontology_filepath.split('/')[-1].split('.')[0]}"
+    dirpath_ttl = f"{dirpath}.ttl"
+    ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
+    ontology_resource.distribution = [forge.attach(dirpath_ttl, content_type="text/turtle")]
+
+    dirpath_json = f"{dirpath}.json"
+    with open(dirpath_json, "w") as fp:
+        json.dump(ontology_json, fp)
+    ontology_resource.distribution.append(
+        forge.attach(dirpath_json, content_type="application/ld+json"))
+
+    if class_resources_mapped is not None:
+        defined_types_df = forge.as_dataframe(class_resources_mapped)
+        dirpath_csv = f"{dirpath}.csv"
+        defined_types_df.to_csv(dirpath_csv)
+        ontology_resource.distribution.append(forge.attach(dirpath_csv, content_type="text/csv"))
+
+    if ontology_filepath in bmo_registration.SYNTHETIC_SENTENCES:
+        synthetic = bmo_registration.SYNTHETIC_SENTENCES[ontology_filepath].get("synthetic", None)
+        wiki = bmo_registration.SYNTHETIC_SENTENCES[ontology_filepath].get("wiki", None)
+        if synthetic:
+            ontology_resource.distribution.append(forge.attach(synthetic, content_type="text/json"))
+        if wiki:
+            ontology_resource.distribution.append(forge.attach(wiki, content_type="text/json"))
+
+    deprecated = ontology_resource.__dict__.get("owl:deprecated", False)
+
+    if data_update:
+        print(
+                f"""Ontology {ontology_resource.get_identifier()} will be
+                {'created/updated and tagged if a tag is provided' 
+                if not deprecated else 'deprecated'}"""
+        )
+        if deprecated:
+            return bmo_registration.deprecate_ontology(
+                forge=forge, ontology_resource=ontology_resource,
+                ontology_filepath=ontology_filepath
+            )
+
+        return bmo_registration.register_ontology(
+            forge=forge, ontology_resource=ontology_resource,
+            ontology_filepath=ontology_filepath, tag=tag
+        )
+
+    print(f"{'Creation/Update' if not deprecated else 'Deprecation'} of ontology "
+          f"{ontology_resource.get_identifier()} - Ignored")
+
+    return None, ontology_resource
+
+
 def register_schemas(
         forge: KnowledgeGraphForge,
         schema_filepath: str,
@@ -626,8 +696,9 @@ def register_schemas(
 
         if data_update:
             print(
-                f"Schema {schema_resource.get_identifier()} will be "
-                f"{'created/updated and tagged' if not deprecated else 'deprecated'}"
+                f"""Schema {schema_resource.get_identifier()} will be
+                {'created/updated and tagged if a tag is provided' 
+                if not deprecated else 'deprecated'}"""
             )
             if deprecated:
                 _, _ = bmo_registration.deprecate_schema(

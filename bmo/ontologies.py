@@ -154,7 +154,7 @@ def frame_ontology(
     framed_onto_json = graph_free_jsonld(framed)
 
     if "@id" in framed_onto_json:
-        framed_onto_json["@id"] = context.expand(framed_onto_json["@id"]) 
+        framed_onto_json["@id"] = context.expand(framed_onto_json["@id"])
     if "skos:prefLabel" in framed_onto_json and framed_onto_json["skos:prefLabel"]:
         framed_onto_json["prefLabel"] = framed_onto_json.pop("skos:prefLabel", None)
     if "rdfs:label" in framed_onto_json and framed_onto_json["rdfs:label"]:
@@ -941,8 +941,9 @@ def subontology_from_term(graph: Graph, entry_point, top_down=True, closed=True)
 
 
 def build_context_from_ontology(
-        ontology_graph, forge_context, vocab=None, binding=None
+        ontology_graph, forge_context, vocab=None, binding=None, exclude_deprecated=False
 ) -> Tuple[Context, List[str]]:
+
     """
     Build a jsonld context object.
     """
@@ -950,119 +951,81 @@ def build_context_from_ontology(
     # excludes brain region (https://neuroshapes.org/BrainRegion) values
     new_forge_context = _initialise_new_context(forge_context, vocab, binding)
     errors = []
+
+    def is_deprecated(subject):
+        t = list(ontology_graph.objects(subject, OWL.deprecated))
+        return t[0] == Literal('true', datatype=XSD.boolean) if len(t) > 0 else False
+
+    def on_failure(failed_subject, exc):
+        defining_ontology = ontology_graph.objects(failed_subject, RDFS.isDefinedBy)
+        errors.append(
+            f"Failed to build context from {failed_subject} "
+            f"defined in the ontology {str(list(defining_ontology))}: {exc}"
+        )
+
     for cls in ontology_graph.subjects(RDF.type, OWL.Class):
-        try:
-            brain_region_triples = list(ontology_graph.triples(
-                (
-                    cls,
-                    RDFS.subClassOf * OneOrMore,
-                    term.URIRef("https://neuroshapes.org/BrainRegion"))
-            )
-            )
-            species_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://neuroshapes.org/Species")))
-            )
-            taxonomic_rank_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * ZeroOrMore,
-                 term.URIRef("http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank")))
-            )
-            pato_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * ZeroOrMore,
-                 term.URIRef("http://purl.obolibrary.org/obo/PATO_0000001")))
-            )
-            bmo_mapping_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/Mapping")))
-            )
-            braincell_types_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/BrainCellTranscriptomeType")))
-            )
-            etypes_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/NeuronElectricalType")))
-            )
-            mtypes_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalType")))
-            )
-            nt_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/NeurotransmitterType")))
-            )
-            nnt_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/NewNeuronType")))
-            )
-            glia_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/GliaType")))
-            )
-            ion_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/Ion")))
-            )
-            ioncurrent_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/IonCurrent")))
-            )
-            potassium_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://neuroshapes.org/PotassiumChannel")))
-            )
-            brain_area_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/BrainArea")))
-            )
-            brainlayer_triples = list(ontology_graph.triples(
-                (cls, RDFS.subClassOf * OneOrMore,
-                 term.URIRef("https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer")))
-            )
+        if not (not exclude_deprecated and is_deprecated(cls)):
+            try:
 
-            name, idref = _build_context_item(cls, new_forge_context)
-
-            if name is not None and idref is not None and not str(idref).startswith(
-                    "http://purl.obolibrary.org/obo/UBERON_") \
-                    and len(brain_region_triples) == 0 and len(species_triples) == 0 \
-                    and len(taxonomic_rank_triples) == 0 and len(pato_triples) == 0 \
-                    and len(bmo_mapping_triples) == 0 and len(braincell_types_triples) == 0 \
-                    and len(mtypes_triples) == 0 and len(nt_triples) == 0 \
-                    and len(ion_triples) == 0 and len(ioncurrent_triples) == 0 \
-                    and len(potassium_triples) == 0 and len(brain_area_triples) == 0 \
-                    and len(brainlayer_triples) == 0 and len(etypes_triples) == 0 \
-                    and len(nnt_triples) == 0 and len(glia_triples) == 0:
-                new_forge_context.add_term(name, idref)
-                new_forge_context.document["@context"][name] = {"@id": idref}
-
-        except Exception as e:
-            defining_ontology = ontology_graph.objects(cls, RDFS.isDefinedBy)
-            errors.append(
-                f"Failed to build context from {cls} defined in the ontology {str(list(defining_ontology))}: {e}")
+                name, idref = _build_context_item(cls, new_forge_context)
+                if name is not None and idref is not None and \
+                        _is_class_to_include_in_context(cls, idref, ontology_graph):
+                        new_forge_context.add_term(name, idref)
+                        new_forge_context.document["@context"][name] = {"@id": idref}
+            except Exception as e:
+                on_failure(cls, e)
 
     for obj_prop in ontology_graph.subjects(RDF.type, OWL.ObjectProperty):
-        try:
-            name, idref = _build_context_item(obj_prop, new_forge_context)
-            if name is not None and idref is not None and _is_property_to_include_in_context(idref):
-                new_forge_context.add_term(name, idref, "@id")
-                new_forge_context.document["@context"][name] = {"@id": idref, "@type": "@id"}
+        if not (not exclude_deprecated and is_deprecated(obj_prop)):
+            try:
+                name, idref = _build_context_item(obj_prop, new_forge_context)
+                if name is not None and idref is not None and _is_property_to_include_in_context(idref):
+                    new_forge_context.add_term(name, idref, "@id")
+                    new_forge_context.document["@context"][name] = {"@id": idref, "@type": "@id"}
 
-        except Exception as e:
-            defining_ontology = ontology_graph.objects(obj_prop, RDFS.isDefinedBy)
-            errors.append(
-                f"Failed to build context from {obj_prop} defined in the ontology {str(list(defining_ontology))}: {e}")
+            except Exception as e:
+                on_failure(obj_prop, e)
 
     for annot_prop in ontology_graph.subjects(RDF.type, OWL.AnnotationProperty):
-        try:
-            name, idref = _build_context_item(annot_prop, new_forge_context)
-            if name is not None and idref is not None and _is_property_to_include_in_context(idref):
-                new_forge_context.add_term(name, idref)
-                new_forge_context.document["@context"][name] = {"@id": idref}
-        except Exception as e:
-            defining_ontology = ontology_graph.objects(annot_prop, RDFS.isDefinedBy)
-            errors.append(
-                f"Failed to build context from {annot_prop} defined in the ontology {str(list(defining_ontology))}: {e}")
+        if not (not exclude_deprecated and is_deprecated(annot_prop)):
+            try:
+                name, idref = _build_context_item(annot_prop, new_forge_context)
+                if name is not None and idref is not None and _is_property_to_include_in_context(idref):
+                    new_forge_context.add_term(name, idref)
+                    new_forge_context.document["@context"][name] = {"@id": idref}
+            except Exception as e:
+                on_failure(annot_prop, e)
+
     return new_forge_context, errors
+
+
+def _is_class_to_include_in_context(class_item: URIRef, uri_ref, ontology_graph: Graph):
+
+    predicate_objects = [
+        (
+            RDFS.subClassOf * OneOrMore, [
+                NSG.BrainRegion, NSG.Species, BMO.Mapping, BMO.BrainCellTranscriptomeType,
+                BMO.NeuronElectricalType, BMO.NeuronMorphologicalType,
+                BMO.NeurotransmitterType, BMO.NewNeuronType, BMO.GliaType,
+                BMO.Ion, BMO.IonCurrent, NSG.PotassiumChannel, BMO.BrainArea, BMO.BrainLayer
+            ]
+        ),
+        (
+            RDFS.subClassOf * ZeroOrMore, [
+                term.URIRef("http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank"),
+                term.URIRef("http://purl.obolibrary.org/obo/PATO_0000001")
+            ]
+        )
+    ]
+
+    list_of_list_of_triples = [
+        list(ontology_graph.triples((class_item, predicate, object_)))
+        for predicate, list_objects in predicate_objects
+        for object_ in list_objects
+    ]
+
+    return all(len(i) == 0 for i in list_of_list_of_triples) \
+        and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/UBERON_") \
 
 
 def _is_property_to_include_in_context(uri_ref):
@@ -1078,20 +1041,21 @@ def _is_property_to_include_in_context(uri_ref):
 
 def build_context_from_schema(
         schema_graph: Graph, forge_context: Context, vocab=None,
-        binding=None
+        binding=None, exclude_deprecated=False
 ):
     new_forge_context = _initialise_new_context(forge_context, vocab, binding)
     errors = []
 
-    t = list(schema_graph.subject_objects(URIRef("http://www.w3.org/2002/07/owl#deprecated")))
+    if exclude_deprecated:
+        t = list(schema_graph.subject_objects(OWL.deprecated))
 
-    if len(t) > 0:
-        deprecated = t[0][1] == Literal(
-            'true', datatype=URIRef('http://www.w3.org/2001/XMLSchema#boolean')
-        )
-        if deprecated:
-            return new_forge_context, errors
+        if len(t) > 0:
+            deprecated = t[0][1] == Literal('true', datatype=XSD.boolean)
+            if deprecated:
+                return new_forge_context, errors
 
+    # TODO this should be changed if we want to declare NodeShape not as direct children of shapes
+    #  as found in some of the deprecated schemas
     for shape in schema_graph.subjects(RDF.type, SHACL.NodeShape):
 
         defining_schema = list(schema_graph.subjects(NXV.shapes, shape))

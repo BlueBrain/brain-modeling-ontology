@@ -1,5 +1,3 @@
-import copy
-import json
 import io
 from contextlib import redirect_stdout
 from typing import Optional, Tuple
@@ -69,36 +67,8 @@ def register_schema(
 
 
 def register_ontology(
-        forge, ontology_json, ontology_filepath, ontology_graph, tag, class_resources_mapped=None
+        forge: KnowledgeGraphForge, ontology_filepath: str, ontology_resource: Resource, tag: str
 ) -> Tuple[Optional[Exception], Resource]:
-
-    ontology_json = copy.deepcopy(ontology_json)
-    # del ontology_json["@context"]
-    ontology_resource = forge.from_json(ontology_json)
-    dirpath = f"./{ontology_filepath.split('/')[-1].split('.')[0]}"
-    dirpath_ttl = f"{dirpath}.ttl"
-    ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
-    ontology_resource.distribution = [forge.attach(dirpath_ttl, content_type="text/turtle")]
-
-    dirpath_json = f"{dirpath}.json"
-    with open(dirpath_json, "w") as fp:
-        json.dump(ontology_json, fp)
-    ontology_resource.distribution.append(
-        forge.attach(dirpath_json, content_type="application/ld+json"))
-
-    if class_resources_mapped is not None:
-        defined_types_df = forge.as_dataframe(class_resources_mapped)
-        dirpath_csv = f"{dirpath}.csv"
-        defined_types_df.to_csv(dirpath_csv)
-        ontology_resource.distribution.append(forge.attach(dirpath_csv, content_type="text/csv"))
-
-    if ontology_filepath in SYNTHETIC_SENTENCES:
-        synthetic = SYNTHETIC_SENTENCES[ontology_filepath].get("synthetic", None)
-        wiki = SYNTHETIC_SENTENCES[ontology_filepath].get("wiki", None)
-        if synthetic:
-            ontology_resource.distribution.append(forge.attach(synthetic, content_type="text/json"))
-        if wiki:
-            ontology_resource.distribution.append(forge.attach(wiki, content_type="text/json"))
 
     return _register_update(
         forge, ontology_resource,
@@ -133,13 +103,26 @@ def _handle_failed(act, resource, action_type, extra_message, type_str, raise_on
 
 
 def deprecate_schema(
-        forge: KnowledgeGraphForge, schema_filename: str, schema_resource: Resource
+        forge: KnowledgeGraphForge, schema_filepath: str, schema_resource: Resource
 ) -> Tuple[Optional[Exception], Resource]:
     """Deprecate schema from the store."""
-    return _deprecate(
-        forge, schema_resource, extra_message=f"from file {schema_filename}",
-        raise_on_fail=False, type_str="Schema"
-    )
+    return _deprecate(forge, schema_resource, raise_on_fail=False, type_str="Schema",
+                      extra_message=f"from file {schema_filepath}")
+
+
+def deprecate_class(
+        forge: KnowledgeGraphForge, class_resource: Resource
+) -> Tuple[Optional[Exception], Resource]:
+    """Deprecate class from the store."""
+    return _deprecate(forge, class_resource, raise_on_fail=False, type_str="Class")
+
+
+def deprecate_ontology(
+        forge: KnowledgeGraphForge, ontology_filepath: str, ontology_resource: Resource
+) -> Tuple[Optional[Exception], Resource]:
+    """Deprecate ontology from the store."""
+    return _deprecate(forge, ontology_resource, raise_on_fail=False, type_str="Ontology",
+                      extra_message=f"from file {ontology_filepath}")
 
 
 def _successful_action_output(type_str, resource, action_verb):
