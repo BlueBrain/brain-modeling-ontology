@@ -61,5 +61,10 @@ def define_arguments():
         default=None, type=str, required=True
     )
 
-    return parser
+    parser.add_argument(
+        "--exclude_deprecated_from_context",
+        help="Whether deprecated schemas and ontology elements should be excluded from the jsonld "
+        "context or not", default=False, type=bool
+    )
 
+    return parser
