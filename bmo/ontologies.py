@@ -426,33 +426,21 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
         for sub_c in cls["subClassOf"]:
             # bring in cls["subClassOf"] some parent classes for quick look up
 
-            if str(BMO.NeuronMorphologicalType) not in cls["subClassOf"] and \
-                    (term.URIRef(sub_c), RDFS.subClassOf * OneOrMore, BMO.NeuronMorphologicalType) \
-                    in ontology_graph:
-                cls["subClassOf"].append(str(BMO.NeuronMorphologicalType))
+            parents_to_add_to_subclass = [
+                BMO.NeuronMorphologicalType,
+                BMO.NeuronElectricalType,
+                NSG.MType,
+                NSG.EType,
+                NSG.BrainRegion,
+                NSG.BrainLayer,
+                BMO.BrainCellType
+            ]
 
-            if str(BMO.NeuronElectricalType) not in cls["subClassOf"] and \
-                    (term.URIRef(sub_c), RDFS.subClassOf * OneOrMore, BMO.NeuronElectricalType) \
-                    in ontology_graph:
-                cls["subClassOf"].append(str(BMO.NeuronElectricalType))
-
-            if str(NSG.MType) not in cls["subClassOf"] and \
-                    (term.URIRef(sub_c), RDFS.subClassOf * OneOrMore, NSG.MType) in ontology_graph:
-                cls["subClassOf"].append(str(NSG.MType))
-
-            if str(NSG.EType) not in cls["subClassOf"] and \
-                    (term.URIRef(sub_c), RDFS.subClassOf * OneOrMore, NSG.EType) in ontology_graph:
-                cls["subClassOf"].append(str(NSG.EType))
-
-            if str(NSG.BrainRegion) not in cls["subClassOf"] and \
-                    (term.URIRef(sub_c), RDFS.subClassOf * OneOrMore,
-                     NSG.BrainRegion) in ontology_graph:
-                cls["subClassOf"].append(str(NSG.BrainRegion))
-
-            if str(NSG.BrainLayer) not in cls["subClassOf"] and \
-                    (term.URIRef(sub_c), RDFS.subClassOf * OneOrMore, NSG.BrainLayer) in \
-                    ontology_graph:
-                cls["subClassOf"].append(str(NSG.BrainLayer))
+            for parent_to_check in parents_to_add_to_subclass:
+                if str(parent_to_check) not in cls["subClassOf"] and \
+                        (term.URIRef(sub_c), RDFS.subClassOf * OneOrMore, parent_to_check) \
+                        in ontology_graph:
+                    cls["subClassOf"].append(str(parent_to_check))
 
         if str(NSG.BrainRegion) in cls["subClassOf"]:
             # this is a brain region, then collect all of it's leaf brain regions

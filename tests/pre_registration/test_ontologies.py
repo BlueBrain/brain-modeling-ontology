@@ -14,7 +14,6 @@ from rdflib.paths import OneOrMore, ZeroOrMore
 from tests.conftest import all_ontology_graph_merged_brain_region_atlas_hierarchy
 
 
-
 def test_terms_aligned_with_context(forge, all_ontology_graphs, all_schema_graphs):
 
     with open(DATA_JSONLD_CONTEXT_PATH, "r") as f:
