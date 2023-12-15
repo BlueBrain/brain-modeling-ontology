@@ -3894,8 +3894,8 @@ bmo:TemplatePropertyCircuitProperty rdf:type owl:Class ;
 bmo:TypeToSchemaMapping rdf:type owl:Class ;
             rdfs:subClassOf prov:Entity ;
             rdfs:label "Type to Schema Mapping"@en ;
-            skos:definition "Mapping between types (classes) and data schemas for SHACL validation"^^xsd:string .
-
+            skos:definition "Mapping between types (classes) and data schemas for SHACL validation"^^xsd:string ;
+            owl:deprecated "true"^^xsd:boolean .
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Vein
 bmo:Vein rdf:type owl:Class ;
