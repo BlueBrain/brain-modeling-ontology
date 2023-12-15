@@ -60,7 +60,7 @@ register-on-staging-environment:
   script:
     - python register_ontologies.py --environment staging --bucket neurosciencegraph/datamodels --ontology_dir './ontologies/bbp/*.ttl' --schema_dir './shapes/**/*.json' --atlas_parcellation_ontology https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e --atlas_parcellation_ontology_bucket bbp/atlas --atlas_parcellation_ontology_version 163 --token $NEXUS_TOKEN_STAGING
   before_script:
-    - pip install .
+    - pip install .[dev]
   after_script:
     - pytest tests/post_registration --atlas_parcellation_ontology_version 163 --token $NEXUS_TOKEN_STAGING
 
@@ -75,7 +75,7 @@ register-on-production-environment:
     - echo $CI_COMMIT_TAG
     - python register_ontologies.py --environment production --bucket neurosciencegraph/datamodels --ontology_dir './ontologies/bbp/*.ttl' --schema_dir './shapes/**/*.json' --atlas_parcellation_ontology https://bbp.epfl.ch/neurosciencegraph/data/0518dd0b-cbc7-43ef-a75f-45631059c8c5 --atlas_parcellation_ontology_bucket bbp/atlas --atlas_parcellation_ontology_version 22 --token $NEXUS_TOKEN_PRODUCTION --tag $CI_COMMIT_TAG
   before_script:
-    - pip install .
+    - pip install .[dev]
   after_script:
     - pytest tests/pre_registration --atlas_parcellation_ontology_version 22 --token
     - $NEXUS_TOKEN_PRODUCTION
