@@ -469,7 +469,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         class_json["@context"] = JSONLD_DATA_CONTEXT_IRI
 
         class_resource = forge.from_json(class_json)
-        deprecated = class_resource.__dict__.get("owl:deprecated", False)
+        deprecated = class_resource.__dict__.get("deprecated", False)
 
         if data_update:
             print(
@@ -624,7 +624,7 @@ def register_ontology(
         if wiki:
             ontology_resource.distribution.append(forge.attach(wiki, content_type="text/json"))
 
-    deprecated = ontology_resource.__dict__.get("owl:deprecated", False)
+    deprecated = ontology_resource.__dict__.get("deprecated", False)
 
     if data_update:
         print(
