@@ -31,6 +31,21 @@ Resolvers:
       targets:
         - identifier: terms
           bucket: neurosciencegraph/datamodels
+        - identifier: CellType
+          bucket: neurosciencegraph/datamodels
+          filters:
+            - path: subClassOf*.id
+              value: BrainCellType
+        - identifier: BrainRegion
+          bucket: neurosciencegraph/datamodels
+          filters:
+            - path: subClassOf*.id
+              value: BrainRegion
+        - identifier: Species
+          bucket: neurosciencegraph/datamodels
+          filters:
+            - path: subClassOf*.id
+              value: Species
       result_resource_mapping: config/mappings/term-to-resource-mapping.hjson
   agent:
     - resolver: AgentResolver
