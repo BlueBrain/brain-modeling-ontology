@@ -47,16 +47,19 @@ def test_classes_can_be_resolved(
         for field_name, all_values in ontology_info.items():
             for value in all_values:
 
-                resolved = forge.resolve(
-                    value.toPython(), scope='ontology',
-                    target=str(resolver_target), strategy='EXACT_MATCH'
-                )
+                try:
+                    resolved = forge.resolve(
+                        value.toPython(), scope='ontology',
+                        target=str(resolver_target), strategy='EXACT_MATCH'
+                    )
 
-                if not resolved:
+                    if not resolved:
+                        raise Exception("Returns nothing")
 
+                except Exception as e:
                     errors.append(
                         f'Class {ontology_class} not resolved by resolver {resolver_target}'
-                        f' using {field_name}: {value}'
+                        f' using {field_name}: {value}: {e}'
                     )
 
     assert len(errors) == 0, f"{errors}"
