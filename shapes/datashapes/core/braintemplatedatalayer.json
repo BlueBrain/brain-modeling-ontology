@@ -1,16 +1,16 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/volumetricdatalayer",
+  "@id": "https://bbp.epfl.ch/shapes/dash/braintemplatedatalayer",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/volumetricdatalayer"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/volumetricdatalayer/shapes/VolumetricDataLayerShape",
+      "@id": "https://bbp.epfl.ch/shapes/dash/braintemplatedatalayer/shapes/BrainTemplateDataLayer",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
-      "targetClass": "nsg:VolumetricDataLayer"
+      "targetClass": "nsg:BrainTemplateDataLayer"
     }
   ]
 }

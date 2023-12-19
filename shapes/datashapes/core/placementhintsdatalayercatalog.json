@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/placementhintsdatalayercatalog",
+  "@type": "Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/datacatalog"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/datacatalog/shapes/PlacementHintsDataLayerCatalog",
+      "node": "https://bbp.epfl.ch/shapes/commons/datacatalog/shapes/DataCatalogShape",
+      "@type": "NodeShape",
+      "targetClass": "bmo:PlacementHintsDataLayerCatalog"
+    }
+  ]
+}

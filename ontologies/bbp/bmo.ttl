@@ -2261,13 +2261,6 @@ bmo:METypeCircuitProperty rdf:type owl:Class ;
                           skos:prefLabel "METype circuit property"^^xsd:string .
 
 
-###  https://bbp.epfl.ch/ontologies/core/bmo/MTypeDensity
-bmo:MTypeDensity rdf:type owl:Class ;
-                 rdfs:subClassOf schema:Dataset ;
-                 rdfs:label "MType Density"@en ;
-                 skos:prefLabel "MType Density volume"^^xsd:string .
-
-
 ###  https://bbp.epfl.ch/ontologies/core/bmo/METypePropertyGenerator
 bmo:METypePropertyGenerator rdf:type owl:Class ;
                             rdfs:subClassOf bmo:ModelCircuitPropertyGenerator ,
@@ -4193,15 +4186,9 @@ nsg:CellDensity rdf:type owl:Class ;
                 skos:altLabel "Cell Density"@en .
 
 
-###  https://neuroshapes.org/CellDensityDataLayer
-nsg:CellDensityDataLayer rdf:type owl:Class ;
-                         rdfs:subClassOf schema:Dataset ;
-                         rdfs:label "CellDensityDataLayer"@en .
-
-
 ###  https://neuroshapes.org/CellOrientationField
 nsg:CellOrientationField rdf:type owl:Class ;
-                         rdfs:subClassOf schema:Dataset ;
+                         rdfs:subClassOf nsg:VolumetricDataLayer ;
                          rdfs:label "CellOrientationField"@en .
 
 
@@ -4624,12 +4611,6 @@ nsg:Protein rdf:type owl:Class ;
             rdfs:label "Protein"@en .
 
 
-###  https://neuroshapes.org/ReconstructedNeuronMorphology
-nsg:ReconstructedNeuronMorphology rdf:type owl:Class ;
-                                  rdfs:subClassOf nsg:NeuronMorphology ;
-                                  rdfs:label "ReconstructedNeuronMorphology"@en .
-
-
 ###  https://neuroshapes.org/Serotonin
 nsg:Serotonin rdf:type owl:Class ;
               rdfs:subClassOf nsg:ExcitatoryTransmitter ,
@@ -4688,12 +4669,6 @@ bmo:SynapseDensity rdf:type owl:Class ;
                    rdfs:subClassOf bmo:BrainVolumeFeature ;
                    rdfs:label "Synapse Density"@en ;
                    skos:definition "Number of synapses per unit volume of brain tissue (e.g. syn/mm^3) based on sample synapse counts."^^xsd:string .
-
-
-###  https://neuroshapes.org/SynthesizedNeuronMorphology
-nsg:SynthesizedNeuronMorphology rdf:type owl:Class ;
-                                rdfs:subClassOf nsg:NeuronMorphology ;
-                                rdfs:label "SynthesizedNeuronMorphology"@en .
 
 
 ###  https://neuroshapes.org/Testosterone
