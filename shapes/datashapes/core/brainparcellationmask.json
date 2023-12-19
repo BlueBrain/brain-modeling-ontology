@@ -1,0 +1,21 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/brainparcellationmask/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/brainparcellationmask",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/volumetricdatalayer"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/brainparcellationmask/shapes/BrainParcellationMask",
+      "@type": "NodeShape",
+      "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
+      "targetClass": "bmo:BrainParcellationMask"
+    }
+  ]
+}

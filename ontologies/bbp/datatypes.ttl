@@ -1,3 +1,4 @@
+@prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
 @prefix nsg: <https://neuroshapes.org/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -14,79 +15,115 @@ skos:altLabel a owl:AnnotationProperty .
 
 skos:prefLabel a owl:AnnotationProperty .
 
-<https://bbp.epfl.ch/ontologies/core/bmo/CellComposition> a owl:Class ;
-    rdfs:label "CellComposition"@en ;
+bmo:BrainParcellationMask a owl:Class ;
+    rdfs:label "Brain Parcellation Mask"@en ;
+    rdfs:subClassOf nsg:VolumetricDataLayer .
+
+bmo:CellComposition a owl:Class ;
+    rdfs:label "Cell Composition"@en ;
     rdfs:subClassOf prov:Entity ;
-    skos:prefLabel "CellComposition"^^xsd:string .
+    skos:prefLabel "Cell Composition"^^xsd:string .
 
-<https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionSummary> a owl:Class ;
-    rdfs:label "CellCompositionSummary"@en ;
+bmo:CellCompositionSummary a owl:Class ;
+    rdfs:label "Cell Composition Summary"@en ;
     rdfs:subClassOf schema:Dataset ;
-    skos:prefLabel "CellCompositionSummary"^^xsd:string .
+    skos:prefLabel "Cell Composition Summary"^^xsd:string .
 
-<https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionVolume> a owl:Class ;
-    rdfs:label "CellCompositionVolume"@en ;
+bmo:CellCompositionVolume a owl:Class ;
+    rdfs:label "Cell Composition Volume"@en ;
     rdfs:subClassOf schema:Dataset ;
-    skos:prefLabel "CellCompositionVolume"^^xsd:string .
+    skos:prefLabel "Cell Composition Volume"^^xsd:string .
 
-<https://bbp.epfl.ch/ontologies/core/bmo/METypeDensity> a owl:Class ;
-    rdfs:label "METypeDensity"@en ;
+bmo:DirectionVectorsField a owl:Class ;
+    rdfs:label "Direction Vectors Field"@en ;
+    rdfs:subClassOf nsg:VolumetricDataLayer .
+
+bmo:HemisphereAnnotationDataLayer a owl:Class ;
+    rdfs:label "Hemisphere Annotation Data Layer"@en ;
+    rdfs:subClassOf nsg:VolumetricDataLayer .
+
+bmo:METypeDensity a owl:Class ;
+    rdfs:label "METype Density"@en ;
     rdfs:subClassOf nsg:CellDensityDataLayer ;
     skos:prefLabel "ME-type density volume"^^xsd:string .
 
-<https://bbp.epfl.ch/ontologies/core/bmo/METypeRatio> a owl:Class ;
+bmo:METypeRatio a owl:Class ;
     rdfs:label "METype Ratio"@en ;
     skos:prefLabel "METype ratio"@en .
 
-<https://bbp.epfl.ch/ontologies/core/bmo/MTypeDensity> a owl:Class ;
+bmo:MTypeDensity a owl:Class ;
     rdfs:label "MType Density"@en ;
     rdfs:subClassOf nsg:CellDensityDataLayer ;
     skos:prefLabel "MType Density volume"@en .
 
+bmo:PlacementHintsDataLayerCatalog a owl:Class ;
+    rdfs:label "Placement Hints Data Layer Catalog"@en ;
+    rdfs:subClassOf schema:DataCatalog .
+
 nsg:BrainParcellationDataLayer a owl:Class ;
-    rdfs:label "BrainParcellationDataLayer"@en ;
+    rdfs:label "Brain Parcellation Data Layer"@en ;
     rdfs:subClassOf nsg:VolumetricDataLayer ;
     skos:prefLabel "Brain Parcellation Volume"@en .
 
 nsg:BrainRegionMesh a owl:Class ;
-    rdfs:label "BrainRegionMesh"@en ;
+    rdfs:label "Brain Region Mesh"@en ;
     rdfs:subClassOf nsg:Mesh ;
     skos:prefLabel "Brain Region Mesh"@en .
 
 nsg:BrainTemplateDataLayer a owl:Class ;
-    rdfs:label "BrainTemplateDataLayer"@en ;
+    rdfs:label "Brain Template Data Layer"@en ;
     rdfs:subClassOf nsg:VolumetricDataLayer ;
     skos:prefLabel "Brain Template Volume"@en .
 
 nsg:CellPositions a owl:Class ;
-    rdfs:label "CellPositions"@en ;
+    rdfs:label "Cell Positions"@en ;
     rdfs:subClassOf nsg:PointCloud ;
     skos:altLabel "Cell Positions"@en,
         "CellPositions"@en ;
     skos:prefLabel "Cell Positions"@en .
 
 nsg:GeneExpressionVolumetricDataLayer a owl:Class ;
-    rdfs:label "GeneExpressionVolumetricDataLayer"@en ;
+    rdfs:label "Gene Expression Volumetric Data Layer"@en ;
     rdfs:subClassOf nsg:VolumetricDataLayer ;
     skos:prefLabel "Gene Expression Volume"@en .
+
+nsg:GliaCellDensity a owl:Class ;
+    rdfs:label "Glia Cell Density"@en ;
+    rdfs:subClassOf nsg:VolumetricDataLayer .
 
 nsg:Literature a owl:Class ;
     rdfs:label "Literature"@en ;
     rdfs:subClassOf schema:Dataset ;
     skos:prefLabel "Literature"@en .
 
+nsg:MorphologyOrientationDataLayer a owl:Class ;
+    rdfs:label "Morphology Orientation Data Layer"@en ;
+    rdfs:subClassOf nsg:VolumetricDataLayer .
+
 nsg:NISSLImageDataLayer a owl:Class ;
-    rdfs:label "NISSLImageDataLayer"@en ;
+    rdfs:label "NISSL Image Data Layer"@en ;
     rdfs:subClassOf nsg:VolumetricDataLayer ;
     skos:prefLabel "NISSL Volume"@en .
 
+nsg:NdRaster a owl:Class ;
+    rdfs:label "Nd Raster"@en ;
+    rdfs:subClassOf nsg:VolumetricDataLayer .
+
+nsg:PHDataLayer a owl:Class ;
+    rdfs:label "PH Data Layer"@en ;
+    rdfs:subClassOf nsg:VolumetricDataLayer .
+
+nsg:PlacementHintsDataLayer a owl:Class ;
+    rdfs:label "Placement Hints Data Layer"@en ;
+    rdfs:subClassOf nsg:VolumetricDataLayer .
+
 nsg:ReconstructedNeuronMorphology a owl:Class ;
-    rdfs:label "ReconstructedNeuronMorphology"@en ;
+    rdfs:label "Reconstructed Neuron Morphology"@en ;
     rdfs:subClassOf nsg:NeuronMorphology ;
     skos:prefLabel "Reconstructed Neuron Morphology"@en .
 
 nsg:SynthesizedNeuronMorphology a owl:Class ;
-    rdfs:label "SynthesizedNeuronMorphology"@en ;
+    rdfs:label "Synthesized Neuron Morphology"@en ;
     rdfs:subClassOf nsg:NeuronMorphology ;
     skos:prefLabel "Synthesized Neuron Morphology"@en .
 
@@ -94,6 +131,10 @@ nsg:Trace a owl:Class ;
     rdfs:label "Trace"@en ;
     rdfs:subClassOf nsg:ElectricalSeries ;
     skos:prefLabel "Trace"@en .
+
+nsg:TwoPhotonImageDataLayer a owl:Class ;
+    rdfs:label "Two Photon Image Data Layer"@en ;
+    rdfs:subClassOf nsg:VolumetricDataLayer .
 
 nsg:defines a owl:AnnotationProperty ;
     rdfs:label "defines"@en .
@@ -112,7 +153,7 @@ nsg:Mesh a owl:Class ;
     skos:prefLabel "Mesh"@en .
 
 nsg:PointCloud a owl:Class ;
-    rdfs:label "PointCloud"@en ;
+    rdfs:label "Point Cloud"@en ;
     rdfs:subClassOf schema:Dataset ;
     skos:prefLabel "Point Cloud"@en .
 
@@ -122,7 +163,7 @@ nsg:TimeSeries a owl:Class ;
     skos:prefLabel "Time Series"@en .
 
 nsg:CellDensityDataLayer a owl:Class ;
-    rdfs:label "CellDensityDataLayer"@en ;
+    rdfs:label "Cell Density Data Layer"@en ;
     rdfs:subClassOf nsg:VolumetricDataLayer ;
     skos:prefLabel "Cell Density Volume"@en .
 
@@ -131,12 +172,12 @@ nsg:NeuronMorphology a owl:Class ;
     rdfs:subClassOf schema:Dataset ;
     skos:prefLabel "Neuron Morphology"@en .
 
-nsg:VolumetricDataLayer a owl:Class ;
-    rdfs:label "VolumetricDataLayer"@en ;
-    rdfs:subClassOf schema:Dataset ;
-    skos:prefLabel "Volume"@en .
-
 schema:Dataset a owl:Class ;
     rdfs:label "Dataset"@en ;
     skos:prefLabel "Dataset"@en .
+
+nsg:VolumetricDataLayer a owl:Class ;
+    rdfs:label "Volumetric Data Layer"@en ;
+    rdfs:subClassOf schema:Dataset ;
+    skos:prefLabel "Volume"@en .
 
