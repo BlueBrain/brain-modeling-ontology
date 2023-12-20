@@ -492,162 +492,74 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
                 contribution_with_agent.insert(i, contrib_uri)
         cls["contribution"] = contribution_with_agent
 
-    if "schema:isPartOf" in cls and cls["schema:isPartOf"]:
-        ip = cls.pop("schema:isPartOf", None)
-        if ip:
-            cls["isPartOf"] = _to_list(ip)
-    if "rdfs:seeAlso" in cls and cls["rdfs:seeAlso"]:
-        sa = cls.pop("rdfs:seeAlso", None)
-        if sa:
-            cls["seeAlso"] = _to_list(sa)
-    if "schema:about" in cls and cls["schema:about"]:
-        ab = cls.pop("schema:about", None)
-        if ab:
-            cls["about"] = _to_list(ab)
+    def add_without_prefix(key, as_list: bool):
+        ignore_same = True
 
+        if key in cls and cls[key]:
+            value = cls.pop(key, None)
+            key_without_prefix = key.split(":")[1]
+            if value:
+                if key_without_prefix in cls and cls[key_without_prefix]:
+                    if cls[key_without_prefix] != value or not ignore_same:
+                        print(
+                            f"Warning - {cls['@id']} - {key_without_prefix} - "
+                            f" {cls[key_without_prefix]} will be overwritten by {value}"
+                        )
 
+                cls[key_without_prefix] = _to_list(value) if as_list else value
 
-    if "bmo:usesCircuitWithProperty" in cls and cls["bmo:usesCircuitWithProperty"]:
-        uc = cls.pop("bmo:usesCircuitWithProperty", None)
-        if uc:
-            cls["usesCircuitWithProperty"] = _to_list(uc)
+    to_add_as_list = [
+        "schema:isPartOf",
+        "rdfs:seeAlso",
+        "schema:about",
+        "bmo:usesCircuitWithProperty",
+        "bmo:generatesCircuitWithProperty",
+        "bmo:canHaveTType",
+        "bmo:canHaveBrainRegion",
+        "bmo:hasParameter",
+        "bmo:isAssociatedWith",
+        "bmo:expressionProfile",
+        "bmo:isBasedOn",
+        "bmo:molecule",
+        "bmo:postsynapticNeuron",
+        "bmo:presynapticNeuron",
+        "nsg:hasFeature",
+        "bmo:hasWorkflowDefinition",
+        "bmo:hasLayerLocationPhenotype",
+        "bmo:hasMorphologicalPhenotype",
+        "nsg:hasLayerLocationPhenotype",
+        "nsg:hasMorphologicalPhenotype",
+        "bmo:hasType",
+        "bmo:hasMType",
+        "bmo:canBeLocatedInBrainRegion",
+        "bmo:canHaveMType",
+        "bmo:exposesParameter",
+        "bmo:sourceType",
+        "nsg:hasInstanceInSpecies",
+        "bmo:targetType",
+        "bmo:constraints",
+        "owl:equivalentClass",
+    ]
 
-    if "bmo:generatesCircuitWithProperty" in cls and cls["bmo:generatesCircuitWithProperty"]:
-        gc = cls.pop("bmo:generatesCircuitWithProperty", None)
-        if gc:
-            cls["generatesCircuitWithProperty"] = _to_list(gc)
-
-    if "bmo:canHaveTType" in cls and cls["bmo:canHaveTType"]:
-        ct = cls.pop("bmo:canHaveTType", None)
-        if ct:
-            cls["canHaveTType"] = _to_list(ct)
-    if "bmo:canHaveBrainRegion" in cls and cls["bmo:canHaveBrainRegion"]:
-        ct = cls.pop("bmo:canHaveBrainRegion", None)
-        if ct:
-            cls["canHaveBrainRegion"] = _to_list(ct)
-    if "bmo:hasParameter" in cls and cls["bmo:hasParameter"]:
-        ct = cls.pop("bmo:hasParameter", None)
-        if ct:
-            cls["hasParameter"] = _to_list(ct)
-    if "bmo:isAssociatedWith" in cls and cls["bmo:isAssociatedWith"]:
-        ct = cls.pop("bmo:isAssociatedWith", None)
-        if ct:
-            cls["isAssociatedWith"] = _to_list(ct)
-    if "bmo:expressionProfile" in cls and cls["bmo:expressionProfile"]:
-        ct = cls.pop("bmo:expressionProfile", None)
-        if ct:
-            cls["expressionProfile"] = _to_list(ct)
-    if "bmo:isBasedOn" in cls and cls["bmo:isBasedOn"]:
-        ct = cls.pop("bmo:isBasedOn", None)
-        if ct:
-            cls["isBasedOn"] = _to_list(ct)
-    if "bmo:molecule" in cls and cls["bmo:molecule"]:
-        ct = cls.pop("bmo:molecule", None)
-        if ct:
-            cls["molecule"] = _to_list(ct)
-    if "bmo:postsynapticNeuron" in cls and cls["bmo:postsynapticNeuron"]:
-        ct = cls.pop("bmo:postsynapticNeuron", None)
-        if ct:
-            cls["postsynapticNeuron"] = _to_list(ct)
-    if "bmo:presynapticNeuron" in cls and cls["bmo:presynapticNeuron"]:
-        ct = cls.pop("bmo:presynapticNeuron", None)
-        if ct:
-            cls["presynapticNeuron"] = _to_list(ct)
-    if "nsg:hasFeature" in cls and cls["nsg:hasFeature"]:
-        ct = cls.pop("nsg:hasFeature", None)
-        if ct:
-            cls["hasFeature"] = _to_list(ct)
-    if "bmo:hasWorkflowDefinition" in cls and cls["bmo:hasWorkflowDefinition"]:
-        ct = cls.pop("bmo:hasWorkflowDefinition", None)
-        if ct:
-            cls["hasWorkflowDefinition"] = _to_list(ct)
-
-    if "bmo:hasLayerLocationPhenotype" in cls and cls["bmo:hasLayerLocationPhenotype"]:
-        ct = cls.pop("bmo:hasLayerLocationPhenotype", None)
-        if ct:
-            cls["hasLayerLocationPhenotype"] = _to_list(ct)
-
-    if "nsg:hasLayerLocationPhenotype" in cls and cls["nsg:hasLayerLocationPhenotype"]:
-        ct = cls.pop("nsg:hasLayerLocationPhenotype", None)
-        if ct:
-            cls["hasLayerLocationPhenotype"] = _to_list(ct)
-
-    if "bmo:hasMorphologicalPhenotype" in cls and cls["bmo:hasMorphologicalPhenotype"]:
-        ct = cls.pop("bmo:hasMorphologicalPhenotype", None)
-        if ct:
-            cls["hasMorphologicalPhenotype"] = _to_list(ct)
-
-    if "nsg:hasMorphologicalPhenotype" in cls and cls["nsg:hasMorphologicalPhenotype"]:
-        ct = cls.pop("nsg:hasMorphologicalPhenotype", None)
-        if ct:
-            cls["hasMorphologicalPhenotype"] = _to_list(ct)
-
-    if "bmo:hasType" in cls and cls["bmo:hasType"]:
-        ct = cls.pop("bmo:hasType", None)
-        if ct:
-            cls["hasType"] = _to_list(ct)
-    if "bmo:hasMType" in cls and cls["bmo:hasMType"]:
-        ct = cls.pop("bmo:hasMType", None)
-        if ct:
-            cls["hasMType"] = _to_list(ct)
-    if "bmo:canHaveBrainRegion" in cls and cls["bmo:canHaveBrainRegion"]:
-        ct = cls.pop("bmo:canHaveBrainRegion", None)
-        if ct:
-            cls["canHaveBrainRegion"] = _to_list(ct)
-    if "bmo:canBeLocatedInBrainRegion" in cls and cls["bmo:canBeLocatedInBrainRegion"]:
-        ct = cls.pop("bmo:canBeLocatedInBrainRegion", None)
-        if ct:
-            cls["canBeLocatedInBrainRegion"] = _to_list(ct)
-
-    if "bmo:canHaveMType" in cls and cls["bmo:canHaveMType"]:
-        ct = cls.pop("bmo:canHaveMType", None)
-        if ct:
-            cls["canHaveMType"] = _to_list(ct)
-    if "bmo:exposesParameter" in cls and cls["bmo:exposesParameter"]:
-        ct = cls.pop("bmo:exposesParameter", None)
-        if ct:
-            cls["exposesParameter"] = _to_list(ct)
-    if "bmo:sourceType" in cls and cls["bmo:sourceType"]:
-        ct = cls.pop("bmo:sourceType", None)
-        if ct:
-            cls["sourceType"] = _to_list(ct)
-
-    if "nsg:hasInstanceInSpecies" in cls and cls["nsg:hasInstanceInSpecies"]:
-        ct = cls.pop("nsg:hasInstanceInSpecies", None)
-        if ct:
-            cls["hasInstanceInSpecies"] = _to_list(ct)
+    for key in to_add_as_list:
+        add_without_prefix(key, as_list=True)
 
     if "hasHierarchyView" in cls:
+        # TODO unsure this is what is intended, it doesn't seem to do anything
         ct = cls.pop("hasHierarchyView", None)
         if ct:
             cls["hasHierarchyView"] = _to_list(ct)
 
-    if "bmo:targetType" in cls and cls["bmo:targetType"]:
-        ct = cls.pop("bmo:targetType", None)
-        if ct:
-            cls["targetType"] = _to_list(ct)
-    if "bmo:constraints" in cls and cls["bmo:constraints"]:
-        ct = cls.pop("bmo:constraints", None)
-        if ct:
-            cls["constraints"] = _to_list(ct)
-    if "owl:equivalentClass" in cls and cls["owl:equivalentClass"]:
-        ct = cls.pop("owl:equivalentClass", None)
-        if ct:
-            cls["equivalentClass"] = _to_list(ct)
+    to_add_as_is = [
+        "skos:prefLabel",
+        "rdfs:label",
+        "skos:definition",
+        "skos:notation",
+        "skos:altLabel"
+    ]
 
-    if "skos:prefLabel" in cls and cls["skos:prefLabel"]:
-        cls["prefLabel"] = cls.pop("skos:prefLabel", None)
-    if "rdfs:label" in cls and cls["rdfs:label"]:
-        cls["label"] = cls.pop("rdfs:label", None)
-
-    if "skos:definition" in cls and cls["skos:definition"]:
-        cls["definition"] = cls.pop("skos:definition", None)
-    if "skos:notation" in cls and cls["skos:notation"]:
-        cls["notation"] = cls.pop("skos:notation", None)
-    if "skos:definition" in cls and cls["skos:definition"]:
-        cls["definition"] = cls.pop("skos:definition", None)
-    if "skos:altLabel" in cls and cls["skos:altLabel"]:
-        cls["altLabel"] = cls.pop("skos:altLabel", None)
+    for key in to_add_as_is:
+        add_without_prefix(key, as_list=False)
 
     if "isDefinedBy" in cls and cls["isDefinedBy"] and isinstance(cls["isDefinedBy"], list):
         cls["isDefinedBy"] = cls["isDefinedBy"][0]

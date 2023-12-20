@@ -633,7 +633,7 @@ EFO:0001352 a owl:Class ;
     rdfs:label "Sprague Dawley"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10116 ;
-    skos:altLabel "Rats, Sprague Dawley",
+    skos:altLabel "Rats, Sprague Dawley"@en,
         "Sprague-Dawley rat"@en,
         "Sprague-Dawley rats"@en .
 
