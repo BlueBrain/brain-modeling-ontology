@@ -103,7 +103,7 @@ bmo:ElectricalStimulus a owl:Class ;
 bmo:METypeRatio a owl:Class ;
     rdfs:label "METype Ratio"@en ;
     rdfs:subClassOf bmo:ModelBrainParameter ;
-    skos:prefLabel "METype Ratio"^^xsd:string .
+    skos:prefLabel "METype Ratio"@en .
 
 bmo:ModelBiochemicalReactionParameter a owl:Class ;
     rdfs:label "Model Biochemical Reaction Parameter"@en ;

@@ -49,7 +49,7 @@ bmo:METypeDensity a owl:Class ;
 
 bmo:METypeRatio a owl:Class ;
     rdfs:label "METype Ratio"@en ;
-    skos:prefLabel "METype ratio"@en .
+    skos:prefLabel "METype Ratio"@en .
 
 bmo:MTypeDensity a owl:Class ;
     rdfs:label "MType Density"@en ;

@@ -6891,12 +6891,11 @@ bmo:Serpinf1_plus a owl:Class ;
 
 bmo:ThalamusBurstAccommodatingElectricalType a owl:Class ;
     rdfs:label "TH_bAC"^^xsd:string ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:subClassOf [
+            a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738235> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738235> ],
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738235>
+        ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType>,
         bmo:NeuronElectricalType ;
     skos:notation "TH_bAC"^^xsd:string ;
@@ -9945,22 +9944,10 @@ ct:PremammillaryNucleusPrincipalCell a owl:Class ;
             owl:someValuesFrom mba:980 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:980 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:980 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1004 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1004 ],
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:1004 ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Premammillary Nucleus Principal Cell" ;
     skos:definition "Principal cell in premammillary nucleus"@en ;
@@ -10876,7 +10863,7 @@ ct:SupratrigeminalNucleusInterneuron a owl:Class ;
             owl:someValuesFrom mba:534 ],
         bmo:NeuronMorphologicalType,
         bmo:NewNeuronType ;
-    skos:altLabel "Supratrigeminal Nucleus Interneuron",
+    skos:altLabel "Supratrigeminal Nucleus Interneuron"@en,
         "Supratrigeminal nucleus interneuron"@en ;
     skos:definition "Interneuron in supratrigeminal nucleus"@en ;
     skos:notation "SUT_IN" .
@@ -10925,7 +10912,7 @@ ct:TrigeminalNucleusPrincipalCell a owl:Class ;
             owl:someValuesFrom mba:460 ],
         bmo:NeuronMorphologicalType,
         bmo:NewNeuronType ;
-    skos:altLabel "Trigeminal Nucleus Principal Cell",
+    skos:altLabel "Trigeminal Nucleus Principal Cell"@en,
         "Trigeminal nucleus principal cell"@en ;
     skos:definition "Principal cell in trigeminal nucleus"@en ;
     skos:notation "MEV_PrC" .

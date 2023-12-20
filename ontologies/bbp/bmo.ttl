@@ -4273,7 +4273,7 @@ nsg:EType rdf:type owl:Class ;
                             owl:someValuesFrom bmo:NeuronElectrophysiologicalFeature
                           ] ;
           rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/7515dc12-ce84-4eea-ba8e-6262670ac741/edit/Classes> ;
-          rdfs:label "Neuron Electrical Type"^^xsd:string .
+          rdfs:label "Brain Cell Electrical Type"@en .
 
 
 ###  https://neuroshapes.org/ElectricalSeries
@@ -4472,7 +4472,7 @@ nsg:MType rdf:type owl:Class ;
                             owl:someValuesFrom bmo:NeuronMorphologicalFeature
                           ] ;
           rdfs:isDefinedBy <https://bbp.epfl.ch/nexus/webprotege/#projects/6a23494a-360c-4152-9e81-fd9828f44db9/edit/Classes> ;
-          rdfs:label "Neuron Morphological Type"^^xsd:string ;
+          rdfs:label "Brain Cell Morphological Type"@en ;
           skos:definition "A classification scheme for a neuron related to its shape."^^xsd:string .
 
 
