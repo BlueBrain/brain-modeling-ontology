@@ -66,7 +66,7 @@ def test_all_classes_are_extracted(framed_classes, all_ontology_graph_merged_bra
 
     class_ids   = framed_classes[0] 
     class_jsons = framed_classes[1]
-    all_ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
+    all_ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
 
     assert len(class_ids) == len(class_jsons)
 
@@ -171,7 +171,7 @@ def test_musmusculus_rat_labels(framed_classes):
 def test_all_brain_regions_have_annotations(framed_classes, all_ontology_graph_merged_brain_region_atlas_hierarchy, atlas_release_prop, atlas_release_version):
     class_ids   = framed_classes[0] 
     class_jsons = framed_classes[1]
-    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
+    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
     framed_class_json_dict = dict(zip(class_ids, class_jsons))
     properties_to_check = ["label", "notation", "prefLabel"]
     errors = []
@@ -187,7 +187,7 @@ def test_all_brain_regions_have_annotations(framed_classes, all_ontology_graph_m
 def test_all_non_layer_brain_regions_have_representedInAnnotation(framed_classes, all_ontology_graph_merged_brain_region_atlas_hierarchy):
     class_ids   = framed_classes[0] 
     class_jsons = framed_classes[1]
-    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
+    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
     framed_class_json_dict = dict(zip(class_ids, class_jsons))
     errors = []
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
@@ -222,7 +222,7 @@ def test_all_non_layer_brain_regions_have_representedInAnnotation(framed_classes
 
 
 def test_layered_child_has_same_layer_as_parent(all_ontology_graph_merged_brain_region_atlas_hierarchy):
-    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
+    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
         if (cls, RDFS.subClassOf*ZeroOrMore, BMO.BrainLayer) not in ontology_graph: # all non layer brain regions (i.e classes that are layers are not wanted)
             if (cls, NSG.hasLayerLocationPhenotype, None) in ontology_graph: # if they have a layer associated (e.g Primary auditory area, layer 6b)

@@ -19,6 +19,7 @@ def pytest_addoption(parser):
     parser.addoption("--atlas_parcellation_ontology_version", action="store", default=None)
     parser.addoption("--atlas_parcellation_ontology_bucket", action="store", default="bbp/atlas")
     parser.addoption("--token", action="store")
+    parser.addoption("--no_randomisation", action="store", default=False, type=bool)
 
 
 PREFIX_MAPPINGS = {
@@ -58,6 +59,11 @@ PREFIX_MAPPINGS = {
     "RS": "http://purl.obolibrary.org/obo/RS_",
     "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_"
 }
+
+
+@pytest.fixture(scope="session")
+def randomize(pytestconfig):
+    return not pytestconfig.getoption("no_randomisation")
 
 
 @pytest.fixture(scope="session")
@@ -165,7 +171,7 @@ def all_ontology_graphs(ontology_dir):
 def framed_classes(data_jsonld_context, all_ontology_graph_merged_brain_region_atlas_hierarchy, atlas_release_id, atlas_release_version):
     new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
     assert len(errors) == 0
-    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
+    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
     
     class_ids, class_jsons, all_blank_node_triples, brain_region_new_classes = bmo.frame_classes(ontology_graph, new_jsonld_context, new_jsonld_context.document,
                                                                                                  atlas_release_id, atlas_release_version)
@@ -192,9 +198,8 @@ def all_ontology_graph_merged_brain_region_atlas_hierarchy(all_ontology_graphs, 
                                                         )
     assert len(triples_to_remove) > 0
     assert len(triples_to_add) >  0
-    return (
-        ontology_graph, triples_to_add, triples_to_remove
-    )
+    return ontology_graph
+
 
 
 @pytest.fixture(scope="session")
