@@ -2748,6 +2748,10 @@
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/delineatedBy",
       "@type": "@id"
     },
+    "delineates": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/delineates",
+      "@type": "@id"
+    },
     "density": {
       "@id": "nsg:density"
     },
