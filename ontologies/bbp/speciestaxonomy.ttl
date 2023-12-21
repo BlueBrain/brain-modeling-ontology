@@ -71,58 +71,58 @@
     rdfs:label "Fezf2-CreER"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Fezf2-CreER"^^xsd:string ;
-    skos:definition "In this strain, CreER was inserted in front of the Fezf2 open reading frame through homologous recombination. In Fezf2-CreER, the GCaMP6f (genetically encoded fluorescent Ca[2+] indicator) is strongly expressed in cortical layer 5 and some layer 6 as well as basolateral amygdala and scattered expression in pyramidal cell layers of hippocampus (Guo et al., 2013)."^^xsd:string .
+    skos:altLabel "Fezf2-CreER"@en ;
+    skos:definition "In this strain, CreER was inserted in front of the Fezf2 open reading frame through homologous recombination. In Fezf2-CreER, the GCaMP6f (genetically encoded fluorescent Ca[2+] indicator) is strongly expressed in cortical layer 5 and some layer 6 as well as basolateral amygdala and scattered expression in pyramidal cell layers of hippocampus (Guo et al., 2013)."@en .
 
 :R7JOvf1kHPmdwJuqPLEiyRA a owl:Class ;
     rdfs:label "Slc6a4-CreERT2_EZ13;Ai166-369739"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Slc6a4-CreERT2_EZ13;Ai166-369739"^^xsd:string ;
-    skos:definition "The Slc6a4-CreERT2_EZ13;Ai166-369739 transgenic mouse has two genetic modifications: Slc6a4-CreERT2_EZ13 which involves the insertion of a modified serotonin transporter (Slc6a4) gene that codes for an enzyme called CreERT2, and Ai166-369739 which involves the insertion of a tdTomato (Ai166) fluorescent protein and a genetically encoded calcium indicator called GCaMP6s (369739) into the mouse genome (Ren et al., 2018)."^^xsd:string .
+    skos:altLabel "Slc6a4-CreERT2_EZ13;Ai166-369739"@en ;
+    skos:definition "The Slc6a4-CreERT2_EZ13;Ai166-369739 transgenic mouse has two genetic modifications: Slc6a4-CreERT2_EZ13 which involves the insertion of a modified serotonin transporter (Slc6a4) gene that codes for an enzyme called CreERT2, and Ai166-369739 which involves the insertion of a tdTomato (Ai166) fluorescent protein and a genetically encoded calcium indicator called GCaMP6s (369739) into the mouse genome (Ren et al., 2018)."@en .
 
 :R7KpJxn18s2ZGxzwkvGg2nb a owl:Class ;
     rdfs:label "Esr2-IRES2-Cre-D"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Esr2-IRES2-Cre-D"^^xsd:string ;
-    skos:definition "Esr2-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression/activity directed by the endogenous Esr2 promoter/enhancer sequences. In the brain, it is observed mainly in medial amygdalar nucleus, bed nuclei of the stria terminalis, paraventricular hypothalamic nucleus, cortical layer 6 and scattered neurons elsewhere in the brain (Daigle et al., 2018)."^^xsd:string .
+    skos:altLabel "Esr2-IRES2-Cre-D"@en ;
+    skos:definition "Esr2-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression/activity directed by the endogenous Esr2 promoter/enhancer sequences. In the brain, it is observed mainly in medial amygdalar nucleus, bed nuclei of the stria terminalis, paraventricular hypothalamic nucleus, cortical layer 6 and scattered neurons elsewhere in the brain (Daigle et al., 2018)."@en .
 
 :R7iITOp5KAC3EtDAI786GAO a owl:Class ;
     rdfs:label "Pdyn-T2A-CreERT2;Ai166-493297"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Pdyn-T2A-CreERT2;Ai166-493297"^^xsd:string ;
-    skos:definition "The Pdyn-T2A-CreERT2;Ai166-493297 mouse has two modificatoins: Pdyn-T2A-CreERT2 which involves the insertion of a modified prodynorphin (Pdyn) gene that codes for an enzyme called CreERT2. The enzyme is only produced in cells where the Pdyn gene is active, allowing for selective activation of CreERT2, and Ai166-493297 which involves the insertion of a fluorescent tdTomato (Ai166) protein and a genetically encoded calcium indicator GCaMP6f (493297) into the genome (Hrvatin et al., 2018)."^^xsd:string .
+    skos:altLabel "Pdyn-T2A-CreERT2;Ai166-493297"@en ;
+    skos:definition "The Pdyn-T2A-CreERT2;Ai166-493297 mouse has two modifications: Pdyn-T2A-CreERT2 which involves the insertion of a modified prodynorphin (Pdyn) gene that codes for an enzyme called CreERT2. The enzyme is only produced in cells where the Pdyn gene is active, allowing for selective activation of CreERT2, and Ai166-493297 which involves the insertion of a fluorescent tdTomato (Ai166) protein and a genetically encoded calcium indicator GCaMP6f (493297) into the genome (Hrvatin et al., 2018)."@en .
 
 :R84Ns0FKi8wdur9YF81jIBd a owl:Class ;
     rdfs:label "Tg(Dbh-cre)KH212Gsat"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Tg(Dbh-cre)KH212Gsat "^^xsd:string ;
-    skos:definition "The Tg(Dbh-cre)KH212Gsat mouse expresses Cre recombinase under the control of the dopamine Beta Hydroxylase (Dbh) promoter. DBH is primarily expressed in the noradrenergic neurons of the central and peripheral nervous systems. In the brain, DBH is mainly found in noradrenergic neurons of the locus coeruleus (LC) and the lateral tegmental area (LTA) in the brainstem, which project to various regions of the brain including the prefrontal cortex, hippocampus, and amygdala. DBH is also expressed in the sympathetic ganglia and adrenal medulla, where it is involved in the synthesis of norepinephrine and epinephrine, respectively. Overall, the expression of DBH is highly specific to noradrenergic neurons and is essential for the synthesis of norepinephrine, which plays a crucial role in various physiological and behavioral processes including stress response, attention, and mood regulation (Eisenhofer et al., 2004)."^^xsd:string .
+    skos:altLabel "Tg(Dbh-cre)KH212Gsat"@en ;
+    skos:definition "The Tg(Dbh-cre)KH212Gsat mouse expresses Cre recombinase under the control of the dopamine Beta Hydroxylase (Dbh) promoter. DBH is primarily expressed in the noradrenergic neurons of the central and peripheral nervous systems. In the brain, DBH is mainly found in noradrenergic neurons of the locus coeruleus (LC) and the lateral tegmental area (LTA) in the brainstem, which project to various regions of the brain including the prefrontal cortex, hippocampus, and amygdala. DBH is also expressed in the sympathetic ganglia and adrenal medulla, where it is involved in the synthesis of norepinephrine and epinephrine, respectively. Overall, the expression of DBH is highly specific to noradrenergic neurons and is essential for the synthesis of norepinephrine, which plays a crucial role in various physiological and behavioral processes including stress response, attention, and mood regulation (Eisenhofer et al., 2004)."@en .
 
 :R8IQIkKuFhWqFB5Zht7qTkh a owl:Class ;
     rdfs:label "Gnb4-IRES2-CreERT2"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Gnb4-Cre "^^xsd:string,
-        "Gnb4-IRES2-CreERT2"^^xsd:string ;
-    skos:definition "Gnb4-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression directed to guanine nucleotide binding protein (G protein) beta 4-expressing cells. Cre recombinase expression and activity largely recapitulates the endogenous Gnb4 gene - it is enriched in claustrum but relatively sparse in nearby structures (endopiriform nucleus and deep insular cortex). These mice may be used to generate conditional mutations for studying gain-or-loss of function and/or fate mapping related to this G protein (Wang et al., 2017)."^^xsd:string .
+    skos:altLabel "Gnb4-Cre"@en,
+        "Gnb4-IRES2-CreERT2"@en ;
+    skos:definition "Gnb4-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression directed to guanine nucleotide binding protein (G protein) beta 4-expressing cells. Cre recombinase expression and activity largely recapitulates the endogenous Gnb4 gene - it is enriched in claustrum but relatively sparse in nearby structures (endopiriform nucleus and deep insular cortex). These mice may be used to generate conditional mutations for studying gain-or-loss of function and/or fate mapping related to this G protein (Wang et al., 2017)."@en .
 
 :R8PX82kfbisMsLvrb95lDTE a owl:Class ;
     rdfs:label "CAV-Cre;Ai139"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "CAV-Cre;Ai139 "^^xsd:string ;
-    skos:definition "An E1-deleted, replication-defective, CAV-2 vector harbouring the CMV promoter that leads to Cre recombinase expression. The open frame is followed by an SV40 polyA signal. Following CAV-Cre injection at the putative target region, CAR expression promotes the uptake of CAV-2 into the fiber terminals and the retrograde axonal transport of CAV-2 back to the distally located soma and results in Are recombinase expression at the source region. In turn, the Cre recombinase inverts the DIO cassette, halting expression of mCAR and instead inducing expression of the ChR2 cargo. This approach has two important advantages: first, it allows for more robust and reliable expression of the inverted transgenes compared to strategies for expressing both proteins in series (e.g., IRES or 2A), and second, it circumvents concerns that sustained CAR expression might interfere with neuronal function (Li SJ et al., 2018)."^^xsd:string .
+    skos:altLabel "CAV-Cre;Ai139"@en ;
+    skos:definition "An E1-deleted, replication-defective, CAV-2 vector harbouring the CMV promoter that leads to Cre recombinase expression. The open frame is followed by an SV40 polyA signal. Following CAV-Cre injection at the putative target region, CAR expression promotes the uptake of CAV-2 into the fiber terminals and the retrograde axonal transport of CAV-2 back to the distally located soma and results in Are recombinase expression at the source region. In turn, the Cre recombinase inverts the DIO cassette, halting expression of mCAR and instead inducing expression of the ChR2 cargo. This approach has two important advantages: first, it allows for more robust and reliable expression of the inverted transgenes compared to strategies for expressing both proteins in series (e.g., IRES or 2A), and second, it circumvents concerns that sustained CAR expression might interfere with neuronal function (Li SJ et al., 2018)."@en .
 
 :R9tbIX7XgY3BAUNFCn35mcW a owl:Class ;
     rdfs:label "Chat-IRES-Cre;Ai166-501053"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Chat-IRES-Cre;Ai166-501053"^^xsd:string ;
-    skos:definition "This strain has Chat-IRES-Cre modification which involves the insertion of a modified gene for choline acetyltransferase (Chat) that codes for an enzyme called Cre. The enzyme is only produced in cells where the Chat gene is active, allowing for selective activation of Cre in certain cells. The strain has also Ai166-501053 modification which involves the insertion of a fluorescent protein - tdTomato (Ai166) and a genetically encoded calcium indicator - GCaMP6s (501053) into the mouse genome (Kim et al., 2017)."^^xsd:string .
+    skos:altLabel "Chat-IRES-Cre;Ai166-501053"@en ;
+    skos:definition "This strain has Chat-IRES-Cre modification which involves the insertion of a modified gene for choline acetyltransferase (Chat) that codes for an enzyme called Cre. The enzyme is only produced in cells where the Chat gene is active, allowing for selective activation of Cre in certain cells. The strain has also Ai166-501053 modification which involves the insertion of a fluorescent protein - tdTomato (Ai166) and a genetically encoded calcium indicator - GCaMP6s (501053) into the mouse genome (Kim et al., 2017)."@en .
 
 :RB1cHDJDESM94SO6duQxrM6 a owl:Class ;
     rdfs:label "GAD67-eGFP"@en ;
@@ -133,87 +133,87 @@
     rdfs:label "Nos1-CreERT2;Sst-IRES-FlpO"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Nos1-CreERT2;Sst-IRES-FlpO"^^xsd:string .
+    skos:altLabel "Nos1-CreERT2;Sst-IRES-FlpO"@en .
 
 :RBAqL8lwvLPhEP5CMkt3zWa a owl:Class ;
     rdfs:label "SSt-Cre;Ai139"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Ai139"^^xsd:string,
-        "Ai139(TIT2L-GFP-ICL-TPT)-D"^^xsd:string,
-        "SSt-Cre;Ai139 "^^xsd:string ;
-    skos:definition "Ai139 (TIT2L-GFP-ICL-TPT)-D (also called Ai139D) mice are a Cre-dependent, Tet-controllable dual fluorescent reporter line, created by targeted insertion at the Igs7 locus (TIGRE; an intergenic region on mouse chromosome 9 that allows reporter expression to be tightly regulated). Exposure to Cre recombinase removes both STOP cassettes - resulting in EGFP fluorescence, tdTomato fluorescence and tTA2 expression - and that EGFP expression may be diminished/eliminated by doxycycline (Daigle et al., 2018)."^^xsd:string .
+    skos:altLabel "Ai139"@en,
+        "Ai139(TIT2L-GFP-ICL-TPT)-D"@en,
+        "SSt-Cre;Ai139"@en ;
+    skos:definition "Ai139 (TIT2L-GFP-ICL-TPT)-D (also called Ai139D) mice are a Cre-dependent, Tet-controllable dual fluorescent reporter line, created by targeted insertion at the Igs7 locus (TIGRE; an intergenic region on mouse chromosome 9 that allows reporter expression to be tightly regulated). Exposure to Cre recombinase removes both STOP cassettes - resulting in EGFP fluorescence, tdTomato fluorescence and tTA2 expression - and that EGFP expression may be diminished/eliminated by doxycycline (Daigle et al., 2018)."@en .
 
 :RBO79jv5U5EBpgwRbGixX4V a owl:Class ;
-    rdfs:label "Ai139-404922"^^xsd:string,
+    rdfs:label "Ai139-404922"@en,
         "Ai139-404922"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Ai139-404922"^^xsd:string ;
-    skos:definition "The Ai139-404922 mouse expresses the genetically encoded calcium indicator GCaMP7f and a fluorescent protein mRuby2 in all cells. The GCaMP7f protein is selectively expressed in cells that have been virally transduced or genetically modified to express Cre recombinase (Madisen et al., 2012)."^^xsd:string .
+    skos:altLabel "Ai139-404922"@en ;
+    skos:definition "The Ai139-404922 mouse expresses the genetically encoded calcium indicator GCaMP7f and a fluorescent protein mRuby2 in all cells. The GCaMP7f protein is selectively expressed in cells that have been virally transduced or genetically modified to express Cre recombinase (Madisen et al., 2012)."@en .
 
 :RBS4I6tyfUBSDt1i0jXLpgN a owl:Class ;
     rdfs:label "Cux2-CreERT2"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Cux2-CreERT2"^^xsd:string ;
-    skos:definition "Cux2-CreERT2 label radial glial cells (RGCs) that gave rise to neurons in the neocortex that predominantly resided in upper neocortical layers (Franco et al., 2012). Cux2-Cre also labels a subset of interneurons and a minor fraction of Ctip2+ projection neurons and neocortical astrocytes. Guo et al., 2013 and Eckler et al., 2018 showed that neurons in neocortical ventricular zone (VZ) can be labelled in this mouse strain but there is some polemics about it (Gil-Sanz et al., 2018)."^^xsd:string .
+    skos:altLabel "Cux2-CreERT2"@en ;
+    skos:definition "Cux2-CreERT2 label radial glial cells (RGCs) that gave rise to neurons in the neocortex that predominantly resided in upper neocortical layers (Franco et al., 2012). Cux2-Cre also labels a subset of interneurons and a minor fraction of Ctip2+ projection neurons and neocortical astrocytes. Guo et al., 2013 and Eckler et al., 2018 showed that neurons in neocortical ventricular zone (VZ) can be labelled in this mouse strain but there is some polemics about it (Gil-Sanz et al., 2018)."@en .
 
 :RBaSmZY6SAaWqkV7nrqyPQo a owl:Class ;
     rdfs:label "Th-Cre_FI172;Ai166-387650"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Th-Cre_FI172;Ai166-387650"^^xsd:string ;
-    skos:definition "The Th-Cre_FI172;Ai166-387650 mouse line that is commonly used to study the role of dopaminergic neurons in the brain. This strain has two genetic modifications, Th-Cre_FI172, which involves the insertion of Cre recombinase under the control of the tyrosine hydroxylase (Th) promoter. Ai166-387650 modification involves the insertion of a genetically encoded calcium indicator - GCaMP6f into the mouse genome (Lerner et al., 2016)."^^xsd:string .
+    skos:altLabel "Th-Cre_FI172;Ai166-387650"@en ;
+    skos:definition "The Th-Cre_FI172;Ai166-387650 mouse line that is commonly used to study the role of dopaminergic neurons in the brain. This strain has two genetic modifications, Th-Cre_FI172, which involves the insertion of Cre recombinase under the control of the tyrosine hydroxylase (Th) promoter. Ai166-387650 modification involves the insertion of a genetically encoded calcium indicator - GCaMP6f into the mouse genome (Lerner et al., 2016)."@en .
 
 :RBfFur5MbOXSzwXeR9WemV1 a owl:Class ;
     rdfs:label "Nos1-CreERT2;Sst-IRES-FlpO;Ai188-hyg_408668-182726"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Nos1-CreERT2;Sst-IRES-FlpO;Ai188-hyg_408668-182726"^^xsd:string ;
-    skos:definition "The Nos1-CreERT2;Sst-IRES-FlpO;Ai188-hyg_408668-182726 mouse has following modifcations: Nos1-CreERT2 adding a tamoxifen-inducible Cre recombinase enzyme to neurons that express the nitric oxide synthase enzyme (Nos1), which is primarily expressed in interneurons in the brain; Sst-IRES-FlpO modificaton which adds a Flp recombinase to neurons that express somatostatin (Sst), and Ai188-hyg_408668-182726 which adds a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Sternson et al., 2021)."^^xsd:string .
+    skos:altLabel "Nos1-CreERT2;Sst-IRES-FlpO;Ai188-hyg_408668-182726"@en ;
+    skos:definition "The Nos1-CreERT2;Sst-IRES-FlpO;Ai188-hyg_408668-182726 mouse has following  modifications: Nos1-CreERT2 adding a tamoxifen-inducible Cre recombinase enzyme to neurons that express the nitric oxide synthase enzyme (Nos1), which is primarily expressed in interneurons in the brain; Sst-IRES-FlpO modification which adds a Flp recombinase to neurons that express somatostatin (Sst), and Ai188-hyg_408668-182726 which adds a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Sternson et al., 2021)."@en .
 
 :RCIhpGlEct4tnqzSfzEVqIs a owl:Class ;
     rdfs:label "Vipr2-IRES2-Cre-neo"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Vipr2-IRES2-Cre-neo"^^xsd:string ;
-    skos:definition "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK–Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells (Daigle et al., 2018)."^^xsd:string .
+    skos:altLabel "Vipr2-IRES2-Cre-neo"@en ;
+    skos:definition "The driver line was created by inserting Cre into the C-terminus of an endogenous gene via homologous recombination with driver gene expression mediated by internal ribosome entry side (IRES2). Target genes chosen for making Cre driver lines to supplement existing lines include cortical layer-selective genes that label mainly receptor genes (Vipr2, vasoactive intestinal peptide receptor2). This strain contains the PGK–Neo (a hybrid gene consisting of the phosphoglycerate kinase I promoter driving the neomycin phosphotransferase gene) which is a widely used cassette employed as a selectable marker for homologous recombination in embryonic stem cells (Daigle et al., 2018)."@en .
 
 :RCdsmhhTCAVRU9NaRWZ4hyk a owl:Class ;
     rdfs:label "Esr2-IRES2-Cre"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Esr2-IRES2-Cre"^^xsd:string ;
-    skos:definition "Esr2-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression/activity directed by the endogenous Esr2 promoter/enhancer sequences. In the brain, it is observed mainly in medial amygdalar nucleus, bed nuclei of the stria terminalis, paraventricular hypothalamic nucleus, cortical layer 6 and scattered neurons elsewhere in the brain. These mice may be used to generate conditional mutations for studying gain-or-loss of function and/or fate mapping in ESR2-expressing cells."^^xsd:string .
+    skos:altLabel "Esr2-IRES2-Cre"@en ;
+    skos:definition "Esr2-IRES2-Cre-D knock-in mice are designed to have Cre recombinase expression/activity directed by the endogenous Esr2 promoter/enhancer sequences. In the brain, it is observed mainly in medial amygdalar nucleus, bed nuclei of the stria terminalis, paraventricular hypothalamic nucleus, cortical layer 6 and scattered neurons elsewhere in the brain. These mice may be used to generate conditional mutations for studying gain-or-loss of function and/or fate mapping in ESR2-expressing cells."@en .
 
 :RDjuVumDYYduZdovvTatpxb a owl:Class ;
     rdfs:label "Tle4-CreER;Ai166_482503-194083"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Tle4-CreER;Ai166_482503-194083"^^xsd:string ;
-    skos:definition "The Tle4-CreER;Ai166_482503-194083 has two following modifications: Tle4-CreER which adds a tamoxifen-inducible Cre recombinase enzyme to neurons that express the transcriptional regulator Tle4, and Ai166_482503-194083 modification adding a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Singh et al., 2019)."^^xsd:string .
+    skos:altLabel "Tle4-CreER;Ai166_482503-194083"@en ;
+    skos:definition "The Tle4-CreER;Ai166_482503-194083 has two following modifications: Tle4-CreER which adds a tamoxifen-inducible Cre recombinase enzyme to neurons that express the transcriptional regulator Tle4, and Ai166_482503-194083 modification adding a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Singh et al., 2019)."@en .
 
 :RDksiUqGFUuhwZaaSGoBO0V a owl:Class ;
     rdfs:label "Calb2-CreERT2;Ai166-497523"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Calb2-CreERT2;Ai166-497523"^^xsd:string ;
-    skos:definition "The Calb2-CreERT2;Ai166-497523 transgenic mouse has two genetic modifications: Calb2-CreERT2 whhch adds a tamoxifen-inducible Cre recombinase to neurons that express the Calbindin 2 (Calb2) calcium-binding protein and Ai166-497523 modification adding a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Tyan et al., 2021)."^^xsd:string .
+    skos:altLabel "Calb2-CreERT2;Ai166-497523"@en ;
+    skos:definition "The Calb2-CreERT2;Ai166-497523 transgenic mouse has two genetic modifications: Calb2-CreERT2 which adds a tamoxifen-inducible Cre recombinase to neurons that express the Calbindin 2 (Calb2) calcium-binding protein and Ai166-497523 modification adding a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Tyan et al., 2021)."@en .
 
 :RDz40iHkMzxTQxTUqlASfyX a owl:Class ;
     rdfs:label "Nxph4-T2A-CreERT2;Ai166_426124-191808"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Nxph4-T2A-CreERT2;Ai166_426124-191808"^^xsd:string ;
-    skos:definition "The Nxph4-T2A-CreERT2;Ai166_426124-191808 mouse was created by introducing two genetic modifications Nxph4-T2A-CreERT2 which involves the insertion of Nxph4 gene into the mouse genome, along with a special sequence called T2A-CreERT2 (Nxph4 gene is expressed specifically in a subset of neurons in the brain, while the T2A-CreERT2 sequence allows for the inducible expression of Cre recombinase in these neurons, and Ai166_426124-191808 modification involving the insertion of Ai166 reporter gene into the genome  (Li et al., 2021)."^^xsd:string .
+    skos:altLabel "Nxph4-T2A-CreERT2;Ai166_426124-191808"@en ;
+    skos:definition "The Nxph4-T2A-CreERT2;Ai166_426124-191808 mouse was created by introducing two genetic modifications Nxph4-T2A-CreERT2 which involves the insertion of Nxph4 gene into the mouse genome, along with a special sequence called T2A-CreERT2 (Nxph4 gene is expressed specifically in a subset of neurons in the brain, while the T2A-CreERT2 sequence allows for the inducible expression of Cre recombinase in these neurons, and Ai166_426124-191808 modification involving the insertion of Ai166 reporter gene into the genome  (Li et al., 2021)."@en .
 
 :RbgCce6FpZBH0tGFk6b88A a owl:Class ;
     rdfs:label "Tlx3-Cre_PL56"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Tlx3-Cre_PL56"^^xsd:string ;
-    skos:definition "Tlx3-Cre_PL56;Ai148 mice exhibit GCaMP6f primarily restricted to IT corticostriatal in layer 5 (de Vries et al., 2020)."^^xsd:string .
+    skos:altLabel "Tlx3-Cre_PL56"@en ;
+    skos:definition "Tlx3-Cre_PL56;Ai148 mice exhibit GCaMP6f primarily restricted to IT corticostriatal in layer 5 (de Vries et al., 2020)."@en .
 
 :RorbCre1 a owl:Class ;
     rdfs:label "Rorb-Cre-1"@en ;
@@ -226,38 +226,38 @@
     rdfs:label "Tacr1-T2A-Cre;Sst-IRES-FlpO;Ai188-hyg-436253"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Tacr1-T2A-Cre;Sst-IRES-FlpO;Ai188-hyg-436253"^^xsd:string ;
-    skos:definition "The Tacr1-T2A-Cre;Sst-IRES-FlpO;Ai188-hyg-436253 was created by combining three different genetic modifications: Tacr1-T2A-Cre which adds a Cre recombinase enzyme to neurons that express the Tacr1 gene; Sst-IRES-FlpO modification adding both the FlpO recombinase and an IRES element to neurons that express the Sst gene, and Ai188-hyg-436253 adding a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Zeng et al., 2018)."^^xsd:string .
+    skos:altLabel "Tacr1-T2A-Cre;Sst-IRES-FlpO;Ai188-hyg-436253"@en ;
+    skos:definition "The Tacr1-T2A-Cre;Sst-IRES-FlpO;Ai188-hyg-436253 was created by combining three different genetic modifications: Tacr1-T2A-Cre which adds a Cre recombinase enzyme to neurons that express the Tacr1 gene; Sst-IRES-FlpO modification adding both the FlpO recombinase and an IRES element to neurons that express the Sst gene, and Ai188-hyg-436253 adding a fluorescent reporter gene to neurons that have undergone Cre-mediated recombination (Zeng et al., 2018)."@en .
 
 :RxoGvqCAmwBJS0E7RVI7qT a owl:Class ;
     rdfs:label "Pvalb-T2A-CreERT2"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Pvalb-2A-CreERT2-D"^^xsd:string,
-        "Pvalb-T2A-CreERT2"^^xsd:string,
-        "Pvalb-T2A-CreERT2-D"^^xsd:string ;
-    skos:definition "Pvalb-T2A-CreERT2-D (Pvalb-2A-CreERT2-D) mice have Cre-ERT2 fusion gene expression directed to Pvalb-expressing cells by the endogenous promoter/enhancer elements of the parvalbumin locus. These mice are a Cre-lox tool that allows inducible Cre expression of genes in Pvalb-expressing cells/tissues (Matho et al., 2021)."^^xsd:string .
+    skos:altLabel "Pvalb-2A-CreERT2-D"@en,
+        "Pvalb-T2A-CreERT2"@en,
+        "Pvalb-T2A-CreERT2-D"@en ;
+    skos:definition "Pvalb-T2A-CreERT2-D (Pvalb-2A-CreERT2-D) mice have Cre-ERT2 fusion gene expression directed to Pvalb-expressing cells by the endogenous promoter/enhancer elements of the parvalbumin locus. These mice are a Cre-lox tool that allows inducible Cre expression of genes in Pvalb-expressing cells/tissues (Matho et al., 2021)."@en .
 
 :RyopyomzZDtQGWHX5lddmE a owl:Class ;
     rdfs:label "Plxnd1-CreER"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Plxnd1-CreER"^^xsd:string ;
-    skos:definition "The PlxnD1-CreER driver recapitulates endogenous PlxnD1 expression and labeles projection neurons in the cerebral cortex, hippocampus, amygdala (BLA and LA), and medium spiny neurons of the striatum (Matho et al., 2021)."^^xsd:string .
+    skos:altLabel "Plxnd1-CreER"@en ;
+    skos:definition "The PlxnD1-CreER driver recapitulates endogenous PlxnD1 expression and labeles projection neurons in the cerebral cortex, hippocampus, amygdala (BLA and LA), and medium spiny neurons of the striatum (Matho et al., 2021)."@en .
 
 :RzIzImaHDkYWwbu1bGJmS a owl:Class ;
     rdfs:label "Npr3-IRES2-CreERT2-neo;Ai166-504501"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Npr3-IRES2-CreERT2-neo;Ai166-504501"^^xsd:string ;
-    skos:definition "The Npr3-IRES2-CreERT2-neo;Ai166-504501 mouse is a transgenic mouse line that is commonly used in neuroscience research to study the role of neurons that express the natriuretic peptide receptor 3 (NPR3) in the brain. This mouse line has two genetic modifications: Npr3-IRES2-CreERT2-neo which involves the insertion of Cre recombinase under the control of the Npr3 promoter. The Npr3 promoter is selectively active in a subset of neurons in the brain, including some neurons in the hippocampus and cortex, and Ai166-504501 which involves the insertion of a genetically encoded calcium indicator, GCaMP6s, into the mouse genome (O'Leary et al., 2021)."^^xsd:string .
+    skos:altLabel "Npr3-IRES2-CreERT2-neo;Ai166-504501"@en ;
+    skos:definition "The Npr3-IRES2-CreERT2-neo;Ai166-504501 mouse is a transgenic mouse line that is commonly used in neuroscience research to study the role of neurons that express the natriuretic peptide receptor 3 (NPR3) in the brain. This mouse line has two genetic modifications: Npr3-IRES2-CreERT2-neo which involves the insertion of Cre recombinase under the control of the Npr3 promoter. The Npr3 promoter is selectively active in a subset of neurons in the brain, including some neurons in the hippocampus and cortex, and Ai166-504501 which involves the insertion of a genetically encoded calcium indicator, GCaMP6s, into the mouse genome (O'Leary et al., 2021)."@en .
 
 :RzLZoF5tbH8jvs4MokBxQ a owl:Class ;
-    rdfs:label "Chrna2-Cre_OE25;Sst-IRES-FlpO;Ai188-hyg-435222"^^xsd:string ;
+    rdfs:label "Chrna2-Cre_OE25;Sst-IRES-FlpO;Ai188-hyg-435222"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Chrna2-Cre_OE25;Sst-IRES-FlpO;Ai188-hyg-435222"^^xsd:string ;
-    skos:definition "The Chrna2-Cre_OE25;Sst-IRES-FlpO;Ai188-hyg-435222 mouse strain has three modifications: Chrna2-Cre_OE25 which refers to the Cre recombinase enzyme, which is driven by the promoter for the Chrna2 gene. The CHRNA2 gene is a gene that encodes for a subunit of the nicotinic acetylcholine receptor; Sst-IRES-FlpO modification where Sst is the promoter for the somatostatin gene, which drives the expression of the IRES-FlpO cassette, and Ai188-hyg-435222 modification refering to a specific reporter gene that is expressed when Cre recombinase or FlpO recombinase removes a stop codon in the Ai188-hyg-435222 allele. This allows for the expression of a fluorescent protein (tdTomato) in the specific cells where the recombinase enzyme is active (Akerboom et al., 2013)."^^xsd:string .
+    skos:altLabel "Chrna2-Cre_OE25;Sst-IRES-FlpO;Ai188-hyg-435222"@en ;
+    skos:definition "The Chrna2-Cre_OE25;Sst-IRES-FlpO;Ai188-hyg-435222 mouse strain has three modifications: Chrna2-Cre_OE25 which refers to the Cre recombinase enzyme, which is driven by the promoter for the Chrna2 gene. The CHRNA2 gene is a gene that encodes for a subunit of the nicotinic acetylcholine receptor; Sst-IRES-FlpO modification where Sst is the promoter for the somatostatin gene, which drives the expression of the IRES-FlpO cassette, and Ai188-hyg-435222 modification refering to a specific reporter gene that is expressed when Cre recombinase or FlpO recombinase removes a stop codon in the Ai188-hyg-435222 allele. This allows for the expression of a fluorescent protein (tdTomato) in the specific cells where the recombinase enzyme is active (Akerboom et al., 2013)."@en .
 
 :VgatCre a owl:Class ;
     rdfs:label "Vgat-Cre"@en ;
@@ -435,20 +435,20 @@ nsg:defines a owl:AnnotationProperty .
     rdfs:label "Cre +/-, Tom +/-"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:definition "This is a hemizygote mouse carrying an allele of the gene for the cre-recombinase as well as the cell membrane-localized tdTomato (mT)"^^xsd:string .
+    skos:definition "This is a hemizygote mouse carrying an allele of the gene for the cre-recombinase as well as the cell membrane-localized tdTomato (mT)"@en .
 
 :R7VSXBJ6dYm8vikkDPJqne8 a owl:Class ;
     rdfs:label "Tnnt1-IRES2-CreERT2"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "Tnnt1-IRES2-CreERT2"^^xsd:string ;
-    skos:definition "Created by inserting Cre into the C terminus of an endogenous gene via homologous recombination, with driver gene expression mediated by an internal ribosome entry site (IRES). Tnnt1 gene was chosen for making Cre driver line for sparse labelling of the thalamic cells (Daigle et al., 2018)."^^xsd:string .
+    skos:altLabel "Tnnt1-IRES2-CreERT2"@en ;
+    skos:definition "Created by inserting Cre into the C terminus of an endogenous gene via homologous recombination, with driver gene expression mediated by an internal ribosome entry site (IRES). Tnnt1 gene was chosen for making Cre driver line for sparse labelling of the thalamic cells (Daigle et al., 2018)."@en .
 
 :R7W0jC5jLW97wVGcqzpUtT6 a owl:Class ;
     rdfs:label "GFP +/-"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:definition "This is a hemizygote mouse carrying an allele of the gene for the green fluorescent protein (GFP)"^^xsd:string .
+    skos:definition "This is a hemizygote mouse carrying an allele of the gene for the green fluorescent protein (GFP)"@en .
 
 NCBITaxon:119089 a owl:Class ;
     rdfs:label "Chromadorea"@en ;
@@ -655,7 +655,6 @@ EFO:0004472 a owl:Class ;
         "C57B/6"@en,
         "C57BL6"@en,
         "C57Bl,"@en,
-        "C57Bl\\6"@en,
         "C57Black"@en,
         "C57Black/6"@en,
         "C57Black6"@en,
@@ -690,9 +689,9 @@ EFO:0005290 a owl:Class ;
 NCBITaxon:10088 a owl:Class ;
     rdfs:label "Mouse"@en ;
     rdfs:subClassOf NCBITaxon:9989 ;
-    skos:altLabel "Mus"^^xsd:string,
-        "mice"^^xsd:string,
-        "mouse"^^xsd:string .
+    skos:altLabel "Mus"@en,
+        "mice"@en,
+        "mouse"@en .
 
 NCBITaxon:10114 a owl:Class ;
     rdfs:label "Rat"@en ;
@@ -761,9 +760,9 @@ NCBITaxon:10090 a owl:Class ;
     rdfs:label "Mus musculus"@en ;
     ncbitaxon:has_rank NCBITaxon:species ;
     rdfs:subClassOf NCBITaxon:10088 ;
-    skos:altLabel "M. musculus"^^xsd:string,
-        "Mouse"^^xsd:string,
-        "house mouse"^^xsd:string .
+    skos:altLabel "M. musculus"@en,
+        "Mouse"@en,
+        "house mouse"@en .
 
 NCBITaxon:strain a owl:Class ;
     rdfs:label "Strain Rank"@en ;

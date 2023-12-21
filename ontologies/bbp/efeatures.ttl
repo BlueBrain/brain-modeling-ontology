@@ -171,7 +171,7 @@ efe:AdaptationPercent3 a owl:Class ;
     rdfs:label "Adaptation Percent3"@en ;
     rdfs:subClassOf bmo:NeuronElectrophysiologicalFeature,
         efe:NeuroElectroNeuronElectrophysiologicalFeature ;
-    skos:altLabel "adaptation percent (1 – first/last ISI)"@en ;
+    skos:altLabel "adaptation percent (1 - first/last ISI)"@en ;
     skos:definition "1 minus ratio of durations between early and late AP inter-spike intervals in an AP train, normalized to a percent"@en ;
     nsg:units "Unitless" .
 
@@ -194,7 +194,7 @@ efe:AdaptationRatio2 a owl:Class ;
     rdfs:label "Adaptation Ratio2"@en ;
     rdfs:subClassOf bmo:NeuronElectrophysiologicalFeature,
         efe:NeuroElectroNeuronElectrophysiologicalFeature ;
-    skos:altLabel "adaptation ratio (1 – first/last ISI)"@en ;
+    skos:altLabel "adaptation ratio (1 - first/last ISI)"@en ;
     skos:definition "1 minus ratio of durations between early and late AP inter-spike intervals in an AP train"@en ;
     nsg:units "Unitless" .
 

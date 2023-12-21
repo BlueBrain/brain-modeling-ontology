@@ -1806,7 +1806,7 @@ bmo:EntityGenerator rdf:type owl:Class ;
 bmo:Equation rdf:type owl:Class ;
              rdfs:subClassOf prov:Entity ;
              rdfs:label "Equation"@en ;
-             skos:definition "In mathematics, an equation is a statement that asserts the equality of two expressions, which are connected by the equals sign \"=\"."^^xsd:string .
+             skos:definition "In mathematics, an equation is a statement that asserts the equality of two expressions, which are connected by the equals sign =."^^xsd:string .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/EvolutionaryAlgorithm
