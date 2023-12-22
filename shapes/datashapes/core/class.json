@@ -1,0 +1,17 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://neuroshapes.org/dash/class",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/ontologyentity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/class/shapes/ClassShape",
+      "@type": "NodeShape",
+      "nodeKind": "sh:IRI",
+      "targetClass": "owl:Class",
+      "node": "https://neuroshapes.org/commons/ontologyentity/shapes/OntologyEntityShape"
+    }
+  ]
+}

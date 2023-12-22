@@ -1,16 +1,16 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/qualitymeasurementannotation",
+  "@id": "https://neuroshapes.org/dash/batchqualitymeasurementannotation",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/qualitymeasurementannotation"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/qualitymeasurementannotation/shapes/QualityMeasurementAnnotationShape",
+      "@id": "https://neuroshapes.org/dash/batchqualitymeasurementannotation/shapes/BatchQualityMeasurementAnnotationShape",
       "@type": "NodeShape",
       "nodeKind": "sh:IRI",
-      "targetClass": "nsg:QualityMeasurementAnnotation",
+      "targetClass": "nsg:BatchQualityMeasurementAnnotation",
       "node": "https://neuroshapes.org/commons/qualitymeasurementannotation/shapes/QualityMeasurementAnnotationShape"
     }
   ]

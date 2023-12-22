@@ -1,17 +1,17 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/density",
+  "@id": "https://neuroshapes.org/dash/neurondensity",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/density"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/density/shapes/DensityShape",
+      "@id": "https://neuroshapes.org/dash/neurondensity/shapes/NeuronDensityShape",
       "@type": "NodeShape",
       "label": "Density shape definition",
       "nodeKind": "sh:BlankNodeOrIRI",
-      "targetClass": "nsg:Density",
+      "targetClass": "nsg:NeuronDensity",
       "node": "https://neuroshapes.org/commons/density/shapes/DensityShape"
     }
   ]

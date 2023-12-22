@@ -1,70 +1,64 @@
 {
-  "@context": [
-    "https://incf.github.io/neuroshapes/contexts/schema.json",
-    {
-      "this": "https://neuroshapes.org/dash/cellrecordseries/shapes/"
-    }
-  ],
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
   "@id": "https://neuroshapes.org/dash/cellrecordseries",
   "@type": "Schema",
   "imports": [
-    "nsg:dash/recordseries",
-    "nsg:commons/brainlocation",
-    "nsg:commons/typedlabeledontologyterm"
+    "https://neuroshapes.org/commons/recordseries"
   ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/cellrecordseries/shapes/CellRecordSeriesShape",
       "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:dash/recordseries/shapes/RecordSeriesShape"
-        },
-        {
-          "property": [
-            {
-              "description": "The morphology type of the reconstructed cell.",
-              "editorialNote": "Need the cell type for class restriction.",
-              "maxCount": 1,
-              "name": "Morphology type",
-              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape",
-              "path": "nsg:mType"
-            },
-            {
-              "class": "nsg:BrainAtlasSpatialReferenceSystem",
-              "maxCount": 1,
-              "path": "nsg:isRegisteredIn"
-            }
-          ]
-        }
-      ],
-      "label": "A Record Series for cells",
+      "description": "Definition of a series of records, each record having measures. Files types for this purpose are usually CSV, TSV or binary buffers",
+      "label": "Record Series",
       "nodeKind": "sh:BlankNodeOrIRI",
-      "targetClass": [
-        "nsg:RecordSeries",
-        "nsg:CellRecordSeries"
-      ]
+      "targetClass": "nsg:CellRecordSeries",
+      "node": "https://neuroshapes.org/commons/recordseries/shapes/RecordSeriesShape"
     },
     {
-      "@id": "https://neuroshapes.org/dash/cellrecordseries/shapes/BrainLocationShape",
+      "@id": "https://neuroshapes.org/dash/recordseries/shapes/RecordMeasureShape",
       "@type": "NodeShape",
-      "and": [
+      "description": "A measure can be anything",
+      "label": "Record Measure Shape",
+      "property": [
         {
-          "node": "nsg:commons/brainlocation/shapes/BrainLocationShape"
+          "datatype": "xsd:string",
+          "description": "Name of the measure",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Name",
+          "path": "schema:name"
         },
         {
-          "property": [
-            {
-              "class": "nsg:BrainAtlasSpatialReferenceSystem",
-              "maxCount": 1,
-              "minCount": 1,
-              "name": "Atlas Spatial Reference System",
-              "path": "nsg:atlasSpatialReferenceSystem"
-            }
-          ]
+          "datatype": "xsd:string",
+          "description": "Description of what this measure is about",
+          "maxCount": 1,
+          "name": "Description",
+          "path": "schema:description"
+        },
+        {
+          "description": "Type of the value",
+          "in": [
+            "ascii",
+            "uint8",
+            "int8",
+            "uint16",
+            "int16",
+            "uint32",
+            "int32",
+            "uint64",
+            "int64",
+            "float16",
+            "float32",
+            "float64"
+          ],
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Data Type",
+          "path": "nsg:componentEncoding"
         }
       ],
-      "label": "A morphology release distribution shape."
+      "targetClass": "nsg:RecordMeasure"
     }
   ]
 }
