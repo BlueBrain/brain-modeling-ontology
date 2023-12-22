@@ -1,0 +1,40 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://neuroshapes.org/commons/thickness",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/quantitativevalue",
+    "nsg:commons/brainlocation"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/thickness/shapes/ThicknessShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Brain location information of the thickness (e.g. specific cortical layer).",
+              "name": "Brain location",
+              "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+              "path": "nsg:brainLocation"
+            },
+            {
+              "description": "Thickness of a neuroscience object such as a brain region layer.",
+              "minCount": 1,
+              "name": "Thickness value",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:series"
+            }
+          ]
+        }
+      ],
+      "label": "Thickness shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://neuroshapes.org/dash/recordmeasure",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/recordseries"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/recordmeasure/shapes/RecordMeasureShape",
+      "@type": "NodeShape",
+      "description": "Definition of a series of records, each record having measures. Files types for this purpose are usually CSV, TSV or binary buffers",
+      "label": "Record Series",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:RecordMeasure",
+      "node": "https://neuroshapes.org/commons/recordseries/shapes/RecordMeasureShape"
+    }
+  ]
+}

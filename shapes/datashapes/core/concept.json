@@ -1,0 +1,17 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://neuroshapes.org/dash/concept",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/ontologyentity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/concept/shapes/ConceptShape",
+      "@type": "NodeShape",
+      "nodeKind": "sh:IRI",
+      "targetClass": "skos:Concept",
+      "node": "https://neuroshapes.org/commons/ontologyentity/shapes/OntologyEntityShape"
+    }
+  ]
+}

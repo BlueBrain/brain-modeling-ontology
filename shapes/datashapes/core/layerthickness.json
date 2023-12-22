@@ -1,17 +1,17 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/thickness",
+  "@id": "https://neuroshapes.org/dash/layerthickness",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/thickness"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/thickness/shapes/ThicknessShape",
+      "@id": "https://neuroshapes.org/dash/layerthickness/shapes/LayerThicknessShape",
       "@type": "NodeShape",
       "label": "Thickness shape definition",
       "nodeKind": "sh:BlankNodeOrIRI",
-      "targetClass": "nsg:Thickness",
+      "targetClass": "nsg:LayerThickness",
       "node": "https://neuroshapes.org/commons/thickness/shapes/ThicknessShape"
     }
   ]

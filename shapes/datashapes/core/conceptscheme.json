@@ -1,13 +1,28 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/taxonomy",
+  "@id": "https://neuroshapes.org/dash/conceptscheme",
   "@type": "Schema",
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/ontology/v0.1.0.json",
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/taxonomy/shapes/taxonomyShape",
+      "@id": "https://neuroshapes.org/dash/conceptscheme/shapes/ConceptSchemeShape",
       "@type": "NodeShape",
       "nodeKind": "sh:IRI",
+      "property": [
+        {
+          "datatype": "xsd:string",
+          "description": "The ontology label.",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Label",
+          "path": "rdfs:label"
+        },
+        {
+          "description": "Imported resources.",
+          "name": "Imports",
+          "path": "owl:imports"
+        }
+      ],
       "targetClass": "skos:ConceptScheme",
       "node": "https://neuroshapes.org/commons/ontology/shapes/OntologyShape"
     }

@@ -1,6 +1,6 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/atlasspatialreferencesystem",
+  "@id": "https://neuroshapes.org/dash/brainatlasspatialreferencesystem",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/atlasspatialreferencesystem"
@@ -8,11 +8,11 @@
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/atlasspatialreferencesystem/v0.1.0.json",
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/atlasspatialreferencesystem/shapes/AtlasSpatialReferenceSystemShape",
+      "@id": "https://neuroshapes.org/dash/brainatlasspatialreferencesystem/shapes/BrainAtlasSpatialReferenceSystemShape",
       "@type": "NodeShape",
       "label": "Atlas spatial reference system",
       "nodeKind": "sh:BlankNodeOrIRI",
-      "targetClass": "nsg:AtlasSpatialReferenceSystem",
+      "targetClass": "nsg:BrainAtlasSpatialReferenceSystem",
       "node": "https://neuroshapes.org/commons/atlasspatialreferencesystem/shapes/AtlasSpatialReferenceSystemShape"
     }
   ]

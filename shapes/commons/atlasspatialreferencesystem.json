@@ -1,0 +1,63 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://neuroshapes.org/commons/atlasspatialreferencesystem",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/entity",
+    "https://neuroshapes.org/commons/vector3d",
+    "https://neuroshapes.org/dash/rotationalmatrix",
+    "https://neuroshapes.org/commons/boundingbox",
+    "https://neuroshapes.org/commons/typedlabeledontologyterm"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/atlasspatialreferencesystem/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/atlasspatialreferencesystem/shapes/AtlasSpatialReferenceSystemShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Origin of the reference system",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Origin",
+              "node": "nsg:commons/vector3d/shapes/Vector3DShape",
+              "path": "nsg:origin"
+            },
+            {
+              "description": "3x3 rotational matrix",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Roatational matrix",
+              "node": "nsg:dash/rotationalmatrix/shapes/RotationalMatrixShape",
+              "path": "nsg:orientation"
+            },
+            {
+              "class": "nsg:BoundingBox",
+              "description": "Bounding box of the image data",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Bounding box",
+              "node": "nsg:commons/boundingbox/shapes/BoundingBoxShape",
+              "path": "nsg:boundingBox"
+            },
+            {
+              "description": "Space dimension unit",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Unit",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/UnitOntologyTermShape",
+              "path": "schema:unitCode"
+            }
+          ]
+        }
+      ],
+      "label": "Atlas spatial reference system",
+      "nodeKind": "sh:BlankNodeOrIRI"
+    }
+  ]
+}

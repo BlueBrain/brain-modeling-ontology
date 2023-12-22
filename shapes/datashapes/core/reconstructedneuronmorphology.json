@@ -1,6 +1,6 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/reconstructedpatchedcell",
+  "@id": "https://neuroshapes.org/dash/reconstructedneuronmorphology",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/reconstructedcell"
@@ -8,11 +8,11 @@
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/morphology/src/main/resources/schemas/neurosciencegraph/morphology/reconstructedcell/v0.1.2.json",
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/reconstructedpatchedcell/shapes/ReconstructedPatchedCellShape",
+      "@id": "https://neuroshapes.org/dash/reconstructedneuronmorphology/shapes/ReconstructedNeuronMorphologyShape",
       "@type": "NodeShape",
       "label": "Reconstructed cell shape definition",
       "nodeKind": "sh:BlankNodeOrIRI",
-      "targetClass": "nsg:ReconstructedPatchedCell",
+      "targetClass": "nsg:ReconstructedNeuronMorphology",
       "node": "https://neuroshapes.org/commons/reconstructedcell/shapes/ReconstructedCellShape"
     }
   ]
