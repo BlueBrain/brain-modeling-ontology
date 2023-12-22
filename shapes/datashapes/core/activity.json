@@ -1,19 +1,14 @@
 {
-  "@context": [
-    "https://incf.github.io/neuroshapes/contexts/schema.json",
-    {
-      "@base": "https://neuroshapes.org/dash/activity/shapes/"
-    }
-  ],
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
   "@id": "https://neuroshapes.org/dash/activity",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/activity"
+    "https://neuroshapes.org/commons/activity"
   ],
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/activity/v0.1.3.json",
   "shapes": [
     {
-      "@id": "ActivityShape",
+      "@id": "https://neuroshapes.org/dash/activity/shapes/ActivityShape",
       "@type": "NodeShape",
       "comment": "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
       "label": "Activity shape",

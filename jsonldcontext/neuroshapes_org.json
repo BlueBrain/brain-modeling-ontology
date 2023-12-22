@@ -2528,6 +2528,7 @@
     },
     "bmc": "https://bbp.epfl.ch/ontologies/core/bmc/",
     "bmo": "https://bbp.epfl.ch/ontologies/core/bmo/",
+    "bmoutils": "https://bbp.epfl.ch/ontologies/core/bmoutils/",
     "boosted": {
       "@id": "nsg:boosted"
     },

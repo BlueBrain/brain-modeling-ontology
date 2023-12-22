@@ -1,19 +1,14 @@
 {
-  "@context": [
-    "https://incf.github.io/neuroshapes/contexts/schema.json",
-    {
-      "@base": "https://neuroshapes.org/dash/experimentalactivity/shapes/"
-    }
-  ],
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
   "@id": "https://neuroshapes.org/dash/experimentalactivity",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/experimentalactivity"
+    "https://neuroshapes.org/commons/experimentalactivity"
   ],
   "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/experimentalactivity/v0.1.0.json",
   "shapes": [
     {
-      "@id": "ActivityShape",
+      "@id": "https://neuroshapes.org/dash/experimentalactivity/shapes/ActivityShape",
       "@type": "NodeShape",
       "label": "Activity description.",
       "node": "nsg:commons/experimentalactivity/shapes/ExperimentalActivityShape",
