@@ -37,6 +37,7 @@
         "@container": "@list"
       },
       "bmo": "https://bbp.epfl.ch/ontologies/core/bmo/",
+      "bmoutils": "https://bbp.epfl.ch/ontologies/core/bmoutils/",
       "class": {
         "@id": "sh:class",
         "@type": "@id"

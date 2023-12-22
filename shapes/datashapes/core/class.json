@@ -10,7 +10,6 @@
       "@id": "https://neuroshapes.org/dash/class/shapes/ClassShape",
       "@type": "NodeShape",
       "nodeKind": "sh:IRI",
-      "targetClass": "owl:Class",
       "node": "https://neuroshapes.org/commons/ontologyentity/shapes/OntologyEntityShape"
     }
   ]

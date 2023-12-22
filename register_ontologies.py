@@ -11,10 +11,16 @@ import bmo.ontologies as bmo
 import bmo.registration as bmo_registration
 from bmo.argument_parsing import define_arguments
 from bmo.loading import DATA_JSONLD_CONTEXT_PATH, SCHEMA_JSONLD_CONTEXT_PATH, load_ontologies, load_schemas
+from bmo.schema_to_type_mapping import create_update_type_to_schema_mapping
 
 from bmo.utils import (
-    BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, SKOS, _get_ontology_annotation_lang_context, CELL_TYPE_ONTOLOGY_URI
+    BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, SKOS,
+    _get_ontology_annotation_lang_context, CELL_TYPE_ONTOLOGY_URI, SHACL
 )
+
+import cProfile
+import pstats
+from pstats import SortKey
 
 WEBPROTEGE_TO_NEXUS = {
     # Target ontology ID's to define
@@ -497,6 +503,10 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     for e in class_errors:
         print(e)
 
+    create_update_type_to_schema_mapping(
+        all_schema_graphs=all_schema_graphs, forge=forge, data_update=data_update, tag=tag
+    )
+
 
 def _merge_ontology(
         from_ontology_graph,
@@ -719,4 +729,7 @@ if __name__ == "__main__":
     parser = define_arguments()
     received_args, leftovers = parser.parse_known_args()
     # registers the ontologies and the schemas
-    parse_and_register_ontologies(received_args)
+
+    with cProfile.Profile() as pr:
+        parse_and_register_ontologies(received_args)
+        pstats.Stats(pr).sort_stats(SortKey.CUMULATIVE).print_stats(10)

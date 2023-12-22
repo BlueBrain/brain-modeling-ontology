@@ -14,51 +14,6 @@
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:CellRecordSeries",
       "node": "https://neuroshapes.org/commons/recordseries/shapes/RecordSeriesShape"
-    },
-    {
-      "@id": "https://neuroshapes.org/dash/recordseries/shapes/RecordMeasureShape",
-      "@type": "NodeShape",
-      "description": "A measure can be anything",
-      "label": "Record Measure Shape",
-      "property": [
-        {
-          "datatype": "xsd:string",
-          "description": "Name of the measure",
-          "maxCount": 1,
-          "minCount": 1,
-          "name": "Name",
-          "path": "schema:name"
-        },
-        {
-          "datatype": "xsd:string",
-          "description": "Description of what this measure is about",
-          "maxCount": 1,
-          "name": "Description",
-          "path": "schema:description"
-        },
-        {
-          "description": "Type of the value",
-          "in": [
-            "ascii",
-            "uint8",
-            "int8",
-            "uint16",
-            "int16",
-            "uint32",
-            "int32",
-            "uint64",
-            "int64",
-            "float16",
-            "float32",
-            "float64"
-          ],
-          "maxCount": 1,
-          "minCount": 1,
-          "name": "Data Type",
-          "path": "nsg:componentEncoding"
-        }
-      ],
-      "targetClass": "nsg:RecordMeasure"
     }
   ]
 }

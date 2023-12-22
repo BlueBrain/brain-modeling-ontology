@@ -1,0 +1,28 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix bmoutils: <https://bbp.epfl.ch/ontologies/core/bmoutils/> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix nxv: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@base <https://bbp.epfl.ch/ontologies/core/bmoutils> .
+
+
+<https://bbp.epfl.ch/ontologies/core/bmoutils> rdf:type owl:Ontology ;
+                                           vann:preferredNamespacePrefix "bmoutils"^^xsd:string ;
+                                           rdfs:label "Brain Modeling Utility Ontology"^^xsd:string .
+
+###  https://bbp.epfl.ch/ontologies/core/bmoutils/SchemaToTypeMapping
+bmoutils:SchemaToTypeMapping rdf:type owl:Class ;
+            rdfs:subClassOf prov:Entity ;
+            rdfs:label "Schema to Type Mapping"@en ;
+            skos:definition "Mapping between data schemas for SHACL validation and types (classes)"^^xsd:string .
+
+
