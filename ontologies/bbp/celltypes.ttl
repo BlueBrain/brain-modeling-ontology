@@ -17396,9 +17396,7 @@ ct:MOBGR_DGC a owl:Class ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "MOBGR_DGC" ;
-    skos:definition """dGC have spheroidal soma of 6-8µm diameter.
-Their dendrites extend from the soma (in the deep MOBgr) to the deep MOBopl (target MCs).Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length.
-They are axonless."""@en ;
+    skos:definition "dGC have spheroidal soma of 6-8µm diameter. Their dendrites extend from the soma (in the deep MOBgr) to the deep MOBopl (target MCs).Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length. They are axonless."@en ;
     skos:notation "MOBgr_dGC" .
 
 ct:MOBGR_SGC a owl:Class ;
@@ -17411,9 +17409,7 @@ ct:MOBGR_SGC a owl:Class ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "MOBGR_SGC" ;
-    skos:definition """sGC have spheroidal soma of 6-8µm diameter.
-Their dendrites extend from the soma (in the deep MOBgr) to the superficial MOBopl (target mTCs). Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length.
-They are axonless."""@en ;
+    skos:definition "sGC have spheroidal soma of 6-8µm diameter. Their dendrites extend from the soma (in the deep MOBgr) to the superficial MOBopl (target mTCs). Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length. They are axonless."@en ;
     skos:notation "MOBgr_sGC" .
 
 ct:MOBMI_MCI a owl:Class ;
@@ -17426,10 +17422,7 @@ ct:MOBMI_MCI a owl:Class ;
             owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "MOBMI_MCI" ;
-    skos:definition """MC have spheroidal soma of 20µm diameter or more.
-The apical dendrite have a diameter of 4µm for a length of 400µm.
-It branches in 4 small tufts dendrites of 0.8µm diameter each.
-Lateral dendrites have a diameter of 3µm for a length of 800µm."""@en ;
+    skos:definition "MC have spheroidal soma of 20µm diameter or more. The apical dendrite have a diameter of 4µm for a length of 400µm. It branches in 4 small tufts dendrites of 0.8µm diameter each. Lateral dendrites have a diameter of 3µm for a length of 800µm."@en ;
     skos:notation "MOBmi_MC" .
 
 ct:MOBOPL_MTC a owl:Class ;
