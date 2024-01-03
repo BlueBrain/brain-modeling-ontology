@@ -104,7 +104,7 @@ def create_update_type_to_schema_mapping(
     schema_id = "https://bbp.epfl.ch/shapes/dash/schematotypemapping"
     id_root = "https://bbp.epfl.ch/nexus/v1/resources/neurosciencegraph/datamodels"
 
-    id_ = f"{id_root}/{quote_plus(schema_id)}/schema_to_type_mapping"
+    id_ = f"{id_root}/_/schema_to_type_mapping"
 
     mapping = Resource()
     mapping.id = id_
