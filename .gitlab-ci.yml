@@ -96,8 +96,11 @@ register_to_environment:
       --atlas_parcellation_ontology_version $atlas_parcellation_ontology_version
       --token $token 
       --tag '$tag'
+    - echo "environment=$environment" >> register.env
+    - echo "atlas_parcellation_ontology=$atlas_parcellation_ontology" >> register.env
     - echo "atlas_parcellation_ontology_version=$atlas_parcellation_ontology_version" >> register.env
     - echo "token=$token" >> register.env
+    - echo "tag=$tag" >> register.env
   artifacts:
     reports:
       dotenv: register.env
