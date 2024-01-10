@@ -102,9 +102,8 @@ def create_update_type_to_schema_mapping(
     )
 
     schema_id = "https://bbp.epfl.ch/shapes/dash/schematotypemapping"
-    id_root = "https://bbp.epfl.ch/nexus/v1/resources/neurosciencegraph/datamodels"
 
-    id_ = f"{id_root}/_/schema_to_type_mapping"
+    id_ = f"{forge._store.endpoint}/resources/{forge._store.bucket}/_/schema_to_type_mapping"
 
     mapping = Resource()
     mapping.id = id_
@@ -113,7 +112,6 @@ def create_update_type_to_schema_mapping(
     mapping.value = schema_to_type_mapping
 
     forge.validate(mapping, type_="SchemaToTypeMapping")
-
 
     if data_update:
         _register_update(

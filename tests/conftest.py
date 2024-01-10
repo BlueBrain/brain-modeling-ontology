@@ -5,60 +5,15 @@ import rdflib
 from kgforge.core import Resource
 from rdflib import RDFS, SKOS, RDF, OWL
 import bmo.ontologies as bmo
+from bmo.argument_parsing import define_arguments
 from bmo.utils import BMO, MBA, NXV, SCHEMAORG, _get_ontology_annotation_lang_context
 from register_ontologies import _get_classes_in_ontology, _merge_ontology, _initialize_forge_objects
 from bmo.loading import load_ontologies, load_schemas
 
 
 def pytest_addoption(parser):
-    parser.addoption("--environment", action="store",
-                     default="https://staging.nise.bbp.epfl.ch/nexus/v1")
-    parser.addoption("--bucket", action="store", default="neurosciencegraph/datamodels")
-    parser.addoption("--atlas_parcellation_ontology", action="store",
-                     default="https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e")
-    parser.addoption("--atlas_parcellation_ontology_version", action="store", default=None)
-    parser.addoption("--atlas_parcellation_ontology_bucket", action="store", default="bbp/atlas")
-    parser.addoption("--token", action="store")
+    parser = define_arguments(parser)
     parser.addoption("--no_randomisation", action="store", default=False, type=bool)
-
-
-PREFIX_MAPPINGS = {
-    "mso": "https://bbp.epfl.ch/ontologies/core/molecular-systems/",
-    "GO": "http://purl.obolibrary.org/obo/GO_",
-    "dc": "http://purl.org/dc/elements/1.1/",
-    "sh": "http://www.w3.org/ns/shacl#",
-    "bmo": "https://bbp.epfl.ch/ontologies/core/bmo/",
-    "bmc": "https://bbp.epfl.ch/ontologies/core/bmc/",
-    "nsg": "https://neuroshapes.org/",
-    "nxv": "https://bluebrain.github.io/nexus/vocabulary/",
-    "owl": "http://www.w3.org/2002/07/owl#",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "xml": "http://www.w3.org/XML/1998/namespace/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "prov": "http://www.w3.org/ns/prov#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "shsh": "http://www.w3.org/ns/shacl-shacl#",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "vann": "http://purl.org/vocab/vann/",
-    "void": "http://rdfs.org/ns/void#",
-    "uberon": "http://purl.obolibrary.org/obo/UBERON_",
-    "obo": "http://purl.obolibrary.org/obo/",
-    "schema": "http://schema.org/",
-    "dcterms": "http://purl.org/dc/terms/",
-    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
-    "NCBITaxon_TAXON": "http://purl.obolibrary.org/obo/NCBITaxon#_",
-    "stim": "https://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/",
-    "datashapes": "https://neuroshapes.org/dash/",
-    "commonshapes": "https://neuroshapes.org/commons/",
-    "ilx": "http://uri.interlex.org/base/ilx_",
-    "efe": "https://bbp.epfl.ch/ontologies/core/efeatures/",
-    "et": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/",
-    "mt": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/",
-    "tt": "http://bbp.epfl.ch/neurosciencegraph/ontologies/ttypes/",
-    "EFO": "http://www.ebi.ac.uk/efo/EFO_",
-    "RS": "http://purl.obolibrary.org/obo/RS_",
-    "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_"
-}
 
 
 @pytest.fixture(scope="session")
@@ -98,23 +53,33 @@ def atlas_parcellation_ontology_bucket(pytestconfig):
 
 @pytest.fixture(scope="session")
 def ontology_dir(pytestconfig):
-    return "./ontologies/bbp"
+    return pytestconfig.getoption("ontology_dir")
 
 
 @pytest.fixture(scope="session")
 def schema_dir(pytestconfig):
-    return "./shapes"
+    return pytestconfig.getoption("schema_dir")
 
 
 @pytest.fixture(scope="session")
 def transformed_schema_path(pytestconfig):
-    return "./ontologies/bbp/shapes_jsonld_expanded"
+    return pytestconfig.getoption("transformed_schema_path")
 
 
 @pytest.fixture(scope="session")
 def forge_objects(environment, bucket, token, atlas_parcellation_ontology_bucket):
+
+    if environment == "staging":
+        endpoint = "https://staging.nise.bbp.epfl.ch/nexus/v1"
+    elif environment == "production":
+        endpoint = "https://bbp.epfl.ch/nexus/v1"
+    else:
+        raise ValueError(
+            "Environment argument must be either \"staging\" or \"production\" "
+        )
+
     return _initialize_forge_objects(
-        endpoint=environment, input_bucket=bucket, token=token,
+        endpoint=endpoint, input_bucket=bucket, token=token,
         atlas_parcellation_ontology_bucket=atlas_parcellation_ontology_bucket
     )
 
@@ -145,11 +110,10 @@ def data_jsonld_context(forge, all_ontology_graphs):
 
 @pytest.fixture(scope="session")
 def all_ontology_graphs(ontology_dir):
-    ontology_pattern = f"{ontology_dir}/*.ttl"
-    ontology_files = glob.glob(ontology_pattern)
+    ontology_files = glob.glob(ontology_dir)
     ontology_graphs_dict = {}
     try:
-        ontology_graphs_dict, all_ontology_graphs = load_ontologies(ontology_pattern)
+        ontology_graphs_dict, all_ontology_graphs = load_ontologies(ontology_dir)
         assert len(all_ontology_graphs) > 0
         assert len(ontology_files) > 0
         assert len(ontology_graphs_dict) == len(ontology_files)
@@ -244,9 +208,8 @@ def atlas_hierarchy_ontology_graph(atlas_parcellation_ontology, atlas_parcellati
 
 @pytest.fixture(scope="session")
 def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
-    schema_pattern = f"{schema_dir}/**/*.json"
     recursive = True
-    schema_filenames = glob.glob(schema_pattern, recursive=recursive)
+    schema_filenames = glob.glob(schema_dir, recursive=recursive)
 
     # non_deprecated_schemas = [
     #     schema_filename for schema_filename in schema_filenames
@@ -255,7 +218,7 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
 
     try:
         schema_graphs_dict, schema_id_to_filepath_dict, all_schema_graphs = load_schemas(
-            schema_pattern, transformed_schema_path, forge_schema, recursive,
+            schema_dir, transformed_schema_path, forge_schema, recursive,
             save_transformed_schema=False
         )
         assert len(all_schema_graphs) > 0
