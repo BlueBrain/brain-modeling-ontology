@@ -6,3 +6,4 @@ __pycache__/*
 __pycache__/
 docs/_build
 ontologies/bbp/shapes_jsonld_expanded/*.ttl
+bmo/version.py

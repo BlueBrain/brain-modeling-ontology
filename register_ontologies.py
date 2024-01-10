@@ -1,6 +1,7 @@
 import argparse
 import json
 import copy
+import yaml
 from typing import Dict, Any, List, Tuple, Optional
 from rdflib import PROV, Literal, RDF, OWL, RDFS, Graph, term
 from kgforge.core.commons import Context
@@ -226,7 +227,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     """
     environment = arguments.environment
     token = arguments.token
-    tag = arguments.tag
+    tag = arguments.tag or None
     ontology_dir = arguments.ontology_dir
     bucket = arguments.bucket
     schema_dir = arguments.schema_dir
@@ -726,7 +727,7 @@ def register_schemas(
 
 if __name__ == "__main__":
     # defines and receives script arguments
-    parser = define_arguments()
+    parser = define_arguments(argparse.ArgumentParser())
     received_args, leftovers = parser.parse_known_args()
     # registers the ontologies and the schemas
 
