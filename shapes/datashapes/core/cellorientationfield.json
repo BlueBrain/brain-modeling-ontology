@@ -12,7 +12,7 @@
   ],
   "shapes": [
     {
-      "@id": "this:CellOrientationField",
+      "@id": "this:CellOrientationFieldShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
       "targetClass": "nsg:CellOrientationField"

@@ -7,7 +7,7 @@
   ],
   "shapes": [
     {
-      "@id": "https://bbp.epfl.ch/shapes/dash/celldensitydatalayer/shapes/CellDensityDataLayer",
+      "@id": "https://bbp.epfl.ch/shapes/dash/celldensitydatalayer/shapes/CellDensityDataLayerShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
       "targetClass": "nsg:CellDensityDataLayer"
