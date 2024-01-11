@@ -7,7 +7,7 @@
   ],
   "shapes": [
     {
-      "@id": "https://bbp.epfl.ch/shapes/dash/gliacelldensity/shapes/GliaCellDensity",
+      "@id": "https://bbp.epfl.ch/shapes/dash/gliacelldensity/shapes/GliaCellDensityShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
       "targetClass": "nsg:GliaCellDensity"

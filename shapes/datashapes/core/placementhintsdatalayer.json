@@ -12,7 +12,7 @@
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/placementhintsdatalayer/shapes/PlacementHintsDataLayer",
+      "@id": "https://neuroshapes.org/dash/placementhintsdatalayer/shapes/PlacementHintsDataLayerShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
       "targetClass": "nsg:PlacementHintsDataLayer"

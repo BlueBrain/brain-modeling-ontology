@@ -7,7 +7,7 @@
   ],
   "shapes": [
     {
-      "@id": "https://bbp.epfl.ch/shapes/dash/datacatalog/shapes/PlacementHintsDataLayerCatalog",
+      "@id": "https://bbp.epfl.ch/shapes/dash/datacatalog/shapes/PlacementHintsDataLayerCatalogShape",
       "node": "https://bbp.epfl.ch/shapes/commons/datacatalog/shapes/DataCatalogShape",
       "@type": "NodeShape",
       "targetClass": "bmo:PlacementHintsDataLayerCatalog"

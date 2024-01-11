@@ -7,7 +7,7 @@
   ],
   "shapes": [
     {
-      "@id": "https://bbp.epfl.ch/shapes/dash/brainparcellationdatalayer/shapes/BrainParcellationDataLayer",
+      "@id": "https://bbp.epfl.ch/shapes/dash/brainparcellationdatalayer/shapes/BrainParcellationDataLayerShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
       "targetClass": "nsg:BrainParcellationDataLayer"

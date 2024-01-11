@@ -12,7 +12,7 @@
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/brainparcellationmask/shapes/BrainParcellationMask",
+      "@id": "https://neuroshapes.org/dash/brainparcellationmask/shapes/BrainParcellationMaskShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
       "targetClass": "bmo:BrainParcellationMask"

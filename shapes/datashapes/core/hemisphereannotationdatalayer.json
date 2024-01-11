@@ -12,7 +12,7 @@
   ],
   "shapes": [
     {
-      "@id": "this:HemisphereAnnotationDataLayer",
+      "@id": "this:HemisphereAnnotationDataLayerShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
       "targetClass": "bmo:HemisphereAnnotationDataLayer"

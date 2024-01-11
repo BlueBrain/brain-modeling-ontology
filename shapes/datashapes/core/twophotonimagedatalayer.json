@@ -7,7 +7,7 @@
   ],
   "shapes": [
     {
-      "@id": "https://bbp.epfl.ch/shapes/dash/twophotonimagedatalayer/shapes/TwoPhotonImageDataLayer",
+      "@id": "https://bbp.epfl.ch/shapes/dash/twophotonimagedatalayer/shapes/TwoPhotonImageDataLayerShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
       "targetClass": "nsg:TwoPhotonImageDataLayer"
