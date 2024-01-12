@@ -2,7 +2,8 @@ import io
 from contextlib import redirect_stdout
 from typing import Optional, Tuple
 
-from kgforge.core import KnowledgeGraphForge, Resource
+from kgforge.core import KnowledgeGraphForge, Resource, commons
+from kgforge.core.commons.exceptions import RetrievalError
 
 
 ALREADY_EXISTS_ERROR = " already exists in project"
@@ -62,7 +63,7 @@ def register_schema(
     return _register_update(
         forge, schema_resource, schema_id=SHACL_SCHEMA_ID,
         tag=tag, extra_message=f"from file {schema_filepath}",
-        raise_on_fail=False, type_str="Schema"
+        raise_on_fail=True, type_str="Schema"
     )
 
 
@@ -77,28 +78,20 @@ def register_ontology(
     )
 
 
-def _process_already_existing_resource(forge: KnowledgeGraphForge, resource: Resource):
-    resource_json = forge.as_json(resource)
-    resource_id = resource_json.pop("@id", resource_json.pop("id", None))
-    resource_id = forge._model.context().expand(resource_id)
-    # resource_json.pop("@type", resource_json.pop("type", None))
-    resource_updated = forge.from_json(resource_json)
-    existing_resource = forge.retrieve(resource_id)
-    resource_updated.id = existing_resource.id
-    if hasattr(resource, "context"):
-        resource_updated.context = resource.context
-    # resource_updated.type = existing_resource.type
-    resource_updated._store_metadata = existing_resource._store_metadata
-    return resource_updated
-
-
-def _handle_failed(act, resource, action_type, extra_message, type_str, raise_on_fail):
+def _handle_failed(
+        action_message, resource, action_type, extra_message, type_str, raise_on_fail,
+        parent_ex=None
+):
     message = f"Failed to {action_type} {type_str.lower()}:{resource.get_identifier()} " \
-              f"{extra_message}: {act.message}"
+              f"{extra_message}: {action_message}"
     print(message)
     ex = Exception(message)
+
     if raise_on_fail:
+        if parent_ex:
+            raise ex from parent_ex
         raise ex
+
     return ex, resource
 
 
@@ -133,7 +126,10 @@ def _deprecate(
         forge: KnowledgeGraphForge, resource: Resource,
         type_str, extra_message="", raise_on_fail=True
 ):
-    resource_retrieved = forge.retrieve(resource.get_identifier())
+    try:
+        resource_retrieved = forge.retrieve(resource.get_identifier())
+    except commons.exceptions.RetrievalError:
+        resource_retrieved = None
 
     if resource_retrieved is None:
         print(
@@ -160,7 +156,7 @@ def _deprecate(
         return None, resource_retrieved
 
     return _handle_failed(
-        last_action, resource_retrieved, "deprecate", extra_message, type_str, raise_on_fail
+        last_action.message, resource_retrieved, "deprecate", extra_message, type_str, raise_on_fail
     )
 
 
@@ -187,11 +183,34 @@ def _register_update(
 
     if ALREADY_EXISTS_ERROR not in last_action.message:
         return _handle_failed(
-            last_action, resource, "register", extra_message, type_str, raise_on_fail
+            last_action.message, resource, "register", extra_message, type_str, raise_on_fail
         )
 
     print(f"{type_str} {resource.get_identifier()} already exists, updating...")
-    resource_updated = _process_already_existing_resource(forge, resource)
+
+    has_id, id_attrib = resource.has_identifier(return_attribute=True)
+
+    if not has_id:
+        return _handle_failed(
+            "Could not find identifier for an existing resource "
+            f"in local description of the {resource.type}",
+            resource, "retrieve", extra_message, type_str, raise_on_fail
+        )
+
+    resource_id = forge._model.context().expand(resource.get_identifier())
+
+    resource_updated = resource
+    setattr(resource_updated, id_attrib, resource_id)
+
+    try:
+        existing_resource = forge.retrieve(resource_id)
+    except RetrievalError as e:
+        return _handle_failed(
+            f"Could not retrieve {id_attrib}",
+            resource, "retrieve", extra_message, type_str, raise_on_fail, parent_ex=e
+        )
+
+    resource_updated._store_metadata = existing_resource._store_metadata
 
     with redirect_stdout(io.StringIO()):
         forge.update(resource_updated)
@@ -210,5 +229,5 @@ def _register_update(
         return None, resource
 
     return _handle_failed(
-        updated_last_action, resource_updated, "update", extra_message, type_str, raise_on_fail
+        updated_last_action.message, resource_updated, "update", extra_message, type_str, raise_on_fail
     )

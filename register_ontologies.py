@@ -480,9 +480,8 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
         if data_update:
             print(
-                f"""Class {class_resource.get_identifier()} will be
-                {'created/updated and tagged if a tag is provided' 
-                if not deprecated else 'deprecated'}"""
+                f"Class {class_resource.get_identifier()} will be "
+                f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
             )
             if deprecated:
                 ex, _ = bmo_registration.deprecate_class(forge=forge, class_resource=class_resource)
@@ -639,9 +638,8 @@ def register_ontology(
 
     if data_update:
         print(
-                f"""Ontology {ontology_resource.get_identifier()} will be
-                {'created/updated and tagged if a tag is provided' 
-                if not deprecated else 'deprecated'}"""
+                f"Ontology {ontology_resource.get_identifier()} will be "
+                f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
         )
         if deprecated:
             return bmo_registration.deprecate_ontology(
@@ -707,9 +705,8 @@ def register_schemas(
 
         if data_update:
             print(
-                f"""Schema {schema_resource.get_identifier()} will be
-                {'created/updated and tagged if a tag is provided' 
-                if not deprecated else 'deprecated'}"""
+                f"Schema {schema_resource.get_identifier()} will be "
+                f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
             )
             if deprecated:
                 _, _ = bmo_registration.deprecate_schema(
