@@ -200,7 +200,7 @@ def _register_update(
     resource_id = forge._model.context().expand(resource.get_identifier())
 
     resource_updated = resource
-    setattr(resource_updated, id_attrib, resource_id)
+    resource_updated.id = resource_id
 
     try:
         existing_resource = forge.retrieve(resource_id)
