@@ -227,7 +227,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     """
     environment = arguments.environment
     token = arguments.token
-    tag = arguments.tag or None
+    tag = arguments.tag if arguments.tag != "-" else None
     ontology_dir = arguments.ontology_dir
     bucket = arguments.bucket
     schema_dir = arguments.schema_dir

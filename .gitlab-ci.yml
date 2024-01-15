@@ -27,7 +27,7 @@ test-ontologies-on-merge-request:
     atlas_parcellation_ontology: https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e
     environment: staging
     atlas_parcellation_ontology_version: 163
-    tag: ""
+    tag: "-"
     token: $NEXUS_TOKEN_STAGING
   script:
     - >
@@ -36,14 +36,14 @@ test-ontologies-on-merge-request:
       --atlas_parcellation_ontology $atlas_parcellation_ontology
       --atlas_parcellation_ontology_version $atlas_parcellation_ontology_version
       --token $token 
-      --tag '$tag'
+      --tag $tag
     - > 
       python register_ontologies.py 
       --environment $environment 
       --atlas_parcellation_ontology $atlas_parcellation_ontology
       --atlas_parcellation_ontology_version $atlas_parcellation_ontology_version
       --token $token 
-      --tag '$tag'
+      --tag $tag
       --no_data_update True 
 
   before_script:
@@ -76,7 +76,7 @@ register_to_environment:
         atlas_parcellation_ontology: https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e
         environment: staging
         atlas_parcellation_ontology_version: 163
-        tag: ""
+        tag: "-"
         token: $NEXUS_TOKEN_STAGING
     # It runs only when a new tag is pushed.
     # It executes ontologies registration for the files changed between this version and the previous one
@@ -95,7 +95,7 @@ register_to_environment:
       --atlas_parcellation_ontology $atlas_parcellation_ontology
       --atlas_parcellation_ontology_version $atlas_parcellation_ontology_version
       --token $token 
-      --tag '$tag'
+      --tag $tag
     - echo "environment=$environment" >> register.env
     - echo "atlas_parcellation_ontology=$atlas_parcellation_ontology" >> register.env
     - echo "atlas_parcellation_ontology_version=$atlas_parcellation_ontology_version" >> register.env
@@ -124,7 +124,7 @@ test-ontologies-on-registration:
       --atlas_parcellation_ontology $atlas_parcellation_ontology
       --atlas_parcellation_ontology_version $atlas_parcellation_ontology_version
       --token $token 
-      --tag '$tag'
+      --tag $tag
 
 
 # GENERATE STAGE
