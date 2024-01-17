@@ -1,16 +1,16 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/neurondensity",
+  "@id": "https://bbp.epfl.ch/shapes/dash/experimentalneurondensity",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/neurondensity"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/neurondensity/shapes/NeuronDensityShape",
+      "@id": "https://bbp.epfl.ch/shapes/dash/experimentalneurondensity/shapes/ExperimentalNeuronDensityShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/neurondensity/shapes/NeuronDensityShape",
-      "targetClass": "nsg:NeuronDensity"
+      "targetClass": "bmo:ExperimentalNeuronDensity"
     }
   ]
 }

@@ -1,16 +1,16 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/parameter",
+  "@id": "https://bbp.epfl.ch/shapes/dash/pscamplitude",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/parameter"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/parameter/shapes/ParameterShape",
+      "@id": "https://bbp.epfl.ch/shapes/dash/pscamplitude/shapes/PSCamplitudeShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/parameter/shapes/ParameterShape",
-      "targetClass": "nsg:Parameter"
+      "targetClass": "bmo:PSCamplitude"
     }
   ]
 }

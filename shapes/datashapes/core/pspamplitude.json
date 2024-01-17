@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/pspamplitude",
+  "@type": "Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/conductancemodelparameter"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/pspamplitude/shapes/PSPamplitudeShape",
+      "@type": "NodeShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/conductancemodelparameter/shapes/ConductanceModelParameterShape",
+      "targetClass": "bmo:PSPamplitude"
+    }
+  ]
+}

@@ -1,16 +1,16 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/neuronmorphology",
+  "@id": "https://bbp.epfl.ch/shapes/dash/synthesizedneuronmorphology",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/neuronmorphology"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/neuronmorphology/shapes/NeuronMorphologyShape",
+      "@id": "https://bbp.epfl.ch/shapes/dash/synthesizedneuronmorphology/shapes/SynthesizedNeuronMorphologyShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/neuronmorphology/shapes/NeuronMorphologyShape",
-      "targetClass": "nsg:NeuronMorphology"
+      "targetClass": "nsg:SynthesizedNeuronMorphology"
     }
   ]
 }

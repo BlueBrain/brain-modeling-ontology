@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/pspcapacitancevoltage",
+  "@type": "Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/conductancemodelparameter"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/pspcapacitancevoltage/shapes/PSPcapacitanceVoltageShape",
+      "@type": "NodeShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/conductancemodelparameter/shapes/ConductanceModelParameterShape",
+      "targetClass": "bmo:PSPcapacitanceVoltage"
+    }
+  ]
+}

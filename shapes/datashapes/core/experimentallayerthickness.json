@@ -1,16 +1,16 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/layerthickness",
+  "@id": "https://bbp.epfl.ch/shapes/dash/experimentallayerthickness",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/layerthickness"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/layerthickness/shapes/LayerThicknessShape",
+      "@id": "https://bbp.epfl.ch/shapes/dash/experimentallayerthickness/shapes/ExperimentalLayerThicknessShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/layerthickness/shapes/LayerThicknessShape",
-      "targetClass": "nsg:LayerThickness"
+      "targetClass": "bmo:ExperimentalLayerThickness"
     }
   ]
 }

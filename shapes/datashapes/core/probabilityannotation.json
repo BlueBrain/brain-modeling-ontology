@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/probabilityannotation",
+  "@type": "Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/probabilityannotation"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/probabilityannotation/shapes/ProbabilityAnnotationShape",
+      "@type": "NodeShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/probabilityannotation/shapes/ProbabilityAnnotationShape",
+      "targetClass": "bmo:ProbabilityAnnotation"
+    }
+  ]
+}

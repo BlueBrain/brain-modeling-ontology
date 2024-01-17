@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/neuronmorphologyfeatureannotation",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/annotation"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/neuronmorphologyfeatureannotation/shapes/NeuronMorphologyFeatureAnnotationShape",
+      "@type": "NodeShape",
+      "node": "https://neuroshapes.org/commons/annotation/shapes/AnnotationShape",
+      "targetClass": "bmo:NeuronMorphologyFeatureAnnotation"
+    }
+  ]
+}
