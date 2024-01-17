@@ -1,16 +1,16 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/boutondensity",
+  "@id": "https://bbp.epfl.ch/shapes/dash/experimentalboutondensity",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/boutondensity"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/boutondensity/shapes/BoutonDensityShape",
+      "@id": "https://bbp.epfl.ch/shapes/dash/experimentalboutondensity/shapes/ExperimentalBoutonDensityShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/boutondensity/shapes/BoutonDensityShape",
-      "targetClass": "nsg:BoutonDensity"
+      "targetClass": "bmo:ExperimentalBoutonDensity"
     }
   ]
 }

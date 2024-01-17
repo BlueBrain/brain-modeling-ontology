@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/ampakineticsmodelparameter",
+  "@type": "Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/ampakineticsmodelparameter"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/ampakineticsmodelparameter/shapes/AMPAKineticsModelParameterShape",
+      "@type": "NodeShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/ampakineticsmodelparameter/shapes/AMPAKineticsModelParameterShape",
+      "targetClass": "bmo:AMPAKineticsModelParameter"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://neuroshapes.org/commons/layerthickness",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/thickness"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/layerthickness/shapes/LayerThicknessShape",
+      "@type": "NodeShape",
+      "label": "Thickness shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "node": "https://neuroshapes.org/commons/thickness/shapes/ThicknessShape"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://neuroshapes.org/commons/dataset",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/minds"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/dataset/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/dataset/shapes/DatasetShape",
+      "@type": "NodeShape",
+      "node": "nsg:commons/minds/shapes/MINDSShape",
+      "nodeKind": "sh:BlankNodeOrIRI"
+    }
+  ]
+}

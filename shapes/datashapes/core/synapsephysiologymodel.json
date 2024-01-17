@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/synapsephysiologymodel",
+  "@type": "Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/modelsynapse"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/synapsephysiologymodel/shapes/SynapsePhysiologyModelShape",
+      "@type": "NodeShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/modelsynapse/shapes/ModelSynapseShape",
+      "targetClass": "bmo:SynapsePhysiologyModel"
+    }
+  ]
+}
