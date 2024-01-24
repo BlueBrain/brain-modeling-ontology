@@ -10,6 +10,7 @@
   "imports": [
     "nsg:commons/subjectcollection"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/subjectcollection/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/subjectcollection/shapes/SubjectCollectionShape",

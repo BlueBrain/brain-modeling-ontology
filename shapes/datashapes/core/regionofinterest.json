@@ -11,6 +11,7 @@
     "nsg:commons/entity",
     "nsg:commons/typedlabeledontologyterm"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/regionofinterest/v1.0.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/regionofinterest/shapes/RegionOfInterestShape",

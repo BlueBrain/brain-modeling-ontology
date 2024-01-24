@@ -11,6 +11,7 @@
     "nsg:commons/entity",
     "nsg:commons/distribution"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/morphology/src/main/resources/schemas/neurosciencegraph/morphology/morphologymesh/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/morphologymesh/shapes/MorphologyMeshShape",

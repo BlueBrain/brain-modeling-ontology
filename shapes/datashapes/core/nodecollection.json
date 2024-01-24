@@ -10,6 +10,7 @@
   "imports": [
     "nsg:commons/entity"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/nodecollection/v0.1.2.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/nodecollection/shapes/NodeCollectionShape",

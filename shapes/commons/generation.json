@@ -7,6 +7,7 @@
   ],
   "@id": "https://provshapes.org/commons/generation",
   "@type": "Schema",
+  "prov:wasDerivedFrom": "https://github.com/BlueBrain/nexus-prov/blob/v1.2.0/modules/prov/src/main/resources/schemas/nexus/provsh/generation/v1.0.0.json",
   "shapes": [
     {
       "@id": "https://provshapes.org/commons/generation/shapes/GenerationShape",

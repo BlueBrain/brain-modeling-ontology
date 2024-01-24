@@ -10,6 +10,7 @@
   "imports": [
     "nsg:commons/labeledontologyentity"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/typedlabeledontologyterm/v0.1.4.json",
   "rdfs:label": "Typed labeled Ontology term",
   "shapes": [
     {

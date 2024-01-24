@@ -11,6 +11,7 @@
     "nsg:commons/distribution",
     "nsg:dash/modelrelease"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/synapserelease/v0.1.2.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseShape",
@@ -43,7 +44,7 @@
         {
           "property": [
             {
-              "description": null,
+              "description": "",
               "in": [
                 "application/mod"
               ],

@@ -124,7 +124,7 @@
         {
           "node": "this:DimensionShape"
         },
-        null
+        {}
       ],
       "class": "nsg:TimeDimension",
       "label": "Time Dimension shape"
