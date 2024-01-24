@@ -2,6 +2,7 @@
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
   "@id": "https://neuroshapes.org/dash/conceptscheme",
   "@type": "Schema",
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/ontology/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/conceptscheme/shapes/ConceptSchemeShape",

@@ -10,6 +10,7 @@
   "imports": [
     "nsg:commons/propertyvalue"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/identifier/v0.2.1.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/commons/identifier/shapes/IdentifierShape",

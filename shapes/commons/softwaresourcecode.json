@@ -37,28 +37,28 @@
           "path": "schema:version"
         },
         {
-          "datatype": "xsd:string",
-          "description": "The command used to execute the task.",
-          "name": "Command",
-          "path": "bmo:command"
+            "datatype": "xsd:string",
+            "description": "The command used to execute the task.",
+            "name": "Command",
+            "path": "bmo:command"
         },
         {
-          "datatype": "xsd:string",
-          "description": "Name of a branch to fetch.",
-          "name": "Branch",
-          "path": "bmo:branch"
+            "datatype": "xsd:string",
+            "description": "Name of a branch to fetch.",
+            "name": "Branch",
+            "path": "bmo:branch"
         },
         {
-          "datatype": "xsd:string",
-          "description": "SHA hash (or PREFIX) of a commit to fetch.",
-          "name": "Commit",
-          "path": "bmo:commit"
+            "datatype": "xsd:string",
+            "description": "SHA hash (or PREFIX) of a commit to fetch.",
+            "name": "Commit",
+            "path": "bmo:commit"
         },
         {
-          "datatype": "xsd:string",
-          "description": "Name of tag to fetch.",
-          "name": "Tag",
-          "path": "bmo:tag"
+            "datatype": "xsd:string",
+            "description": "Name of tag to fetch.",
+            "name": "Tag",
+            "path": "bmo:tag"
         }
       ]
     }

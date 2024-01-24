@@ -7,7 +7,7 @@
   ],
   "@id": "https://neuroshapes.org/commons/entitywithoutannotationsubject",
   "@type": "nxv:Schema",
-  "editorialNote": "This is a helper schema to avoid recursive imports of annoation and entity: an annotation is an entity while an entity can have an annotation.",
+  "editorialNote":"This is a helper schema to avoid recursive imports of annoation and entity: an annotation is an entity while an entity can have an annotation.",
   "imports": [
     "https://neuroshapes.org/commons/identifier",
     "https://neuroshapes.org/commons/license",
@@ -173,16 +173,16 @@
           "path": "schema:distribution"
         },
         {
-          "description": "Sub-parts of the entity.",
-          "name": "Has Part",
-          "path": "schema:hasPart",
-          "nodeKind": "sh:BlankNodeOrIRI"
+            "description": "Sub-parts of the entity.",
+            "name": "Has Part",
+            "path": "schema:hasPart",
+            "nodeKind": "sh:BlankNodeOrIRI"
         },
         {
-          "description": "What the entity is a part of.",
-          "name": "Is Part Of",
-          "path": "schema:isPartOf",
-          "nodeKind": "sh:BlankNodeOrIRI"
+            "description": "What the entity is a part of.",
+            "name": "Is Part Of",
+            "path": "schema:isPartOf",
+            "nodeKind": "sh:BlankNodeOrIRI"
         },
         {
           "class": "nsg:ObjectOfStudy",
@@ -193,7 +193,7 @@
           "path": "nsg:objectOfStudy"
         },
         {
-          "class": "nsg:AtlasRelease",
+          "class": "nsg:AtlasRelease",  
           "name": "Atlas Release",
           "nodeKind": "sh:IRI",
           "path": "nsg:atlasRelease"

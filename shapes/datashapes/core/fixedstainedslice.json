@@ -10,6 +10,7 @@
   "imports": [
     "nsg:commons/entity"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/morphology/src/main/resources/schemas/neurosciencegraph/morphology/fixedstainedslice/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/fixedstainedslice/shapes/FixedStainedSliceShape",

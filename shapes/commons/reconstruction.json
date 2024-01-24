@@ -6,6 +6,7 @@
     "nsg:commons/activity",
     "nsg:commons/typedlabeledontologyterm"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/morphology/src/main/resources/schemas/neurosciencegraph/morphology/reconstruction/v0.1.1.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/commons/reconstruction/shapes/ReconstructionShape",

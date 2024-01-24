@@ -7,9 +7,10 @@
   ],
   "@id": "https://neuroshapes.org/dash/parcellationlabel",
   "@type": "Schema",
-  "imports": [
+  "imports":[
     "https://neuroshapes.org/commons/entity"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/parcellationlabel/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/parcellationlabel/shapes/ParcellationLabelsShape",

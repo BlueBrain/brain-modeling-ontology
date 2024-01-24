@@ -11,6 +11,7 @@
     "https://neuroshapes.org/commons/typedlabeledontologyterm",
     "https://neuroshapes.org/commons/modelinstance"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/simplifiedcircuit/v0.1.2.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/simplifiedcircuit/shapes/SimplifiedCircuitShape",
@@ -38,10 +39,10 @@
               "path": "nsg:species"
             },
             {
-              "description": null,
+              "description": "",
               "maxCount": 1,
               "minCount": 1,
-              "name": null,
+              "name": "",
               "node": "this:NodeCollectionShape",
               "path": "nsg:synapse"
             },
@@ -107,7 +108,7 @@
           "property": [
             {
               "description": "Location of the data file defining properties of the synapses.",
-              "editorialNote": null,
+              "editorialNote": "",
               "maxCount": 1,
               "minCount": 1,
               "name": "Properties",
@@ -137,7 +138,7 @@
         {
           "property": [
             {
-              "description": null,
+              "description": "",
               "in": [
                 "application/mod"
               ],
@@ -269,10 +270,10 @@
         {
           "property": [
             {
-              "description": null,
+              "description": "",
               "maxCount": 1,
               "minCount": 1,
-              "name": null,
+              "name": "",
               "path": "nsg:memodelRelease"
             },
             {
@@ -315,7 +316,7 @@
           ]
         }
       ],
-      "label": null
+      "label": ""
     }
   ]
 }

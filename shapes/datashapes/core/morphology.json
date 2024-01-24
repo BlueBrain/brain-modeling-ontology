@@ -10,6 +10,7 @@
   "imports": [
     "nsg:commons/modelinstance"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/morphology/v0.1.4.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/morphology/shapes/MorphologyShape",
@@ -21,7 +22,7 @@
         {
           "property": [
             {
-              "description": null,
+              "description": "",
               "name": "Distribution",
               "node": "this:MorphologyDistributionShape",
               "path": "schema:distribution"
@@ -67,7 +68,7 @@
         {
           "property": [
             {
-              "description": null,
+              "description": "",
               "in": [
                 "application/swc",
                 "application/neurolucida",

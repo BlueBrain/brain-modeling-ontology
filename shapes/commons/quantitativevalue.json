@@ -10,6 +10,7 @@
   "imports": [
     "nsg:commons/unit"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/quantitativevalue/v0.1.2.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape",
@@ -121,7 +122,7 @@
           "node": "nsg:commons/unit/shapes/UnitShape"
         },
         {
-          "or": [
+          "or":[
             {
               "property": [
                 {

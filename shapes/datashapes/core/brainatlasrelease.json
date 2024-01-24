@@ -5,6 +5,7 @@
   "imports": [
     "https://neuroshapes.org/commons/atlasrelease"
   ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/atlasrelease/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/brainatlasrelease/shapes/BrainAtlasReleaseShape",
