@@ -11,7 +11,6 @@
     "nsg:commons/collection",
     "nsg:commons/typedlabeledontologyterm"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/subjectcollection/v0.1.1.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/commons/subjectcollection/shapes/SubjectCollectionShape",

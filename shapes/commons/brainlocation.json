@@ -13,7 +13,6 @@
     "nsg:commons/vector3d"
   ],
   "label": "Brain Location Schema",
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/brainlocation/v0.1.1.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/commons/brainlocation/shapes/BrainLocationShape",

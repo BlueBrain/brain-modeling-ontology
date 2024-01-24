@@ -7,10 +7,10 @@
   ],
   "shapes": [
     {
-        "@id": "https://bbp.epfl.ch/shapes/dash/datacatalog/shapes/DataCatalogShape",
-        "node": "https://bbp.epfl.ch/shapes/commons/datacatalog/shapes/DataCatalogShape",
-        "@type": "NodeShape",
-        "targetClass": "schema:DataCatalog"
+      "@id": "https://bbp.epfl.ch/shapes/dash/datacatalog/shapes/DataCatalogShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/datacatalog/shapes/DataCatalogShape",
+      "@type": "NodeShape",
+      "targetClass": "schema:DataCatalog"
     }
   ]
 }

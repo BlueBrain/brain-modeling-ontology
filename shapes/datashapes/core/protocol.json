@@ -10,7 +10,6 @@
   "imports": [
     "nsg:commons/protocol"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/protocol/v0.1.5.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/protocol/shapes/ProtocolShape",

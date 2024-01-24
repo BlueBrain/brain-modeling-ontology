@@ -11,7 +11,6 @@
     "nsg:commons/entity",
     "nsg:commons/typedlabeledontologyterm"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/bluepyefeconfiguration/v0.1.7.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/bluepyefeconfiguration/shapes/BluePyEfeConfigurationShape",

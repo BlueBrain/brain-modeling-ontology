@@ -7,11 +7,10 @@
   ],
   "@id": "https://neuroshapes.org/dash/sphereofinterest",
   "@type": "Schema",
-  "imports":[
+  "imports": [
     "https://neuroshapes.org/dash/regionofinterest",
     "https://neuroshapes.org/commons/quantitativevalue"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/sphereofinterest/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/sphereofinterest/shapes/SphereOfInterestShape",
