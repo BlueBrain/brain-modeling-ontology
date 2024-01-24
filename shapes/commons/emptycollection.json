@@ -11,7 +11,6 @@
     "https://provshapes.org/commons/emptycollection",
     "nsg:commons/entity"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/emptycollection/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/commons/emptycollection/shapes/EmptyCollectionShape",

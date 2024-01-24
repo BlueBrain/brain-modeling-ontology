@@ -7,7 +7,6 @@
   ],
   "@id": "https://neuroshapes.org/commons/propertyvalue",
   "@type": "Schema",
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/nexus-schemas/src/main/resources/schemas/nexus/schemaorgsh/propertyvalue/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/commons/propertyvalue/shapes/PropertyValueShape",

@@ -11,7 +11,6 @@
     "nsg:commons/entity",
     "nsg:commons/typedlabeledontologyterm"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/hostcell/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/hostcell/shapes/HostCellShape",
