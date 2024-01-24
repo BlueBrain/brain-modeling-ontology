@@ -11,7 +11,6 @@
     "nsg:commons/labeledontologyentity",
     "nsg:commons/quantitativevalue"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/subject/v0.1.0.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/commons/subject/shapes/SubjectShape",
@@ -100,7 +99,7 @@
           "description": "Weight of the subject.",
           "maxCount": 1,
           "name": "Weight",
-          "or":[
+          "or": [
             {
               "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape"
             },

@@ -12,7 +12,6 @@
     "https://neuroshapes.org/commons/annotation",
     "https://neuroshapes.org/commons/entitywithoutannotationsubject"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/entity/v1.0.0.json",
   "shapes": [
     {
       "@id": "this:EntityShape",

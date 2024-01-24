@@ -10,7 +10,6 @@
   "imports": [
     "nsg:commons/entity"
   ],
-  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/singlecellsimulationtrace/v0.1.4.json",
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/singlecellsimulationtrace/shapes/SingleCellSimulationTraceShape",
