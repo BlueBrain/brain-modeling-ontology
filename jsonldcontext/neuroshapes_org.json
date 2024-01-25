@@ -2200,7 +2200,7 @@
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticParameterAnnotation"
     },
     "SynapticParameterAssignment": {
-      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticParameteAssignment"
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticParameterAssignment"
     },
     "SynapticStrength": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticStrength"
