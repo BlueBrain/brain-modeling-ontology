@@ -3,7 +3,7 @@
   "@id": "https://neuroshapes.org/dash/reconstructedneuronmorphology",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/reconstructedcell"
+    "https://neuroshapes.org/commons/neuronmorphology"
   ],
   "shapes": [
     {
@@ -12,7 +12,7 @@
       "label": "Reconstructed cell shape definition",
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:ReconstructedNeuronMorphology",
-      "node": "https://neuroshapes.org/commons/reconstructedcell/shapes/ReconstructedCellShape"
+      "node": "https://neuroshapes.org/commons/neuronmorphology/shapes/NeuronMorphologyShape"
     }
   ]
 }
