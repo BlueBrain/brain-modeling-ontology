@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/variantdefinitions",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/entity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/variantdefinitions/shapes/VariantDefinitionsShape",
+      "@type": "NodeShape",
+      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+      "targetClass": "bmo:VariantDefinitions"
+    }
+  ]
+}

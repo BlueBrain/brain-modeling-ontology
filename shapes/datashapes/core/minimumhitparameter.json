@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/minimumhitparameter",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/parameter"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/minimumhitparameter/shapes/MinimumHitParameterShape",
+      "@type": "NodeShape",
+      "node": "https://neuroshapes.org/commons/parameter/shapes/ParameterShape",
+      "targetClass": "bmo:MinimumHitParameter"
+    }
+  ]
+}

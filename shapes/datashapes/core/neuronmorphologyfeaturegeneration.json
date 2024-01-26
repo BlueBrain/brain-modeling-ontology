@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/neuronmorphologyfeaturegeneration",
+  "@type": "Schema",
+  "imports": [
+    "https://provshapes.org/commons/generation"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/neuronmorphologyfeaturegeneration/shapes/NeuronMorphologyFeatureGenerationShape",
+      "@type": "NodeShape",
+      "node": "https://provshapes.org/commons/generation/shapes/GenerationShape",
+      "targetClass": "bmo:NeuronMorphologyFeatureGeneration"
+    }
+  ]
+}

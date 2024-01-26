@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/topologicaldatabasegeneration",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/activity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/topologicaldatabasegeneration/shapes/TopologicalDatabaseGenerationShape",
+      "@type": "NodeShape",
+      "node": "https://neuroshapes.org/commons/activity/shapes/ActivityShape",
+      "targetClass": "bmo:TopologicalDatabaseGeneration"
+    }
+  ]
+}

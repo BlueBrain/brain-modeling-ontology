@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/touchdistanceparameter",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/parameter"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/touchdistanceparameter/shapes/TouchDistanceParameterShape",
+      "@type": "NodeShape",
+      "node": "https://neuroshapes.org/commons/parameter/shapes/ParameterShape",
+      "targetClass": "bmo:TouchDistanceParameter"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/simulationcampaignanalysis",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/activity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/simulationcampaignanalysis/shapes/SimulationCampaignAnalysisShape",
+      "@type": "NodeShape",
+      "node": "https://neuroshapes.org/commons/activity/shapes/ActivityShape",
+      "targetClass": "bmo:SimulationCampaignAnalysis"
+    }
+  ]
+}
