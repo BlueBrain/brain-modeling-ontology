@@ -10,7 +10,7 @@
       "@id": "https://bbp.epfl.ch/shapes/commons/datacatalog/shapes/DataCatalogShape",
       "@type": "NodeShape",
       "description": "Data Catalog",
-      "nodeKind": "sh:IRI",
+      "nodeKind": "sh:BlankNodeOrIRI",
       "and": [
         {
           "node": "nsg:commons/entity/shapes/EntityShape"

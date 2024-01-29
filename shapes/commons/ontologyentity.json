@@ -48,7 +48,7 @@
           ]
         }
       ],
-      "nodeKind": "sh:IRI"
+      "nodeKind": "sh:BlankNodeOrIRI"
     }
   ]
 }

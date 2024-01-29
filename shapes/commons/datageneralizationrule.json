@@ -10,7 +10,7 @@
       "@id": "https://bbp.epfl.ch/shapes/commons/datageneralizationrule/shapes/DataGeneralizationRuleShape",
       "@type": "NodeShape",
       "description": "Data Generalization Rule",
-      "nodeKind": "sh:IRI",
+      "nodeKind": "sh:BlankNodeOrIRI",
       "and": [
         {
           "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape"

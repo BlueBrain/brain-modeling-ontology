@@ -11,7 +11,7 @@
     {
       "@id": "https://neuroshapes.org/commons/license/shapes/LicenseShape",
       "@type": "NodeShape",
-      "nodeKind": "sh:IRI",
+      "nodeKind": "sh:BlankNodeOrIRI",
       "seeAlso": [
         "https://www.w3.org/TR/vocab-dcat",
         "https://github.com/creativecommons/cc.licenserdf"

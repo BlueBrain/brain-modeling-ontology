@@ -10,7 +10,7 @@
       "@id": "https://bbp.epfl.ch/shapes/dash/embeddingmodeldatacatalog/shapes/EmbeddingModelDataCatalogShape",
       "@type": "NodeShape",
       "description": "Embedding Model Data Catalog",
-      "nodeKind": "sh:IRI",
+      "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "bmo:EmbeddingModelDataCatalog",
       "and": [
         {

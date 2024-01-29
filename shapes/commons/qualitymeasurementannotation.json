@@ -40,7 +40,7 @@
           ]
         }
       ],
-      "nodeKind": "sh:IRI"
+      "nodeKind": "sh:BlankNodeOrIRI"
     },
     {
       "@id": "https://neuroshapes.org/commons/qualitymeasurementannotation/shapes/HasBodyShape",
