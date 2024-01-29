@@ -43,7 +43,7 @@
           ]
         }
       ],
-      "nodeKind": "sh:IRI",
+      "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:ElectrophysiologyFeature"
     },
     {

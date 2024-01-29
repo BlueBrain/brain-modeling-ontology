@@ -62,7 +62,7 @@
         }
       ],
       "label": "Minimum Information about a Neuroscience DataSet",
-      "nodeKind": "sh:IRI",
+      "nodeKind": "sh:BlankNodeOrIRI",
       "seeAlso": [
         "https://www.w3.org/TR/vocab-dcat",
         "https://schema.org",

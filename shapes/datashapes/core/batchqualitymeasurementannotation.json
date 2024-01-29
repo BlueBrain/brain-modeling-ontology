@@ -9,7 +9,7 @@
     {
       "@id": "https://neuroshapes.org/dash/batchqualitymeasurementannotation/shapes/BatchQualityMeasurementAnnotationShape",
       "@type": "NodeShape",
-      "nodeKind": "sh:IRI",
+      "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:BatchQualityMeasurementAnnotation",
       "node": "https://neuroshapes.org/commons/qualitymeasurementannotation/shapes/QualityMeasurementAnnotationShape"
     }
