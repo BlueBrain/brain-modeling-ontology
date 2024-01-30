@@ -304,9 +304,9 @@ def frame_classes(
                         ontology_graph.objects(
                             term.URIRef(layer), RDFS.subClassOf * OneOrMore / SCHEMAORG.about
                         )
-                    )  # every group of layers 
-                    # (e.g. the Neorcotex layer class or the hippocampus layer) 
-                    # should link to its brain region scope 
+                    )  # every group of layers
+                    # (e.g. the Neorcotex layer class or the hippocampus layer)
+                    # should link to its brain region scope
                     # (i.e the highest brain regions it applies to) through SCHEMAORG.about
                 new_layered_classes = _create_property_based_hierarchy(
                     ontology_graph,
@@ -369,19 +369,18 @@ def _id_if_dict(e):
 
 
 def _get_leaf_regions(uri, children_hierarchy_property, ontology_graph) -> Set[str]:
-    query = """
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX schema: <http://schema.org/>
-            PREFIX bmo: <https://bbp.epfl.ch/ontologies/core/bmo/>
-            
-            SELECT DISTINCT ?leaf_region
-            WHERE{{
-            <{0}> {1}+ ?leaf_region .
-            FILTER NOT EXISTS {{?leaf_region {1} ?a}}
-            
-            }}
-            LIMIT 2000
-            """.format(uri, children_hierarchy_property)
+    query = f"""
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX schema: <http://schema.org/>
+        PREFIX bmo: <https://bbp.epfl.ch/ontologies/core/bmo/>
+
+        SELECT DISTINCT ?leaf_region
+        WHERE {{
+            <{uri}> {children_hierarchy_property}+ ?leaf_region .
+            FILTER NOT EXISTS {{?leaf_region {children_hierarchy_property} ?a}}
+        }}
+        LIMIT 2000
+        """
 
     leaf_regions = {str(l_br[0]) for l_br in list(ontology_graph.query(query))}
 
@@ -589,7 +588,7 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
     if "atlas_id" in cls and cls["atlas_id"] == "None":
         cls["atlas_id"] = None
     if atlas_release_id and atlas_release_version:
-        cls["atlasRelease"] = {"@id": atlas_release_id, "@type":"BrainAtlasRelease", "_rev": atlas_release_version}
+        cls["atlasRelease"] = {"@id": atlas_release_id, "@type": "BrainAtlasRelease", "_rev": atlas_release_version}
     return cls
 
 
@@ -645,11 +644,12 @@ def _create_property_based_hierarchy(
             next_cls_urirefs = [grand_parent]
             new_isPartOf_property_uriref = BMO.isLayerPartOf
 
-        else:  # if all(grandParent_uncle_without_layer) or set(layer_urirefs).issubset(set(grand_parent_layers)): # if the grand parent class does not have a layer and uncle does not have the layer
-            # then create a corresponding layer location class with 
-            # label == the grand parent label, layer altLabel, 
+        else:  # if all(grandParent_uncle_without_layer) or set(layer_urirefs).issubset(set(grand_parent_layers)):
+            # if the grand parent class does not have a layer and uncle does not have the layer
+            # then create a corresponding layer location class with
+            # label == the grand parent label, layer altLabel,
             # is part of (isLayerPartOf) of the grand parent which (contains it - hasLayerPart),
-            # add the newly created class is parent of current class which contains it 
+            # add the newly created class is parent of current class which contains it
 
             grand_parent_label = ontology_graph.value(subject=grand_parent, predicate=RDFS.label)
             grand_parent_notation = ontology_graph.value(subject=grand_parent,
@@ -868,10 +868,9 @@ def build_context_from_ontology(
             try:
 
                 name, idref = _build_context_item(cls, new_forge_context)
-                if name is not None and idref is not None and \
-                        _is_class_to_include_in_context(cls, idref, ontology_graph):
-                        new_forge_context.add_term(name, idref)
-                        new_forge_context.document["@context"][name] = {"@id": idref}
+                if name is not None and idref is not None and _is_class_to_include_in_context(cls, idref, ontology_graph):
+                    new_forge_context.add_term(name, idref)
+                    new_forge_context.document["@context"][name] = {"@id": idref}
             except Exception as e:
                 on_failure(cls, e)
 
@@ -925,7 +924,7 @@ def _is_class_to_include_in_context(class_item: URIRef, uri_ref, ontology_graph:
     ]
 
     return all(len(i) == 0 for i in list_of_list_of_triples) \
-        and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/UBERON_") \
+        and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/UBERON_")
 
 
 def _is_property_to_include_in_context(uri_ref):
@@ -999,13 +998,17 @@ def _build_context_item(uri_ref, forge_context):
             pass  # nothing to do
         else:  # uri_ref in context, with different fragments
             raise ValueError(
-                f"The URI {str(uri_ref)} is present in the context under a name {found_uri_ref.name} different of its fragment {fragment}")
+                f"The URI {str(uri_ref)} is present in the context under a name "
+                f"{found_uri_ref.name} different of its fragment {fragment}"
+            )
     else:  # uri_ref not in context
         if fragment in forge_context.terms:  # uri_ref not in context, fragment in
-            if str(uri_ref) != forge_context.terms[
-                fragment].id:  # uri_ref not in context, fragment in but under different ns
+            if str(uri_ref) != forge_context.terms[fragment].id:
+                # uri_ref not in context, fragment in but under different ns
                 raise ValueError(
-                    f"The fragment {fragment} of the term {str(uri_ref)} is present in the context under a different namespace {forge_context.terms[fragment].id}")
+                    f"The fragment {fragment} of the term {str(uri_ref)} is present in the context "
+                    f"under a different namespace {forge_context.terms[fragment].id}"
+                )
         else:  # uri_ref not in context, fragment not in
             name, idref = fragment, str(uri_ref)  # a new context term can be created
     return name, idref

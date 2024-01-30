@@ -5,7 +5,6 @@ from rdflib import RDF, Graph, OWL
 from kgforge.core import KnowledgeGraphForge, Resource
 from bmo.registration import _register_update
 from bmo.utils import NXV, SHACL
-from urllib.parse import quote_plus
 
 
 def get_shapes_in_schemas(schemas_graph: Graph) -> List[Tuple]:

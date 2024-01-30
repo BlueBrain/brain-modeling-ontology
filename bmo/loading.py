@@ -2,8 +2,8 @@ import glob
 import json
 import os
 from copy import deepcopy
-from typing import Dict, Any, List, Tuple, Optional
-from rdflib import PROV, Literal, Namespace, RDF, OWL, RDFS, Graph, term
+from typing import Dict, List, Tuple
+from rdflib import Namespace, Graph
 from kgforge.core import KnowledgeGraphForge, Resource
 
 

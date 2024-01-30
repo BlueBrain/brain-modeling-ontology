@@ -30,6 +30,7 @@ test-ontologies-on-merge-request:
     tag: "-"
     token: $NEXUS_TOKEN_STAGING
   script:
+    - flake8 tests bmo register_ontologies.py
     - >
       pytest tests/pre_registration 
       --environment $environment 

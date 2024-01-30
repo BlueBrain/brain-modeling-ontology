@@ -1,7 +1,9 @@
 import argparse
 import json
 import copy
-import yaml
+import cProfile
+import pstats
+from pstats import SortKey
 from typing import Dict, Any, List, Tuple, Optional
 from rdflib import PROV, Literal, RDF, OWL, RDFS, Graph, term
 from kgforge.core.commons import Context
@@ -16,36 +18,12 @@ from bmo.schema_to_type_mapping import create_update_type_to_schema_mapping
 
 from bmo.utils import (
     BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, SKOS,
-    _get_ontology_annotation_lang_context, CELL_TYPE_ONTOLOGY_URI, SHACL
+    _get_ontology_annotation_lang_context, CELL_TYPE_ONTOLOGY_URI
 )
 
-import cProfile
-import pstats
-from pstats import SortKey
-
-WEBPROTEGE_TO_NEXUS = {
-    # Target ontology ID's to define
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes": "https://bbp.epfl.ch/ontologies/core/molecular-systems",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/c0f3a3e7-6dd2-4802-a00a-61ae366a35bb/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mba",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/7515dc12-ce84-4eea-ba8e-6262670ac741/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/6a23494a-360c-4152-9e81-fd9828f44db9/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/ea484e60-5a27-4790-8f2a-e2975897f407/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/ea484e60-5a27-4790-8f2a-e2975897f407/edit/Classes?selection=Class(%3Chttps://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus%3E)": "https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/d4ee40c6-4131-4915-961d-51a5c587c667/edit/Classes": "https://bbp.epfl.ch/ontologies/core/efeatures",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/a9878003-7d0b-4f75-aad8-7de3eeeacd73/edit/Classes": "https://bbp.epfl.ch/ontologies/core/mfeatures",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/648aec19-2694-4ab2-9231-3905e2bd3d38/edit/Classes": "https://bbp.epfl.ch/ontologies/core/metypes",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/c9128328-fe63-4e5e-8ec1-c7f0f0f33d19/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/",
-    "urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec/edit/Classes": "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/celltypes",
-    "urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec": "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/celltypes",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ChemicalReaction%3E)": "https://neuroshapes.org/ChemicalReaction",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Molecule%3E)": "https://neuroshapes.org/Molecule",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ReactionKineticParameter%3E)": "https://neuroshapes.org/ReactionKineticParameter",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/ReactionRateEquation%3E)": "https://neuroshapes.org/ReactionRateEquation",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/SteadyStateMolecularConcentration%3E)": "https://neuroshapes.org/SteadyStateMolecularConcentration",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Complex%3E)": "https://neuroshapes.org/Complex",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Metabolite%3E)": "https://neuroshapes.org/Metabolite",
-    "https://bbp.epfl.ch/nexus/webprotege/#projects/755556fa-73b1-4863-96af-e8359109b4ef/edit/Classes?selection=Class(%3Chttps://neuroshapes.org/Protein%3E)": "https://neuroshapes.org/Protein",
-}
+# Target ontology ID's to define
+with open("./webprotege_to_nexus.json", "r") as f:
+    WEBPROTEGE_TO_NEXUS = json.loads(f.read())
 
 # "urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec/edit/Classes"
 # in none of the ontology files
@@ -152,7 +130,7 @@ def execute_ontology_registration(
     # bmo.remove_defines_relation(ontology_graph, ontology)
 
 
-def _update_brainregion_graph(ontology_graph, class_resources_framed, all_class_resources_framed_dict, 
+def _update_brainregion_graph(ontology_graph, class_resources_framed, all_class_resources_framed_dict,
                               brain_region_generated_classes, atlas_release_id, atlas_release_version,
                               atlas_parcellation_ontology_id):
 
@@ -175,8 +153,7 @@ def _update_brainregion_graph(ontology_graph, class_resources_framed, all_class_
         (term.URIRef(atlas_release_id), RDF.type, NSG.BrainAtlasRelease)
     )
 
-    atlas_parcellation_ontology_derivation_bNode, \
-        atlas_parcellation_ontology_derivation_triples = _create_bnode_triples_from_value(
+    atlas_parcellation_ontology_derivation_bNode, atlas_parcellation_ontology_derivation_triples = _create_bnode_triples_from_value(
         {
             RDF.type: PROV.Derivation,
             PROV.entity: term.URIRef(atlas_parcellation_ontology_id)
@@ -199,6 +176,7 @@ def _update_brainregion_graph(ontology_graph, class_resources_framed, all_class_
     ontology_graph.add(
         (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation, atlasRelease_derivation_bNode)
     )
+
 
 def _get_classes_in_ontology(all_class_resources_dict, uriref_iterator):
     return {

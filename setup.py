@@ -39,7 +39,8 @@ setup(
             "pytest-bdd==6.1.1",
             "pytest-cov==2.10.1",
             "pytest-mock==3.3.1",
-            "codecov==2.1.13"
+            "codecov==2.1.13",
+            "flake8==6.1.0"
         ],
         "docs": [
             "sphinx==7.1.2",
