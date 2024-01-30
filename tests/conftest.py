@@ -7,8 +7,8 @@ from rdflib import RDFS, SKOS, RDF, OWL
 import bmo.ontologies as bmo
 from bmo.argument_parsing import define_arguments
 from bmo.utils import BMO, MBA, NXV, SCHEMAORG, _get_ontology_annotation_lang_context
-from register_ontologies import _get_classes_in_ontology, _merge_ontology, _initialize_forge_objects
 from bmo.loading import load_ontologies, load_schemas
+from register_ontologies import _merge_ontology, _initialize_forge_objects
 
 
 def pytest_addoption(parser):
@@ -132,16 +132,22 @@ def all_ontology_graphs(ontology_dir):
 
 
 @pytest.fixture(scope="session")
-def framed_classes(data_jsonld_context, all_ontology_graph_merged_brain_region_atlas_hierarchy, atlas_release_id, atlas_release_version):
+def framed_classes(
+        data_jsonld_context, all_ontology_graph_merged_brain_region_atlas_hierarchy,
+        atlas_release_id, atlas_release_version
+):
     new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
     assert len(errors) == 0
     ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
-    
-    class_ids, class_jsons, all_blank_node_triples, brain_region_new_classes = bmo.frame_classes(ontology_graph, new_jsonld_context, new_jsonld_context.document,
-                                                                                                 atlas_release_id, atlas_release_version)
+
+    class_ids, class_jsons, all_blank_node_triples, brain_region_new_classes = bmo.frame_classes(
+        ontology_graph, new_jsonld_context, new_jsonld_context.document,
+        atlas_release_id, atlas_release_version
+    )
     return (
         class_ids, class_jsons, brain_region_new_classes
     )
+
 
 @pytest.fixture(scope="session")
 def all_ontology_graph_merged_brain_region_atlas_hierarchy(all_ontology_graphs, atlas_hierarchy_ontology_graph):
@@ -152,18 +158,19 @@ def all_ontology_graph_merged_brain_region_atlas_hierarchy(all_ontology_graphs, 
 
     atlas_ontology_graph = atlas_hierarchy_ontology_graph[0]
 
-    triples_to_add, triples_to_remove = _merge_ontology(atlas_ontology_graph, brain_region_graph, 
-                                                        ontology_graph, [
-                                                            SCHEMAORG.hasPart,
-                                                            SCHEMAORG.isPartOf,RDFS.label, SKOS.prefLabel, SKOS.notation, SKOS.altLabel,
-                                                            MBA.atlas_id, MBA.color_hex_triplet, MBA.graph_order, MBA.hemisphere_id,
-                                                            MBA.st_level, SCHEMAORG.identifier, BMO.representedInAnnotation,
-                                                            BMO.regionVolumeRatioToWholeBrain, BMO.regionVolume]
-                                                        )
+    what_property_to_merge = [
+        SCHEMAORG.hasPart,
+        SCHEMAORG.isPartOf, RDFS.label, SKOS.prefLabel, SKOS.notation, SKOS.altLabel,
+        MBA.atlas_id, MBA.color_hex_triplet, MBA.graph_order, MBA.hemisphere_id,
+        MBA.st_level, SCHEMAORG.identifier, BMO.representedInAnnotation,
+        BMO.regionVolumeRatioToWholeBrain, BMO.regionVolume
+    ]
+    triples_to_add, triples_to_remove = _merge_ontology(
+        atlas_ontology_graph, brain_region_graph, ontology_graph, what_property_to_merge
+    )
     assert len(triples_to_remove) > 0
-    assert len(triples_to_add) >  0
+    assert len(triples_to_add) > 0
     return ontology_graph
-
 
 
 @pytest.fixture(scope="session")
@@ -174,20 +181,24 @@ def atlas_release_prop(atlas_release_id, atlas_release_version):
             "_rev": atlas_release_version
         }
 
+
 @pytest.fixture(scope="session")
 def atlas_release_id(atlas_hierarchy_ontology_graph):
     return atlas_hierarchy_ontology_graph[1].atlasRelease.id
+
 
 @pytest.fixture(scope="session")
 def atlas_release_version(atlas_hierarchy_ontology_graph):
     return atlas_hierarchy_ontology_graph[1].atlasRelease._rev
 
+
 @pytest.fixture(scope="session")
 def atlas_hierarchy_ontology_graph(atlas_parcellation_ontology, atlas_parcellation_ontology_version,
                                    forge_atlas):
     try:
-        version = int(
-            atlas_parcellation_ontology_version) if atlas_parcellation_ontology_version is not None else atlas_parcellation_ontology_version
+        version = int(atlas_parcellation_ontology_version) \
+            if atlas_parcellation_ontology_version is not None \
+            else None
         atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology, version=version)
         assert hasattr(atlas_hierarchy, "atlasRelease")
         assert hasattr(atlas_hierarchy.atlasRelease, "_rev")

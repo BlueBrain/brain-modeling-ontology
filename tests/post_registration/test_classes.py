@@ -12,13 +12,14 @@ from bmo.utils import BMO, NSG, SKOS
 
 @pytest.mark.parametrize("object_, predicate, resolver_target", [
     pytest.param(
-        object_, predicate, resolver_target, id=object_.toPython())
-        for object_, predicate, resolver_target in [
-            (NSG.BrainRegion, RDFS.subClassOf * OneOrMore, "BrainRegion"),
-            (BMO.BrainCellType, RDFS.subClassOf * OneOrMore, "CellType"),
-            (NSG.Species, RDFS.subClassOf * OneOrMore, "Species"),
-            (OWL.Class, RDF.type, "terms")
-        ]
+        object_, predicate, resolver_target, id=object_.toPython()
+    )
+    for object_, predicate, resolver_target in [
+        (NSG.BrainRegion, RDFS.subClassOf * OneOrMore, "BrainRegion"),
+        (BMO.BrainCellType, RDFS.subClassOf * OneOrMore, "CellType"),
+        (NSG.Species, RDFS.subClassOf * OneOrMore, "Species"),
+        (OWL.Class, RDF.type, "terms")
+    ]
 ])
 def test_classes_can_be_resolved(
         forge, all_ontology_graph_merged_brain_region_atlas_hierarchy, object_: URIRef,

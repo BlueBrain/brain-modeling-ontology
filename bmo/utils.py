@@ -4,7 +4,7 @@ MAPPING = {
     "β": "beta",
     "\xa0": " ",
     "–": "-",
-    "\u2013":"?"
+    "\u2753": "?"
 }
 
 
@@ -19,6 +19,7 @@ MBA = Namespace("http://api.brain-map.org/api/v2/data/Structure/")
 
 BRAIN_REGION_ONTOLOGY_URI = "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion"
 CELL_TYPE_ONTOLOGY_URI = "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/celltypes"
+
 
 def is_ascii(s):
     return all(ord(c) < 128 for c in s)
