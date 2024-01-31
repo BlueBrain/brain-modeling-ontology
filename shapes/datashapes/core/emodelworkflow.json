@@ -3,13 +3,13 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/emodelworkflow",
   "@type": "nxv:Schema",
   "imports": [
-    "https://bbp.epfl.ch/shapes/commons/workflow"
+    "https://bbp.epfl.ch/shapes/commons/baseworkflow"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/emodelworkflow/shapes/EModelWorkflowShape",
       "@type": "NodeShape",
-      "node": "https://bbp.epfl.ch/shapes/commons/workflow/shapes/WorkflowShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/baseworkflow/shapes/BaseWorkflowShape",
       "targetClass": "bmo:EModelWorkflow"
     }
   ]

@@ -1,0 +1,23 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://bbp.epfl.ch/shapes/dash/basemodelbuildingworkflow/shapes/"
+    }
+  ],
+  "@id": "https://bbp.epfl.ch/shapes/dash/basemodelbuildingworkflow",
+  "@type": "nxv:Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/basemodelbuildingworkflow"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/basemodelbuildingworkflow/shapes/BaseModelBuildingWorkflowShape",
+      "@type": "NodeShape",
+      "label": "Model Building Workflow",
+      "node": "https://bbp.epfl.ch/shapes/commons/basemodelbuildingworkflow/shapes/BaseModelBuildingWorkflowShape",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "bmo:ModelBuildingWorkflow"
+    }
+  ]
+}
