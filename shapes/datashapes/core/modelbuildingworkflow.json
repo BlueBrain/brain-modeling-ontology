@@ -1,4 +1,5 @@
 {
+  "owl:deprecated": true,
   "@context": [
     "https://incf.github.io/neuroshapes/contexts/schema.json",
     {
