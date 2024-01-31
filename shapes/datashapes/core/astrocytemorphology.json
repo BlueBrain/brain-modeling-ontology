@@ -1,16 +1,16 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/morphology",
+  "@id": "https://bbp.epfl.ch/shapes/dash/astrocytemorphology",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/morphology"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/morphology/shapes/MorphologyShape",
+      "@id": "https://bbp.epfl.ch/shapes/dash/astrocytemorphology/shapes/AstrocyteMorphologyShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/morphology/shapes/MorphologyShape",
-      "targetClass": "nsg:Morphology"
+      "targetClass": "nsg:AstrocyteMorphology"
     }
   ]
 }

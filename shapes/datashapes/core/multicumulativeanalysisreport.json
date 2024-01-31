@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/multicumulativeanalysisreport",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/dataset"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/multicumulativeanalysisreport/shapes/MultiCumulativeAnalysisReportShape",
+      "@type": "NodeShape",
+      "node": "https://neuroshapes.org/commons/dataset/shapes/DatasetShape",
+      "targetClass": "bmo:MultiCumulativeAnalysisReport"
+    }
+  ]
+}
