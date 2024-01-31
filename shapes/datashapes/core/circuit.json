@@ -1,16 +1,16 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/simplifiedcircuit",
+  "@id": "https://bbp.epfl.ch/shapes/dash/circuit",
   "@type": "Schema",
   "imports": [
     "https://bbp.epfl.ch/shapes/commons/circuit"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/simplifiedcircuit/shapes/SimplifiedCircuitShape",
+      "@id": "https://bbp.epfl.ch/shapes/dash/circuit/shapes/CircuitShape",
       "@type": "NodeShape",
       "node": "https://bbp.epfl.ch/shapes/commons/circuit/shapes/CircuitShape",
-      "targetClass": "nsg:SimplifiedCircuit"
+      "targetClass": "nsg:Circuit"
     }
   ]
 }

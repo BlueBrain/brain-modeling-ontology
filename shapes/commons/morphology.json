@@ -1,0 +1,80 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://neuroshapes.org/commons/morphology",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/modelinstance"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/morphology/shapes/MorphologyShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/modelinstance/shapes/ModelInstanceShape"
+        },
+        {
+          "property": [
+            {
+              "description": null,
+              "name": "Distribution",
+              "node": "https://neuroshapes.org/commons/morphology/shapes/MorphologyDistributionShape",
+              "path": "schema:distribution"
+            },
+            {
+              "class": "nsg:MorphologyRelease",
+              "description": "The morphology release (s) this morphology is part of.",
+              "editorialNote": "Can a morphology belongs to multiple release ?",
+              "name": "Part of",
+              "path": "schema:isPartOf"
+            },
+            {
+              "description": "Morphological cell type",
+              "name": "mType",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/MorphologicalCellTypeOntologyTermShape",
+              "path": "nsg:mType"
+            },
+            {
+              "description": "Morphology view in 2D",
+              "name": "view2d",
+              "node": "nsg:commons/entity/shapes/EntityShape",
+              "path": "nsg:view2d"
+            },
+            {
+              "description": "Morphology view in 3D",
+              "name": "view3d",
+              "node": "nsg:commons/entity/shapes/EntityShape",
+              "path": "nsg:view3d"
+            }
+          ]
+        }
+      ],
+      "label": "This shape is for..."
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/morphology/shapes/MorphologyDistributionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/distribution/shapes/DistributionShape"
+        },
+        {
+          "property": [
+            {
+              "description": null,
+              "in": [
+                "application/swc",
+                "application/neurolucida",
+                "application/h5",
+                "application/neuroml"
+              ],
+              "name": "Media type",
+              "path": "schema:encodingFormat"
+            }
+          ]
+        }
+      ],
+      "label": "This shape is for..."
+    }
+  ]
+}
