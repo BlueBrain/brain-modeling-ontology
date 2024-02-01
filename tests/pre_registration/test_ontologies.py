@@ -1,9 +1,11 @@
 import json
 import re
+import pytest
 from kgforge.core.commons import Context
-from rdflib import RDFS, XSD, Literal, RDF, OWL, SH
+from rdflib import RDFS, XSD, Literal, RDF, OWL, SH, Graph
 from rdflib.paths import OneOrMore, ZeroOrMore
 from rdflib.term import URIRef
+from typing import List, Optional
 
 import bmo.ontologies as bmo
 from bmo.loading import DATA_JSONLD_CONTEXT_PATH
@@ -11,7 +13,14 @@ from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, CELL_TYPE_ONTOLOGY_URI, NS
 from register_ontologies import execute_ontology_registration
 
 
-def test_terms_aligned_with_context(forge, all_ontology_graphs, all_schema_graphs):
+@pytest.fixture
+def framed_class_json_dict(framed_classes):
+    class_ids = framed_classes[0]
+    class_jsons = framed_classes[1]
+    return dict(zip(class_ids, class_jsons))
+
+
+def test_terms_aligned_with_context(all_ontology_graphs, all_schema_graphs):
 
     with open(DATA_JSONLD_CONTEXT_PATH, "r") as f:
         previous_forge_context_json = json.load(f)
@@ -128,7 +137,9 @@ def test_brain_region_same_leaves_in_all_hierarchy(all_ontology_graphs):
     ammons_horn_brain_region_uri = "http://api.brain-map.org/api/v2/data/Structure/375"
     anterior_cingulate_area_dorsal_part_layer_6b = "http://api.brain-map.org/api/v2/data/Structure/927"
 
-    current_class_layers = list(ontology_graph.objects(URIRef(anterior_cingulate_area_dorsal_part_layer_6b), NSG.hasLayerLocationPhenotype))
+    current_class_layers = list(ontology_graph.objects(URIRef(anterior_cingulate_area_dorsal_part_layer_6b),
+                                                       NSG.hasLayerLocationPhenotype
+                                                       ))
     classes_relevant_for_layer = set()
     for layer in current_class_layers:
         classes_relevant_for_layer = set(
@@ -171,10 +182,7 @@ def test_all_classes_have_label_notation_not_plus(framed_classes):
     assert len(errors) == 0, errors
 
 
-def test_musmusculus_rat_labels(framed_classes):
-    class_ids = framed_classes[0]
-    class_jsons = framed_classes[1]
-    framed_class_json_dict = dict(zip(class_ids, class_jsons))
+def test_musmusculus_rat_labels(framed_class_json_dict):
     mus_musculus_class_json = framed_class_json_dict["http://purl.obolibrary.org/obo/NCBITaxon_10090"]
     rattus_class_json = framed_class_json_dict["http://purl.obolibrary.org/obo/NCBITaxon_10116"]
     errors = _check_dict_for_property_type_value(mus_musculus_class_json, ["label"], [str], ["Mus musculus"])
@@ -182,11 +190,22 @@ def test_musmusculus_rat_labels(framed_classes):
     assert len(errors) == 0, errors
 
 
-def test_all_brain_regions_have_annotations(framed_classes, all_ontology_graph_merged_brain_region_atlas_hierarchy, atlas_release_prop, atlas_release_version):
-    class_ids = framed_classes[0]
-    class_jsons = framed_classes[1]
+@pytest.mark.skip(reason="To be used when information is complete")
+def test_all_etypes_have_definition(framed_class_json_dict, all_ontology_graphs):
+    ontology_graph = all_ontology_graphs[0]
+    all_etypes = ontology_graph.subjects(RDFS.subClassOf, BMO.NeuronElectricalType)
+    errors = []
+    for etype in all_etypes:
+        etype_class_json = framed_class_json_dict[str(etype)]
+        errors.extend(_check_dict_for_property_type_value(etype_class_json, ["definition"], [str]))
+    assert len(errors) == 0, errors
+
+
+def test_all_brain_regions_have_annotations(
+    framed_class_json_dict, all_ontology_graph_merged_brain_region_atlas_hierarchy,
+    atlas_release_prop, atlas_release_version
+):
     ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
-    framed_class_json_dict = dict(zip(class_ids, class_jsons))
     properties_to_check = ["label", "notation", "prefLabel"]
     errors = []
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
@@ -202,12 +221,8 @@ def test_all_brain_regions_have_annotations(framed_classes, all_ontology_graph_m
 
 
 def test_all_non_layer_brain_regions_have_representedInAnnotation(
-        framed_classes, all_ontology_graph_merged_brain_region_atlas_hierarchy
-):
-    class_ids = framed_classes[0]
-    class_jsons = framed_classes[1]
+        framed_class_json_dict, all_ontology_graph_merged_brain_region_atlas_hierarchy):
     ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
-    framed_class_json_dict = dict(zip(class_ids, class_jsons))
     errors = []
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
         cls_json = framed_class_json_dict[str(cls)]
@@ -284,8 +299,13 @@ def test_layered_child_has_same_layer_as_parent(all_ontology_graph_merged_brain_
                 f"The following values were found: {is_part_ofs}."
 
 
-def _check_dict_for_property_type_value(cls_json, properties, expected_types, expected_values):
-    assert len(properties) == len(expected_types)
+def _check_dict_for_property_type_value(
+    cls_json: dict,
+    properties: List[str],
+    expected_types: Optional[List[str]] = None,
+    expected_values: Optional[List[str]] = None
+):
+    assert not expected_types or len(properties) == len(expected_types)
     assert not expected_values or len(properties) == len(expected_values)
     errors = []
     for i, p in enumerate(properties):
@@ -293,7 +313,7 @@ def _check_dict_for_property_type_value(cls_json, properties, expected_types, ex
             errors.append(f"Property {p} not present in {cls_json}")
         else:
             message = f"Value '{cls_json[p]}' of property '{p}' in resource '{cls_json['@id']}'does not have "
-            if not isinstance(cls_json[p], expected_types[i]):
+            if expected_types and not isinstance(cls_json[p], expected_types[i]):
                 errors.append(message + f"the expected type '{expected_types[i]}' ")
             if expected_values and expected_values[i] and cls_json[p] != expected_values[i]:
                 errors.append(message + f"the expected value '{expected_values[i]}' ")
@@ -366,7 +386,11 @@ def test_frame_ontologies(
         assert len(errors) == 0, errors
 
 
-def _get_in_annotation_leaves(uri, ontology_graph, view_leaf_property_uri_ref):
+def _get_in_annotation_leaves(
+    uri: str,
+    ontology_graph: Graph,
+    view_leaf_property_uri_ref: URIRef
+):
     leaves = set(ontology_graph.objects(URIRef(uri), view_leaf_property_uri_ref))
     return {
         leaf for leaf in leaves
