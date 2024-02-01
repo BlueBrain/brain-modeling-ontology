@@ -16,6 +16,7 @@
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/cACint> a owl:Class ;
     rdfs:label "cACint"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous accommodating interneuron electrical type"@en ;
     skos:notation "cACint"^^xsd:string ;
     skos:prefLabel "Continuous accommodating interneuron electrical type"^^xsd:string ;
     nsg:color "#108b8b" .
@@ -723,87 +724,6 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 <http://uri.interlex.org/base/ilx_0738197> a owl:Class ;
     rdfs:label "cAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty nsg:contribution ;
-            owl:someValuesFrom bmo:BBP_contribution ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasInstanceInSpecies ;
-            owl:someValuesFrom obo:NCBITaxon_10090 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_BP> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_SCA> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_Tri> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_OLM> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_CCKBC> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381369> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381374> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383195> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty owl:equivalentClass ;
-            owl:someValuesFrom ct:ICOnsetEType ],
-        [ a owl:Restriction ;
-            owl:onProperty owl:equivalentClass ;
-            owl:someValuesFrom ct:ICOn-typeEtype ],
-        [ a owl:Restriction ;
-            owl:onProperty owl:equivalentClass ;
-            owl:someValuesFrom ct:ICAdaptingEType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383206> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383209> ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
         [ a owl:Restriction ;
@@ -902,7 +822,89 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:contribution ;
+            owl:someValuesFrom bmo:BBP_contribution ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasInstanceInSpecies ;
+            owl:someValuesFrom obo:NCBITaxon_10090 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_BP> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_SCA> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_Tri> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_OLM> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_CCKBC> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381369> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381374> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383195> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICOnsetEType ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICOn-typeEtype ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICAdaptingEType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383206> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383209> ],
         bmo:NeuronElectricalType ;
+    skos:definition "Continuous accommodating electrical type"@en ;
     skos:notation "cAC"^^xsd:string ;
     skos:prefLabel "Continuous accommodating electrical type"@en .
 
@@ -972,6 +974,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Continuous stuttering electrical type"@en ;
     skos:notation "cSTUT"^^xsd:string ;
     skos:prefLabel "Continuous stuttering electrical type"@en ;
     nsg:color "#40cd73" .
@@ -1132,6 +1135,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Burst accommodating electrical type"@en ;
     skos:notation "bAC"^^xsd:string ;
     skos:prefLabel "Burst accommodating electrical type"@en ;
     nsg:color "#3431e4" .
@@ -1220,6 +1224,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Burst stuttering electrical type"@en ;
     skos:notation "bSTUT"^^xsd:string ;
     skos:prefLabel "Burst stuttering electrical type"@en ;
     nsg:color "#2ff7af" .
@@ -1422,6 +1427,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Continuous non-accommodating electrical type"@en ;
     skos:notation "cNAC"^^xsd:string ;
     skos:prefLabel "Continuous non-accommodating electrical type"@en ;
     nsg:color "#4d683e" .
@@ -1471,6 +1477,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Delayed stuttering electrical type"@en ;
     skos:notation "dSTUT"^^xsd:string ;
     skos:prefLabel "Delayed stuttering electrical type"@en ;
     nsg:color "#323c07" .
@@ -1595,6 +1602,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Burst non-accommodating electrical type"@en ;
     skos:notation "bNAC"^^xsd:string ;
     skos:prefLabel "Burst non-accommodating electrical type"@en ;
     nsg:color "#383733" .
@@ -1668,6 +1676,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Continuous irregular electrical type"@en ;
     skos:notation "cIR"^^xsd:string ;
     skos:prefLabel "Continuous irregular electrical type"@en ;
     nsg:color "#b1bccb" .
@@ -1804,6 +1813,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Delayed non-accommodating electrical type"@en ;
     skos:notation "dNAC"^^xsd:string ;
     skos:prefLabel "Delayed non-accommodating electrical type"@en ;
     nsg:color "#cb59d3" .
@@ -1889,6 +1899,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Burst irregular electrical type"@en ;
     skos:notation "bIR"^^xsd:string ;
     skos:prefLabel "Burst irregular electrical type"@en ;
     nsg:color "#b9f700" .
@@ -1896,6 +1907,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 <http://uri.interlex.org/base/ilx_0738207> a owl:Class ;
     rdfs:label "cAD"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous adapting electrical type"@en ;
     skos:notation "cAD"^^xsd:string ;
     skos:prefLabel "Continuous adapting electrical type"@en .
 
@@ -2129,108 +2141,126 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 <http://uri.interlex.org/base/ilx_0738241> a owl:Class ;
     rdfs:label "ltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Low-threshold bursting electrical type"@en ;
     skos:notation "ltb"^^xsd:string ;
     skos:prefLabel "Low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738242> a owl:Class ;
     rdfs:label "noscltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Non-oscillatory low-threshold bursting electrical type"@en ;
     skos:notation "noscltb"^^xsd:string ;
     skos:prefLabel "Non-oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738243> a owl:Class ;
     rdfs:label "cNAD"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous non-adapting electrical type"@en ;
     skos:notation "cNAD"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738244> a owl:Class ;
     rdfs:label "oscltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Oscillatory low-threshold bursting electrical type"@en ;
     skos:notation "oscltb"^^xsd:string ;
     skos:prefLabel "Oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738245> a owl:Class ;
     rdfs:label "dNAD"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Delayed non-adapting electrical type"@en ;
     skos:notation "dNAD"^^xsd:string ;
     skos:prefLabel "Delayed non-adapting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738246> a owl:Class ;
     rdfs:label "dAD"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Delayed adapting electrical type"@en ;
     skos:notation "dAD"^^xsd:string ;
     skos:prefLabel "Delayed adapting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738247> a owl:Class ;
     rdfs:label "bAD"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Burst adapting electrical type"@en ;
     skos:notation "bAD"^^xsd:string ;
     skos:prefLabel "Burst adapting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738248> a owl:Class ;
     rdfs:label "nltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Non-low-threshold bursting electrical type"@en ;
     skos:notation "nltb"^^xsd:string ;
     skos:prefLabel "Non-low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738249> a owl:Class ;
     rdfs:label "cNAD-noscltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous non-adapting non-oscillatory low-threshold bursting electrical type"@en ;
     skos:notation "cNAD-noscltb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting non-oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738250> a owl:Class ;
     rdfs:label "cAD-noscltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous adapting non-oscillatory low-threshold bursting electrical type"@en ;
     skos:notation "cAD-noscltb"^^xsd:string ;
     skos:prefLabel "Continuous adapting non-oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738251> a owl:Class ;
     rdfs:label "cNAD-nltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous non-adapting non-low-threshold bursting electrical type"@en ;
     skos:notation "cNAD-nltb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting non-low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738252> a owl:Class ;
     rdfs:label "cNAD-oscltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous non-adapting oscillatory low-threshold bursting electrical type"@en ;
     skos:notation "cNAD-oscltb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738253> a owl:Class ;
     rdfs:label "cNAD-altb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous non-adapting atypical low-threshold bursting electrical type"@en ;
     skos:notation "cNAD-altb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting atypical low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738254> a owl:Class ;
     rdfs:label "cNAD-ltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous non-adapting low-threshold bursting electrical type"@en ;
     skos:notation "cNAD-ltb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738255> a owl:Class ;
     rdfs:label "cAD-ltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous adapting low-threshold bursting electrical type"@en ;
     skos:notation "cAD-ltb"^^xsd:string ;
     skos:prefLabel "Continuous adapting low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738256> a owl:Class ;
     rdfs:label "dNAD-ltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Delayed non-adapting low-threshold bursting electrical type"@en ;
     skos:notation "dNAD-ltb"^^xsd:string ;
     skos:prefLabel "Delayed non-adapting low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738257> a owl:Class ;
     rdfs:label "cSTUT-noscltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Continuous stuttering non-oscillatory low-threshold bursting electrical type"@en ;
     skos:notation "cSTUT-noscltb"^^xsd:string ;
     skos:prefLabel "Continuous stuttering non-oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738258> a owl:Class ;
     rdfs:label "dAD-ltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
+    skos:definition "Delayed adapting low-threshold bursting electrical type"@en ;
     skos:notation "dAD-ltb"^^xsd:string ;
     skos:prefLabel "Delayed adapting low-threshold bursting electrical type"@en .
 
@@ -2257,6 +2287,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:382 ],
         bmo:NeuronElectricalType ;
+    skos:definition "Continuous Accommodating Pyramidal Cell"@en ;
     skos:notation "cACpyr"^^xsd:string ;
     skos:prefLabel "Continuous Accommodating Pyramidal Cell"@en .
 
@@ -2450,7 +2481,8 @@ bmo:GenericExcitatoryNeuronEType a owl:Class ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:GenericNeuronElectricalType ;
     skos:notation "GEN_etype"^^xsd:string ;
-    skos:prefLabel "Generic Excitatory Neuron EType"^^xsd:string .
+    skos:prefLabel "Generic Excitatory Neuron EType"^^xsd:string ;
+    skos:definition "Generic Excitatory Neuron EType"@en .
 
 bmo:GenericInhibitoryNeuronEType a owl:Class ;
     rdfs:label "GIN_etype"@en ;
@@ -2484,7 +2516,9 @@ bmo:GenericInhibitoryNeuronEType a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom ct:CaudoputamenTHPlusInterneuron ],
-        bmo:NeuronElectricalType .
+        bmo:NeuronElectricalType ;
+    skos:prefLabel "Generic Inhibitory Neuron EType"^^xsd:string ;
+    skos:definition "Generic Inhibitory Neuron EType"@en .
 
 bmo:GenericNeuronTType a owl:Class ;
     rdfs:label "Generic Neuron TType"@en ;
@@ -3770,6 +3804,135 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
     rdfs:label "NCx_bSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:18_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:21_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:22_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:23_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:24_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:25_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:31_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:32_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:33_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:34_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:35_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:36_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:37_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:38_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:39_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:40_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:41_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:42_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:43_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:44_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:45_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:46_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:47_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:48_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:49_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:5_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:50_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:51_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:52_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:53_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:54_Vip_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:55_Vip_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:56_Vip_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:57_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:58_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:59_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:6_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:60_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:61_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:62_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:63_Sst_Chodl ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:64_Sst_Chodl ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:65_Sst_Chodl ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:66_Sst ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
@@ -4029,135 +4192,6 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:17_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:18_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:21_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:22_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:23_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:24_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:25_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:31_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:32_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:33_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:34_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:35_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:36_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:37_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:38_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:39_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:40_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:41_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:42_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:43_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:44_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:45_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:46_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:47_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:48_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:49_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:5_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:50_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:51_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:52_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:53_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:54_Vip_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:55_Vip_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:56_Vip_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:57_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:58_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:59_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:6_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:60_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:61_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:62_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:63_Sst_Chodl ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:64_Sst_Chodl ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:65_Sst_Chodl ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
     skos:notation "NCx_bSTUT"@en ;
     skos:prefLabel "Neocortex burst stuttering electrical type"@en .
@@ -6891,13 +6925,12 @@ bmo:Serpinf1_plus a owl:Class ;
 
 bmo:ThalamusBurstAccommodatingElectricalType a owl:Class ;
     rdfs:label "TH_bAC"^^xsd:string ;
-    rdfs:subClassOf [
-            a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738235>
-        ],
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738235> ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType>,
         bmo:NeuronElectricalType ;
+    skos:definition "Thalamus burst accommodating electrical type"@en ;
     skos:notation "TH_bAC"^^xsd:string ;
     skos:prefLabel "Thalamus burst accommodating electrical type"@en .
 
@@ -6938,7 +6971,8 @@ bmo:ThalamusContinuousAdaptingNonOscillatoryLowThresholdBurstingElectricalType a
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738229> ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType>,
         bmo:NeuronElectricalType ;
-    skos:definition "Continuous adapting non-oscillatory low-threshold bursting"@en ;
+    skos:definition "Continuous adapting non-oscillatory low-threshold bursting"@en,
+        "Thalamus continuous adapting non-oscillatory low-threshold bursting electrical type"@en ;
     skos:notation "TH_cAD-noscltb"@en ;
     skos:prefLabel "Thalamus continuous adapting non-oscillatory low-threshold bursting electrical type"@en .
 
@@ -6979,7 +7013,8 @@ bmo:ThalamusContinuousNonAdaptingNonOscillatoryLowThresholdBurstingElectricalTyp
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738229> ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType>,
         bmo:NeuronElectricalType ;
-    skos:definition "Continuous non-adapting non-oscillatory low-threshold bursting"@en ;
+    skos:definition "Continuous non-adapting non-oscillatory low-threshold bursting"@en,
+        "Thalamus continuous non-adapting non-oscillatory low-threshold bursting electrical type"@en ;
     skos:notation "TH_cNAD-noscltb"@en ;
     skos:prefLabel "Thalamus continuous non-adapting non-oscillatory low-threshold bursting electrical type"@en .
 
@@ -7014,7 +7049,8 @@ bmo:ThalamusDelayedAdaptingLowThresholdBurstingElectricalType a owl:Class ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738236> ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType>,
         bmo:NeuronElectricalType ;
-    skos:definition "Delayed adapting low-threshold bursting"@en ;
+    skos:definition "Delayed adapting low-threshold bursting"@en,
+        "Thalamus delayed adapting low-threshold bursting electrical type"@en ;
     skos:notation "TH_dAD-ltb"@en ;
     skos:prefLabel "Thalamus delayed adapting low-threshold bursting electrical type"@en .
 
@@ -7031,7 +7067,8 @@ bmo:ThalamusDelayedNonAdaptingLowThresholdBurstingElectricalType a owl:Class ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738236> ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType>,
         bmo:NeuronElectricalType ;
-    skos:definition "Delayed non-adapting low-threshold bursting"@en ;
+    skos:definition "Delayed non-adapting low-threshold bursting"@en,
+        "Thalamus delayed non-adapting low-threshold bursting electrical type"@en ;
     skos:notation "TH_dNAD-ltb"@en ;
     skos:prefLabel "Thalamus delayed non-adapting low-threshold bursting electrical type"@en .
 
@@ -7599,6 +7636,17 @@ ct:BundleSystemPyramidalCell a owl:Class ;
     skos:altLabel "Bundle System Pyramidal Cell" ;
     skos:definition "Pyramidal neuron in bundle system"@en ;
     skos:notation "mfbs_Pyr" .
+
+ct:CaudoputamenNPY-SOMPlusLow-ThresholdSpikingInterneuron a owl:Class ;
+    rdfs:label "CP_LTS"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:672 ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "PLTS" ;
+    skos:definition "Medium sized soma, 3-5 aspiny dendrites, with little branching, very long sparsely branching axon extending 600-1000 μm from soma forming infrequent bouquets with varicosities"@en ;
+    skos:notation "CP_LTS" ;
+    skos:prefLabel "Caudoputamen NPY-SOM+ Low-Threshold Spiking Interneuron" .
 
 ct:CerebellarNucleusCell a owl:Class ;
     rdfs:label "Cerebellar Nucleus Cell"@en ;
@@ -8549,6 +8597,7 @@ ct:HYTonicEType a owl:Class ;
     rdfs:label "HY_Tonic"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:altLabel "HY Tonic EType" ;
+    skos:definition "HY Tonic EType" ;
     skos:notation "HY_Tonic" .
 
 ct:HindbrainPrincipalCell a owl:Class ;
@@ -9389,6 +9438,16 @@ ct:NucleusAccumbensMediumSpinyNeuron a owl:Class ;
     rdfs:label "Nucleus Accumbens Medium Spiny Neuron"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Nucleus accumbens medium spiny neuron"@en .
+
+ct:NucleusAccumbensNPY-SOMPlusLow-ThresholdSpikingInterneuron a owl:Class ;
+    rdfs:label "ACB_LTS"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:56 ],
+        bmo:NeuronMorphologicalType ;
+    skos:definition "Medium sized soma, 3-5 aspiny dendrites, with little branching, very long sparsely branching axon extending 600-1000 μm from soma forming infrequent bouquets with varicosities"@en ;
+    skos:notation "ACB_LTS" ;
+    skos:prefLabel "Nucleus Accumbens NPY-SOM+ Low-Threshold Spiking Interneuron" .
 
 ct:NucleusOfTheBrachiumPrincipalCell a owl:Class ;
     rdfs:label "NB_PrC"@en ;
@@ -11063,7 +11122,8 @@ ct:bIR_dSTR a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom ct:NucleusAccumbensCholingericTonicallyActiveInterneuron ],
-        bmo:NeuronElectricalType .
+        bmo:NeuronElectricalType ;
+    skos:definition "Tonically active neurons, irregular spiking, burst firing"@en.
 
 ct:cNAD_ltb_dSTR a owl:Class ;
     rdfs:label "cNAD_ltb_dSTR"@en ;
@@ -11087,7 +11147,8 @@ ct:cNAD_lts_dSTR a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom ct:CaudoputamenPVPlusFast-SpikingNeuron ],
-        bmo:NeuronElectricalType .
+        bmo:NeuronElectricalType ;
+    skos:definition "Low-threshold spiking, tonically active, slow and regular firing,  characteristic 'notch' in the membrane potential during the depolarizing phase of the action potential, depolarizing sag, high input resistance"@en .
 
 ct:dAD_htp_dSTR a owl:Class ;
     rdfs:label "dAD_htp_dSTR"@en ;
@@ -11107,7 +11168,8 @@ ct:dAD_ltb_dSTR a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom ct:NucleusAccumbensMediumSpinyProjectionNeuronType1 ],
-        bmo:NeuronElectricalType .
+        bmo:NeuronElectricalType ;
+    skos:definition "Delayed spike, adapting or accelerating, input rectification, low resting potential, regular spiking, low-threshold spike, burst firing"@en .
 
 tts:124_L2_IT_APr a owl:Class ;
     rdfs:label "124_L2 IT APr"^^xsd:string ;
@@ -12357,7 +12419,7 @@ nsg:layer a owl:ObjectProperty ;
 <urn:webprotege:ontology:b307df0e-232d-4e20-9467-80e0733ecbec> a owl:Ontology ;
     rdfs:label "Cell Types Ontology"^^xsd:string ;
     vann:preferredNamespacePrefix "celltypes"^^xsd:string ;
-    owl:versionInfo "R1658"^^xsd:string .
+    owl:versionInfo "R1660"^^xsd:string .
 
 mba:262 a owl:Class .
 
@@ -12433,6 +12495,7 @@ mba:262 a owl:Class .
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381366> ],
         bmo:NeuronElectricalType ;
+    skos:definition "Continuous adapting pyramidal cell electrical type"@en ;
     skos:notation "cADpyr"^^xsd:string ;
     skos:prefLabel "Continuous adapting pyramidal cell electrical type"^^xsd:string ;
     nsg:color "#abb228" .
@@ -12701,6 +12764,33 @@ schema:Organization a owl:Class ;
     skos:definition "Principal neuron located in the olfactory bulb in the mammalian central nervous system. The cell bodies are arranged in a thin layer between the granule cell layer and the external plexiform layer. Each mitral cell is usually characterized in the mammal by a single primary dendrite that traverses the external plexiform layer and terminates within an olfactory glomerulus in a tuft of branches which receives input from the axons of olfactory receptor neurons. Axons of the mitral cells project to a number of areas in the brain, including the piriform cortex, entorhinal cortex, olfactory tubercle, and amygdala."@en ;
     skos:notation "AOB_MC"^^xsd:string ;
     skos:prefLabel "Olfactory Bulb Main Mitral Cell"@en .
+
+<http://uri.interlex.org/base/ilx_0738235> a owl:Class ;
+    rdfs:label "VPL_IN"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:733 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:218 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:170 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:718 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:549 ],
+        bmo:NeuronMorphologicalType,
+        <https://bbp.epfl.ch/ontologies/core/mtypes/ThalamusMType>,
+        nsg:Interneuron ;
+    skos:definition "Ventral posterolateral nucleus of the thalamus interneuron"@en ;
+    skos:notation "VPL_IN"^^xsd:string ;
+    skos:prefLabel "Ventral posterolateral nucleus of the thalamus interneuron"@en .
 
 prov:Agent a owl:Class ;
     rdfs:label "Agent"@en .
@@ -13233,17 +13323,6 @@ ct:CaudoputamenNO-ReleasingLow-ThresholdSpikingInterneuron a owl:Class ;
     skos:notation "CP_NOLTS" ;
     skos:prefLabel "Caudoputamen NO-Releasing Low-Threshold Spiking Interneuron" .
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/CaudoputamenNPY-SOMPlusLow-ThresholdSpikingInterneuron> a owl:Class ;
-    rdfs:label "CP_LTS"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:672 ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "PLTS" ;
-    skos:definition "Medium sized soma, 3-5 aspiny dendrites, with little branching, very long sparsely branching axon extending 600-1000 μm from soma forming infrequent bouquets with varicosities"@en ;
-    skos:notation "CP_LTS" ;
-    skos:prefLabel "Caudoputamen NPY-SOM+ Low-Threshold Spiking Interneuron" .
-
 ct:CaudoputamenNPY-SOM-NeurogliaformNeuron a owl:Class ;
     rdfs:label "CP_NGF"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -13481,16 +13560,6 @@ ct:NucleusAccumbensMediumSpinyProjectionNeuronType3 a owl:Class ;
     skos:notation "ACB_MSN3" ;
     skos:prefLabel "Nucleus Accumbens Medium Spiny Projection Neuron Type 3" .
 
-<https://bbp.epfl.ch/ontologies/core/celltypes/NucleusAccumbensNPY-SOMPlusLow-ThresholdSpikingInterneuron> a owl:Class ;
-    rdfs:label "ACB_LTS"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:56 ],
-        bmo:NeuronMorphologicalType ;
-    skos:definition "Medium sized soma, 3-5 aspiny dendrites, with little branching, very long sparsely branching axon extending 600-1000 μm from soma forming infrequent bouquets with varicosities"@en ;
-    skos:notation "ACB_LTS" ;
-    skos:prefLabel "Nucleus Accumbens NPY-SOM+ Low-Threshold Spiking Interneuron" .
-
 ct:NucleusAccumbensPVPlusFast-SpikingNeuron a owl:Class ;
     rdfs:label "ACB_FS"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -13530,31 +13599,31 @@ nsg:BiopolarPyramidalPhenotype a owl:Class ;
 nsg:Contribution a owl:Class ;
     rdfs:label "Contribution"@en .
 
-nsg:DescendingAxonPhenotype a owl:Class   ;
+nsg:DescendingAxonPhenotype a owl:Class ;
     rdfs:label "Descending Axon Phenotype"@en .
 
 <https://neuroshapes.org/GO:1990021Phenotype> a owl:Class ;
     rdfs:label "Schaffer axon collateral"@en .
 
-nsg:HorizontalAxonPhenotype a owl:Class  ;
+nsg:HorizontalAxonPhenotype a owl:Class ;
     rdfs:label "Horizontal Axon Phenotype"@en .
 
-nsg:HorizontalPyramidalPhenotype a owl:Class  ;
+nsg:HorizontalPyramidalPhenotype a owl:Class ;
     rdfs:label "Horizontal Pyramidal Phenotype"@en .
 
-nsg:LargeAxonPhenotype a owl:Class  ;
+nsg:LargeAxonPhenotype a owl:Class ;
     rdfs:label "Large Axon Phenotype"@en .
 
-nsg:PerforantPathwayAssociatedPhenotype a owl:Class  ;
+nsg:PerforantPathwayAssociatedPhenotype a owl:Class ;
     rdfs:label "Perforant Pathway Associated Phenotype"@en .
 
-nsg:PyramidalPhenotype a owl:Class  ;
+nsg:PyramidalPhenotype a owl:Class ;
     rdfs:label "Pyramidal Phenotype"@en .
 
-nsg:SmallAxonPhenotype a owl:Class  ;
+nsg:SmallAxonPhenotype a owl:Class ;
     rdfs:label "Small Axon Phenotype"@en .
 
-nsg:SpinyStellatePhenotype a owl:Class  ;
+nsg:SpinyStellatePhenotype a owl:Class ;
     rdfs:label "Spiny Stellate Phenotype"@en .
 
 grid:grid.5333.6 a schema:Organization,
@@ -17194,33 +17263,6 @@ obo:UBERON_0007640 a owl:Class .
     skos:notation "L6_TPC"^^xsd:string ;
     skos:prefLabel "Layer 6 Tufted Pyramidal Cell"@en .
 
-<http://uri.interlex.org/base/ilx_0738235> a owl:Class ;
-    rdfs:label "VPL_IN"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:733 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:218 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:170 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:718 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
-        bmo:NeuronMorphologicalType,
-        <https://bbp.epfl.ch/ontologies/core/mtypes/ThalamusMType>,
-        nsg:Interneuron ;
-    skos:definition "Ventral posterolateral nucleus of the thalamus interneuron"@en ;
-    skos:notation "VPL_IN"^^xsd:string ;
-    skos:prefLabel "Ventral posterolateral nucleus of the thalamus interneuron"@en .
-
 <http://uri.interlex.org/base/ilx_0738383> a owl:Class ;
     rdfs:label "L2_TPC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -17878,8 +17920,7 @@ tts:VLMC a owl:Class ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
 nsg:EarlyBifurcatingTuftedPyramidalPhenotype a owl:Class ;
-                                    rdfs:label "Early Bifurcating Tufted Pyramidal Phenotype"@en .
-
+    rdfs:label "Early Bifurcating Tufted Pyramidal Phenotype"@en .
 
 nsg:Glia a owl:Class ;
     rdfs:label "Glia"@en ;
@@ -17887,10 +17928,10 @@ nsg:Glia a owl:Class ;
     skos:prefLabel "Glia" .
 
 nsg:NarrowTuftedPyramidalPhenotype a owl:Class ;
-                                    rdfs:label "Narrow Tufted Pyramidal Phenotype"@en .
+    rdfs:label "Narrow Tufted Pyramidal Phenotype"@en .
 
 nsg:UntuftedPyramidalPhenotype a owl:Class ;
-                             rdfs:label "Untufted Pyramidal Phenotype"@en .
+    rdfs:label "Untufted Pyramidal Phenotype"@en .
 
 mba:589508447 a owl:Class .
 
@@ -19004,25 +19045,25 @@ tts:NP_SUB a owl:Class ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
 nsg:BituftedPhenotype a owl:Class ;
-                    rdfs:label "Bitufted Phenotype"@en .
+    rdfs:label "Bitufted Phenotype"@en .
 
 nsg:DoubleBouquetPhenotype a owl:Class ;
-                    rdfs:label "Double Bouquet Phenotype"@en .
+    rdfs:label "Double Bouquet Phenotype"@en .
 
 nsg:LargeBasketPhenotype a owl:Class ;
-                    rdfs:label "Large Basket Phenotype"@en .
+    rdfs:label "Large Basket Phenotype"@en .
 
 nsg:LateBifurcatingTuftedPyramidalPhenotype a owl:Class ;
-                    rdfs:label "Late Bifurcating Tufted Pyramidal Phenotype"@en .
+    rdfs:label "Late Bifurcating Tufted Pyramidal Phenotype"@en .
 
 nsg:NestBasketPhenotype a owl:Class ;
-                    rdfs:label "NestBasket Phenotype"@en .
+    rdfs:label "NestBasket Phenotype"@en .
 
 nsg:NeurogliaformPhenotype a owl:Class ;
-                    rdfs:label "Neurogliaform Phenotype"@en .
+    rdfs:label "Neurogliaform Phenotype"@en .
 
 nsg:SmallBasketPhenotype a owl:Class ;
-                    rdfs:label "SmallBasket Phenotype"@en .
+    rdfs:label "SmallBasket Phenotype"@en .
 
 mba:254 a owl:Class .
 
@@ -23530,7 +23571,7 @@ tts:L3_IT_ENT a owl:Class ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
 nsg:MartinottiPhenotype a owl:Class ;
-    rdfs:label "Martinotti Phenotype"^^xsd:string.
+    rdfs:label "Martinotti Phenotype"^^xsd:string .
 
 <http://uri.interlex.org/base/ilx_0777218> a owl:Class ;
     rdfs:label "NGC"^^xsd:string ;
