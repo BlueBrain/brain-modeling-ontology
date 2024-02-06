@@ -159,11 +159,11 @@
     skos:altLabel "Nos1-CreERT2;Sst-IRES-FlpO"@en ,
         "Nos1-CreERT2+Sst-IRES-FlpO"@en .
 
-:SStCre a owl:Class ;
-    rdfs:label "SSt-Cre"@en ;
+:SstCre a owl:Class ;
+    rdfs:label "Sst-Cre"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
-    skos:altLabel "SSt-Cre"@en;
+    skos:altLabel "Sst-Cre"@en;
     skos:definition "mouse strain in bbp-external/seu"@en .
 
 :Ai139 a owl:Class ;
