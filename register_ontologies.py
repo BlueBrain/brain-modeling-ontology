@@ -13,12 +13,23 @@ from kgforge.specializations.mappings import DictionaryMapping
 import bmo.ontologies as bmo
 import bmo.registration as bmo_registration
 from bmo.argument_parsing import define_arguments
-from bmo.loading import DATA_JSONLD_CONTEXT_PATH, SCHEMA_JSONLD_CONTEXT_PATH, load_ontologies, load_schemas
+from bmo.loading import (
+    DATA_JSONLD_CONTEXT_PATH,
+    SCHEMA_JSONLD_CONTEXT_PATH,
+    load_ontologies,
+    load_schemas,
+)
 from bmo.schema_to_type_mapping import create_update_type_to_schema_mapping
 
 from bmo.utils import (
-    BMO, BRAIN_REGION_ONTOLOGY_URI, MBA, NSG, NXV, SCHEMAORG, SKOS,
-    _get_ontology_annotation_lang_context, CELL_TYPE_ONTOLOGY_URI
+    ATLAS_PROPERTIES_TO_MERGE,
+    BMO,
+    BRAIN_REGION_ONTOLOGY_URI,
+    NSG,
+    NXV,
+    SCHEMAORG,
+    _get_ontology_annotation_lang_context,
+    CELL_TYPE_ONTOLOGY_URI,
 )
 
 # Target ontology ID's to define
@@ -32,34 +43,41 @@ JSONLD_DATA_CONTEXT_IRI = "https://neuroshapes.org"
 JSONLD_SCHEMA_CONTEXT_IRI = "https://incf.github.io/neuroshapes/contexts/schema.json"
 
 
-def _initialize_forge_objects(endpoint, token, input_bucket, atlas_parcellation_ontology_bucket):
+def _initialize_forge_objects(
+    endpoint, token, input_bucket, atlas_parcellation_ontology_bucket
+):
     def get_forge_object(config_path, selected_bucket):
         return KnowledgeGraphForge(
-            config_path, endpoint=endpoint, bucket=selected_bucket, token=token, debug=True
+            config_path,
+            endpoint=endpoint,
+            bucket=selected_bucket,
+            token=token,
+            debug=True,
         )
 
     forge = get_forge_object("config/forge-config.yml", input_bucket)
     forge_schema = get_forge_object("config/forge-schema-config.yml", input_bucket)
-    forge_atlas = get_forge_object("config/forge-config-new.yml",
-                                   atlas_parcellation_ontology_bucket)
+    forge_atlas = get_forge_object(
+        "config/forge-config-new.yml", atlas_parcellation_ontology_bucket
+    )
 
     return forge, forge_schema, forge_atlas
 
 
 def execute_ontology_registration(
-        forge: KnowledgeGraphForge,
-        ontology_path: str,
-        ontology_graph: Graph,
-        all_class_resources_mapped_dict: Dict,
-        all_class_resources_framed_dict: Dict,
-        new_forge_context: Context,
-        new_jsonld_context_dict: Dict,
-        brain_region_generated_classes: List[str],
-        atlas_release_id: str,
-        atlas_release_version: int,
-        atlas_parcellation_ontology_id: str,
-        data_update: bool,
-        tag=None
+    forge: KnowledgeGraphForge,
+    ontology_path: str,
+    ontology_graph: Graph,
+    all_class_resources_mapped_dict: Dict,
+    all_class_resources_framed_dict: Dict,
+    new_forge_context: Context,
+    new_jsonld_context_dict: Dict,
+    brain_region_generated_classes: List[str],
+    atlas_release_id: str,
+    atlas_release_version: int,
+    atlas_parcellation_ontology_id: str,
+    data_update: bool,
+    tag=None,
 ) -> Tuple[str, Dict]:
     """
     Executes the registration process
@@ -94,7 +112,9 @@ def execute_ontology_registration(
 
     # Consider keeping restrictions in ontology and remove them in classes
     # bmo.restrictions_to_triples(ontology_graph)
-    ontology = bmo.replace_is_defined_by_uris(ontology_graph, WEBPROTEGE_TO_NEXUS, str(ontology))
+    ontology = bmo.replace_is_defined_by_uris(
+        ontology_graph, WEBPROTEGE_TO_NEXUS, str(ontology)
+    )
 
     class_resources_mapped = _get_classes_in_ontology(
         all_class_resources_mapped_dict, ontology_graph.subjects(RDF.type, OWL.Class)
@@ -104,8 +124,15 @@ def execute_ontology_registration(
     )
 
     if str(ontology) == BRAIN_REGION_ONTOLOGY_URI:
-        _update_brainregion_graph(ontology_graph, class_resources_framed, all_class_resources_framed_dict, brain_region_generated_classes,
-                                  atlas_release_id, atlas_release_version, atlas_parcellation_ontology_id)
+        _update_brainregion_graph(
+            ontology_graph,
+            class_resources_framed,
+            all_class_resources_framed_dict,
+            brain_region_generated_classes,
+            atlas_release_id,
+            atlas_release_version,
+            atlas_parcellation_ontology_id,
+        )
 
     # if ontology is too large, remove `defines` relationships from the ontology
 
@@ -117,64 +144,98 @@ def execute_ontology_registration(
 
     # Frame ontology given the provided context
     ontology_json = bmo.frame_ontology(
-        ontology_graph, new_forge_context, new_jsonld_context_dict, class_resources_framed,
-        include_defined_classes
+        ontology_graph,
+        new_forge_context,
+        new_jsonld_context_dict,
+        class_resources_framed,
+        include_defined_classes,
     )
 
     register_ontology(
-        forge, ontology_json, ontology_path, ontology_graph,
-        tag, class_resources_mapped=list(class_resources_mapped.values()), data_update=data_update
+        forge,
+        ontology_json,
+        ontology_path,
+        ontology_graph,
+        tag,
+        class_resources_mapped=list(class_resources_mapped.values()),
+        data_update=data_update,
     )
 
     return str(ontology), ontology_json
     # bmo.remove_defines_relation(ontology_graph, ontology)
 
 
-def _update_brainregion_graph(ontology_graph, class_resources_framed, all_class_resources_framed_dict,
-                              brain_region_generated_classes, atlas_release_id, atlas_release_version,
-                              atlas_parcellation_ontology_id):
+def _update_brainregion_graph(
+    ontology_graph,
+    class_resources_framed,
+    all_class_resources_framed_dict,
+    brain_region_generated_classes,
+    atlas_release_id,
+    atlas_release_version,
+    atlas_parcellation_ontology_id,
+):
 
     brain_region_generated_classes_resources_framed = _get_classes_in_ontology(
-            all_class_resources_framed_dict, brain_region_generated_classes
+        all_class_resources_framed_dict, brain_region_generated_classes
     )
 
     class_resources_framed.update(
-        {k: v
+        {
+            k: v
             for k, v in brain_region_generated_classes_resources_framed.items()
-            if k not in class_resources_framed}
+            if k not in class_resources_framed
+        }
     )
     ontology_graph.add(
-        (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.atlasRelease, term.URIRef(atlas_release_id))
+        (
+            term.URIRef(BRAIN_REGION_ONTOLOGY_URI),
+            NSG.atlasRelease,
+            term.URIRef(atlas_release_id),
+        )
     )
     ontology_graph.add(
         (term.URIRef(atlas_release_id), NXV.rev, Literal(atlas_release_version))
     )
-    ontology_graph.add(
-        (term.URIRef(atlas_release_id), RDF.type, NSG.BrainAtlasRelease)
-    )
+    ontology_graph.add((term.URIRef(atlas_release_id), RDF.type, NSG.BrainAtlasRelease))
 
-    atlas_parcellation_ontology_derivation_bNode, atlas_parcellation_ontology_derivation_triples = _create_bnode_triples_from_value(
+    (
+        atlas_parcellation_ontology_derivation_bNode,
+        atlas_parcellation_ontology_derivation_triples,
+    ) = _create_bnode_triples_from_value(
         {
             RDF.type: PROV.Derivation,
-            PROV.entity: term.URIRef(atlas_parcellation_ontology_id)
+            PROV.entity: term.URIRef(atlas_parcellation_ontology_id),
         }
     )
 
     ontology_graph.add(
-        (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation,
-            atlas_parcellation_ontology_derivation_bNode)
+        (
+            term.URIRef(BRAIN_REGION_ONTOLOGY_URI),
+            NSG.derivation,
+            atlas_parcellation_ontology_derivation_bNode,
+        )
     )
 
     ontology_graph.add(
-        (term.URIRef(atlas_parcellation_ontology_id), RDF.type, NSG.ParcellationOntology)
+        (
+            term.URIRef(atlas_parcellation_ontology_id),
+            RDF.type,
+            NSG.ParcellationOntology,
+        )
     )
 
-    atlasRelease_derivation_bNode, atlasRelease_derivation_triples = _create_bnode_triples_from_value(
-        {RDF.type: PROV.Derivation, PROV.entity: term.URIRef(atlas_release_id)}
+    atlasRelease_derivation_bNode, atlasRelease_derivation_triples = (
+        _create_bnode_triples_from_value(
+            {RDF.type: PROV.Derivation, PROV.entity: term.URIRef(atlas_release_id)}
+        )
     )
 
     ontology_graph.add(
-        (term.URIRef(BRAIN_REGION_ONTOLOGY_URI), NSG.derivation, atlasRelease_derivation_bNode)
+        (
+            term.URIRef(BRAIN_REGION_ONTOLOGY_URI),
+            NSG.derivation,
+            atlasRelease_derivation_bNode,
+        )
     )
 
 
@@ -187,11 +248,13 @@ def _get_classes_in_ontology(all_class_resources_dict, uriref_iterator):
 
 
 def prepare_update_jsonld_context(
-        forge: KnowledgeGraphForge, new_jsonld_context_json, jsonld_context_iri
+    forge: KnowledgeGraphForge, new_jsonld_context_json, jsonld_context_iri
 ):
     new_jsonld_context_resource = forge.from_jsonld(new_jsonld_context_json)
     existing_jsonld_context_resource = forge.retrieve(jsonld_context_iri)
-    new_jsonld_context_resource._store_metadata = existing_jsonld_context_resource._store_metadata
+    new_jsonld_context_resource._store_metadata = (
+        existing_jsonld_context_resource._store_metadata
+    )
     return new_jsonld_context_resource
 
 
@@ -222,11 +285,14 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         endpoint = "https://bbp.epfl.ch/nexus/v1"
     else:
         raise ValueError(
-            "Environment argument must be either \"staging\" or \"production\" ")
+            'Environment argument must be either "staging" or "production" '
+        )
 
     forge, forge_schema, forge_atlas = _initialize_forge_objects(
-        endpoint=endpoint, token=token, input_bucket=bucket,
-        atlas_parcellation_ontology_bucket=atlas_parcellation_ontology_bucket
+        endpoint=endpoint,
+        token=token,
+        input_bucket=bucket,
+        atlas_parcellation_ontology_bucket=atlas_parcellation_ontology_bucket,
     )
 
     print("Loading ontologies - Start")
@@ -243,21 +309,23 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         new_jsonld_schema_context_document = json.load(f)
 
     new_jsonld_schema_context_resource = prepare_update_jsonld_context(
-        forge_schema,
-        new_jsonld_schema_context_document,
-        JSONLD_SCHEMA_CONTEXT_IRI
+        forge_schema, new_jsonld_schema_context_document, JSONLD_SCHEMA_CONTEXT_IRI
     )
 
     print("Preparing schema JSON-LD context - Finish\n")
 
-    print("Updating schema JSON-LD context - Start "
-          "(because the schemas refer the JSONLD context)")
+    print(
+        "Updating schema JSON-LD context - Start "
+        "(because the schemas refer the JSONLD context)"
+    )
 
     if data_update:
         forge_schema.update(new_jsonld_schema_context_resource)
 
-    print(f"Updating schema JSON-LD context - {'Finish' if data_update else 'Ignored'}: "
-          f"{new_jsonld_schema_context_document['@id']} \n")
+    print(
+        f"Updating schema JSON-LD context - {'Finish' if data_update else 'Ignored'}: "
+        f"{new_jsonld_schema_context_document['@id']} \n"
+    )
 
     print("Loading schemas - Start")
 
@@ -266,29 +334,36 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         transformed_schema_path,
         forge_schema,
         recursive=True,
-        save_transformed_schema=True
+        save_transformed_schema=True,
     )
 
     print(
         f"Loading schemas - Finish: {len(schema_graphs_dict)} schemas with"
-        f" {len(all_schema_graphs)} triples\n")
+        f" {len(all_schema_graphs)} triples\n"
+    )
 
-    print("Collecting JSON-LD data context from all ontologies and from all schemas - Start")
+    print(
+        "Collecting JSON-LD data context from all ontologies and from all schemas - Start"
+    )
 
     with open(DATA_JSONLD_CONTEXT_PATH, "r") as f:
         forge_model_context_document = json.load(f)
 
     forge_model_context = Context(
         document=forge_model_context_document["@context"],
-        iri=forge_model_context_document['@id']
+        iri=forge_model_context_document["@id"],
     )
 
     new_jsonld_context, ontology_errors = bmo.build_context_from_ontology(
-        all_ontology_graphs, forge_model_context, exclude_deprecated=exclude_deprecated_from_context
+        all_ontology_graphs,
+        forge_model_context,
+        exclude_deprecated=exclude_deprecated_from_context,
     )
 
     new_jsonld_schema_context, schema_errors = bmo.build_context_from_schema(
-        all_schema_graphs, new_jsonld_context, exclude_deprecated=exclude_deprecated_from_context
+        all_schema_graphs,
+        new_jsonld_context,
+        exclude_deprecated=exclude_deprecated_from_context,
     )
 
     errors = ontology_errors + schema_errors
@@ -308,13 +383,17 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     new_jsonld_context_document["@id"] = JSONLD_DATA_CONTEXT_IRI
     new_jsonld_context.iri = JSONLD_DATA_CONTEXT_IRI
 
-    print(f"Preparing data JSON-LD context {new_jsonld_context_document['@id']} - Start")
+    print(
+        f"Preparing data JSON-LD context {new_jsonld_context_document['@id']} - Start"
+    )
 
     new_jsonld_context_resource = prepare_update_jsonld_context(
         forge, new_jsonld_context_document, JSONLD_DATA_CONTEXT_IRI
     )
 
-    print(f"Preparing data JSON-LD context {new_jsonld_context_document['@id']} - Finish\n")
+    print(
+        f"Preparing data JSON-LD context {new_jsonld_context_document['@id']} - Finish\n"
+    )
 
     # with open("./new_jsonld_context_resource.json", "w") as f:
     #     json.dump(forge.as_json(new_jsonld_context_resource), f)
@@ -324,8 +403,10 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     if data_update:
         forge.update(new_jsonld_context_resource)
 
-    print(f"Updating data JSON-LD context {new_jsonld_context_document['@id']} - "
-          f"{'Finish' if data_update else 'Ignored'}\n")
+    print(
+        f"Updating data JSON-LD context {new_jsonld_context_document['@id']} - "
+        f"{'Finish' if data_update else 'Ignored'}\n"
+    )
 
     print("Preparing ontology classes - Start")
     new_jsonld_context_dict = new_jsonld_context_document["@context"]
@@ -337,21 +418,27 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     # Waiting for a single version (tag) across all the atlas dataset to be
     # made available, _rev will be used.
-    version = int(atlas_parcellation_ontology_version) \
-        if atlas_parcellation_ontology_version is not None \
+    version = (
+        int(atlas_parcellation_ontology_version)
+        if atlas_parcellation_ontology_version is not None
         else atlas_parcellation_ontology_version
+    )
 
     atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology, version=version)
 
     atlas_hierarchy_jsonld_distribution = [
-        distrib for distrib in atlas_hierarchy.distribution
+        distrib
+        for distrib in atlas_hierarchy.distribution
         if distrib.encodingFormat == "application/ld+json"
     ]
 
     atlas_hierarchy_jsonld_distribution = atlas_hierarchy_jsonld_distribution[0]
 
     forge_atlas.download(
-        atlas_hierarchy_jsonld_distribution, follow="contentUrl", path=".", overwrite=True
+        atlas_hierarchy_jsonld_distribution,
+        follow="contentUrl",
+        path=".",
+        overwrite=True,
     )
 
     atlas_hierarchy_ontology_graph = Graph().parse(
@@ -362,14 +449,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         atlas_hierarchy_ontology_graph,
         ontology_graphs_dict["./ontologies/bbp/brainregion.ttl"],
         all_ontology_graphs,
-        [SCHEMAORG.hasPart, SCHEMAORG.isPartOf,
-         RDFS.label, SKOS.prefLabel, SKOS.notation, SKOS.altLabel, MBA.atlas_id,
-         MBA.color_hex_triplet,
-         MBA.graph_order, MBA.hemisphere_id,
-         MBA.st_level, SCHEMAORG.identifier,
-         BMO.representedInAnnotation,
-         BMO.regionVolumeRatioToWholeBrain,
-         BMO.regionVolume]
+        ATLAS_PROPERTIES_TO_MERGE,
     )
 
     print(
@@ -380,14 +460,15 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         f"region ontology for {len(triples_to_remove)} brain regions."
     )
 
-    class_ids, class_jsons, all_blank_node_triples, brain_region_generated_classes =\
+    class_ids, class_jsons, all_blank_node_triples, brain_region_generated_classes = (
         bmo.frame_classes(
             all_ontology_graphs,
             new_jsonld_context,
             new_jsonld_context_dict,
             atlas_hierarchy.atlasRelease.id,
-            atlas_hierarchy.atlasRelease._rev
+            atlas_hierarchy.atlasRelease._rev,
         )
+    )
 
     all_class_resources_framed_dict = dict(zip(class_ids, class_jsons))
 
@@ -395,15 +476,19 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     class_resources_mapped = forge.map(
         data=class_jsons,
-        mapping=DictionaryMapping.load("./config/mappings/term-to-resource-mapping.hjson"),
-        na=None
+        mapping=DictionaryMapping.load(
+            "./config/mappings/term-to-resource-mapping.hjson"
+        ),
+        na=None,
     )
 
     all_class_resources_mapped_dict = dict(zip(class_ids, class_resources_mapped))
 
     print(f"Got {len(class_resources_mapped)} mapped classes")
 
-    print(f"Preparing ontology classes - Finish - Class count: {len(class_resources_mapped)} \n")
+    print(
+        f"Preparing ontology classes - Finish - Class count: {len(class_resources_mapped)} \n"
+    )
 
     print(f"Registering {len(list(schema_graphs_dict.keys()))} schemas - Start")
     already_registered = []
@@ -419,12 +504,16 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             new_jsonld_schema_context,
             tag=tag,
             already_registered=already_registered,
-            data_update=data_update
+            data_update=data_update,
         )
 
-    print(f"Registering schemas - Finish - Schema count: {len(list(schema_graphs_dict.keys()))}\n")
+    print(
+        f"Registering schemas - Finish - Schema count: {len(list(schema_graphs_dict.keys()))}\n"
+    )
 
-    print(f"Registering ontologies - Start - Ontology count: {len(ontology_graphs_dict)} ")
+    print(
+        f"Registering ontologies - Start - Ontology count: {len(ontology_graphs_dict)} "
+    )
 
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
 
@@ -441,10 +530,12 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             atlas_release_version=atlas_hierarchy.atlasRelease._rev,
             atlas_parcellation_ontology_id=atlas_parcellation_ontology,
             tag=tag,
-            data_update=data_update
+            data_update=data_update,
         )
 
-    print(f"Registering ontologies - Finish - Ontology count: {len(ontology_graphs_dict)}\n")
+    print(
+        f"Registering ontologies - Finish - Ontology count: {len(ontology_graphs_dict)}\n"
+    )
 
     print(f"Registering classes - Start: Class count:  {len(class_jsons)}")
 
@@ -462,7 +553,9 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
                 f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
             )
             if deprecated:
-                ex, _ = bmo_registration.deprecate_class(forge=forge, class_resource=class_resource)
+                ex, _ = bmo_registration.deprecate_class(
+                    forge=forge, class_resource=class_resource
+                )
             else:
                 ex, _ = bmo_registration.register_class(
                     forge=forge, class_resource=class_resource, tag=tag
@@ -472,25 +565,29 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
                 class_errors.append(ex)
 
         else:
-            print(f"{'Creation/Update' if not deprecated else 'Deprecation'} of class "
-                  f"{class_resource.get_identifier()} - Ignored")
+            print(
+                f"{'Creation/Update' if not deprecated else 'Deprecation'} of class "
+                f"{class_resource.get_identifier()} - Ignored"
+            )
 
-    print(f"Registering classes - Finish - Class count: {len(class_jsons)},"
-          f" {len(class_errors)} errors")
+    print(
+        f"Registering classes - Finish - Class count: {len(class_jsons)},"
+        f" {len(class_errors)} errors"
+    )
 
     for e in class_errors:
         print(e)
 
     create_update_type_to_schema_mapping(
-        all_schema_graphs=all_schema_graphs, forge=forge, data_update=data_update, tag=tag
+        all_schema_graphs=all_schema_graphs,
+        forge=forge,
+        data_update=data_update,
+        tag=tag,
     )
 
 
 def _merge_ontology(
-        from_ontology_graph,
-        to_ontology_graph,
-        to_another_graph,
-        what_property_to_merge
+    from_ontology_graph, to_ontology_graph, to_another_graph, what_property_to_merge
 ):
     # merge hierarchy from atlas with this brain region:
     # make sure atlas hierarchy, labels, notation, identifier, ... is fully included in bmo
@@ -505,55 +602,71 @@ def _merge_ontology(
                 triples_to_remove[str(from_s)] = set()
 
             if (from_s, from_p, None) in to_ontology_graph:
-                for to_s, to_p, to_o in to_ontology_graph.triples((from_s, from_p, None)):
-                    if from_p != SCHEMAORG.identifier:
-                        if (
-                                from_p == BMO.regionVolume or
-                                from_p == BMO.regionVolumeRatioToWholeBrain
-                        ) and str(from_o) != "":
+                for to_s, to_p, to_o in to_ontology_graph.triples(
+                    (from_s, from_p, None)
+                ):
+                    if (
+                        from_p == BMO.regionVolume
+                        or from_p == BMO.regionVolumeRatioToWholeBrain
+                    ) and str(from_o) != "":
 
-                            bNode, triples = _create_bnode_triples_from_value({
+                        bNode, triples = _create_bnode_triples_from_value(
+                            {
                                 SCHEMAORG.value: from_o,
-                                SCHEMAORG.unitCode: Literal("cubic micrometer")
-                            })
-                            triples_to_add[str(from_s)].update(triples)
-                            triples_to_add[str(from_s)].add((from_s, from_p, bNode))
-                            triples_to_remove[str(from_s)].update((to_s, to_p, to_o))
-                        elif str(from_o) != "":
-                            triples_to_add[str(from_s)].add((from_s, from_p, from_o))
-                            triples_to_remove[str(from_s)].add((to_s, to_p, to_o))
+                                SCHEMAORG.unitCode: Literal("cubic micrometer"),
+                            }
+                        )
+                        triples_to_add[str(from_s)].update(triples)
+                        triples_to_add[str(from_s)].add((from_s, from_p, bNode))
+                        triples_to_remove[str(from_s)].update((to_s, to_p, to_o))
+                    elif str(from_o) != "":
+                        triples_to_add[str(from_s)].add((from_s, from_p, from_o))
+                        triples_to_remove[str(from_s)].add((to_s, to_p, to_o))
             else:
                 if (
-                        from_p == BMO.regionVolume or
-                        from_p == BMO.regionVolumeRatioToWholeBrain
-                ) and str(from_o) != "":  # check atlas pipeline value when the brain region
+                    from_p == BMO.regionVolume
+                    or from_p == BMO.regionVolumeRatioToWholeBrain
+                ) and str(
+                    from_o
+                ) != "":  # check atlas pipeline value when the brain region
                     # is not in the volume (currently '' is used)
 
-                    bNode, triples = _create_bnode_triples_from_value({
-                        SCHEMAORG.value: from_o,
-                        SCHEMAORG.unitCode: Literal("cubic micrometer")
-                    })
+                    bNode, triples = _create_bnode_triples_from_value(
+                        {
+                            SCHEMAORG.value: from_o,
+                            SCHEMAORG.unitCode: Literal("cubic micrometer"),
+                        }
+                    )
                     triples_to_add[str(from_s)].update(triples)
                     triples_to_add[str(from_s)].add((from_s, from_p, bNode))
                 elif str(from_o) != "":
                     triples_to_add[str(from_s)].add((from_s, from_p, from_o))
 
                 if isinstance(from_o, term.URIRef):
-                    for from_o_s, from_o_p, from_o_o in \
-                            from_ontology_graph.triples((from_o, None, None)):
+                    for from_o_s, from_o_p, from_o_o in from_ontology_graph.triples(
+                        (from_o, None, None)
+                    ):
 
                         if str(from_o_s) not in triples_to_add:
                             triples_to_add[str(from_o_s)] = set()
 
-                        if from_o_p not in [BMO.layers, BMO.adjacentTo, BMO.continuousWith,
-                                            BMO.hasLayerLocationPhenotype] \
-                                and from_o_p not in what_property_to_merge:
+                        if (
+                            from_o_p
+                            not in [
+                                BMO.layers,
+                                BMO.adjacentTo,
+                                BMO.continuousWith,
+                                BMO.hasLayerLocationPhenotype,
+                            ]
+                            and from_o_p not in what_property_to_merge
+                        ):
                             # will be merged once the data format is okay
 
-                            triples_to_add[str(from_o_s)].add((from_o_s, from_o_p, from_o_o))
+                            triples_to_add[str(from_o_s)].add(
+                                (from_o_s, from_o_p, from_o_o)
+                            )
             triples_to_add[str(from_s)].add((from_s, RDFS.subClassOf, NSG.BrainRegion))
             triples_to_add[str(from_s)].add((from_s, RDF.type, OWL.Class))
-
     for k, v in triples_to_remove.items():
         for t in v:
             to_ontology_graph.remove(t)
@@ -567,7 +680,7 @@ def _merge_ontology(
 
 
 def _create_bnode_triples_from_value(
-        prop_uriref_to_value_dict: Dict
+    prop_uriref_to_value_dict: Dict,
 ) -> Tuple[term.BNode, List[Tuple[term.BNode, Any, Any]]]:
 
     triples = []
@@ -579,9 +692,13 @@ def _create_bnode_triples_from_value(
 
 
 def register_ontology(
-        forge: KnowledgeGraphForge, ontology_json: Dict, ontology_filepath: str,
-        ontology_graph: Graph, tag: Optional[str],
-        class_resources_mapped: Optional[List], data_update: bool,
+    forge: KnowledgeGraphForge,
+    ontology_json: Dict,
+    ontology_filepath: str,
+    ontology_graph: Graph,
+    tag: Optional[str],
+    class_resources_mapped: Optional[List],
+    data_update: bool,
 ) -> Tuple[Optional[Exception], Resource]:
 
     ontology_json = copy.deepcopy(ontology_json)
@@ -590,70 +707,88 @@ def register_ontology(
     dirpath = f"./{ontology_filepath.split('/')[-1].split('.')[0]}"
     dirpath_ttl = f"{dirpath}.ttl"
     ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
-    ontology_resource.distribution = [forge.attach(dirpath_ttl, content_type="text/turtle")]
+    ontology_resource.distribution = [
+        forge.attach(dirpath_ttl, content_type="text/turtle")
+    ]
 
     dirpath_json = f"{dirpath}.json"
     with open(dirpath_json, "w") as fp:
         json.dump(ontology_json, fp)
     ontology_resource.distribution.append(
-        forge.attach(dirpath_json, content_type="application/ld+json"))
+        forge.attach(dirpath_json, content_type="application/ld+json")
+    )
 
     if class_resources_mapped is not None:
         defined_types_df = forge.as_dataframe(class_resources_mapped)
         dirpath_csv = f"{dirpath}.csv"
         defined_types_df.to_csv(dirpath_csv)
-        ontology_resource.distribution.append(forge.attach(dirpath_csv, content_type="text/csv"))
+        ontology_resource.distribution.append(
+            forge.attach(dirpath_csv, content_type="text/csv")
+        )
 
     if ontology_filepath in bmo_registration.SYNTHETIC_SENTENCES:
-        synthetic = bmo_registration.SYNTHETIC_SENTENCES[ontology_filepath].get("synthetic", None)
+        synthetic = bmo_registration.SYNTHETIC_SENTENCES[ontology_filepath].get(
+            "synthetic", None
+        )
         wiki = bmo_registration.SYNTHETIC_SENTENCES[ontology_filepath].get("wiki", None)
         if synthetic:
-            ontology_resource.distribution.append(forge.attach(synthetic, content_type="text/json"))
+            ontology_resource.distribution.append(
+                forge.attach(synthetic, content_type="text/json")
+            )
         if wiki:
-            ontology_resource.distribution.append(forge.attach(wiki, content_type="text/json"))
+            ontology_resource.distribution.append(
+                forge.attach(wiki, content_type="text/json")
+            )
 
     deprecated = ontology_resource.__dict__.get("deprecated", False)
 
     if data_update:
         print(
-                f"Ontology {ontology_resource.get_identifier()} will be "
-                f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
+            f"Ontology {ontology_resource.get_identifier()} will be "
+            f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
         )
         if deprecated:
             return bmo_registration.deprecate_ontology(
-                forge=forge, ontology_resource=ontology_resource,
-                ontology_filepath=ontology_filepath
+                forge=forge,
+                ontology_resource=ontology_resource,
+                ontology_filepath=ontology_filepath,
             )
 
         return bmo_registration.register_ontology(
-            forge=forge, ontology_resource=ontology_resource,
-            ontology_filepath=ontology_filepath, tag=tag
+            forge=forge,
+            ontology_resource=ontology_resource,
+            ontology_filepath=ontology_filepath,
+            tag=tag,
         )
 
-    print(f"{'Creation/Update' if not deprecated else 'Deprecation'} of ontology "
-          f"{ontology_resource.get_identifier()} - Ignored")
+    print(
+        f"{'Creation/Update' if not deprecated else 'Deprecation'} of ontology "
+        f"{ontology_resource.get_identifier()} - Ignored"
+    )
 
     return None, ontology_resource
 
 
 def register_schemas(
-        forge: KnowledgeGraphForge,
-        schema_filepath: str,
-        schema_content: Dict,
-        schema_graphs_dict: Dict[str, Dict],
-        schema_id_to_filepath_dict: Dict[str, str],
-        all_schema_graph: Graph,
-        jsonld_schema_context,
-        tag: Optional[str],
-        already_registered: List,
-        data_update: bool
+    forge: KnowledgeGraphForge,
+    schema_filepath: str,
+    schema_content: Dict,
+    schema_graphs_dict: Dict[str, Dict],
+    schema_id_to_filepath_dict: Dict[str, str],
+    all_schema_graph: Graph,
+    jsonld_schema_context,
+    tag: Optional[str],
+    already_registered: List,
+    data_update: bool,
 ):
 
     # TODO should there be a mechanism to raise errors/warn when importing deprecated schemas?
 
     if schema_content["resource"].id not in already_registered:
         if "imports" in schema_content:
-            imported_schemas = [jsonld_schema_context.expand(i) for i in schema_content["imports"]]
+            imported_schemas = [
+                jsonld_schema_context.expand(i) for i in schema_content["imports"]
+            ]
             for imported_schema in imported_schemas:
                 if imported_schema in schema_id_to_filepath_dict:
                     imported_schema_file = schema_id_to_filepath_dict[imported_schema]
@@ -671,9 +806,10 @@ def register_schemas(
                     schema_graphs_dict=schema_graphs_dict,
                     schema_id_to_filepath_dict=schema_id_to_filepath_dict,
                     all_schema_graph=all_schema_graph,
-                    jsonld_schema_context=jsonld_schema_context, tag=tag,
+                    jsonld_schema_context=jsonld_schema_context,
+                    tag=tag,
                     already_registered=already_registered,
-                    data_update=data_update
+                    data_update=data_update,
                 )
 
                 already_registered.extend(imported_schema_content["resource"].id)
@@ -696,8 +832,10 @@ def register_schemas(
                 )
                 already_registered.append(schema_resource.get_identifier())
         else:
-            print(f"{'Creation/Update' if not deprecated else 'Deprecation'} of schema "
-                  f"{schema_resource.get_identifier()} - Ignored")
+            print(
+                f"{'Creation/Update' if not deprecated else 'Deprecation'} of schema "
+                f"{schema_resource.get_identifier()} - Ignored"
+            )
 
 
 if __name__ == "__main__":

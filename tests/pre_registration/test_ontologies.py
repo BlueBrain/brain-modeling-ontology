@@ -1,6 +1,19 @@
+import pytest
+
 import json
 import re
-import pytest
+from bmo.loading import DATA_JSONLD_CONTEXT_PATH
+from bmo.utils import (
+    ATLAS_PROPERTIES_TO_MERGE,
+    BMO,
+    BRAIN_REGION_ONTOLOGY_URI,
+    CELL_TYPE_ONTOLOGY_URI,
+    NSG,
+    SCHEMAORG,
+    MBA,
+)
+
+import rdflib
 from kgforge.core.commons import Context
 from rdflib import RDFS, XSD, Literal, RDF, OWL, SH, Graph
 from rdflib.paths import OneOrMore, ZeroOrMore
@@ -8,8 +21,6 @@ from rdflib.term import URIRef
 from typing import List, Optional
 
 import bmo.ontologies as bmo
-from bmo.loading import DATA_JSONLD_CONTEXT_PATH
-from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, CELL_TYPE_ONTOLOGY_URI, NSG, SCHEMAORG
 from register_ontologies import execute_ontology_registration
 
 
@@ -24,16 +35,25 @@ def test_terms_aligned_with_context(all_ontology_graphs, all_schema_graphs):
 
     with open(DATA_JSONLD_CONTEXT_PATH, "r") as f:
         previous_forge_context_json = json.load(f)
-
-    forge_context = Context(previous_forge_context_json["@context"], previous_forge_context_json["@id"])
-    new_jsonld_context, ontology_errors = bmo.build_context_from_ontology(all_ontology_graphs[0], forge_context)
-    new_jsonld_context, schema_errors = bmo.build_context_from_schema(all_schema_graphs[0], new_jsonld_context)
+    graph_of_all_ontologies = all_ontology_graphs[0]
+    graph_of_all_schemas = all_schema_graphs[0]
+    forge_context = Context(
+        previous_forge_context_json["@context"], previous_forge_context_json["@id"]
+    )
+    new_jsonld_context, ontology_errors = bmo.build_context_from_ontology(
+        graph_of_all_ontologies, forge_context
+    )
+    new_jsonld_context, schema_errors = bmo.build_context_from_schema(
+        graph_of_all_schemas, new_jsonld_context
+    )
     errors = []
     errors.extend(ontology_errors)
     errors.extend(schema_errors)
     assert len(errors) == 0
     assert new_jsonld_context.iri == forge_context.iri
-    assert set(forge_context.document.keys()).issubset(new_jsonld_context.document.keys())
+    assert set(forge_context.document.keys()).issubset(
+        new_jsonld_context.document.keys()
+    )
 
 
 def test_ontologies_classes_conform_schemas(forge, all_ontology_graphs):
@@ -56,24 +76,176 @@ def test_classes_instances_are_disjoint(all_ontology_graphs):
     assert len(classes_instances) == 0
 
 
-def test_object_annotation_properties_are_disjoint(all_ontology_graphs):
+def test_classes_object_annotation_properties_are_disjoint(all_ontology_graphs):
     obj_prop_instances = []
-    for obj_prop in all_ontology_graphs[0].subjects(RDF.type, OWL.ObjectProperty):
-        if (obj_prop, RDF.type, OWL.AnnotationProperty) in all_ontology_graphs[0]:
+    class_prop_instances = []
+    graph_of_all_ontologies = all_ontology_graphs[0]  # rdflib.Graph() with all ontologies
+    for obj_prop in graph_of_all_ontologies.subjects(RDF.type, OWL.ObjectProperty):
+        if (obj_prop, RDF.type, OWL.AnnotationProperty) in graph_of_all_ontologies:
             obj_prop_instances.append(obj_prop)
+        if (obj_prop, RDF.type, OWL.Class) in graph_of_all_ontologies:
+            class_prop_instances.append(obj_prop)
+    for annotation_prop in graph_of_all_ontologies.subjects(
+        RDF.type, OWL.AnnotationProperty
+    ):
+        if (annotation_prop, RDF.type, OWL.Class) in graph_of_all_ontologies:
+            class_prop_instances.append(annotation_prop)
+
     assert len(obj_prop_instances) == 0
+    assert len(class_prop_instances) == 0
 
 
 def test_no_topObjectProperty_instances(all_ontology_graphs):
-    topobj_prop_instances = all_ontology_graphs[0].subjects(RDF.type, OWL.topObjectProperty)
+    graph_of_all_ontologies = all_ontology_graphs[0]
+    topobj_prop_instances = graph_of_all_ontologies.subjects(
+        RDF.type, OWL.topObjectProperty
+    )
     assert len(list(topobj_prop_instances)) == 0
 
 
-def test_all_classes_are_extracted(framed_classes, all_ontology_graph_merged_brain_region_atlas_hierarchy):
+def test_atlas_hierarchy_brainregions_merge_ontology(
+    forge,
+    atlas_hierarchy_ontology_graph_classes,
+    brain_region_ontologygraph_classes,
+    all_ontology_graph_merged_brain_region_atlas_hierarchy,
+    atlas_hierarchy_ontology_graph_resource,
+    framed_class_json_dict,
+):
+    brain_region_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[1]
+    atlas_hierarchy_ontology_graph = atlas_hierarchy_ontology_graph_resource[0]
+
+    for atlas_hierarchy_class in atlas_hierarchy_ontology_graph_classes:
+        assert (
+            str(atlas_hierarchy_class) in framed_class_json_dict
+        ), f"{str(atlas_hierarchy_class)} should be present in the framed classes."
+        # the types of bmo.utils.ATLAS_PROPERTIES_TO_MERGE with indice to indice matching
+        properties_to_merge_types = [
+            list,
+            list,
+            str,
+            str,
+            str,
+            str,
+            str,
+            int,
+            str,
+            bool,
+            dict,
+            dict,
+        ]
+        errors = []
+        for i, prop in enumerate(ATLAS_PROPERTIES_TO_MERGE):
+            atlas_hierarchy_class_prop_val = list(
+                atlas_hierarchy_ontology_graph.objects(atlas_hierarchy_class, prop)
+            )
+            brain_region_graph_class_prop_val = list(
+                brain_region_graph.objects(atlas_hierarchy_class, prop)
+            )
+            assert len(atlas_hierarchy_class_prop_val) == len(
+                brain_region_graph_class_prop_val
+            ), (
+                f"{str(atlas_hierarchy_class)}"
+                f"should have the same number of values for the property {str(prop)} in atlas ({atlas_hierarchy_class_prop_val})"
+                f"and in the brain region ontologies {brain_region_graph_class_prop_val}."
+            )
+            if properties_to_merge_types[i] not in [list, dict]:
+                assert len(atlas_hierarchy_class_prop_val) <= 1, (
+                    f"{str(atlas_hierarchy_class)} should have one or no value for the property {str(prop)}."
+                    f"Found {atlas_hierarchy_class_prop_val}."
+                )
+                if len(atlas_hierarchy_class_prop_val) == 1:
+                    atlas_hierarchy_class_prop_val = atlas_hierarchy_class_prop_val[
+                        0
+                    ].value
+                    brain_region_graph_class_prop_val = (
+                        brain_region_graph_class_prop_val[0].value
+                    )
+            else:
+                atlas_hierarchy_class_prop_val = sorted(
+                    [
+                        (
+                            str(prop_val)
+                            if isinstance(prop_val, rdflib.term.URIRef)
+                            else prop_val
+                        )
+                        for prop_val in atlas_hierarchy_class_prop_val
+                    ]
+                )
+                brain_region_graph_class_prop_val = sorted(
+                    [
+                        (
+                            str(prop_val)
+                            if isinstance(prop_val, rdflib.term.URIRef)
+                            else prop_val
+                        )
+                        for prop_val in brain_region_graph_class_prop_val
+                    ]
+                )
+            if (
+                prop == BMO.regionVolume or prop == BMO.regionVolumeRatioToWholeBrain
+            ) and _is_represented_in_annotation(
+                atlas_hierarchy_ontology_graph, atlas_hierarchy_class
+            ):
+                assert len(atlas_hierarchy_class_prop_val) == 1, (
+                    f"{str(atlas_hierarchy_class)},"
+                    f"represented in the annotation should have exactement one value for the property {str(prop)}. Found {atlas_hierarchy_class_prop_val}."
+                )
+                brain_region_graph_class_prop_val = brain_region_graph_class_prop_val[0]
+                atlas_hierarchy_class_prop_val = atlas_hierarchy_class_prop_val[0]
+                assert isinstance(brain_region_graph_class_prop_val, rdflib.term.BNode)
+                _, _, blank_node_triples = bmo._process_blank_nodes(
+                    brain_region_graph,
+                    brain_region_graph_class_prop_val,
+                    process_restriction=False,
+                )
+                assert len(blank_node_triples) == 2
+                assert (
+                    brain_region_graph_class_prop_val,
+                    SCHEMAORG.value,
+                    atlas_hierarchy_class_prop_val,
+                ) in blank_node_triples
+                assert (
+                    brain_region_graph_class_prop_val,
+                    SCHEMAORG.unitCode,
+                    Literal("cubic micrometer"),
+                ) in blank_node_triples
+                expected_prop_json_val = {
+                    "value": atlas_hierarchy_class_prop_val.value,
+                    "unitCode": "cubic micrometer",
+                }
+            else:
+                assert (
+                    atlas_hierarchy_class_prop_val == brain_region_graph_class_prop_val
+                ), (
+                    f"{str(prop)} should have the value "
+                    f"{atlas_hierarchy_class_prop_val} in the brain region ontology. Found: {brain_region_graph_class_prop_val}"
+                )
+                expected_prop_json_val = atlas_hierarchy_class_prop_val
+            prop_symbol = forge._model.context().to_symbol(prop)
+            prop_fragment = forge._model.context()._prep_expand(prop_symbol)[2]
+            if (
+                atlas_hierarchy_class != MBA["997"] or prop != SCHEMAORG.isPartOf
+            ):  # MBA["997"] is the root so is not part of another class
+                if expected_prop_json_val:
+                    errors.extend(
+                        _check_dict_for_property_type_value(
+                            framed_class_json_dict[str(atlas_hierarchy_class)],
+                            [prop_fragment],
+                            [properties_to_merge_types[i]],
+                            [expected_prop_json_val],
+                            sort_values=True,
+                        )
+                    )
+        assert len(errors) == 0, f"The followings errors were found: {errors}"
+
+
+def test_all_classes_are_extracted(
+    framed_classes, all_ontology_graph_merged_brain_region_atlas_hierarchy
+):
 
     class_ids = framed_classes[0]
     class_jsons = framed_classes[1]
-    all_ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
+    all_ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
 
     assert len(class_ids) == len(class_jsons)
 
@@ -125,8 +297,12 @@ def test_metype_correctedly_propagated(all_ontology_graphs, forge):
     propagated_brain_regions = bmo._get_sub_regions_to_propagate_metype_to(
         ontology_graph, brain_region, bmo.BMO.NeuronMorphologicalType
     )
-    expected_propagated_brain_regions = ontology_graph.objects(URIRef(brain_region), bmo.SCHEMAORG.hasPart*OneOrMore)
-    expected_propagated_brain_regions = {str(br) for br in expected_propagated_brain_regions}
+    expected_propagated_brain_regions = ontology_graph.objects(
+        URIRef(brain_region), bmo.SCHEMAORG.hasPart * OneOrMore
+    )
+    expected_propagated_brain_regions = {
+        str(br) for br in expected_propagated_brain_regions
+    }
     assert set(propagated_brain_regions) == expected_propagated_brain_regions
 
 
@@ -135,30 +311,46 @@ def test_brain_region_same_leaves_in_all_hierarchy(all_ontology_graphs):
 
     isocortex_brain_region_uri = "http://api.brain-map.org/api/v2/data/Structure/315"
     ammons_horn_brain_region_uri = "http://api.brain-map.org/api/v2/data/Structure/375"
-    anterior_cingulate_area_dorsal_part_layer_6b = "http://api.brain-map.org/api/v2/data/Structure/927"
+    anterior_cingulate_area_dorsal_part_layer_6b = (
+        "http://api.brain-map.org/api/v2/data/Structure/927"
+    )
 
-    current_class_layers = list(ontology_graph.objects(URIRef(anterior_cingulate_area_dorsal_part_layer_6b),
-                                                       NSG.hasLayerLocationPhenotype
-                                                       ))
+    current_class_layers = list(
+        ontology_graph.objects(
+            URIRef(anterior_cingulate_area_dorsal_part_layer_6b),
+            NSG.hasLayerLocationPhenotype,
+        )
+    )
     classes_relevant_for_layer = set()
     for layer in current_class_layers:
         classes_relevant_for_layer = set(
-            ontology_graph.objects(URIRef(layer), RDFS.subClassOf*OneOrMore/SCHEMAORG.about)
+            ontology_graph.objects(
+                URIRef(layer), RDFS.subClassOf * OneOrMore / SCHEMAORG.about
+            )
         )
 
     new_classes = bmo._create_property_based_hierarchy(
-        ontology_graph, URIRef(anterior_cingulate_area_dorsal_part_layer_6b),
-        current_class_layers, classes_relevant_for_layer, SCHEMAORG.isPartOf
+        ontology_graph,
+        URIRef(anterior_cingulate_area_dorsal_part_layer_6b),
+        current_class_layers,
+        classes_relevant_for_layer,
+        SCHEMAORG.isPartOf,
     )
     assert len(new_classes) == 0
 
     ammons_horn_brain_region_layer_leaves = set(
-        ontology_graph.objects(URIRef(ammons_horn_brain_region_uri), BMO.hasLayerLeafRegionPart)
+        ontology_graph.objects(
+            URIRef(ammons_horn_brain_region_uri), BMO.hasLayerLeafRegionPart
+        )
     )
     ammons_horn_brain_region_default_leaves = set(
-        ontology_graph.objects(URIRef(ammons_horn_brain_region_uri), BMO.hasLeafRegionPart)
+        ontology_graph.objects(
+            URIRef(ammons_horn_brain_region_uri), BMO.hasLeafRegionPart
+        )
     )
-    assert ammons_horn_brain_region_layer_leaves == ammons_horn_brain_region_default_leaves
+    assert (
+        ammons_horn_brain_region_layer_leaves == ammons_horn_brain_region_default_leaves
+    )
 
     isocortex_brain_region_layer_in_annotation_leaves = _get_in_annotation_leaves(
         isocortex_brain_region_uri, ontology_graph, BMO.hasLayerLeafRegionPart
@@ -166,27 +358,48 @@ def test_brain_region_same_leaves_in_all_hierarchy(all_ontology_graphs):
     isocortex_brain_region_default_in_annotation_leaves = _get_in_annotation_leaves(
         isocortex_brain_region_uri, ontology_graph, BMO.hasLeafRegionPart
     )
-    assert isocortex_brain_region_layer_in_annotation_leaves == isocortex_brain_region_default_in_annotation_leaves
+    assert (
+        isocortex_brain_region_layer_in_annotation_leaves
+        == isocortex_brain_region_default_in_annotation_leaves
+    )
 
 
 def test_all_classes_have_label_notation_not_plus(framed_classes):
     class_jsons = framed_classes[1]
     errors = []
     for class_json in class_jsons:
-        regexp = re.compile(r'[+]')
+        regexp = re.compile(r"[+]")
         if regexp.search(class_json["@id"]):
-            errors.append(f"Class URIs should not have '+' character: {class_json['@id']}")
-        errors.extend(_check_dict_for_property_type_value(class_json, ["label"], [str], None))
+            errors.append(
+                f"Class URIs should not have '+' character: {class_json['@id']}"
+            )
+        errors.extend(
+            _check_dict_for_property_type_value(class_json, ["label"], [str], None)
+        )
         if "notation" in class_json:
-            errors.extend(_check_dict_for_property_type_value(class_json, ["notation"], [str], None))
+            errors.extend(
+                _check_dict_for_property_type_value(
+                    class_json, ["notation"], [str], None
+                )
+            )
     assert len(errors) == 0, errors
 
 
 def test_musmusculus_rat_labels(framed_class_json_dict):
-    mus_musculus_class_json = framed_class_json_dict["http://purl.obolibrary.org/obo/NCBITaxon_10090"]
-    rattus_class_json = framed_class_json_dict["http://purl.obolibrary.org/obo/NCBITaxon_10116"]
-    errors = _check_dict_for_property_type_value(mus_musculus_class_json, ["label"], [str], ["Mus musculus"])
-    errors.extend(_check_dict_for_property_type_value(rattus_class_json, ["label"], [str], ["Rattus norvegicus"]))
+    mus_musculus_class_json = framed_class_json_dict[
+        "http://purl.obolibrary.org/obo/NCBITaxon_10090"
+    ]
+    rattus_class_json = framed_class_json_dict[
+        "http://purl.obolibrary.org/obo/NCBITaxon_10116"
+    ]
+    errors = _check_dict_for_property_type_value(
+        mus_musculus_class_json, ["label"], [str], ["Mus musculus"]
+    )
+    errors.extend(
+        _check_dict_for_property_type_value(
+            rattus_class_json, ["label"], [str], ["Rattus norvegicus"]
+        )
+    )
     assert len(errors) == 0, errors
 
 
@@ -197,15 +410,19 @@ def test_all_etypes_have_definition(framed_class_json_dict, all_ontology_graphs)
     errors = []
     for etype in all_etypes:
         etype_class_json = framed_class_json_dict[str(etype)]
-        errors.extend(_check_dict_for_property_type_value(etype_class_json, ["definition"], [str]))
+        errors.extend(
+            _check_dict_for_property_type_value(etype_class_json, ["definition"], [str])
+        )
     assert len(errors) == 0, errors
 
 
 def test_all_brain_regions_have_annotations(
-    framed_class_json_dict, all_ontology_graph_merged_brain_region_atlas_hierarchy,
-    atlas_release_prop, atlas_release_version
+    framed_class_json_dict,
+    all_ontology_graph_merged_brain_region_atlas_hierarchy,
+    atlas_release_prop,
+    atlas_release_version,
 ):
-    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
+    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
     properties_to_check = ["label", "notation", "prefLabel"]
     errors = []
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
@@ -213,7 +430,10 @@ def test_all_brain_regions_have_annotations(
         cls_json = framed_class_json_dict[str(cls)]
         cls_properties = properties_to_check + ["atlasRelease"]
         e = _check_dict_for_property_type_value(
-            cls_json, cls_properties, [str, str, str, dict], [None, None, None, atlas_release_prop]
+            cls_json,
+            cls_properties,
+            [str, str, str, dict],
+            [None, None, None, atlas_release_prop],
         )
         errors.extend(e)
         assert atlas_release_version >= 1
@@ -221,19 +441,22 @@ def test_all_brain_regions_have_annotations(
 
 
 def test_all_non_layer_brain_regions_have_representedInAnnotation(
-        framed_class_json_dict, all_ontology_graph_merged_brain_region_atlas_hierarchy):
-    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
+    framed_class_json_dict, all_ontology_graph_merged_brain_region_atlas_hierarchy
+):
+    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
     errors = []
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
         cls_json = framed_class_json_dict[str(cls)]
-        if (cls, RDFS.subClassOf*ZeroOrMore, BMO.BrainLayer) not in ontology_graph:
-            e = _check_dict_for_property_type_value(cls_json, ["hasHierarchyView"], [list], None)
+        if (cls, RDFS.subClassOf * ZeroOrMore, BMO.BrainLayer) not in ontology_graph:
+            e = _check_dict_for_property_type_value(
+                cls_json, ["hasHierarchyView"], [list], None
+            )
             errors.extend(e)
             assert (cls, BMO.representedInAnnotation, None) in ontology_graph
             assert "representedInAnnotation" in cls_json
-            is_represented_in_annotation = list(ontology_graph.objects(cls, BMO.representedInAnnotation))
-            assert len(is_represented_in_annotation) == 1
-            is_represented_in_annotation = is_represented_in_annotation[0]
+            is_represented_in_annotation = _is_represented_in_annotation(
+                ontology_graph, cls
+            )
             assert isinstance(is_represented_in_annotation, Literal)
             assert isinstance(cls_json["representedInAnnotation"], bool)
             assert str(is_represented_in_annotation) in ["true", "false"]
@@ -244,21 +467,40 @@ def test_all_non_layer_brain_regions_have_representedInAnnotation(
                 assert "regionVolume" in cls_json
                 assert "regionVolumeRatioToWholeBrain" in cls_json
                 assert cls_json["regionVolume"]["unitCode"] == "cubic micrometer"
-                assert cls_json["regionVolumeRatioToWholeBrain"]["unitCode"] == "cubic micrometer"
+                assert (
+                    cls_json["regionVolumeRatioToWholeBrain"]["unitCode"]
+                    == "cubic micrometer"
+                )
                 assert isinstance(cls_json["regionVolume"]["value"], float)
-                assert isinstance(cls_json["regionVolumeRatioToWholeBrain"]["value"], float)
+                assert isinstance(
+                    cls_json["regionVolumeRatioToWholeBrain"]["value"], float
+                )
             else:
                 assert (cls, BMO.regionVolume, None) not in ontology_graph
-                assert (cls, BMO.regionVolumeRatioToWholeBrain, None) not in ontology_graph
+                assert (
+                    cls,
+                    BMO.regionVolumeRatioToWholeBrain,
+                    None,
+                ) not in ontology_graph
                 assert "regionVolume" not in cls_json
                 assert "regionVolumeRatioToWholeBrain" not in cls_json
     assert len(errors) == 0, errors
 
 
-def test_layered_child_has_same_layer_as_parent(all_ontology_graph_merged_brain_region_atlas_hierarchy):
-    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
+def _is_represented_in_annotation(ontology_graph, cls):
+    is_represented_in_annotation = list(
+        ontology_graph.objects(cls, BMO.representedInAnnotation)
+    )
+    assert len(is_represented_in_annotation) == 1
+    return is_represented_in_annotation[0]
+
+
+def test_layered_child_has_same_layer_as_parent(
+    all_ontology_graph_merged_brain_region_atlas_hierarchy,
+):
+    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
     for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
-        if (cls, RDFS.subClassOf*ZeroOrMore, BMO.BrainLayer) not in ontology_graph:
+        if (cls, RDFS.subClassOf * ZeroOrMore, BMO.BrainLayer) not in ontology_graph:
             # all non layer brain regions (i.e classes that are layers are not wanted)
             if (cls, NSG.hasLayerLocationPhenotype, None) in ontology_graph:
                 # if they have a layer associated (e.g Primary auditory area, layer 6b)
@@ -266,44 +508,57 @@ def test_layered_child_has_same_layer_as_parent(all_ontology_graph_merged_brain_
                     ontology_graph.objects(cls, NSG.hasLayerLocationPhenotype)
                 )  # the layers of the current class
                 grand_parents = list(
-                    ontology_graph.objects(cls, BMO.isLayerPartOf/SCHEMAORG.isPartOf)
+                    ontology_graph.objects(cls, BMO.isLayerPartOf / SCHEMAORG.isPartOf)
                 )  # the grand parents through a layer hierarchy
                 for layer in current_class_layers:
                     # The highest class to which descendants the layer is relevant
                     # (e.g layer 2 is only relevant for Isocortex descendants. So layer 2 is about Isocortex)
                     classes_relevant_for_layer = set(
-                        ontology_graph.objects(layer, RDFS.subClassOf*OneOrMore/SCHEMAORG.about)
+                        ontology_graph.objects(
+                            layer, RDFS.subClassOf * OneOrMore / SCHEMAORG.about
+                        )
                     )
-                    assert len(classes_relevant_for_layer) > 0, f"Layer '{layer}' does not apply to a class"
+                    assert (
+                        len(classes_relevant_for_layer) > 0
+                    ), f"Layer '{layer}' does not apply to a class"
                     relevant_grand_parents = set()
                     for c in classes_relevant_for_layer:
                         # collect all grand parents that are layer descendants of one of the classes_relevant_for_layer
                         s = {
-                            grand_parent for grand_parent in grand_parents
-                            if (grand_parent, BMO.isLayerPartOf*OneOrMore, c) in ontology_graph
+                            grand_parent
+                            for grand_parent in grand_parents
+                            if (grand_parent, BMO.isLayerPartOf * OneOrMore, c)
+                            in ontology_graph
                         }
                         relevant_grand_parents.update(s)
 
                     for rg in relevant_grand_parents:
-                        assert (rg, NSG.hasLayerLocationPhenotype, layer) in ontology_graph, \
-                            f"Class {str(cls)} is a layer descendant of the class '{str(rg)} but "\
+                        assert (
+                            rg,
+                            NSG.hasLayerLocationPhenotype,
+                            layer,
+                        ) in ontology_graph, (
+                            f"Class {str(cls)} is a layer descendant of the class '{str(rg)} but "
                             f"has a layer '{layer}' not associated with the grandparents"
+                        )
 
             # is_layer_part_ofs = set(ontology_graph.objects(cls, BMO.isLayerPartOf))
             # waiting to clarify if to enforce at most a single parent for layer based hierarchy
             # assert len (is_layer_part_ofs) in [0,1]
             is_part_ofs = set(ontology_graph.objects(cls, SCHEMAORG.isPartOf))
-            assert len(is_part_ofs) in [0, 1], \
-                f"Class {str(cls)} should have at most 1 value for isPartOf property " \
-                f"instead of {len(is_part_ofs)}."\
+            assert len(is_part_ofs) in [0, 1], (
+                f"Class {str(cls)} should have at most 1 value for isPartOf property "
+                f"instead of {len(is_part_ofs)}."
                 f"The following values were found: {is_part_ofs}."
+            )
 
 
 def _check_dict_for_property_type_value(
     cls_json: dict,
     properties: List[str],
     expected_types: Optional[List[str]] = None,
-    expected_values: Optional[List[str]] = None
+    expected_values: Optional[List[str]] = None,
+    sort_values=False,
 ):
     assert not expected_types or len(properties) == len(expected_types)
     assert not expected_values or len(properties) == len(expected_values)
@@ -312,46 +567,67 @@ def _check_dict_for_property_type_value(
         if p not in cls_json:
             errors.append(f"Property {p} not present in {cls_json}")
         else:
-            message = f"Value '{cls_json[p]}' of property '{p}' in resource '{cls_json['@id']}'does not have "
+            message = f"Value '{cls_json[p]}' of property '{p}' in resource '{cls_json['@id']}' does not have "
             if expected_types and not isinstance(cls_json[p], expected_types[i]):
                 errors.append(message + f"the expected type '{expected_types[i]}' ")
-            if expected_values and expected_values[i] and cls_json[p] != expected_values[i]:
-                errors.append(message + f"the expected value '{expected_values[i]}' ")
+            if expected_values and expected_values[i]:
+                if sort_values and expected_types[i] in [dict, list]:
+                    value, expected_value = sorted(cls_json[p]), sorted(
+                        expected_values[i]
+                    )
+                else:
+                    value, expected_value = cls_json[p], expected_values[i]
+                if value != expected_value:
+                    errors.append(
+                        message + f"the expected value '{expected_values[i]}' "
+                    )
     return errors
 
 
 def test_frame_ontologies(
-        forge, all_ontology_graphs, data_jsonld_context, framed_classes,
-        atlas_parcellation_ontology, atlas_release_prop, atlas_release_id, atlas_release_version
+    forge,
+    all_ontology_graphs,
+    data_jsonld_context,
+    framed_classes,
+    framed_class_json_dict,
+    atlas_parcellation_ontology,
+    atlas_release_prop,
+    atlas_release_id,
+    atlas_release_version,
 ):
-
     ontology_graphs_dict = all_ontology_graphs[1]
-    class_ids = framed_classes[0]
-    class_jsons = framed_classes[1]
     brain_region_generated_classes = framed_classes[2]
     new_jsonld_context, _ = data_jsonld_context
     errors = []
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
         ontology_uri, ontology_json = execute_ontology_registration(
-                            forge=forge,
-                            ontology_path=ontology_path,
-                            ontology_graph=ontology_graph,
-                            all_class_resources_mapped_dict={},
-                            all_class_resources_framed_dict=dict(zip(class_ids, class_jsons)),
-                            new_forge_context=new_jsonld_context,
-                            new_jsonld_context_dict=new_jsonld_context.document,
-                            brain_region_generated_classes=brain_region_generated_classes,
-                            atlas_release_id=atlas_release_id,
-                            atlas_release_version=atlas_release_version,
-                            atlas_parcellation_ontology_id=atlas_parcellation_ontology,
-                            data_update=False,
-                            tag=None
-                        )
+            forge=forge,
+            ontology_path=ontology_path,
+            ontology_graph=ontology_graph,
+            all_class_resources_mapped_dict={},
+            all_class_resources_framed_dict=framed_class_json_dict,
+            new_forge_context=new_jsonld_context,
+            new_jsonld_context_dict=new_jsonld_context.document,
+            brain_region_generated_classes=brain_region_generated_classes,
+            atlas_release_id=atlas_release_id,
+            atlas_release_version=atlas_release_version,
+            atlas_parcellation_ontology_id=atlas_parcellation_ontology,
+            data_update=False,
+            tag=None,
+        )
 
         annotation_properties = ["@context", "@id", "@type", "label"]
-        expected_annotation_properties_values = ["https://neuroshapes.org", ontology_uri, "Ontology", None]
+        expected_annotation_properties_values = [
+            "https://neuroshapes.org",
+            ontology_uri,
+            "Ontology",
+            None,
+        ]
         e = _check_dict_for_property_type_value(
-            ontology_json, annotation_properties, [str, str, str, str], expected_annotation_properties_values
+            ontology_json,
+            annotation_properties,
+            [str, str, str, str],
+            expected_annotation_properties_values,
         )
         errors.extend(e)
         if ontology_uri == BRAIN_REGION_ONTOLOGY_URI:
@@ -362,7 +638,7 @@ def test_frame_ontologies(
                     "description": "Layer based hierarchy",
                     "hasParentHierarchyProperty": "isLayerPartOf",
                     "hasChildrenHierarchyProperty": "hasLayerPart",
-                    "hasLeafHierarchyProperty": "hasLayerLeafRegionPart"
+                    "hasLeafHierarchyProperty": "hasLayerLeafRegionPart",
                 },
                 {
                     "@id": "https://neuroshapes.org/BrainRegion",
@@ -370,29 +646,36 @@ def test_frame_ontologies(
                     "description": "Atlas default brain region hierarchy",
                     "hasParentHierarchyProperty": "isPartOf",
                     "hasChildrenHierarchyProperty": "hasPart",
-                    "hasLeafHierarchyProperty": "hasLeafRegionPart"
-                }
+                    "hasLeafHierarchyProperty": "hasLeafRegionPart",
+                },
             ]
             e = _check_dict_for_property_type_value(
-                ontology_json, ["hasHierarchyView", "atlasRelease"], [list, dict], [hasHierarchyView, atlas_release_prop]
+                ontology_json,
+                ["hasHierarchyView", "atlasRelease"],
+                [list, dict],
+                [hasHierarchyView, atlas_release_prop],
             )
             errors.extend(e)
         if ontology_uri == CELL_TYPE_ONTOLOGY_URI:
             assert "defines" not in ontology_json
         else:
-            e = _check_dict_for_property_type_value(ontology_json, ["defines"], [list], None)
+            e = _check_dict_for_property_type_value(
+                ontology_json, ["defines"], [list], None
+            )
             errors.extend(e)
-            assert all(map(lambda k: isinstance(k, dict), ontology_json["defines"])), f"One defined class of the ontology {ontology_uri} is not of type dict."
+            assert all(
+                map(lambda k: isinstance(k, dict), ontology_json["defines"])
+            ), f"One defined class of the ontology {ontology_uri} is not of type dict."
         assert len(errors) == 0, errors
 
 
 def _get_in_annotation_leaves(
-    uri: str,
-    ontology_graph: Graph,
-    view_leaf_property_uri_ref: URIRef
+    uri: str, ontology_graph: Graph, view_leaf_property_uri_ref: URIRef
 ):
     leaves = set(ontology_graph.objects(URIRef(uri), view_leaf_property_uri_ref))
     return {
-        leaf for leaf in leaves
-        if (leaf, BMO.representedInAnnotation, Literal(True, datatype=XSD.boolean)) in ontology_graph
+        leaf
+        for leaf in leaves
+        if (leaf, BMO.representedInAnnotation, Literal(True, datatype=XSD.boolean))
+        in ontology_graph
     }

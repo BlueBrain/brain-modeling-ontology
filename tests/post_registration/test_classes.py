@@ -30,7 +30,7 @@ def test_classes_can_be_resolved(
     in the ontology can be resolved using forge
     """
 
-    all_ontology_graphs_merged = all_ontology_graph_merged_brain_region_atlas_hierarchy
+    all_ontology_graphs_merged = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
 
     class_list = list(all_ontology_graphs_merged.subjects(predicate, object_))
 
