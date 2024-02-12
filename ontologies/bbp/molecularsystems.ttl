@@ -350,8 +350,7 @@ nsg:species a owl:ObjectProperty ;
 schema:isPartOf a owl:ObjectProperty ;
     rdfs:label "isPartOf"@en .
 
-bmo:Molecule a owl:Class,
-        owl:ObjectProperty ;
+bmo:Molecule a owl:Class;
     rdfs:label "Molecule"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty mso:compartment ;

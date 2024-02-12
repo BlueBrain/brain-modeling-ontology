@@ -3,12 +3,19 @@ import glob
 import pytest
 import rdflib
 from kgforge.core import Resource
-from rdflib import RDFS, SKOS, RDF, OWL
+from rdflib import RDF, OWL, RDFS
+from rdflib.paths import ZeroOrMore
 import bmo.ontologies as bmo
 from bmo.argument_parsing import define_arguments
-from bmo.utils import BMO, MBA, NXV, SCHEMAORG, _get_ontology_annotation_lang_context
-from bmo.loading import load_ontologies, load_schemas
+from bmo.utils import (
+    ATLAS_PROPERTIES_TO_MERGE,
+    BMO,
+    NSG,
+    NXV,
+    _get_ontology_annotation_lang_context,
+)
 from register_ontologies import _merge_ontology, _initialize_forge_objects
+from bmo.loading import load_ontologies, load_schemas
 
 
 def pytest_addoption(parser):
@@ -75,12 +82,14 @@ def forge_objects(environment, bucket, token, atlas_parcellation_ontology_bucket
         endpoint = "https://bbp.epfl.ch/nexus/v1"
     else:
         raise ValueError(
-            "Environment argument must be either \"staging\" or \"production\" "
+            'Environment argument must be either "staging" or "production" '
         )
 
     return _initialize_forge_objects(
-        endpoint=endpoint, input_bucket=bucket, token=token,
-        atlas_parcellation_ontology_bucket=atlas_parcellation_ontology_bucket
+        endpoint=endpoint,
+        input_bucket=bucket,
+        token=token,
+        atlas_parcellation_ontology_bucket=atlas_parcellation_ontology_bucket,
     )
 
 
@@ -102,9 +111,13 @@ def forge_schema(forge_objects):
 @pytest.fixture(scope="session")
 def data_jsonld_context(forge, all_ontology_graphs):
     forge_context = forge._model.context()
-    new_jsonld_context, errors = bmo.build_context_from_ontology(all_ontology_graphs[0],
-                                                                 forge_context)
-    new_jsonld_context.document["@context"].update(_get_ontology_annotation_lang_context())
+    graph_of_all_ontologies = all_ontology_graphs[0]
+    new_jsonld_context, errors = bmo.build_context_from_ontology(
+        graph_of_all_ontologies, forge_context
+    )
+    new_jsonld_context.document["@context"].update(
+        _get_ontology_annotation_lang_context()
+    )
     return new_jsonld_context, errors
 
 
@@ -118,12 +131,13 @@ def all_ontology_graphs(ontology_dir):
         assert len(ontology_files) > 0
         assert len(ontology_graphs_dict) == len(ontology_files)
         assert len(ontology_graphs_dict) == len(
-            list(all_ontology_graphs.subjects(RDF.type, OWL.Ontology)))
+            list(all_ontology_graphs.subjects(RDF.type, OWL.Ontology))
+        )
         return all_ontology_graphs, ontology_graphs_dict
     except Exception as e:
-        missing_ontologies = set([filepath.split('/')[-1] for filepath in ontology_files]) - \
-                             set([filepath.split('/')[-1] for filepath in
-                                  ontology_graphs_dict.keys()])
+        missing_ontologies = set(
+            [filepath.split("/")[-1] for filepath in ontology_files]
+        ) - set([filepath.split("/")[-1] for filepath in ontology_graphs_dict.keys()])
 
         pytest.fail(
             f"Failed to load all ontologies in {ontology_dir}. "
@@ -133,88 +147,129 @@ def all_ontology_graphs(ontology_dir):
 
 @pytest.fixture(scope="session")
 def framed_classes(
-        data_jsonld_context, all_ontology_graph_merged_brain_region_atlas_hierarchy,
-        atlas_release_id, atlas_release_version
+    data_jsonld_context,
+    all_ontology_graph_merged_brain_region_atlas_hierarchy,
+    atlas_release_id,
+    atlas_release_version,
 ):
     new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
     assert len(errors) == 0
-    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
-
-    class_ids, class_jsons, all_blank_node_triples, brain_region_new_classes = bmo.frame_classes(
-        ontology_graph, new_jsonld_context, new_jsonld_context.document,
-        atlas_release_id, atlas_release_version
+    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
+    class_ids, class_jsons, all_blank_node_triples, brain_region_new_classes = (
+        bmo.frame_classes(
+            ontology_graph,
+            new_jsonld_context,
+            new_jsonld_context.document,
+            atlas_release_id,
+            atlas_release_version,
+        )
     )
-    return (
-        class_ids, class_jsons, brain_region_new_classes
-    )
+    return (class_ids, class_jsons, brain_region_new_classes)
 
 
 @pytest.fixture(scope="session")
-def all_ontology_graph_merged_brain_region_atlas_hierarchy(all_ontology_graphs, atlas_hierarchy_ontology_graph):
-    ontology_graph = all_ontology_graphs[0]
+def all_ontology_graph_merged_brain_region_atlas_hierarchy(
+    all_ontology_graphs, atlas_hierarchy_ontology_graph_resource
+):
+    graph_of_all_ontologies = all_ontology_graphs[0]
     ontology_graphs_dict = all_ontology_graphs[1]
 
     brain_region_graph = ontology_graphs_dict["./ontologies/bbp/brainregion.ttl"]
-
-    atlas_ontology_graph = atlas_hierarchy_ontology_graph[0]
-
-    what_property_to_merge = [
-        SCHEMAORG.hasPart,
-        SCHEMAORG.isPartOf, RDFS.label, SKOS.prefLabel, SKOS.notation, SKOS.altLabel,
-        MBA.atlas_id, MBA.color_hex_triplet, MBA.graph_order, MBA.hemisphere_id,
-        MBA.st_level, SCHEMAORG.identifier, BMO.representedInAnnotation,
-        BMO.regionVolumeRatioToWholeBrain, BMO.regionVolume
-    ]
+    atlas_ontology_graph = atlas_hierarchy_ontology_graph_resource[0]
     triples_to_add, triples_to_remove = _merge_ontology(
-        atlas_ontology_graph, brain_region_graph, ontology_graph, what_property_to_merge
+        atlas_ontology_graph,
+        brain_region_graph,
+        graph_of_all_ontologies,
+        ATLAS_PROPERTIES_TO_MERGE,
     )
     assert len(triples_to_remove) > 0
     assert len(triples_to_add) > 0
-    return ontology_graph
+    return graph_of_all_ontologies, brain_region_graph
 
 
 @pytest.fixture(scope="session")
 def atlas_release_prop(atlas_release_id, atlas_release_version):
     return {
-            "@id": atlas_release_id,
-            "@type": "BrainAtlasRelease",
-            "_rev": atlas_release_version
-        }
+        "@id": atlas_release_id,
+        "@type": "BrainAtlasRelease",
+        "_rev": atlas_release_version,
+    }
 
 
 @pytest.fixture(scope="session")
-def atlas_release_id(atlas_hierarchy_ontology_graph):
-    return atlas_hierarchy_ontology_graph[1].atlasRelease.id
+def atlas_release_id(atlas_hierarchy_ontology_graph_resource):
+    return atlas_hierarchy_ontology_graph_resource[1].atlasRelease.id
 
 
 @pytest.fixture(scope="session")
-def atlas_release_version(atlas_hierarchy_ontology_graph):
-    return atlas_hierarchy_ontology_graph[1].atlasRelease._rev
+def atlas_release_version(atlas_hierarchy_ontology_graph_resource):
+    return atlas_hierarchy_ontology_graph_resource[1].atlasRelease._rev
 
 
 @pytest.fixture(scope="session")
-def atlas_hierarchy_ontology_graph(atlas_parcellation_ontology, atlas_parcellation_ontology_version,
-                                   forge_atlas):
+def atlas_hierarchy_ontology_graph_resource(
+    atlas_parcellation_ontology, atlas_parcellation_ontology_version, forge_atlas
+):
     try:
-        version = int(atlas_parcellation_ontology_version) \
-            if atlas_parcellation_ontology_version is not None \
+        version = (
+            int(atlas_parcellation_ontology_version)
+            if atlas_parcellation_ontology_version is not None
             else None
-        atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology, version=version)
+        )
+        atlas_hierarchy = forge_atlas.retrieve(
+            atlas_parcellation_ontology, version=version
+        )
         assert hasattr(atlas_hierarchy, "atlasRelease")
         assert hasattr(atlas_hierarchy.atlasRelease, "_rev")
         atlas_hierarchy_jsonld_distribution = [
-            distrib for distrib in atlas_hierarchy.distribution
+            distrib
+            for distrib in atlas_hierarchy.distribution
             if distrib.encodingFormat == "application/ld+json"
         ]
         atlas_hierarchy_jsonld_distribution = atlas_hierarchy_jsonld_distribution[0]
-        forge_atlas.download(atlas_hierarchy_jsonld_distribution, follow="contentUrl", path=".",
-                             overwrite=True)
-        atlas_hierarchy_ontology_graph = rdflib.Graph().parse(
-            atlas_hierarchy_jsonld_distribution.name, format="json-ld")
-        assert len(atlas_hierarchy_ontology_graph) > 0
-        return atlas_hierarchy_ontology_graph, atlas_hierarchy
+        forge_atlas.download(
+            atlas_hierarchy_jsonld_distribution,
+            follow="contentUrl",
+            path=".",
+            overwrite=True,
+        )
+        atlas_hierarchy_ontology_graph_resource = rdflib.Graph().parse(
+            atlas_hierarchy_jsonld_distribution.name, format="json-ld"
+        )
+        assert len(atlas_hierarchy_ontology_graph_resource) > 0
+        return atlas_hierarchy_ontology_graph_resource, atlas_hierarchy
     except Exception as e:
         pytest.fail(f"Failed to load {atlas_parcellation_ontology}: {e}")
+
+
+@pytest.fixture(scope="session")
+def atlas_hierarchy_ontology_graph_classes(atlas_hierarchy_ontology_graph_resource):
+    atlas_hierarchy_ontology_graph = atlas_hierarchy_ontology_graph_resource[0]
+    atlas_hierarchy_ontology_classes = list(
+        atlas_hierarchy_ontology_graph.subjects(RDF.type, OWL.Class)
+    )
+    assert len(atlas_hierarchy_ontology_classes) > 0
+    return atlas_hierarchy_ontology_classes
+
+
+@pytest.fixture(scope="session")
+def brain_region_ontologygraph_classes(
+    atlas_hierarchy_ontology_graph_classes,
+    all_ontology_graph_merged_brain_region_atlas_hierarchy,
+):
+    brain_region_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[1]
+    brain_region_layer_graph_classes = list(
+        brain_region_graph.subjects(RDFS.subClassOf, NSG.BrainRegion)
+    )
+    brain_region_graph_classes = [
+        cls
+        for cls in brain_region_layer_graph_classes
+        if (cls, RDFS.subClassOf * ZeroOrMore, BMO.BrainLayer) not in brain_region_graph
+    ]
+    assert len(brain_region_graph_classes) >= len(
+        atlas_hierarchy_ontology_graph_classes
+    )
+    return brain_region_graph_classes
 
 
 @pytest.fixture(scope="session")
@@ -228,9 +283,14 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
     # ]
 
     try:
-        schema_graphs_dict, schema_id_to_filepath_dict, all_schema_graphs = load_schemas(
-            schema_dir, transformed_schema_path, forge_schema, recursive,
-            save_transformed_schema=False
+        schema_graphs_dict, schema_id_to_filepath_dict, all_schema_graphs = (
+            load_schemas(
+                schema_dir,
+                transformed_schema_path,
+                forge_schema,
+                recursive,
+                save_transformed_schema=False,
+            )
         )
         assert len(all_schema_graphs) > 0
         assert len(schema_id_to_filepath_dict) == len(schema_id_to_filepath_dict)
@@ -238,13 +298,15 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
         assert len(schema_filenames) > 0
         assert len(schema_graphs_dict) == len(schema_filenames)
         assert len(schema_graphs_dict) == len(
-            list(all_schema_graphs.subjects(RDF.type, NXV.Schema)))
+            list(all_schema_graphs.subjects(RDF.type, NXV.Schema))
+        )
         all_imported_schemas = all_schema_graphs.objects(None, OWL.imports)
         all_imported_schemas = {str(r) for r in all_imported_schemas}
         loaded_schema = set(schema_id_to_filepath_dict.keys())
         assert len(loaded_schema) >= len(set(all_imported_schemas))
         assert all_imported_schemas.issubset(
-            loaded_schema), f"Imported schemas are missing: {all_imported_schemas - loaded_schema}"
+            loaded_schema
+        ), f"Imported schemas are missing: {all_imported_schemas - loaded_schema}"
         schema_id_to_filepath_dict_values = list(schema_id_to_filepath_dict.values())
         for k, v in schema_graphs_dict.items():
             assert k in schema_filenames
@@ -259,8 +321,9 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
             assert "jsonld" in v
         return all_schema_graphs, schema_graphs_dict, schema_id_to_filepath_dict
     except Exception as e:
-        missing_schemas = set([filepath.split('/')[-1] for filepath in schema_filenames]) - \
-                          set([filepath.split('/')[-1] for filepath in schema_graphs_dict.keys()])
+        missing_schemas = set(
+            [filepath.split("/")[-1] for filepath in schema_filenames]
+        ) - set([filepath.split("/")[-1] for filepath in schema_graphs_dict.keys()])
         pytest.fail(
             f"Failed to load all schemas in {schema_dir}. "
             f"Not loaded schemas are {missing_schemas}. {e}"
