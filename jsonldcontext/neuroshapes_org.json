@@ -753,7 +753,10 @@
     "GABA": {
       "@id": "https://neuroshapes.org/GABA"
     },
-    "GO": "http://purl.obolibrary.org/obo/GO_",
+    "GO": {
+      "@id":"http://purl.obolibrary.org/obo/GO_",
+      "@prefix":true
+    },
     "GPFS": {
       "@id": "nsg:GPFS"
     },
@@ -1319,7 +1322,10 @@
     "Motivation": {
       "@id": "nsg:Motivation"
     },
-    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
+    "NCBITaxon": {
+      "@id":"http://purl.obolibrary.org/obo/NCBITaxon_",
+      "@prefix":true
+    },
     "NGVUnit": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/NGVUnit"
     },
@@ -3201,7 +3207,10 @@
     "identifier": {
       "@id": "schema:identifier"
     },
-    "ilx": "http://uri.interlex.org/base/ilx_",
+    "ilx": {
+      "@id":"http://uri.interlex.org/base/ilx_",
+      "@prefix":true
+    },
     "image": {
       "@id": "schema:image"
     },
@@ -3979,7 +3988,10 @@
     "type": {
       "@id": "rdf:type"
     },
-    "uberon": "http://purl.obolibrary.org/obo/UBERON_",
+    "uberon": {
+      "@id":"http://purl.obolibrary.org/obo/UBERON_",
+       "@prefix":true
+    },
     "uniprotID": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/uniprotID"
     },
