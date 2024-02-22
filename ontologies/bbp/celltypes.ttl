@@ -17476,7 +17476,7 @@ ct:MOBGR_SGC a owl:Class ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
         bmo:NeuronMorphologicalType ;
     skos:altLabel "MOBGR_SGC" ;
-    skos:definition "sGC have spheroidal soma of 6-8µm diameter. Their dendrites extend from the soma (in the deep MOBgr) to the superficial MOBopl (target mTCs). Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length. They are axonless."@en ;
+    skos:definition "sGC have spheroidal soma of 6-8µm diameter. Their dendrites extend from the soma (in the superficial MOBgr) to the superficial MOBopl (target mTCs). Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length. They are axonless."@en ;
     skos:notation "MOBgr_sGC" .
 
 ct:MOBMI_MCI a owl:Class ;
