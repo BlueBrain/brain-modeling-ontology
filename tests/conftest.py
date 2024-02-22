@@ -293,7 +293,7 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
             )
         )
         assert len(all_schema_graphs) > 0
-        assert len(schema_id_to_filepath_dict) == len(schema_id_to_filepath_dict)
+        assert len(schema_graphs_dict) == len(schema_id_to_filepath_dict)
 
         assert len(schema_filenames) > 0
         assert len(schema_graphs_dict) == len(schema_filenames)
