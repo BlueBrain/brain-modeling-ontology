@@ -699,6 +699,16 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
     rdfs:subClassOf bmo:NewNeuronType ;
     skos:altLabel "Substantia nigra pars reticulata principal neuron"@en .
 
+<http://uri.interlex.org/base/ilx_0111658> a owl:Class ;
+    rdfs:label "LGN_IN"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:733 ] ;
+    skos:definition "Thalamic Interneuron Cell, from the region \"Dorsal part of the lateral geniculate complex\" (LGd). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_IN\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). The rodent region \"LGd\" is the corresponding homologue of the primate/etc. region \"LGN\" used in the name; however, any morphologies belonging to this M-type were reconstructed from mouse neurons."@en ;
+    skos:notation "LGN_IN"@en ;
+    skos:prefLabel "Thalamus geniculate nucleus (lateral) interneuron"@en .
+
 <http://uri.interlex.org/base/ilx_0111968> a owl:Class ;
     rdfs:label "Trigeminal Nucleus Intrinsic Cell"@en ;
     rdfs:subClassOf bmo:NewNeuronType ;
@@ -724,87 +734,6 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 <http://uri.interlex.org/base/ilx_0738197> a owl:Class ;
     rdfs:label "cAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383211> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaBasketCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaChandelierCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107933> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383213> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383214> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383215> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383216> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383217> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383221> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383222> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383223> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383224> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383225> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383226> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383227> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383229> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383230> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383231> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383233> ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383234> ],
         [ a owl:Restriction ;
@@ -903,6 +832,87 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383209> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383211> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaChandelierCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107933> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383213> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383214> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383215> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383216> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383217> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383221> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383222> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383223> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383224> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383225> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383226> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383227> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383229> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383230> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383231> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383233> ],
         bmo:NeuronElectricalType ;
     skos:definition "Continuous accommodating electrical type"@en ;
     skos:notation "cAC"^^xsd:string ;
@@ -1931,19 +1941,23 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738214> a owl:Class ;
     rdfs:label "ATN_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:239 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Anterior group of the dorsal thalamus\" (ATN). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "ATN_TC"^^xsd:string ;
     skos:prefLabel "Anterior group of the dorsal thalamus thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738215> a owl:Class ;
     rdfs:label "AV_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:255 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Anteroventral nucleus of thalamus\" (AV). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "AV_TC"^^xsd:string ;
     skos:prefLabel "Anteroventral nucleus of thalamus thalamo-cortical cell"@en .
 
@@ -1985,10 +1999,12 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738220> a owl:Class ;
     rdfs:label "LD_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:155 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Lateral dorsal nucleus of thalamus\" (LD). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "LD_TC"^^xsd:string ;
     skos:prefLabel "Lateral dorsal nucleus of thalamus thalamo-cortical cell"@en .
 
@@ -1996,44 +2012,53 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
     rdfs:label "LGN_TC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:733 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Dorsal part of the lateral geniculate complex\" (LGd). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory fibers, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). The rodent region \"LGd\" is the corresponding homologue of the primate/etc. region \"LGN\" used in the name; however, any morphologies belonging to this M-type were reconstructed from mouse neurons."@en ;
     skos:notation "LGN_TC"^^xsd:string ;
-    skos:prefLabel "Lateral geniculate nucleus thalamo-cortical cell"@en .
+    skos:prefLabel "Lateral geniculate complex, dorsal part thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738222> a owl:Class ;
     rdfs:label "LP_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:218 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Lateral posterior nucleus of the thalamus\" (LP). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "LP_TC"^^xsd:string ;
     skos:prefLabel "Lateral posterior nucleus of the thalamus thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738223> a owl:Class ;
     rdfs:label "MD_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:362 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Mediodorsal nucleus of thalamus\" (MD). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "MD_TC"^^xsd:string ;
     skos:prefLabel "Mediodorsal nucleus of thalamus thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738224> a owl:Class ;
     rdfs:label "MDI_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:59 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Intermediodorsal nucleus of the thalamus\" (IMD). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). Note that the region acronym in the M-type name is \"MDI\", but this is a different name for the same region as the Allen Institute's hierarchical \"IMD\" region."@en ;
     skos:notation "MDI_TC"^^xsd:string ;
     skos:prefLabel "Mediodorsal nucleus of the thalamus, lateral part thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738225> a owl:Class ;
     rdfs:label "PCN_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:907 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Paracentral nucleus\" (PCN). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "PCN_TC"^^xsd:string ;
     skos:prefLabel "Paracentral nucleus thalamo-cortical cell"@en .
 
@@ -2048,75 +2073,91 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738227> a owl:Class ;
     rdfs:label "POM_IN"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:1020 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/ThalamusMType>,
         nsg:Interneuron ;
+    skos:definition "Thalamic Interneuron Cell, from the region \"Posterior complex of the thalamus\" (PO). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_IN\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). \"POM\" in the M-type name refers to the medial part of the \"PO\" region, but in the Allen Institute's region hierarchy, all of the PO is grouped under only one region."@en ;
     skos:notation "POM_IN"^^xsd:string ;
     skos:prefLabel "Posterior nucleus of the thalamus, medial part interneuron"@en .
 
 <http://uri.interlex.org/base/ilx_0738228> a owl:Class ;
     rdfs:label "RE_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:181 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Nucleus of reuniens\" (RE). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "RE_TC"^^xsd:string ;
     skos:prefLabel "Nucleus of reuniens thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738231> a owl:Class ;
     rdfs:label "VAL_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:629 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Ventral anterior-lateral complex of the thalamus\" (VAL). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VAL_TC"^^xsd:string ;
     skos:prefLabel "Ventral anterior-lateral complex of the thalamus thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738232> a owl:Class ;
     rdfs:label "VENT_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:637 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Ventral group of the dorsal thalamus\" (VENT). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VENT_TC"^^xsd:string ;
     skos:prefLabel "Ventral group of the dorsal thalamus thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738233> a owl:Class ;
     rdfs:label "VM_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:685 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Ventral medial nucleus of the thalamus\" (VM). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VM_TC"^^xsd:string ;
     skos:prefLabel "Ventral medial nucleus of the thalamus thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738234> a owl:Class ;
     rdfs:label "VP_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:709 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Ventral posterior complex of the thalamus\" (VP). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VP_TC"^^xsd:string ;
     skos:prefLabel "Ventral posterior complex of the thalamus thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738237> a owl:Class ;
     rdfs:label "VPM_IN"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:733 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/ThalamusMType>,
         nsg:Interneuron ;
+    skos:definition "Thalamic Interneuron Cell, from the region \"Ventral posteromedial nucleus of the thalamus\" (VPM). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_IN\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VPM_IN"^^xsd:string ;
     skos:prefLabel "Ventral posteromedial nucleus of the thalamus interneuron"@en .
 
 <http://uri.interlex.org/base/ilx_0738238> a owl:Class ;
     rdfs:label "VPM_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:549 ],
+            owl:someValuesFrom mba:733 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
+    skos:definition "Thalamocortical Cell, from the region \"Ventral posteromedial nucleus of the thalamus\" (VPM). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VPM_TC"^^xsd:string ;
     skos:prefLabel "Ventral posteromedial nucleus of the thalamus thalamo-cortical cell"@en .
 
@@ -2480,9 +2521,9 @@ bmo:GenericExcitatoryNeuronEType a owl:Class ;
             owl:onProperty nsg:hasInstanceInSpecies ;
             owl:someValuesFrom obo:NCBITaxon_10090 ],
         bmo:GenericNeuronElectricalType ;
+    skos:definition "Generic Excitatory Neuron EType"@en ;
     skos:notation "GEN_etype"^^xsd:string ;
-    skos:prefLabel "Generic Excitatory Neuron EType"^^xsd:string ;
-    skos:definition "Generic Excitatory Neuron EType"@en .
+    skos:prefLabel "Generic Excitatory Neuron EType"^^xsd:string .
 
 bmo:GenericInhibitoryNeuronEType a owl:Class ;
     rdfs:label "GIN_etype"@en ;
@@ -2517,8 +2558,8 @@ bmo:GenericInhibitoryNeuronEType a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom ct:CaudoputamenTHPlusInterneuron ],
         bmo:NeuronElectricalType ;
-    skos:prefLabel "Generic Inhibitory Neuron EType"^^xsd:string ;
-    skos:definition "Generic Inhibitory Neuron EType"@en .
+    skos:definition "Generic Inhibitory Neuron EType"@en ;
+    skos:prefLabel "Generic Inhibitory Neuron EType"^^xsd:string .
 
 bmo:GenericNeuronTType a owl:Class ;
     rdfs:label "Generic Neuron TType"@en ;
@@ -3803,6 +3844,135 @@ bmo:NeocortexBurstNonAccommodatingElectricalType a owl:Class ;
 bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
     rdfs:label "NCx_bSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383213> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383214> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383215> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383224> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383225> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383226> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383231> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383233> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383234> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:10_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:100_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:101_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:102_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:103_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:104_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:105_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:106_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:107_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:108_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:109_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:11_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:110_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:111_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:112_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:113_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:114_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:115_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:116_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:117_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:118_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:119_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:12_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:120_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:121_Pvalb ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:122_Pvalb_Vipr2 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:123_Pvalb_Vipr2 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:13_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:14_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:15_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:16_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:17_Lamp5 ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:18_Lamp5 ],
         [ a owl:Restriction ;
@@ -4063,135 +4233,6 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383213> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383214> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383215> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383224> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383225> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383226> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383231> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383233> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383234> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:10_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:100_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:101_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:102_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:103_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:104_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:105_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:106_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:107_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:108_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:109_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:11_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:110_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:111_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:112_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:113_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:114_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:115_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:116_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:117_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:118_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:119_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:12_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:120_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:121_Pvalb ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:122_Pvalb_Vipr2 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:123_Pvalb_Vipr2 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:13_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:14_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:15_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:16_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:17_Lamp5 ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
     skos:notation "NCx_bSTUT"@en ;
     skos:prefLabel "Neocortex burst stuttering electrical type"@en .
@@ -11123,7 +11164,7 @@ ct:bIR_dSTR a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom ct:NucleusAccumbensCholingericTonicallyActiveInterneuron ],
         bmo:NeuronElectricalType ;
-    skos:definition "Tonically active neurons, irregular spiking, burst firing"@en.
+    skos:definition "Tonically active neurons, irregular spiking, burst firing"@en .
 
 ct:cNAD_ltb_dSTR a owl:Class ;
     rdfs:label "cNAD_ltb_dSTR"@en ;
@@ -12502,6 +12543,7 @@ mba:262 a owl:Class .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SLM_PPA> a owl:Class ;
     rdfs:label "SLM_PPA"@en ;
+    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:391 ],
@@ -12532,13 +12574,13 @@ mba:262 a owl:Class .
         bmo:NeuronMorphologicalType,
         <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType>,
         nsg:Interneuron ;
+    skos:definition "'The cell bodies of perforant path-associated cells are often located at the stratum radiatum/lacunosum moleculare border and their dendrites can either cover all layers or remain in stratum lacunosum moleculare and adjacent stratum radiatum. The axons of this cell type are concentrated in stratum lacunosum moleculare.' (pp.950, Klausberger, Thomas. 2009. 'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
     skos:notation "SLM_PPA"^^xsd:string ;
-    skos:definition "\'The cell bodies of perforant path-associated cells are often located at the stratum radiatum/lacunosum moleculare border and their dendrites can either cover all layers or remain in stratum lacunosum moleculare and adjacent stratum radiatum. The axons of this cell type are concentrated in stratum lacunosum moleculare.\' (pp.950, Klausberger, Thomas. 2009. \'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.\' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
-    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x";
     skos:prefLabel "Stratum Lacunosum Moleculare Perforant Pathway Associated Cell"@en .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_BP> a owl:Class ;
     rdfs:label "SO_BP"@en ;
+    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:399 ],
@@ -12560,13 +12602,13 @@ mba:262 a owl:Class .
         bmo:NeuronMorphologicalType,
         <https://bbp.epfl.ch/ontologies/core/mtypes/BipolarCell>,
         <https://bbp.epfl.ch/ontologies/core/mtypes/HippocampusMType> ;
+    skos:definition "'Backprojecting cells are located in stratum oriens with horizontally running dendrites. Their axons innervate different layers of the CA1 area, and main axons cross the fissure and extensively project backwards to other hippocampal subfields including CA3 and dentate gyrus.' (pp.952, Klausberger, Thomas. 2009. 'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
     skos:notation "SO_BP"^^xsd:string ;
-    skos:definition "\'Backprojecting cells are located in stratum oriens with horizontally running dendrites. Their axons innervate different layers of the CA1 area, and main axons cross the fissure and extensively project backwards to other hippocampal subfields including CA3 and dentate gyrus.\' (pp.952, Klausberger, Thomas. 2009. \'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.\' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
-    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x";
     skos:prefLabel "Stratum Oriens Bipolar Cell"@en .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_OLM> a owl:Class ;
     rdfs:label "SO_OLM"@en ;
+    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
@@ -12584,13 +12626,13 @@ mba:262 a owl:Class .
             owl:someValuesFrom obo:UBERON_0005371 ],
         bmo:NeuronMorphologicalType,
         ct:OriensLacunosumMoleculareCell ;
+    skos:definition "'The eponymous axonal arborization and dendritic orientations of oriens lacunosum-moleculare (O-LM) cells are striking features that make them easily recognizable and arguably the most studied interneurons that target dendrites of pyramidal cells. In the CA1 area, O-LM cells are located in stratum oriens and have horizontally extending dendrites with hairy spines on distal segments. The axons of O-LM cells give few collaterals in stratum oriens but project mainly through the strata pyramidale and radiatum to branch heavily in stratum lacunosum-moleculare (Ramon y Cajal, 1893; McBain et al., 1994; Sik et al., 1995; Maccaferri & McBain, 1996), matching the glutamatergic input from the entorhinal cortex and thalamus. The axons give some collaterals also in the deep stratum radiatum but do not cross the fissure to the dentate gyrus.' (pp.948, Klausberger, Thomas. 2009. 'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
     skos:notation "SO_OLM"^^xsd:string ;
-    skos:definition "\'The eponymous axonal arborization and dendritic orientations of oriens lacunosum-moleculare (O-LM) cells are striking features that make them easily recognizable and arguably the most studied interneurons that target dendrites of pyramidal cells. In the CA1 area, O-LM cells are located in stratum oriens and have horizontally extending dendrites with hairy spines on distal segments. The axons of O-LM cells give few collaterals in stratum oriens but project mainly through the strata pyramidale and radiatum to branch heavily in stratum lacunosum-moleculare (Ramon y Cajal, 1893; McBain et al., 1994; Sik et al., 1995; Maccaferri & McBain, 1996), matching the glutamatergic input from the entorhinal cortex and thalamus. The axons give some collaterals also in the deep stratum radiatum but do not cross the fissure to the dentate gyrus.\' (pp.948, Klausberger, Thomas. 2009. \'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.\' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
-    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x";
     skos:prefLabel "Stratum Oriens Oriens-Lacunosum Moleculare Cell"@en .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_Tri> a owl:Class ;
     rdfs:label "SO_Tri"@en ;
+    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
@@ -12608,13 +12650,13 @@ mba:262 a owl:Class .
             owl:someValuesFrom obo:UBERON_0005371 ],
         bmo:NeuronMorphologicalType,
         ct:TrilaminarCell ;
+    skos:definition "'Trilaminar cell somata are located in the stratum oriens with horizontally running dendrites. It should be noted that this distinct cell type is not simply defined by axonal arborizations in three layers (strata oriens, pyramidale and radiatum), because many other distinct interneurons innervate the same layers. Trilaminar cells not only innervate the dendrites but also to a lesser extent the somata of CA1 pyramidal cells.' (pp.952, Klausberger, Thomas. 2009. 'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
     skos:notation "SO_Tri"^^xsd:string ;
-    skos:definition "\'Trilaminar cell somata are located in the stratum oriens with horizontally running dendrites. It should be noted that this distinct cell type is not simply defined by axonal arborizations in three layers (strata oriens, pyramidale and radiatum), because many other distinct interneurons innervate the same layers. Trilaminar cells not only innervate the dendrites but also to a lesser extent the somata of CA1 pyramidal cells.\' (pp.952, Klausberger, Thomas. 2009. \'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.\' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
-    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x";
     skos:prefLabel "Stratum Oriens Trilaminar Cell"@en .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_AA> a owl:Class ;
     rdfs:label "SP_AA"@en ;
+    schema:citation "https://doi.org/10.1007/978-3-319-99103-0_2" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
@@ -12632,13 +12674,13 @@ mba:262 a owl:Class .
             owl:someValuesFrom obo:UBERON_0002313 ],
         bmo:NeuronMorphologicalType,
         ct:AxoAxonicCell ;
+    skos:definition "Axo-axonic cells (AAC) '... provide GABAergic innervation to the axon initial segments of principal cells, placing them in a unique position to control action potential utput of the target neurons. Similar to PV-BCs, the termination zone of the axon is mainly in the cell body layer, but it is slightly shifted toward the str. oriens. Many, but not all, AACs can be distinguished from BCs at the light microscopic level by the presence of vertical rows of synaptic boutons (cartridges), which form contacts with the axon initial segment (AIS)' (pp. 62, Vida, Imre, Claudius E. Degro, and Sam A. Booker. 2018. 'Morphology of Hippocampal Neurons.' In Hippocampal Microcircuits: A Computational Modeler's Resource Book, edited by Vassilis Cutsuridis, Bruce P. Graham, Stuart Cobb, and Imre Vida, 29-90. Cham: Springer International Publishing. https://doi.org/10.1007/978-3-319-99103-0_2)"@en ;
     skos:notation "SP_AA"^^xsd:string ;
-    skos:definition "Axo-axonic cells (AAC) \'... provide GABAergic innervation to the axon initial segments of principal cells, placing them in a unique position to control action potential utput of the target neurons. Similar to PV-BCs, the termination zone of the axon is mainly in the cell body layer, but it is slightly shifted toward the str. oriens. Many, but not all, AACs can be distinguished from BCs at the light microscopic level by the presence of vertical rows of synaptic boutons (cartridges), which form contacts with the axon initial segment (AIS)\' (pp. 62, Vida, Imre, Claudius E. Degro, and Sam A. Booker. 2018. \'Morphology of Hippocampal Neurons.\' In Hippocampal Microcircuits: A Computational Modeler's Resource Book, edited by Vassilis Cutsuridis, Bruce P. Graham, Stuart Cobb, and Imre Vida, 29-90. Cham: Springer International Publishing. https://doi.org/10.1007/978-3-319-99103-0_2)"@en ;
-    schema:citation "https://doi.org/10.1007/978-3-319-99103-0_2";
     skos:prefLabel "Pyramidal layer Axo-Axonic Cell"@en .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_CCKBC> a owl:Class ;
     rdfs:label "SP_CCKBC"@en ;
+    schema:citation "https://doi.org/10.1007/978-3-319-99103-0_2" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
@@ -12655,14 +12697,13 @@ mba:262 a owl:Class .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom obo:UBERON_0002313 ],
         ct:CCKBC ;
+    skos:definition "CCK-expressing basket cells 'Similar to PV-BCs, CCK-BCs form synapses with the somata and proximal dendrites of pyramidal cells as also indicated by the axonal distribution in the str. pyramidale and adjacent region of str. radiatum and oriens.' (pp. 61, Vida, Imre, Claudius E. Degro, and Sam A. Booker. 2018. 'Morphology of Hippocampal Neurons.' In Hippocampal Microcircuits: A Computational Modeler's Resource Book, edited by Vassilis Cutsuridis, Bruce P. Graham, Stuart Cobb, and Imre Vida, 29-90. Cham: Springer International Publishing. https://doi.org/10.1007/978-3-319-99103-0_2)"@en ;
     skos:notation "SP_CCKBC"^^xsd:string ;
-    skos:definition "CCK-expressing basket cells \'Similar to PV-BCs, CCK-BCs form synapses with the somata and proximal dendrites of pyramidal cells as also indicated by the axonal distribution in the str. pyramidale and adjacent region of str. radiatum and oriens.\' (pp. 61, Vida, Imre, Claudius E. Degro, and Sam A. Booker. 2018. \'Morphology of Hippocampal Neurons.\' In Hippocampal Microcircuits: A Computational Modeler's Resource Book, edited by Vassilis Cutsuridis, Bruce P. Graham, Stuart Cobb, and Imre Vida, 29-90. Cham: Springer International Publishing. https://doi.org/10.1007/978-3-319-99103-0_2)"@en ;
-    schema:citation "https://doi.org/10.1007/978-3-319-99103-0_2";
     skos:prefLabel "SP_CCKBC"@en .
-
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_PC> a owl:Class ;
     rdfs:label "SP_PC"@en ;
+    schema:citation "https://doi.org/10.1007/978-3-319-99103-0_2" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:407 ],
@@ -12689,13 +12730,13 @@ mba:262 a owl:Class .
             owl:someValuesFrom nsg:PyramidalPhenotype ],
         bmo:NeuronMorphologicalType,
         ct:HippocampusPyramidalCell ;
+    skos:definition "Pyramidal cells '... are characterized by a pyramid-shaped or ovoid soma, a large- caliber apical dendrite, and a number of small-caliber basal dendrites. Cell bodies of CA1 pyramidal cells are typically found in the cell body layer (str. pyramidale) or in proximal str. oriens.' (pp. 32, Vida, Imre, Claudius E. Degro, and Sam A. Booker. 2018. 'Morphology of Hippocampal Neurons.' In Hippocampal Microcircuits: A Computational Modeler's Resource Book, edited by Vassilis Cutsuridis, Bruce P. Graham, Stuart Cobb, and Imre Vida, 29-90.Cham: Springer International Publishing. https://doi.org/10.1007/978-3-319-99103-0_2)"@en ;
     skos:notation "SP_PC"^^xsd:string ;
-    skos:definition "Pyramidal cells \'... are characterized by a pyramid-shaped or ovoid soma, a large- caliber apical dendrite, and a number of small-caliber basal dendrites. Cell bodies of CA1 pyramidal cells are typically found in the cell body layer (str. pyramidale) or in proximal str. oriens.\' (pp. 32, Vida, Imre, Claudius E. Degro, and Sam A. Booker. 2018. \'Morphology of Hippocampal Neurons.\' In Hippocampal Microcircuits: A Computational Modeler's Resource Book, edited by Vassilis Cutsuridis, Bruce P. Graham, Stuart Cobb, and Imre Vida, 29-90.Cham: Springer International Publishing. https://doi.org/10.1007/978-3-319-99103-0_2)"@en ;
-    schema:citation "https://doi.org/10.1007/978-3-319-99103-0_2";
     skos:prefLabel "Pyramidal Layer Pyramidal Cell"@en .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_SCA> a owl:Class ;
     rdfs:label "SR_SCA"@en ;
+    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
@@ -12726,9 +12767,8 @@ mba:262 a owl:Class .
         bmo:NeuronMorphologicalType,
         ct:SchafferCollateralAssociatedCell,
         nsg:Interneuron ;
+    skos:definition "'The somata of Schaffer collateral-associated cells are located mainly in stratum radiatum with dendrites spanning all layers. The axons of these cells innervate the oblique and to a lesser extent basal dendrites of CA1 pyramidal cells and interneurons in stratum radiatum and oriens, matching the excitatory input from CA3 pyramidal cells, giving the cell its name. In contrast to bistratified cells, the axons of Schaffer collateral associated cells are concentrated more in stratum radiatum than in stratum oriens.' (pp.949-950, Klausberger, Thomas. 2009. 'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
     skos:notation "SR_SCA"^^xsd:string ;
-    skos:definition "\'The somata of Schaffer collateral-associated cells are located mainly in stratum radiatum with dendrites spanning all layers. The axons of these cells innervate the oblique and to a lesser extent basal dendrites of CA1 pyramidal cells and interneurons in stratum radiatum and oriens, matching the excitatory input from CA3 pyramidal cells, giving the cell its name. In contrast to bistratified cells, the axons of Schaffer collateral associated cells are concentrated more in stratum radiatum than in stratum oriens.\' (pp.949-950, Klausberger, Thomas. 2009. \'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.\' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
-    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x";
     skos:prefLabel "Stratum Radiatum GO:1990021 Cell"@en .
 
 obo:PATO_0070001 a owl:Class .
@@ -13668,6 +13708,7 @@ mba:982 a owl:Class .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_BS> a owl:Class ;
     rdfs:label "SO_BS"@en ;
+    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:399 ],
@@ -13688,13 +13729,13 @@ mba:982 a owl:Class .
             owl:someValuesFrom nsg:BistratifiedPhenotype ],
         bmo:NeuronMorphologicalType,
         ct:HippocampusBistratifiedCell ;
+    skos:definition "Bistratified cells (BS) '... somata are mainly located in stratum pyramidale, but oriens-bistratified cells with somata and horizontally running dendrites in stratum oriens have also been reported. The dendrites of bistratified cells in stratum pyramidale extend widely in the strata oriens and radiatum and form connexin36-containing gap junctions with other interneurons (Baude et al., 2007). In contrast to basket and axo-axonic cells, the dendrites of bistratified cells do not enter stratum lacunosum-moleculare but often bend back at the radiatum/lacunosum-moleculare border.' (pp.949, Klausberger, Thomas. 2009. 'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
     skos:notation "SO_BS"^^xsd:string ;
-    skos:definition "Bistratified cells (BS) \'... somata are mainly located in stratum pyramidale, but oriens-bistratified cells with somata and horizontally running dendrites in stratum oriens have also been reported. The dendrites of bistratified cells in stratum pyramidale extend widely in the strata oriens and radiatum and form connexin36-containing gap junctions with other interneurons (Baude et al., 2007). In contrast to basket and axo-axonic cells, the dendrites of bistratified cells do not enter stratum lacunosum-moleculare but often bend back at the radiatum/lacunosum-moleculare border.\' (pp.949, Klausberger, Thomas. 2009. \'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.\' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
-    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x";
     skos:prefLabel "Stratum Oriens Bistratified Cell"@en .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_BS> a owl:Class ;
     rdfs:label "SP_BS"@en ;
+    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
@@ -13715,13 +13756,13 @@ mba:982 a owl:Class .
             owl:someValuesFrom nsg:BistratifiedPhenotype ],
         bmo:NeuronMorphologicalType,
         ct:HippocampusBistratifiedCell ;
+    skos:definition "Bistratified cells (BS) '... somata are mainly located in stratum pyramidale, but oriens-bistratified cells with somata and horizontally running dendrites in stratum oriens have also been reported. The dendrites of bistratified cells in stratum pyramidale extend widely in the strata oriens and radiatum and form connexin36-containing gap junctions with other interneurons (Baude et al., 2007). In contrast to basket and axo-axonic cells, the dendrites of bistratified cells do not enter stratum lacunosum-moleculare but often bend back at the radiatum/lacunosum-moleculare border.' (pp.949, Klausberger, Thomas. 2009. 'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.' The European Journal of Neuroscience 30 (6): 947-57.i https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
     skos:notation "SP_BS"^^xsd:string ;
-    skos:definition "Bistratified cells (BS) \'... somata are mainly located in stratum pyramidale, but oriens-bistratified cells with somata and horizontally running dendrites in stratum oriens have also been reported. The dendrites of bistratified cells in stratum pyramidale extend widely in the strata oriens and radiatum and form connexin36-containing gap junctions with other interneurons (Baude et al., 2007). In contrast to basket and axo-axonic cells, the dendrites of bistratified cells do not enter stratum lacunosum-moleculare but often bend back at the radiatum/lacunosum-moleculare border.\' (pp.949, Klausberger, Thomas. 2009. \'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.\' The European Journal of Neuroscience 30 (6): 947-57.i https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
-    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x";
     skos:prefLabel "Pyramidal Layer Bistratified Cell"@en .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_Ivy> a owl:Class ;
     rdfs:label "SP_Ivy"@en ;
+    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
@@ -13739,13 +13780,13 @@ mba:982 a owl:Class .
             owl:someValuesFrom obo:UBERON_0002313 ],
         bmo:NeuronMorphologicalType,
         ct:IvyCell ;
+    skos:definition " 'In contrast to neurogliaform cells innervating the apical tuft of pyramidal cells, the very dense axons of ivy cells, resembling the thick branching of this plant, cover stratum oriens and radiatum, making synapses onto the basal and oblique dendrites of pyramidal cells. The cell bodies of ivy cells are located in stratum pyramidale and radiatum and the usually short dendrites can cover all layers.' (pp.951, Klausberger, Thomas. 2009. 'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
     skos:notation "SP_Ivy"^^xsd:string ;
-    skos:definition " \'In contrast to neurogliaform cells innervating the apical tuft of pyramidal cells, the very dense axons of ivy cells, resembling the thick branching of this plant, cover stratum oriens and radiatum, making synapses onto the basal and oblique dendrites of pyramidal cells. The cell bodies of ivy cells are located in stratum pyramidale and radiatum and the usually short dendrites can cover all layers.\' (pp.951, Klausberger, Thomas. 2009. \'GABAergic Interneurons Targeting Dendrites of Pyramidal Cells in the CA1 Area of the Hippocampus.\' The European Journal of Neuroscience 30 (6): 947-57. https://doi.org/10.1111/j.1460-9568.2009.06913.x)"@en ;
-    schema:citation "https://doi.org/10.1111/j.1460-9568.2009.06913.x";
     skos:prefLabel "Pyramidal layer Ivy Cell"@en .
 
 <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_PVBC> a owl:Class ;
     rdfs:label "SP_PVBC"@en ;
+    schema:citation "https://doi.org/10.1152/physrev.00007.2017" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
@@ -13762,9 +13803,8 @@ mba:982 a owl:Class .
             owl:onProperty nsg:hasLayerLocationPhenotype ;
             owl:someValuesFrom obo:UBERON_0002313 ],
         ct:PVBC ;
+    skos:definition "Parvalbumin-expressing Basket Cells (PVBC) '... frequently have large pyramidal shaped or fusiform somas typically residing within (70%) or immediately adjacent to s.p. both in s.o. (24%) and s.r. (6%). PVBCs predominantly display mostly aspiny, pyramidal-shaped, or bitufted dendritic trees spanning from the alveus to s.l.m., positioning them to receive input from all excitatory afferent projections innervating the hippocampal CA1 region. The axon emerges from the soma or a primary dendrite and ultimately gives rise to large numbers of collaterals forming basketlike dense pericellular arrays of synaptic boutons primarily innervating the soma and proximal dendrites of pyramidal cells (99% of output synapses), with a minority of outputs (1%) forming autapses or contacting other interneurons.' (pp.1623, Pelkey, Kenneth A., Ramesh Chittajallu, Michael T. Craig, Ludovic Tricoire, Jason C. Wester, and Chris J. McBain. 2017. 'Hippocampal GABAergic Inhibitory Interneurons.' Physiological Reviews 97 (4): 1619-1747. https://doi.org/10.1152/physrev.00007.2017)"@en ;
     skos:notation "SP_PVBC"^^xsd:string ;
-    skos:definition "Parvalbumin-expressing Basket Cells (PVBC) \'... frequently have large pyramidal shaped or fusiform somas typically residing within (70%) or immediately adjacent to s.p. both in s.o. (24%) and s.r. (6%). PVBCs predominantly display mostly aspiny, pyramidal-shaped, or bitufted dendritic trees spanning from the alveus to s.l.m., positioning them to receive input from all excitatory afferent projections innervating the hippocampal CA1 region. The axon emerges from the soma or a primary dendrite and ultimately gives rise to large numbers of collaterals forming basketlike dense pericellular arrays of synaptic boutons primarily innervating the soma and proximal dendrites of pyramidal cells (99% of output synapses), with a minority of outputs (1%) forming autapses or contacting other interneurons.\' (pp.1623, Pelkey, Kenneth A., Ramesh Chittajallu, Michael T. Craig, Ludovic Tricoire, Jason C. Wester, and Chris J. McBain. 2017. \'Hippocampal GABAergic Inhibitory Interneurons.\' Physiological Reviews 97 (4): 1619-1747. https://doi.org/10.1152/physrev.00007.2017)"@en ;
-    schema:citation "https://doi.org/10.1152/physrev.00007.2017";
     skos:prefLabel "SP_PVBC"@en .
 
 obo:NCBITaxon_10116 a owl:Class ;
@@ -31682,10 +31722,12 @@ tts:L5_PT_CTX a owl:Class ;
 
 <http://uri.interlex.org/base/ilx_0738230> a owl:Class ;
     rdfs:label "Thalamo-Cortical Cell"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:549 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/ThalamusMType> ;
+    skos:definition "Thalamocortical Cell, from the thalamus region (TH). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "TH_TC"^^xsd:string ;
     skos:prefLabel "Thalamus thalamo-cortical cell"@en .
 
@@ -32281,6 +32323,8 @@ tts:62_Vip_Igfbp6 a owl:Class ;
         tts:CGE ;
     tts:cell_set_alias "CS202106160_62"^^xsd:string ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
+
+mba:549 a owl:Class .
 
 tts:108_Pvalb a owl:Class ;
     rdfs:label "108_Pvalb"^^xsd:string ;
@@ -32968,8 +33012,6 @@ tts:123_Pvalb_Vipr2 a owl:Class ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
 mba:1097 a owl:Class .
-
-mba:549 a owl:Class .
 
 tts:CGE a owl:Class ;
     rdfs:label "CGE"^^xsd:string ;
