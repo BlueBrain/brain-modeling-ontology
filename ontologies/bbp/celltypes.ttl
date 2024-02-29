@@ -735,84 +735,6 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
     rdfs:label "cAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383234> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383235> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383236> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383239> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383240> ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:contribution ;
-            owl:someValuesFrom bmo:BBP_contribution ],
-        [ a owl:Restriction ;
-            owl:onProperty nsg:hasInstanceInSpecies ;
-            owl:someValuesFrom obo:NCBITaxon_10090 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_BP> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_SCA> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_Tri> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_OLM> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_CCKBC> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:315 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381369> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381374> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383195> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty owl:equivalentClass ;
-            owl:someValuesFrom ct:ICOnsetEType ],
-        [ a owl:Restriction ;
-            owl:onProperty owl:equivalentClass ;
-            owl:someValuesFrom ct:ICOn-typeEtype ],
-        [ a owl:Restriction ;
-            owl:onProperty owl:equivalentClass ;
-            owl:someValuesFrom ct:ICAdaptingEType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
@@ -913,6 +835,84 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383233> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383234> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383235> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383236> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383239> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383240> ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:contribution ;
+            owl:someValuesFrom bmo:BBP_contribution ],
+        [ a owl:Restriction ;
+            owl:onProperty nsg:hasInstanceInSpecies ;
+            owl:someValuesFrom obo:NCBITaxon_10090 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_BP> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SR_SCA> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_Tri> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SO_OLM> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/SP_CCKBC> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:315 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381369> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381374> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383195> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICOnsetEType ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICOn-typeEtype ],
+        [ a owl:Restriction ;
+            owl:onProperty owl:equivalentClass ;
+            owl:someValuesFrom ct:ICAdaptingEType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383197> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383198> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
         bmo:NeuronElectricalType ;
     skos:definition "Continuous accommodating electrical type"@en ;
     skos:notation "cAC"^^xsd:string ;
@@ -993,9 +993,6 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
     rdfs:label "bAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:MOBMI_MCI ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
@@ -1006,9 +1003,6 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
         [ a owl:Restriction ;
             owl:onProperty owl:equivalentClass ;
             owl:someValuesFrom ct:HYphasicEType ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:MOBMI_MCI ],
         [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom ct:AmygdalaEntorhinalCortexEC-ProjectingCell ],
@@ -1242,6 +1236,9 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 <http://uri.interlex.org/base/ilx_0738201> a owl:Class ;
     rdfs:label "cNAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:MOBMI_MCI ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
         [ a owl:Restriction ;
@@ -3844,6 +3841,138 @@ bmo:NeocortexBurstNonAccommodatingElectricalType a owl:Class ;
 bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
     rdfs:label "NCx_bSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:66_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:67_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:68_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:69_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:7_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:70_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:71_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:72_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:73_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:74_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:75_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:76_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:77_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:78_Sst_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:79_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:8_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:80_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:81_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:82_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:83_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:84_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:85_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:86_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:87_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:88_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:89_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:9_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:90_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:91_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:92_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:93_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:94_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:95_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:96_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:97_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:98_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:99_Sst ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381369> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381374> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
+        [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
         [ a owl:Restriction ;
@@ -4101,138 +4230,6 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:65_Sst_Chodl ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:66_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:67_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:68_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:69_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:7_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:70_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:71_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:72_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:73_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:74_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:75_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:76_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:77_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:78_Sst_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:79_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:8_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:80_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:81_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:82_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:83_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:84_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:85_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:86_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:87_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:88_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:89_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:9_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:90_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:91_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:92_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:93_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:94_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:95_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:96_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:97_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:98_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:99_Sst ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381369> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0381374> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383199> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
     skos:notation "NCx_bSTUT"@en ;
     skos:prefLabel "Neocortex burst stuttering electrical type"@en .
@@ -13567,6 +13564,19 @@ ct:LateralHabenulaProjectionCell a owl:Class ;
     skos:definition "Projection neuron in lateral habenula"@en ;
     skos:notation "LH_PT" .
 
+ct:MOBMI_MCI a owl:Class ;
+    rdfs:label "MOBmi_MC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:236 ],
+        [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
+        bmo:NeuronMorphologicalType ;
+    skos:altLabel "MOBMI_MCI" ;
+    skos:definition "MC have spheroidal soma of 20µm diameter or more. The apical dendrite have a diameter of 4µm for a length of 400µm. It branches in 4 small tufts dendrites of 0.8µm diameter each. Lateral dendrites have a diameter of 3µm for a length of 800µm."@en ;
+    skos:notation "MOBmi_MC" .
+
 ct:MedullaNoncatecholaminergicCell a owl:Class ;
     rdfs:label "MY_NCATH"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -17518,19 +17528,6 @@ ct:MOBGR_SGC a owl:Class ;
     skos:altLabel "MOBGR_SGC" ;
     skos:definition "sGC have spheroidal soma of 6-8µm diameter. Their dendrites extend from the soma (in the superficial MOBgr) to the superficial MOBopl (target mTCs). Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length. They are axonless."@en ;
     skos:notation "MOBgr_sGC" .
-
-ct:MOBMI_MCI a owl:Class ;
-    rdfs:label "MOBmi_MC"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:236 ],
-        [ a owl:Restriction ;
-            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
-            owl:someValuesFrom bmo:ExcitatoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
-    skos:altLabel "MOBMI_MCI" ;
-    skos:definition "MC have spheroidal soma of 20µm diameter or more. The apical dendrite have a diameter of 4µm for a length of 400µm. It branches in 4 small tufts dendrites of 0.8µm diameter each. Lateral dendrites have a diameter of 3µm for a length of 800µm."@en ;
-    skos:notation "MOBmi_MC" .
 
 ct:MOBOPL_MTC a owl:Class ;
     rdfs:label "MOBopl_mTC"@en ;
