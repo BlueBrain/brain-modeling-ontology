@@ -705,7 +705,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:733 ] ;
-    skos:definition "Thalamic Interneuron Cell, from the region \"Dorsal part of the lateral geniculate complex\" (LGd). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_IN\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). The rodent region \"LGd\" is the corresponding homologue of the primate/etc. region \"LGN\" used in the name; however, any morphologies belonging to this M-type were reconstructed from mouse neurons."@en ;
+    skos:definition "Thalamic Interneuron Cell, from the region \'Dorsal part of the lateral geniculate complex\' (LGd). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_IN\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). The rodent region \'LGd\' is the corresponding homologue of the primate/etc. region \'LGN\' used in the name; however, any morphologies belonging to this M-type were reconstructed from mouse neurons."@en ;
     skos:notation "LGN_IN"@en ;
     skos:prefLabel "Thalamus geniculate nucleus (lateral) interneuron"@en .
 
@@ -734,84 +734,6 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 <http://uri.interlex.org/base/ilx_0738197> a owl:Class ;
     rdfs:label "cAC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383206> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383209> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383211> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaBasketCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaChandelierCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107933> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383213> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383214> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383215> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383216> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383217> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383221> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383222> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383223> ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
-        [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383224> ],
         [ a owl:Restriction ;
@@ -913,6 +835,84 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383200> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383201> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383202> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383203> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383204> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383205> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383206> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383209> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383210> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383211> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaBasketCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaChandelierCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaProteinKkinaseCdeltaPKCdelta-Positive ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:AmygdalaPrincipalCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0107933> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383212> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383213> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383214> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383215> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383216> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383217> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383221> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383222> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveMType ;
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0383223> ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:inferredCanHaveMType ;
+            owl:someValuesFrom ct:LocusCoeruleusGABAergicCell ],
         bmo:NeuronElectricalType ;
     skos:definition "Continuous accommodating electrical type"@en ;
     skos:notation "cAC"^^xsd:string ;
@@ -1943,7 +1943,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:239 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Anterior group of the dorsal thalamus\" (ATN). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Anterior group of the dorsal thalamus\' (ATN). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "ATN_TC"^^xsd:string ;
     skos:prefLabel "Anterior group of the dorsal thalamus thalamo-cortical cell"@en .
 
@@ -1954,7 +1954,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:255 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Anteroventral nucleus of thalamus\" (AV). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Anteroventral nucleus of thalamus\' (AV). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "AV_TC"^^xsd:string ;
     skos:prefLabel "Anteroventral nucleus of thalamus thalamo-cortical cell"@en .
 
@@ -2001,7 +2001,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:155 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Lateral dorsal nucleus of thalamus\" (LD). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Lateral dorsal nucleus of thalamus\' (LD). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "LD_TC"^^xsd:string ;
     skos:prefLabel "Lateral dorsal nucleus of thalamus thalamo-cortical cell"@en .
 
@@ -2011,7 +2011,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:733 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Dorsal part of the lateral geniculate complex\" (LGd). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory fibers, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). The rodent region \"LGd\" is the corresponding homologue of the primate/etc. region \"LGN\" used in the name; however, any morphologies belonging to this M-type were reconstructed from mouse neurons."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Dorsal part of the lateral geniculate complex\' (LGd). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory fibers, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). The rodent region \'LGd\' is the corresponding homologue of the primate/etc. region \'LGN\' used in the name; however, any morphologies belonging to this M-type were reconstructed from mouse neurons."@en ;
     skos:notation "LGN_TC"^^xsd:string ;
     skos:prefLabel "Lateral geniculate complex, dorsal part thalamo-cortical cell"@en .
 
@@ -2022,7 +2022,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:218 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Lateral posterior nucleus of the thalamus\" (LP). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Lateral posterior nucleus of the thalamus\' (LP). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "LP_TC"^^xsd:string ;
     skos:prefLabel "Lateral posterior nucleus of the thalamus thalamo-cortical cell"@en .
 
@@ -2033,7 +2033,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:362 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Mediodorsal nucleus of thalamus\" (MD). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Mediodorsal nucleus of thalamus\' (MD). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "MD_TC"^^xsd:string ;
     skos:prefLabel "Mediodorsal nucleus of thalamus thalamo-cortical cell"@en .
 
@@ -2044,7 +2044,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:59 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Intermediodorsal nucleus of the thalamus\" (IMD). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). Note that the region acronym in the M-type name is \"MDI\", but this is a different name for the same region as the Allen Institute's hierarchical \"IMD\" region."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Intermediodorsal nucleus of the thalamus\' (IMD). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). Note that the region acronym in the M-type name is \'MDI\', but this is a different name for the same region as the Allen Institute's hierarchical \'IMD\' region."@en ;
     skos:notation "MDI_TC"^^xsd:string ;
     skos:prefLabel "Mediodorsal nucleus of the thalamus, lateral part thalamo-cortical cell"@en .
 
@@ -2055,7 +2055,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:907 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Paracentral nucleus\" (PCN). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Paracentral nucleus\' (PCN). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "PCN_TC"^^xsd:string ;
     skos:prefLabel "Paracentral nucleus thalamo-cortical cell"@en .
 
@@ -2076,7 +2076,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:someValuesFrom mba:1020 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/ThalamusMType>,
         nsg:Interneuron ;
-    skos:definition "Thalamic Interneuron Cell, from the region \"Posterior complex of the thalamus\" (PO). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_IN\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). \"POM\" in the M-type name refers to the medial part of the \"PO\" region, but in the Allen Institute's region hierarchy, all of the PO is grouped under only one region."@en ;
+    skos:definition "Thalamic Interneuron Cell, from the region \'Posterior complex of the thalamus\' (PO). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_IN\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). \'POM\' in the M-type name refers to the medial part of the \'PO\' region, but in the Allen Institute's region hierarchy, all of the PO is grouped under only one region."@en ;
     skos:notation "POM_IN"^^xsd:string ;
     skos:prefLabel "Posterior nucleus of the thalamus, medial part interneuron"@en .
 
@@ -2087,7 +2087,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:181 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Nucleus of reuniens\" (RE). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Nucleus of reuniens\' (RE). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "RE_TC"^^xsd:string ;
     skos:prefLabel "Nucleus of reuniens thalamo-cortical cell"@en .
 
@@ -2098,7 +2098,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:629 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Ventral anterior-lateral complex of the thalamus\" (VAL). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Ventral anterior-lateral complex of the thalamus\' (VAL). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VAL_TC"^^xsd:string ;
     skos:prefLabel "Ventral anterior-lateral complex of the thalamus thalamo-cortical cell"@en .
 
@@ -2109,7 +2109,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:637 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Ventral group of the dorsal thalamus\" (VENT). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Ventral group of the dorsal thalamus\' (VENT). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VENT_TC"^^xsd:string ;
     skos:prefLabel "Ventral group of the dorsal thalamus thalamo-cortical cell"@en .
 
@@ -2120,7 +2120,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:685 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Ventral medial nucleus of the thalamus\" (VM). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Ventral medial nucleus of the thalamus\' (VM). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VM_TC"^^xsd:string ;
     skos:prefLabel "Ventral medial nucleus of the thalamus thalamo-cortical cell"@en .
 
@@ -2131,7 +2131,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:709 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Ventral posterior complex of the thalamus\" (VP). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Ventral posterior complex of the thalamus\' (VP). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VP_TC"^^xsd:string ;
     skos:prefLabel "Ventral posterior complex of the thalamus thalamo-cortical cell"@en .
 
@@ -2143,7 +2143,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:someValuesFrom mba:733 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/ThalamusMType>,
         nsg:Interneuron ;
-    skos:definition "Thalamic Interneuron Cell, from the region \"Ventral posteromedial nucleus of the thalamus\" (VPM). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_IN\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamic Interneuron Cell, from the region \'Ventral posteromedial nucleus of the thalamus\' (VPM). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_IN\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VPM_IN"^^xsd:string ;
     skos:prefLabel "Ventral posteromedial nucleus of the thalamus interneuron"@en .
 
@@ -2154,7 +2154,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:733 ],
         <http://uri.interlex.org/base/ilx_0738230> ;
-    skos:definition "Thalamocortical Cell, from the region \"Ventral posteromedial nucleus of the thalamus\" (VPM). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the region \'Ventral posteromedial nucleus of the thalamus\' (VPM). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VPM_TC"^^xsd:string ;
     skos:prefLabel "Ventral posteromedial nucleus of the thalamus thalamo-cortical cell"@en .
 
@@ -3842,6 +3842,135 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
     rdfs:label "NCx_bSTUT"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:18_Lamp5 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:21_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:22_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:23_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:24_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:25_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:31_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:32_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:33_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:34_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:35_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:36_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:37_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:38_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:39_Sncg ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:40_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:41_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:42_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:43_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:44_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:45_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:46_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:47_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:48_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:49_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:5_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:50_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:51_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:52_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:53_Vip ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:54_Vip_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:55_Vip_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:56_Vip_HPF ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:57_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:58_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:59_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:6_Lamp5_Lhx6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:60_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:61_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:62_Vip_Igfbp6 ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:63_Sst_Chodl ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:64_Sst_Chodl ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
+            owl:someValuesFrom tts:65_Sst_Chodl ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:66_Sst ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
@@ -4101,135 +4230,6 @@ bmo:NeocortexBurstStutteringElectricalType a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveTType ;
             owl:someValuesFrom tts:17_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:18_Lamp5 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:21_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:22_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:23_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:24_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:25_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:31_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:32_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:33_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:34_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:35_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:36_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:37_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:38_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:39_Sncg ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:40_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:41_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:42_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:43_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:44_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:45_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:46_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:47_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:48_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:49_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:5_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:50_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:51_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:52_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:53_Vip ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:54_Vip_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:55_Vip_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:56_Vip_HPF ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:57_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:58_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:59_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:6_Lamp5_Lhx6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:60_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:61_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:62_Vip_Igfbp6 ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:63_Sst_Chodl ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:64_Sst_Chodl ],
-        [ a owl:Restriction ;
-            owl:onProperty bmo:canHaveTType ;
-            owl:someValuesFrom tts:65_Sst_Chodl ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/NeocortexEType> ;
     skos:notation "NCx_bSTUT"@en ;
     skos:prefLabel "Neocortex burst stuttering electrical type"@en .
@@ -17511,10 +17511,23 @@ ct:MOBGR_DGC a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
+        bmo:NeuronMorphologicalType,
+        ct:MOBGR_GC ;
     skos:altLabel "MOBGR_DGC" ;
     skos:definition "dGC have spheroidal soma of 6-8µm diameter. Their dendrites extend from the soma (in the deep MOBgr) to the deep MOBopl (target MCs).Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length. They are axonless."@en ;
     skos:notation "MOBgr_dGC" .
+
+ct:MOBGR_GC a owl:Class ;
+    rdfs:label "MOBgr_GC"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
+            owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
+        [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:220 ] ;
+    skos:altLabel "MOBGR_GC"@en ;
+    skos:definition "Generic type grouping MOBgr_dGC and MOBgr_sGC" ;
+    skos:notation "MOBGR_GC"@en .
 
 ct:MOBGR_SGC a owl:Class ;
     rdfs:label "MOBgr_sGC"@en ;
@@ -17524,7 +17537,8 @@ ct:MOBGR_SGC a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
             owl:someValuesFrom bmo:InhibitoryNeurotransmitterType ],
-        bmo:NeuronMorphologicalType ;
+        bmo:NeuronMorphologicalType,
+        ct:MOBGR_GC ;
     skos:altLabel "MOBGR_SGC" ;
     skos:definition "sGC have spheroidal soma of 6-8µm diameter. Their dendrites extend from the soma (in the superficial MOBgr) to the superficial MOBopl (target mTCs). Thus the size of the dendrites can be extrapolated to a range from ~200µm to ~400µm length. They are axonless."@en ;
     skos:notation "MOBgr_sGC" .
@@ -31724,7 +31738,7 @@ tts:L5_PT_CTX a owl:Class ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:549 ],
         <https://bbp.epfl.ch/ontologies/core/mtypes/ThalamusMType> ;
-    skos:definition "Thalamocortical Cell, from the thalamus region (TH). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \"VPL_TC\" M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:definition "Thalamocortical Cell, from the thalamus region (TH). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "TH_TC"^^xsd:string ;
     skos:prefLabel "Thalamus thalamo-cortical cell"@en .
 

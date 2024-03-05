@@ -14,7 +14,7 @@ from bmo.utils import (
     NXV,
     _get_ontology_annotation_lang_context,
 )
-from register_ontologies import _merge_ontology, _initialize_forge_objects
+from scripts.register_ontologies import _merge_ontology, _initialize_forge_objects
 from bmo.loading import load_ontologies, load_schemas
 
 
