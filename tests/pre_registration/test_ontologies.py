@@ -21,7 +21,7 @@ from rdflib.term import URIRef
 from typing import List, Optional
 
 import bmo.ontologies as bmo
-from register_ontologies import execute_ontology_registration
+from scripts.register_ontologies import execute_ontology_registration
 
 
 @pytest.fixture

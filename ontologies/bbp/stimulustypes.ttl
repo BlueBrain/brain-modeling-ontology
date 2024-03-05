@@ -578,6 +578,6 @@ nsg:BlueBrainStimulus a owl:Class ;
 
 nsg:LNMCStimulus a owl:Class ;
     rdfs:label "LNMCStimulus"@en ;
-    schema1:description "The stimuli under LNMCStimulus were identified from the NWB files of the \"NMC SSCX\" and the \"Adaptive Stimulus Set\" datasets from the Laboratory of Neural Microcircuitry. They represent the 'raw' stimuli as assigned by the experimenter."^^xsd:string ;
+    schema1:description "The stimuli under LNMCStimulus were identified from the NWB files of the \'NMC SSCX\' and the \'Adaptive Stimulus Set\' datasets from the Laboratory of Neural Microcircuitry. They represent the 'raw' stimuli as assigned by the experimenter."^^xsd:string ;
     rdfs:subClassOf bmo:ElectricalStimulus .
 

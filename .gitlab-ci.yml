@@ -30,7 +30,7 @@ test-ontologies-on-merge-request:
     tag: "-"
     token: $NEXUS_TOKEN_STAGING
   script:
-    - flake8 tests bmo register_ontologies.py
+    - flake8 tests bmo scripts/register_ontologies.py
     - >
       pytest tests/pre_registration 
       --environment $environment 
@@ -39,7 +39,7 @@ test-ontologies-on-merge-request:
       --token $token 
       --tag $tag
     - > 
-      python register_ontologies.py 
+      python scripts/register_ontologies.py 
       --environment $environment 
       --atlas_parcellation_ontology $atlas_parcellation_ontology
       --atlas_parcellation_ontology_version $atlas_parcellation_ontology_version
@@ -49,6 +49,14 @@ test-ontologies-on-merge-request:
 
   before_script:
     - pip install .[dev]
+    - python scripts/clean_ontology_files.py 
+      --environment $environment
+      --atlas_parcellation_ontology $atlas_parcellation_ontology
+      --atlas_parcellation_ontology_version $atlas_parcellation_ontology_version
+      --token $token
+      --tag $tag
+      --no_data_update True
+
 variables:
   KUBERNETES_HELPER_MEMORY_REQUEST: 512Mi
   KUBERNETES_HELPER_MEMORY_LIMIT: 1Gi
@@ -69,7 +77,7 @@ register_to_environment:
           - shapes/**/*.json
           - jsonldcontext/*.json
           - texts/*.json
-          - register_ontologies.py
+          - scripts/register_ontologies.py
           - bmo/*.py
           - .gitlab-ci.yml
       when: on_success
@@ -91,7 +99,7 @@ register_to_environment:
         token: $NEXUS_TOKEN_PRODUCTION
   script:
     - > 
-      python register_ontologies.py 
+      python scripts/register_ontologies.py 
       --environment $environment 
       --atlas_parcellation_ontology $atlas_parcellation_ontology
       --atlas_parcellation_ontology_version $atlas_parcellation_ontology_version
@@ -123,7 +131,7 @@ test-ontologies-on-registration:
           - shapes/**/*.json
           - jsonldcontext/*.json
           - texts/*.json
-          - register_ontologies.py
+          - scripts/register_ontologies.py
           - bmo/*.py
           - .gitlab-ci.yml
       needs: ["register_to_environment"]

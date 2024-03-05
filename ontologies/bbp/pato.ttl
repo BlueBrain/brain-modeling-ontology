@@ -273,7 +273,7 @@ obo:RO_0002254 a owl:ObjectProperty ;
 obo:RO_0002297 a owl:ObjectProperty ;
     rdfs:label "results in formation of"@en ;
     obo:IAO_0000112 "an annotation of gene X to anatomical structure formation with results_in_formation_of UBERON:0000007 (pituitary gland) means that at the beginning of the process a pituitary gland does not exist and at the end of the process a pituitary gland exists.",
-        "every \"endocardial cushion formation\" (GO:0003272) results_in_formation_of some \"endocardial cushion\" (UBERON:0002062)"@en ;
+        "every \'endocardial cushion formation\' (GO:0003272) results_in_formation_of some \'endocardial cushion\' (UBERON:0002062)"@en ;
     obo:IAO_0000114 obo:IAO_0000125 ;
     obo:IAO_0000117 "Chris Mungall" ;
     obo:IAO_0000119 "GOC:mtg_berkeley_2013" ;
@@ -286,7 +286,7 @@ obo:RO_0002326 a owl:ObjectProperty ;
     rdfs:label "contributes to"@en ;
     obo:IAO_0000112 "ATP citrate lyase (ACL) in Arabidopsis: it is a heterooctamer, composed of two types of subunits, ACLA and ACLB in a A(4)B(4) stoichiometry. Neither of the subunits expressed alone give ACL activity, but co-expression results in ACL activity. Both subunits contribute_to the ATP citrate lyase activity.",
         "Subunits of nuclear RNA polymerases: none of the individual subunits have RNA polymerase activity, yet all of these subunits contribute_to DNA-dependent RNA polymerase activity.",
-        "eIF2: has three subunits (alpha, beta, gamma); one binds GTP; one binds RNA; the whole complex binds the ribosome (all three subunits are required for ribosome binding). So one subunit is annotated to GTP binding and one to RNA binding without qualifiers, and all three stand in the contributes_to relationship to \"ribosome binding\". And all three are part_of an eIF2 complex" ;
+        "eIF2: has three subunits (alpha, beta, gamma); one binds GTP; one binds RNA; the whole complex binds the ribosome (all three subunits are required for ribosome binding). So one subunit is annotated to GTP binding and one to RNA binding without qualifiers, and all three stand in the contributes_to relationship to \'ribosome binding\'. And all three are part_of an eIF2 complex" ;
     obo:IAO_0000116 """We would like to say
 
 if and only if
@@ -403,7 +403,7 @@ obo:RO_0002575 a owl:AnnotationProperty ;
 
 Where we have an annotation assertion
 
-  "directly P" "is direct form of" "P\"""" ;
+  "directly P" "is direct form of" "P\'""" ;
     obo:RO_0002423 "If we have the annotation P is-direct-form-of Q, and we have inverses P' and Q', then it follows that P' is-direct-form-of Q'" ;
     dc:creator "Chris Mungall" .
 
@@ -1910,7 +1910,7 @@ obo:RO_0002215 a owl:ObjectProperty ;
     obo:IAO_0000118 "has function realized in" ;
     obo:IAO_0000119 <http://www.ncbi.nlm.nih.gov/pubmed/20123131>,
         <http://www.ncbi.nlm.nih.gov/pubmed/21208450> ;
-    obo:IAO_0000232 "For compatibility with BFO, this relation has a shortcut definition in which the expression \"capable of some P\" expands to \"bearer_of (some realized_by only P)\"." ;
+    obo:IAO_0000232 "For compatibility with BFO, this relation has a shortcut definition in which the expression \'capable of some P\' expands to \'bearer_of (some realized_by only P)\'." ;
     obo:IAO_0000424 "RO_0000053 some (RO_0000054 only ?Y)" ;
     oboInOwl:inSubset <http://purl.obolibrary.org/obo/ro/subsets#ro-eco> ;
     rdfs:subPropertyOf obo:RO_0002216 .
@@ -2244,7 +2244,7 @@ oboInOwl:SubsetProperty a owl:AnnotationProperty ;
     owl:annotatedTarget "Process(P2) is directly negatively regulated by process(P1) iff: P1 negatively regulates P2 via direct physical interaction between an agent executing P1 (or some part of P1) and an agent executing P2 (or some part of P2).  For example, if protein A has protein binding activity(P1) that targets protein B and this binding  negatively regulates the kinase activity (P2) of protein B then P2 directly negatively regulated by P1." .
 
 [] a swrl:Imp ;
-    rdfs:comment "This rule is dubious: added as a quick fix for expected inference in GO-CAM.  The problem is most acute for transmembrane proteins, such as receptors or cell adhesion molecules, which have some subfunctions inside the cell (e.g. kinase activity) and some subfunctions outside (e.g. ligand binding).  Correct annotation of where these functions occurs leads to incorrect inference about the location of the whole protein.  This should probably be weakened to \"... -> overlaps\"" ;
+    rdfs:comment "This rule is dubious: added as a quick fix for expected inference in GO-CAM.  The problem is most acute for transmembrane proteins, such as receptors or cell adhesion molecules, which have some subfunctions inside the cell (e.g. kinase activity) and some subfunctions outside (e.g. ligand binding).  Correct annotation of where these functions occurs leads to incorrect inference about the location of the whole protein.  This should probably be weakened to \'... -> overlaps\'" ;
     swrl:body [ a swrl:AtomList ;
             rdf:first [ a swrl:IndividualPropertyAtom ;
                     swrl:argument1 <urn:swrl#x> ;
