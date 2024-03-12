@@ -701,7 +701,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0111658> a owl:Class ;
     rdfs:label "LGN_IN"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:733 ] ;
@@ -1938,7 +1938,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738214> a owl:Class ;
     rdfs:label "ATN_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:239 ],
@@ -1949,7 +1949,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738215> a owl:Class ;
     rdfs:label "AV_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:255 ],
@@ -1996,7 +1996,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738220> a owl:Class ;
     rdfs:label "LD_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:155 ],
@@ -2017,7 +2017,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738222> a owl:Class ;
     rdfs:label "LP_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:218 ],
@@ -2028,7 +2028,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738223> a owl:Class ;
     rdfs:label "MD_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:362 ],
@@ -2039,7 +2039,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738224> a owl:Class ;
     rdfs:label "MDI_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:59 ],
@@ -2050,7 +2050,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738225> a owl:Class ;
     rdfs:label "PCN_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:907 ],
@@ -2070,7 +2070,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738227> a owl:Class ;
     rdfs:label "POM_IN"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:1020 ],
@@ -2082,7 +2082,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738228> a owl:Class ;
     rdfs:label "RE_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:181 ],
@@ -2093,7 +2093,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738231> a owl:Class ;
     rdfs:label "VAL_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:629 ],
@@ -2104,7 +2104,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738232> a owl:Class ;
     rdfs:label "VENT_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:637 ],
@@ -2115,7 +2115,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738233> a owl:Class ;
     rdfs:label "VM_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:685 ],
@@ -2126,7 +2126,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738234> a owl:Class ;
     rdfs:label "VP_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:709 ],
@@ -2137,7 +2137,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738237> a owl:Class ;
     rdfs:label "VPM_IN"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:733 ],
@@ -2149,7 +2149,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 <http://uri.interlex.org/base/ilx_0738238> a owl:Class ;
     rdfs:label "VPM_TC"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:733 ],
@@ -31733,7 +31733,7 @@ tts:L5_PT_CTX a owl:Class ;
 
 <http://uri.interlex.org/base/ilx_0738230> a owl:Class ;
     rdfs:label "Thalamo-Cortical Cell"@en ;
-    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
             owl:someValuesFrom mba:549 ],
