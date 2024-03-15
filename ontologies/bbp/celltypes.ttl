@@ -704,7 +704,8 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
     schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
-            owl:someValuesFrom mba:733 ] ;
+            owl:someValuesFrom mba:733 ] ,
+            nsg:MType ;
     skos:definition "Thalamic Interneuron Cell, from the region \'Dorsal part of the lateral geniculate complex\' (LGd). Thalamic interneurons (IN) are rare inhibitory cells which exist in all thalamic nuclei (regions) except for the reticular thalamic nucleus (RT) (O'Reilly, et al., 2021, https://doi.org/10.1016/j.neubiorev.2021.03.015 ). They receive synapses from, and synapse onto, nearby excitatory thalamocortical cells. Because there is limited existing data on the morphologies of these cells, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_IN\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 ). The rodent region \'LGd\' is the corresponding homologue of the primate/etc. region \'LGN\' used in the name; however, any morphologies belonging to this M-type were reconstructed from mouse neurons."@en ;
     skos:notation "LGN_IN"@en ;
     skos:prefLabel "Thalamus geniculate nucleus (lateral) interneuron"@en .
@@ -31732,7 +31733,7 @@ tts:L5_PT_CTX a owl:Class ;
     tts:taxonomy_id "CCN202106160"^^xsd:string .
 
 <http://uri.interlex.org/base/ilx_0738230> a owl:Class ;
-    rdfs:label "Thalamo-Cortical Cell"@en ;
+    rdfs:label "TH_TC"@en ;
     schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
