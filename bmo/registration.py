@@ -12,6 +12,7 @@ ALREADY_DEPRECATED_ERROR = "is deprecated"
 SHACL_SCHEMA_ID = "https://bluebrain.github.io/nexus/schemas/shacl-20170720.ttl"
 ONTOLOGY_SCHEMA_ID = "https://neuroshapes.org/dash/ontology"
 CLASS_SCHEMA_ID = "https://neuroshapes.org/dash/ontologyentity"
+NAMEDINDIVIDUAL_SCHEMA_ID = "https://bbp.epfl.ch/shapes/dash/namedindividual"
 
 
 SYNTHETIC_SENTENCES = {
@@ -53,6 +54,16 @@ def register_class(
     return _register_update(
         forge=forge, resource=class_resource,
         schema_id=CLASS_SCHEMA_ID, tag=tag, type_str="Class", raise_on_fail=False
+    )
+
+
+def register_namedindividual(
+        forge: KnowledgeGraphForge, resource: Resource, tag=None
+) -> Tuple[Optional[Exception], Resource]:
+    """Register ontology named individual to the store."""
+    return _register_update(
+        forge=forge, resource=resource,
+        schema_id=CLASS_SCHEMA_ID, tag=tag, type_str="NamedIndividual", raise_on_fail=False
     )
 
 

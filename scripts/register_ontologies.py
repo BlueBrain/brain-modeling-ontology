@@ -537,7 +537,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         f"Registering ontologies - Finish - Ontology count: {len(ontology_graphs_dict)}\n"
     )
 
-    print(f"Registering classes - Start: Class count:  {len(class_jsons)}")
+    print(f"Registering ontology terms - Start: Entity count:  {len(class_jsons)}")
 
     class_errors = []
 
@@ -549,7 +549,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
         if data_update:
             print(
-                f"Class {class_resource.get_identifier()} will be "
+                f"Term {class_resource.get_identifier()} will be "
                 f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
             )
             if deprecated:
@@ -557,9 +557,17 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
                     forge=forge, class_resource=class_resource
                 )
             else:
-                ex, _ = bmo_registration.register_class(
-                    forge=forge, class_resource=class_resource, tag=tag
-                )
+                if class_resource.type == 'Class':
+                    ex, _ = bmo_registration.register_class(
+                        forge=forge, class_resource=class_resource, tag=tag
+                    )
+                elif class_resource.type == 'NamedIndividual':
+                    ex, _ = bmo_registration.register_namedindividual(
+                        forge=forge, resource=class_resource, tag=tag
+                    )
+                else:
+                    raise ValueError(f"Ontology term with id {class_resource.id} "
+                                     f"has an unsupported type: {class_resource.type}.")
 
             if ex is not None:
                 class_errors.append(ex)
@@ -571,7 +579,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             )
 
     print(
-        f"Registering classes - Finish - Class count: {len(class_jsons)},"
+        f"Registering ontology terms - Finish - Entity count: {len(class_jsons)},"
         f" {len(class_errors)} errors"
     )
 
