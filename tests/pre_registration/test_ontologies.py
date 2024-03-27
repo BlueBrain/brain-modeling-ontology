@@ -18,7 +18,7 @@ from kgforge.core.commons import Context
 from rdflib import RDFS, XSD, Literal, RDF, OWL, SH, Graph
 from rdflib.paths import OneOrMore, ZeroOrMore
 from rdflib.term import URIRef
-from typing import List, Optional
+from typing import List, Optional, Type
 
 import bmo.ontologies as bmo
 from scripts.register_ontologies import execute_ontology_registration
@@ -556,7 +556,7 @@ def test_layered_child_has_same_layer_as_parent(
 def _check_dict_for_property_type_value(
     cls_json: dict,
     properties: List[str],
-    expected_types: Optional[List[str]] = None,
+    expected_types: Optional[List[Type]] = None,
     expected_values: Optional[List[str]] = None,
     sort_values=False,
 ):
