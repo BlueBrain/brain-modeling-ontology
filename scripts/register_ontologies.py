@@ -547,9 +547,14 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         class_resource = forge.from_json(class_json)
         deprecated = class_resource.__dict__.get("deprecated", False)
 
+        # Classes are only of type Class, but other ontology terms can have multiple types
+        class_resource_id = class_resource.get_identifier()
+        resource_type = class_resource.get_type() if isinstance(class_resource.get_type(), List) \
+            else [class_resource.get_type()]
+
         if data_update:
             print(
-                f"Term {class_resource.get_identifier()} will be "
+                f"Term {class_resource_id} will be "
                 f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
             )
             if deprecated:
@@ -557,17 +562,17 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
                     forge=forge, class_resource=class_resource
                 )
             else:
-                if class_resource.type == 'Class':
+                if 'Class' in resource_type:
                     ex, _ = bmo_registration.register_class(
                         forge=forge, class_resource=class_resource, tag=tag
                     )
-                elif class_resource.type == 'NamedIndividual':
+                elif 'NamedIndividual' in resource_type:
                     ex, _ = bmo_registration.register_namedindividual(
                         forge=forge, resource=class_resource, tag=tag
                     )
                 else:
-                    raise ValueError(f"Ontology term with id {class_resource.id} "
-                                     f"has an unsupported type: {class_resource.type}.")
+                    raise ValueError(f"Ontology term with id {class_resource_id} "
+                                     f"has an unsupported type: {resource_type}.")
 
             if ex is not None:
                 class_errors.append(ex)
@@ -575,7 +580,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         else:
             print(
                 f"{'Creation/Update' if not deprecated else 'Deprecation'} of class "
-                f"{class_resource.get_identifier()} - Ignored"
+                f"{class_resource_id} - Ignored"
             )
 
     print(
