@@ -68,12 +68,14 @@ def test_ontologies_classes_conform_schemas(forge, all_ontology_graphs):
     # forge.validate(classes, _type="Class")
 
 
-def test_classes_instances_are_disjoint(all_ontology_graphs):
-    classes_instances = []
-    for cls in all_ontology_graphs[0].subjects(RDF.type, OWL.Class):
-        if (cls, RDF.type, OWL.NamedIndividual) in all_ontology_graphs[0]:
-            classes_instances.append(cls)
-    assert len(classes_instances) == 0
+def test_classes_have_only_class_type(all_ontology_graphs):
+    classes_with_multiple_types = []
+    ontology_graphs, _ = all_ontology_graphs
+    for cls in ontology_graphs.subjects(RDF.type, OWL.Class):
+        for obj in ontology_graphs.objects(cls, RDF.type):
+            if obj != OWL.Class:
+                classes_with_multiple_types.append(cls)
+    assert len(classes_with_multiple_types) == 0
 
 
 def test_classes_object_annotation_properties_are_disjoint(all_ontology_graphs):
@@ -362,6 +364,19 @@ def test_brain_region_same_leaves_in_all_hierarchy(all_ontology_graphs):
         isocortex_brain_region_layer_in_annotation_leaves
         == isocortex_brain_region_default_in_annotation_leaves
     )
+
+
+def test_multitype_entities_are_namedindividuals(framed_classes):
+    classes_json = framed_classes[1]
+    errors = []
+    for class_json in classes_json:
+        if isinstance(class_json['@type'], list):
+            if 'Class' in class_json['@type']:
+                errors.append(f"{class_json['@id']} - class should only have type `Class`")
+            elif 'NamedIndividual' not in class_json['@type']:
+                errors.append(f"{class_json['@id']} - non-class term is expected to be a `NamedIndividual`")
+
+    assert len(errors) == 0, errors
 
 
 def test_all_classes_have_label_notation_not_plus(framed_classes):
