@@ -63,7 +63,7 @@ def register_namedindividual(
     """Register ontology named individual to the store."""
     return _register_update(
         forge=forge, resource=resource,
-        schema_id=CLASS_SCHEMA_ID, tag=tag, type_str="NamedIndividual", raise_on_fail=False
+        schema_id=NAMEDINDIVIDUAL_SCHEMA_ID, tag=tag, type_str="NamedIndividual", raise_on_fail=False
     )
 
 
