@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/namedindividual",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/ontologyentity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/namedindividual/shapes/NamedIndividualShape",
+      "@type": "NodeShape",
+      "node": "https://neuroshapes.org/commons/ontologyentity/shapes/OntologyEntityShape",
+      "targetClass": "owl:NamedIndividual"
+    }
+  ]
+}
