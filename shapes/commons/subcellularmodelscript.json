@@ -1,0 +1,101 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/subcellularmodelscript/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/subcellularmodelscript",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/distribution"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/subcellularmodelscript/shapes/SubCellularModelScriptShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "SubCellular modelScript distribution.",
+              "name": "Distribution",
+              "node": "https://neuroshapes.org/dash/subcellularmodelscript/shapes/DistributionShape",
+              "path": "schema:distribution",
+              "minCount": 1            
+            },
+            {
+              "description": "Exposes Parameters inside the mod file. Any RANGE, STATE and GLOBAL parameters which are in the mod file that can be accesed from hoc e.g. gkbar, ik, gk",
+              "name": "Exposes parameter",
+              "path": "bmo:exposesParameter"
+            },
+            {
+              "description": "NEURON Block Range, GLOBAL and others. Structure can be changed depending on the file content",
+              "name": "Exposes parameter",
+              "path": "bmo:exposesParameter"
+            },
+            {
+              "description": "Temperature where teh mod operates in Celsius",
+              "name": "Temperature",
+              "path": "nsg:temperature"
+            },
+            {
+              "description": "If the mod is temperature dependent",
+              "name": "Is temperature dependent",
+              "path": "bmo:isTemperatureDependent",
+              "datatype": "xsd:boolean",
+              "minCount": 1
+            },
+            {
+              "description": "If the mod file has liquid junction potential correction",
+              "name": "Is Liquid junction potential corrected",
+              "path": "bmo:isLjpCorrected",
+              "datatype": "xsd:boolean",
+              "minCount": 1
+            },
+            {
+              "description": "Object of Study",
+              "name": "Objet of Study",
+              "path": "nsg:objectOfStudy",
+              "minCount": 1
+            },
+            {
+              "description": "Subject of Study",
+              "name": "Subject",
+              "path": "nsg:subject",
+              "minCount": 1
+            }
+          ]
+        }
+      ],
+      "label": "This shape is for all mechanisms shapes"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/subcellularmodelscript/shapes/DistributionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/distribution/shapes/DistributionShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Subcellular model script media type(s)",
+              "in": [
+                "application/neuron-mod",
+                "application/mod"
+
+              ],
+              "name": "Media type",
+              "path": "schema:encodingFormat"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -3,13 +3,12 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/brainregionselectorconfig",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/entity"
+    "https://bbp.epfl.ch/shapes/commons/modelsubconfig"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/brainregionselectorconfig/shapes/BrainRegionSelectorConfigShape",
-      "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/modelsubconfig/shapes/ModelSubConfigShape",
       "targetClass": "bmo:BrainRegionSelectorConfig"
     }
   ]

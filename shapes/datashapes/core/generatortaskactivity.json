@@ -3,13 +3,110 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/generatortaskactivity",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/activity"
+    "https://bbp.epfl.ch/shapes/commons/workflowactivity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/generatortaskactivity/shapes/GeneratorTaskActivityShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/activity/shapes/ActivityShape",
+      "and": [
+        {
+          "node": "https://bbp.epfl.ch/shapes/commons/workflowactivity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "name": "User revision",
+              "path": "bmo:used_rev",
+              "minCount": 1,
+              "datatype": "xsd:integer"
+            },
+            {
+              "name": "User configuration",
+              "path": "bmo:used_config",
+              "minCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:MEModelConfig"
+                },
+              "qualifiedValueShapesDisjoint": true,
+              "qualifiedMaxCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:MorphologyAssignmentConfig"
+                },
+              "qualifiedValueShapesDisjoint": true,
+              "qualifiedMaxCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:MicroConnectomeConfig"
+                },
+              "qualifiedValueShapesDisjoint": true,
+              "qualifiedMaxCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:MacroConnectomeConfig"
+                },
+              "qualifiedValueShapesDisjoint": true,
+              "qualifiedMaxCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:SynapseConfig"
+                },
+              "qualifiedValueShapesDisjoint": true,
+              "qualifiedMaxCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:CellCompositionConfig"
+                },
+              "qualifiedValueShapesDisjoint": true,
+              "qualifiedMaxCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:CellPositionConfig"
+                },
+              "qualifiedValueShapesDisjoint": true,
+              "qualifiedMaxCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:BrainRegionSelectorConfig"
+                },
+              "qualifiedValueShapesDisjoint": true,
+              "qualifiedMaxCount": 1
+            },
+            {
+              "name": "Status",
+              "path": "nsg:status",
+              "datatype": "xsd:string",
+              "minCount": 1
+            }
+          ]
+        }
+      ],
       "targetClass": "bmo:GeneratorTaskActivity"
     }
   ]

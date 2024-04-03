@@ -1,0 +1,132 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": [
+        "Entity",
+        "EModelConfiguration"
+    ],
+    "annotation": [
+        {
+            "@type": [
+                "ETypeAnnotation",
+                "Annotation"
+            ],
+            "hasBody": {
+                "@type": [
+                    "EType",
+                    "AnnotationBody"
+                ],
+                "label": "bAC_IN"
+            },
+            "name": "E-type annotation"
+        }
+    ],
+    "atlasRelease": {
+        "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+        "@type": [
+            "BrainAtlasRelease",
+            "AtlasRelease"
+        ],
+        "_rev": 9
+    },
+    "brainLocation": {
+        "@type": "BrainLocation",
+        "brainRegion": {
+            "@id": "http://api.brain-map.org/api/v2/data/Structure/549",
+            "label": "Thalamus"
+        }
+    },
+    "contribution": {
+        "@type": "Contribution",
+        "agent": {
+            "@id": "https://bbp.epfl.ch/nexus/v1/realms/bbp/users/ikilic",
+            "@type": [
+                "Person",
+                "Agent"
+            ],
+            "email": "ilkan.kilic@epfl.ch",
+            "name": "Ilkan Fabrice Kili\u00e7",
+            "preferred_username": "ikilic",
+            "sub": "f:0fdadef7-b2b9-492b-af46-c65492d459c2:ikilic"
+        }
+    },
+    "distribution": {
+        "@type": "DataDownload",
+        "atLocation": {
+            "@type": "Location",
+            "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/7/b/2/d/4/4/b/3/EMC__emodel=bAC_IN__etype=bAC_IN__species=mouse__brain_region=TH__iteration=1b62c97.json",
+            "store": {
+                "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+                "@type": "RemoteDiskStorage",
+                "_rev": 1
+            }
+        },
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 7983
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F2d922ec5-c4a5-4150-a43e-0063b472cc5e",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "72c725b7d8d5c37f47915071e4ea60f3399aa462361b292856a2630acc687e91"
+        },
+        "encodingFormat": "application/json",
+        "name": "EMC__emodel=bAC_IN__etype=bAC_IN__species=mouse__brain_region=TH__iteration=1b62c97.json"
+    },
+    "eModel": "bAC_IN",
+    "eType": "bAC_IN",
+    "iteration": "1b62c97",
+    "name": "EMC__1b62c97__bAC_IN",
+    "objectOfStudy": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/taxonomies/objectsofstudy/singlecells",
+        "label": "Single Cell"
+    },
+    "subject": {
+        "@type": "Subject",
+        "species": {
+            "@id": "http://purl.obolibrary.org/obo/NCBITaxon_10090",
+            "label": "Mus musculus"
+        }
+    },
+    "uses": [
+        {
+            "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/be2e4057-a996-4fca-9498-c5a1baf24974",
+            "@type": "NeuronMorphology"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/neurosciencegraph/data/01b43d13-d3f6-48b9-8dac-e9f66f8ccbc7",
+            "@type": "SubCellularModelScript"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ebd97d10-4df2-4167-b253-79355c1e4572",
+            "@type": "SubCellularModelScript"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/neurosciencegraph/data/16fccb56-44c3-4a29-aafd-47cad97ed44e",
+            "@type": "SubCellularModelScript"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/neurosciencegraph/data/eab4ce21-bffd-4db1-b412-7aad701d9c8e",
+            "@type": "SubCellularModelScript"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/neurosciencegraph/data/93028d65-b11d-42ab-a755-fa148ce7eadb",
+            "@type": "SubCellularModelScript"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/neurosciencegraph/data/bb1114ac-8f11-4903-b304-c53ac461b9d7",
+            "@type": "SubCellularModelScript"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/neurosciencegraph/data/52e43da8-0744-4846-846a-dbe76c400b6b",
+            "@type": "SubCellularModelScript"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/neurosciencegraph/data/098e6a7a-a203-42ec-a2e7-1a59c086ff38",
+            "@type": "SubCellularModelScript"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/neurosciencegraph/data/5db8b922-e0a1-4ab8-9674-4998a5bebb3b",
+            "@type": "SubCellularModelScript"
+        }
+    ]
+}

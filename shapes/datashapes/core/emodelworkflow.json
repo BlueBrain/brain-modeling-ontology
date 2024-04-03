@@ -1,15 +1,104 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
   "@id": "https://bbp.epfl.ch/shapes/dash/emodelworkflow",
-  "@type": "nxv:Schema",
+  "@type": "Schema",
   "imports": [
-    "https://bbp.epfl.ch/shapes/commons/baseworkflow"
+    "https://neuroshapes.org/commons/emodelentity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/emodelworkflow/shapes/EModelWorkflowShape",
       "@type": "NodeShape",
-      "node": "https://bbp.epfl.ch/shapes/commons/baseworkflow/shapes/BaseWorkflowShape",
+      "and": [
+        {
+          "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape"
+        },
+        {
+          "property": [
+          {
+            "path": "bmo:uses",
+            "nodeKind": "sh:BlankNodeOrIRI"
+          },
+          {
+            "path": "bmo:generates",
+            "nodeKind": "sh:BlankNodeOrIRI",
+            "minCount": 1
+          },
+          {
+            "path": "bmo:generates",
+            "qualifiedValueShape":
+              {
+                "class": "nsg:EModel"
+              },
+            "qualifiedMinCount": 1,
+            "qualifiedValueShapesDisjoint": true
+          },
+          {
+              "path": "bmo:generates",
+              "qualifiedValueShape":
+                {
+                  "class": "nsg:EModelScript"
+                },
+            "qualifiedMinCount": 1,
+            "qualifiedValueShapesDisjoint": true
+          },
+          {
+            "path": "bmo:generates",
+            "qualifiedValueShape":
+              {
+                "class": "bmo:FitnessCalculatorConfiguration"
+              },
+            "qualifiedMaxCount": 1,
+            "qualifiedValueShapesDisjoint": true
+          },
+          {
+            "name": "Has part",
+            "path": "schema:hasPart",
+            "nodeKind": "sh:BlankNodeOrIRI",
+            "minCount": 1
+          },
+          {
+            "path": "schema:hasPart",
+            "qualifiedValueShape":
+              {
+                "class": "bmo:EModelConfiguration"
+              },
+            "qualifiedMinCount": 1,
+            "qualifiedValueShapesDisjoint": true
+          },
+          {
+            "path": "schema:hasPart",
+            "qualifiedValueShape":
+              {
+                "class": "bmo:ExtractionTargetsConfiguration"
+              },
+            "qualifiedMinCount": 1,
+            "qualifiedValueShapesDisjoint": true
+          },
+          {
+            "path": "schema:hasPart",
+            "qualifiedValueShape":
+              {
+                "class": "bmo:EModelPipelineSettings"
+              },
+            "qualifiedMinCount": 1,
+            "qualifiedValueShapesDisjoint": true
+          },
+          {
+            "description": "State of the workflow.",
+            "name": "State",
+            "datatype": "xsd:string",
+            "path": "bmo:state"
+          },
+          {
+            "description": "Iteration in the workflow.",
+            "name": "Iteration",
+            "datatype": "xsd:string",
+            "path": "bmo:iteration"
+          }
+        ]
+      }
+      ],
       "targetClass": "bmo:EModelWorkflow"
     }
   ]

@@ -67,7 +67,7 @@
               "description": "The media value should start with one of the following application|audio|font|image|message|model|multipart|text|video followed by / and then any Alphanumeric characters.",
               "maxCount": 1,
               "path": "schema:encodingFormat",
-              "pattern": "^(application|audio|font|image|message|model|multipart|text|video)/[A-Za-z0-9]+"
+              "pattern": "^(application|audio|font|image|message|model|multipart|text|video)/[A-Za-z0-9_.-]+"
             }
           ]
         }

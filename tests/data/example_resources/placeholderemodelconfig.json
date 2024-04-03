@@ -1,0 +1,32 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/2ec96e9f-7254-44b5-bbcb-fdea3e18f110",
+    "@type": [
+        "PlaceholderEModelConfig",
+        "Entity"
+    ],
+    "distribution": {
+        "@type": "DataDownload",
+        "atLocation": {
+            "@type": "Location",
+            "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/f/6/9/e/9/b/4/4/emodels.json",
+            "store": {
+                "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+                "@type": "RemoteDiskStorage",
+                "_rev": 1
+            }
+        },
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 29067892
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2Fa2223a53-da53-454f-a42a-52d2f26c99a7",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "82fa2bdd10c1a8a007a343a37de28ff36708d85045e9c3637a4c7cf39ab72527"
+        },
+        "encodingFormat": "application/json",
+        "name": "emodels.json"
+    },
+    "name": "Default EModel Placeholders Release 1.0"
+}

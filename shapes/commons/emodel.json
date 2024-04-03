@@ -1,0 +1,82 @@
+{
+    "@context": [
+      "https://incf.github.io/neuroshapes/contexts/schema.json",
+      {
+        "this": "https://neuroshapes.org/commons/emodel/shapes/"
+      }
+    ],
+    "@id": "https://neuroshapes.org/commons/emodel",
+    "@type": "Schema",
+    "imports": [
+      "nsg:commons/emodelentity"
+    ],
+    "shapes": [
+      {
+        "@id": "https://neuroshapes.org/commons/emodel/shapes/EModelShape",
+        "@type": "NodeShape",
+        "and": [
+          {
+            "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape"
+          },
+          {
+            "property": [
+              {
+                "description": "A quantitative measure of the quality of the EModel.",
+                "name": "EModel quality score",
+                "datatype": "xsd:double",
+                "path": "nsg:score"
+              },
+              {
+                "path": "nsg:eType",
+                "minCount": 1
+              },
+              {
+                "name": "EModel Generation",
+                "node": "this:EModelGenerationShape",
+                "path": "nsg:generation",
+                "minCount": 1
+              },
+              {
+                "name": "Iteration",
+                "path": "bmo:iteration",
+                "datatype": "xsd:string"
+              },
+              {
+                "name": "Seed used for building",
+                "path": "bmo:seed",
+                "datatype": "xsd:integer"
+              }
+            ]
+          }
+        ],
+        "comment": "An EModel requires all teh attributes in teh MINDS shape plus the detail of what is being modeled (values of modelOf)",
+        "label": "EModel shape"
+      },
+      {
+        "@id": "https://neuroshapes.org/commons/emodel/shapes/EModelGenerationShape",
+        "@type": "sh:NodeShape",
+        "property": [
+          {
+            "description": "Generation of the EModel.",
+            "minCount": 1,
+            "name": "Content",
+            "path": "prov:activity",
+            "node": "this:EModelActivityShape"
+          }
+        ]
+      },
+      {
+        "@id": "https://neuroshapes.org/commons/emodel/shapes/EModelActivityShape",
+        "@type": "sh:NodeShape",
+        "property": [
+          {
+            "class": "bmo:EModelWorkflow",
+            "description": "The script content.",
+            "minCount": 1,
+            "name": "EModelWorkflow",
+            "path": "nsg:followedWorkflow"
+          }
+        ]
+      }
+    ]
+  }

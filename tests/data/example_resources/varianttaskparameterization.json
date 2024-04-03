@@ -1,0 +1,35 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": [
+        "VariantTaskParameterization",
+        "Entity"
+    ],
+    "distribution": {
+        "@type": "DataDownload",
+        "atLocation": {
+            "@type": "Location",
+            "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/4/3/6/d/5/9/8/7/variant_task_parameterization.json",
+            "store": {
+                "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+                "@type": "RemoteDiskStorage",
+                "_rev": 1
+            }
+        },
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 799
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F9283bce1-88e3-4072-b343-5ddf3694e423",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "fdde17c811fa986fd6bb312c0755db588d83966cba44ec7729a942433ab567ef"
+        },
+        "encodingFormat": "application/json",
+        "name": "variant_task_parameterization.json"
+    },
+    "name": "VariantTaskParameterization",
+    "wasGeneratedBy": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/7a46e72f-2386-4f52-aa05-54ab441f958b",
+        "@type": "WorkflowExecution"
+    }
+}

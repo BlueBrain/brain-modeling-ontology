@@ -1,0 +1,24 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": [
+        "SynapseConfig",
+        "Entity"
+    ],
+    "configVersion": 1,
+    "distribution": {
+        "@type": "DataDownload",
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 766
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F7cf60941-d87a-4bd0-8930-ff5623d65bc7?rev=3",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "b62b245a2c22dc92b4e98c33d17229d3aa87beed8a92d2c02feb715fca4b5e61"
+        },
+        "encodingFormat": "application/json",
+        "name": "synaptic_assignment.json"
+    },
+    "generatorName": "connectome_filtering",
+    "name": "SynapseConfig"
+}

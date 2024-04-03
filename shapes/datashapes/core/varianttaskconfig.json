@@ -3,13 +3,13 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/varianttaskconfig",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/entity"
+    "https://bbp.epfl.ch/shapes/commons/modelsubconfig"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/varianttaskconfig/shapes/VariantTaskConfigShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/modelsubconfig/shapes/ModelSubConfigShape",
       "targetClass": "bmo:VariantTaskConfig"
     }
   ]

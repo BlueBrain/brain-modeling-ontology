@@ -1,8 +1,8 @@
 import glob
 
+from kgforge.core.resource import Resource
 import pytest
 import rdflib
-from kgforge.core import Resource
 from rdflib import RDF, OWL, RDFS
 from rdflib.paths import ZeroOrMore
 import bmo.ontologies as bmo
@@ -14,8 +14,12 @@ from bmo.utils import (
     NXV,
     _get_ontology_annotation_lang_context,
 )
-from scripts.register_ontologies import _merge_ontology, _initialize_forge_objects
 from bmo.loading import load_ontologies, load_schemas
+from scripts.register_ontologies import (
+    _initialize_forge_objects,
+    _merge_ontology,
+    combine_jsonld_context
+)
 
 
 def pytest_addoption(parser):
@@ -119,6 +123,11 @@ def data_jsonld_context(forge, all_ontology_graphs):
         _get_ontology_annotation_lang_context()
     )
     return new_jsonld_context, errors
+
+
+@pytest.fixture(scope="session")
+def forge_endpoint(forge):
+    return forge._store.endpoint
 
 
 @pytest.fixture(scope="session")
@@ -328,3 +337,11 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
             f"Failed to load all schemas in {schema_dir}. "
             f"Not loaded schemas are {missing_schemas}. {e}"
         )
+
+
+@pytest.fixture(scope="session")
+def updated_local_jsonld_context(all_ontology_graphs, all_schema_graphs):
+    _, new_jsonld_context, _ = combine_jsonld_context(all_ontology_graphs[0],
+                                                      all_schema_graphs[0],
+                                                      True)
+    return new_jsonld_context

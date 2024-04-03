@@ -3,13 +3,46 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/emodelconfiguration",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/entity"
+    "https://neuroshapes.org/commons/emodelentity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/emodelconfiguration/shapes/EModelConfigurationShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+      "and": [
+        {
+          "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape"
+        },
+        {
+          "property":
+          [
+            {
+              "description": "What the configuration consumed",
+              "name": "Uses",
+              "path": "bmo:uses",
+              "nodeKind": "sh:BlankNodeOrIRI",
+              "minCount": 2
+            },
+            {
+              "path": "bmo:uses",
+              "qualifiedValueShape":
+                {
+                  "class": "nsg:NeuronMorphology"
+                },
+              "qualifiedMinCount": 1,
+              "qualifiedMaxCount": 1
+            },
+            {
+              "path": "bmo:uses",
+              "qualifiedValueShape":
+                {
+                  "class": "nsg:SubCellularModelScript"
+                },
+              "qualifiedMinCount": 1
+            }
+          ]
+        }
+      ],
       "targetClass": "bmo:EModelConfiguration"
     }
   ]

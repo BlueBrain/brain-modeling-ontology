@@ -1,0 +1,25 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": [
+        "CellPositionConfig",
+        "Entity"
+    ],
+    "configVersion": 0,
+    "description": "NA",
+    "distribution": {
+        "@type": "DataDownload",
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 282
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F7eca5183-7774-45ee-a649-c238c48158c3?rev=1",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "b41ac797e21613b9c1771ba30dac781097892de9edee86f27b0e29ff1fee648a"
+        },
+        "encodingFormat": "application/json",
+        "name": "cell-position-config.json"
+    },
+    "generatorName": "cell_position",
+    "name": "Cell position config"
+}

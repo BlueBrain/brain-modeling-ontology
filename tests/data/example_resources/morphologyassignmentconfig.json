@@ -1,0 +1,21 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": "MorphologyAssignmentConfig",
+    "configVersion": 1,
+    "distribution": {
+        "@type": "DataDownload",
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 605
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2Fae82d3ca-21e1-49ea-88c7-79ae191f2d7c?rev=1",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "45ff978105bcaf479f5c86a02fd1c7f26e4c833ad07a221f3b27435c76c56797"
+        },
+        "encodingFormat": "application/json",
+        "name": "morphology-assignment-config.json"
+    },
+    "generatorName": "mmodel",
+    "name": "MorphologyAssignmentConfig"
+}

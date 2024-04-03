@@ -21,7 +21,6 @@
         {
           "property": [
             {
-              "class": "prov:Entity",
               "description": "What the workflow is about",
               "name": "About",
               "path": "schema:about"
@@ -29,7 +28,7 @@
             {
               "class": "prov:Entity",
               "description": "What the workflow will uses",
-              "name": "Generates",
+              "name": "Uses",
               "path": "bmo:uses"
             },
             {

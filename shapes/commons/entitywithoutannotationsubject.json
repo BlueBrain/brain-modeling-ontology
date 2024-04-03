@@ -185,7 +185,6 @@
           "nodeKind": "sh:BlankNodeOrIRI"
         },
         {
-          "class": "nsg:ObjectOfStudy",
           "description": "Object of Study",
           "editorialNote": "The object of study ",
           "name": "Object of Study",
