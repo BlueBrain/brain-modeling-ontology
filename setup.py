@@ -26,11 +26,10 @@ setup(
         "setuptools_scm",
     ],
     install_requires=[
-        "rdflib==6.3.2",
+        "rdflib==7.0.0",
         "pyld==2.0.3",
         "numpy==1.24.4",
-        "nexusforge@git+https://github.com/BlueBrain/nexus-forge",
-        "bluegraph[neo4j]@git+https://github.com/BlueBrain/BlueGraph"
+        "nexusforge@git+https://github.com/BlueBrain/nexus-forge"
     ],
     extras_require={
         "dev": [
