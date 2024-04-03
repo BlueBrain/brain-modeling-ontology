@@ -8,8 +8,7 @@
   "@id": "https://neuroshapes.org/commons/modelinstance",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/entity",
-    "nsg:commons/typedlabeledontologyterm"
+    "nsg:commons/minds"
   ],
   "shapes": [
     {
@@ -17,7 +16,7 @@
       "@type": "NodeShape",
       "and": [
         {
-          "node": "nsg:commons/entity/shapes/EntityShape"
+          "node": "nsg:commons/minds/shapes/MINDSShape"
         },
         {
           "property": [
@@ -26,18 +25,6 @@
               "editorialNote": "The value of this property should be constraint by a sh:class corresponding to what is being modeled.",
               "name": "Model of",
               "path": "nsg:modelOf"
-            },
-            {
-              "description": "Brain region",
-              "name": "Brain region",
-              "node": "nsg:commons/typedlabeledontologyterm/shapes/BrainRegionOntologyTermShape",
-              "path": "nsg:brainRegion"
-            },
-            {
-              "description": "Species",
-              "name": "Species",
-              "node": "nsg:commons/typedlabeledontologyterm/shapes/SpeciesOntologyTermShape",
-              "path": "nsg:species"
             }
           ]
         }

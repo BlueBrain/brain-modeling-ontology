@@ -1,14 +1,53 @@
-from rdflib import RDF, SH
+import os
+from rdflib import RDF
 from rdflib.paths import ZeroOrMore
 from rdflib.term import URIRef, BNode
 import pytest
-from bmo.utils import NXV
-from bmo.utils import SHACL
+import requests
+import yaml
+from kgforge.core.forge import KnowledgeGraphForge
+# from pyshacl import validate
+import json
+from bmo.utils import NXV, SHACL, SH
 from bmo.schema_to_type_mapping import (
     get_shapes_in_schemas,
     get_schema_to_target_classes_2,
     get_schema_to_target_classes_1
 )
+
+
+EXAMPLE_RESOURCES_DIR = './tests/data/example_resources'
+
+
+@pytest.fixture
+def resource_examples(examples_dir=EXAMPLE_RESOURCES_DIR):
+    resource_files = os.listdir(examples_dir)
+    resource_files = [f for f in resource_files if f.endswith(".json")]
+    resources = {}
+    for resource_file in resource_files:
+        fpath = os.path.join(examples_dir, resource_file)
+        with open(fpath, 'r') as sfr:
+            resources[resource_file] = json.load(sfr)
+    return resources
+
+
+@pytest.fixture
+def request_headers(token):
+    headers = {'Authorization': f"Bearer {token}",
+               "Content-Type": "application/json"}
+    return headers
+
+
+@pytest.fixture
+def registered_schemas_ids(forge_endpoint, request_headers):
+    url = f"{forge_endpoint}/schemas/neurosciencegraph/datamodels"
+    params = {'deprecated': False, 'size': 1000}
+    response = requests.get(url=url, headers=request_headers, params=params)
+    if response.ok:
+        return [r['@id'] for r in response.json()['_results']]
+    else:
+        raise ValueError(f'There is a problem fetching the schemas from Nexus:\n'
+                         f'{response.status_code} - {response.text}')
 
 
 @pytest.mark.skip(reason="To be refined")
@@ -196,3 +235,79 @@ def get_referenced_shapes(schema_uri, schema_graph, sparql_path):
         if not isinstance(defined_shape, BNode):
             defined_shapes.append(defined_shape)
     return defined_shapes
+
+
+def test_schemas_validate_examples(forge, updated_local_jsonld_context, all_schema_graphs,
+                                   resource_examples):
+    "Check that schemas validate againts sample resources"
+    # Get resources and classes mapping
+    schemas_graph, schema_dict, schema_to_file_dict = all_schema_graphs
+    schema_class = get_schema_to_target_classes_2(schemas_graph, forge)
+    class_schema = {v[0].split('/')[-1]: k for k, v in schema_class.items()}
+    class_lower = {k.lower(): k for k in class_schema.keys()}
+
+    # create tmp directory in the same place as the schemas
+    tmp_dir = './tmp_shapes/'
+    if not os.path.exists(tmp_dir):
+        os.mkdir(tmp_dir)
+    if not os.path.exists(f'{tmp_dir}/ontologies'):
+        os.mkdir(f'{tmp_dir}/ontologies')
+    # dump the new json context
+    context_document = updated_local_jsonld_context.document
+    with open('jsonldcontext/new_jsonld_context.json', 'w') as f:
+        json.dump(context_document, f, indent=2)
+
+    os.system(f'cp ./ontologies/bbp/*.ttl {tmp_dir}/ontologies')
+    os.system(f'cp -r ./shapes {tmp_dir}')
+
+    context_iri = './jsonldcontext/new_jsonld_context.json'
+    # use an existing configuration file and modify it
+    with open('./config/forge-config.yml', 'r') as fc:
+        config = yaml.safe_load(fc)
+    config['Model']['origin'] = 'directory'
+    config['Model']['source'] = './shapes'
+    config['Model']['context']['iri'] = './jsonldcontext/new_jsonld_context.json'
+    config['Model']['context']['bucket'] = './jsonldcontext'
+
+    config_path = './config/tmp-forge-config.yml'
+    with open(config_path, 'w') as fo:
+        yaml.safe_dump(config, fo)
+
+    # Generate a forge instance from a directory with all schemas, ontologies and the new context
+    forge_tmp = KnowledgeGraphForge(config_path,
+                                    endpoint=forge._store.endpoint,
+                                    bucket=forge._store.bucket,
+                                    token=forge._store.token)
+
+    for example_file, example in resource_examples.items():
+        type_ = class_lower[example_file.split('.json')[0]]
+        if type_ not in class_schema:
+            raise ValueError(f"Not found {type_} in class_schema, possible keys: {class_lower.keys()}")
+        schema_id = class_schema[type_]
+        if schema_id not in schema_to_file_dict:
+            raise ValueError(f"Not found source file for schema with id {schema_id}, possible keys are: {schema_to_file_dict.keys()}")
+        schema_file = schema_to_file_dict[schema_id]
+        class_id = schema_dict[schema_file]
+        if not class_id:
+            raise ValueError(f"Class id for {type_} is {class_id}, with example_file: {example_file}, {schema_dict.keys()}")
+
+        schema_jsonld = schema_dict[schema_file]['jsonld']
+        assert schema_id == schema_jsonld['@id']
+
+        if not schema_file:
+            raise ValueError(f"Schema for the type {type_} was not found with class id {class_id}.")
+
+        if schema_file not in schema_dict:
+            raise ValueError(f"Schema file {schema_file} was not found in the schema dictionary: {schema_dict.keys()}")
+
+        # Run validation
+        try:
+            # change the context iri to be the one of the directory
+            example['@context'] = context_iri
+            example_resource = forge_tmp._store.service.to_resource(example)
+            forge_tmp.validate(example_resource, type_=type_)
+            if not example_resource._last_action.succeeded:
+                raise ValueError(f"Local validation failed: {example_resource._last_action.message}, {type_}")
+        except Exception as e:
+            raise ValueError(f"The example from file {example_file} \n {example}\n"
+                             f"failed to validate schema {schema_id}, with error {e}")

@@ -8,8 +8,9 @@
   "@id": "https://neuroshapes.org/dash/emodelscript",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/entity",
-    "nsg:commons/distribution"
+    "nsg:commons/emodelentity",
+    "nsg:commons/distribution",
+    "nsg:commons/emodel"
   ],
   "shapes": [
     {
@@ -17,44 +18,52 @@
       "@type": "NodeShape",
       "and": [
         {
-          "node": "nsg:commons/entity/shapes/EntityShape"
+          "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape"
         },
         {
           "property": [
+            {
+              "description": "seed",
+              "name": "seed",
+              "datatype": "xsd:integer",
+              "path": "bmo:seed"
+            },
             {
               "description": "Distribution.",
               "name": "Distribution",
-              "node": "this:EModelScriptDistributionShape",
+              "node": "https://neuroshapes.org/dash/emodelscript/shapes/DistributionShape",
               "path": "schema:distribution"
+            },
+            {
+              "description": "EModelScript Generation",
+              "name": "Generation",
+              "node": "https://neuroshapes.org/commons/emodel/shapes/EModelGenerationShape",
+              "path": "nsg:generation"
             }
           ]
         }
       ],
-      "label": "This shape is for...",
+      "label": "This shape is for defining the EModelScript of an EModel",
       "targetClass": "nsg:EModelScript"
     },
     {
-      "@id": "https://neuroshapes.org/dash/emodelscript/shapes/EModelScriptDistributionShape",
+      "@id": "https://neuroshapes.org/dash/emodelscript/shapes/DistributionShape",
       "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:commons/distribution/shapes/DistributionShape"
-        },
-        {
-          "property": [
-            {
-              "description": "Emodel script media types",
-              "in": [
-                "application/neuron-hoc",
-                "application/neuroml"
-              ],
-              "name": "Media type",
-              "path": "schema:encodingFormat"
-            }
-          ]
-        }
-      ],
-      "label": "This shape is for..."
+      "and": {
+        "node": "https://neuroshapes.org/commons/distribution/shapes/DistributionShape"
+      },
+        "property": [
+          {
+            "in": [
+              "application/neuron-hoc",
+              "application/hoc",
+              "application/json",
+              "application/neuroml"
+            ],
+            "name": "Media type",
+            "path": "schema:encodingFormat" 
+          }
+        ]
     }
   ]
 }

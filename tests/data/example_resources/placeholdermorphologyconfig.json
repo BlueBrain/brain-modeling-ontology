@@ -1,0 +1,31 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": [
+        "PlaceholderMorphologyConfig",
+        "Entity"
+    ],
+    "distribution": {
+        "@type": "DataDownload",
+        "atLocation": {
+            "@type": "Location",
+            "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/3/1/0/b/a/3/d/a/placeholders.json",
+            "store": {
+                "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+                "@type": "RemoteDiskStorage",
+                "_rev": 1
+            }
+        },
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 6630087
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F44ed2212-2ed6-411a-a1bf-29a3985c48f8",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "285cdb08b921d4dbf12912be340ebc2827840e28f9515d48afd19c32145ee5c7"
+        },
+        "encodingFormat": "application/json",
+        "name": "placeholders.json"
+    },
+    "name": "Default Placeholders Configuration Release 3.0"
+}

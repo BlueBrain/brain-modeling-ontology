@@ -9,7 +9,19 @@
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/placeholdermorphologyconfig/shapes/PlaceholderMorphologyConfigShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+      "and": [
+        {
+          "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "path": "schema:distribution",
+              "minCount": 1
+            }
+          ]
+        }
+      ],
       "targetClass": "bmo:PlaceholderMorphologyConfig"
     }
   ]

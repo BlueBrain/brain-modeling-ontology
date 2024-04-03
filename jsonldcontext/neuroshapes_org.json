@@ -287,6 +287,9 @@
     "BrainRegion": {
       "@id": "nsg:BrainRegion"
     },
+    "BrainRegionSelectorConfig": {
+      "@id": "bmo:BrainRegionSelectorConfig"
+    },
     "BrainRegionMesh": {
       "@id": "https://neuroshapes.org/BrainRegionMesh"
     },
@@ -360,6 +363,9 @@
       "@id": "nsg:CampaignAnalysis",
       "@type": "@id"
     },
+    "CanonicalMorphologyModel": {
+      "@id": "bmo:CanonicalMorphologyModel"
+    },
     "Capillary": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Capillary"
     },
@@ -371,6 +377,9 @@
     },
     "CellCapacitance": {
       "@id": "https://bbp.epfl.ch/ontologies/core/efeatures/CellCapacitance"
+    },
+    "CellCompositionConfig": {
+      "@id": "bmo:CellCompositionConfig"
     },
     "CellCounting": {
       "@id": "nsg:CellCounting"
@@ -392,6 +401,9 @@
     },
     "CellPositionCircuitProperty": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/CellPositionCircuitProperty"
+    },
+    "CellPositionConfig": {
+      "@id": "bmo:CellPositionConfig"
     },
     "CellPositions": {
       "@id": "nsg:CellPositions"
@@ -534,6 +546,9 @@
     "DetailedCircuit": {
       "@id": "nsg:DetailedCircuit"
     },
+    "DistributedMechanism": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/DistributedMechanism"
+    },
     "Dopamine": {
       "@id": "https://neuroshapes.org/Dopamine"
     },
@@ -561,8 +576,8 @@
     "EModelChannelDistribution": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelChannelDistrubution"
     },
-    "EModelConfig": {
-      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelConfig"
+    "EModelConfiguration": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelConfiguration"
     },
     "EModelHyperparameter": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelHyperparameter"
@@ -705,8 +720,8 @@
     "ExtracellularPartMetabolismBuildingWorkflow": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPartMetabolismBuildingWorkflow"
     },
-    "ExtractionTargetsConfig": {
-      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/ExtractionTargetsConfig"
+    "ExtractionTargetsConfiguration": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/ExtractionTargetsConfiguration"
     },
     "FISlope": {
       "@id": "https://bbp.epfl.ch/ontologies/core/efeatures/FISlope"
@@ -777,6 +792,9 @@
     },
     "GeneratorVariant": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/GeneratorVariant"
+    },
+    "GeneratorTaskActivity": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/GeneratorTaskActivity"
     },
     "Glia": {
       "@id": "https://neuroshapes.org/Glia"
@@ -1037,6 +1055,9 @@
     "MEModelClassicNeuronModelGenerator": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/MEModelClassicNeuronModelGenerator"
     },
+    "MEModelConfig": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/MEModelConfig"
+    },
     "MEModelCylinderNeuronModelGenerator": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/MEModelCylinderNeuronModelGenerator"
     },
@@ -1063,6 +1084,9 @@
     },
     "MTypeCircuitProperty": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/MTypeCircuitProperty"
+    },
+    "MacroConnectomeConfig": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/MacroConnectomeConfig"
     },
     "Mapping": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Mapping"
@@ -1117,6 +1141,9 @@
     },
     "Microcircuit": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Microcircuit"
+    },
+    "MicroConnectomeConfig": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/MicroConnectomeConfig"
     },
     "Microdomain": {
       "@id": "nsg:Microdomain"
@@ -1301,6 +1328,9 @@
     "Morphology": {
       "@id": "nsg:Morphology"
     },
+    "MorphologyAssignmentConfig": {
+      "@id": "bmo:MorphologyAssignmentConfig"
+    },
     "MorphologyDiversification": {
       "@id": "nsg:MorphologyDiversification"
     },
@@ -1321,6 +1351,9 @@
     },
     "Motivation": {
       "@id": "nsg:Motivation"
+    },
+    "MsgGeneticModel": {
+      "@id": "bmo:MsgGeneticModel"
     },
     "NCBITaxon": {
       "@id":"http://purl.obolibrary.org/obo/NCBITaxon_",
@@ -1553,6 +1586,12 @@
     },
     "Other": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Other"
+    },
+    "PlaceholderEModelConfig": {
+      "@id": "bmo:PlaceholderEModelConfig"
+    },
+    "PlaceholderMorphologyConfig": {
+      "@id": "bmo:PlaceholderMorphologyConfig"
     },
     "PlacementHintsDataLayer": {
       "@id": "nsg:PlacementHintsDataLayer"
@@ -2160,6 +2199,9 @@
     "Synapse": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Synapse"
     },
+    "SynapseConfig": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapseConfig"
+    },
     "SynapseDensity": {
       "@id": "bmo:SynapseDensity"
     },
@@ -2360,6 +2402,15 @@
     },
     "VariableReport": {
       "@id": "nsg:VariableReport"
+    },
+    "VariantTaskActivity": {
+      "@id": "bmo:VariantTaskActivity"
+    },
+    "VariantTaskConfig": {
+      "@id": "bmo:VariantTaskConfig"
+    },
+    "VariantTaskParameterization": {
+      "@id": "bmo:VariantTaskParameterization"
     },
     "VasculatureGraphModel": {
       "@id": "nsg:VasculatureGraphModel"
@@ -2955,6 +3006,9 @@
     "generated": {
       "@id": "prov:generated"
     },
+    "generatorName": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/generatorName"
+    },
     "hasHierarchyView": {
       "@id": "bmo:hasHierarchyView",
       "@type":"@id"
@@ -3073,6 +3127,12 @@
     "isLayerPartOf": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/isLayerPartOf",
       "@type": "@id"
+    },
+    "isLjpCorrected": {
+      "@id": "bmo:isLjpCorrected"
+    },
+    "isTemperatureDependent": {
+      "@id": "bmo:isTemperatureDependent"
     },
     "hasLayerLeafRegionPart": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/hasLayerLeafRegionPart",
@@ -3311,6 +3371,9 @@
     "liquidJunctionPotential": {
       "@id": "nsg:liquidJunctionPotential"
     },
+    "ljp_corrected": {
+      "@id": "bmo:ljp_corrected"
+    },
     "location": {
       "@id": "nsg:location"
     },
@@ -3375,6 +3438,12 @@
     "minValue": {
       "@id": "schema:minValue"
     },
+    "mod": {
+      "@id": "bmo:mod"
+    },
+    "modelId": {
+      "@id": "bmo:modelId"
+    },
     "modelOf": {
       "@id": "nsg:modelOf"
     },
@@ -3423,6 +3492,9 @@
     },
     "neurom_id": {
       "@id": "https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id"
+    },
+    "nmodlParameter": {
+      "@id": "bmo:nmodlParameter"
     },
     "nodeCollection": {
       "@id": "nsg:nodeCollection"
@@ -3734,6 +3806,9 @@
       "@id": "rdfs:seeAlso",
       "@type": "@id"
     },
+    "seed": {
+      "@id": "bmo:seed"
+    },
     "series": {
       "@id": "nsg:series"
     },
@@ -3895,6 +3970,9 @@
       "@id": "https://bbp.epfl.ch/ontologies/core/molecular-systems/substrate",
       "@type": "@id"
     },
+    "suffix": {
+      "@id": "bmo:suffix"
+    },
     "sweep": {
       "@id": "nsg:sweep"
     },
@@ -4010,6 +4088,12 @@
     },
     "used": {
       "@id": "prov:used"
+    },
+    "used_config": {
+      "@id": "bmo:used_config"
+    },
+    "used_rev": {
+      "@id": "bmo:used_rev"
     },
     "uses": {
       "@id": "bmo:uses"

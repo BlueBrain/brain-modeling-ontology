@@ -18,7 +18,7 @@
         {
           "property": [
             {
-              "datatype": "xsd:int",
+              "datatype": "xsd:integer",
               "description": "Number of points involved in the modelisation of the soma",
               "maxCount": 1,
               "name": "Soma number of points",

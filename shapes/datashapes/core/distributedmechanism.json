@@ -1,0 +1,18 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json"
+  ],
+  "@id": "https://bbp.epfl.ch/shapes/dash/distributedmechanism",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/subcellularmodelscript"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/distributedmechanism/shapes/DistributedMechanismShape",
+      "@type": "NodeShape",
+      "node": "nsg:commons/subcellularmodelscript/shapes/SubCellularModelScriptShape",
+      "targetClass": "bmo:DistributedMechanism"
+    }
+  ]
+}

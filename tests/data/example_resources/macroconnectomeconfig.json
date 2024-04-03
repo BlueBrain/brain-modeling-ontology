@@ -1,0 +1,21 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": "MacroConnectomeConfig",
+    "configVersion": 0,
+    "distribution": {
+        "@type": "DataDownload",
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 463
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fneurosciencegraph%2Fdata%2Fc65236c6-386f-44d4-9c7f-4f71c1965aa8?rev=3",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "4d88182f0c2870ff0af735b227d8f5bca19a86846793743ed394e56e0732af9f"
+        },
+        "encodingFormat": "application/json",
+        "name": "macroconnectome-config.json"
+    },
+    "generatorName": "connectome",
+    "name": "MacroConnectomeConfig"
+}

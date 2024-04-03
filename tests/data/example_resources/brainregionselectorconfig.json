@@ -1,0 +1,24 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": "BrainRegionSelectorConfig",
+    "distribution": {
+        "@type": "DataDownload",
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 1266
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F92d8b60b-0b00-4b7e-b224-592c8ece2ae8",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "d1c3d25836c51058cf38db6c77ac2994c910da199e72b5d0aa9b641587a455db"
+        },
+        "encodingFormat": "application/json",
+        "name": "brain-region-selector-config.json"
+    },
+    "name": "Test BrainRegionSelectorConfig VISp [DO NOT USE]",
+    "generatorName": "brain region selector",
+    "wasGeneratedBy": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/2f7d04d2-94dd-4bd1-bcbc-c8271d24a36e",
+        "@type": "WorkflowExecution"
+    }
+}

@@ -3,13 +3,34 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/extractiontargetsconfiguration",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/entity"
+    "https://neuroshapes.org/commons/emodelentity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/extractiontargetsconfiguration/shapes/ExtractionTargetsConfigurationShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+      "and": [
+        {
+        "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:Trace",
+              "description": "What the configuration consumed",
+              "name": "Uses",
+              "path": "bmo:uses",
+              "minCont": 2
+            },
+            {
+              "description": "Iteration in the workflow.",
+              "name": "Iteration",
+              "datatype": "xsd:string",
+              "path": "bmo:iteration"
+            }
+          ]
+        }
+      ],
       "targetClass": "bmo:ExtractionTargetsConfiguration"
     }
   ]

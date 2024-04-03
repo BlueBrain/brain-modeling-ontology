@@ -3,13 +3,26 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/emodelpipelinesettings",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/entity"
+    "https://neuroshapes.org/commons/emodelentity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/emodelpipelinesettings/shapes/EModelPipelineSettingsShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+      "and":[
+        {
+          "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The iteration of the pipeline",
+              "name": "Iteration",
+              "path": "bmo:iteration"
+            }
+          ]
+        }
+      ],
       "targetClass": "bmo:EModelPipelineSettings"
     }
   ]

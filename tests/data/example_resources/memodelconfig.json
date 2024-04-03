@@ -1,0 +1,24 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": [
+        "Entity",
+        "MEModelConfig"
+    ],
+    "configVersion": 1,
+    "distribution": {
+        "@type": "DataDownload",
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 316
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F3cf3104d-0ccd-48aa-9662-2af9f2e382a6?rev=1",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "1068fa068c0b6a1b4172019b3472a67968493a56f149e59725b4b0a8fa877ba1"
+        },
+        "encodingFormat": "application/json",
+        "name": "me-model-config.json"
+    },
+    "generatorName": "memodel",
+    "name": "MEModelConfig"
+}

@@ -1,0 +1,20 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@type": "VariantTaskActivity",
+    "generated": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/c5de9b8a-1c4f-43d0-9b0d-2189dd864c69",
+        "@type": "DetailedCircuit"
+    },
+    "startedAtTime": "2023-12-15T08:45:05.916120",
+    "endedAtTime": "2023-12-15T18:45:00.906120",
+    "status": "Done",
+    "used_config": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/37cd0331-cc0a-45c1-b518-25cbf7ba5cb6",
+        "@type": "VariantTaskConfig"
+    },
+    "used_rev": 1,
+    "wasInfluencedBy": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/7a46e72f-2386-4f52-aa05-54ab441f958b",
+        "@type": "WorkflowExecution"
+    }
+}

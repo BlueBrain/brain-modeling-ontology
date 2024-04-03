@@ -3,13 +3,25 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/varianttaskparameterization",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/dataset"
+    "https://neuroshapes.org/commons/entity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/varianttaskparameterization/shapes/VariantTaskParameterizationShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/dataset/shapes/DatasetShape",
+      "and": [
+        {
+          "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "path": "schema:distribution",
+              "minCount": 1
+            }
+          ]
+        }
+      ],
       "targetClass": "bmo:VariantTaskParameterization"
     }
   ]

@@ -8,51 +8,41 @@
   "@id": "https://neuroshapes.org/dash/modelscript",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/entity"
+    "nsg:commons/entity",
+    "nsg:commons/distribution"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/modelscript/shapes/EModelScriptShape",
+      "@id": "https://neuroshapes.org/dash/modelscript/shapes/ModelScriptShape",
       "@type": "NodeShape",
       "and": [
         {
           "node": "nsg:commons/entity/shapes/EntityShape"
         },
         {
-          "property": [
-            {
+          "property": {
               "description": "Distribution.",
               "name": "Distribution",
-              "node": "this:EModelScriptDistributionShape",
-              "path": "schema:distribution"
-            }
-          ]
-        }
-      ],
-      "label": "This shape is for..."
-    },
-    {
-      "@id": "https://neuroshapes.org/dash/modelscript/shapes/EModelScriptDistributionShape",
-      "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:commons/distribution/shapes/DistributionShape"
-        },
-        {
-          "property": [
-            {
-              "description": "Emodel script media types",
-              "in": [
-                "application/neuron-hoc",
-                "application/neuroml"
+              "and": [
+                {
+                  "node": "https://neuroshapes.org/commons/distribution/shapes/DistributionShape"
+                },
+                {
+                  "in": [
+                    "application/neuron-hoc",
+                    "application/hoc",
+                    "application/json",
+                    "application/neuroml"
+                  ],
+                  "name": "Media type",
+                  "path": "schema:encodingFormat" 
+                }
               ],
-              "name": "Media type",
-              "path": "schema:encodingFormat"
-            }
-          ]
+              "path": "schema:distribution"
+          }
         }
       ],
-      "label": "This shape is for..."
+      "label": "This shape is the main model script shape"
     },
     {
       "@id": "https://neuroshapes.org/dash/modelscript/shapes/SubCellularModelScriptShape",
@@ -66,30 +56,21 @@
             {
               "description": "SubCellular modelScript distribution.",
               "name": "Distribution",
-              "node": "this:SubCellularModelScriptDistributionShape",
+              "node":{
+                "and": [
+                  {
+                    "node": "https://neuroshapes.org/commons/distribution/shapes/DistributionShape"
+                  },
+                  {
+                    "in": [
+                      "application/mod"
+                    ],
+                    "name": "Media type",
+                    "path": "schema:encodingFormat" 
+                  }
+                ]
+              },
               "path": "schema:distribution"
-            }
-          ]
-        }
-      ],
-      "label": "This shape is for..."
-    },
-    {
-      "@id": "https://neuroshapes.org/dash/modelscript/shapes/SubCellularModelScriptDistributionShape",
-      "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:commons/distribution/shapes/DistributionShape"
-        },
-        {
-          "property": [
-            {
-              "description": "Subcellular model script media type(s)",
-              "in": [
-                "application/neuron-mod"
-              ],
-              "name": "Media type",
-              "path": "schema:encodingFormat"
             }
           ]
         }

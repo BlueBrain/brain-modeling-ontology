@@ -40,12 +40,19 @@
               "name": "Cell Density composition volume",
               "class": "bmo:MorphologyModelDistribution",
               "path": "bmo:morphologyModelDistribution"
+            },
+            {
+              "path": "nsg:brainLocation",
+              "minCount": 1
+            },
+            {
+              "path": "nsg:subject",
+              "minCount": 1
             }
           ]
         }
       ],
       "label": "CanonicalMorphologyModel shape definition",
-      "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "bmo:CanonicalMorphologyModel"
     }
   ]

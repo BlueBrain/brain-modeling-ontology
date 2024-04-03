@@ -1,0 +1,101 @@
+{
+    "@context": "https://neuroshapes.org",
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/dabbc748-c3df-442a-b1b2-ce9e62768d96",
+    "@type": [
+        "Entity",
+        "Dataset",
+        "SubCellularModelScript",
+        "HodgkinHuxleyIonCurrentModel",
+        "DistributedMechanism"
+    ],
+    "description": "Stochastic inactivating channel using values reported in Mendonca et al. 2016. (Modified from https://senselab.med.yale.edu/modeldb/showmodel.cshtml?model=125385&file=/Sbpap_code/mod/skaprox.mod). The model keeps track on the number of channels in each state, and uses a binomial distribution to update these number. Jan 1999, Mickey London, Hebrew University, mikilon@lobster.ls.huji.ac.il. Peter N. Steinmetz, Caltech, peter@klab.caltech.edu. 14 Sep 99 PNS. Added deterministic flag. 19 May 2002 Kamran Diba.  Changed gamma and deterministic from GLOBAL to RANGE. 23 Nov 2011 Werner Van Geit @ BBP. Changed the file so that it can use the neuron random number generator. Tuned voltage dependence. 16 Mar 2016 James G King @ BBP. Incorporate modifications suggested by Michael Hines to improve stiching to deterministic mode, thread safety, and using Random123. 26 Sep 2016 Christian Roessert @ BBP. Adding inactivation, changing dynamics to values reported in Mendonca et al. 2016. : LJP: OK, whole-cell patch, corrected by 10 mV (Mendonca et al. 2016)",
+    "distribution": {
+        "@type": "DataDownload",
+        "atLocation": {
+            "@type": "Location",
+            "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/d/4/d/6/5/1/7/e/StochKv3.mod",
+            "store": {
+                "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+                "@type": "RemoteDiskStorage",
+                "_rev": 1
+            }
+        },
+        "contentSize": {
+            "unitCode": "bytes",
+            "value": 14452
+        },
+        "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fnexus%2Fv1%2Fresources%2Fbbp%2Fmmb-point-neuron-framework-model%2F_%2Fdec0fc55-744a-4306-8179-4b671c59a0fa",
+        "digest": {
+            "algorithm": "SHA-256",
+            "value": "c5c627f94e8e7282c843c53d1b3893940c2ed87de63a727e3ac4dde5cf812b96"
+        },
+        "encodingFormat": "application/mod",
+        "name": "StochKv3.mod"
+    },
+    "exposesParameters": [
+        {
+            "@type": "NmodlSuffix",
+            "name": "StochKv3",
+            "represents": "IonChannelMechanism"
+        },
+        {
+            "@type": "NmodlRangeVariable",
+            "lowerLimit": 0,
+            "name": "gkbar",
+            "represents": "ConductanceDensity",
+            "unit": "S/cm2"
+        }
+    ],
+    "identifier": "CTX_StochKv3",
+    "ion": {
+        "@id": "https://neuroshapes.org/K",
+        "label": "K"
+    },
+    "isLjpCorrected": true,
+    "isTemperatureDependent": false,
+    "ljp_corrected": true,
+    "mod": {
+        "gbar": "gkbar",
+        "suffix": "StochKv3"
+    },
+    "modelid": "CTX_StochKv3",
+    "model_class": "HodgkinHuxley",
+    "modelId": "ncx12",
+    "name": "StochKv3",
+    "nmodlParameter": {
+        "range": [
+            "N",
+            "eta",
+            "gk",
+            "gamma",
+            "deterministic",
+            "gkbar",
+            "ik",
+            "N0",
+            "N1",
+            "n0_n1",
+            "n1_n0"
+        ],
+        "read": "ek",
+        "suffix": "StochKv3",
+        "useion": "k",
+        "write": "ik"
+    },
+    "objectOfStudy": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/taxonomies/objectsofstudy/ionchannels",
+        "label": "Ion Channel"
+    },
+    "origin": "neocortex",
+    "subject": {
+        "@type": "Subject",
+        "species": {
+            "@id": "http://purl.obolibrary.org/obo/NCBITaxon_10116",
+            "label": "Rattus Norvegicus"
+        }
+    },
+    "suffix": "StochKv3",
+    "temperature": {
+        "unitCode": "C",
+        "value": 34
+    }
+}

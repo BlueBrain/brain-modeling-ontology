@@ -3,13 +3,58 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/varianttaskactivity",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/activity"
+    "https://bbp.epfl.ch/shapes/commons/workflowactivity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/varianttaskactivity/shapes/VariantTaskActivityShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/activity/shapes/ActivityShape",
+      "and": [
+        {
+          "node": "https://bbp.epfl.ch/shapes/commons/workflowactivity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "path": "bmo:used_config",
+              "minCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:VariantTaskConfig"
+                },
+              "qualifiedMinCount": 1
+            },
+            {
+              "name": "User revision",
+              "path": "bmo:used_rev",
+              "minCount": 1,
+              "datatype": "xsd:integer"
+            },
+            {
+              "name": "Status",
+              "path": "nsg:status",
+              "datatype": "xsd:string",
+              "minCount": 1
+            },
+            {
+              "name": "Was influenced by",
+              "path": "prov:wasInfluencedBy",
+              "minCount": 1
+            },
+            {
+              "path": "prov:wasInfluencedBy",
+              "qualifiedValueShape":
+                {
+                  "class": "nsg:WorkflowExecution"
+                },
+              "qualifiedMinCount": 1
+            }
+          ]
+        }
+      ],
       "targetClass": "bmo:VariantTaskActivity"
     }
   ]

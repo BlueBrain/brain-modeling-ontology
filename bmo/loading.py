@@ -4,6 +4,7 @@ import os
 from copy import deepcopy
 from typing import Dict, List, Tuple
 from rdflib import Namespace, Graph
+
 from kgforge.core import KnowledgeGraphForge, Resource
 
 

@@ -141,6 +141,7 @@ def execute_ontology_registration(
 
     # make list of framed classes
     class_resources_framed = list(class_resources_framed.values())
+    class_resources_mapped = list(class_resources_mapped.values())
 
     # Frame ontology given the provided context
     ontology_json = bmo.frame_ontology(
@@ -157,7 +158,7 @@ def execute_ontology_registration(
         ontology_path,
         ontology_graph,
         tag,
-        class_resources_mapped=list(class_resources_mapped.values()),
+        class_resources_mapped=class_resources_mapped,
         data_update=data_update,
     )
 
@@ -245,6 +246,32 @@ def _get_classes_in_ontology(all_class_resources_dict, uriref_iterator):
         for cls in uriref_iterator
         if str(cls) in all_class_resources_dict
     }
+
+
+def combine_jsonld_context(all_ontology_graphs, all_schema_graphs,
+                           exclude_deprecated_from_context):
+    with open(DATA_JSONLD_CONTEXT_PATH, "r") as f:
+        local_model_context_document = json.load(f)
+
+    local_model_context = Context(
+        document=local_model_context_document["@context"],
+        iri=local_model_context_document["@id"],
+    )
+
+    new_jsonld_context, ontology_errors = bmo.build_context_from_ontology(
+        all_ontology_graphs,
+        local_model_context,
+        exclude_deprecated=exclude_deprecated_from_context,
+    )
+
+    new_jsonld_schema_context, schema_errors = bmo.build_context_from_schema(
+        all_schema_graphs,
+        new_jsonld_context,
+        exclude_deprecated=exclude_deprecated_from_context,
+    )
+
+    errors = ontology_errors + schema_errors
+    return new_jsonld_context, new_jsonld_schema_context, errors
 
 
 def prepare_update_jsonld_context(
@@ -346,27 +373,9 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         "Collecting JSON-LD data context from all ontologies and from all schemas - Start"
     )
 
-    with open(DATA_JSONLD_CONTEXT_PATH, "r") as f:
-        forge_model_context_document = json.load(f)
-
-    forge_model_context = Context(
-        document=forge_model_context_document["@context"],
-        iri=forge_model_context_document["@id"],
+    new_jsonld_context, new_jsonld_schema_context, errors = combine_jsonld_context(
+        all_ontology_graphs, all_schema_graphs, exclude_deprecated_from_context
     )
-
-    new_jsonld_context, ontology_errors = bmo.build_context_from_ontology(
-        all_ontology_graphs,
-        forge_model_context,
-        exclude_deprecated=exclude_deprecated_from_context,
-    )
-
-    new_jsonld_schema_context, schema_errors = bmo.build_context_from_schema(
-        all_schema_graphs,
-        new_jsonld_context,
-        exclude_deprecated=exclude_deprecated_from_context,
-    )
-
-    errors = ontology_errors + schema_errors
 
     if len(errors) > 0:
         raise ValueError(

@@ -18,7 +18,6 @@ parser = define_arguments(argparse.ArgumentParser())
 received_args, leftovers = parser.parse_known_args()
 ontology_dir = received_args.ontology_dir
 
-    
 cwd = os.getcwd()
 ontofiles = glob.iglob(ontology_dir, recursive=True)
 p = re.compile(r'\\"')
