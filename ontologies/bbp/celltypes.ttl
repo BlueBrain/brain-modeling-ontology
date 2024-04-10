@@ -2069,6 +2069,17 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
     skos:notation "PO_TC"^^xsd:string ;
     skos:prefLabel "Posterior complex of the thalamus thalamo-cortical cell"@en .
 
+ct:POL_TC a owl:Class ;
+    rdfs:label "POL_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:1029 ],
+       ct:ThalamusRelayCell ;
+    skos:definition "Thalamocortical Cell, from the region \'Posterior limiting nucleus of the thalamus\' (POL). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:notation "POL_TC"^^xsd:string ;
+    skos:prefLabel "Posterior limiting nucleus of the thalamus"@en .
+
 <http://uri.interlex.org/base/ilx_0738227> a owl:Class ;
     rdfs:label "POM_IN"@en ;
     schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
@@ -2158,6 +2169,17 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
     skos:definition "Thalamocortical Cell, from the region \'Ventral posteromedial nucleus of the thalamus\' (VPM). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
     skos:notation "VPM_TC"^^xsd:string ;
     skos:prefLabel "Ventral posteromedial nucleus of the thalamus thalamo-cortical cell"@en .
+
+ct:VPMpc_TC a owl:Class ;
+    rdfs:label "VPMpc_TC"@en ;
+    schema:citation "https://doi.org/10.1016/j.celrep.2023.112200" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty bmo:canBeLocatedInBrainRegion ;
+            owl:someValuesFrom mba:741 ],
+        ct:ThalamusRelayCell;
+    skos:definition "Thalamocortical Cell, from the region \'Ventral posteromedial nucleus of the thalamus, parvicellular part\' (VPMpc). Thalamocortical (TC) cells are the main neuron celltype of the excitatory nuclei (regions) of the thalamus. They project to the cortex, the reticular thalamic nucleus (RT), and elsewhere, and they receive inputs from cortex, RT, ascending sensory inputs, and elsewhere. Because TC cell morphologies are not radically different from each other, the reconstructed morphologies belonging to this M-type were analyzed using the methods in (Iavarone, et al., 2019, https://doi.org/10.1371/journal.pcbi.1006753 ) and subsequently used as members of the \'VPL_TC\' M-type in (Iavarone, et al., 2023, https://doi.org/10.1016/j.celrep.2023.112200 )."@en ;
+    skos:notation "VPMpc_TC"^^xsd:string ;
+    skos:prefLabel "Ventral posteromedial nucleus of the thalamus, parvicellular part thalamo-cortical cell"@en .
 
 <http://uri.interlex.org/base/ilx_0738239> a owl:Class ;
     rdfs:label "VL_TC"@en ;
