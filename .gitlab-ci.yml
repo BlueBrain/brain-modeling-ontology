@@ -26,7 +26,7 @@ test-ontologies-on-merge-request:
   variables:
     atlas_parcellation_ontology: https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e
     environment: staging
-    atlas_parcellation_ontology_version: 167
+    atlas_parcellation_ontology_version: 170
     tag: "-"
     token: $NEXUS_TOKEN_STAGING
   script:
@@ -84,7 +84,7 @@ register_to_environment:
       variables:
         atlas_parcellation_ontology: https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e
         environment: staging
-        atlas_parcellation_ontology_version: 167
+        atlas_parcellation_ontology_version: 170
         tag: "-"
         token: $NEXUS_TOKEN_STAGING
     # It runs only when a new tag is pushed.

@@ -26,8 +26,7 @@ from scripts.register_ontologies import execute_ontology_registration
 
 @pytest.fixture
 def framed_class_json_dict(framed_classes):
-    class_ids = framed_classes[0]
-    class_jsons = framed_classes[1]
+    class_ids, class_jsons, _ = framed_classes
     return dict(zip(class_ids, class_jsons))
 
 
@@ -110,11 +109,10 @@ def test_atlas_hierarchy_brainregions_merge_ontology(
     atlas_hierarchy_ontology_graph_classes,
     brain_region_ontologygraph_classes,
     all_ontology_graph_merged_brain_region_atlas_hierarchy,
-    atlas_hierarchy_ontology_graph_resource,
+    atlas_hierarchy_ontology_graph,
     framed_class_json_dict,
 ):
     brain_region_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[1]
-    atlas_hierarchy_ontology_graph = atlas_hierarchy_ontology_graph_resource[0]
 
     for atlas_hierarchy_class in atlas_hierarchy_ontology_graph_classes:
         assert (
@@ -147,7 +145,7 @@ def test_atlas_hierarchy_brainregions_merge_ontology(
                 brain_region_graph_class_prop_val
             ), (
                 f"{str(atlas_hierarchy_class)}"
-                f"should have the same number of values for the property {str(prop)} in atlas ({atlas_hierarchy_class_prop_val})"
+                f" should have the same number of values for the property {str(prop)} in atlas ({atlas_hierarchy_class_prop_val})"
                 f"and in the brain region ontologies {brain_region_graph_class_prop_val}."
             )
             if properties_to_merge_types[i] not in [list, dict]:
@@ -190,7 +188,7 @@ def test_atlas_hierarchy_brainregions_merge_ontology(
             ):
                 assert len(atlas_hierarchy_class_prop_val) == 1, (
                     f"{str(atlas_hierarchy_class)},"
-                    f"represented in the annotation should have exactement one value for the property {str(prop)}. Found {atlas_hierarchy_class_prop_val}."
+                    f"represented in the annotation should have exactly one value for the property {str(prop)}. Found {atlas_hierarchy_class_prop_val}."
                 )
                 brain_region_graph_class_prop_val = brain_region_graph_class_prop_val[0]
                 atlas_hierarchy_class_prop_val = atlas_hierarchy_class_prop_val[0]
@@ -245,19 +243,17 @@ def test_all_classes_are_extracted(
     framed_classes, all_ontology_graph_merged_brain_region_atlas_hierarchy
 ):
 
-    class_ids = framed_classes[0]
-    class_jsons = framed_classes[1]
+    class_ids, class_jsons, _ = framed_classes
+
     all_ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
 
     assert len(class_ids) == len(class_jsons)
 
-    classes = all_ontology_graph.subjects(RDF.type, OWL.Class)
-    classes = [str(c) for c in classes]
-    instances = all_ontology_graph.subjects(RDF.type, OWL.NamedIndividual)
-    instances = [str(i) for i in instances]
-    cls_int = []
-    cls_int.extend(classes)
-    cls_int.extend(instances)
+    classes = [str(e) for e in all_ontology_graph.subjects(RDF.type, OWL.Class)]
+    instances = [str(e) for e in all_ontology_graph.subjects(RDF.type, OWL.NamedIndividual)]
+
+    cls_int = classes + instances
+
     assert len(cls_int) > 0
     assert len(cls_int) == len(class_jsons)
 
@@ -380,7 +376,8 @@ def test_multitype_entities_are_namedindividuals(framed_classes):
 
 
 def test_all_classes_have_label_notation_not_plus(framed_classes):
-    class_jsons = framed_classes[1]
+    class_jsons = [e for e in framed_classes[1] if not e.get("deprecated", False)]
+
     errors = []
     for class_json in class_jsons:
         regexp = re.compile(r"[+]")
@@ -431,16 +428,25 @@ def test_all_etypes_have_definition(framed_class_json_dict, all_ontology_graphs)
     assert len(errors) == 0, errors
 
 
+@pytest.fixture(scope="session")
+def non_deprecated_brain_regions_in_ontology_graph(all_ontology_graph_merged_brain_region_atlas_hierarchy):
+    graph_of_all_ontologies, _ = all_ontology_graph_merged_brain_region_atlas_hierarchy
+    non_deprecated_br = [
+        e for e in list(graph_of_all_ontologies.subjects(RDFS.subClassOf, NSG.BrainRegion))
+        if not bmo._is_deprecated(e, graph_of_all_ontologies)
+    ]
+    return non_deprecated_br
+
+
 def test_all_brain_regions_have_annotations(
     framed_class_json_dict,
-    all_ontology_graph_merged_brain_region_atlas_hierarchy,
     atlas_release_prop,
+    non_deprecated_brain_regions_in_ontology_graph,
     atlas_release_version,
 ):
-    ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
     properties_to_check = ["label", "notation", "prefLabel"]
     errors = []
-    for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
+    for cls in non_deprecated_brain_regions_in_ontology_graph:
         assert str(cls) in framed_class_json_dict
         cls_json = framed_class_json_dict[str(cls)]
         cls_properties = properties_to_check + ["atlasRelease"]
@@ -456,11 +462,11 @@ def test_all_brain_regions_have_annotations(
 
 
 def test_all_non_layer_brain_regions_have_representedInAnnotation(
-    framed_class_json_dict, all_ontology_graph_merged_brain_region_atlas_hierarchy
+    framed_class_json_dict, non_deprecated_brain_regions_in_ontology_graph, all_ontology_graph_merged_brain_region_atlas_hierarchy
 ):
     ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
     errors = []
-    for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
+    for cls in non_deprecated_brain_regions_in_ontology_graph:
         cls_json = framed_class_json_dict[str(cls)]
         if (cls, RDFS.subClassOf * ZeroOrMore, BMO.BrainLayer) not in ontology_graph:
             e = _check_dict_for_property_type_value(
@@ -511,10 +517,12 @@ def _is_represented_in_annotation(ontology_graph, cls):
 
 
 def test_layered_child_has_same_layer_as_parent(
-    all_ontology_graph_merged_brain_region_atlas_hierarchy,
+    non_deprecated_brain_regions_in_ontology_graph,
+    all_ontology_graph_merged_brain_region_atlas_hierarchy
 ):
     ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
-    for cls in ontology_graph.subjects(RDFS.subClassOf, NSG.BrainRegion):
+
+    for cls in non_deprecated_brain_regions_in_ontology_graph:
         if (cls, RDFS.subClassOf * ZeroOrMore, BMO.BrainLayer) not in ontology_graph:
             # all non layer brain regions (i.e classes that are layers are not wanted)
             if (cls, NSG.hasLayerLocationPhenotype, None) in ontology_graph:

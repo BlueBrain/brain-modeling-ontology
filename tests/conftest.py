@@ -8,7 +8,6 @@ from rdflib.paths import ZeroOrMore
 import bmo.ontologies as bmo
 from bmo.argument_parsing import define_arguments
 from bmo.utils import (
-    ATLAS_PROPERTIES_TO_MERGE,
     BMO,
     NSG,
     NXV,
@@ -79,7 +78,6 @@ def transformed_schema_path(pytestconfig):
 
 @pytest.fixture(scope="session")
 def forge_objects(environment, bucket, token, atlas_parcellation_ontology_bucket):
-
     if environment == "staging":
         endpoint = "https://staging.nise.bbp.epfl.ch/nexus/v1"
     elif environment == "production":
@@ -135,14 +133,14 @@ def all_ontology_graphs(ontology_dir):
     ontology_files = glob.glob(ontology_dir)
     ontology_graphs_dict = {}
     try:
-        ontology_graphs_dict, all_ontology_graphs = load_ontologies(ontology_dir)
-        assert len(all_ontology_graphs) > 0
+        ontology_graphs_dict, graph_of_all_ontologies = load_ontologies(ontology_dir)
+        assert len(graph_of_all_ontologies) > 0
         assert len(ontology_files) > 0
         assert len(ontology_graphs_dict) == len(ontology_files)
         assert len(ontology_graphs_dict) == len(
-            list(all_ontology_graphs.subjects(RDF.type, OWL.Ontology))
+            list(graph_of_all_ontologies.subjects(RDF.type, OWL.Ontology))
         )
-        return all_ontology_graphs, ontology_graphs_dict
+        return graph_of_all_ontologies, ontology_graphs_dict
     except Exception as e:
         missing_ontologies = set(
             [filepath.split("/")[-1] for filepath in ontology_files]
@@ -156,12 +154,12 @@ def all_ontology_graphs(ontology_dir):
 
 @pytest.fixture(scope="session")
 def framed_classes(
-    data_jsonld_context,
-    all_ontology_graph_merged_brain_region_atlas_hierarchy,
-    atlas_release_id,
-    atlas_release_version,
+        data_jsonld_context,
+        all_ontology_graph_merged_brain_region_atlas_hierarchy,
+        atlas_release_id,
+        atlas_release_version,
 ):
-    new_jsonld_context, errors = data_jsonld_context[0], data_jsonld_context[1]
+    new_jsonld_context, errors = data_jsonld_context
     assert len(errors) == 0
     ontology_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[0]
     class_ids, class_jsons, all_blank_node_triples, brain_region_new_classes = (
@@ -173,23 +171,21 @@ def framed_classes(
             atlas_release_version,
         )
     )
-    return (class_ids, class_jsons, brain_region_new_classes)
+    return class_ids, class_jsons, brain_region_new_classes
 
 
 @pytest.fixture(scope="session")
 def all_ontology_graph_merged_brain_region_atlas_hierarchy(
-    all_ontology_graphs, atlas_hierarchy_ontology_graph_resource
+        all_ontology_graphs, ontology_dir, atlas_hierarchy_ontology_graph
 ):
-    graph_of_all_ontologies = all_ontology_graphs[0]
-    ontology_graphs_dict = all_ontology_graphs[1]
+    graph_of_all_ontologies, ontology_graphs_dict = all_ontology_graphs
 
     brain_region_graph = ontology_graphs_dict["./ontologies/bbp/brainregion.ttl"]
-    atlas_ontology_graph = atlas_hierarchy_ontology_graph_resource[0]
+
     triples_to_add, triples_to_remove = _merge_ontology(
-        atlas_ontology_graph,
+        atlas_hierarchy_ontology_graph,
         brain_region_graph,
         graph_of_all_ontologies,
-        ATLAS_PROPERTIES_TO_MERGE,
     )
     assert len(triples_to_remove) > 0
     assert len(triples_to_add) > 0
@@ -206,54 +202,63 @@ def atlas_release_prop(atlas_release_id, atlas_release_version):
 
 
 @pytest.fixture(scope="session")
-def atlas_release_id(atlas_hierarchy_ontology_graph_resource):
-    return atlas_hierarchy_ontology_graph_resource[1].atlasRelease.id
+def atlas_release_id(atlas_parcellation_ontology_resource):
+    return atlas_parcellation_ontology_resource.atlasRelease.id
 
 
 @pytest.fixture(scope="session")
-def atlas_release_version(atlas_hierarchy_ontology_graph_resource):
-    return atlas_hierarchy_ontology_graph_resource[1].atlasRelease._rev
+def atlas_release_version(atlas_parcellation_ontology_resource):
+    return atlas_parcellation_ontology_resource.atlasRelease._rev
 
 
 @pytest.fixture(scope="session")
-def atlas_hierarchy_ontology_graph_resource(
-    atlas_parcellation_ontology, atlas_parcellation_ontology_version, forge_atlas
-):
+def atlas_parcellation_ontology_resource(atlas_parcellation_ontology, atlas_parcellation_ontology_version, forge_atlas):
     try:
         version = (
             int(atlas_parcellation_ontology_version)
             if atlas_parcellation_ontology_version is not None
             else None
         )
-        atlas_hierarchy = forge_atlas.retrieve(
+        atlas_parcellation_ontology_resource = forge_atlas.retrieve(
             atlas_parcellation_ontology, version=version
         )
-        assert hasattr(atlas_hierarchy, "atlasRelease")
-        assert hasattr(atlas_hierarchy.atlasRelease, "_rev")
-        atlas_hierarchy_jsonld_distribution = [
-            distrib
-            for distrib in atlas_hierarchy.distribution
-            if distrib.encodingFormat == "application/ld+json"
-        ]
-        atlas_hierarchy_jsonld_distribution = atlas_hierarchy_jsonld_distribution[0]
+        assert hasattr(atlas_parcellation_ontology_resource, "atlasRelease")
+        assert hasattr(atlas_parcellation_ontology_resource.atlasRelease, "_rev")
+
+        return atlas_parcellation_ontology_resource
+
+    except Exception as e:
+        pytest.fail(f"Failed to load {atlas_parcellation_ontology}: {e}")
+
+
+@pytest.fixture(scope="session")
+def atlas_hierarchy_ontology_graph(atlas_parcellation_ontology_resource, forge_atlas):
+    try:
+        atlas_hierarchy_jsonld_distribution = next(
+            (distrib for distrib in atlas_parcellation_ontology_resource.distribution
+             if distrib.encodingFormat == "application/ld+json"), None
+        )
+
+        assert atlas_hierarchy_jsonld_distribution, "Couldn't find json-ld distribution in atlas parcellation ontology resource"
+
         forge_atlas.download(
             atlas_hierarchy_jsonld_distribution,
             follow="contentUrl",
             path=".",
             overwrite=True,
         )
-        atlas_hierarchy_ontology_graph_resource = rdflib.Graph().parse(
+        atlas_hierarchy_ontology_graph = rdflib.Graph().parse(
             atlas_hierarchy_jsonld_distribution.name, format="json-ld"
         )
-        assert len(atlas_hierarchy_ontology_graph_resource) > 0
-        return atlas_hierarchy_ontology_graph_resource, atlas_hierarchy
+        assert len(atlas_hierarchy_ontology_graph) > 0
+
+        return atlas_hierarchy_ontology_graph
     except Exception as e:
-        pytest.fail(f"Failed to load {atlas_parcellation_ontology}: {e}")
+        pytest.fail(f"Failed to load atlas hierarchy ontology graph from atlas hierarchy resource: {e}")
 
 
 @pytest.fixture(scope="session")
-def atlas_hierarchy_ontology_graph_classes(atlas_hierarchy_ontology_graph_resource):
-    atlas_hierarchy_ontology_graph = atlas_hierarchy_ontology_graph_resource[0]
+def atlas_hierarchy_ontology_graph_classes(atlas_hierarchy_ontology_graph):
     atlas_hierarchy_ontology_classes = list(
         atlas_hierarchy_ontology_graph.subjects(RDF.type, OWL.Class)
     )
@@ -263,8 +268,8 @@ def atlas_hierarchy_ontology_graph_classes(atlas_hierarchy_ontology_graph_resour
 
 @pytest.fixture(scope="session")
 def brain_region_ontologygraph_classes(
-    atlas_hierarchy_ontology_graph_classes,
-    all_ontology_graph_merged_brain_region_atlas_hierarchy,
+        atlas_hierarchy_ontology_graph_classes,
+        all_ontology_graph_merged_brain_region_atlas_hierarchy,
 ):
     brain_region_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy[1]
     brain_region_layer_graph_classes = list(

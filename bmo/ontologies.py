@@ -23,6 +23,7 @@ GENERIC_CELL_TYPES = {
 
 ROOT_BRAIN_REGION = "http://api.brain-map.org/api/v2/data/Structure/997"
 
+
 # BASE_CELL_TYPE_CLASSES = {str(BMO.NeuronMorphologicalType): BMO.NeuronMorphologicalType,
 #                           str(BMO.NeuronElectricalType): BMO.NeuronElectricalType}
 
@@ -268,6 +269,53 @@ def _collect_ancestors_restrictions(
     return rels, all_blank_node_triples
 
 
+def _frame_brain_regions(ontology_graph, cls_int):
+    # add views
+
+    new_layered_classes_all = []
+
+    all_br = [
+        current_class for current_class, _ in cls_int
+        if (current_class, RDFS.subClassOf, NSG.BrainRegion) in ontology_graph
+    ]
+
+    for current_class in all_br:
+        ontology_graph.add((current_class, BMO.hasHierarchyView, NSG.BrainRegion))
+        if (current_class, NSG.hasLayerLocationPhenotype, None) in ontology_graph:
+            current_class_layers = list(
+                ontology_graph.objects(current_class, NSG.hasLayerLocationPhenotype)
+            )
+            classes_relevant_for_layer = set()
+            for layer in current_class_layers:
+                classes_relevant_for_layer = set(
+                    ontology_graph.objects(
+                        term.URIRef(layer), RDFS.subClassOf * OneOrMore / SCHEMAORG.about
+                    )
+                )  # every group of layers
+                # (e.g. the Neorcotex layer class or the hippocampus layer)
+                # should link to its brain region scope
+                # (i.e the highest brain regions it applies to) through SCHEMAORG.about
+            new_layered_classes = _create_property_based_hierarchy(
+                ontology_graph,
+                current_class,
+                current_class_layers,
+                classes_relevant_for_layer,
+                SCHEMAORG.isPartOf
+            )
+            for new_c in new_layered_classes:
+                ontology_graph.add(
+                    (term.URIRef(new_c), BMO.representedInAnnotation,
+                     Literal(False, datatype=XSD.boolean))
+                )
+            new_layered_classes_all.extend(new_layered_classes)
+
+    return new_layered_classes_all
+
+
+def _is_deprecated(class_: URIRef, graph_to_check: Graph) -> bool:
+    return (class_, OWL.deprecated, Literal(True, datatype=XSD.boolean)) in graph_to_check
+
+
 def frame_classes(
         ontology_graph: Graph,
         forge_context,
@@ -291,36 +339,8 @@ def frame_classes(
     cls = ontology_graph.subjects(RDF.type, OWL.Class)
     cls_int = [(c, RDFS.subClassOf) for c in cls]
 
-    # add views
-    for current_class, restrictions_property in cls_int:
-        if (current_class, RDFS.subClassOf, NSG.BrainRegion) in ontology_graph:
-            ontology_graph.add((current_class, BMO.hasHierarchyView, NSG.BrainRegion))
-            if (current_class, NSG.hasLayerLocationPhenotype, None) in ontology_graph:
-                current_class_layers = list(
-                    ontology_graph.objects(current_class, NSG.hasLayerLocationPhenotype))
-                classes_relevant_for_layer = set()
-                for layer in current_class_layers:
-                    classes_relevant_for_layer = set(
-                        ontology_graph.objects(
-                            term.URIRef(layer), RDFS.subClassOf * OneOrMore / SCHEMAORG.about
-                        )
-                    )  # every group of layers
-                    # (e.g. the Neorcotex layer class or the hippocampus layer)
-                    # should link to its brain region scope
-                    # (i.e the highest brain regions it applies to) through SCHEMAORG.about
-                new_layered_classes = _create_property_based_hierarchy(
-                    ontology_graph,
-                    current_class,
-                    current_class_layers,
-                    classes_relevant_for_layer,
-                    SCHEMAORG.isPartOf
-                )
-                for new_c in new_layered_classes:
-                    ontology_graph.add(
-                        (term.URIRef(new_c), BMO.representedInAnnotation,
-                         Literal(False, datatype=XSD.boolean))
-                    )
-                new_classes.extend(new_layered_classes)
+    new_layered_classes = _frame_brain_regions(ontology_graph, cls_int)
+    new_classes.extend(new_layered_classes)
 
     cls_int.extend({(term.URIRef(c), RDFS.subClassOf) for c in new_classes})
 
@@ -567,7 +587,7 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
         propagated_brain_regions = []
         if cls["@id"] in GENERIC_CELL_TYPES:
             propagated_brain_regions = _get_sub_regions_to_propagate_metype_to(
-                ontology_graph, ROOT_BRAIN_REGION,  GENERIC_CELL_TYPES[cls["@id"]]
+                ontology_graph, ROOT_BRAIN_REGION, GENERIC_CELL_TYPES[cls["@id"]]
             )
         elif "subClassOf" in cls and str(BMO.NeuronMorphologicalType) in cls["subClassOf"]:
             for sr in cls["canBeLocatedInBrainRegion"]:
@@ -843,7 +863,6 @@ def subontology_from_term(graph: Graph, entry_point, top_down=True, closed=True)
 def build_context_from_ontology(
         ontology_graph, forge_context, vocab=None, binding=None, exclude_deprecated=False
 ) -> Tuple[Context, List[str]]:
-
     """
     Build a jsonld context object.
     """
@@ -899,7 +918,6 @@ def build_context_from_ontology(
 
 
 def _is_class_to_include_in_context(class_item: URIRef, uri_ref, ontology_graph: Graph):
-
     predicate_objects = [
         (
             RDFS.subClassOf * OneOrMore, [
