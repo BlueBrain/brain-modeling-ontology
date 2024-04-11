@@ -3,6 +3,7 @@ import json
 import copy
 import cProfile
 import pstats
+from collections import defaultdict
 from pstats import SortKey
 from typing import Dict, Any, List, Tuple, Optional
 from rdflib import PROV, Literal, RDF, OWL, RDFS, Graph, term
@@ -457,8 +458,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     triples_to_add, triples_to_remove = _merge_ontology(
         atlas_hierarchy_ontology_graph,
         ontology_graphs_dict["./ontologies/bbp/brainregion.ttl"],
-        all_ontology_graphs,
-        ATLAS_PROPERTIES_TO_MERGE,
+        all_ontology_graphs
     )
 
     print(
@@ -469,6 +469,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         f"region ontology for {len(triples_to_remove)} brain regions."
     )
 
+    print("Framing classes - Start")
     class_ids, class_jsons, all_blank_node_triples, brain_region_generated_classes = (
         bmo.frame_classes(
             all_ontology_graphs,
@@ -478,10 +479,11 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             atlas_hierarchy.atlasRelease._rev,
         )
     )
+    print("Framing classes - Finish")
 
     all_class_resources_framed_dict = dict(zip(class_ids, class_jsons))
 
-    print(f"Got {len(all_class_resources_framed_dict)} non mapped classes")
+    print(f"Got {len(all_class_resources_framed_dict)} framed classes")
 
     class_resources_mapped = forge.map(
         data=class_jsons,
@@ -609,91 +611,69 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
 
 def _merge_ontology(
-    from_ontology_graph, to_ontology_graph, to_another_graph, what_property_to_merge
+    from_ontology_graph,  # in usage, atlas_hierarchy_ontology_graph
+    to_ontology_graph,  # in usage, brain_region_graph = brain_region.ttl
+    to_another_graph,  # in usage, graph_of_all_ontologies = *.ttl
+    what_property_to_merge=ATLAS_PROPERTIES_TO_MERGE
 ):
     # merge hierarchy from atlas with this brain region:
     # make sure atlas hierarchy, labels, notation, identifier, ... is fully included in bmo
 
-    triples_to_add = {}
-    triples_to_remove = {}
-    for prop in what_property_to_merge:
-        for from_s, from_p, from_o in from_ontology_graph.triples((None, prop, None)):
-            if str(from_s) not in triples_to_add:
-                triples_to_add[str(from_s)] = set()
-            if str(from_s) not in triples_to_remove:
-                triples_to_remove[str(from_s)] = set()
+    triples_to_add = defaultdict(set)
+    triples_to_remove = defaultdict(set)
 
-            if (from_s, from_p, None) in to_ontology_graph:
-                for to_s, to_p, to_o in to_ontology_graph.triples(
-                    (from_s, from_p, None)
-                ):
-                    if (
-                        from_p == BMO.regionVolume
-                        or from_p == BMO.regionVolumeRatioToWholeBrain
-                    ) and str(from_o) != "":
+    triples_per_prop = [
+        e for prop in what_property_to_merge
+        for e in from_ontology_graph.triples((None, prop, None))
+    ]
 
-                        bNode, triples = _create_bnode_triples_from_value(
-                            {
-                                SCHEMAORG.value: from_o,
-                                SCHEMAORG.unitCode: Literal("cubic micrometer"),
-                            }
-                        )
-                        triples_to_add[str(from_s)].update(triples)
-                        triples_to_add[str(from_s)].add((from_s, from_p, bNode))
-                        triples_to_remove[str(from_s)].update((to_s, to_p, to_o))
-                    elif str(from_o) != "":
-                        triples_to_add[str(from_s)].add((from_s, from_p, from_o))
-                        triples_to_remove[str(from_s)].add((to_s, to_p, to_o))
-            else:
-                if (
-                    from_p == BMO.regionVolume
-                    or from_p == BMO.regionVolumeRatioToWholeBrain
-                ) and str(
-                    from_o
-                ) != "":  # check atlas pipeline value when the brain region
-                    # is not in the volume (currently '' is used)
+    # Adding relevant triples from the atlas hierarchy into the brain region graph (interesting properties)
+    for (from_s, from_p, from_o) in triples_per_prop:
 
-                    bNode, triples = _create_bnode_triples_from_value(
-                        {
-                            SCHEMAORG.value: from_o,
-                            SCHEMAORG.unitCode: Literal("cubic micrometer"),
-                        }
-                    )
-                    triples_to_add[str(from_s)].update(triples)
-                    triples_to_add[str(from_s)].add((from_s, from_p, bNode))
-                elif str(from_o) != "":
-                    triples_to_add[str(from_s)].add((from_s, from_p, from_o))
+        if str(from_o) == "":
+            continue
 
-                if isinstance(from_o, term.URIRef):
-                    for from_o_s, from_o_p, from_o_o in from_ontology_graph.triples(
-                        (from_o, None, None)
-                    ):
+        if from_p in [BMO.regionVolume, BMO.regionVolumeRatioToWholeBrain]:  # Special case
 
-                        if str(from_o_s) not in triples_to_add:
-                            triples_to_add[str(from_o_s)] = set()
+            b_node, triples = _create_bnode_triples_from_value(
+                {
+                    SCHEMAORG.value: from_o,
+                    SCHEMAORG.unitCode: Literal("cubic micrometer"),
+                }
+            )
+            triples_to_add[str(from_s)].update(triples)
+            triples_to_add[str(from_s)].add((from_s, from_p, b_node))
+        else:
+            triples_to_add[str(from_s)].add((from_s, from_p, from_o))  # add triples from atlas hierarchy ontology graph to brain region graph
 
-                        if (
-                            from_o_p
-                            not in [
-                                BMO.layers,
-                                BMO.adjacentTo,
-                                BMO.continuousWith,
-                                BMO.hasLayerLocationPhenotype,
-                            ]
-                            and from_o_p not in what_property_to_merge
-                        ):
-                            # will be merged once the data format is okay
+        # For all s/p of relevant properties, remove from brain region graph the triples with same s/p as those in atlas
+        if (from_s, from_p, None) in to_ontology_graph:
+            for to_s, to_p, to_o in to_ontology_graph.triples((from_s, from_p, None)):
+                triples_to_remove[str(from_s)].add((to_s, to_p, to_o))  # remove triples from brain region graph from brain region graph
 
-                            triples_to_add[str(from_o_s)].add(
-                                (from_o_s, from_o_p, from_o_o)
-                            )
-            triples_to_add[str(from_s)].add((from_s, RDFS.subClassOf, NSG.BrainRegion))
-            triples_to_add[str(from_s)].add((from_s, RDF.type, OWL.Class))
-    for k, v in triples_to_remove.items():
+        # What to keep from the atlas graph (= uriref tied to an interesting property to merge have other properties that could be interesting)
+        if (from_s, from_p, None) not in to_ontology_graph and isinstance(from_o, term.URIRef):
+
+            for from_o_s, from_o_p, from_o_o in from_ontology_graph.triples((from_o, None, None)):
+
+                properties_to_ignore = [
+                    BMO.layers,
+                    BMO.adjacentTo,
+                    BMO.continuousWith,
+                    BMO.hasLayerLocationPhenotype,
+                ]
+                if from_o_p not in properties_to_ignore and from_o_p not in what_property_to_merge:
+                    # will be merged once the data format is okay
+                    triples_to_add[str(from_o_s)].add((from_o_s, from_o_p, from_o_o))
+
+        triples_to_add[str(from_s)].add((from_s, RDFS.subClassOf, NSG.BrainRegion))
+        triples_to_add[str(from_s)].add((from_s, RDF.type, OWL.Class))
+
+    for _, v in triples_to_remove.items():
         for t in v:
             to_ontology_graph.remove(t)
             to_another_graph.remove(t)
-    for k, v in triples_to_add.items():
+    for _, v in triples_to_add.items():
         for t in v:
             to_ontology_graph.add(t)
             to_another_graph.add(t)
@@ -706,11 +686,11 @@ def _create_bnode_triples_from_value(
 ) -> Tuple[term.BNode, List[Tuple[term.BNode, Any, Any]]]:
 
     triples = []
-    bNode = term.BNode()
+    b_node = term.BNode()
     for prop_uriref, value in prop_uriref_to_value_dict.items():
-        triples.append((bNode, prop_uriref, value))
+        triples.append((b_node, prop_uriref, value))
 
-    return bNode, triples
+    return b_node, triples
 
 
 def register_ontology(
