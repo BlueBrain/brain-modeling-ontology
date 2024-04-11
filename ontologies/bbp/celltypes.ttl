@@ -2330,7 +2330,7 @@ ct:VPMpc_TC a owl:Class ;
         bmo:NeuronMorphologicalType ;
     skos:definition "the soma as a globular shape, and its surface has numerous thorny to lamellar protrusions. The Bergman glial fibers take off branches from the upper part of the soma. They run straightly to the molecular layer. The Bergman fibers hold irregular appendages."@en ;
     skos:notation "CBXpu_BeC" ;
-    skos:prefLabel "CBXpu_BeC"@en .
+    skos:prefLabel "Cerebellum Bergmann Cell"@en .
 
 <http://uri.interlex.org/ilx_0101965> a owl:Class ;
     rdfs:label "CBXpu_CaC"@en ;
@@ -2343,7 +2343,7 @@ ct:VPMpc_TC a owl:Class ;
         bmo:NeuronMorphologicalType ;
     skos:definition "The soma is small with a radius around 5 µm. Located in the Purkinje cell layer. The dendritic arbors emerge from their apical poles in the form of chandelierlike processes. They ascend to the molecular layer. Their axons run horizontally above the Purkinje cell layer and the branches extend in the molecular layer"@en ;
     skos:notation "CBXpu_CaC" ;
-    skos:prefLabel "CBXpu_CaC"@en .
+    skos:prefLabel "Cerebellum Candelabrum Cell"@en .
 
 <http://uri.interlex.org/ilx_0101976> a owl:Class ;
     rdfs:label "CBXgr_UBC"@en ;
@@ -2356,7 +2356,7 @@ ct:VPMpc_TC a owl:Class ;
         bmo:NeuronMorphologicalType ;
     skos:definition "the soma is in chalice-like form and the radius is around 4-5 µm. Located in the granular layer. The dendrite are stubby. The axons ramify within the granular layer, terminating in large mossy fiber."@en ;
     skos:notation "CBXgr_UBC" ;
-    skos:prefLabel "CBXgr_UBC"@en .
+    skos:prefLabel "Cerebellum Unipolar Brush Cell"@en .
 
 skos:altLabel a owl:AnnotationProperty .
 
@@ -7715,7 +7715,7 @@ ct:CBXgr_GloC a owl:Class ;
         bmo:NeuronMorphologicalType ;
     skos:definition "the soma is round and distributed in the granular layer. There are radiating dendrites and spread mostly in the Purkinje cell layer. The axons project into the molecular layer following the directly or indirectly ascending trajectory."@en ;
     skos:notation "CBXgr_GloC" ;
-    skos:prefLabel "CBXgr_GloC"@en .
+    skos:prefLabel "Cerebellum Globular Cell"@en .
 
 ct:CaudoputamenNPY-SOMPlusLow-ThresholdSpikingInterneuron a owl:Class ;
     rdfs:label "CP_LTS"@en ;
@@ -11252,6 +11252,7 @@ ct:cSTUT_cNAC a owl:Class ;
         bmo:NeuronElectricalType ;
     skos:definition "In the vermal cSTUT = 75% cNAC = 25 %. In the hemisphere : cSTUT = 16.7% cNAC = 83.3 %"@en .
 
+
 ct:dAD_htp_dSTR a owl:Class ;
     rdfs:label "dAD_htp_dSTR"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -12963,7 +12964,7 @@ schema:Organization a owl:Class ;
         bmo:NeuronMorphologicalType ;
     skos:definition "The soma is pyramidal or oval with a radius of 6 µm. of Located in the 1/3 inner of the molecular layer. The dendrites are long, straight and extend upward to the Pia surface with few branches. The axon mesures several hundred of µm and runs parallel to the Purkinje cell layer. There are descending collaterals (thicks and run in the sagittal plan) and ascending collaterals (severals, thin, short and present in the 2/3 inner of the molecular layer)"@en ;
     skos:notation "CBXmo_BC" ;
-    skos:prefLabel "CBXmo_BC"@en .
+    skos:prefLabel "Cerebellum Basket Cell"@en .
 
 <http://uri.interlex.org/ilx_0101975> a owl:Class ;
     rdfs:label "CBXmo_StC"@en ;
@@ -12976,7 +12977,7 @@ schema:Organization a owl:Class ;
         bmo:NeuronMorphologicalType ;
     skos:definition "The soma is small and fusiform with a radius around 4 µm. Located in the 2/3 outer of the molecular layer. The dendrites are long, thin, contorted, aspinous and branching in all directions. The axon branch immediately in short and circumscribed collaterals."@en ;
     skos:notation "CBXmo_StC" ;
-    skos:prefLabel "CBXmo_StC"@en .
+    skos:prefLabel "Cerebellum Stellate Cell"@en .
 
 prov:Agent a owl:Class ;
     rdfs:label "Agent"@en .
