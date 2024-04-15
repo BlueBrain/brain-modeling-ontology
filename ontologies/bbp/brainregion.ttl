@@ -25770,3 +25770,428 @@ mba:614454281 owl:deprecated "true"^^xsd:boolean .
 mba:614454280 owl:deprecated "true"^^xsd:boolean .
 mba:614454279 owl:deprecated "true"^^xsd:boolean .
 mba:614454278 owl:deprecated "true"^^xsd:boolean .
+
+<http://api.brain-map.org/api/v2/data/Structure/1037481934> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1037502706> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1087129144> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1160721590> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1165809076> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1307372013> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1355885073> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1430875964> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1431942459> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1454256797> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1463157755> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1598869030> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1624848466> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1645194511> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1672280517> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1695203883> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1720700944> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1758306548> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1890964946> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1896413216> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/1942628671> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2012716980> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2026216612> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2078623765> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2102386393> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2153924985> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2167613582> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2186168811> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2189208794> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2208057363> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2218254883> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2224619882> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2260827822> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2292194787> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2300544548> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2336071181> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2341154899> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2361776473> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2413172686> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2414821463> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2430059008> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2439179873> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2511156654> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2536061413> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2542216029> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2544082156> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2546495501> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2598818153> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2646114338> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2668242174> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2683995601> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2691358660> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2782023316> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2790124484> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2835688982> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2845253318> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2854337283> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2862362532> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2887815719> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2892558637> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2897348183> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2906756445> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2927119608> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2949903222> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2951747260> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/2985091592> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3049552521> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3088876178> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3095364455> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3099716140> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3114287561> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3132124329> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3192952047> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3206763505> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3250982806> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3269661528> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3314370483> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3360392253> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3376791707> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3403314552> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3412423041> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3516629919> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3562104832> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3582239403> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3582777032> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3591549811> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3653590473> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3683796018> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3693772975> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3710667749> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3714509274> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3718675619> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3724992631> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3781663036> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3803368771> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3808183566> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3808433473> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3880005807> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3893800328> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3894563657> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3920533696> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3927629261> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3937412080> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3956191525> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3962734174> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005392> .
+
+<http://api.brain-map.org/api/v2/data/Structure/3964792502> a owl:Class ;
+    rdfs:subClassOf nsg:BrainRegion ;
+    nsg:hasLayerLocationPhenotype <http://purl.obolibrary.org/obo/UBERON_0005391> .
+
