@@ -20,6 +20,7 @@ from bmo.loading import (
     load_ontologies,
     load_schemas,
 )
+from bmo.logger import logger
 from bmo.schema_to_type_mapping import create_update_type_to_schema_mapping
 
 from bmo.utils import (
@@ -98,7 +99,7 @@ def execute_ontology_registration(
     :return: A tuple (the ontology id, the framed JSON payload of the regstered ontology)
     """
 
-    print(f"Registering ontology {ontology_path} - Start")
+    logger.info(f"Registering ontology {ontology_path} - Start")
 
     ontology = bmo.find_ontology_resource(ontology_graph)
 
@@ -323,15 +324,15 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         atlas_parcellation_ontology_bucket=atlas_parcellation_ontology_bucket,
     )
 
-    print("Loading ontologies - Start")
+    logger.info("Loading ontologies - Start")
     ontology_graphs_dict, all_ontology_graphs = load_ontologies(ontology_dir)
 
-    print(
+    logger.info(
         f"Loading ontologies - Finished: {len(ontology_graphs_dict)} "
         f"ontologies with {len(all_ontology_graphs)} triples\n"
     )
 
-    print("Preparing schema JSON-LD context - Start ")
+    logger.info("Preparing schema JSON-LD context - Start ")
 
     with open(SCHEMA_JSONLD_CONTEXT_PATH, "r") as f:
         new_jsonld_schema_context_document = json.load(f)
@@ -340,9 +341,9 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         forge_schema, new_jsonld_schema_context_document, JSONLD_SCHEMA_CONTEXT_IRI
     )
 
-    print("Preparing schema JSON-LD context - Finish\n")
+    logger.info("Preparing schema JSON-LD context - Finish\n")
 
-    print(
+    logger.info(
         "Updating schema JSON-LD context - Start "
         "(because the schemas refer the JSONLD context)"
     )
@@ -350,12 +351,12 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     if data_update:
         forge_schema.update(new_jsonld_schema_context_resource)
 
-    print(
+    logger.info(
         f"Updating schema JSON-LD context - {'Finish' if data_update else 'Ignored'}: "
         f"{new_jsonld_schema_context_document['@id']} \n"
     )
 
-    print("Loading schemas - Start")
+    logger.info("Loading schemas - Start")
 
     schema_graphs_dict, schema_id_to_filepath_dict, all_schema_graphs = load_schemas(
         schema_dir,
@@ -365,12 +366,12 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         save_transformed_schema=True,
     )
 
-    print(
+    logger.info(
         f"Loading schemas - Finish: {len(schema_graphs_dict)} schemas with"
         f" {len(all_schema_graphs)} triples\n"
     )
 
-    print(
+    logger.info(
         "Collecting JSON-LD data context from all ontologies and from all schemas - Start"
     )
 
@@ -384,7 +385,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             f"and schemas in {schema_dir}: {errors}"
         )
 
-    print(
+    logger.info(
         f"Collecting JSON-LD data context from all ontologies and from all schemas - Finish - "
         f"Ontology dir: {ontology_dir}, Schema dir: {schema_dir}.\n"
     )
@@ -393,7 +394,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     new_jsonld_context_document["@id"] = JSONLD_DATA_CONTEXT_IRI
     new_jsonld_context.iri = JSONLD_DATA_CONTEXT_IRI
 
-    print(
+    logger.info(
         f"Preparing data JSON-LD context {new_jsonld_context_document['@id']} - Start"
     )
 
@@ -401,30 +402,30 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         forge, new_jsonld_context_document, JSONLD_DATA_CONTEXT_IRI
     )
 
-    print(
+    logger.info(
         f"Preparing data JSON-LD context {new_jsonld_context_document['@id']} - Finish\n"
     )
 
     # with open("./new_jsonld_context_resource.json", "w") as f:
     #     json.dump(forge.as_json(new_jsonld_context_resource), f)
 
-    print(f"Updating data JSON-LD context {new_jsonld_context_document['@id']} - Start")
+    logger.info(f"Updating data JSON-LD context {new_jsonld_context_document['@id']} - Start")
 
     if data_update:
         forge.update(new_jsonld_context_resource)
 
-    print(
+    logger.info(
         f"Updating data JSON-LD context {new_jsonld_context_document['@id']} - "
         f"{'Finish' if data_update else 'Ignored'}\n"
     )
 
-    print("Preparing ontology classes - Start")
+    logger.info("Preparing ontology classes - Start")
     new_jsonld_context_dict = new_jsonld_context_document["@context"]
     new_jsonld_context_dict.update(_get_ontology_annotation_lang_context())
 
     bmo.replace_is_defined_by_uris(all_ontology_graphs, WEBPROTEGE_TO_NEXUS)
 
-    print("Merging brain region ontology with atlas hierarchy - Start")
+    logger.info("Merging brain region ontology with atlas hierarchy - Start")
 
     # Waiting for a single version (tag) across all the atlas dataset to be
     # made available, _rev will be used.
@@ -461,7 +462,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         all_ontology_graphs
     )
 
-    print(
+    logger.info(
         f"Merging brain region ontology with atlas hierarchy - Finish -"
         f" {len(triples_to_add.values())} triples were added to the brain region ontology "
         f"for {len(triples_to_add)} brain regions and from the atlas hierarchy "
@@ -469,7 +470,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         f"region ontology for {len(triples_to_remove)} brain regions."
     )
 
-    print("Framing classes - Start")
+    logger.info("Framing classes - Start")
     class_ids, class_jsons, all_blank_node_triples, brain_region_generated_classes = (
         bmo.frame_classes(
             all_ontology_graphs,
@@ -479,11 +480,11 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             atlas_hierarchy.atlasRelease._rev,
         )
     )
-    print("Framing classes - Finish")
+    logger.info("Framing classes - Finish")
 
     all_class_resources_framed_dict = dict(zip(class_ids, class_jsons))
 
-    print(f"Got {len(all_class_resources_framed_dict)} framed classes")
+    logger.info(f"Got {len(all_class_resources_framed_dict)} framed classes")
 
     class_resources_mapped = forge.map(
         data=class_jsons,
@@ -495,13 +496,13 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     all_class_resources_mapped_dict = dict(zip(class_ids, class_resources_mapped))
 
-    print(f"Got {len(class_resources_mapped)} mapped classes")
+    logger.info(f"Got {len(class_resources_mapped)} mapped classes")
 
-    print(
+    logger.info(
         f"Preparing ontology classes - Finish - Class count: {len(class_resources_mapped)} \n"
     )
 
-    print(f"Registering {len(list(schema_graphs_dict.keys()))} schemas - Start")
+    logger.info(f"Registering {len(list(schema_graphs_dict.keys()))} schemas - Start")
     already_registered = []
 
     for schema_file, schema_content in schema_graphs_dict.items():
@@ -518,11 +519,11 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             data_update=data_update,
         )
 
-    print(
+    logger.info(
         f"Registering schemas - Finish - Schema count: {len(list(schema_graphs_dict.keys()))}\n"
     )
 
-    print(
+    logger.info(
         f"Registering ontologies - Start - Ontology count: {len(ontology_graphs_dict)} "
     )
 
@@ -544,11 +545,11 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             data_update=data_update,
         )
 
-    print(
+    logger.info(
         f"Registering ontologies - Finish - Ontology count: {len(ontology_graphs_dict)}\n"
     )
 
-    print(f"Registering ontology terms - Start: Entity count:  {len(class_jsons)}")
+    logger.info(f"Registering ontology terms - Start: Entity count:  {len(class_jsons)}")
 
     class_errors = []
 
@@ -564,7 +565,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             else [class_resource.get_type()]
 
         if data_update:
-            print(
+            logger.info(
                 f"Term {class_resource_id} will be "
                 f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
             )
@@ -589,18 +590,18 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
                 class_errors.append(ex)
 
         else:
-            print(
+            logger.info(
                 f"{'Creation/Update' if not deprecated else 'Deprecation'} of class "
                 f"{class_resource_id} - Ignored"
             )
 
-    print(
+    logger.info(
         f"Registering ontology terms - Finish - Entity count: {len(class_jsons)},"
         f" {len(class_errors)} errors"
     )
 
     for e in class_errors:
-        print(e)
+        logger.error(e)
 
     create_update_type_to_schema_mapping(
         all_schema_graphs=all_schema_graphs,
@@ -745,7 +746,7 @@ def register_ontology(
     deprecated = ontology_resource.__dict__.get("deprecated", False)
 
     if data_update:
-        print(
+        logger.info(
             f"Ontology {ontology_resource.get_identifier()} will be "
             f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
         )
@@ -763,7 +764,7 @@ def register_ontology(
             tag=tag,
         )
 
-    print(
+    logger.info(
         f"{'Creation/Update' if not deprecated else 'Deprecation'} of ontology "
         f"{ontology_resource.get_identifier()} - Ignored"
     )
@@ -820,7 +821,7 @@ def register_schemas(
         deprecated = schema_resource.__dict__.get("owl:deprecated", False)
 
         if data_update:
-            print(
+            logger.info(
                 f"Schema {schema_resource.get_identifier()} will be "
                 f"{'created/updated and tagged if a tag is provided' if not deprecated else 'deprecated'}"
             )
@@ -834,7 +835,7 @@ def register_schemas(
                 )
                 already_registered.append(schema_resource.get_identifier())
         else:
-            print(
+            logger.info(
                 f"{'Creation/Update' if not deprecated else 'Deprecation'} of schema "
                 f"{schema_resource.get_identifier()} - Ignored"
             )
