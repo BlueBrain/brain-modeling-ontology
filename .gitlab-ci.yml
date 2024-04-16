@@ -24,9 +24,9 @@ test-ontologies-on-merge-request:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "develop"'
       when: always
   variables:
-    atlas_parcellation_ontology: https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e
+    atlas_parcellation_ontology: '$ATLAS_PARCELLATION_ONTOLOGY_ID_STAGING'
     environment: staging
-    atlas_parcellation_ontology_version: 170
+    atlas_parcellation_ontology_version: $ATLAS_PARCELLATION_ONTOLOGY_VERSION_STAGING
     tag: "-"
     token: $NEXUS_TOKEN_STAGING
   script:
@@ -49,6 +49,7 @@ test-ontologies-on-merge-request:
 
   before_script:
     - pip install .[dev]
+    - echo "Using atlas_parcellation_ontology ID $atlas_parcellation_ontology at revision $atlas_parcellation_ontology_version"
     - python scripts/clean_ontology_files.py 
       --environment $environment
       --atlas_parcellation_ontology $atlas_parcellation_ontology
@@ -82,9 +83,9 @@ register_to_environment:
           - .gitlab-ci.yml
       when: on_success
       variables:
-        atlas_parcellation_ontology: https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e
+        atlas_parcellation_ontology: '$ATLAS_PARCELLATION_ONTOLOGY_ID_STAGING'
         environment: staging
-        atlas_parcellation_ontology_version: 170
+        atlas_parcellation_ontology_version: $ATLAS_PARCELLATION_ONTOLOGY_VERSION_STAGING
         tag: "-"
         token: $NEXUS_TOKEN_STAGING
     # It runs only when a new tag is pushed.
@@ -98,6 +99,7 @@ register_to_environment:
         tag: $CI_COMMIT_TAG
         token: $NEXUS_TOKEN_PRODUCTION
   script:
+    - echo "In environment '$environment', using atlas_parcellation_ontology ID $atlas_parcellation_ontology at revision $atlas_parcellation_ontology_version"
     - > 
       python scripts/register_ontologies.py 
       --environment $environment 

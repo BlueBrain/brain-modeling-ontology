@@ -5,6 +5,7 @@ from typing import Optional, Tuple
 from kgforge.core import KnowledgeGraphForge, Resource, commons
 from kgforge.core.commons.exceptions import RetrievalError
 
+from bmo.logger import logger
 
 ALREADY_EXISTS_ERROR = " already exists in project"
 ALREADY_DEPRECATED_ERROR = "is deprecated"
@@ -95,7 +96,7 @@ def _handle_failed(
 ):
     message = f"Failed to {action_type} {type_str.lower()}:{resource.get_identifier()} " \
               f"{extra_message}: {action_message}"
-    print(message)
+    logger.error(message)
     ex = Exception(message)
 
     if raise_on_fail:
@@ -143,7 +144,7 @@ def _deprecate(
         resource_retrieved = None
 
     if resource_retrieved is None:
-        print(
+        logger.error(
             f"{type_str} {resource.get_identifier()} "
             f"cannot be deprecated because it cannot be retrieved"
         )
@@ -155,15 +156,15 @@ def _deprecate(
     last_action = resource_retrieved._last_action
 
     if not last_action:
-        print("No deprecation action?")
+        logger.info("No deprecation action?")
         return None, resource_retrieved
 
     if last_action.succeeded:
-        print(_successful_action_output(type_str, resource_retrieved, "deprecated"))
+        logger.info(_successful_action_output(type_str, resource_retrieved, "deprecated"))
         return None, resource_retrieved
 
     if ALREADY_DEPRECATED_ERROR in last_action.message:
-        print(f"{type_str} {resource_retrieved.get_identifier()} already deprecated.")
+        logger.info(f"{type_str} {resource_retrieved.get_identifier()} already deprecated.")
         return None, resource_retrieved
 
     return _handle_failed(
@@ -182,11 +183,11 @@ def _register_update(
     last_action = resource._last_action
 
     if not last_action:
-        print("No registration action?")
+        logger.warning("No registration action?")
         return None, resource
 
     if last_action.succeeded:
-        print(_successful_action_output(type_str, resource, "registered"))
+        logger.info(_successful_action_output(type_str, resource, "registered"))
 
         if tag is not None:
             forge.tag(resource, tag)
@@ -197,7 +198,7 @@ def _register_update(
             last_action.message, resource, "register", extra_message, type_str, raise_on_fail
         )
 
-    print(f"{type_str} {resource.get_identifier()} already exists, updating...")
+    logger.info(f"{type_str} {resource.get_identifier()} already exists, updating...")
 
     has_id, id_attrib = resource.has_identifier(return_attribute=True)
 
@@ -229,11 +230,11 @@ def _register_update(
     updated_last_action = resource_updated._last_action
 
     if not updated_last_action:
-        print("No update action?")
+        logger.warning("No update action?")
         return None, resource
 
     if updated_last_action.succeeded:
-        print(_successful_action_output(type_str, resource, "updated"))
+        logger.info(_successful_action_output(type_str, resource, "updated"))
 
         if tag is not None:
             forge.tag(resource_updated, tag)
