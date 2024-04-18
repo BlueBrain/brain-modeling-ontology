@@ -11,6 +11,14 @@ stages:
   - generate
   - deploy
 
+variables:
+  KUBERNETES_HELPER_MEMORY_REQUEST: 512Mi
+  KUBERNETES_HELPER_MEMORY_LIMIT: 1Gi
+#    KUBERNETES_MEMORY_LIMIT: 8Gi
+#    KUBERNETES_MEMORY_REQUEST: 8Gi
+  ATLAS_PARCELLATION_ONTOLOGY_ID_STAGING: "https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e"
+  ATLAS_PARCELLATION_ONTOLOGY_VERSION_STAGING: 170
+
 # TEST STAGE
 
 # It runs only when a push is executed in a merge request and an ontology file has changed
@@ -57,12 +65,6 @@ test-ontologies-on-merge-request:
       --token $token
       --tag $tag
       --no_data_update True
-
-variables:
-  KUBERNETES_HELPER_MEMORY_REQUEST: 512Mi
-  KUBERNETES_HELPER_MEMORY_LIMIT: 1Gi
-#    KUBERNETES_MEMORY_LIMIT: 8Gi
-#    KUBERNETES_MEMORY_REQUEST: 8Gi
 
 
 # REGISTER STAGE
