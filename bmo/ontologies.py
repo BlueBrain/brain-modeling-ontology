@@ -10,7 +10,15 @@ from pyshacl.rdfutil import clone_graph
 from rdflib import OWL, RDF, RDFS, SKOS, XSD, PROV, Literal, term, Graph, URIRef, namespace
 from rdflib.paths import OneOrMore, ZeroOrMore
 
-from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
+from bmo.slim_ontologies import get_slim_ontology_id
+from bmo.utils import (
+    BMO,
+    BRAIN_REGION_ONTOLOGY_URI,
+    NSG,
+    SCHEMAORG,
+    SHACL,
+    NXV
+)
 
 # TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
 
@@ -1069,3 +1077,19 @@ def replace_is_defined_by_uris(graph, uri_mapping, ontology_uri=None):
         new_ontology_uri = uri_mapping.get(ontology_uri, ontology_uri)
         return term.URIRef(new_ontology_uri)
     return None
+
+
+def replace_ontology_id(ontology_graph: Graph, new_id: term.URIRef) -> None:
+    for s in ontology_graph.subjects(RDF.type, OWL.Ontology):
+        ontology_graph.remove((s, RDF.type, OWL.Ontology))
+    ontology_graph.add((new_id, RDF.type, OWL.Ontology))
+
+
+def all_ontologies_ids(ontology_graphs_dict: Dict[str, Graph]) -> Set[str]:
+    all_ontologies_ids = set()
+    for _, ontology_graph in ontology_graphs_dict.items():
+        ontology = find_ontology_resource(ontology_graph)
+        all_ontologies_ids.add(str(ontology))
+        slim_id = get_slim_ontology_id(ontology)
+        all_ontologies_ids.add(str(slim_id))
+    return all_ontologies_ids

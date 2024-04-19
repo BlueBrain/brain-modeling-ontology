@@ -3,9 +3,10 @@
   "@id": "https://neuroshapes.org/commons/neuronmorphology",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/minds",
+    "nsg:commons/dataset",
     "nsg:commons/quantitativevalue",
-    "nsg:commons/collection"
+    "nsg:commons/collection",
+    "nsg:commons/distribution"
   ],
   "shapes": [
     {
@@ -13,10 +14,17 @@
       "@type": "NodeShape",
       "and": [
         {
-          "node": "nsg:commons/minds/shapes/MINDSShape"
+          "node": "nsg:commons/dataset/shapes/DatasetShape"
         },
         {
           "property": [
+            {
+              "description": "Neuron Morphology distribution",
+              "minCount": 1,
+              "name": "Soma number of points",
+              "path": "schema:distribution",
+              "node": "https://neuroshapes.org/commons/neuronmorphology/shapes/DistributionShape"
+            },
             {
               "datatype": "xsd:integer",
               "description": "Number of points involved in the modelisation of the soma",
@@ -91,6 +99,31 @@
               "description": "Number of projections of a neurite category",
               "name": "Number of projections",
               "path": "nsg:numberOfProjections"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/neuronmorphology/shapes/DistributionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/distribution/shapes/DistributionShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Morphology media type(s)",
+              "in": [
+                "application/swc",
+                "application/asc",
+                "application/h5",
+                "application/obj",
+                "application/xml"
+              ],
+              "name": "Media type",
+              "path": "schema:encodingFormat"
             }
           ]
         }

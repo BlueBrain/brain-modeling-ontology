@@ -5,7 +5,7 @@ import cProfile
 import pstats
 from collections import defaultdict
 from pstats import SortKey
-from typing import Dict, Any, List, Tuple, Optional
+from typing import Dict, Any, List, Tuple, Optional, Set, Union
 from rdflib import PROV, Literal, RDF, OWL, RDFS, Graph, term
 from kgforge.core.commons import Context
 from kgforge.core import KnowledgeGraphForge, Resource
@@ -14,6 +14,7 @@ from kgforge.specializations.mappings import DictionaryMapping
 import bmo.ontologies as bmo
 import bmo.registration as bmo_registration
 from bmo.argument_parsing import define_arguments
+from bmo.schema_to_type_mapping import create_update_type_to_schema_mapping
 from bmo.loading import (
     DATA_JSONLD_CONTEXT_PATH,
     SCHEMA_JSONLD_CONTEXT_PATH,
@@ -21,8 +22,11 @@ from bmo.loading import (
     load_schemas,
 )
 from bmo.logger import logger
-from bmo.schema_to_type_mapping import create_update_type_to_schema_mapping
 
+from bmo.slim_ontologies import (create_slim_ontology_graph,
+                                 create_slim_classes,
+                                 get_slim_ontology_id
+                                 )
 from bmo.utils import (
     ATLAS_PROPERTIES_TO_MERGE,
     BMO,
@@ -69,6 +73,7 @@ def _initialize_forge_objects(
 def execute_ontology_registration(
     forge: KnowledgeGraphForge,
     ontology_path: str,
+    slim_ontology_path: str,
     ontology_graph: Graph,
     all_class_resources_mapped_dict: Dict,
     all_class_resources_framed_dict: Dict,
@@ -86,6 +91,7 @@ def execute_ontology_registration(
 
     :param forge: The nexus forge object
     :param ontology_path: relative path to the ontology
+    :param slim_ontology_path: relative path to the slim ontology
     :param ontology_graph: the Graph() of the ontology to register
     :param all_class_resources_mapped_dict: all ontology classes
     :param all_class_resources_framed_dict:
@@ -137,13 +143,12 @@ def execute_ontology_registration(
         )
 
     # if ontology is too large, remove `defines` relationships from the ontology
-
     # the CELL_TYPE_ONTOLOGY_URI ontology is too big for having all its content into metadata
     include_defined_classes = not str(ontology) == CELL_TYPE_ONTOLOGY_URI
 
     # make list of framed classes
+    class_resources_mapped = [forge.as_jsonld(mapped_class) for mapped_class in class_resources_mapped.values()]
     class_resources_framed = list(class_resources_framed.values())
-    class_resources_mapped = list(class_resources_mapped.values())
 
     # Frame ontology given the provided context
     ontology_json = bmo.frame_ontology(
@@ -162,6 +167,44 @@ def execute_ontology_registration(
         tag,
         class_resources_mapped=class_resources_mapped,
         data_update=data_update,
+    )
+
+    print(
+        f"Registration of ontology: {str(ontology)} - Done\n"
+    )
+
+    # Standard registration done
+    # Create slim version of ontologies
+    slim_ontology_graph = create_slim_ontology_graph(ontology_graph)
+    slim_ontology = get_slim_ontology_id(ontology)
+
+    # Replace ontology graph id
+    bmo.replace_ontology_id(slim_ontology_graph, slim_ontology)
+
+    slim_classes_mapped = create_slim_classes(class_resources_mapped)
+    slim_classes_framed = create_slim_classes(class_resources_framed)
+
+    # frame the slim ontology
+    slim_ontology_json = bmo.frame_ontology(
+        slim_ontology_graph,
+        new_forge_context,
+        new_jsonld_context_dict,
+        slim_classes_framed,
+        True,  # always include defined classes in ontology
+    )
+
+    register_ontology(
+        forge,
+        slim_ontology_json,
+        slim_ontology_path,
+        slim_ontology_graph,
+        tag,
+        class_resources_mapped=slim_classes_mapped,
+        data_update=data_update,
+    )
+
+    print(
+        f"Registration of slim ontology version: {str(slim_ontology)} - Done\n"
     )
 
     return str(ontology), ontology_json
@@ -299,6 +342,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     token = arguments.token
     tag = arguments.tag if arguments.tag != "-" else None
     ontology_dir = arguments.ontology_dir
+    slim_ontology_dir = arguments.slim_ontology_dir
     bucket = arguments.bucket
     schema_dir = arguments.schema_dir
     transformed_schema_path = arguments.transformed_schema_path
@@ -498,6 +542,9 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     logger.info(f"Got {len(class_resources_mapped)} mapped classes")
 
+    # make a list of ontology ids to be used when registering schemas
+    all_ontologies_ids = bmo.all_ontologies_ids(ontology_graphs_dict)
+
     logger.info(
         f"Preparing ontology classes - Finish - Class count: {len(class_resources_mapped)} \n"
     )
@@ -517,6 +564,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
             tag=tag,
             already_registered=already_registered,
             data_update=data_update,
+            ontologies_ids=all_ontologies_ids,
         )
 
     logger.info(
@@ -529,9 +577,13 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
 
+        slim_ontology_dir = slim_ontology_dir.split('*.ttl')[0]
+        slim_ontology_path = f"{slim_ontology_dir}/{ontology_path.split('.')[1]}_slim.ttl"
+
         execute_ontology_registration(
             forge=forge,
             ontology_path=ontology_path,
+            slim_ontology_path=slim_ontology_path,
             ontology_graph=ontology_graph,
             all_class_resources_mapped_dict=all_class_resources_mapped_dict,
             all_class_resources_framed_dict=all_class_resources_framed_dict,
@@ -783,6 +835,7 @@ def register_schemas(
     tag: Optional[str],
     already_registered: List,
     data_update: bool,
+    ontologies_ids: Optional[Union[Set, List]] = []
 ):
 
     # TODO should there be a mechanism to raise errors/warn when importing deprecated schemas?
@@ -795,10 +848,12 @@ def register_schemas(
             for imported_schema in imported_schemas:
                 if imported_schema in schema_id_to_filepath_dict:
                     imported_schema_file = schema_id_to_filepath_dict[imported_schema]
+                elif imported_schema in ontologies_ids:
+                    continue
                 else:
                     raise ValueError(
                         f"The schema {imported_schema} (imported from {schema_content['id']} "
-                        f"in {schema_filepath}) was not found."
+                        f"in {schema_filepath}) was not found, nor is it an ontology in {ontologies_ids}"
                     )
                 imported_schema_content = schema_graphs_dict[imported_schema_file]
 
@@ -813,6 +868,7 @@ def register_schemas(
                     tag=tag,
                     already_registered=already_registered,
                     data_update=data_update,
+                    ontologies_ids=ontologies_ids
                 )
 
                 already_registered.extend(imported_schema_content["resource"].id)

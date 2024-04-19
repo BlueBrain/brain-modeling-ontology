@@ -9,7 +9,8 @@
   "@type": "Schema",
   "imports": [
     "nsg:commons/labeledontologyentity",
-    "nsg:commons/quantitativevalue"
+    "nsg:commons/quantitativevalue",
+    "http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy_slim"
   ],
   "shapes": [
     {
@@ -22,14 +23,24 @@
           "minCount": 1,
           "name": "Species",
           "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-          "path": "nsg:species"
+          "sh:message": "Species should be defined in the Species Taxonomy ontology",
+          "sh:sparql": {
+            "@type": "sh:SPARQLConstraint",
+            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/> <https://neuroshapes.org/defines> ?value.\n ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species>} .\n}"
+          },
+          "path": "https://neuroshapes.org/species"
         },
         {
           "description": "Subject strain",
           "maxCount": 1,
           "name": "Strain",
           "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-          "path": "nsg:strain"
+          "sh:message": "Strains should be defined in the Species Taxonomy ontology",
+          "sh:sparql": {
+            "@type": "sh:SPARQLConstraint",
+            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/> <https://neuroshapes.org/defines> ?value.\n ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain>} .\n}"
+          },
+          "path": "https://neuroshapes.org/strain"
         },
         {
           "description": "Transgenic modification of subject",
