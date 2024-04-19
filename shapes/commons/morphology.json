@@ -16,7 +16,6 @@
         {
           "property": [
             {
-              "description": null,
               "name": "Distribution",
               "node": "https://neuroshapes.org/commons/morphology/shapes/MorphologyDistributionShape",
               "path": "schema:distribution"
@@ -61,7 +60,6 @@
         {
           "property": [
             {
-              "description": null,
               "in": [
                 "application/swc",
                 "application/neurolucida",

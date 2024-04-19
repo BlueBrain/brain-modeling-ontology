@@ -10,7 +10,8 @@
   "imports": [
     "nsg:commons/quantitativevalue",
     "nsg:commons/typedlabeledontologyterm",
-    "nsg:commons/vector3d"
+    "nsg:commons/vector3d",
+    "http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion_slim"
   ],
   "label": "Brain Location Schema",
   "shapes": [
@@ -116,6 +117,11 @@
           "description": "Brain region region (e.g. layer of the neocortex)",
           "name": "Brain region layer",
           "node": "nsg:commons/typedlabeledontologyterm/shapes/BrainRegionOntologyTermShape",
+          "sh:sparql": {
+            "@type": "sh:SPARQLConstraint",
+            "sh:message": "Layers should be defined in the Brain Region Ontology and be subClassOf nsg:BrainLayer",
+            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> <https://neuroshapes.org/defines>  ?value . \n ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://neuroshapes.org/BrainLayer> }.\n}"
+          },
           "path": "nsg:layer"
         },
         {
@@ -132,6 +138,11 @@
           "name": "Brain region",
           "node": "nsg:commons/typedlabeledontologyterm/shapes/BrainRegionOntologyTermShape",
           "path": "nsg:brainRegion",
+          "sh:sparql": {
+            "@type": "sh:SPARQLConstraint",
+            "sh:message": "Brain Regions should be defined in the Brain Region Ontology",
+            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> <https://neuroshapes.org/defines>  ?value . \n ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://neuroshapes.org/BrainRegion>}.\n}"
+          },
           "sh:minCount": 1
         },
         {

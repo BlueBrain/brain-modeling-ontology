@@ -32,6 +32,7 @@ PREFIX_MAPPINGS = {
     "schema": "http://schema.org/",
     "dcterms": "http://purl.org/dc/terms/",
     "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
+    "ncbitaxon": "http://purl.obolibrary.org/obo/ncbitaxon#",
     "NCBITaxon_TAXON": "http://purl.obolibrary.org/obo/NCBITaxon#_",
     "stim": "https://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/",
     "datashapes": "https://neuroshapes.org/dash/",

@@ -67,6 +67,11 @@ def ontology_dir(pytestconfig):
 
 
 @pytest.fixture(scope="session")
+def slim_ontology_dir(pytestconfig):
+    return pytestconfig.getoption("slim_ontology_dir")
+
+
+@pytest.fixture(scope="session")
 def schema_dir(pytestconfig):
     return pytestconfig.getoption("schema_dir")
 
@@ -113,7 +118,7 @@ def forge_schema(forge_objects):
 @pytest.fixture(scope="session")
 def data_jsonld_context(forge, all_ontology_graphs):
     forge_context = forge._model.context()
-    graph_of_all_ontologies = all_ontology_graphs[0]
+    graph_of_all_ontologies, _ = all_ontology_graphs
     new_jsonld_context, errors = bmo.build_context_from_ontology(
         graph_of_all_ontologies, forge_context
     )
@@ -150,6 +155,12 @@ def all_ontology_graphs(ontology_dir):
             f"Failed to load all ontologies in {ontology_dir}. "
             f"Not loaded ontologies are: {missing_ontologies}: {e}"
         )
+
+
+@pytest.fixture(scope="session")
+def slim_ontology_list(slim_ontology_dir):
+    _, all_ontology_graphs = load_ontologies(slim_ontology_dir)
+    return list(all_ontology_graphs.subjects(RDF.type, OWL.Ontology))
 
 
 @pytest.fixture(scope="session")
@@ -287,7 +298,8 @@ def brain_region_ontologygraph_classes(
 
 
 @pytest.fixture(scope="session")
-def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
+def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema, slim_ontology_list):
+
     recursive = True
     schema_filenames = glob.glob(schema_dir, recursive=recursive)
 
@@ -315,7 +327,8 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema):
             list(all_schema_graphs.subjects(RDF.type, NXV.Schema))
         )
         all_imported_schemas = all_schema_graphs.objects(None, OWL.imports)
-        all_imported_schemas = {str(r) for r in all_imported_schemas}
+        # make sure it was not an ontology
+        all_imported_schemas = {str(r) for r in all_imported_schemas if r not in slim_ontology_list}
         loaded_schema = set(schema_id_to_filepath_dict.keys())
         assert len(loaded_schema) >= len(set(all_imported_schemas))
         assert all_imported_schemas.issubset(

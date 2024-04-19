@@ -1,0 +1,248 @@
+@prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix parms: <https://bbp.epfl.ch/ontologies/core/parameters/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema1:name rdfs:label "name"@en .
+
+schema1:sameAs rdfs:label "sameAs"@en .
+
+schema1:unitCode rdfs:label "unitCode"@en .
+
+schema1:value rdfs:label "value"@en .
+
+rdfs:isDefinedBy rdfs:label "isDefinedBy"@en .
+
+rdfs:label rdfs:label "label"@en .
+
+owl:equivalentClass rdfs:label "equivalentClass"@en .
+
+owl:topDataProperty rdfs:label "Attributes"@en .
+
+skos:definition rdfs:label "definition"@en .
+
+skos:prefLabel rdfs:label "prefLabel"@en .
+
+bmo:constraints rdfs:label "constraints"@en .
+
+<https://bbp.epfl.ch/ontologies/core/parameters> rdfs:label "Brain Modeling Parameter Ontology"^^xsd:string ;
+    nsg:defines schema1:Dataset,
+        schema1:QuantitativeValue,
+        prov:Entity,
+        bmo:AtlasDistanceToLayer,
+        bmo:AtlasETypeRatio,
+        bmo:BrainVolumeParameter,
+        bmo:ConductanceDensity,
+        bmo:ConnectivityModelCoefficient,
+        bmo:DendriteSynapseDensity,
+        bmo:EModelParameter,
+        bmo:EModelParameterConstraint,
+        bmo:ETypeRatio,
+        bmo:ElectricalStimulus,
+        bmo:Ion,
+        bmo:METypeRatio,
+        bmo:ModelBiochemicalReactionParameter,
+        bmo:ModelBrainParameter,
+        bmo:ModelBrainParameterConstraint,
+        bmo:ModelConnectivityParameter,
+        bmo:NeuronPart,
+        bmo:NeuronPartFeature,
+        parms:DecayTimeConstant,
+        parms:Dep,
+        parms:Fac,
+        parms:GABAB_ratio,
+        parms:InitialConcentrationOfMg,
+        parms:NMDA_ratio,
+        parms:Nrrp,
+        parms:SynapticConductanceWeight,
+        parms:SynapticReversalPotential,
+        parms:TimeConstantInMsForRecoveryFromDepression,
+        parms:TimeConstantInMsForRecoveryFromFacilitation,
+        parms:Use,
+        parms:conductance,
+        parms:e_GABAA,
+        parms:e_GABAB,
+        parms:gmax,
+        parms:gsyn,
+        parms:gsynSRSF,
+        parms:nrrp,
+        parms:scale_mg,
+        parms:slope_mg,
+        parms:tau_d_AMPA,
+        parms:tau_d_GABAA,
+        parms:tau_d_GABAB,
+        parms:tau_d_NMDA,
+        parms:tau_r_AMPA,
+        parms:tau_r_GABAA,
+        parms:tau_r_GABAB,
+        parms:tau_r_NMDA,
+        parms:u,
+        parms:u0,
+        parms:uHillCoefficient .
+
+<https://bbp.epfl.ch/ontologies/core/parameters_slim> a owl:Ontology .
+
+nsg:defines rdfs:label "defines"@en .
+
+nsg:hasBaselDendriteFeature rdfs:label "hasBaselDendriteFeature"@en .
+
+nsg:hasConstraint rdfs:label "hasConstraint"@en .
+
+nsg:hasLayerLocation rdfs:label "hasLayerLocation"@en .
+
+nsg:hasObliqDendrite rdfs:label "hasObliqDendrite"@en .
+
+nsg:hasTuftDendriteFeature rdfs:label "hasTuftDendriteFeature"@en .
+
+schema1:QuantitativeValue rdfs:label "Quantitative Value"@en ;
+    rdfs:subClassOf prov:Entity .
+
+bmo:AtlasDistanceToLayer rdfs:label "AtlasDistanceToLayer"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+bmo:AtlasETypeRatio rdfs:label "AtlasETypeRatio"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+bmo:BrainVolumeParameter rdfs:label "Model Brain Volume Parameter"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+bmo:ConductanceDensity rdfs:label "Conductance Density"@en ;
+    rdfs:subClassOf bmo:EModelParameter,
+        bmo:NeuronPartFeature .
+
+bmo:ConnectivityModelCoefficient rdfs:label "Connectivity Model Coefficient"@en ;
+    rdfs:subClassOf bmo:ModelConnectivityParameter .
+
+bmo:DendriteSynapseDensity rdfs:label "DendriteSynapseDensity"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+bmo:EModelParameterConstraint rdfs:label "EModel Parameter Constraint"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameterConstraint .
+
+bmo:ETypeRatio rdfs:label "E-TypeRatio"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+bmo:ElectricalStimulus rdfs:label "Electrical Stimulus"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+bmo:METypeRatio rdfs:label "METype Ratio"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+bmo:ModelBiochemicalReactionParameter rdfs:label "Model Biochemical Reaction Parameter"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:DecayTimeConstant rdfs:label "dtc"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:Dep rdfs:label "Dep"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:Fac rdfs:label "Fac"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:GABAB_ratio rdfs:label "GABAB_ratio"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:InitialConcentrationOfMg rdfs:label "mg"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:NMDA_ratio rdfs:label "NMDA_ratio"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:Nrrp rdfs:label "Nrrp"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:SynapticConductanceWeight rdfs:label "weight"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:SynapticReversalPotential rdfs:label "e"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:TimeConstantInMsForRecoveryFromDepression rdfs:label "d"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:TimeConstantInMsForRecoveryFromFacilitation rdfs:label "f"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:Use rdfs:label "Use"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:conductance rdfs:label "conductance"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:e_GABAA rdfs:label "e_GABAA"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:e_GABAB rdfs:label "e_GABAB"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:gmax rdfs:label "gmax"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:gsyn rdfs:label "gsyn"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:gsynSRSF rdfs:label "gsynSRSF"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:nrrp rdfs:label "nrrp"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:scale_mg rdfs:label "scale_mg"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:slope_mg rdfs:label "slope_mg"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:tau_d_AMPA rdfs:label "tau_d_AMPA"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:tau_d_GABAA rdfs:label "tau_d_GABAA"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:tau_d_GABAB rdfs:label "tau_d_GABAB"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:tau_d_NMDA rdfs:label "tau_d_NMDA"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:tau_r_AMPA rdfs:label "tau_r_AMPA"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:tau_r_GABAA rdfs:label "tau_r_GABAA"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:tau_r_GABAB rdfs:label "tau_r_GABAB"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:tau_r_NMDA rdfs:label "tau_r_NMDA"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:u rdfs:label "u"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:u0 rdfs:label "u0"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+parms:uHillCoefficient rdfs:label "uHillCoefficient"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+bmo:EModelParameter rdfs:label "EModel Parameter"^^xsd:string ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+bmo:ModelBrainParameterConstraint rdfs:label "Model Brain Parameter Constraint"@en ;
+    rdfs:subClassOf prov:Entity .
+
+bmo:ModelConnectivityParameter rdfs:label "Model Connectivity Parameter"@en ;
+    rdfs:subClassOf bmo:ModelBrainParameter .
+
+prov:Entity rdfs:label "Entity"@en .
+
+bmo:ModelBrainParameter rdfs:label "Model Brain Parameter"@en ;
+    rdfs:subClassOf prov:Entity .
+

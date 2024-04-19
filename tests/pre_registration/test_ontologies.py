@@ -2,7 +2,9 @@ import pytest
 
 import json
 import re
+from rdflib import term
 from bmo.loading import DATA_JSONLD_CONTEXT_PATH
+from bmo.slim_ontologies import SLIM_GRAPH_PREDICATES
 from bmo.utils import (
     ATLAS_PROPERTIES_TO_MERGE,
     BMO,
@@ -22,6 +24,121 @@ from typing import List, Optional, Type
 
 import bmo.ontologies as bmo
 from scripts.register_ontologies import execute_ontology_registration
+from bmo.slim_ontologies import (
+    create_slim_ontology_graph,
+    create_slim_classes
+)
+
+
+@pytest.fixture
+def example_ontology_json(data_jsonld_context):
+    jsonld_context, _ = data_jsonld_context
+    context = jsonld_context.document["@context"]
+    return {
+              "@context": context,
+              "@type": "Ontology",
+              "defines": [
+                  {"@id": "http://purl.obolibrary.org/obo/GO_0005575",
+                   "@type": "Class",
+                   "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"],
+                   "equivalentClass": ["https://bbp.epfl.ch/ontologies/core/bmo/SubcellularPart"],
+                   "label": "Cellular Component",
+                   "definition": "A location, relative to cellular compartments and structures.",
+                   "altLabel": ["cell or subcellular entity", "cellular component"],
+                   "atlasRelease": {
+                       "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+                       "_rev": 3}},
+                  {"@id": "http://purl.obolibrary.org/obo/GO_0005739",
+                   "@type": "Class",
+                   "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"],
+                   "equivalentClass": ["https://bbp.epfl.ch/ontologies/core/bmo/Mitochondrion"],
+                   "atlasRelease": {
+                       "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+                       "_rev": 3}},
+                  {"@id": "http://purl.obolibrary.org/obo/GO_0005783",
+                   "@type": "Class",
+                   "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"],
+                   "equivalentClass": ["https://bbp.epfl.ch/ontologies/core/bmo/EndoplasmicReticulum"],
+                   "atlasRelease": {
+                       "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+                       "_rev": 3}},
+                  {"@id": "http://purl.obolibrary.org/obo/GO_0005829",
+                   "@type": "Class",
+                   "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"],
+                   "equivalentClass": ["https://bbp.epfl.ch/ontologies/core/bmo/Cytosol"],
+                   "atlasRelease": {
+                       "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+                       "_rev": 3}},
+                  {"@id": "http://purl.obolibrary.org/obo/GO_0030424",
+                   "@type": "Class",
+                   "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"],
+                   "equivalentClass": ["https://neuroshapes.org/Axon"],
+                   "atlasRelease": {
+                       "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+                       "_rev": 3}},
+              ],
+              "label": "Example Ontology"
+            }
+
+
+@pytest.fixture
+def example_ontology_graph(example_ontology_json):
+    return Graph().parse(
+        data=json.dumps(example_ontology_json),
+        format="json-ld"
+    )
+
+
+def test_slim_ontology_graph(example_ontology_graph):
+    keep_attributes = SLIM_GRAPH_PREDICATES
+    slim_graph = create_slim_ontology_graph(example_ontology_graph, keep_attributes)
+
+    # Check the keep attributes are actually kept
+    for p in keep_attributes:
+        for s, o in example_ontology_graph.subject_objects(p):
+            if isinstance(o, term.Literal):
+                o = term.Literal(str(o))
+            if (s, p, o) not in slim_graph:
+                raise ValueError(f'The tripe {(s, p, o)} was not found in the slim_graph')
+
+
+@pytest.mark.parametrize(
+    "keep_attributes,expected",
+    [
+        pytest.param((['@id']),
+                     ([{"@id": "http://purl.obolibrary.org/obo/GO_0005575"},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0005739"},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0005783"},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0005829"},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0030424"}]),
+                     id='only_ids'),
+        pytest.param((['@id', 'label']),
+                     ([{"@id": "http://purl.obolibrary.org/obo/GO_0005575",
+                        "label": "Cellular Component"},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0005739"},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0005783"},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0005829"},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0030424"}]),
+                     id='ids_labels'),
+        pytest.param((['@id', 'subClassOf']),
+                     ([{"@id": "http://purl.obolibrary.org/obo/GO_0005575",
+                        "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"]},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0005739",
+                        "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"]},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0005783",
+                        "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"]},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0005829",
+                        "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"]},
+                       {"@id": "http://purl.obolibrary.org/obo/GO_0030424",
+                        "subClassOf": ["https://bbp.epfl.ch/ontologies/core/bmo/Mapping"]}]
+                      ),
+                     id='ids_labels')
+    ]
+)
+def test_reduce_classes(example_ontology_json, keep_attributes, expected):
+    classes = example_ontology_json['defines']
+    slim_classes = create_slim_classes(classes, keep_attributes)
+    assert slim_classes == expected
 
 
 @pytest.fixture
@@ -617,15 +734,19 @@ def test_frame_ontologies(
     atlas_release_prop,
     atlas_release_id,
     atlas_release_version,
+    slim_ontology_dir,
 ):
     ontology_graphs_dict = all_ontology_graphs[1]
     brain_region_generated_classes = framed_classes[2]
     new_jsonld_context, _ = data_jsonld_context
     errors = []
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
+        slim_ontology_dir = slim_ontology_dir.split('*ttl')[0]
+        slim_ontology_path = f"{slim_ontology_dir}/{ontology_path.split('.')[1]}_slim.ttl"
         ontology_uri, ontology_json = execute_ontology_registration(
             forge=forge,
             ontology_path=ontology_path,
+            slim_ontology_path=slim_ontology_path,
             ontology_graph=ontology_graph,
             all_class_resources_mapped_dict={},
             all_class_resources_framed_dict=framed_class_json_dict,

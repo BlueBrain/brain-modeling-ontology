@@ -38,10 +38,8 @@
               "path": "nsg:species"
             },
             {
-              "description": null,
               "maxCount": 1,
               "minCount": 1,
-              "name": null,
               "node": "this:NodeCollectionShape",
               "path": "nsg:synapse"
             },
@@ -107,7 +105,6 @@
           "property": [
             {
               "description": "Location of the data file defining properties of the synapses.",
-              "editorialNote": null,
               "maxCount": 1,
               "minCount": 1,
               "name": "Properties",
@@ -152,7 +149,6 @@
         {
           "property": [
             {
-              "description": null,
               "in": [
                 "application/mod"
               ],
@@ -284,10 +280,8 @@
         {
           "property": [
             {
-              "description": null,
               "maxCount": 1,
               "minCount": 1,
-              "name": null,
               "path": "nsg:memodelRelease"
             },
             {
