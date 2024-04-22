@@ -734,15 +734,13 @@ def test_frame_ontologies(
     atlas_release_prop,
     atlas_release_id,
     atlas_release_version,
-    slim_ontology_dir,
 ):
     ontology_graphs_dict = all_ontology_graphs[1]
     brain_region_generated_classes = framed_classes[2]
     new_jsonld_context, _ = data_jsonld_context
     errors = []
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
-        slim_ontology_dir = slim_ontology_dir.split('*ttl')[0]
-        slim_ontology_path = f"{slim_ontology_dir}/{ontology_path.split('.')[1]}_slim.ttl"
+        slim_ontology_path = f"./{ontology_path.split('.')[1]}_slim.ttl"
         ontology_uri, ontology_json = execute_ontology_registration(
             forge=forge,
             ontology_path=ontology_path,

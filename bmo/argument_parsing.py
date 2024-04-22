@@ -41,11 +41,6 @@ def define_arguments(parser: Union[argparse.ArgumentParser, Parser]):
     )
 
     add_arg(
-        "--slim_ontology_dir", help="The path to load slim ontologies from.",
-        default='./ontologies/bbp_slim/*.ttl', type=str
-    )
-
-    add_arg(
         "--schema_dir", help="The path to load schemas from.",
         default='./shapes/**/*.json', type=str
     )

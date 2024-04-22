@@ -1,9 +1,12 @@
 import glob
+import os
+import yaml
+import json
 
 from kgforge.core.resource import Resource
 import pytest
 import rdflib
-from rdflib import RDF, OWL, RDFS
+from rdflib import RDF, OWL, RDFS, term
 from rdflib.paths import ZeroOrMore
 import bmo.ontologies as bmo
 from bmo.argument_parsing import define_arguments
@@ -14,11 +17,24 @@ from bmo.utils import (
     _get_ontology_annotation_lang_context,
 )
 from bmo.loading import load_ontologies, load_schemas
+from kgforge.core.forge import KnowledgeGraphForge
 from scripts.register_ontologies import (
     _initialize_forge_objects,
     _merge_ontology,
     combine_jsonld_context
 )
+from bmo.ontologies import (
+    find_ontology_resource,
+    replace_ontology_id,
+    add_defines_relation,
+    all_ontologies_ids
+)
+from bmo.slim_ontologies import (
+    create_slim_ontology_graph,
+    get_slim_ontology_id
+)
+
+NEW_JSON_CONTEXT_PATH = './jsonldcontext/new_jsonld_context.json'
 
 
 def pytest_addoption(parser):
@@ -64,11 +80,6 @@ def atlas_parcellation_ontology_bucket(pytestconfig):
 @pytest.fixture(scope="session")
 def ontology_dir(pytestconfig):
     return pytestconfig.getoption("ontology_dir")
-
-
-@pytest.fixture(scope="session")
-def slim_ontology_dir(pytestconfig):
-    return pytestconfig.getoption("slim_ontology_dir")
 
 
 @pytest.fixture(scope="session")
@@ -158,9 +169,75 @@ def all_ontology_graphs(ontology_dir):
 
 
 @pytest.fixture(scope="session")
-def slim_ontology_list(slim_ontology_dir):
-    _, all_ontology_graphs = load_ontologies(slim_ontology_dir)
-    return list(all_ontology_graphs.subjects(RDF.type, OWL.Ontology))
+def new_context_path():
+    return NEW_JSON_CONTEXT_PATH
+
+
+@pytest.fixture(scope="session")
+def forge_rdfmodel(forge, all_ontology_graphs,
+                   all_ontology_graph_merged_brain_region_atlas_hierarchy,
+                   updated_local_jsonld_context,
+                   new_context_path):
+    _, brain_region_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
+    # create tmp directory in the same place as the schemas
+    tmp_dir = './tmp_shapes/'
+    if not os.path.exists(tmp_dir):
+        os.mkdir(tmp_dir)
+    ontologies_dirpath = f'{tmp_dir}/ontologies'
+    if not os.path.exists(ontologies_dirpath):
+        os.mkdir(ontologies_dirpath)
+
+    # create slim ontologies and save them to files
+    _, ontology_graphs_dict = all_ontology_graphs
+    for ontology_file, ontology_graph in ontology_graphs_dict.items():
+        if 'brainregion' in ontology_file:  # replave the brain region graph with the merged graph
+            ontology_graph = brain_region_graph
+            dirpath = f"./{ontology_file.split('/')[-1].split('.')[0]}"
+            dirpath_ttl = f"{dirpath}_before_slim.ttl"
+            ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
+        ontology = find_ontology_resource(ontology_graph)
+        add_defines_relation(ontology_graph, ontology)
+
+        # Create slim version of ontologies
+        slim_ontology_graph = create_slim_ontology_graph(ontology_graph)
+        slim_ontology = get_slim_ontology_id(ontology)
+        replace_ontology_id(slim_ontology_graph, slim_ontology)
+
+        # Replace ontology graph id
+        dirpath = f"{ontologies_dirpath}/{ontology_file.split('/')[-1].split('.')[0]}"
+        dirpath_ttl = f"{dirpath}_slim.ttl"
+        slim_ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
+
+    # dump the new json context
+    context_document = updated_local_jsonld_context.document
+    with open(new_context_path, 'w') as f:
+        json.dump(context_document, f, indent=2)
+
+    os.system(f'cp -r ./shapes {tmp_dir}')
+
+    # use an existing configuration file and modify it
+    with open('./config/forge-config.yml', 'r') as fc:
+        config = yaml.safe_load(fc)
+    config['Model']['origin'] = 'directory'
+    config['Model']['source'] = f'{tmp_dir}'
+    config['Model']['context']['iri'] = new_context_path
+    config['Model']['context']['bucket'] = './jsonldcontext'
+
+    config_path = './config/tmp-forge-config.yml'
+    with open(config_path, 'w') as fo:
+        yaml.safe_dump(config, fo)
+
+    # Generate a forge instance from a directory with all schemas, ontologies and the new context
+    return KnowledgeGraphForge(config_path,
+                               endpoint=forge._store.endpoint,
+                               bucket=forge._store.bucket,
+                               token=forge._store.token)
+
+
+@pytest.fixture(scope="session")
+def ontology_list(all_ontology_graphs):
+    _, all_ontology_dict = all_ontology_graphs
+    return all_ontologies_ids(all_ontology_dict)
 
 
 @pytest.fixture(scope="session")
@@ -298,7 +375,7 @@ def brain_region_ontologygraph_classes(
 
 
 @pytest.fixture(scope="session")
-def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema, slim_ontology_list):
+def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema, ontology_list):
 
     recursive = True
     schema_filenames = glob.glob(schema_dir, recursive=recursive)
@@ -328,7 +405,8 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema, slim_on
         )
         all_imported_schemas = all_schema_graphs.objects(None, OWL.imports)
         # make sure it was not an ontology
-        all_imported_schemas = {str(r) for r in all_imported_schemas if r not in slim_ontology_list}
+        ontology_list = [term.URIRef(el) for el in ontology_list]
+        all_imported_schemas = {str(r) for r in all_imported_schemas if r not in ontology_list}
         loaded_schema = set(schema_id_to_filepath_dict.keys())
         assert len(loaded_schema) >= len(set(all_imported_schemas))
         assert all_imported_schemas.issubset(
