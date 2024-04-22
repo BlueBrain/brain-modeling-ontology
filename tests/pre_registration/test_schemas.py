@@ -4,31 +4,20 @@ from rdflib.paths import ZeroOrMore
 from rdflib.term import URIRef, BNode
 import pytest
 import requests
-import yaml
 import copy
-from kgforge.core.forge import KnowledgeGraphForge
 # from pyshacl import validate
 import json
 from bmo.utils import NXV, SHACL, SH
-from bmo.ontologies import (
-    find_ontology_resource,
-    replace_ontology_id,
-    add_defines_relation
-)
+
 from bmo.schema_to_type_mapping import (
     get_shapes_in_schemas,
     get_schema_to_target_classes_2,
     get_schema_to_target_classes_1
 )
-from bmo.slim_ontologies import (
-    create_slim_ontology_graph,
-    get_slim_ontology_id
-)
 
 
 EXAMPLE_RESOURCES_DIR = './tests/data/example_resources'
 WRONG_EXAMPLE_RESOURCES_DIR = './tests/data/wrong_example_resources'
-NEW_JSON_CONTEXT_PATH = './jsonldcontext/new_jsonld_context.json'
 
 
 @pytest.fixture
@@ -105,10 +94,9 @@ def test_get_schema_to_target_classes(all_schema_graphs, forge):
         f"Schemas with more than one target class, {invalid_schemas_2}"
 
 
-def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, slim_ontology_list):
-    schema_graphs, schema_graphs_dict, schema_id_to_filepath_dict = all_schema_graphs
+def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, ontology_list):
+    _, schema_graphs_dict, schema_id_to_filepath_dict = all_schema_graphs
     jsonld_context_from_ontologies, _ = data_jsonld_context
-    slim_ontology_list = [str(el) for el in slim_ontology_list]  # before they where URIRef
     for schema_file, schema_content_dict in schema_graphs_dict.items():
         used_shapes = get_referenced_shapes(
             None, schema_content_dict["graph"], SH.node | SH.property
@@ -117,7 +105,7 @@ def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, slim_ontol
         directly_imported_schemas, transitive_imported_schemas = get_imported_schemas(
             jsonld_context_from_ontologies, schema_content_dict, schema_graphs_dict,
             schema_id_to_filepath_dict, already_imported_schemas, expand_uri=True,
-            transitive_imports=True, ontology_list=slim_ontology_list
+            transitive_imports=True, ontology_list=ontology_list
         )
         for imported_schema in transitive_imported_schemas:
             # check imported schemas are defined
@@ -133,7 +121,7 @@ def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, slim_ontol
                     jsonld_context_from_ontologies, imported_schema_content_dict,
                     schema_graphs_dict,
                     schema_id_to_filepath_dict, already_imported_schemas, expand_uri=True,
-                    transitive_imports=True, ontology_list=slim_ontology_list
+                    transitive_imports=True, ontology_list=ontology_list
                 )
 
                 message = f"The schema {schema_content_dict['id']} located in {schema_file} " \
@@ -254,67 +242,6 @@ def get_referenced_shapes(schema_uri, schema_graph, sparql_path):
 
 
 @pytest.fixture(scope="session")
-def forge_rdfmodel(forge, all_ontology_graphs,
-                   all_ontology_graph_merged_brain_region_atlas_hierarchy,
-                   updated_local_jsonld_context,
-                   context_path=NEW_JSON_CONTEXT_PATH):
-    _, brain_region_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
-    # create tmp directory in the same place as the schemas
-    tmp_dir = './tmp_shapes/'
-    if not os.path.exists(tmp_dir):
-        os.mkdir(tmp_dir)
-    ontologies_dirpath = f'{tmp_dir}/ontologies'
-    if not os.path.exists(ontologies_dirpath):
-        os.mkdir(ontologies_dirpath)
-
-    # create slim ontologies and save them to files
-    _, ontology_graphs_dict = all_ontology_graphs
-    for ontology_file, ontology_graph in ontology_graphs_dict.items():
-        if 'brainregion' in ontology_file:  # replave the brain region graph with the merged graph
-            ontology_graph = brain_region_graph
-            dirpath = f"./{ontology_file.split('/')[-1].split('.')[0]}"
-            dirpath_ttl = f"{dirpath}_before_slim.ttl"
-            ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
-        ontology = find_ontology_resource(ontology_graph)
-        add_defines_relation(ontology_graph, ontology)
-
-        # Create slim version of ontologies
-        slim_ontology_graph = create_slim_ontology_graph(ontology_graph)
-        slim_ontology = get_slim_ontology_id(ontology)
-        replace_ontology_id(slim_ontology_graph, slim_ontology)
-
-        # Replace ontology graph id
-        dirpath = f"{ontologies_dirpath}/{ontology_file.split('/')[-1].split('.')[0]}"
-        dirpath_ttl = f"{dirpath}_slim.ttl"
-        slim_ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
-
-    # dump the new json context
-    context_document = updated_local_jsonld_context.document
-    with open(context_path, 'w') as f:
-        json.dump(context_document, f, indent=2)
-
-    os.system(f'cp -r ./shapes {tmp_dir}')
-
-    # use an existing configuration file and modify it
-    with open('./config/forge-config.yml', 'r') as fc:
-        config = yaml.safe_load(fc)
-    config['Model']['origin'] = 'directory'
-    config['Model']['source'] = f'{tmp_dir}'
-    config['Model']['context']['iri'] = context_path
-    config['Model']['context']['bucket'] = './jsonldcontext'
-
-    config_path = './config/tmp-forge-config.yml'
-    with open(config_path, 'w') as fo:
-        yaml.safe_dump(config, fo)
-
-    # Generate a forge instance from a directory with all schemas, ontologies and the new context
-    return KnowledgeGraphForge(config_path,
-                               endpoint=forge._store.endpoint,
-                               bucket=forge._store.bucket,
-                               token=forge._store.token)
-
-
-@pytest.fixture(scope="session")
 def schemas_classes_dicts(forge, all_schema_graphs):
     schemas_graph, schema_dict, schema_to_file_dict = all_schema_graphs
     schema_class = get_schema_to_target_classes_2(schemas_graph, forge)
@@ -346,7 +273,7 @@ def check_type_in_loaded_context(example_file, type_, class_schema, schema_to_fi
 
 def test_schemas_validate_examples(schemas_classes_dicts,
                                    forge_rdfmodel, resource_examples,
-                                   context_iri=NEW_JSON_CONTEXT_PATH):
+                                   new_context_path):
     "Check that schemas validate againts sample resources"
     # Get resources and classes mapping
     schema_dict, schema_to_file_dict, class_schema = schemas_classes_dicts
@@ -360,7 +287,7 @@ def test_schemas_validate_examples(schemas_classes_dicts,
         try:
             print(" --- Validating ", example_file)
             # change the context iri to be the one of the directory
-            example['@context'] = context_iri
+            example['@context'] = new_context_path
             example_resource = forge_rdfmodel._store.service.to_resource(example)
             forge_rdfmodel.validate(example_resource, type_=type_)
             if not example_resource._last_action.succeeded:
@@ -372,7 +299,7 @@ def test_schemas_validate_examples(schemas_classes_dicts,
 
 def test_schemas_validate_wrong_examples(schemas_classes_dicts,
                                          forge_rdfmodel, resource_examples,
-                                         context_iri=NEW_JSON_CONTEXT_PATH):
+                                         new_context_path):
     "Check that schemas validate againts sample resources"
     # Get resources and classes mapping
     _, _, class_schema = schemas_classes_dicts
@@ -382,7 +309,7 @@ def test_schemas_validate_wrong_examples(schemas_classes_dicts,
         type_ = class_lower[example_file.split('.json')[0]]
         schema_id = class_schema[type_]
 
-        example['@context'] = context_iri
+        example['@context'] = new_context_path
         example_resource = forge_rdfmodel._store.service.to_resource(example)
         if hasattr(example_resource, 'brainLocation'):
             old_brain_region = copy.deepcopy(example_resource.brainLocation.brainRegion)

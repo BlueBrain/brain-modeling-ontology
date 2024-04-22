@@ -342,7 +342,6 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     token = arguments.token
     tag = arguments.tag if arguments.tag != "-" else None
     ontology_dir = arguments.ontology_dir
-    slim_ontology_dir = arguments.slim_ontology_dir
     bucket = arguments.bucket
     schema_dir = arguments.schema_dir
     transformed_schema_path = arguments.transformed_schema_path
@@ -555,8 +554,8 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
 
-        slim_ontology_dir = slim_ontology_dir.split('*.ttl')[0]
-        slim_ontology_path = f"{slim_ontology_dir}/{ontology_path.split('.')[1]}_slim.ttl"
+        dirpath = f"./{ontology_path.split('/')[-1].split('.')[0]}"
+        slim_ontology_path = f"{dirpath}_slim.ttl"
 
         execute_ontology_registration(
             forge=forge,
