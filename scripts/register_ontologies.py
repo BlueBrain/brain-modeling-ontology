@@ -549,28 +549,6 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         f"Preparing ontology classes - Finish - Class count: {len(class_resources_mapped)} \n"
     )
 
-    logger.info(f"Registering {len(list(schema_graphs_dict.keys()))} schemas - Start")
-    already_registered = []
-
-    for schema_file, schema_content in schema_graphs_dict.items():
-        register_schemas(
-            forge_schema,
-            schema_file,
-            schema_content,
-            schema_graphs_dict,
-            schema_id_to_filepath_dict,
-            all_schema_graphs,
-            new_jsonld_schema_context,
-            tag=tag,
-            already_registered=already_registered,
-            data_update=data_update,
-            ontologies_ids=all_ontologies_ids,
-        )
-
-    logger.info(
-        f"Registering schemas - Finish - Schema count: {len(list(schema_graphs_dict.keys()))}\n"
-    )
-
     logger.info(
         f"Registering ontologies - Start - Ontology count: {len(ontology_graphs_dict)} "
     )
@@ -654,6 +632,28 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     for e in class_errors:
         logger.error(e)
+
+    logger.info(f"Registering {len(list(schema_graphs_dict.keys()))} schemas - Start")
+    already_registered = []
+
+    for schema_file, schema_content in schema_graphs_dict.items():
+        register_schemas(
+            forge_schema,
+            schema_file,
+            schema_content,
+            schema_graphs_dict,
+            schema_id_to_filepath_dict,
+            all_schema_graphs,
+            new_jsonld_schema_context,
+            tag=tag,
+            already_registered=already_registered,
+            data_update=data_update,
+            ontologies_ids=all_ontologies_ids,
+        )
+
+    logger.info(
+        f"Registering schemas - Finish - Schema count: {len(list(schema_graphs_dict.keys()))}\n"
+    )
 
     create_update_type_to_schema_mapping(
         all_schema_graphs=all_schema_graphs,
