@@ -1085,6 +1085,14 @@ def replace_ontology_id(ontology_graph: Graph, new_id: term.URIRef) -> None:
     ontology_graph.add((new_id, RDF.type, OWL.Ontology))
 
 
+def copy_ontology_label(ontology_graph, ontology_id,
+                        other_ontology_graph, other_ontology_id) -> None:
+    """Copy the label from one ontology to another."""
+    for o in ontology_graph.objects(ontology_id, RDFS.label):
+        ontology_label = o
+    other_ontology_graph.add((other_ontology_id, RDFS.label, ontology_label))
+
+
 def all_ontologies_ids(ontology_graphs_dict: Dict[str, Graph]) -> Set[str]:
     all_ontologies_ids = set()
     for _, ontology_graph in ontology_graphs_dict.items():
