@@ -27,7 +27,8 @@ from bmo.ontologies import (
     find_ontology_resource,
     replace_ontology_id,
     add_defines_relation,
-    all_ontologies_ids
+    all_ontologies_ids,
+    copy_ontology_label
 )
 from bmo.slim_ontologies import (
     create_slim_ontology_graph,
@@ -202,6 +203,7 @@ def forge_rdfmodel(forge, all_ontology_graphs,
         slim_ontology_graph = create_slim_ontology_graph(ontology_graph)
         slim_ontology = get_slim_ontology_id(ontology)
         replace_ontology_id(slim_ontology_graph, slim_ontology)
+        copy_ontology_label(ontology_graph, ontology, slim_ontology_graph, slim_ontology)
 
         # Replace ontology graph id
         dirpath = f"{ontologies_dirpath}/{ontology_file.split('/')[-1].split('.')[0]}"
