@@ -821,3 +821,15 @@ def _get_in_annotation_leaves(
         if (leaf, BMO.representedInAnnotation, Literal(True, datatype=XSD.boolean))
         in ontology_graph
     }
+
+
+def test_deprecated_have_valid_type(all_ontology_graphs):
+    graph_of_all_ontologies, _ = all_ontology_graphs
+    deprecated_subjects = list(graph_of_all_ontologies.subjects(OWL.deprecated, Literal(True, datatype=XSD.boolean)))
+    types = [OWL.Class, OWL.NamedIndividual, OWL.AnnotationProperty, OWL.ObjectProperty]
+    have_class_or_named_individual = dict(
+        (s, any((s, RDF.type, type_) in graph_of_all_ontologies for type_ in types))
+        for s in deprecated_subjects
+    )
+    failed = [s for s, has_valid_type in have_class_or_named_individual.items() if not has_valid_type]
+    assert len(failed) == 0, f"These are flagged as deprecated but are neither classes nor named individuals: {failed} "
