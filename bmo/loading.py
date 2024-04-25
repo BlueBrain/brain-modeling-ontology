@@ -140,9 +140,7 @@ def load_ontologies(ontology_dir: str) -> Tuple[Dict, Graph]:
         try:
             # remove_non_ascii(ontology_path)
             # read the ontology
-            ontology_graph = Graph()
-            for prefix, mapping in PREFIX_MAPPINGS.items():
-                ontology_graph.bind(prefix, Namespace(mapping))
+            ontology_graph = initialise_graph()
             ontology_graph.parse(ontology_path, format="turtle")
             all_ontology_graphs.parse(ontology_path, format="turtle")
             ontology_graphs_dict[ontology_path] = ontology_graph
