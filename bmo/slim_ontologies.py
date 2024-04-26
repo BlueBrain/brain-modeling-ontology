@@ -1,16 +1,18 @@
 from typing import List, Dict
-from rdflib import RDF, Graph, term, RDFS
+from rdflib import RDF, Graph, term, RDFS, OWL
 from bmo.loading import initialise_graph
 
 
 SLIM_CLASS_ATTRIBUTES = ['@id', '@type', 'label', 'subClassOf']
-SLIM_GRAPH_PREDICATES = [RDFS.label, RDFS.subClassOf,
+SLIM_GRAPH_PREDICATES = [RDF.type, RDFS.label, RDFS.subClassOf,
                          term.URIRef("https://neuroshapes.org/defines"),
                          term.URIRef("http://purl.obolibrary.org/obo/ncbitaxon#has_rank")]
+SLIM_GRAPH_TYPES = [OWL.Ontology, OWL.Class, OWL.NamedIndividual]
 
 
 def create_slim_ontology_graph(original_graph: Graph,
-                               keep_attributes: List[term.URIRef] = SLIM_GRAPH_PREDICATES) -> Graph:
+                               keep_attributes: List[term.URIRef] = SLIM_GRAPH_PREDICATES,
+                               keep_types: List[term.URIRef] = SLIM_GRAPH_TYPES) -> Graph:
     """Remove any property from the classes that is not in the provided list of attributes.
 
     :param source_graph: The original graph to be slim
@@ -18,15 +20,17 @@ def create_slim_ontology_graph(original_graph: Graph,
     """
     slim_graph = initialise_graph()
     # Only copy tripples that are in keep_attributes
-    for s in original_graph.subjects(RDF.type, None):
-        for p, o in original_graph.predicate_objects(s):
-            # remove blank nodes
-            if p in keep_attributes:
-                if not isinstance(o, term.BNode):
-                    # Make them simple literals
-                    if isinstance(o, term.Literal):
-                        o = term.Literal(str(o))
+    for s, p, o in original_graph:
+        # remove blank nodes
+        if p in keep_attributes:
+            if p == RDF.type:
+                if o in keep_types:
                     slim_graph.add((s, p, o))
+            elif not isinstance(o, term.BNode):
+                # Make them simple literals
+                if isinstance(o, term.Literal):
+                    o = term.Literal(str(o))
+                slim_graph.add((s, p, o))
     return slim_graph
 
 

@@ -1080,16 +1080,31 @@ def replace_is_defined_by_uris(graph, uri_mapping, ontology_uri=None):
 
 
 def replace_ontology_id(ontology_graph: Graph, new_id: term.URIRef) -> None:
-    for s in ontology_graph.subjects(RDF.type, OWL.Ontology):
-        ontology_graph.remove((s, RDF.type, OWL.Ontology))
-    ontology_graph.add((new_id, RDF.type, OWL.Ontology))
+    original_id = find_ontology_resource(ontology_graph)
+    for s, p, o in ontology_graph:
+        if s == original_id:
+            ontology_graph.remove((s, p, o))
+            if isinstance(o, term.Literal):
+                o = term.Literal(str(o))
+            ontology_graph.add((new_id, p, o))
+        elif p == original_id:
+            ontology_graph.remove((s, p, o))
+            if isinstance(o, term.Literal):
+                o = term.Literal(str(o))
+            ontology_graph.add((s, new_id, o))
+        elif o == original_id:
+            ontology_graph.remove((s, p, o))
+            ontology_graph.add((s, p, new_id))
 
 
 def copy_ontology_label(ontology_graph, ontology_id,
-                        other_ontology_graph, other_ontology_id) -> None:
+                        other_ontology_graph, other_ontology_id,
+                        append_label=None) -> None:
     """Copy the label from one ontology to another."""
     for o in ontology_graph.objects(ontology_id, RDFS.label):
         ontology_label = o
+    if append_label:
+        ontology_label = term.Literal(str(o) + append_label)
     other_ontology_graph.add((other_ontology_id, RDFS.label, ontology_label))
 
 

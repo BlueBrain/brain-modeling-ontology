@@ -91,12 +91,17 @@ def example_ontology_graph(example_ontology_json):
 
 def test_slim_ontology_graph(example_ontology_graph):
     keep_attributes = SLIM_GRAPH_PREDICATES
-    slim_graph = create_slim_ontology_graph(example_ontology_graph, keep_attributes)
+    keep_types = [OWL.Ontology, OWL.Class]
+    slim_graph = create_slim_ontology_graph(example_ontology_graph,
+                                            keep_attributes, keep_types)
 
     # Check the keep attributes are actually kept
     for p in keep_attributes:
         for s, o in example_ontology_graph.subject_objects(p):
-            if isinstance(o, term.Literal):
+            if p == RDF.type:
+                if o not in keep_types:
+                    continue
+            elif isinstance(o, term.Literal):
                 o = term.Literal(str(o))
             if (s, p, o) not in slim_graph:
                 raise ValueError(f'The tripe {(s, p, o)} was not found in the slim_graph')

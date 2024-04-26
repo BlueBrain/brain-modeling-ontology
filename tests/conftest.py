@@ -191,11 +191,8 @@ def forge_rdfmodel(forge, all_ontology_graphs,
     # create slim ontologies and save them to files
     _, ontology_graphs_dict = all_ontology_graphs
     for ontology_file, ontology_graph in ontology_graphs_dict.items():
-        if 'brainregion' in ontology_file:  # replave the brain region graph with the merged graph
+        if 'brainregion' in ontology_file:  # replace the brain region graph with the merged graph
             ontology_graph = brain_region_graph
-            dirpath = f"./{ontology_file.split('/')[-1].split('.')[0]}"
-            dirpath_ttl = f"{dirpath}_before_slim.ttl"
-            ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
         ontology = find_ontology_resource(ontology_graph)
         add_defines_relation(ontology_graph, ontology)
 
