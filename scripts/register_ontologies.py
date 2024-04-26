@@ -181,7 +181,8 @@ def execute_ontology_registration(
     # Replace ontology graph id
     bmo.replace_ontology_id(slim_ontology_graph, slim_ontology)
     # Copy ontology label
-    bmo.copy_ontology_label(ontology_graph, ontology, slim_ontology_graph, slim_ontology)
+    bmo.copy_ontology_label(ontology_graph, ontology, slim_ontology_graph, slim_ontology,
+                            append_label=" Slim Version")
 
     slim_classes_mapped = create_slim_classes(class_resources_mapped)
     slim_classes_framed = create_slim_classes(class_resources_framed)

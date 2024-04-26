@@ -26,7 +26,7 @@
           "sh:message": "Species should be defined in the Species Taxonomy ontology",
           "sh:sparql": {
             "@type": "sh:SPARQLConstraint",
-            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/> <https://neuroshapes.org/defines> ?value.\n ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species>} .\n}"
+            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy_slim> <https://neuroshapes.org/defines> ?value.\n ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species>} .\n}"
           },
           "path": "https://neuroshapes.org/species"
         },
@@ -38,7 +38,7 @@
           "sh:message": "Strains should be defined in the Species Taxonomy ontology",
           "sh:sparql": {
             "@type": "sh:SPARQLConstraint",
-            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/> <https://neuroshapes.org/defines> ?value.\n ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain>} .\n}"
+            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy_slim> <https://neuroshapes.org/defines> ?value.\n ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain>} .\n}"
           },
           "path": "https://neuroshapes.org/strain"
         },

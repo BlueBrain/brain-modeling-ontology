@@ -120,7 +120,7 @@
           "sh:sparql": {
             "@type": "sh:SPARQLConstraint",
             "sh:message": "Layers should be defined in the Brain Region Ontology and be subClassOf nsg:BrainLayer",
-            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> <https://neuroshapes.org/defines>  ?value . \n ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://neuroshapes.org/BrainLayer> }.\n}"
+            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion_slim> <https://neuroshapes.org/defines>  ?value . \n ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://neuroshapes.org/BrainLayer> }.\n}"
           },
           "path": "nsg:layer"
         },
@@ -141,9 +141,10 @@
           "sh:sparql": {
             "@type": "sh:SPARQLConstraint",
             "sh:message": "Brain Regions should be defined in the Brain Region Ontology",
-            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion> <https://neuroshapes.org/defines>  ?value . \n ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://neuroshapes.org/BrainRegion>}.\n}"
+            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion_slim> <https://neuroshapes.org/defines>  ?value . \n ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://neuroshapes.org/BrainRegion>}.\n}"
           },
-          "sh:minCount": 1
+          "sh:minCount": 1,
+          "sh:maxCount": 1
         },
         {
           "description": "Position in layer (deep / superficial)",
