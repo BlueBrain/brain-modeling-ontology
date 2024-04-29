@@ -1,0 +1,160 @@
+@prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/core/dataqualitymetrics> a owl:Ontology ;
+                                                                    rdfs:label "Data Quality Metrics Ontology"^^xsd:string .
+
+skos:definition a owl:AnnotationProperty .
+
+bmo:canBeLoadedWithMorphioMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Can be loaded with Morphio Metric" ;
+    skos:prefLabel "Can be loaded with morphio" .
+
+bmo:hasAllNonZeroNeuriteRadiiMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Has all non-zero neurite radii Metric" ;
+    skos:prefLabel "Neurite Has all non zero neurite radii" .
+
+bmo:hasAllNonZeroSectionLengthsMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Has all non-zero section lengths Metric" ;
+    skos:prefLabel "Neurite Has all non-zero section lengths" .
+
+bmo:hasApicalDendriteMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Has Apical Dendrite Metric" ;
+    skos:prefLabel "Has apical dendrite" .
+
+bmo:hasAxonMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Has Axon Metric" ;
+    skos:prefLabel "Has axon" .
+
+bmo:hasBasalDendrite a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Has Basal Dendrite Metric" ;
+    skos:prefLabel "Has basal dendrite" .
+
+bmo:hasMultifurcationMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Has Multifurcation Metric" ;
+    skos:prefLabel "Has Multifurcation" .
+
+bmo:hasNoFlatNeuritesMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Has no flat neurites Metric" ;
+    skos:prefLabel "Has no flat neurites" .
+
+bmo:hasNoZeroSomaRadiusMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Has non-zero soma radius Metric" ;
+    skos:prefLabel "Has nonzero soma radius" .
+
+bmo:hasUnifurcationMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Has Unifurcation Metric" ;
+    skos:prefLabel "Has Unifurcation" .
+
+bmo:neuriteHasDifferentDiametersMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Neurite Has Different Diameters Metric" ;
+    skos:prefLabel "Neurite Has Different Diameters" .
+
+bmo:zThicknessMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Z Thickness Metric" ;
+    skos:prefLabel "Z thickness is larger than 50" .
+
+nsg:axonMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Axon Metric"@en ;
+    skos:definition "The axon metric is a metric providing the number of axons of a neuron morphology. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/401fa5c28f3da76dce0c2283622abbb784029a41/neurom/core/neuron.py#L212"^^xsd:string ;
+    skos:prefLabel "Number of Axons" .
+
+nsg:danglingBranchMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Dangling Branch Metric"@en ;
+    skos:definition "The dangling branch metric is a metric about dangling segments of neurites of a neuron morphology. A dendrite is considered dangling, if its first point is located too far away from the soma center and an axon is considered dangling if its first point is located too far away from the soma center AND from any point belonging to a dendrite. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/401fa5c28f3da76dce0c2283622abbb784029a41/neurom/check/neuron_checks.py#L267"^^xsd:string ;
+    skos:prefLabel "Neurite Has No Dangling Branch" .
+
+nsg:dendriteStemmingFromSomaMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Dendrite Stemming From Soma Metric"@en ;
+    skos:definition "The dendrite stemming from soma metric is a metric providing the number of dendritic tress stemming from the soma of a neuron morphology. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/401fa5c28f3da76dce0c2283622abbb784029a41/neurom/core/neuron.py#L212"^^xsd:string ;
+    skos:prefLabel "Number of Dendrites Stemming From Soma" .
+
+nsg:fatEndMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Fat End Metric"@en ;
+    skos:definition "The fat end metric is a metric about the fat ends of a neuron morphology. A fat end is defined as a leaf segment whose last point is larger by a factor of `multiple_of_mean` than the mean of the points in `final_point_count`. In NeuroM, by default multiple_of_mean is set to 2 and final_point_count to 5. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/401fa5c28f3da76dce0c2283622abbb784029a41/neurom/check/neuron_checks.py#L224"^^xsd:string ;
+    skos:prefLabel "Neurite Has No Fat Ends" .
+
+nsg:maximumBranchOrderMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Maximum Branch Order Metric"@en ;
+    skos:definition "The maximum branch order metric is a feature providing the maximum section branch order in a collection of neurites of a neuron morphology. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/14d7e997024f261915999e9629ce209dcf6e8c4f/neurom/features/neuritefunc.py#L145"^^xsd:string ;
+    skos:prefLabel "Maximum Section Branch Order" .
+
+nsg:maximumSectionLengthMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Maximum Section Length Metric"@en ;
+    skos:definition "The maximum section length metric is a feature providing the maximum length of a section across all sections of a neuron morphology. A section of a neuron morphology is a tree node containing a series of two or more points whose first and last element are any of the following combinations: root node and forking point; forking point and forking point; forking point and end point; root node and end point. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/14d7e997024f261915999e9629ce209dcf6e8c4f/neurom/features/neuritefunc.py#L125"^^xsd:string ;
+    skos:prefLabel "Maximum Section Length" .
+
+nsg:multifurcationMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Multifurcation Metric"@en ;
+    skos:definition "The multifurcation metric is a metric about sections of a neuron morphology with more than two children. A section of a neuron morphology is a tree node containing a series of two or more points whose first and last element are any of the following combinations: root node and forking point; forking point and forking point; forking point and end point; root node and end point. See also: https://neurom.readthedocs.io/en/latest/definitions.html"^^xsd:string .
+
+nsg:narrowNeuriteSectionMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Narrow Neurite Section Metric"@en ;
+    skos:definition "The narrow neurite section metric is a metric about neurites of a neuron morphology with narrow sections. The radius threshold to consider a neurite as narrow in NeuroM is set to 0.05 μm by default. A section of a neuron morphology is a tree node containing a series of two or more points whose first and last element are any of the following combinations: root node and forking point; forking point and forking point; forking point and end point; root node and end point. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/401fa5c28f3da76dce0c2283622abbb784029a41/neurom/check/neuron_checks.py#L312"^^xsd:string ;
+    skos:prefLabel "Has no narrow Neurite Section" .
+
+nsg:narrowStartMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Narrow Start Metric"@en ;
+    skos:definition "The narrow start metric is a metric about first segments of neurites of a neuron morphology with a narrow start. By default, the ratio that the second point must be smaller than the first point of a segment is set to 0.9 in NeuroM. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/401fa5c28f3da76dce0c2283622abbb784029a41/neurom/check/neuron_checks.py#L251"^^xsd:string ;
+    skos:prefLabel "Neurite Has No Narrow Start" .
+
+nsg:rootNodeJumpMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Root Node Jump Metric"@en ;
+    skos:definition "The root node jump metric is a metric about root nodes of neurites of a neuron morphology which are located further away than `radius_multiplier * soma radius` from the soma center. By default, radius_multiplier is set to 2 in NeuroM. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/401fa5c28f3da76dce0c2283622abbb784029a41/neurom/check/neuron_checks.py#L209"^^xsd:string ;
+    skos:prefLabel "Neurite Has No Root Node Jump" .
+
+nsg:singleChildMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Single Child Metric"@en ;
+    skos:definition "The single child metric is a metric about sections of a neuron morphology with a single child. A section of a neuron morphology is a tree node containing a series of two or more points whose first and last element are any of the following combinations: root node and forking point; forking point and forking point; forking point and end point; root node and end point. See also: https://neurom.readthedocs.io/en/latest/definitions.html"^^xsd:string .
+
+nsg:totalSectionLengthMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Total Section Length Metric"@en ;
+    skos:definition "The total section length metric is a feature providing the total length of all sections of a neuron morphology. A section of a neuron morphology is a tree node containing a series of two or more points whose first and last element are any of the following combinations: root node and forking point; forking point and forking point; forking point and end point; root node and end point. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/14d7e997024f261915999e9629ce209dcf6e8c4f/neurom/features/neuritefunc.py#L58"^^xsd:string ;
+    skos:prefLabel "Total Section Length" .
+
+nsg:zJumpMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Z Jump Metric"@en ;
+    skos:definition "The Z jump metric is a metric about large differences in consecutive z-values of points of neurites of a neuron morphology. By default, the value above which consecutive z-values are considered a jump is set to 30 μm in NeuroM. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/401fa5c28f3da76dce0c2283622abbb784029a41/neurom/check/neuron_checks.py#L186"^^xsd:string ;
+    skos:prefLabel "Neurite Has No Z Jump" .
+
+nsg:zeroLengthSegmentMetric a owl:NamedIndividual,
+        nsg:Metric ;
+    rdfs:label "Zero Length Segment Metric"@en ;
+    skos:definition "The zero length segment metric is a metric about the segments of a neuron morphology which have a length of zero. A segment consists of two consecutive points belonging to the same neurite and section of a neuron morphology. See also: https://neurom.readthedocs.io/en/latest/definitions.html and https://github.com/BlueBrain/NeuroM/blob/401fa5c28f3da76dce0c2283622abbb784029a41/neurom/check/neuron_checks.py#L111"^^xsd:string ;
+    skos:prefLabel "Neurite Has all nonzero segment lengths" .
+
+nsg:Metric a owl:Class ;
+    rdfs:label "Metric" ;
+    rdfs:seeAlso <http://purl.org/eis/vocab/daq#Metric>,
+        <https://www.w3.org/TR/vocab-dqv/#dqv:Metric> ;
+    skos:definition "Represents a standard to measure a quality dimension. An observation (instance of dqv:QualityMeasurement) assigns a value in a given unit to a Metric."^^xsd:string .
+
