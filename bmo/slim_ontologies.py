@@ -3,7 +3,7 @@ from rdflib import RDF, Graph, term, RDFS, OWL
 from bmo.loading import initialise_graph
 
 
-SLIM_CLASS_ATTRIBUTES = ['@id', '@type', 'label', 'subClassOf']
+SLIM_CLASS_ATTRIBUTES = ['@id', '@type', 'label', 'subClassOf', 'deprecated']
 SLIM_GRAPH_PREDICATES = [RDF.type, RDFS.label, RDFS.subClassOf,
                          term.URIRef("https://neuroshapes.org/defines"),
                          term.URIRef("http://purl.obolibrary.org/obo/ncbitaxon#has_rank")]

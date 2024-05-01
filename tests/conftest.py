@@ -1,12 +1,15 @@
 import glob
 import os
+from typing import Dict, Tuple
+
 import yaml
 import json
 
 from kgforge.core.resource import Resource
 import pytest
 import rdflib
-from rdflib import RDF, OWL, RDFS, term
+from kgforge.specializations.mappings import DictionaryMapping
+from rdflib import RDF, OWL, RDFS, term, Graph
 from rdflib.paths import ZeroOrMore
 import bmo.ontologies as bmo
 from bmo.argument_parsing import define_arguments
@@ -21,7 +24,7 @@ from kgforge.core.forge import KnowledgeGraphForge
 from scripts.register_ontologies import (
     _initialize_forge_objects,
     _merge_ontology,
-    combine_jsonld_context
+    combine_jsonld_context, execute_ontology_registration
 )
 from bmo.ontologies import (
     find_ontology_resource,
@@ -64,7 +67,7 @@ def bucket(pytestconfig):
 
 
 @pytest.fixture(scope="session")
-def atlas_parcellation_ontology(pytestconfig):
+def atlas_parcellation_ontology_id(pytestconfig):
     return pytestconfig.getoption("atlas_parcellation_ontology")
 
 
@@ -175,10 +178,14 @@ def new_context_path():
 
 
 @pytest.fixture(scope="session")
-def forge_rdfmodel(forge, all_ontology_graphs,
-                   all_ontology_graph_merged_brain_region_atlas_hierarchy,
-                   updated_local_jsonld_context,
-                   new_context_path):
+def forge_rdfmodel(
+        forge, all_ontology_graphs,
+        all_ontology_graph_merged_brain_region_atlas_hierarchy,
+        updated_local_jsonld_context, new_context_path
+):
+
+    _, new_jsonld_schema_context, _ = updated_local_jsonld_context
+
     _, brain_region_graph = all_ontology_graph_merged_brain_region_atlas_hierarchy
     # create tmp directory in the same place as the schemas
     tmp_dir = './tmp_shapes/'
@@ -208,7 +215,8 @@ def forge_rdfmodel(forge, all_ontology_graphs,
         slim_ontology_graph.serialize(destination=dirpath_ttl, format="ttl")
 
     # dump the new json context
-    context_document = updated_local_jsonld_context.document
+    context_document = new_jsonld_schema_context.document
+
     with open(new_context_path, 'w') as f:
         json.dump(context_document, f, indent=2)
 
@@ -237,6 +245,27 @@ def forge_rdfmodel(forge, all_ontology_graphs,
 def ontology_list(all_ontology_graphs):
     _, all_ontology_dict = all_ontology_graphs
     return all_ontologies_ids(all_ontology_dict)
+
+
+@pytest.fixture(scope="session")
+def framed_class_json_dict(framed_classes):
+    class_ids, class_jsons, _ = framed_classes
+    return dict(zip(class_ids, class_jsons))
+
+
+@pytest.fixture(scope="session")
+def mapped_class_json_dict(framed_classes, forge):
+    class_ids, class_jsons, _ = framed_classes
+
+    class_resources_mapped = forge.map(
+        data=class_jsons,
+        mapping=DictionaryMapping.load(
+            "./config/mappings/term-to-resource-mapping.hjson"
+        ),
+        na=None
+    )
+
+    return dict(zip(class_ids, class_resources_mapped))
 
 
 @pytest.fixture(scope="session")
@@ -280,6 +309,50 @@ def all_ontology_graph_merged_brain_region_atlas_hierarchy(
 
 
 @pytest.fixture(scope="session")
+def framed_ontologies(
+        all_ontology_graphs,
+        atlas_parcellation_ontology_id,
+        framed_classes, forge,
+        framed_class_json_dict,
+        atlas_release_id, atlas_release_version,
+        data_jsonld_context
+):
+
+    _, ontology_graphs_dict = all_ontology_graphs
+    _, _, brain_region_generated_classes = framed_classes
+
+    new_jsonld_context, _ = data_jsonld_context
+
+    framed_ontologies_dict: Dict[str, Tuple[Dict, Graph]] = {}
+
+    for ontology_path, ontology_graph in ontology_graphs_dict.items():
+
+        dirpath = f"./{ontology_path.split('/')[-1].split('.')[0]}"
+        slim_ontology_path = f"{dirpath}_slim.ttl"
+
+        ontology_uri, ontology_json = execute_ontology_registration(
+            forge=forge,
+            ontology_path=ontology_path,
+            slim_ontology_path=slim_ontology_path,
+            ontology_graph=ontology_graph,
+            all_class_resources_mapped_dict={},
+            all_class_resources_framed_dict=framed_class_json_dict,
+            new_forge_context=new_jsonld_context,
+            new_jsonld_context_dict=new_jsonld_context.document,
+            brain_region_generated_classes=brain_region_generated_classes,
+            atlas_release_id=atlas_release_id,
+            atlas_release_version=atlas_release_version,
+            atlas_parcellation_ontology_id=atlas_parcellation_ontology_id,
+            tag=None,
+            data_update=False,
+        )
+
+        framed_ontologies_dict[ontology_uri] = (ontology_json, ontology_graph)
+
+    return framed_ontologies_dict
+
+
+@pytest.fixture(scope="session")
 def atlas_release_prop(atlas_release_id, atlas_release_version):
     return {
         "@id": atlas_release_id,
@@ -299,7 +372,7 @@ def atlas_release_version(atlas_parcellation_ontology_resource):
 
 
 @pytest.fixture(scope="session")
-def atlas_parcellation_ontology_resource(atlas_parcellation_ontology, atlas_parcellation_ontology_version, forge_atlas):
+def atlas_parcellation_ontology_resource(atlas_parcellation_ontology_id, atlas_parcellation_ontology_version, forge_atlas):
     try:
         version = (
             int(atlas_parcellation_ontology_version)
@@ -307,7 +380,7 @@ def atlas_parcellation_ontology_resource(atlas_parcellation_ontology, atlas_parc
             else None
         )
         atlas_parcellation_ontology_resource = forge_atlas.retrieve(
-            atlas_parcellation_ontology, version=version
+            atlas_parcellation_ontology_id, version=version
         )
         assert hasattr(atlas_parcellation_ontology_resource, "atlasRelease")
         assert hasattr(atlas_parcellation_ontology_resource.atlasRelease, "_rev")
@@ -315,7 +388,7 @@ def atlas_parcellation_ontology_resource(atlas_parcellation_ontology, atlas_parc
         return atlas_parcellation_ontology_resource
 
     except Exception as e:
-        pytest.fail(f"Failed to load {atlas_parcellation_ontology}: {e}")
+        pytest.fail(f"Failed to load {atlas_parcellation_ontology_id}: {e}")
 
 
 @pytest.fixture(scope="session")
@@ -436,7 +509,6 @@ def all_schema_graphs(transformed_schema_path, schema_dir, forge_schema, ontolog
 
 @pytest.fixture(scope="session")
 def updated_local_jsonld_context(all_ontology_graphs, all_schema_graphs):
-    _, new_jsonld_context, _ = combine_jsonld_context(all_ontology_graphs[0],
-                                                      all_schema_graphs[0],
-                                                      True)
-    return new_jsonld_context
+    all_schema_graphs, _, _ = all_schema_graphs
+    graph_of_all_ontologies, _ = all_ontology_graphs
+    return combine_jsonld_context(graph_of_all_ontologies, all_schema_graphs, True)

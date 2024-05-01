@@ -10,6 +10,7 @@ from pyshacl.rdfutil import clone_graph
 from rdflib import OWL, RDF, RDFS, SKOS, XSD, PROV, Literal, term, Graph, URIRef, namespace
 from rdflib.paths import OneOrMore, ZeroOrMore
 
+from bmo.logger import logger
 from bmo.slim_ontologies import get_slim_ontology_id
 from bmo.utils import (
     BMO,
@@ -169,7 +170,13 @@ def frame_ontology(
     if "rdfs:label" in framed_onto_json and framed_onto_json["rdfs:label"]:
         framed_onto_json["label"] = framed_onto_json.pop("rdfs:label", None)
     if include_defined_classes:
-        framed_onto_json["defines"] = class_resources_framed
+        class_resources_framed_without_deprecated = [e for e in class_resources_framed if not e.get("deprecated", False)]
+        logger.info(
+            f"{len(class_resources_framed) - len(class_resources_framed_without_deprecated)} "
+            f"classes will not be included in 'defines' because they are deprecated"
+        )
+        framed_onto_json["defines"] = class_resources_framed_without_deprecated
+
     elif "defines" in frame_json:
         framed_onto_json.pop("defines")
     framed_onto_json["@context"] = context.iri

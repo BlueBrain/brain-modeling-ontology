@@ -23,11 +23,7 @@ from rdflib.term import URIRef
 from typing import List, Optional, Type
 
 import bmo.ontologies as bmo
-from scripts.register_ontologies import execute_ontology_registration
-from bmo.slim_ontologies import (
-    create_slim_ontology_graph,
-    create_slim_classes
-)
+from bmo.slim_ontologies import create_slim_ontology_graph, create_slim_classes
 
 
 @pytest.fixture
@@ -144,12 +140,6 @@ def test_reduce_classes(example_ontology_json, keep_attributes, expected):
     classes = example_ontology_json['defines']
     slim_classes = create_slim_classes(classes, keep_attributes)
     assert slim_classes == expected
-
-
-@pytest.fixture
-def framed_class_json_dict(framed_classes):
-    class_ids, class_jsons, _ = framed_classes
-    return dict(zip(class_ids, class_jsons))
 
 
 def test_terms_aligned_with_context(all_ontology_graphs, all_schema_graphs):
@@ -729,39 +719,10 @@ def _check_dict_for_property_type_value(
     return errors
 
 
-def test_frame_ontologies(
-    forge,
-    all_ontology_graphs,
-    data_jsonld_context,
-    framed_classes,
-    framed_class_json_dict,
-    atlas_parcellation_ontology,
-    atlas_release_prop,
-    atlas_release_id,
-    atlas_release_version,
-):
-    ontology_graphs_dict = all_ontology_graphs[1]
-    brain_region_generated_classes = framed_classes[2]
-    new_jsonld_context, _ = data_jsonld_context
+def test_frame_ontologies(framed_ontologies, atlas_release_prop):
     errors = []
-    for ontology_path, ontology_graph in ontology_graphs_dict.items():
-        slim_ontology_path = f"./{ontology_path.split('.')[1]}_slim.ttl"
-        ontology_uri, ontology_json = execute_ontology_registration(
-            forge=forge,
-            ontology_path=ontology_path,
-            slim_ontology_path=slim_ontology_path,
-            ontology_graph=ontology_graph,
-            all_class_resources_mapped_dict={},
-            all_class_resources_framed_dict=framed_class_json_dict,
-            new_forge_context=new_jsonld_context,
-            new_jsonld_context_dict=new_jsonld_context.document,
-            brain_region_generated_classes=brain_region_generated_classes,
-            atlas_release_id=atlas_release_id,
-            atlas_release_version=atlas_release_version,
-            atlas_parcellation_ontology_id=atlas_parcellation_ontology,
-            data_update=False,
-            tag=None,
-        )
+
+    for ontology_uri, (ontology_json, _) in framed_ontologies.items():
 
         annotation_properties = ["@context", "@id", "@type", "label"]
         expected_annotation_properties_values = [
@@ -814,6 +775,23 @@ def test_frame_ontologies(
                 map(lambda k: isinstance(k, dict), ontology_json["defines"])
             ), f"One defined class of the ontology {ontology_uri} is not of type dict."
         assert len(errors) == 0, errors
+
+
+def test_frame_ontologies_do_not_have_deprecated_classes(framed_ontologies):
+
+    res = {}
+    for ontology_uri, (ontology_json, ontology_graph) in framed_ontologies.items():
+        if "defines" in ontology_json:
+            deprecated_things = list(ontology_graph.subjects(OWL.deprecated, Literal(True, datatype=XSD.boolean)))
+            deprecated_classes_in_defines = [
+                e["@id"] for e in ontology_json["defines"]
+                if URIRef(e["@id"]) in deprecated_things
+            ]
+            res[ontology_uri] = deprecated_classes_in_defines
+        else:
+            res[ontology_uri] = []
+
+    assert all(len(v) == 0 for v in res.values()), f"Some deprecated classes were found in the 'defines' fields of some ontologies {res}"
 
 
 def _get_in_annotation_leaves(
