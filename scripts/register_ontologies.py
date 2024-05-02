@@ -23,10 +23,11 @@ from bmo.loading import (
 )
 from bmo.logger import logger
 
-from bmo.slim_ontologies import (create_slim_ontology_graph,
-                                 create_slim_classes,
-                                 get_slim_ontology_id
-                                 )
+from bmo.slim_ontologies import (
+    create_slim_ontology_graph,
+    create_slim_classes,
+    get_slim_ontology_id,
+)
 from bmo.utils import (
     ATLAS_PROPERTIES_TO_MERGE,
     BMO,
@@ -147,7 +148,10 @@ def execute_ontology_registration(
     include_defined_classes = not str(ontology) == CELL_TYPE_ONTOLOGY_URI
 
     # make list of framed classes
-    class_resources_mapped = [forge.as_jsonld(mapped_class) for mapped_class in class_resources_mapped.values()]
+    class_resources_mapped = [
+        forge.as_jsonld(mapped_class)
+        for mapped_class in class_resources_mapped.values()
+    ]
     class_resources_framed = list(class_resources_framed.values())
 
     # Frame ontology given the provided context
@@ -169,9 +173,7 @@ def execute_ontology_registration(
         data_update=data_update,
     )
 
-    print(
-        f"Registration of ontology: {str(ontology)} - Done\n"
-    )
+    print(f"Registration of ontology: {str(ontology)} - Done\n")
 
     # Standard registration done
     # Create slim version of ontologies
@@ -181,8 +183,13 @@ def execute_ontology_registration(
     # Replace ontology graph id
     bmo.replace_ontology_id(slim_ontology_graph, slim_ontology)
     # Copy ontology label
-    bmo.copy_ontology_label(ontology_graph, ontology, slim_ontology_graph, slim_ontology,
-                            append_label=" Slim Version")
+    bmo.copy_ontology_label(
+        ontology_graph,
+        ontology,
+        slim_ontology_graph,
+        slim_ontology,
+        append_label=" Slim Version",
+    )
 
     slim_classes_mapped = create_slim_classes(class_resources_mapped)
     slim_classes_framed = create_slim_classes(class_resources_framed)
@@ -206,9 +213,7 @@ def execute_ontology_registration(
         data_update=data_update,
     )
 
-    print(
-        f"Registration of slim ontology version: {str(slim_ontology)} - Done\n"
-    )
+    print(f"Registration of slim ontology version: {str(slim_ontology)} - Done\n")
 
     return str(ontology), ontology_json
     # bmo.remove_defines_relation(ontology_graph, ontology)
@@ -296,8 +301,9 @@ def _get_classes_in_ontology(all_class_resources_dict, uriref_iterator):
     }
 
 
-def combine_jsonld_context(all_ontology_graphs, all_schema_graphs,
-                           exclude_deprecated_from_context):
+def combine_jsonld_context(
+    all_ontology_graphs, all_schema_graphs, exclude_deprecated_from_context
+):
     with open(DATA_JSONLD_CONTEXT_PATH, "r") as f:
         local_model_context_document = json.load(f)
 
@@ -455,7 +461,9 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     # with open("./new_jsonld_context_resource.json", "w") as f:
     #     json.dump(forge.as_json(new_jsonld_context_resource), f)
 
-    logger.info(f"Updating data JSON-LD context {new_jsonld_context_document['@id']} - Start")
+    logger.info(
+        f"Updating data JSON-LD context {new_jsonld_context_document['@id']} - Start"
+    )
 
     if data_update:
         forge.update(new_jsonld_context_resource)
@@ -505,7 +513,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     triples_to_add, triples_to_remove = _merge_ontology(
         atlas_hierarchy_ontology_graph,
         ontology_graphs_dict["./ontologies/bbp/brainregion.ttl"],
-        all_ontology_graphs
+        all_ontology_graphs,
     )
 
     logger.info(
@@ -556,10 +564,8 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     )
 
     for ontology_path, ontology_graph in ontology_graphs_dict.items():
-
         dirpath = f"./{ontology_path.split('/')[-1].split('.')[0]}"
         slim_ontology_path = f"{dirpath}_slim.ttl"
-
         execute_ontology_registration(
             forge=forge,
             ontology_path=ontology_path,
@@ -581,7 +587,9 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         f"Registering ontologies - Finish - Ontology count: {len(ontology_graphs_dict)}\n"
     )
 
-    logger.info(f"Registering ontology terms - Start: Entity count:  {len(class_jsons)}")
+    logger.info(
+        f"Registering ontology terms - Start: Entity count:  {len(class_jsons)}"
+    )
 
     class_errors = []
 
@@ -593,8 +601,11 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
         # Classes are only of type Class, but other ontology terms can have multiple types
         class_resource_id = class_resource.get_identifier()
-        resource_type = class_resource.get_type() if isinstance(class_resource.get_type(), List) \
+        resource_type = (
+            class_resource.get_type()
+            if isinstance(class_resource.get_type(), List)
             else [class_resource.get_type()]
+        )
 
         if data_update:
             logger.info(
@@ -606,17 +617,19 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
                     forge=forge, class_resource=class_resource
                 )
             else:
-                if 'Class' in resource_type:
+                if "Class" in resource_type:
                     ex, _ = bmo_registration.register_class(
                         forge=forge, class_resource=class_resource, tag=tag
                     )
-                elif 'NamedIndividual' in resource_type:
+                elif "NamedIndividual" in resource_type:
                     ex, _ = bmo_registration.register_namedindividual(
                         forge=forge, resource=class_resource, tag=tag
                     )
                 else:
-                    raise ValueError(f"Ontology term with id {class_resource_id} "
-                                     f"has an unsupported type: {resource_type}.")
+                    raise ValueError(
+                        f"Ontology term with id {class_resource_id} "
+                        f"has an unsupported type: {resource_type}."
+                    )
 
             if ex is not None:
                 class_errors.append(ex)
@@ -669,7 +682,7 @@ def _merge_ontology(
     from_ontology_graph,  # in usage, atlas_hierarchy_ontology_graph
     to_ontology_graph,  # in usage, brain_region_graph = brain_region.ttl
     to_another_graph,  # in usage, graph_of_all_ontologies = *.ttl
-    what_property_to_merge=ATLAS_PROPERTIES_TO_MERGE
+    what_property_to_merge=ATLAS_PROPERTIES_TO_MERGE,
 ):
     # merge hierarchy from atlas with this brain region:
     # make sure atlas hierarchy, labels, notation, identifier, ... is fully included in bmo
@@ -678,17 +691,21 @@ def _merge_ontology(
     triples_to_remove = defaultdict(set)
 
     triples_per_prop = [
-        e for prop in what_property_to_merge
+        e
+        for prop in what_property_to_merge
         for e in from_ontology_graph.triples((None, prop, None))
     ]
 
     # Adding relevant triples from the atlas hierarchy into the brain region graph (interesting properties)
-    for (from_s, from_p, from_o) in triples_per_prop:
+    for from_s, from_p, from_o in triples_per_prop:
 
         if str(from_o) == "":
             continue
 
-        if from_p in [BMO.regionVolume, BMO.regionVolumeRatioToWholeBrain]:  # Special case
+        if from_p in [
+            BMO.regionVolume,
+            BMO.regionVolumeRatioToWholeBrain,
+        ]:  # Special case
 
             b_node, triples = _create_bnode_triples_from_value(
                 {
@@ -699,17 +716,25 @@ def _merge_ontology(
             triples_to_add[str(from_s)].update(triples)
             triples_to_add[str(from_s)].add((from_s, from_p, b_node))
         else:
-            triples_to_add[str(from_s)].add((from_s, from_p, from_o))  # add triples from atlas hierarchy ontology graph to brain region graph
+            triples_to_add[str(from_s)].add(
+                (from_s, from_p, from_o)
+            )  # add triples from atlas hierarchy ontology graph to brain region graph
 
         # For all s/p of relevant properties, remove from brain region graph the triples with same s/p as those in atlas
         if (from_s, from_p, None) in to_ontology_graph:
             for to_s, to_p, to_o in to_ontology_graph.triples((from_s, from_p, None)):
-                triples_to_remove[str(from_s)].add((to_s, to_p, to_o))  # remove triples from brain region graph from brain region graph
+                triples_to_remove[str(from_s)].add(
+                    (to_s, to_p, to_o)
+                )  # remove triples from brain region graph from brain region graph
 
         # What to keep from the atlas graph (= uriref tied to an interesting property to merge have other properties that could be interesting)
-        if (from_s, from_p, None) not in to_ontology_graph and isinstance(from_o, term.URIRef):
+        if (from_s, from_p, None) not in to_ontology_graph and isinstance(
+            from_o, term.URIRef
+        ):
 
-            for from_o_s, from_o_p, from_o_o in from_ontology_graph.triples((from_o, None, None)):
+            for from_o_s, from_o_p, from_o_o in from_ontology_graph.triples(
+                (from_o, None, None)
+            ):
 
                 properties_to_ignore = [
                     BMO.layers,
@@ -717,7 +742,10 @@ def _merge_ontology(
                     BMO.continuousWith,
                     BMO.hasLayerLocationPhenotype,
                 ]
-                if from_o_p not in properties_to_ignore and from_o_p not in what_property_to_merge:
+                if (
+                    from_o_p not in properties_to_ignore
+                    and from_o_p not in what_property_to_merge
+                ):
                     # will be merged once the data format is okay
                     triples_to_add[str(from_o_s)].add((from_o_s, from_o_p, from_o_o))
 
@@ -837,7 +865,7 @@ def register_schemas(
     tag: Optional[str],
     already_registered: List,
     data_update: bool,
-    ontologies_ids: Optional[Union[Set, List]] = []
+    ontologies_ids: Optional[Union[Set, List]] = [],
 ):
 
     # TODO should there be a mechanism to raise errors/warn when importing deprecated schemas?
@@ -870,7 +898,7 @@ def register_schemas(
                     tag=tag,
                     already_registered=already_registered,
                     data_update=data_update,
-                    ontologies_ids=ontologies_ids
+                    ontologies_ids=ontologies_ids,
                 )
 
                 already_registered.extend(imported_schema_content["resource"].id)

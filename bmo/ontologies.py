@@ -1,4 +1,5 @@
 """Utils for processing ontologies."""
+
 import json
 from typing import Dict, Tuple, Any, List, Set
 
@@ -7,19 +8,24 @@ from kgforge.core.commons.context import Context
 from collections import OrderedDict
 
 from pyshacl.rdfutil import clone_graph
-from rdflib import OWL, RDF, RDFS, SKOS, XSD, PROV, Literal, term, Graph, URIRef, namespace
+from rdflib import (
+    OWL,
+    RDF,
+    RDFS,
+    SKOS,
+    XSD,
+    PROV,
+    Literal,
+    term,
+    Graph,
+    URIRef,
+    namespace,
+)
 from rdflib.paths import OneOrMore, ZeroOrMore
 
 from bmo.logger import logger
 from bmo.slim_ontologies import get_slim_ontology_id
-from bmo.utils import (
-    BMO,
-    BRAIN_REGION_ONTOLOGY_URI,
-    NSG,
-    SCHEMAORG,
-    SHACL,
-    NXV
-)
+from bmo.utils import BMO, BRAIN_REGION_ONTOLOGY_URI, NSG, SCHEMAORG, SHACL, NXV
 
 # TOO_LARGE_ERROR = "the request payload exceed the maximum configured limit"
 
@@ -27,7 +33,7 @@ GENERIC_CELL_TYPES = {
     "https://bbp.epfl.ch/ontologies/core/bmo/GenericInhibitoryNeuronMType": BMO.NeuronMorphologicalType,
     "https://bbp.epfl.ch/ontologies/core/bmo/GenericExcitatoryNeuronMType": BMO.NeuronMorphologicalType,
     "https://bbp.epfl.ch/ontologies/core/bmo/GenericInhibitoryNeuronEType": BMO.NeuronElectricalType,
-    "https://bbp.epfl.ch/ontologies/core/bmo/GenericExcitatoryNeuronEType": BMO.NeuronElectricalType
+    "https://bbp.epfl.ch/ontologies/core/bmo/GenericExcitatoryNeuronEType": BMO.NeuronElectricalType,
 }
 
 ROOT_BRAIN_REGION = "http://api.brain-map.org/api/v2/data/Structure/997"
@@ -52,19 +58,33 @@ def graph_free_jsonld(jsonld_doc, context=None):
 
 
 def _create_hierarchy_view(
-        uri_having_view: str, view_uri: str, view_label: str, view_description: str,
-        parent_hierarchy_property: str, children_hierarchy_property: str,
-        leaf_hierarchy_property: str
+    uri_having_view: str,
+    view_uri: str,
+    view_label: str,
+    view_description: str,
+    parent_hierarchy_property: str,
+    children_hierarchy_property: str,
+    leaf_hierarchy_property: str,
 ) -> Tuple[List[Tuple], Dict[str, Dict]]:
     triples = [
         (term.URIRef(uri_having_view), BMO.hasHierarchyView, term.URIRef(view_uri)),
         (term.URIRef(view_uri), RDFS.label, Literal(view_label)),
         (term.URIRef(view_uri), SCHEMAORG.description, Literal(view_description)),
-        (term.URIRef(view_uri), BMO.hasParentHierarchyProperty, Literal(parent_hierarchy_property)),
-        (term.URIRef(view_uri), BMO.hasChildrenHierarchyProperty, Literal(
-            children_hierarchy_property)),
-        (term.URIRef(view_uri), BMO.hasLeafHierarchyProperty, Literal(leaf_hierarchy_property))
-
+        (
+            term.URIRef(view_uri),
+            BMO.hasParentHierarchyProperty,
+            Literal(parent_hierarchy_property),
+        ),
+        (
+            term.URIRef(view_uri),
+            BMO.hasChildrenHierarchyProperty,
+            Literal(children_hierarchy_property),
+        ),
+        (
+            term.URIRef(view_uri),
+            BMO.hasLeafHierarchyProperty,
+            Literal(leaf_hierarchy_property),
+        ),
     ]
 
     json_object = {
@@ -74,7 +94,7 @@ def _create_hierarchy_view(
             "description": view_description,
             "hasParentHierarchyProperty": parent_hierarchy_property,
             "hasChildrenHierarchyProperty": children_hierarchy_property,
-            "hasLeafHierarchyProperty": leaf_hierarchy_property
+            "hasLeafHierarchyProperty": leaf_hierarchy_property,
         }
     }
 
@@ -82,43 +102,28 @@ def _create_hierarchy_view(
 
 
 def frame_ontology(
-        ontology_graph, context, context_json, class_resources_framed,
-        include_defined_classes=True
+    ontology_graph,
+    context,
+    context_json,
+    class_resources_framed,
+    include_defined_classes=True,
 ):
     """Frame ontology into a JSON-LD payload."""
 
     frame_json = {
         "@context": context_json,
         "@type": str(OWL.Ontology),
-        "defines": [{
-            "@type": ["owl:Class", "owl:ObjectProperty"],
-            "subClassOf": [
-                {
-                    "@embed": False
-                }
-            ],
-            "equivalentClass": [
-                {
-                    "@embed": False
-                }
-            ],
-            "sameAs": [
-                {
-                    "@embed": False
-                }
-            ],
-            "hasPart": [
-                {
-                    "@embed": False
-                }
-            ],
-            "isPartOf": [
-                {
-                    "@embed": False
-                }
-            ],
-            "@embed": True
-        }]
+        "defines": [
+            {
+                "@type": ["owl:Class", "owl:ObjectProperty"],
+                "subClassOf": [{"@embed": False}],
+                "equivalentClass": [{"@embed": False}],
+                "sameAs": [{"@embed": False}],
+                "hasPart": [{"@embed": False}],
+                "isPartOf": [{"@embed": False}],
+                "@embed": True,
+            }
+        ],
     }
     ontology_uri = find_ontology_resource(ontology_graph)
     if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
@@ -129,13 +134,17 @@ def frame_ontology(
             "Layer based hierarchy",
             "isLayerPartOf",
             "hasLayerPart",
-            "hasLayerLeafRegionPart"
+            "hasLayerLeafRegionPart",
         )
 
         brain_region_view_triples, brain_region_view_json = _create_hierarchy_view(
-            BRAIN_REGION_ONTOLOGY_URI, str(NSG.BrainRegion), "BrainRegion",
+            BRAIN_REGION_ONTOLOGY_URI,
+            str(NSG.BrainRegion),
+            "BrainRegion",
             "Atlas default brain region hierarchy",
-            "isPartOf", "hasPart", "hasLeafRegionPart"
+            "isPartOf",
+            "hasPart",
+            "hasLeafRegionPart",
         )
         view_triples = layer_view_triples + brain_region_view_triples
 
@@ -153,12 +162,15 @@ def frame_ontology(
             for b in bns:
                 new_ontology_graph.remove((indiv, RDF.type, b))
 
-    onto_string = new_ontology_graph.serialize(format="json-ld", auto_compact=True, indent=2)
+    onto_string = new_ontology_graph.serialize(
+        format="json-ld", auto_compact=True, indent=2
+    )
     onto_json = json.loads(onto_string)
 
     framed = jsonld.frame(
-        onto_json, frame_json,
-        options={"expandContext": context_json, "pruneBlankNodeIdentifiers": True}
+        onto_json,
+        frame_json,
+        options={"expandContext": context_json, "pruneBlankNodeIdentifiers": True},
     )
 
     framed_onto_json = graph_free_jsonld(framed)
@@ -170,7 +182,9 @@ def frame_ontology(
     if "rdfs:label" in framed_onto_json and framed_onto_json["rdfs:label"]:
         framed_onto_json["label"] = framed_onto_json.pop("rdfs:label", None)
     if include_defined_classes:
-        class_resources_framed_without_deprecated = [e for e in class_resources_framed if not e.get("deprecated", False)]
+        class_resources_framed_without_deprecated = [
+            e for e in class_resources_framed if not e.get("deprecated", False)
+        ]
         logger.info(
             f"{len(class_resources_framed) - len(class_resources_framed_without_deprecated)} "
             f"classes will not be included in 'defines' because they are deprecated"
@@ -184,7 +198,7 @@ def frame_ontology(
     if str(ontology_uri) == BRAIN_REGION_ONTOLOGY_URI:
         framed_onto_json["hasHierarchyView"] = [
             layer_view_json["hasHierarchyView"],
-            brain_region_view_json["hasHierarchyView"]
+            brain_region_view_json["hasHierarchyView"],
         ]
 
     return framed_onto_json
@@ -251,7 +265,9 @@ def _process_blank_nodes(ontology_graph, blank_node, process_restriction=True):
 def add_ontology_label(ontology_graph, ontology, label=None):
     """Add label to the ontology resource."""
     if label is None:
-        for t in ontology_graph.objects(ontology, URIRef("http://purl.org/dc/elements/1.1/title")):
+        for t in ontology_graph.objects(
+            ontology, URIRef("http://purl.org/dc/elements/1.1/title")
+        ):
             label = t.value
             break
     if not label:
@@ -264,9 +280,10 @@ def add_ontology_label(ontology_graph, ontology, label=None):
 
 
 def _collect_ancestors_restrictions(
-        ontology_graph: Graph, _class,
-        restrictions_property=RDFS.subClassOf,
-        restrictions_only=False
+    ontology_graph: Graph,
+    _class,
+    restrictions_property=RDFS.subClassOf,
+    restrictions_only=False,
 ):
     rels = []
     all_blank_node_triples = []
@@ -277,8 +294,9 @@ def _collect_ancestors_restrictions(
             all_blank_node_triples.extend(blank_node_triples)
         elif not restrictions_only:
             if isinstance(o, term.BNode):
-                _, _, blank_node_triples = _process_blank_nodes(ontology_graph, o,
-                                                                process_restriction=False)
+                _, _, blank_node_triples = _process_blank_nodes(
+                    ontology_graph, o, process_restriction=False
+                )
                 all_blank_node_triples.extend(blank_node_triples)
             rels.append((p, o))
     return rels, all_blank_node_triples
@@ -290,7 +308,8 @@ def _frame_brain_regions(ontology_graph, cls_int):
     new_layered_classes_all = []
 
     all_br = [
-        current_class for current_class, _ in cls_int
+        current_class
+        for current_class, _ in cls_int
         if (current_class, RDFS.subClassOf, NSG.BrainRegion) in ontology_graph
     ]
 
@@ -304,7 +323,8 @@ def _frame_brain_regions(ontology_graph, cls_int):
             for layer in current_class_layers:
                 classes_relevant_for_layer = set(
                     ontology_graph.objects(
-                        term.URIRef(layer), RDFS.subClassOf * OneOrMore / SCHEMAORG.about
+                        term.URIRef(layer),
+                        RDFS.subClassOf * OneOrMore / SCHEMAORG.about,
                     )
                 )  # every group of layers
                 # (e.g. the Neorcotex layer class or the hippocampus layer)
@@ -315,12 +335,15 @@ def _frame_brain_regions(ontology_graph, cls_int):
                 current_class,
                 current_class_layers,
                 classes_relevant_for_layer,
-                SCHEMAORG.isPartOf
+                SCHEMAORG.isPartOf,
             )
             for new_c in new_layered_classes:
                 ontology_graph.add(
-                    (term.URIRef(new_c), BMO.representedInAnnotation,
-                     Literal(False, datatype=XSD.boolean))
+                    (
+                        term.URIRef(new_c),
+                        BMO.representedInAnnotation,
+                        Literal(False, datatype=XSD.boolean),
+                    )
                 )
             new_layered_classes_all.extend(new_layered_classes)
 
@@ -328,15 +351,19 @@ def _frame_brain_regions(ontology_graph, cls_int):
 
 
 def _is_deprecated(class_: URIRef, graph_to_check: Graph) -> bool:
-    return (class_, OWL.deprecated, Literal(True, datatype=XSD.boolean)) in graph_to_check
+    return (
+        class_,
+        OWL.deprecated,
+        Literal(True, datatype=XSD.boolean),
+    ) in graph_to_check
 
 
 def frame_classes(
-        ontology_graph: Graph,
-        forge_context,
-        context,
-        atlas_release_id: str,
-        atlas_release_version: int
+    ontology_graph: Graph,
+    forge_context,
+    context,
+    atlas_release_id: str,
+    atlas_release_version: int,
 ) -> Tuple[List[str], List[dict], Any, List[str]]:
     """Frame ontology classes into JSON-LD payloads."""
     class_jsons = []
@@ -347,7 +374,7 @@ def frame_classes(
     frame_json_class = {
         "@context": context,
         "@type": [str(OWL.Class), str(OWL.NamedIndividual)],
-        "@embed": True
+        "@embed": True,
     }
 
     # Consider removing the restrictions
@@ -375,16 +402,21 @@ def frame_classes(
             current_class_graph.add(t)
 
         current_class_string = current_class_graph.serialize(
-            format="json-ld", auto_compact=True, indent=2)
+            format="json-ld", auto_compact=True, indent=2
+        )
         current_class_framed = jsonld.frame(
-            json.loads(current_class_string), frame_json_class)
+            json.loads(current_class_string), frame_json_class
+        )
         current_class_framed = graph_free_jsonld(current_class_framed)
         identifier = str(current_class)
         current_class_framed["@id"] = identifier
         del current_class_framed["@context"]
         new_current_class_framed = _frame_class(
-            current_class_framed, forge_context, ontology_graph,
-            atlas_release_id, atlas_release_version
+            current_class_framed,
+            forge_context,
+            ontology_graph,
+            atlas_release_id,
+            atlas_release_version,
         )
 
         new_current_class_framed.pop("bmo:canHaveTType", None)
@@ -422,8 +454,13 @@ def _get_leaf_regions(uri, children_hierarchy_property, ontology_graph) -> Set[s
     return leaf_regions
 
 
-def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_release_id: str,
-                 atlas_release_version: int):
+def _frame_class(
+    cls: Dict,
+    context: Context,
+    ontology_graph: Graph,
+    atlas_release_id: str,
+    atlas_release_version: int,
+):
     to_pop = []
     for k, v in cls.items():
         if v is not None and v != {}:
@@ -431,11 +468,18 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
             k_term = context.find_term(k_expanded, "@id")
 
             if k_term and k_term.type == "@id":
-                res = [
-                    context.expand(s)
-                    if "uberon:" not in s else str(s).replace("uberon:", context.expand('uberon'))
-                    for s in _to_list(v)
-                ] if not isinstance(v, dict) else [context.expand(v["@id"])]
+                res = (
+                    [
+                        (
+                            context.expand(s)
+                            if "uberon:" not in s
+                            else str(s).replace("uberon:", context.expand("uberon"))
+                        )
+                        for s in _to_list(v)
+                    ]
+                    if not isinstance(v, dict)
+                    else [context.expand(v["@id"])]
+                )
 
                 ns, fragment = namespace.split_uri(k_expanded)
 
@@ -454,7 +498,9 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
     if "subClassOf" in cls and cls["subClassOf"] and cls["subClassOf"] != {}:
 
         cls["subClassOf"] = list(
-            context.expand(_id_if_dict(s)) for s in _to_list(cls["subClassOf"]) if s != {}
+            context.expand(_id_if_dict(s))
+            for s in _to_list(cls["subClassOf"])
+            if s != {}
         )
 
         for sub_c in cls["subClassOf"]:
@@ -467,25 +513,35 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
                 NSG.EType,
                 NSG.BrainRegion,
                 NSG.BrainLayer,
-                BMO.BrainCellType
+                BMO.BrainCellType,
             ]
 
             for parent_to_check in parents_to_add_to_subclass:
-                if str(parent_to_check) not in cls["subClassOf"] and \
-                        (term.URIRef(sub_c), RDFS.subClassOf * OneOrMore, parent_to_check) \
-                        in ontology_graph:
+                if (
+                    str(parent_to_check) not in cls["subClassOf"]
+                    and (
+                        term.URIRef(sub_c),
+                        RDFS.subClassOf * OneOrMore,
+                        parent_to_check,
+                    )
+                    in ontology_graph
+                ):
                     cls["subClassOf"].append(str(parent_to_check))
 
         if str(NSG.BrainRegion) in cls["subClassOf"]:
             # this is a brain region, then collect all of it's leaf brain regions
             # (to move out of here). Find a rdflib.Path to replace sparql
 
-            leaf_regions = _get_leaf_regions(cls["@id"], "schema:hasPart", ontology_graph)
+            leaf_regions = _get_leaf_regions(
+                cls["@id"], "schema:hasPart", ontology_graph
+            )
 
             if len(leaf_regions) > 0:
                 cls["hasLeafRegionPart"] = list(leaf_regions)
 
-            layer_leaf_regions = _get_leaf_regions(cls["@id"], "bmo:hasLayerPart", ontology_graph)
+            layer_leaf_regions = _get_leaf_regions(
+                cls["@id"], "bmo:hasLayerPart", ontology_graph
+            )
             if len(layer_leaf_regions) > 0:
                 cls["hasLayerLeafRegionPart"] = list(layer_leaf_regions)
 
@@ -502,10 +558,14 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
         cls[p_symbol].append(context.expand(str(o)))
 
     if "hasPart" in cls and cls["hasPart"] and cls["hasPart"] != {}:
-        cls["hasPart"] = [context.expand(_id_if_dict(s)) for s in _to_list(cls["hasPart"])]
+        cls["hasPart"] = [
+            context.expand(_id_if_dict(s)) for s in _to_list(cls["hasPart"])
+        ]
 
     if "isPartOf" in cls and cls["isPartOf"] and cls["isPartOf"] != {}:
-        cls["isPartOf"] = [context.expand(_id_if_dict(s)) for s in _to_list(cls["isPartOf"])]
+        cls["isPartOf"] = [
+            context.expand(_id_if_dict(s)) for s in _to_list(cls["isPartOf"])
+        ]
 
     if "contribution" in cls and cls["contribution"] and cls["contribution"] != {}:
         cls["contribution"] = list(
@@ -514,14 +574,26 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
 
         contribution_with_agent = []
         for i, contrib_uri in enumerate(cls["contribution"]):
-            contribution_agent = ontology_graph.objects(term.URIRef(contrib_uri), PROV.agent)
+            contribution_agent = ontology_graph.objects(
+                term.URIRef(contrib_uri), PROV.agent
+            )
             if contribution_agent:
                 contribution_agent = list(contribution_agent)[0]
                 contribution_agent_type = list(
-                    ontology_graph.objects(term.URIRef(contribution_agent), RDF.type))
-                contribution_agent_type = [context.to_symbol(t) for t in contribution_agent_type]
-                contribution_with_agent.insert(i, {
-                    "agent": {"@id": contribution_agent, "@type": contribution_agent_type}})
+                    ontology_graph.objects(term.URIRef(contribution_agent), RDF.type)
+                )
+                contribution_agent_type = [
+                    context.to_symbol(t) for t in contribution_agent_type
+                ]
+                contribution_with_agent.insert(
+                    i,
+                    {
+                        "agent": {
+                            "@id": contribution_agent,
+                            "@type": contribution_agent_type,
+                        }
+                    },
+                )
             else:
                 contribution_with_agent.insert(i, contrib_uri)
         cls["contribution"] = contribution_with_agent
@@ -589,13 +661,17 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
         "rdfs:label",
         "skos:definition",
         "skos:notation",
-        "skos:altLabel"
+        "skos:altLabel",
     ]
 
     for key in to_add_as_is:
         add_without_prefix(key, as_list=False)
 
-    if "isDefinedBy" in cls and cls["isDefinedBy"] and isinstance(cls["isDefinedBy"], list):
+    if (
+        "isDefinedBy" in cls
+        and cls["isDefinedBy"]
+        and isinstance(cls["isDefinedBy"], list)
+    ):
         cls["isDefinedBy"] = cls["isDefinedBy"][0]
 
     if "canBeLocatedInBrainRegion" in cls:
@@ -604,7 +680,10 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
             propagated_brain_regions = _get_sub_regions_to_propagate_metype_to(
                 ontology_graph, ROOT_BRAIN_REGION, GENERIC_CELL_TYPES[cls["@id"]]
             )
-        elif "subClassOf" in cls and str(BMO.NeuronMorphologicalType) in cls["subClassOf"]:
+        elif (
+            "subClassOf" in cls
+            and str(BMO.NeuronMorphologicalType) in cls["subClassOf"]
+        ):
             for sr in cls["canBeLocatedInBrainRegion"]:
                 propagated_brain_regions = _get_sub_regions_to_propagate_metype_to(
                     ontology_graph, sr, BMO.NeuronMorphologicalType
@@ -615,29 +694,45 @@ def _frame_class(cls: Dict, context: Context, ontology_graph: Graph, atlas_relea
                     ontology_graph, sr, BMO.NeuronElectricalType
                 )
         if len(propagated_brain_regions) > 0:
-            cls["canBeLocatedInBrainRegion"] = [cls["canBeLocatedInBrainRegion"]] if isinstance(
-                cls["canBeLocatedInBrainRegion"], str) else cls["canBeLocatedInBrainRegion"]
+            cls["canBeLocatedInBrainRegion"] = (
+                [cls["canBeLocatedInBrainRegion"]]
+                if isinstance(cls["canBeLocatedInBrainRegion"], str)
+                else cls["canBeLocatedInBrainRegion"]
+            )
             # can it be a dict?
             cls["canBeLocatedInBrainRegion"].extend(propagated_brain_regions)
 
     if "atlas_id" in cls and cls["atlas_id"] == "None":
         cls["atlas_id"] = None
     if atlas_release_id and atlas_release_version:
-        cls["atlasRelease"] = {"@id": atlas_release_id, "@type": "BrainAtlasRelease", "_rev": atlas_release_version}
+        cls["atlasRelease"] = {
+            "@id": atlas_release_id,
+            "@type": "BrainAtlasRelease",
+            "_rev": atlas_release_version,
+        }
     return cls
 
 
 def _create_property_based_hierarchy(
-        ontology_graph, cls_uriref, layer_urirefs,
-        classes_relevant_for_layer, isPartOf_property_uriref
+    ontology_graph,
+    cls_uriref,
+    layer_urirefs,
+    classes_relevant_for_layer,
+    isPartOf_property_uriref,
 ) -> List[str]:
     new_classes = []
     grand_parents = list(
-        ontology_graph.objects(cls_uriref, isPartOf_property_uriref / SCHEMAORG.isPartOf))
+        ontology_graph.objects(
+            cls_uriref, isPartOf_property_uriref / SCHEMAORG.isPartOf
+        )
+    )
     relevant_grand_parents = set()
     for c in classes_relevant_for_layer:
-        s = {grand_parent for grand_parent in grand_parents if
-             (grand_parent, SCHEMAORG.isPartOf * ZeroOrMore, c) in ontology_graph}
+        s = {
+            grand_parent
+            for grand_parent in grand_parents
+            if (grand_parent, SCHEMAORG.isPartOf * ZeroOrMore, c) in ontology_graph
+        }
         relevant_grand_parents.update(s)
 
     next_cls_urirefs = []
@@ -645,20 +740,38 @@ def _create_property_based_hierarchy(
         grandParent_uncle_without_layer = []
         uncle_with_layer = []
         grand_parent_layers = list(
-            ontology_graph.objects(grand_parent, NSG.hasLayerLocationPhenotype))
+            ontology_graph.objects(grand_parent, NSG.hasLayerLocationPhenotype)
+        )
         uncles = list(ontology_graph.objects(grand_parent, SCHEMAORG.hasPart))
         uncle_layers = {}
         for uncle in uncles:
-            uncle_layers[uncle] = list(ontology_graph.objects(uncle, NSG.hasLayerLocationPhenotype))
+            uncle_layers[uncle] = list(
+                ontology_graph.objects(uncle, NSG.hasLayerLocationPhenotype)
+            )
         for layer in layer_urirefs:
             grandParent_uncle_without_layer.extend(
-                [(grand_parent, NSG.hasLayerLocationPhenotype, layer) not in ontology_graph,
-                 (grand_parent, SCHEMAORG.hasPart / NSG.hasLayerLocationPhenotype,
-                  layer) not in ontology_graph])
+                [
+                    (grand_parent, NSG.hasLayerLocationPhenotype, layer)
+                    not in ontology_graph,
+                    (
+                        grand_parent,
+                        SCHEMAORG.hasPart / NSG.hasLayerLocationPhenotype,
+                        layer,
+                    )
+                    not in ontology_graph,
+                ]
+            )
 
-            uncle_with_layer.extend([(grand_parent,
-                                      SCHEMAORG.hasPart / NSG.hasLayerLocationPhenotype,
-                                      layer) in ontology_graph])
+            uncle_with_layer.extend(
+                [
+                    (
+                        grand_parent,
+                        SCHEMAORG.hasPart / NSG.hasLayerLocationPhenotype,
+                        layer,
+                    )
+                    in ontology_graph
+                ]
+            )
 
         if all(uncle_with_layer):
             # current class should be part of the uncle with same layers
@@ -686,14 +799,21 @@ def _create_property_based_hierarchy(
             # is part of (isLayerPartOf) of the grand parent which (contains it - hasLayerPart),
             # add the newly created class is parent of current class which contains it
 
-            grand_parent_label = ontology_graph.value(subject=grand_parent, predicate=RDFS.label)
-            grand_parent_notation = ontology_graph.value(subject=grand_parent,
-                                                         predicate=SKOS.notation)
+            grand_parent_label = ontology_graph.value(
+                subject=grand_parent, predicate=RDFS.label
+            )
+            grand_parent_notation = ontology_graph.value(
+                subject=grand_parent, predicate=SKOS.notation
+            )
             layer_altLabels = [grand_parent_label]
             layer_notations = [grand_parent_notation]
             for layer in layer_urirefs:
-                layer_altLabel = ontology_graph.value(subject=layer, predicate=SKOS.altLabel)
-                layer_notation = ontology_graph.value(subject=layer, predicate=SKOS.notation)
+                layer_altLabel = ontology_graph.value(
+                    subject=layer, predicate=SKOS.altLabel
+                )
+                layer_notation = ontology_graph.value(
+                    subject=layer, predicate=SKOS.notation
+                )
                 layer_altLabels.append(layer_altLabel)
                 layer_notations.append(layer_notation)
 
@@ -703,24 +823,46 @@ def _create_property_based_hierarchy(
             new_class_uri = "/".join([BRAIN_REGION_ONTOLOGY_URI, new_class_notation])
             ontology_graph.add((term.URIRef(new_class_uri), RDF.type, OWL.Class))
             ontology_graph.add(
-                (term.URIRef(new_class_uri), RDFS.subClassOf, NSG.BrainRegion))
-            ontology_graph.add((term.URIRef(new_class_uri), RDFS.label,
-                                Literal(new_class_label, lang="en")))
-            ontology_graph.add((term.URIRef(new_class_uri), SKOS.prefLabel,
-                                Literal(new_class_label, lang="en")))
+                (term.URIRef(new_class_uri), RDFS.subClassOf, NSG.BrainRegion)
+            )
             ontology_graph.add(
-                (term.URIRef(new_class_uri), SKOS.notation, Literal(new_class_notation)))
+                (
+                    term.URIRef(new_class_uri),
+                    RDFS.label,
+                    Literal(new_class_label, lang="en"),
+                )
+            )
+            ontology_graph.add(
+                (
+                    term.URIRef(new_class_uri),
+                    SKOS.prefLabel,
+                    Literal(new_class_label, lang="en"),
+                )
+            )
+            ontology_graph.add(
+                (term.URIRef(new_class_uri), SKOS.notation, Literal(new_class_notation))
+            )
 
-            ontology_graph.add((term.URIRef(new_class_uri), BMO.isLayerPartOf, grand_parent))
-            ontology_graph.add((grand_parent, BMO.hasLayerPart, term.URIRef(new_class_uri)))
-            ontology_graph.add((term.URIRef(new_class_uri), BMO.hasLayerPart, cls_uriref))
-            ontology_graph.add((cls_uriref, BMO.isLayerPartOf, term.URIRef(new_class_uri)))
+            ontology_graph.add(
+                (term.URIRef(new_class_uri), BMO.isLayerPartOf, grand_parent)
+            )
+            ontology_graph.add(
+                (grand_parent, BMO.hasLayerPart, term.URIRef(new_class_uri))
+            )
+            ontology_graph.add(
+                (term.URIRef(new_class_uri), BMO.hasLayerPart, cls_uriref)
+            )
+            ontology_graph.add(
+                (cls_uriref, BMO.isLayerPartOf, term.URIRef(new_class_uri))
+            )
             ontology_graph.add((grand_parent, BMO.hasHierarchyView, BMO.BrainLayer))
             ontology_graph.add(
-                (term.URIRef(new_class_uri), BMO.hasHierarchyView, BMO.BrainLayer))
+                (term.URIRef(new_class_uri), BMO.hasHierarchyView, BMO.BrainLayer)
+            )
             for layer in layer_urirefs:
                 ontology_graph.add(
-                    (term.URIRef(new_class_uri), NSG.hasLayerLocationPhenotype, layer))
+                    (term.URIRef(new_class_uri), NSG.hasLayerLocationPhenotype, layer)
+                )
             new_classes.append(new_class_uri)
             next_cls_urirefs = [term.URIRef(new_class_uri)]
             new_isPartOf_property_uriref = BMO.isLayerPartOf
@@ -728,30 +870,46 @@ def _create_property_based_hierarchy(
         for next_cls_uriref in next_cls_urirefs:
             new_classes.extend(
                 _create_property_based_hierarchy(
-                    ontology_graph, next_cls_uriref, layer_urirefs,
+                    ontology_graph,
+                    next_cls_uriref,
+                    layer_urirefs,
                     classes_relevant_for_layer,
-                    new_isPartOf_property_uriref)
+                    new_isPartOf_property_uriref,
+                )
             )
     return new_classes
 
 
 def _get_sub_regions_to_propagate_metype_to(
-        ontology_graph: Graph, from_brain_region, cell_type
+    ontology_graph: Graph, from_brain_region, cell_type
 ) -> List[str]:
     propagated_brain_regions = []
-    sub_brain_regions = ontology_graph.objects(term.URIRef(from_brain_region),
-                                               SCHEMAORG.hasPart)
+    sub_brain_regions = ontology_graph.objects(
+        term.URIRef(from_brain_region), SCHEMAORG.hasPart
+    )
     for sub_brain_region in sub_brain_regions:
-        if not ((sub_brain_region,
-                 ~OWL.someValuesFrom / ~RDFS.subClassOf / RDFS.subClassOf / OWL.someValuesFrom,
-                 BMO.BBP_contribution) in ontology_graph and
-                (sub_brain_region,
-                 ~OWL.someValuesFrom / ~RDFS.subClassOf / RDFS.subClassOf * ZeroOrMore,
-                 cell_type) in ontology_graph):  # missing the canBeLocatedInBrainRegion
+        if not (
+            (
+                sub_brain_region,
+                ~OWL.someValuesFrom
+                / ~RDFS.subClassOf
+                / RDFS.subClassOf
+                / OWL.someValuesFrom,
+                BMO.BBP_contribution,
+            )
+            in ontology_graph
+            and (
+                sub_brain_region,
+                ~OWL.someValuesFrom / ~RDFS.subClassOf / RDFS.subClassOf * ZeroOrMore,
+                cell_type,
+            )
+            in ontology_graph
+        ):  # missing the canBeLocatedInBrainRegion
             propagated_brain_regions.append(str(sub_brain_region))
             propagated_brain_regions.extend(
                 _get_sub_regions_to_propagate_metype_to(
-                    ontology_graph, str(sub_brain_region), cell_type)
+                    ontology_graph, str(sub_brain_region), cell_type
+                )
             )
     return propagated_brain_regions
 
@@ -760,7 +918,10 @@ def normalize_uris(filename, prefix, new_filename, format="turtle"):
     """Normalize resource URIs to the provided prefix."""
     reserved_namespaces = [
         "http://www.w3.org/2004/02/skos/core",
-        str(RDF), str(RDFS), str(OWL), str(XSD)
+        str(RDF),
+        str(RDFS),
+        str(OWL),
+        str(XSD),
     ]
 
     g = Graph()
@@ -807,13 +968,13 @@ def subontology_from_term(graph: Graph, entry_point, top_down=True, closed=True)
     subgraph.namespace_manager.bind("owl", OWL)
 
     if top_down:
-        all_terms = list(
-            graph.subjects(
-                RDFS.subClassOf * OneOrMore, entry_point)) + [entry_point]
+        all_terms = list(graph.subjects(RDFS.subClassOf * OneOrMore, entry_point)) + [
+            entry_point
+        ]
     else:
-        all_terms = list(
-            graph.objects(
-                entry_point, RDFS.subClassOf * OneOrMore)) + [entry_point]
+        all_terms = list(graph.objects(entry_point, RDFS.subClassOf * OneOrMore)) + [
+            entry_point
+        ]
 
     def add_incident_triples(term):
         new_classes = set()
@@ -842,7 +1003,8 @@ def subontology_from_term(graph: Graph, entry_point, top_down=True, closed=True)
                             for onprop in graph.objects(o, OWL.onProperty):
                                 subgraph.add((o, OWL.onProperty, onprop))
                                 for onprop_p, onprop_o in graph.predicate_objects(
-                                        onprop):
+                                    onprop
+                                ):
                                     subgraph.add((onprop, onprop_p, onprop_o))
                             for pp, oo in graph.predicate_objects(o):
                                 subgraph.add((o, pp, oo))
@@ -876,7 +1038,7 @@ def subontology_from_term(graph: Graph, entry_point, top_down=True, closed=True)
 
 
 def build_context_from_ontology(
-        ontology_graph, forge_context, vocab=None, binding=None, exclude_deprecated=False
+    ontology_graph, forge_context, vocab=None, binding=None, exclude_deprecated=False
 ) -> Tuple[Context, List[str]]:
     """
     Build a jsonld context object.
@@ -888,7 +1050,7 @@ def build_context_from_ontology(
 
     def is_deprecated(subject):
         t = list(ontology_graph.objects(subject, OWL.deprecated))
-        return t[0] == Literal('true', datatype=XSD.boolean) if len(t) > 0 else False
+        return t[0] == Literal("true", datatype=XSD.boolean) if len(t) > 0 else False
 
     def on_failure(failed_subject, exc):
         defining_ontology = ontology_graph.objects(failed_subject, RDFS.isDefinedBy)
@@ -902,7 +1064,11 @@ def build_context_from_ontology(
             try:
 
                 name, idref = _build_context_item(cls, new_forge_context)
-                if name is not None and idref is not None and _is_class_to_include_in_context(cls, idref, ontology_graph):
+                if (
+                    name is not None
+                    and idref is not None
+                    and _is_class_to_include_in_context(cls, idref, ontology_graph)
+                ):
                     new_forge_context.add_term(name, idref)
                     new_forge_context.document["@context"][name] = {"@id": idref}
             except Exception as e:
@@ -912,9 +1078,16 @@ def build_context_from_ontology(
         if not (not exclude_deprecated and is_deprecated(obj_prop)):
             try:
                 name, idref = _build_context_item(obj_prop, new_forge_context)
-                if name is not None and idref is not None and _is_property_to_include_in_context(idref):
+                if (
+                    name is not None
+                    and idref is not None
+                    and _is_property_to_include_in_context(idref)
+                ):
                     new_forge_context.add_term(name, idref, "@id")
-                    new_forge_context.document["@context"][name] = {"@id": idref, "@type": "@id"}
+                    new_forge_context.document["@context"][name] = {
+                        "@id": idref,
+                        "@type": "@id",
+                    }
 
             except Exception as e:
                 on_failure(obj_prop, e)
@@ -923,7 +1096,11 @@ def build_context_from_ontology(
         if not (not exclude_deprecated and is_deprecated(annot_prop)):
             try:
                 name, idref = _build_context_item(annot_prop, new_forge_context)
-                if name is not None and idref is not None and _is_property_to_include_in_context(idref):
+                if (
+                    name is not None
+                    and idref is not None
+                    and _is_property_to_include_in_context(idref)
+                ):
                     new_forge_context.add_term(name, idref)
                     new_forge_context.document["@context"][name] = {"@id": idref}
             except Exception as e:
@@ -935,19 +1112,31 @@ def build_context_from_ontology(
 def _is_class_to_include_in_context(class_item: URIRef, uri_ref, ontology_graph: Graph):
     predicate_objects = [
         (
-            RDFS.subClassOf * OneOrMore, [
-                NSG.BrainRegion, NSG.Species, BMO.Mapping, BMO.BrainCellTranscriptomeType,
-                BMO.NeuronElectricalType, BMO.NeuronMorphologicalType,
-                BMO.NeurotransmitterType, BMO.NewNeuronType, BMO.GliaType,
-                BMO.Ion, BMO.IonCurrent, NSG.PotassiumChannel, BMO.BrainArea, BMO.BrainLayer
-            ]
+            RDFS.subClassOf * OneOrMore,
+            [
+                NSG.BrainRegion,
+                NSG.Species,
+                BMO.Mapping,
+                BMO.BrainCellTranscriptomeType,
+                BMO.NeuronElectricalType,
+                BMO.NeuronMorphologicalType,
+                BMO.NeurotransmitterType,
+                BMO.NewNeuronType,
+                BMO.GliaType,
+                BMO.Ion,
+                BMO.IonCurrent,
+                NSG.PotassiumChannel,
+                BMO.BrainArea,
+                BMO.BrainLayer,
+            ],
         ),
         (
-            RDFS.subClassOf * ZeroOrMore, [
+            RDFS.subClassOf * ZeroOrMore,
+            [
                 term.URIRef("http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank"),
-                term.URIRef("http://purl.obolibrary.org/obo/PATO_0000001")
-            ]
-        )
+                term.URIRef("http://purl.obolibrary.org/obo/PATO_0000001"),
+            ],
+        ),
     ]
 
     list_of_list_of_triples = [
@@ -956,24 +1145,33 @@ def _is_class_to_include_in_context(class_item: URIRef, uri_ref, ontology_graph:
         for object_ in list_objects
     ]
 
-    return all(len(i) == 0 for i in list_of_list_of_triples) \
-        and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/UBERON_")
+    return all(len(i) == 0 for i in list_of_list_of_triples) and not str(
+        uri_ref
+    ).startswith("http://purl.obolibrary.org/obo/UBERON_")
 
 
 def _is_property_to_include_in_context(uri_ref):
     ns, fragment = _split_uri(str(uri_ref))
-    return str(ns) not in ["http://www.geneontology.org/formats/oboInOwl#",
-                           "http://purl.obolibrary.org/obo/pato#",
-                           "http://purl.obolibrary.org/obo/ro/subsets#",
-                           "http://purl.obolibrary.org/obo/go#"] \
-        and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/IAO_") \
-        and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/RO_") \
+    return (
+        str(ns)
+        not in [
+            "http://www.geneontology.org/formats/oboInOwl#",
+            "http://purl.obolibrary.org/obo/pato#",
+            "http://purl.obolibrary.org/obo/ro/subsets#",
+            "http://purl.obolibrary.org/obo/go#",
+        ]
+        and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/IAO_")
+        and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/RO_")
         and not str(uri_ref).startswith("http://purl.obolibrary.org/obo/BFO_")
+    )
 
 
 def build_context_from_schema(
-        schema_graph: Graph, forge_context: Context, vocab=None,
-        binding=None, exclude_deprecated=False
+    schema_graph: Graph,
+    forge_context: Context,
+    vocab=None,
+    binding=None,
+    exclude_deprecated=False,
 ):
     new_forge_context = _initialise_new_context(forge_context, vocab, binding)
     errors = []
@@ -982,7 +1180,7 @@ def build_context_from_schema(
         t = list(schema_graph.subject_objects(OWL.deprecated))
 
         if len(t) > 0:
-            deprecated = t[0][1] == Literal('true', datatype=XSD.boolean)
+            deprecated = t[0][1] == Literal("true", datatype=XSD.boolean)
             if deprecated:
                 return new_forge_context, errors
 
@@ -992,7 +1190,11 @@ def build_context_from_schema(
 
         defining_schema = list(schema_graph.subjects(NXV.shapes, shape))
 
-        for predicate in [SHACL.targetClass, SHACL.targetObjectsOf, SHACL.targetSubjectsOf]:
+        for predicate in [
+            SHACL.targetClass,
+            SHACL.targetObjectsOf,
+            SHACL.targetSubjectsOf,
+        ]:
             for obj_value in schema_graph.objects(shape, predicate):
                 try:
                     name, idref = _build_context_item(obj_value, new_forge_context)
@@ -1057,8 +1259,8 @@ def _split_uri(uri):
 
 def replace_is_defined_by_uris(graph, uri_mapping, ontology_uri=None):
     """
-        Replace targets of `isDefinedBy` rel with Nexus URIs.
-        Replace WebProtégé generated ontology URIs with mapped ones.
+    Replace targets of `isDefinedBy` rel with Nexus URIs.
+    Replace WebProtégé generated ontology URIs with mapped ones.
     """
 
     triples_to_add = set()
@@ -1104,15 +1306,19 @@ def replace_ontology_id(ontology_graph: Graph, new_id: term.URIRef) -> None:
             ontology_graph.add((s, p, new_id))
 
 
-def copy_ontology_label(ontology_graph, ontology_id,
-                        other_ontology_graph, other_ontology_id,
-                        append_label=None) -> None:
+def copy_ontology_label(
+    ontology_graph,
+    ontology_id,
+    other_ontology_graph,
+    other_ontology_id,
+    append_label=None,
+) -> None:
     """Copy the label from one ontology to another."""
     for o in ontology_graph.objects(ontology_id, RDFS.label):
         ontology_label = o
     if append_label:
-        ontology_label = term.Literal(str(o) + append_label)
-    other_ontology_graph.add((other_ontology_id, RDFS.label, ontology_label))
+        ontology_label = term.Literal(str(ontology_label) + append_label)
+    other_ontology_graph.set((other_ontology_id, RDFS.label, ontology_label))
 
 
 def all_ontologies_ids(ontology_graphs_dict: Dict[str, Graph]) -> Set[str]:
