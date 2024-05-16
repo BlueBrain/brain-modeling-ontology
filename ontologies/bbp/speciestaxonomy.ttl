@@ -61,6 +61,30 @@
         nsg:Species,
         <https://phenome.jax.org/strains/178> .
 
+:BAC_cckdsredBACpvagfponFVBAnt a owl:Class ;
+    rdfs:label "BAC_cck/dsred//BAC_pva/gfp on FVB/Ant"@en ;
+    ncbitaxon:has_rank NCBITaxon:strain ;
+    rdfs:subClassOf NCBITaxon:10090 ;
+    skos:definition "These mice resulted from crossing Cck-dsred transgenic mice, which express the red fluorescent protein DsRed in cholecystokinin-containing neurons, with Pva-gfp transgenic mice, which express green fluorescent protein in parvalbumin-expressing neurons. The background strain is FVB/Ant (https://doi.org/10.1111/j.1601-183x.2006.00282.x)."@en .
+
+:BAC_cckdsredonFVBAnt a owl:Class ;
+    rdfs:label "BAC_cck/dsred on FVB/Ant"@en ;
+    ncbitaxon:has_rank NCBITaxon:strain ;
+    rdfs:subClassOf NCBITaxon:10090 ;
+    skos:definition "Cck-dsred transgenic mice express the red fluorescent protein DsRed in cholecystokinin-containing neurons. The construct was designed by Ferenc Erdélyi and Gábor Szabó at IEM (KOKI). The background strain is FVB/Ant (https://doi.org/10.1111/j.1601-183x.2006.00282.x)."@en .
+
+:BAC_pvagfponFVBAnt a owl:Class ;
+    rdfs:label "BAC_pva/gfp on FVB/Ant"@en ;
+    ncbitaxon:has_rank NCBITaxon:strain ;
+    rdfs:subClassOf NCBITaxon:10090 ;
+    skos:definition "Pva-gfp transgenic mice express green fluorescent protein in parvalbumin-expressing neurons. BAC construct was designed by AH Meyer in  the laboratory of Hannah Monyer (https://doi.org/10.1523/jneurosci.22-16-07055.2002). Pronuclear microinjection was carried out in IEM (KOKI).  The background strain is FVB/Ant (https://doi.org/10.1111/j.1601-183x.2006.00282.x)."@en .
+
+:CrIRES_creGtROSA26SorCAGLSL_ZsGreen1onC57BI6J a owl:Class ;
+    rdfs:label "Cr/IRES_cre//Gt(ROSA)26Sor_CAG/LSL_ZsGreen1 on C57Bl/6J"@en ;
+    ncbitaxon:has_rank NCBITaxon:strain ;
+    rdfs:subClassOf NCBITaxon:10090 ;
+    skos:definition "These mice resulted from crossing Cr-IRES-Cre mice, which have Cre recombinase expression directed to calretinin-expressing cells (https://doi.org/10.1016/j.neuron.2011.07.026), with Gt(ROSA)26Sor_CAG/LSL_ZsGreen1 mice in which enhanced green fluorescent protein (ZsGreen1) is expressed following Cre-mediated recombination (https://doi.org/10.1038/nn.2467).  The background strain is C57Bl/6J."@en .
+
 :GrpCreKH288 a owl:Class ;
     rdfs:label "Grp-Cre_KH288"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
@@ -416,6 +440,12 @@
     ncbitaxon:has_rank NCBITaxon:strain ;
     rdfs:subClassOf NCBITaxon:10090 ;
     skos:definition "Vglut2-Cre is a mouse strain from Mouselight."@en .
+
+:VipIREScreonC57BI6J a owl:Class ;
+    rdfs:label "Vip-IRES-cre on C57Bl/6J"@en ;
+    ncbitaxon:has_rank NCBITaxon:strain ;
+    rdfs:subClassOf NCBITaxon:10090 ;
+    skos:definition "Vip-IRES-Cre mice have Cre recombinase expression directed to Vip-expressing cells by the endogenous promoter/enhancer elements of the vasoactive intestinal polypeptide locus (https://doi.org/10.1016/j.neuron.2011.07.026). The background strain is C57Bl/6J."@en .
 
 NCBITaxon:3702 a owl:Class ;
     rdfs:label "Arabidopsis thaliana"@en ;
