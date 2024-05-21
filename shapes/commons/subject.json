@@ -26,9 +26,9 @@
           "sh:message": "Species should be defined in the Species Taxonomy ontology",
           "sh:sparql": {
             "@type": "sh:SPARQLConstraint",
-            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy_slim> <https://neuroshapes.org/defines> ?value.\n ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species>} .\n}"
+            "sh:select": "SELECT  $this ?value ?count WHERE {\n        {\n $this $PATH ?value.\n            FILTER NOT EXISTS {\n                <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy_slim> <https://neuroshapes.org/defines> ?value.\n                ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_species>. ?value rdfs:label ?label .\n            }\n        }\n        UNION\n        {\n            {\n              SELECT $this ?value (COUNT(*) AS ?count) {\n                  SELECT  DISTINCT $this ?value ?label\n                      WHERE {\n                          $this $PATH ?value.\n                          ?value rdfs:label ?label .\n                      }\n              }\n              GROUP BY ?this ?value\n            }\n            FILTER (?count > 1)\n        }\n    }"
           },
-          "path": "https://neuroshapes.org/species"
+          "path": "nsg:species"
         },
         {
           "description": "Subject strain",
@@ -38,9 +38,9 @@
           "sh:message": "Strains should be defined in the Species Taxonomy ontology",
           "sh:sparql": {
             "@type": "sh:SPARQLConstraint",
-            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy_slim> <https://neuroshapes.org/defines> ?value.\n ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain>} .\n}"
+            "sh:select": "SELECT  $this ?value ?count WHERE {{\n            $this $PATH ?value.\n            FILTER NOT EXISTS {\n                <http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy_slim> <https://neuroshapes.org/defines> ?value.\n                ?value <http://purl.obolibrary.org/obo/ncbitaxon#has_rank> <http://purl.obolibrary.org/obo/NCBITaxon_strain>. ?value rdfs:label ?label .\n            }\n        }\n        UNION\n        {\n            {\n              SELECT $this ?value (COUNT(*) AS ?count) {\n                  SELECT  DISTINCT $this ?value ?label\n                      WHERE {\n                          $this $PATH ?value.\n                          ?value rdfs:label ?label .\n                      }\n              }\n              GROUP BY ?this ?value\n            }\n            FILTER (?count > 1)\n        }}"
           },
-          "path": "https://neuroshapes.org/strain"
+          "path": "nsg:strain"
         },
         {
           "description": "Transgenic modification of subject",

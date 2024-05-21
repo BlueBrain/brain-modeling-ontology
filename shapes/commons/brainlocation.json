@@ -120,7 +120,7 @@
           "sh:sparql": {
             "@type": "sh:SPARQLConstraint",
             "sh:message": "Layers should be defined in the Brain Region Ontology and be subClassOf nsg:BrainLayer",
-            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion_slim> <https://neuroshapes.org/defines>  ?value . \n ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf>* <https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer> }.\n}"
+            "sh:select": "SELECT  $this ?value ?count\n   WHERE {{ \n      $this $PATH ?value.\n            FILTER NOT EXISTS {\n                     <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion_slim> <https://neuroshapes.org/defines> ?value . \n                            ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf>* <https://bbp.epfl.ch/ontologies/core/bmo/BrainLayer>. ?value rdfs:label ?label .\n            }\n    }\n     UNION\n    {\n        {\n          SELECT $this ?value (COUNT(*) AS ?count) {\n              SELECT  DISTINCT $this ?value ?label\n                  WHERE {\n                      $this $PATH ?value.\n                      ?value rdfs:label ?label .\n                  }\n          }\n          GROUP BY $this ?value\n        }\n        FILTER (?count > 1)\n    }}"
           },
           "path": "nsg:layer"
         },
@@ -141,7 +141,7 @@
           "sh:sparql": {
             "@type": "sh:SPARQLConstraint",
             "sh:message": "Brain Regions should be defined in the Brain Region Ontology",
-            "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion_slim> <https://neuroshapes.org/defines>  ?value . \n ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://neuroshapes.org/BrainRegion>}.\n}"
+            "sh:select": "SELECT  $this ?value ?count WHERE {{\n          $this $PATH ?value.\n          FILTER NOT EXISTS {\n            <http://bbp.epfl.ch/neurosciencegraph/ontologies/core/brainregion_slim> <https://neuroshapes.org/defines> ?value .\n            ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://neuroshapes.org/BrainRegion>. ?value rdfs:label ?label .\n          } \n  }\n  UNION\n  {\n      {\n        SELECT ?this ?value (COUNT(*) AS ?count) {\n                 SELECT  DISTINCT $this ?value ?label\n                          WHERE {\n                                      $this $PATH ?value.\n                                      ?value rdfs:label ?label .\n                          }\n        }\n        GROUP BY ?this ?value\n      }  FILTER (?count > 1)\n  }}"
           },
           "sh:minCount": 1,
           "sh:maxCount": 1
