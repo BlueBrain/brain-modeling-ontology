@@ -179,6 +179,9 @@
     "AtlasETypeRatio": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/AtlasETypeRatio"
     },
+    "AtlasPipelineConfig": {
+      "@id": "bmo:AtlasPipelineConfig"
+    },
     "AtlasRelease": {
       "@id": "nsg:AtlasRelease"
     },
