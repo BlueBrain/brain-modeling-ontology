@@ -4112,13 +4112,16 @@
       "@id": "schema:valuePattern"
     },
     "valueX": {
-      "@id": "nsg:valueX"
+      "@id": "nsg:valueX",
+      "@type": "xsd:float"
     },
     "valueY": {
-      "@id": "nsg:valueY"
+      "@id": "nsg:valueY",
+      "@type": "xsd:float"
     },
     "valueZ": {
-      "@id": "nsg:valueZ"
+      "@id": "nsg:valueZ",
+      "@type": "xsd:float"
     },
     "vann": "http://purl.org/vocab/vann/",
     "variable": {

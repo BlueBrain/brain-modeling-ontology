@@ -1533,6 +1533,12 @@ bmo:DepressingSynapseType rdf:type owl:Class ;
                           rdfs:label "Depressing Synapse Type"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/DistributedMechanismModel
+bmo:DistributedMechanismModel rdf:type owl:Class ;
+                              rdfs:subClassOf bmo:SubCellularModel ;
+                              rdfs:label "Distributed Mechanism Model"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/DynamicParametersCircuitProperty
 bmo:DynamicParametersCircuitProperty rdf:type owl:Class ;
                                      rdfs:subClassOf bmo:ModelCircuitProperty ;
@@ -1792,6 +1798,12 @@ bmo:EvolutionaryAlgorithm rdf:type owl:Class ;
 bmo:ExperimentalData rdf:type owl:Class ;
                      rdfs:subClassOf bmo:DataGenerationModality ;
                      rdfs:label "Experimental Data"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ExternalStimulusModel
+bmo:ExternalStimulusModel rdf:type owl:Class ;
+                         rdfs:subClassOf bmo:PointProcessModel ;
+                         rdfs:label "External Stimulus Model"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ExtracellularPart
@@ -2094,7 +2106,7 @@ bmo:IonCurrent rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/IonCurrentModel
 bmo:IonCurrentModel rdf:type owl:Class ;
-                    rdfs:subClassOf nsg:SubCellularModel ,
+                    rdfs:subClassOf bmo:DistributedMechanismModel ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty nsg:ion ;
                                       owl:someValuesFrom bmo:Ion
@@ -3378,6 +3390,12 @@ bmo:PerisomaticCurrentFiringFeature rdf:type owl:Class ;
                                     skos:definition "Feature of perisomatic firing response to current steps"^^xsd:string .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/PointProcessModel
+bmo:PointProcessModel rdf:type owl:Class ;
+                              rdfs:subClassOf bmo:SubCellularModel ;
+                              rdfs:label "Point Process Model"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Position
 bmo:Position rdf:type owl:Class ;
              rdfs:label "Position"@en .
@@ -3636,6 +3654,12 @@ bmo:Synapse rdf:type owl:Class ;
                             ] ;
             rdfs:label "Synapse"@en ;
             skos:definition "A structure that permits a neuron to pass an electrical or chemical signal to another neuron or to the target effector cell. Synapse is formed by a presynaptic and postsynaptic part with a space between the two parts. Different structural proteins connect the pre- and postsynaptic parts of the synapse."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/SynapseModel
+bmo:SynapseModel rdf:type owl:Class ;
+                         rdfs:subClassOf nsg:SubCellularModel ;
+                         rdfs:label "Synapse Model"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SynapseModelCategory
@@ -4505,6 +4529,12 @@ nsg:SubCellularModel rdf:type owl:Class ;
                                      ] ;
                      rdfs:label "SubCellularModel"@en ;
                      skos:altLabel "SubCellular Model"@en .
+
+
+###  https://neuroshapes.org/SubCellularModelScript
+nsg:SubCellularModelScript rdf:type owl:Class ;
+                           rdfs:subClassOf bmo:SubCellularModel ;
+                           rdfs:label "SubCellular Model Script"@en .
 
 
 ###  https://neuroshapes.org/Subject

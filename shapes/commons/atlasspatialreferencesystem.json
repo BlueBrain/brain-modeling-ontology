@@ -6,8 +6,7 @@
     "https://neuroshapes.org/commons/entity",
     "https://neuroshapes.org/commons/vector3d",
     "https://neuroshapes.org/dash/rotationalmatrix",
-    "https://neuroshapes.org/commons/boundingbox",
-    "https://neuroshapes.org/commons/typedlabeledontologyterm"
+    "https://neuroshapes.org/commons/boundingbox"
   ],
   "shapes": [
     {
@@ -49,7 +48,6 @@
               "maxCount": 1,
               "minCount": 1,
               "name": "Unit",
-              "node": "nsg:commons/typedlabeledontologyterm/shapes/UnitOntologyTermShape",
               "path": "schema:unitCode"
             }
           ]

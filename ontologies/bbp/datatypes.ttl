@@ -38,6 +38,10 @@ bmo:DirectionVectorsField a owl:Class ;
     rdfs:label "Direction Vectors Field"@en ;
     rdfs:subClassOf nsg:VolumetricDataLayer .
 
+bmo:ExperimentalTrace a owl:Class ;
+    rdfs:label "Experimental Trace"@en ;
+    rdfs:subClassOf nsg:Trace .
+
 bmo:HemisphereAnnotationDataLayer a owl:Class ;
     rdfs:label "Hemisphere Annotation Data Layer"@en ;
     rdfs:subClassOf nsg:VolumetricDataLayer .
@@ -59,6 +63,11 @@ bmo:MTypeDensity a owl:Class ;
 bmo:PlacementHintsDataLayerCatalog a owl:Class ;
     rdfs:label "Placement Hints Data Layer Catalog"@en ;
     rdfs:subClassOf schema:DataCatalog .
+
+bmo:PlaceholderNeuronMorphology a owl:Class ;
+    rdfs:label "Placeholder Neuron Morphology"@en ;
+    rdfs:subClassOf nsg:NeuronMorphology ;
+    skos:prefLabel "Placeholder Neuron Morphology"@en .
 
 nsg:BrainParcellationDataLayer a owl:Class ;
     rdfs:label "Brain Parcellation Data Layer"@en ;
