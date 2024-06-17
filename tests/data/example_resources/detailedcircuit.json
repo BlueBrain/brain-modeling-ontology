@@ -1,0 +1,35 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/c41f8a04-5031-49b9-9ae9-4a2c92e6c19c",
+  "@type": "DetailedCircuit",
+  "atlasRelease": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+    "@type": [
+      "BrainAtlasRelease",
+      "AtlasRelease",
+      "Entity"
+    ]
+  },
+  "brainLocation": {
+    "brainRegion": {
+      "@id": "mba:997",
+      "label": "root"
+    }
+  },
+  "circuitConfigPath": {
+    "@type": "DataDownload",
+    "url": "file:///gpfs/bbp.cscs.ch/data/scratch/proj134/zisis/sub-workflows/mmodel/out/circuit_config.json"
+  },
+  "description": "Partial circuit built with cell properties, and morphologies.",
+  "name": "Partial circuit with morphologies",
+  "subject": {
+    "@type": "Subject",
+    "species": {
+      "@id": "NCBITaxon:10090",
+      "label": "Mus musculus"
+    }
+  }
+}

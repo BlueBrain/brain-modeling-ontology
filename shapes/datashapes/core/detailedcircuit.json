@@ -1,14 +1,10 @@
 {
-  "@context": [
-    "https://incf.github.io/neuroshapes/contexts/schema.json",
-    {
-      "this": "https://neuroshapes.org/dash/detailedcircuit/shapes/"
-    }
-  ],
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
   "@id": "https://neuroshapes.org/dash/detailedcircuit",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/modelinstance"
+    "https://neuroshapes.org/commons/entity",
+    "https://neuroshapes.org/commons/distribution"
   ],
   "shapes": [
     {
@@ -16,33 +12,41 @@
       "@type": "NodeShape",
       "and": [
         {
-          "node": "nsg:commons/modelinstance/shapes/ModelInstanceShape"
+          "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape"
         },
         {
           "property": [
             {
-              "class": "nsg:NodeCollection",
-              "description": "Node collection entity.",
-              "minCount": 1,
-              "name": "Node collection",
-              "path": "nsg:nodeCollection",
-              "seeAlso": "nsg:dash/nodecollection/shapes/NodeCollectionShape"
+              "path": "bmo:circuitConfigPath",
+              "name": "Circuit Configuration path",
+              "description": "SONATA circuit config path with relative or absolute paths to circuit components",
+              "class": "schema:DataDownload",
+              "node": "https://neuroshapes.org/commons/distribution/shapes/DistributionShape",
+	      "minCount": 1,
+	      "maxCount": 1
             },
-            {
-              "class": "nsg:EdgeCollection",
-              "description": "Location of nrn synapse file and additional circuit description files: start.ncs and start.target",
-              "name": "nrnPath",
-              "path": "nsg:edgeCollection",
-              "seeAlso": "nsg:dash/edgecollection/shapes/EdgeCollectionShape"
-            },
-            {
-              "class": "nsg:Target",
-              "description": "Optional parameter giving location of predefined targets stored in the named file",
-              "editorialNote": "constrain with application/bbp-target",
+	    {
+              "path": "nsg:atlasRelease",
+	      "name": "Atlas release",
               "maxCount": 1,
-              "name": "TargetFile",
-              "path": "nsg:target",
-              "seeAlso": "nsg:dash/target/shapes/TargetShape"
+              "nodeKind": "sh:IRI"
+            },
+            {
+             "path": "nsg:brainLocation",
+	     "name": "brainLocation",
+             "minCount": 1
+            },
+            {
+              "path": "nsg:contribution",
+              "name": "Contribution"
+            },
+            {
+              "path": "nsg:generation",
+              "name": "Generation"
+            },
+	    {
+              "path": "nsg:subject",
+              "name": "Subject"
             }
           ]
         }
