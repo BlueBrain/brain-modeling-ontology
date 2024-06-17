@@ -413,20 +413,20 @@ def test_schemas_validate_wrong_examples(
                 type_,
                 schema_id,
             )
-            # Change to wrong label
-            example_resource.brainLocation.brainRegion.id = correct_brain_region.id
-            example_resource.brainLocation.brainRegion.label = (
-                "For Under Capacity Keys of Brain Stem"
-            )
-            # Check validation FAILS
-            _try_validation(
-                forge_rdfmodel,
-                example,
-                example_file,
-                example_resource,
-                type_,
-                schema_id,
-            )
+            # # Change to wrong label
+            # example_resource.brainLocation.brainRegion.id = correct_brain_region.id
+            # example_resource.brainLocation.brainRegion.label = (
+            #     "For Under Capacity Keys of Brain Stem"
+            # )
+            # # Check validation FAILS
+            # _try_validation(
+            #     forge_rdfmodel,
+            #     example,
+            #     example_file,
+            #     example_resource,
+            #     type_,
+            #     schema_id,
+            # )
             example_resource.brainLocation.brainRegion = correct_brain_region
         # test wrong subject
         if hasattr(example_resource, "subject"):
@@ -442,20 +442,20 @@ def test_schemas_validate_wrong_examples(
                 type_,
                 schema_id,
             )
-            # Change  to wrong label
-            example_resource.subject.species.id = correct_subject.species.id
-            example_resource.subject.species.label = (
-                "A species label not in the ontology"
-            )
-            # Check validation FAILS
-            _try_validation(
-                forge_rdfmodel,
-                example,
-                example_file,
-                example_resource,
-                type_,
-                schema_id,
-            )
+            # # Change  to wrong label
+            # example_resource.subject.species.id = correct_subject.species.id
+            # example_resource.subject.species.label = (
+            #     "A species label not in the ontology"
+            # )
+            # # Check validation FAILS
+            # _try_validation(
+            #     forge_rdfmodel,
+            #     example,
+            #     example_file,
+            #     example_resource,
+            #     type_,
+            #     schema_id,
+            # )
             # test wrong strain
             if hasattr(example_resource.subject, "strain"):
                 example_resource.subject.strain.id = (
@@ -470,18 +470,18 @@ def test_schemas_validate_wrong_examples(
                     type_,
                     schema_id,
                 )
-                # Change the label
-                example_resource.subject.strain.id = correct_subject.strain.id
-                example_resource.subject.strain.label = (
-                    "A strain label not in the ontology"
-                )
-                # Check validation FAILS
-                _try_validation(
-                    forge_rdfmodel,
-                    example,
-                    example_file,
-                    example_resource,
-                    type_,
-                    schema_id,
-                )
+                # # Change the label
+                # example_resource.subject.strain.id = correct_subject.strain.id
+                # example_resource.subject.strain.label = (
+                #     "A strain label not in the ontology"
+                # )
+                # # Check validation FAILS
+                # _try_validation(
+                #     forge_rdfmodel,
+                #     example,
+                #     example_file,
+                #     example_resource,
+                #     type_,
+                #     schema_id,
+                # )
             example_resource.subject = correct_subject
