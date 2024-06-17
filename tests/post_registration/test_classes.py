@@ -7,7 +7,7 @@ from kgforge.core.commons.strategies import ResolvingStrategy
 from rdflib import RDFS, RDF, OWL, URIRef, Literal, XSD
 from rdflib.paths import OneOrMore
 
-from bmo.utils import BMO, NSG, SKOS
+from bmo.utils import BMO, NSG, SKOS, NCBITAXON
 from scripts.register_ontologies import JSONLD_DATA_CONTEXT_IRI
 
 
@@ -47,7 +47,8 @@ def registered_terms_ids(forge):
     for object_, predicate, resolver_target in [
         (NSG.BrainRegion, RDFS.subClassOf * OneOrMore, "BrainRegion"),
         (BMO.BrainCellType, RDFS.subClassOf * OneOrMore, "CellType"),
-        (NSG.Species, RDFS.subClassOf * OneOrMore, "Species"),
+        (NSG.Species, NCBITAXON.hasRank, "Species"),
+        (NSG.Strain, NCBITAXON.hasRank, "Strain"),
         (OWL.Class, RDF.type, "terms")
     ]
 ])
