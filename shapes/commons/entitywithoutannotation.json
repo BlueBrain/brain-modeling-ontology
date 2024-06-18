@@ -18,21 +18,15 @@
       "@type": "sh:NodeShape",
       "comment": "An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.",
       "label": "Entity shape",
-      "and": [
+      "node": "https://neuroshapes.org/commons/entitywithoutannotationsubject/shapes/EntityShape",
+      "property": [
         {
-          "node": "https://neuroshapes.org/commons/entitywithoutannotationsubject/shapes/EntityShape"
-        },
-        {
-          "property": [
-            {
-              "class": "nsg:Subject",
-              "description": "The subject of the study. This data represent an observation of this subject.",
-              "editorialNote": "Asserted subject entity. It may differ from the subject from the provenance.",
-              "name": "Subject",
-              "path": "nsg:subject",
-              "node": "nsg:commons/subject/shapes/SubjectShape"
-            }
-          ]
+          "class": "nsg:Subject",
+          "description": "The subject of the study. This data represent an observation of this subject.",
+          "editorialNote": "Asserted subject entity. It may differ from the subject from the provenance.",
+          "name": "Subject",
+          "path": "nsg:subject",
+          "node": "nsg:commons/subject/shapes/SubjectShape"
         }
       ]
     }
