@@ -10,30 +10,26 @@
     {
       "@id": "https://neuroshapes.org/dash/detailedcircuit/shapes/DetailedCircuitShape",
       "@type": "NodeShape",
-      "and": [
-        {
-          "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape"
-        },
-        {
-          "property": [
+      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+      "property": [
             {
               "path": "bmo:circuitConfigPath",
               "name": "Circuit Configuration path",
               "description": "SONATA circuit config path with relative or absolute paths to circuit components",
               "class": "schema:DataDownload",
               "node": "https://neuroshapes.org/commons/distribution/shapes/DistributionShape",
-	      "minCount": 1,
-	      "maxCount": 1
+	            "minCount": 1,
+	            "maxCount": 1
             },
-	    {
+	          {
               "path": "nsg:atlasRelease",
-	      "name": "Atlas release",
+	            "name": "Atlas release",
               "maxCount": 1,
               "nodeKind": "sh:IRI"
             },
             {
              "path": "nsg:brainLocation",
-	     "name": "brainLocation",
+	           "name": "brainLocation",
              "minCount": 1
             },
             {
@@ -44,12 +40,10 @@
               "path": "nsg:generation",
               "name": "Generation"
             },
-	    {
+	          {
               "path": "nsg:subject",
               "name": "Subject"
             }
-          ]
-        }
       ],
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:DetailedCircuit"
