@@ -8,54 +8,59 @@
   "@id": "https://neuroshapes.org/dash/memodel",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/modelinstance"
+    "https://neuroshapes.org/commons/emodelentity"
   ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/memodel/shapes/MEModelShape",
       "@type": "NodeShape",
-      "and": [
+      "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape",
+      "property": [
         {
-          "node": "nsg:commons/modelinstance/shapes/ModelInstanceShape"
+          "class": "nsg:MEModelRelease",
+          "description": "The memodel release this memodel is part of.",
+          "name": "Part of",
+          "path": "schema:isPartOf"
         },
         {
-          "property": [
+          "description": "The memodel parts: EModel and NeuronMorphology resources.",
+          "name": "Has part",
+          "path": "schema:hasPart",
+          "minCount": 2
+        },
+        {
+          "path": "schema:hasPart",
+          "qualifiedValueShape":
             {
-              "class": "nsg:EModel",
-              "description": "EModel shape",
-              "maxCount": 1,
-              "minCount": 1,
-              "name": "EModel",
-              "path": "nsg:eModel",
-              "seeAlso": "nsg:dash/emodel/shapes/EModelShape"
+              "class": "nsg:NeuronMorphology"
             },
+          "qualifiedMinCount": 1
+        },
+        {
+          "path": "schema:hasPart",
+          "qualifiedValueShape":
             {
-              "class": "nsg:Morphology",
-              "description": "Morphology shape.",
-              "maxCount": 1,
-              "minCount": 1,
-              "name": "Morphology",
-              "path": "nsg:morphology",
-              "seeAlso": "nsg:dash/morphology/shapes/MorphologyShape"
+              "class": "nsg:EModel"
             },
-            {
-              "class": "nsg:EModelScript",
-              "description": "EModel script which should be used to instantiante single cell model. Should reference one of the scripts in EModel.",
-              "maxCount": 1,
-              "minCount": 1,
-              "name": "EModel script",
-              "path": "nsg:mainModelScript"
-            },
-            {
-              "class": "nsg:MEModelRelease",
-              "description": "The memodel release this memodel is part of.",
-              "name": "Part of",
-              "path": "schema:isPartOf"
-            }
-          ]
+          "qualifiedMinCount": 1
+        },
+        {
+          "path": "nsg:eModel",
+          "minCount": 1,
+          "maxCount": 1
+        },
+        {
+          "path": "nsg:eType",
+          "minCount": 1,
+          "maxCount": 1
+        },
+        {
+          "path": "nsg:mType",
+          "minCount": 1,
+          "maxCount": 1
         }
       ],
-      "label": "This shape is for...",
+      "label": "This shape is for Morphological-Electrical Models",
       "targetClass": "nsg:MEModel"
     }
   ]
