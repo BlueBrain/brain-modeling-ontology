@@ -14,40 +14,34 @@
       {
         "@id": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape",
         "@type": "NodeShape",
-        "and": [
+        "node": "https://neuroshapes.org/commons/modelinstance/shapes/ModelInstanceShape",
+        "property": [
           {
-            "node": "https://neuroshapes.org/commons/modelinstance/shapes/ModelInstanceShape"
+            "path": "nsg:atlasRelease",
+            "minCount": 1
           },
           {
-            "property": [
-              {
-                "path": "nsg:atlasRelease",
-                "minCount": 1
-              },
-              {
-                "description": "Name of the emodel constructed joining the electrical and morphological types of the cell used to build the model.",
-                "name": "EModel",
-                "path": "nsg:eModel",
-                "datatype": "xsd:string",
-                "minCount": 1 
-              },
-              {
-                "description": "The electrical type of the cell used to build the model.",
-                "name": "Etype of the EModel",
-                "path": "nsg:eType",
-                "datatype": "xsd:string"
-              },
-              {
-                "description": "The morphological type of the cell used to build the model.",
-                "name": "MType of the EModel",
-                "path": "nsg:mType",
-                "datatype": "xsd:string"
-              },
-              {
-                "path": "nsg:objectOfStudy",
-                "minCount": 1
-              }
-            ]
+            "description": "Name of the emodel constructed joining the electrical and morphological types of the cell used to build the model.",
+            "name": "EModel",
+            "path": "nsg:eModel",
+            "datatype": "xsd:string",
+            "minCount": 1
+          },
+          {
+            "description": "The electrical type of the cell used to build the model.",
+            "name": "Etype of the EModel",
+            "path": "nsg:eType",
+            "datatype": "xsd:string"
+          },
+          {
+            "description": "The morphological type of the cell used to build the model.",
+            "name": "MType of the EModel",
+            "path": "nsg:mType",
+            "datatype": "xsd:string"
+          },
+          {
+            "path": "nsg:objectOfStudy",
+            "minCount": 1
           }
         ],
         "comment": "An EModel requires all teh attributes in teh MINDS shape plus the detail of what is being modeled (values of modelOf)",
