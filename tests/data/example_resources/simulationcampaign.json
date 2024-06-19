@@ -1,0 +1,52 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/3fa2e4d7-3360-4487-ad3b-b22bd877010a",
+  "@type": "SimulationCampaign",
+  "description": "Simulation experiment 18/06/2024, 11:49:39",
+  "name": "Simulation experiment 18/06/2024, 11:49:39",
+  "parameter": {
+    "attrs": {
+      "blue_config_template": "simulation_config.tmpl",
+      "circuit_config": "/gpfs/bbp.cscs.ch/data/scratch/proj134/workflow-outputs/dev/20242602-one-region-synthesis/synapseConfig/build/circuit_config.json",
+      "path_prefix": "/gpfs/bbp.cscs.ch/project/proj134/scratch/sims"
+    },
+    "coords": {
+      "calciumConcentration": [
+        0.8,
+        2.45,
+        4.1
+      ],
+      "forwardSkip": [
+        5000,
+        7666.67,
+        10333.33,
+        13000
+      ],
+      "seed": [
+        1,
+        11743,
+        23485
+      ]
+    }
+  },
+  "simulations": {
+    "@type": "DataDownload",
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 7618
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https:%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2Fb7be9a45-20c9-4c4a-8f91-05a2a6fff0d3",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "1c694ff9daf9cc7ceea7b086971b67edc7e6124f5ccbfdb6703c1f60b6644d5e"
+    },
+    "encodingFormat": "application/json"
+  },
+  "wasGeneratedBy": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/e0b09e47-3a0e-4f7c-bb3f-0125a48d2187",
+    "@type": "SimulationCampaignExecution"
+  }
+}

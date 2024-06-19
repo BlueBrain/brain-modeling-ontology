@@ -206,6 +206,15 @@
     "BatchQualityMeasurementAnnotation": {
       "@id": "nsg:BatchQualityMeasurementAnnotation"
     },
+    "BbpWorkflowConfig": {
+      "@id": "bmo:BbpWorkflowConfig"
+    },
+    "BbpWorkflowActivity": {
+      "@id": "bmo:BbpWorkflowActivity"
+    },
+    "BbpWorkflowResource": {
+      "@id": "bmo:BbpWorkflowResource"
+    },
     "BiochemicalReaction": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/BiochemicalReaction"
     },
@@ -495,6 +504,9 @@
     "Contribution": {
       "@id": "nsg:Contribution"
     },
+    "CumulativeAnalysisReport": {
+      "@id": "bmo:CumulativeAnalysisReport"
+    },
     "Cytosol": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Cytosol"
     },
@@ -603,8 +615,14 @@
     "EModelInstanceCircuitProperty": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelInstanceCircuitProperty"
     },
+    "EModelOptimizationActivity": {
+      "@id": "bmo:EModelOptimizationActivity"
+    },
     "EModelOptimizationBatchSize": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelOptimizationBatchSize"
+    },
+    "EModelOptimizationConfig": {
+      "@id": "bmo:EModelOptimizationConfig"
     },
     "EModelOptimizationStochasticity": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/EModelOptimizationStochasticity"
@@ -1367,6 +1385,15 @@
     "MsgGeneticModel": {
       "@id": "bmo:MsgGeneticModel"
     },
+    "MultiCumulativeAnalysisReport": {
+      "@id": "bmo:MultiCumulativeAnalysisReport"
+    },
+    "MultiCumulativeSimulationCampaignAnalysis": {
+      "@id": "bmo:MultiCumulativeSimulationCampaignAnalysis"
+    },
+    "MultiEModelAnalysis": {
+      "@id": "bmo:MultiEModelAnalysis"
+    },
     "NCBITaxon": {
       "@id":"http://purl.obolibrary.org/obo/NCBITaxon_",
       "@prefix":true
@@ -2001,6 +2028,21 @@
       "@id": "nsg:SimulationCampaign",
       "@type": "@id"
     },
+    "SimulationCampaignAnalysis": {
+      "@id": "bmo:SimulationCampaignAnalysis"
+    },
+    "SimulationCampaignConfiguration": {
+      "@id": "bmo:SimulationCampaignConfiguration"
+    },
+    "SimulationCampaignExecution": {
+      "@id": "bmo:SimulationCampaignExecution"
+    },
+    "SimulationCampaignGeneration": {
+      "@id": "bmo:SimulationCampaignGeneration"
+    },
+    "SimulationCampaignUIConfig": {
+      "@id": "bmo:SimulationCampaignUIConfig"
+    },
     "SimulationDensity": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SimulationDensity"
     },
@@ -2249,6 +2291,9 @@
     },
     "SynapticPathway": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticPathway"
+    },
+    "SynapticParameterAssignment": {
+      "@id": "bmo:SynapticParameterAssignment"
     },
     "SynapticPathwayFeature": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticPathwayFeature"
@@ -4177,6 +4222,9 @@
     },
     "variant": {
       "@id": "nsg:variant"
+    },
+    "variantName": {
+      "@id": "bmo:variantName"
     },
     "vectorDimension": {
       "@id": "nsg:vectorDimension"

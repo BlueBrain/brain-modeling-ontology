@@ -1,0 +1,28 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/neurosciencegraph/data/1fbbf729-b8ff-428b-9972-2c60a2c76046",
+  "@type": "BbpWorkflowActivity",
+  "endedAtTime": "2023-06-22T00:34:02.082",
+  "generated": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/a1050314-5950-4ccd-91b4-5118153f9c82",
+    "@type": "AnalysisReport"
+  },
+  "startedAtTime": "2023-06-22T00:34:02.080",
+  "status": "Done",
+  "used": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/955707b3-beb4-4c2a-b3f3-1f1640cac636",
+    "@type": "BbpWorkflowConfig"
+  },
+  "used_config": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/955707b3-beb4-4c2a-b3f3-1f1640cac636",
+    "@type": "BbpWorkflowConfig"
+  },
+  "used_rev": 1,
+  "wasInfluencedBy": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/b4bd5912-05b6-42da-9e3b-b25486b82cba",
+    "@type": "WorkflowExecution"
+  }
+}

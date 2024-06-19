@@ -1,0 +1,13 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/neurosciencegraph/data/29764ed7-5aa3-426d-8301-a8b18005bd7c",
+  "@type": "BbpWorkflowResource",
+  "name": "sim run",
+  "wasGeneratedBy": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/b4bd5912-05b6-42da-9e3b-b25486b82cba",
+    "@type": "WorkflowExecution"
+  }
+}

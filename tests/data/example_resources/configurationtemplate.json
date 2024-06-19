@@ -1,0 +1,9 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/e4ea67ff-980a-4688-b95b-c8445e467be4",
+  "@type": "ConfigurationTemplate",
+  "name": "ConfigurationTemplate"
+}

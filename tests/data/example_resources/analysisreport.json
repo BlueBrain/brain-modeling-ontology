@@ -1,0 +1,37 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/64be1d32-039b-4a32-a228-296f62ecf037",
+  "@type": "AnalysisReport",
+  "categories": "Synapse",
+  "derivation": {
+    "@type": "Derivation",
+    "entity": {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/da2696dc-6931-40e9-9c51-66fa25b6b6fa",
+      "@type": "Simulation"
+    }
+  },
+  "description": "Simulation campaign raster plots",
+  "distribution": {
+    "@type": "DataDownload",
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 30131
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https:%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F4c6a8e2a-e557-4684-8a64-d2bef9778f70",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "5c66d5bcf62508ba8b0be2abd7c98747c1d3de1dab8ec5c856d73848ec90b7e4"
+    },
+    "encodingFormat": "image/png",
+    "name": "forwardSkip=13000.0__seed=23485__calciumConcentration=4.1.png"
+  },
+  "name": "trace",
+  "types": "Analysis",
+  "wasGeneratedBy": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/39649024-9a15-44ed-b533-98960c4c55e6",
+    "@type": "SimulationCampaignAnalysis"
+  }
+}

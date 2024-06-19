@@ -1,0 +1,19 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/9c8b1f2e-de96-444f-814b-82f962a13053",
+  "@type": "AnalysisSoftwareSourceCode",
+  "branch": "main",
+  "codeRepository": "https://github.com/GianlucaFicarelli/my-custom-analyses.git",
+  "command": "python main.py",
+  "configurationTemplate": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/e4ea67ff-980a-4688-b95b-c8445e467be4",
+    "@type": "ConfigurationTemplate"
+  },
+  "description": "",
+  "name": "OBP Demo",
+  "subdirectory": "src/campaign_01",
+  "targetEntity": "SimulationCampaign"
+}

@@ -1,0 +1,27 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/a9bd7f15-8902-4766-87d3-d43c99a926cd",
+  "@type": [
+    "Entity",
+    "Dataset",
+    "SynapticParameter"
+  ],
+  "name": "SynapticParameter",
+  "distribution": {
+    "@type": "DataDownload",
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 6739
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F656616ec-5025-48d7-8fa9-a6a5598cad4f?rev=1",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "894400ff8431df52ed109fdb24cf1e21990881cfe1ab69644610b0293d7506ab"
+    },
+    "encodingFormat": "application/json",
+    "name": "synaptic_parameters.json"
+  }
+}

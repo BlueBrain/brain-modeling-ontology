@@ -1,0 +1,85 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/e9fc77e1-9e69-46c0-a19b-e69a44faea38",
+  "@type": "CumulativeAnalysisReport",
+  "generation": {
+    "@type": "Generation",
+    "activity": {
+      "@type": "Activity",
+      "wasAssociatedWith": {
+        "@type": "AnalysisSoftwareSourceCode",
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/9c8b1f2e-de96-444f-814b-82f962a13053"
+      }
+    }
+  },
+  "derivation": {
+    "@type": "Derivation",
+    "entity": {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/ba821ff7-8f1a-4896-b592-c07c2e3ee8dc",
+      "@type": "SimulationCampaign"
+    }
+  },
+  "description": "Custom analysis description",
+  "distribution": {
+    "@type": "DataDownload",
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 3766
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https:%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F23f594dd-959f-4023-87fc-0330557929b3",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "7ec3096bccbfe8315de9813a3647a5d7ca68fee44eb1935439343bf3cf91d62e"
+    },
+    "encodingFormat": "application/zip",
+    "name": "output.zip"
+  },
+  "hasPart": [
+    {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/ba025e36-ae2e-4c4a-b4ff-cb98f184e598",
+      "@type": "AnalysisReport"
+    },
+    {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/83c41574-464d-4b82-b8ee-c241f313b5ef",
+      "@type": "AnalysisReport"
+    },
+    {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/2de2385a-2c25-4bcc-8b8a-c40d3167b8d6",
+      "@type": "AnalysisReport"
+    },
+    {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/3f6614a0-3259-401d-a4e2-4df33ba8a047",
+      "@type": "AnalysisReport"
+    },
+    {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/afe40c51-6e9c-43f1-acd5-6697168508aa",
+      "@type": "AnalysisReport"
+    },
+    {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/8c88497e-9603-4f12-8f5d-47493165541b",
+      "@type": "AnalysisReport"
+    },
+    {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/654cefa4-cbe4-40a9-adc1-f20572c43f72",
+      "@type": "AnalysisReport"
+    },
+    {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/8caddad0-ab93-45b1-97a1-3d51a5f0423f",
+      "@type": "AnalysisReport"
+    },
+    {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/34ee42ed-4b39-4e1d-bc8b-4ccea2863dc9",
+      "@type": "AnalysisReport"
+    }
+  ],
+  "index": 0,
+  "name": "Custom analysis name",
+  "types": "Analysis",
+  "wasGeneratedBy": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/89e109a8-bbb4-4c50-ad52-e4653bf442d0",
+    "@type": "MultiCumulativeSimulationCampaignAnalysis"
+  }
+}

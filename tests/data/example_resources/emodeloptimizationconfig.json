@@ -1,0 +1,35 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/b049b7f1-7878-4c62-b768-cd589d01d64a",
+  "@type": [
+    "Entity",
+    "EModelOptimizationConfig"
+  ],
+  "brainLocation": {
+    "@type": "BrainLocation",
+    "brainRegion": {
+      "@id": "mba:614454291",
+      "label": "Primary somatosensory area, nose, layer 3"
+    }
+  },
+  "distribution": {
+    "@type": "DataDownload",
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 68288
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F58370802-ca2d-4ca9-8140-f6de4cbddf79?rev=6",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "9d91f17ff06aaef83e9d546db04d9e3a641b65876d6cc64b05b31ad45c23fc99"
+    },
+    "encodingFormat": "application/json",
+    "name": "emodel-optimization-config.json"
+  },
+  "eType": "cADpyr",
+  "mType": "L3_TPC:A",
+  "name": "my_emodel"
+}
