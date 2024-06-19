@@ -3,13 +3,13 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/workflowexecution",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/activity"
+    "https://bbp.epfl.ch/shapes/commons/workflowactivity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/workflowexecution/shapes/WorkflowExecutionShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/activity/shapes/ActivityShape",
+      "node": "https://bbp.epfl.ch/shapes/commons/workflowactivity/shapes/ActivityShape",
       "targetClass": "nsg:WorkflowExecution"
     }
   ]

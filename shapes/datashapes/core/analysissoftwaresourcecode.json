@@ -25,7 +25,6 @@
               "path": "schema:codeRepository"
             },
             {
-              "minCount": 1,
               "path": "schema:programmingLanguage"
             },
             {

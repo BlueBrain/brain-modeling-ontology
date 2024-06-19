@@ -1,75 +1,53 @@
 {
-  "@context": [
-    "https://incf.github.io/neuroshapes/contexts/schema.json",
-    {
-      "this": "https://neuroshapes.org/dash/simulation/shapes/"
-    }
-  ],
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
   "@id": "https://neuroshapes.org/dash/simulation",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/activity"
+    "https://neuroshapes.org/commons/entity"
   ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/simulation/shapes/SimulationShape",
       "@type": "NodeShape",
-      "and": [
+      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+      "targetClass": "nsg:Simulation",
+      "property": [
         {
-          "node": "nsg:commons/activity/shapes/ActivityShape"
+          "datatype": "xsd:dateTime",
+          "description": "The simulation end time.",
+          "maxCount": 1,
+          "name": "End Date",
+          "path": "prov:endedAtTime"
         },
         {
-          "property": [
-            {
-              "minCount": 2,
-              "path": "prov:used"
-            },
-            {
-              "description": "Used model.",
-              "name": "Model",
-              "path": "prov:used",
-              "qualifiedMaxCount": 1,
-              "qualifiedMinCount": 1,
-              "qualifiedValueShape": {
-                "class": "nsg:ModelInstance"
-              },
-              "qualifiedValueShapesDisjoint": true,
-              "seeAlso": "nsg:dash/modelinstance/shapes/ModelInstanceShape"
-            },
-            {
-              "description": "Used configuration.",
-              "name": "Configuration",
-              "path": "prov:used",
-              "qualifiedMaxCount": 1,
-              "qualifiedMinCount": 1,
-              "qualifiedValueShape": {
-                "class": "nsg:Configuration"
-              },
-              "qualifiedValueShapesDisjoint": true,
-              "seeAlso": "nsg:commons/entity/shapes/EntityShape"
-            },
-            {
-              "datatype": "nsg:SimulationStatus",
-              "description": "Simulation status.",
-              "minCount": 1,
-              "name": "Status",
-              "path": "nsg:status",
-              "seeAlso": "nsg:commons/typedlabeledontologyterm/shapes/ModelSimulationStatusOntologyTermShape"
-            },
-            {
-              "class": "nsg:VariableReport",
-              "description": "Generated variable report (file attached (bbp, h5, nwb), variable name, target taken from (to be controlled) [compartment, soma, summation, extra cellular recording])),",
-              "minCount": 1,
-              "name": "Generated report",
-              "path": "prov:generated",
-              "seeAlso": "nsg:dash/variablereport/shapes/VariableReportShape"
-            }
-          ]
+          "datatype": "xsd:dateTime",
+          "description": "The simulation start time. It should precede the value of prov:endedAtTime.",
+          "lessThan": "prov:endedAtTime",
+          "maxCount": 1,
+          "name": "Start Date",
+          "path": "prov:startedAtTime"
+        },
+        {
+          "name": "Status",
+          "path": "nsg:status",
+          "datatype": "xsd:string",
+          "minCount": 1
+        },
+        {
+          "description": "Log url of the simulation",
+          "name": "Log url",
+          "datatype": "xsd:string",
+          "path": "bmo:log_url",
+          "maxCount": 1
+        },
+        {
+          "description": "Config file of the simulation",
+          "name": "Config file",
+          "datatype": "xsd:string",
+          "path": "bmo:config_file",
+          "maxCount": 1
         }
-      ],
-      "comment": "Query: Get all simulation that generates a voltage trace layer 5",
-      "label": "Model simulation activity shape",
-      "targetClass": "nsg:Simulation"
+      ]
     }
   ]
 }

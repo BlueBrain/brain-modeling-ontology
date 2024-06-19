@@ -1,0 +1,31 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/45d409b3-771a-468f-b2cc-ec550dc1fa60",
+  "@type": "WorkflowExecution",
+  "configFileName": "simulation.cfg",
+  "distribution": {
+    "@type": "DataDownload",
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 1016
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https:%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2Ff74b6688-9f43-481b-b8fd-12476521a798",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "71a382763623d3d2c72cc5f37df3c3446a7cb20f9aba563329120148308ceecb"
+    },
+    "encodingFormat": "application/zip",
+    "name": "2024-06-18_13-10-48.964872.zip"
+  },
+  "endedAtTime": "2024-06-18T11:10:55.052662",
+  "module": "bbp_workflow.sbo.viz.task",
+  "name": "bbp_workflow.sbo.viz.task.RunAllSimCampaignMeta",
+  "parameters": "",
+  "startedAtTime": "2024-06-18T11:10:49.126086",
+  "status": "Failed",
+  "task": "RunAllSimCampaignMeta",
+  "version": "3.1.65"
+}

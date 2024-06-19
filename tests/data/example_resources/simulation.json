@@ -1,0 +1,24 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/da2696dc-6931-40e9-9c51-66fa25b6b6fa",
+  "@type": "Simulation",
+  "config_file": "/gpfs/bbp.cscs.ch/project/proj134/scratch/sims/12119383-d921-4a0c-a29a-a094fb807fbd_1/35/simulation_config.json",
+  "endedAtTime": "2024-06-18T09:55:34.770178",
+  "log_url": "https://ood.bbp.epfl.ch/pun/sys/files/api/v1/fs/gpfs/bbp.cscs.ch/data/scratch/proj134/sims/12119383-d921-4a0c-a29a-a094fb807fbd_1/35/.2257164_35.log",
+  "name": "35",
+  "parameter": {
+    "coords": {
+      "calciumConcentration": 4.1,
+      "forwardSkip": 13000,
+      "seed": 23485
+    }
+  },
+  "status": "Done",
+  "wasGeneratedBy": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/e0b09e47-3a0e-4f7c-bb3f-0125a48d2187",
+    "@type": "SimulationCampaignExecution"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/e0b09e47-3a0e-4f7c-bb3f-0125a48d2187",
+  "@type": "SimulationCampaignExecution",
+  "endedAtTime": "2024-06-18T09:56:01.148848",
+  "generated": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/3fa2e4d7-3360-4487-ad3b-b22bd877010a",
+    "@type": "SimulationCampaign"
+  },
+  "startedAtTime": "2024-06-18T09:51:18.195359",
+  "status": "Done",
+  "used": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/f5572adf-cfd8-43c0-a94c-38df4e53a4db",
+    "@type": "SimulationCampaignConfiguration"
+  },
+  "used_config": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/1bbe575c-1cd3-4cce-ba93-26b9faa65a67",
+    "@type": "BbpWorkflowConfig"
+  },
+  "used_rev": 1,
+  "wasInfluencedBy": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/f5dde533-46f0-45f9-a3fb-db90490c3dcd",
+    "@type": "WorkflowExecution"
+  }
+}

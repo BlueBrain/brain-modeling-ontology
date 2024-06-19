@@ -1,0 +1,17 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/d5686d38-b2cd-4010-919e-34b2113e4b1e",
+  "@type": "MultiCumulativeAnalysisReport",
+  "hasPart": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/e9fc77e1-9e69-46c0-a19b-e69a44faea38",
+    "@type": "CumulativeAnalysisReport"
+  },
+  "name": "MultiCumulativeAnalysisReport",
+  "wasGeneratedBy": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/89e109a8-bbb4-4c50-ad52-e4653bf442d0",
+    "@type": "MultiCumulativeSimulationCampaignAnalysis"
+  }
+}

@@ -10,7 +10,39 @@
       "@id": "https://bbp.epfl.ch/shapes/dash/variant/shapes/VariantShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
-      "targetClass": "bmo:Variant"
+      "targetClass": "bmo:Variant",
+      "property": [
+        {
+          "name": "Variant distribution",
+          "path": "schema:distribution",
+          "minCount": 1,
+	  "maxCount": 1
+        },
+        {
+          "name": "Generator name",
+          "description": "The name of the generator",
+          "path": "bmo:generatorName",
+          "minCount": 1,
+	  "maxCount": 1,
+          "datatype": "xsd:string"
+        },
+        {
+          "name": "Variant name",
+          "description": "The name of the generator variant",
+          "path": "bmo:variantName",
+          "minCount": 1,
+	  "maxCount": 1,
+          "datatype": "xsd:string"
+        },
+        {
+          "name": "Version",
+          "datatype": "xsd:string",
+          "description": "Version of the generator variant.",
+          "maxCount": 1,
+          "minCount": 1,
+          "path": "schema:version"
+       }
+      ]
     }
   ]
 }

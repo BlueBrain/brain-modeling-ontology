@@ -1,0 +1,45 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/commons/bbpworkflowactivity",
+  "@type": "Schema",
+  "imports": [
+    "https://provshapes.org/commons/activity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/commons/bbpworkflowactivity/shapes/BbpWorkflowActivityShape",
+      "@type": "NodeShape",
+      "node": "https://provshapes.org/commons/activity/shapes/ActivityShape",
+      "property": [
+        {
+          "name": "User revision",
+          "path": "bmo:used_rev",
+          "datatype": "xsd:integer",
+          "minCount": 1,
+          "maxCount": 1
+        },
+        {
+          "name": "User configuration",
+          "path": "bmo:used_config",
+          "minCount": 1,
+          "maxCount": 1
+        },
+        {
+          "name": "Used entity",
+          "path": "prov:used"
+        },
+        {
+          "name": "Status",
+          "path": "nsg:status",
+          "datatype": "xsd:string",
+          "minCount": 1,
+          "maxCount": 1
+        },
+        {
+          "path": "nsg:derivation",
+          "name": "Derivation"
+        }
+      ]
+    }
+  ]
+}

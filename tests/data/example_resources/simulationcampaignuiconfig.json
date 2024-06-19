@@ -1,0 +1,45 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/3702982a-8a73-4fe1-8d85-9983d54c6904",
+  "@type": [
+    "Entity",
+    "SimulationCampaignUIConfig"
+  ],
+  "contribution": {
+    "@type": "Contribution",
+    "agent": {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/",
+      "@type": "Person",
+      "email": "stefano.antonel@epfl.ch",
+      "name": "Stefano Maximiliano Antonel",
+      "preferred_username": "antonel"
+    }
+  },
+  "description": "Simulation experiment 18/06/2024, 13:05:26",
+  "distribution": {
+    "@type": "DataDownload",
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 6922
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F7bea59d0-99bf-4c48-bfb4-e78be02023ee?rev=4",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "e3cf5ce8fc286c3def1f062723c445ae7a85c204284ae80b1ecb5d51ebbbd0f8"
+    },
+    "encodingFormat": "application/json",
+    "name": "sim-campaign-ui-config.json"
+  },
+  "name": "Simulation experiment 18/06/2024, 13:05:26",
+  "used": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/ed47bc93-e1ac-450c-8bd1-216a2f39c4c9",
+    "@type": "DetailedCircuit"
+  },
+  "wasInfluencedBy": {
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/45d409b3-771a-468f-b2cc-ec550dc1fa60",
+    "@type": "WorkflowExecution"
+  }
+}
