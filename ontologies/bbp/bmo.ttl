@@ -2333,12 +2333,20 @@ bmo:MicroConnectomeData rdf:type owl:Class ;
                                  rdfs:subClassOf bmo:ConnectomeData ;
                                  rdfs:label "Micro-Connectome data"@en .
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/MicroConnectomeDataOverrides
+bmo:MicroConnectomeDataOverrides rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:ConnectomeData ;
+                                 rdfs:label "Micro-Connectome data overrides"@en .
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/MicroConnectomeVariantSelection
 bmo:MicroConnectomeVariantSelection rdf:type owl:Class ;
                                  rdfs:subClassOf bmo:ConnectomeData ;
                                  rdfs:label "Micro-Connectome variant selection"@en .
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/MicroConnectomeVariantSelectionOverrides
+bmo:MicroConnectomeVariantSelectionOverrides rdf:type owl:Class ;
+                                 rdfs:subClassOf bmo:ConnectomeData ;
+                                 rdfs:label "Micro-Connectome variant selection overrides"@en .
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/Mitochondrion
 bmo:Mitochondrion rdf:type owl:Class ;

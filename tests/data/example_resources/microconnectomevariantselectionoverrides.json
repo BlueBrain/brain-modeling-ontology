@@ -1,0 +1,48 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/aa368c52-952a-4b4b-badf-ec689966205a",
+  "@type": [
+    "Entity",
+    "Dataset",
+    "MicroConnectomeVariantSelectionOverrides"
+  ],
+  "atlasRelease": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/831a626a-c0ae-4691-8ce8-cfb7491345d9",
+    "@type": [
+      "BrainAtlasRelease",
+      "AtlasRelease"
+    ]
+  },
+  "brainLocation": {
+    "@type": "BrainLocation",
+    "brainRegion": {
+      "@id": "mba:997",
+      "label": "Whole mouse brain"
+    }
+  },
+  "distribution": {
+    "@type": "DataDownload",
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 14914
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F1ef1865d-de7b-4654-95f6-b3941da7796d?rev=1",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "20a21a827f86e28dcafa9f58d58c0a9fd9286b2d2006371e33df788ca62f5750"
+    },
+    "encodingFormat": "application/arrow",
+    "name": "variant-overrides.arrow"
+  },
+  "name": "MicroConnectome Variant Selection Overrides",
+  "subject": {
+    "@type": "Subject",
+    "species": {
+      "@id": "NCBITaxon:10090",
+      "label": "Mus musculus"
+    }
+  }
+}

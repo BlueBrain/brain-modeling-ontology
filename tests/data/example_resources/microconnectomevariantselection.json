@@ -1,0 +1,101 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/neurosciencegraph/data/a46a442c-5baa-4a5c-9907-bfb359dd9e5d",
+  "@type": [
+    "Entity",
+    "Dataset",
+    "MicroConnectomeVariantSelection"
+  ],
+  "atlasRelease": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/831a626a-c0ae-4691-8ce8-cfb7491345d9",
+    "@type": [
+      "BrainAtlasRelease",
+      "AtlasRelease"
+    ]
+  },
+  "brainLocation": {
+    "@type": "BrainLocation",
+    "brainRegion": {
+      "@id": "mba:997",
+      "label": "root"
+    }
+  },
+  "contribution": {
+    "@type": "Contribution",
+    "agent": {
+      "@id": "https://bbp.epfl.ch/nexus/v1/realms/bbp/users/pokorny",
+      "@type": [
+        "Agent",
+        "Person"
+      ],
+      "email": "christoph.pokorny@epfl.ch",
+      "familyName": "Pokorny",
+      "givenName": "Christoph",
+      "name": "Christoph Pokorny"
+    }
+  },
+  "derivation": {
+    "@type": "Derivation",
+    "entity": {
+      "@id": "https://bbp.epfl.ch/nexus/web/bbp/mmb-point-neuron-framework-model/resources/https%3A%2F%2Fbbp.epfl.ch%2Fneurosciencegraph%2Fdata%2Fconnectomeprojectionparams%2F077b8ecb-84e1-40a0-a8d8-cdbb8b185ae5",
+      "@type": "ConnectomeProjectionParameter"
+    }
+  },
+  "distribution": {
+    "@type": "DataDownload",
+    "atLocation": {
+      "@type": "Location",
+      "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/2/a/4/8/9/d/9/1/variant_matrix.arrow",
+      "store": {
+        "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+        "@type": "RemoteDiskStorage",
+        "_rev": 1
+      }
+    },
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 30503514
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fneurosciencegraph%2Fdata%2F79b51b75-81e2-4b2f-98fc-666130512cea?rev=1",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "f0b013fa2dc21bb4731083e9ed106fa6ce8e765b08a15f72515e93ca97b486c1"
+    },
+    "encodingFormat": "application/arrow",
+    "name": "variant_matrix.arrow"
+  },
+  "generation": {
+    "@type": "Generation",
+    "activity": {
+      "@type": "Activity",
+      "endedAtTime": "2023-05-23T00:18:00",
+      "startedAtTime": "2023-05-23T08:00:00",
+      "wasAssociatedWith": {
+        "@type": [
+          "Agent",
+          "SoftwareAgent"
+        ],
+        "description": "Desentangling Macro/Micro projection constraints for between-region connectivity using data from the Allen Institute of Brain Science",
+        "name": "Biological parameters for between-region connectivity - Macro-Micro scale",
+        "softwareSourceCode": {
+          "@type": "SoftwareSourceCode",
+          "codeRepository": "https://bbpgitlab.epfl.ch/conn/personal/pokorny/mmb2022-46/-/blob/011b8b5d03f1b9c8b9ad8278fb000bd89feb1f6a/notebooks/Biological%20parameters%20for%20between-region%20connectivity%20-%20Macro-Micro%20scale.ipynb",
+          "programmingLanguage": "Python",
+          "runtimePlatform": "3.8.3",
+          "version": "0.0.1"
+        }
+      }
+    }
+  },
+  "name": "Initial MicroConnectome Variant Selection",
+  "subject": {
+    "@type": "Subject",
+    "species": {
+      "@id": "NCBITaxon:10090",
+      "label": "Mus musculus"
+    }
+  }
+}
