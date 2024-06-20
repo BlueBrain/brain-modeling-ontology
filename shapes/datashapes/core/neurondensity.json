@@ -3,13 +3,13 @@
   "@id": "https://neuroshapes.org/dash/neurondensity",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/neurondensity"
+    "https://neuroshapes.org/commons/volumetricdatalayer"
   ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/neurondensity/shapes/NeuronDensityShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/neurondensity/shapes/NeuronDensityShape",
+      "node": "https://neuroshapes.org/commons/volumetricdatalayer/shapes/VolumetricDataLayerShape",
       "targetClass": "nsg:NeuronDensity"
     }
   ]
