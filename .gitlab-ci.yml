@@ -97,7 +97,7 @@ register_to_environment:
       variables:
         atlas_parcellation_ontology: https://bbp.epfl.ch/neurosciencegraph/data/0518dd0b-cbc7-43ef-a75f-45631059c8c5
         environment: production
-        atlas_parcellation_ontology_version: 32
+        atlas_parcellation_ontology_version: 34
         tag: $CI_COMMIT_TAG
         token: $NEXUS_TOKEN_PRODUCTION
   script:
