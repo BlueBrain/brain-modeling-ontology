@@ -3012,6 +3012,9 @@
     "generated": {
       "@id": "prov:generated"
     },
+    "generator": {
+      "@id": "nsg:generator"
+    },
     "generatorName": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/generatorName"
     },
@@ -4129,6 +4132,9 @@
     "vann": "http://purl.org/vocab/vann/",
     "variable": {
       "@id": "nsg:variable"
+    },
+    "variant": {
+      "@id": "nsg:variant"
     },
     "vectorDimension": {
       "@id": "nsg:vectorDimension"
