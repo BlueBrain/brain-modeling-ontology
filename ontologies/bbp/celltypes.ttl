@@ -7028,6 +7028,7 @@ bmo:SP_IS3 a owl:Class ;
 bmo:SP_OLM a owl:Class ;
     rdfs:label "SP_OLM"@en ;
     rdfs:subClassOf ct:OriensLacunosumMoleculareCell ;
+    skos:altLabel "O-LM"^^xsd:string ;
     skos:notation "SP_OLM"@en ;
     skos:prefLabel "Stratum pyramidale Oriens-Lacunosum Moleculare cell"@en .
 
