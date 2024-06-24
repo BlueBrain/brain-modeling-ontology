@@ -25,33 +25,6 @@
             "minCount": 1
           },
           {
-            "path": "bmo:generates",
-            "qualifiedValueShape":
-              {
-                "class": "nsg:EModel"
-              },
-            "qualifiedMinCount": 1,
-            "qualifiedValueShapesDisjoint": true
-          },
-          {
-              "path": "bmo:generates",
-              "qualifiedValueShape":
-                {
-                  "class": "nsg:EModelScript"
-                },
-            "qualifiedMinCount": 1,
-            "qualifiedValueShapesDisjoint": true
-          },
-          {
-            "path": "bmo:generates",
-            "qualifiedValueShape":
-              {
-                "class": "bmo:FitnessCalculatorConfiguration"
-              },
-            "qualifiedMaxCount": 1,
-            "qualifiedValueShapesDisjoint": true
-          },
-          {
             "name": "Has part",
             "path": "schema:hasPart",
             "nodeKind": "sh:BlankNodeOrIRI",
