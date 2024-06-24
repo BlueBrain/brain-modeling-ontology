@@ -2611,6 +2611,9 @@
     "brainRegion": {
       "@id": "nsg:brainRegion"
     },
+    "brainRegionSelectorConfig": {
+      "@id": "bmo:brainRegionSelectorConfig"
+    },
     "brainTemplateDataLayer": {
       "@id": "nsg:brainTemplateDataLayer"
     },
@@ -2641,6 +2644,12 @@
     },
     "cell": {
       "@id": "nsg:cell"
+    },
+    "cellCompositionConfig": {
+      "@id": "bmo:cellCompositionConfig"
+    },
+    "cellPositionConfig": {
+      "@id": "bmo:cellPositionConfig"
     },
     "cellLibraryFile": {
       "@id": "nsg:cellLibraryFile"
@@ -2736,6 +2745,9 @@
     },
     "configurationTemplate": {
       "@id": "bmo:configurationTemplate"
+    },
+    "configs": {
+      "@id": "bmo:configs"
     },
     "conformsTo": {
       "@id": "nsg:conformsTo"
@@ -3407,6 +3419,9 @@
     "mType": {
       "@id": "nsg:mType"
     },
+    "macroConnectomeConfig": {
+      "@id": "bmo:macroConnectomeConfig"
+    },
     "mainModelScript": {
       "@id": "nsg:mainModelScript"
     },
@@ -3440,6 +3455,12 @@
     "memodelRelease": {
       "@id": "nsg:memodelRelease"
     },
+    "meModelConfig": {
+      "@id": "bmo:meModelConfig"
+    },
+    "microConnectomeConfig": {
+      "@id": "bmo:microConnectomeConfig"
+    },
     "minDensity": {
       "@id": "https://neuroshapes.org/minDensity",
       "@type": "@id"
@@ -3468,6 +3489,9 @@
     },
     "morphology": {
       "@id": "nsg:morphology"
+    },
+    "morphologyAssignmentConfig": {
+      "@id": "bmo:morphologyAssignmentConfig"
     },
     "morphologyModelDistribution": {
       "@id": "bmo:morphologyModelDistribution"
@@ -3990,6 +4014,9 @@
     },
     "synapseRelease": {
       "@id": "nsg:synapseRelease"
+    },
+    "synapticConfig": {
+      "@id": "bmo:synapticConfig"
     },
     "synapticConnection": {
       "@id": "bmo:synapticConnection"

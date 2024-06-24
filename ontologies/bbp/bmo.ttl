@@ -2486,6 +2486,12 @@ bmo:ModelBrainVolumeBuildingWorkflow rdf:type owl:Class ;
                                      rdfs:label "Model Brain Volume Building Workflow"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBuildingConfig
+bmo:ModelBuildingConfig rdf:type owl:Class ;
+                        rdfs:subClassOf bmo:WorkflowConfig ;
+                        rdfs:label "Model Building Configuration"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelBuildingWorkflow
 bmo:ModelBuildingWorkflow rdf:type owl:Class ;
                           rdfs:subClassOf bmo:Workflow ,
@@ -3950,6 +3956,12 @@ bmo:Workflow rdf:type owl:Class ;
                              ] ;
              rdfs:label "Workflow"@en ;
              skos:definition "A workflow represents a set of actions or steps intended by one or more agents to achieve some goals. A workflow is a specification or a plan and is instantiated by activities."@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/WorkflowConfig
+bmo:WorkflowConfig rdf:type owl:Class ;
+                   rdfs:subClassOf prov:Entity ;
+                   rdfs:label "Workflow Configuration"@en .
 
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/WorkflowDefinition

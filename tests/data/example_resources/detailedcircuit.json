@@ -14,6 +14,7 @@
     ]
   },
   "brainLocation": {
+    "@type": "BrainLocation",
     "brainRegion": {
       "@id": "mba:997",
       "label": "root"

@@ -1,0 +1,67 @@
+{
+    "@context": "https://bbp.neuroshapes.org",
+    "@type": [
+      "ModelBuildingConfig",
+      "Entity"
+    ],
+    "configs": {
+      "brainRegionSelectorConfig": {
+            "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/b54f4af3-8525-4017-888f-d1349a8b0b4b",
+            "@type": [
+              "BrainRegionSelectorConfig",
+              "Entity"
+            ]
+      },
+      "cellCompositionConfig": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/5a4b2aa5-ae24-4749-aab2-12af3a74e13b",
+        "@type": [
+          "CellCompositionConfig",
+          "Entity"
+        ]
+      },
+      "cellPositionConfig": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/f6ee642a-2290-454f-b5ba-51d1efc5a414",
+        "@type": [
+          "CellPositionConfig",
+          "Entity"
+        ]
+      },
+      "macroConnectomeConfig": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/d4bc9813-1244-4850-be79-11888e48ce08",
+        "@type": [
+          "MacroConnectomeConfig",
+          "Entity"
+        ]
+      },
+      "meModelConfig": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/1ce2db3f-7dec-4229-b7fd-82fb4f97564c",
+        "@type": [
+          "MEModelConfig",
+          "Entity"
+        ]
+      },
+      "microConnectomeConfig": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/3b5019a7-ba32-4672-bc10-0e6a587db785",
+        "@type": [
+          "MicroConnectomeConfig",
+          "Entity"
+        ]
+      },
+      "morphologyAssignmentConfig": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/2d6bfe95-8adf-47a2-bae2-dc05de4a8d47",
+        "@type": [
+          "MorphologyAssignmentConfig",
+          "Entity"
+        ]
+      },
+      "synapseConfig": {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/243a4295-2e0d-45b2-96c7-89c8a962f5d2",
+        "@type": [
+          "SynapseConfig",
+          "Entity"
+        ]
+      }
+    },
+    "description": "Fully supported by circuit building.",
+    "name": "Release 23.01 - simulation"
+}
