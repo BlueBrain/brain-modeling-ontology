@@ -25153,7 +25153,7 @@ nsg:PyramidalNeuron a owl:Class ;
         bmo:NeuronMorphologicalType ;
     skos:altLabel "Pyramidal cell"^^xsd:string ;
     skos:definition "A neuron with a pyramidal shaped soma and two distinct dendritic trees. The basal dendrites emerge from the base and the apical dendrites from the apex of the pyramidal cell body."@en ;
-    skos:notation "Pyr"^^xsd:string ;
+    skos:notation "PyrNeuron"^^xsd:string ;
     skos:prefLabel "Pyramidal neuron"^^xsd:string .
 
 mba:1037 a owl:Class .
