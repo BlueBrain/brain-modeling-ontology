@@ -1,0 +1,29 @@
+{
+    "@context": "https://bbp.neuroshapes.org",
+    "@type": [
+      "Entity",
+      "SingleNeuronSimulation"
+    ],
+    "description": "Simulation with IV protocol",
+    "distribution": {
+      "@type": "DataDownload",
+      "contentSize": {
+        "unitCode": "bytes",
+        "value": 923
+      },
+      "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F55e9ab0b-30d8-48a3-84b4-39e74fedb0e2?rev=1",
+      "digest": {
+        "algorithm": "SHA-256",
+        "value": "deb3898b8a7b9b5d54206180f5131e3fc240aee218ede21b2e028ee66b70dfca"
+      },
+      "encodingFormat": "application/json",
+      "name": "single-neuron-simulation.json"
+    },
+    "injectionLocation": "dendrite.01B",
+    "name": "antonel-single-cell-sim",
+    "used": {
+      "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/e990f748-a856-4be0-a7d3-9f0bc336447c",
+      "@type": "EModel"
+    },
+    "recordingLocation": ["dendrite.01A", "dendrite.01B"]
+  }

@@ -1,0 +1,44 @@
+{
+    "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+    "@id": "https://bbp.epfl.ch/shapes/dash/singleneuronsimulation",
+    "@type": "Schema",
+    "imports": [
+      "https://neuroshapes.org/commons/entity",
+      "https://neuroshapes.org/commons/distribution"
+    ],
+    "shapes": [
+      {
+        "@id": "https://bbp.epfl.ch/shapes/dash/singleneuronsimulation/shapes/SingleNeuronSimulationShape",
+        "@type": "NodeShape",
+        "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+        "property": [
+            {
+                "path": "prov:used",
+                "nodeKind": "sh:IRI",
+                "class": "nsg:EModel",
+                "minCount": 1
+            },
+            {
+                "path": "nsg:recordingLocation",
+                "dataType": "xsd:string",
+                "minCount": 1
+            },
+            {
+                "path": "bmo:injectionLocation",
+                "dataType": "xsd:string",
+                "minCount": 1
+            },
+            {
+                "path": "schema:distribution",
+                "node": "https://neuroshapes.org/commons/distribution/shapes/DistributionShape",
+                "minCount": 1
+            },
+            {
+                "path": "schema:description",
+                "dataType": "xsd:string"
+            }
+        ],
+        "targetClass": "bmo:SingleNeuronSimulation"
+      }
+    ]
+  }
