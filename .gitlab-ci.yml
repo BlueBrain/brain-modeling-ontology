@@ -18,6 +18,8 @@ variables:
 #    KUBERNETES_MEMORY_REQUEST: 8Gi
   ATLAS_PARCELLATION_ONTOLOGY_ID_STAGING: "https://bbp.epfl.ch/neurosciencegraph/data/ontologies/34388d3b-0b88-4deb-9686-6fcd9ef8990e"
   ATLAS_PARCELLATION_ONTOLOGY_VERSION_STAGING: 182
+  ATLAS_PARCELLATION_ONTOLOGY_ID_PROD: "https://bbp.epfl.ch/neurosciencegraph/data/0518dd0b-cbc7-43ef-a75f-45631059c8c5"
+  ATLAS_PARCELLATION_ONTOLOGY_VERSION_PROD: 36
 
 # TEST STAGE
 
@@ -95,9 +97,9 @@ register_to_environment:
     - if: $CI_COMMIT_TAG
       when: on_success
       variables:
-        atlas_parcellation_ontology: https://bbp.epfl.ch/neurosciencegraph/data/0518dd0b-cbc7-43ef-a75f-45631059c8c5
+        atlas_parcellation_ontology: $ATLAS_PARCELLATION_ONTOLOGY_ID_PROD
         environment: production
-        atlas_parcellation_ontology_version: 34
+        atlas_parcellation_ontology_version: $ATLAS_PARCELLATION_ONTOLOGY_VERSION_PROD
         tag: $CI_COMMIT_TAG
         token: $NEXUS_TOKEN_PRODUCTION
   script:
