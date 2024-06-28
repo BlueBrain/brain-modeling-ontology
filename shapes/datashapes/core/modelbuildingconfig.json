@@ -5,13 +5,13 @@
   "@id": "https://neuroshapes.org/dash/modelbuildingconfig",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/modelbuildingconfig"
+    "nsg:commons/modelbuildingconfigbase"
   ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/modelbuildingconfig/shapes/ModelBuildingConfigShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/modelbuildingconfig/shapes/ModelBuildingConfigShape",
+      "node": "https://neuroshapes.org/commons/modelbuildingconfigbase/shapes/ModelBuildingConfigShape",
       "label": "ModelBuildingConfig shape definition",
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "bmo:ModelBuildingConfig"

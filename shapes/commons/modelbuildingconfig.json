@@ -1,13 +1,13 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/commons/modelbuildingconfig",
+  "@id": "https://neuroshapes.org/commons/modelbuildingconfigbase",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/entity"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/commons/modelbuildingconfig/shapes/ModelBuildingConfigShape",
+      "@id": "https://neuroshapes.org/commons/modelbuildingconfigbase/shapes/ModelBuildingConfigShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
       "property": [
@@ -15,13 +15,13 @@
           "description": "List configurations used for the model building",
           "name": "Building configuration",
           "path": "bmo:configs",
-          "node": "https://neuroshapes.org/commons/modelbuildingconfig/shapes/ConfigsShape",
+          "node": "https://neuroshapes.org/commons/modelbuildingconfigbase/shapes/ConfigsShape",
           "minCount": 1
         }
       ]
     },
     {
-      "@id": "https://neuroshapes.org/commons/modelbuildingconfig/shapes/ConfigsShape",
+      "@id": "https://neuroshapes.org/commons/modelbuildingconfigbase/shapes/ConfigsShape",
       "@type": "NodeShape",
       "nodeKing": "sh:BlankNode",
       "property": [
