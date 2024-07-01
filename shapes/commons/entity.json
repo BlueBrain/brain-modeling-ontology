@@ -10,7 +10,8 @@
   "imports": [
     "https://neuroshapes.org/commons/subject",
     "https://neuroshapes.org/commons/annotation",
-    "https://neuroshapes.org/commons/entitywithoutannotationsubject"
+    "https://neuroshapes.org/commons/entitywithoutannotationsubject",
+    "https://bbp.epfl.ch/ontologies/core/bmo_slim"
   ],
   "shapes": [
     {

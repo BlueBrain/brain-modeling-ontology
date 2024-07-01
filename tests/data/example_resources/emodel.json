@@ -39,10 +39,7 @@
         "@type": "Contribution",
         "agent": {
             "@id": "https://bbp.epfl.ch/nexus/v1/realms/bbp/users/ikilic",
-            "@type": [
-                "Person",
-                "Agent"
-            ],
+            "@type": "Person",
             "email": "ilkan.kilic@epfl.ch",
             "name": "Ilkan Fabrice Kili\u00e7",
             "preferred_username": "ikilic",
