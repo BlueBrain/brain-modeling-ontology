@@ -1235,6 +1235,7 @@ bmo:BrainModelingActivity rdf:type owl:Class ;
 
 ###  https://bbp.epfl.ch/ontologies/core/bmo/BrainModelingAgent
 bmo:BrainModelingAgent rdf:type owl:Class ;
+                       rdfs:subClassOf prov:Agent ;
                        rdfs:label "Brain Modeling Agent"@en ;
                        skos:definition "A Brain Modeling Agent is an organization, a person or a software agent that is engaged in the process of digitally reconstructing brain tissue."@en .
 
