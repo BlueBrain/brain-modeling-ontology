@@ -1,0 +1,82 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/canonicalmorphologymodelparameters/e568fa94-089a-4627-86a7-63cbd7f53af9",
+  "@type": [
+    "Dataset",
+    "MorphologyModelParameter"
+  ],
+  "annotation": {
+    "@type": [
+      "Annotation",
+      "MTypeAnnotation"
+    ],
+    "hasBody": {
+      "@id": "ilx:0383216",
+      "@type": [
+        "AnnotationBody",
+        "MType"
+      ],
+      "label": "L4_NGC"
+    },
+    "name": "M-type Annotation"
+  },
+  "atlasRelease": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+    "@type": [
+      "BrainAtlasRelease",
+      "AtlasRelease"
+    ]
+  },
+  "brainLocation": {
+    "@type": "BrainLocation",
+    "brainRegion": {
+      "@id": "mba:315",
+      "label": "Isocortex"
+    }
+  },
+  "contribution": {
+    "@type": "Contribution",
+    "agent": {
+      "@id": "https://bbp.epfl.ch/nexus/v1/realms/bbp/group/bbp-ou-cells",
+      "@type": [
+        "Agent",
+        "OrganizationalUnit"
+      ],
+      "name": "Cells Team"
+    }
+  },
+  "distribution": {
+    "@type": "DataDownload",
+    "atLocation": {
+      "@type": "Location",
+      "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/d/1/d/5/a/5/2/e/params_luigi_Isocortex_Isocortex_L4_NGC.json",
+      "store": {
+        "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+        "@type": "RemoteDiskStorage",
+        "_rev": 1
+      }
+    },
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 1233
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2Fbcfc8745-dde1-4854-bf63-661b999edfd8",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "0069ae4db34ac4c28cc30c6ef297ad640b658aa7d0b95b5d32040a935fdf6f06"
+    },
+    "encodingFormat": "application/json",
+    "name": "params_luigi_Isocortex_Isocortex_L4_NGC.json"
+  },
+  "name": "Parameters for the Canonical Morphology Model L4_NGC",
+  "subject": {
+    "@type": "Subject",
+    "species": {
+      "@id": "NCBITaxon:10090",
+      "label": "Mus musculus"
+    }
+  }
+}
