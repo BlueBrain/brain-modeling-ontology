@@ -143,10 +143,6 @@ def execute_ontology_registration(
             atlas_parcellation_ontology_id,
         )
 
-    # if ontology is too large, remove `defines` relationships from the ontology
-    # the CELL_TYPE_ONTOLOGY_URI ontology is too big for having all its content into metadata
-    include_defined_classes = not str(ontology) == CELL_TYPE_ONTOLOGY_URI
-
     # make list of framed classes
     class_resources_mapped = [
         forge.as_jsonld(mapped_class)
@@ -160,11 +156,28 @@ def execute_ontology_registration(
         new_forge_context,
         new_jsonld_context_dict,
         class_resources_framed,
-        include_defined_classes,
+        True,
     )
+
+    # if ontology is too large, remove `defines` relationships from the ontology
+    # the CELL_TYPE_ONTOLOGY_URI ontology is too big for having all its content into metadata
+    include_defined_classes = not str(ontology) == CELL_TYPE_ONTOLOGY_URI
+
+    if include_defined_classes:
+        ontology_payload = copy.deepcopy(ontology_json)
+    else:
+        # Frame ontology given the provided context
+        ontology_payload = bmo.frame_ontology(
+            ontology_graph,
+            new_forge_context,
+            new_jsonld_context_dict,
+            class_resources_framed,
+            include_defined_classes,
+        )
 
     register_ontology(
         forge,
+        ontology_payload,
         ontology_json,
         ontology_path,
         ontology_graph,
@@ -203,8 +216,11 @@ def execute_ontology_registration(
         True,  # always include defined classes in ontology
     )
 
+    slim_ontology_payload = copy.deepcopy(slim_ontology_json)
+
     register_ontology(
         forge,
+        slim_ontology_payload,
         slim_ontology_json,
         slim_ontology_path,
         slim_ontology_graph,
@@ -215,7 +231,7 @@ def execute_ontology_registration(
 
     print(f"Registration of slim ontology version: {str(slim_ontology)} - Done\n")
 
-    return str(ontology), ontology_json
+    return str(ontology), ontology_json, ontology_payload
     # bmo.remove_defines_relation(ontology_graph, ontology)
 
 
@@ -778,6 +794,7 @@ def _create_bnode_triples_from_value(
 
 def register_ontology(
     forge: KnowledgeGraphForge,
+    ontology_payload: Dict,
     ontology_json: Dict,
     ontology_filepath: str,
     ontology_graph: Graph,
@@ -787,8 +804,9 @@ def register_ontology(
 ) -> Tuple[Optional[Exception], Resource]:
 
     ontology_json = copy.deepcopy(ontology_json)
+    ontology_payload = copy.deepcopy(ontology_payload)
     # del ontology_json["@context"]
-    ontology_resource = forge.from_json(ontology_json)
+    ontology_resource = forge.from_json(ontology_payload)
     dirpath = f"./{ontology_filepath.split('/')[-1].split('.')[0]}"
     dirpath_ttl = f"{dirpath}.ttl"
     ontology_graph.serialize(destination=dirpath_ttl, format="ttl")

@@ -722,7 +722,7 @@ def _check_dict_for_property_type_value(
 def test_frame_ontologies(framed_ontologies, atlas_release_prop):
     errors = []
 
-    for ontology_uri, (ontology_json, _) in framed_ontologies.items():
+    for ontology_uri, (ontology_json, _, ontology_payload) in framed_ontologies.items():
 
         annotation_properties = ["@context", "@id", "@type", "label"]
         expected_annotation_properties_values = [
@@ -765,26 +765,27 @@ def test_frame_ontologies(framed_ontologies, atlas_release_prop):
             )
             errors.extend(e)
         if ontology_uri == CELL_TYPE_ONTOLOGY_URI:
-            assert "defines" not in ontology_json
+            assert "defines" not in ontology_payload
         else:
             e = _check_dict_for_property_type_value(
-                ontology_json, ["defines"], [list], None
+                ontology_payload, ["defines"], [list], None
             )
             errors.extend(e)
             assert all(
-                map(lambda k: isinstance(k, dict), ontology_json["defines"])
+                map(lambda k: isinstance(k, dict), ontology_payload["defines"])
             ), f"One defined class of the ontology {ontology_uri} is not of type dict."
+            assert ontology_json == ontology_payload
         assert len(errors) == 0, errors
 
 
 def test_frame_ontologies_do_not_have_deprecated_classes(framed_ontologies):
 
     res = {}
-    for ontology_uri, (ontology_json, ontology_graph) in framed_ontologies.items():
-        if "defines" in ontology_json:
+    for ontology_uri, (_, ontology_graph, ontology_payload) in framed_ontologies.items():
+        if "defines" in ontology_payload:
             deprecated_things = list(ontology_graph.subjects(OWL.deprecated, Literal(True, datatype=XSD.boolean)))
             deprecated_classes_in_defines = [
-                e["@id"] for e in ontology_json["defines"]
+                e["@id"] for e in ontology_payload["defines"]
                 if URIRef(e["@id"]) in deprecated_things
             ]
             res[ontology_uri] = deprecated_classes_in_defines
