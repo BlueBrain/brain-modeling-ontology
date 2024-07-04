@@ -266,6 +266,12 @@
     "BrainComponentType": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/BrainComponentType"
     },
+    "BrainConnectomeStrength" : {
+      "@id": "bmo:BrainConnectomeStrength"
+    },
+    "BrainConnectomeStrengthOverrides" : {
+      "@id": "bmo:BrainConnectomeStrengthOverrides"
+    },
     "BrainImaging": {
       "@id": "nsg:BrainImaging"
     },

@@ -1,0 +1,36 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/neurosciencegraph/data/3a2a597a-5163-4320-90c8-a9c1fdbeaf6f",
+  "@type": [
+    "Entity",
+    "Dataset",
+    "BrainConnectomeStrengthOverrides"
+  ],
+  "distribution": {
+    "@type": "DataDownload",
+    "atLocation": {
+      "@type": "Location",
+      "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/2/d/d/7/d/7/0/2/overrides_130263.arrow",
+      "store": {
+        "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+        "@type": "RemoteDiskStorage",
+        "_rev": 1
+      }
+    },
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 1706298
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fneurosciencegraph%2Fdata%2F3aa8acad-b85b-4e8e-9ce4-c4e5ce2341d5",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "810fa4aec78449e90951f47bd3e44ca474bd541625e329e13da636a224b583af"
+    },
+    "encodingFormat": "application/arrow",
+    "name": "overrides_130263.arrow"
+  },
+  "name": "Brain connectome strength (macro) overrides manual example"
+}

@@ -3,13 +3,13 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/brainconnectomestrengthoverrides",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/dataset"
+    "https://neuroshapes.org/commons/entity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/brainconnectomestrengthoverrides/shapes/BrainConnectomeStrengthOverridesShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/dataset/shapes/DatasetShape",
+      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
       "targetClass": "bmo:BrainConnectomeStrengthOverrides"
     }
   ]
