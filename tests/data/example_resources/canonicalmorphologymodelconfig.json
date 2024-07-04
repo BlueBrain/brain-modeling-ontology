@@ -1,0 +1,35 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/523cba47-5595-401c-9475-710f68e693ec",
+  "@type": [
+    "CanonicalMorphologyModelConfig",
+    "Entity"
+  ],
+  "distribution": {
+    "@type": "DataDownload",
+    "atLocation": {
+      "@type": "Location",
+      "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/9/7/8/5/0/6/d/d/canonicals.json",
+      "store": {
+        "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+        "@type": "RemoteDiskStorage",
+        "_rev": 1
+      }
+    },
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 7227535
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F1d080482-d056-41a7-b2e3-3289795e5b21",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "ff0bf8c92d6158c794572dd31e68720b5ba20bcb92cd726fff1d3aba40486d77"
+    },
+    "encodingFormat": "application/json",
+    "name": "canonicals.json"
+  },
+  "name": "Default Canonical Morphology Models Release 3.0"
+}

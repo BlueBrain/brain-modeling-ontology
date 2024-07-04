@@ -369,6 +369,9 @@
     "CanonicalMorphologyModel": {
       "@id": "bmo:CanonicalMorphologyModel"
     },
+    "CanonicalMorphologyModelConfig": {
+      "@id": "bmo:CanonicalMorphologyModelConfig"
+    },
     "Capillary": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/Capillary"
     },
