@@ -330,7 +330,7 @@ def framed_ontologies(
         dirpath = f"./{ontology_path.split('/')[-1].split('.')[0]}"
         slim_ontology_path = f"{dirpath}_slim.ttl"
 
-        ontology_uri, ontology_json = execute_ontology_registration(
+        ontology_uri, ontology_json, ontology_payload = execute_ontology_registration(
             forge=forge,
             ontology_path=ontology_path,
             slim_ontology_path=slim_ontology_path,
@@ -347,7 +347,7 @@ def framed_ontologies(
             data_update=False,
         )
 
-        framed_ontologies_dict[ontology_uri] = (ontology_json, ontology_graph)
+        framed_ontologies_dict[ontology_uri] = (ontology_json, ontology_graph, ontology_payload)
 
     return framed_ontologies_dict
 
