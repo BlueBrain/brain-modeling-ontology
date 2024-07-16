@@ -57,7 +57,7 @@ def define_arguments(parser: Union[argparse.ArgumentParser, Parser]):
     )
 
     add_arg(
-        "--atlas_parcellation_ontology_version", help="The atlas parcellation ontology version.",
+        "--atlas_parcellation_ontology_tag", help="The atlas parcellation ontology tag.",
         default=None, type=str, required=True
     )
 

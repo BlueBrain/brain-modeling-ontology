@@ -371,7 +371,7 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
     schema_dir = arguments.schema_dir
     transformed_schema_path = arguments.transformed_schema_path
     atlas_parcellation_ontology = arguments.atlas_parcellation_ontology
-    atlas_parcellation_ontology_version = arguments.atlas_parcellation_ontology_version
+    atlas_parcellation_ontology_tag = arguments.atlas_parcellation_ontology_tag
     atlas_parcellation_ontology_bucket = arguments.atlas_parcellation_ontology_bucket
     data_update = not arguments.no_data_update
     exclude_deprecated_from_context = arguments.exclude_deprecated_from_context
@@ -497,15 +497,13 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     logger.info("Merging brain region ontology with atlas hierarchy - Start")
 
-    # Waiting for a single version (tag) across all the atlas dataset to be
-    # made available, _rev will be used.
-    version = (
-        int(atlas_parcellation_ontology_version)
-        if atlas_parcellation_ontology_version is not None
-        else atlas_parcellation_ontology_version
+    tag = (
+        str(atlas_parcellation_ontology_tag)
+        if atlas_parcellation_ontology_tag is not None
+        else atlas_parcellation_ontology_tag
     )
 
-    atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology, version=version)
+    atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology, version=tag)
 
     atlas_hierarchy_jsonld_distribution = [
         distrib

@@ -72,8 +72,8 @@ def atlas_parcellation_ontology_id(pytestconfig):
 
 
 @pytest.fixture(scope="session")
-def atlas_parcellation_ontology_version(pytestconfig):
-    return pytestconfig.getoption("atlas_parcellation_ontology_version")
+def atlas_parcellation_ontology_tag(pytestconfig):
+    return pytestconfig.getoption("atlas_parcellation_ontology_tag")
 
 
 @pytest.fixture(scope="session")
@@ -372,15 +372,16 @@ def atlas_release_version(atlas_parcellation_ontology_resource):
 
 
 @pytest.fixture(scope="session")
-def atlas_parcellation_ontology_resource(atlas_parcellation_ontology_id, atlas_parcellation_ontology_version, forge_atlas):
+def atlas_parcellation_ontology_resource(atlas_parcellation_ontology_id, atlas_parcellation_ontology_tag,
+                                         forge_atlas):
     try:
-        version = (
-            int(atlas_parcellation_ontology_version)
-            if atlas_parcellation_ontology_version is not None
+        tag = (
+            str(atlas_parcellation_ontology_tag)
+            if atlas_parcellation_ontology_tag is not None
             else None
         )
         atlas_parcellation_ontology_resource = forge_atlas.retrieve(
-            atlas_parcellation_ontology_id, version=version
+            atlas_parcellation_ontology_id, version=tag
         )
         assert hasattr(atlas_parcellation_ontology_resource, "atlasRelease")
         assert hasattr(atlas_parcellation_ontology_resource.atlasRelease, "_rev")

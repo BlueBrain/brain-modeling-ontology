@@ -272,3 +272,21 @@ def select_resource(endpoint: str, token: str, type_: str,
 
     """
     return select_single_from_df(sorted_resources_many(endpoint, token, type_, projects))
+
+
+def delta_get(endpoint: str, relative_url: str, token):
+
+    headers = {
+        "mode": "cors",
+        "Content-Type": "application/json",
+        "Accept": "application/ld+json, application/json",
+        "Authorization": "Bearer " + token
+    }
+
+    return requests.get(f'{endpoint}{relative_url}', headers=headers)
+
+
+def get_obp_projects(endpoint: str, token: str) -> List[str]:
+    res = delta_get(endpoint, "/search/suites/sbo", token=token).json()["projects"]
+
+    return res
