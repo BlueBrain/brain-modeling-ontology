@@ -109,7 +109,7 @@ register_to_environment:
       python scripts/register_ontologies.py 
       --environment $environment 
       --atlas_parcellation_ontology $atlas_parcellation_ontology
-      --atlas_parcellation_ontology_tag: $atlas_parcellation_ontology_tag
+      --atlas_parcellation_ontology_tag $atlas_parcellation_ontology_tag
       --token $token 
       --tag $tag
     - echo "environment=$environment" >> register.env
