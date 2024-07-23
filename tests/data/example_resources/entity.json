@@ -1,0 +1,79 @@
+{
+    "@context": "https://bbp.neuroshapes.org",
+    "@type": [
+        "Entity",
+        "Dataset",
+        "MEModel"
+    ],
+    "name": "CA1_int_bAC_011017HP2_2019032911530_SO_BS_SO_011023HP2",
+    "contribution": {
+        "@type": "Contribution",
+        "agent": {
+            "@id": "https://www.grid.ac/institutes/grid.5333.6",
+            "@type": [
+                "Agent",
+                "Organization"
+            ]
+        }
+    },
+    "hasPart": [
+        {
+            "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/84a70e2a-7f70-4bc9-bbb8-01929df4e99f",
+            "@type": "EModel"
+        },
+        {
+            "@id": "https://bbp.epfl.ch/data/bbp/allresources/eb278a7f-04bd-49f7-a970-248d628397ac",
+            "@type": "NeuronMorphology"
+        }
+    ],
+    "threshold_current": 0.4734374999999999,
+    "holding_current": 0.4734374999999999,
+    "mType": "SO_BS",
+    "eType": "bAC",
+    "eModel": "CA1_int_bAC_011017HP2_2019032911530",
+    "brainLocation": {
+        "@type": "BrainLocation",
+        "brainRegion": {
+            "@id": "http://api.brain-map.org/api/v2/data/Structure/382"
+        },
+        "layer": {
+            "@id": "http://purl.obolibrary.org/obo/UBERON_0005371"
+        }
+    },
+    "subject": {
+        "@type": "Subject",
+        "species": {
+            "@id": "http://purl.obolibrary.org/obo/NCBITaxon_10116"
+        }
+    },
+    "annotation": [
+        {
+            "@type": [
+                "ETypeAnnotation",
+                "Annotation"
+            ],
+            "hasBody": {
+                "@type": [
+                    "EType",
+                    "AnnotationBody"
+                ],
+                "label": "bAC"
+            },
+            "name": "E-type annotation"
+        },
+        {
+            "@type": [
+                "MTypeAnnotation",
+                "Annotation"
+            ],
+            "hasBody": {
+                "@type": [
+                    "MType",
+                    "AnnotationBody"
+                ],
+                "label": "SO_BS"
+            },
+            "name": "M-type annotation"
+        }
+    ]
+}
