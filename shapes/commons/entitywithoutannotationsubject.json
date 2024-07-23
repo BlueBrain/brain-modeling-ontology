@@ -31,7 +31,6 @@
           "datatype": "xsd:string",
           "description": "The entity name.",
           "maxCount": 1,
-          "minCount": 1,
           "name": "Name",
           "path": "schema:name"
         },

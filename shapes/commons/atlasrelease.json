@@ -9,43 +9,37 @@
     {
       "@id": "https://neuroshapes.org/commons/atlasrelease/shapes/AtlasReleaseShape",
       "@type": "NodeShape",
-      "and": [
+      "node": "nsg:commons/entity/shapes/EntityShape",
+      "property": [
         {
-          "node": "nsg:commons/entity/shapes/EntityShape"
+          "datatype": "xsd:date",
+          "description": "atlas release date.",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Release Date",
+          "path": "schema:releaseDate"
         },
         {
-          "property": [
-            {
-              "datatype": "xsd:date",
-              "description": "atlas release date.",
-              "maxCount": 1,
-              "minCount": 1,
-              "name": "Release Date",
-              "path": "schema:releaseDate"
-            },
-            {
-              "class": "nsg:BrainTemplateDataLayer",
-              "path": "nsg:brainTemplateDataLayer"
-            },
-            {
-              "class": "nsg:BrainParcellationDataLayer",
-              "maxCount": 1,
-              "minCount": 1,
-              "path": "nsg:parcellationVolume"
-            },
-            {
-              "class": "nsg:ParcellationOntology",
-              "maxCount": 1,
-              "minCount": 1,
-              "path": "nsg:parcellationOntology"
-            },
-            {
-              "class": "nsg:AtlasSpatialReferenceSystem",
-              "maxCount": 1,
-              "minCount": 1,
-              "path": "nsg:spatialReferenceSystem"
-            }
-          ]
+          "class": "nsg:BrainTemplateDataLayer",
+          "path": "nsg:brainTemplateDataLayer"
+        },
+        {
+          "class": "nsg:BrainParcellationDataLayer",
+          "maxCount": 1,
+          "minCount": 1,
+          "path": "nsg:parcellationVolume"
+        },
+        {
+          "class": "nsg:ParcellationOntology",
+          "maxCount": 1,
+          "minCount": 1,
+          "path": "nsg:parcellationOntology"
+        },
+        {
+          "class": "nsg:AtlasSpatialReferenceSystem",
+          "maxCount": 1,
+          "minCount": 1,
+          "path": "nsg:spatialReferenceSystem"
         }
       ],
       "description": "Atlas release description.",

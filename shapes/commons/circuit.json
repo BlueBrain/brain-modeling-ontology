@@ -9,6 +9,7 @@
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/typedlabeledontologyterm",
+    "https://neuroshapes.org/commons/entity",
     "https://neuroshapes.org/commons/modelinstance"
   ],
   "shapes": [
