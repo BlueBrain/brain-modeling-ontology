@@ -345,20 +345,16 @@ def test_schemas_validate_examples(
 ):
     "Check that schemas validate againts sample resources"
     # Get resources and classes mapping
-    # schema_dict, schema_to_file_dict, class_schema = schemas_classes_dicts
-    # class_lower = {k.lower(): k for k in class_schema.keys()}
+    schema_dict, schema_to_file_dict, class_schema = schemas_classes_dicts
+    class_lower = {k.lower(): k for k in class_schema.keys()}
 
     for example_file, example in resource_examples.items():
-        if example_file != "entity.json":
-            continue
-        # type_ = class_lower[example_file.split(".json")[0]]
-        # check_type_in_loaded_context(
-        #     example_file, type_, class_schema, schema_to_file_dict, schema_dict
-        # )
-        # schema_id = class_schema[type_]
+        type_ = class_lower[example_file.split(".json")[0]]
+        check_type_in_loaded_context(
+            example_file, type_, class_schema, schema_to_file_dict, schema_dict
+        )
+        schema_id = class_schema[type_]
         # Run validation
-        type_ = "Entity"
-        schema_id = "https://neuroshapes.org/dash/entity"
         try:
             print(" --- Validating ", example_file)
             # change the context iri to be the one of the directory
