@@ -714,6 +714,15 @@ NCBITaxon:9975 a owl:Class ;
     ncbitaxon:has_rank NCBITaxon:order ;
     rdfs:subClassOf NCBITaxon:40674 .
 
+NCBITaxon:10141 a owl:Class ;
+    rdfs:label "Cavia porcellus"@en ;
+    ncbitaxon:has_rank NCBITaxon:species ;
+    rdfs:subClassOf NCBITaxon:9989 ;
+    skos:altLabel "Cavia aperea porcellus"@en ,
+                  "Cavia cobaya"@en,
+                  "guinea pig"@en,
+                  "Mus porcellus"@en .
+
 RS:0001827 a owl:Class ;
     rdfs:label "Long-Evans"@en ;
     ncbitaxon:has_rank NCBITaxon:strain ;
