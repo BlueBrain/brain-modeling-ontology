@@ -497,13 +497,13 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
 
     logger.info("Merging brain region ontology with atlas hierarchy - Start")
 
-    tag = (
+    atlas_tag = (
         str(atlas_parcellation_ontology_tag)
         if atlas_parcellation_ontology_tag is not None
         else atlas_parcellation_ontology_tag
     )
 
-    atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology, version=tag)
+    atlas_hierarchy = forge_atlas.retrieve(atlas_parcellation_ontology, version=atlas_tag)
 
     atlas_hierarchy_jsonld_distribution = [
         distrib

@@ -4,7 +4,13 @@ import json
 from bmo.logger import logger
 from bmo.argument_parsing import define_arguments
 from bmo.utils import get_request_headers, get_obp_projects
-from bmo.views import View, create_aggregate_es_view, create_es_view
+from bmo.views import (
+    View,
+    create_aggregate_es_view,
+    create_es_view,
+    create_es_view_payload,
+    create_aggregate_es_view_payload
+)
 
 
 OBP_RELEASE_CHANGING_VIEWS = {
@@ -13,21 +19,19 @@ OBP_RELEASE_CHANGING_VIEWS = {
                       "https://bbp.epfl.ch/ontologies/core/bmo/MTypeDensity",
                       "https://bbp.epfl.ch/ontologies/core/bmo/METypeDensity",
                       "https://neuroshapes.org/CellDensityDataLayer",
+                      "https://neuroshapes.org/BrainParcellationMesh",
+                      "https://neuroshapes.org/VolumetricDataLayer",
+                      "https://neuroshapes.org/CellRecordSeries",
+                      "https://neuroshapes.org/AtlasRelease",
+                      "https://neuroshapes.org/AtlasSpatialReferenceSystem",
                       "http://www.w3.org/2002/07/owl#Ontology",
                       "https://neuroshapes.org/ParcellationOntology"
-                  ],
-                  "resource_schemas": [
-                      "https://neuroshapes.org/dash/brainparcellationmesh",
-                      "https://neuroshapes.org/dash/atlasrelease",
-                      "https://neuroshapes.org/dash/volumetricdatalayer",
-                      "https://neuroshapes.org/dash/cellrecordseries",
-                      "https://neuroshapes.org/dash/atlasspatialreferencesystem",
-                      "https://neuroshapes.org/dash/recordseries"
                   ]},
     "neurosciencegraph/datamodels": {
         "tag": "{bmo_tag}",
         "resource_types": [
             "http://www.w3.org/2002/07/owl#Class",
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
             "http://www.w3.org/2002/07/owl#Ontology"
         ]}
 }
@@ -35,22 +39,99 @@ OBP_RELEASE_CHANGING_VIEWS = {
 DATASET_ES_VIEW_ID = "https://bbp.epfl.ch/neurosciencegraph/data/views/es/dataset"
 
 OBP_RELEASE_FIXED_PROJECTS = [
-    "bbp/agents"
-    "bbp/licenses"
+    "bbp/agents",
+    "bbp/licenses",
     "bbp/protocols",
     "bbp/inference-rules"
 ]
 
 
+def create_update_view(view_id, endpoint, token, bucket, **kwargs):
+    # Get arguments
+    payload = kwargs.get('payload', None)
+    view_list = kwargs.get('view_list', None)
+    is_aggregate = kwargs.get('is_aggregate', False)
+    tag = kwargs.get('tag', None)
+    mapping = kwargs.get('mapping', None)
+    resource_types = kwargs.get('resource_types', None)
+    resource_schemas = kwargs.get('resource_schemas', None)
+    include_metadata = kwargs.get('include_metadata', True)
+    include_deprecated = kwargs.get('include_deprecated', False)
+
+    # Try to retrieve the view
+    headers = get_request_headers(token)
+    view_response = View.get(endpoint, bucket, headers, view_id)
+    view_json = view_response.json()
+
+    # if the view doesn't exist, create it
+    if view_json['@type'] == "ResourceNotFound":
+        if is_aggregate:
+            logger.info(f"- Creating aggregate ES view {view_id}")
+
+            create_response = create_aggregate_es_view(endpoint, bucket, token,
+                                                       view_list, view_id)
+        else:
+            create_response = create_es_view(endpoint,
+                                             bucket=bucket,
+                                             token=token,
+                                             view_id=view_id,
+                                             tag=tag,
+                                             mapping=mapping,
+                                             resource_types=resource_types,
+                                             resource_schemas=resource_schemas)
+
+        if _check_status(create_response):
+            logger.info("- Successfully created the aggregate ES view for OBP suite projects")
+            return True
+        else:
+            raise ValueError("Stopping the ES view creation.")
+
+    # if the view was fetched
+    elif _check_status(view_response):
+        logger.info(f"- Found existing aggregate ES view {view_id}")
+        if is_aggregate:
+            if view_list is None:
+                raise ValueError("Aggregate views require `view_list` to be provided")
+            payload = create_aggregate_es_view_payload(view_list)
+        else:
+            payload = create_es_view_payload(tag, mapping, resource_types,
+                                             resource_schemas, include_metadata,
+                                             include_deprecated)
+
+        # check changes in payload
+        changed = False
+        for k, v in payload.items():
+            if not k.startswith('_') and k != "@context":
+                if view_json[k] != v:
+                    changed = True
+                    break
+
+        if changed:
+            logger.info("- View payload has changed! - Updating ES view")
+            updated_response = View.update(endpoint, bucket,
+                                           payload, headers,
+                                           view_id=view_id,
+                                           rev=view_json['_rev'])
+            if _check_status(updated_response):
+                logger.info("- Successfully updated aggregate ES view")
+                return True
+            else:
+                raise ValueError(f"Error updating view {view_id}. Stopping the ES view creation.")
+    else:
+        raise ValueError(f"Error creating/updating view {view_id}. Stopping the ES view creation.")
+
+
 def _check_status(response: requests.Response):
     response_json = response.json()
-    if str(response.status_code).startswith('2'):
+    if 200 <= response.status_code < 300:
         return True
-    elif response.status_code == '409':  # Conflict
+    elif response.status_code == 409:  # Conflict
         logger.info(f"- Conflict registering the ES view. Reason: {response_json['reason']}")
-        return True
-    logger.info(f"- Error registering the ES view. Reason: {response_json['reason']}")
-    return False
+        if 'already exists in project' in response_json['reason']:
+            return True
+    else:
+        logger.info(f"- Error {response.status_code} registering the ES view. Reason: {response_json['reason']}")
+        return False
 
 
 def register_release_es_views(arguments: argparse.Namespace):
@@ -91,72 +172,29 @@ def register_release_es_views(arguments: argparse.Namespace):
 
     for view_bucket, view_args in OBP_RELEASE_CHANGING_VIEWS.items():
         view_args['tag'] = view_args['tag'].format(**tags_dict)
-        print(view_args['tag'])
         view_id = f"https://bbp.epfl.ch/data/{view_bucket}/es_view_tag_{view_args['tag']}"
-        response = create_es_view(endpoint,
-                                  bucket=view_bucket,
-                                  token=token,
-                                  view_id=view_id,
-                                  tag=view_args['tag'],
-                                  mapping=mapping,
-                                  resource_types=view_args['resource_types'] if 'resource_types' in view_args else None,
-                                  resource_schemas=view_args['resource_schemas'] if 'resource_schemas' in view_args else None)
-        if _check_status(response):
-            logger.info(f"- Successfully created ES view {view_id} in {view_bucket} project")
+        success = create_update_view(view_id=view_id,
+                                     endpoint=endpoint,
+                                     token=token,
+                                     bucket=view_bucket,
+                                     tag=view_args['tag'],
+                                     mapping=mapping,
+                                     resource_types=view_args['resource_types'] if 'resource_types' in view_args else None,
+                                     resource_schemas=view_args['resource_schemas'] if 'resource_schemas' in view_args else None)
+        if success:
+            logger.info(f"- Successfully created/updated ES view {view_id} in {view_bucket} project")
             views_to_aggregate.append({'@id': view_id,
                                        'project': view_bucket})
         else:
-            raise ValueError("Stopping the ES view creation.")
+            raise ValueError(" Error in release view creation- Stopping the ES view creation.")
 
     logger.info(
         "Creating release ES views with tagged data - Finish "
     )
 
-    # Get OBP suite projects
+    # Add other bbp buckets into the aggregate views of atlas and datamodels
+    # First get OBP suite projects
     obp_projects = get_obp_projects(endpoint, token)
-
-    current_view_list = [{'@id': DATASET_ES_VIEW_ID,
-                          'project': obp_p} for obp_p in obp_projects]
-
-    # Try to retrieve the view
-    aggregate_obp_view_id = f"https://bbp.epfl.ch/data/{atlas_bucket}/es_aggregate_view_obp"
-    headers = get_request_headers(token)
-    obp_view_response = View.get(endpoint, atlas_bucket, headers, aggregate_obp_view_id)
-    obp_view_json = obp_view_response.json()
-
-    # if the view doesn't exist, create it
-    if obp_view_json['@type'] == "ResourceNotFound":
-
-        logger.info("- Creating aggregate ES view for OBP suite projects")
-
-        aggregate_response = create_aggregate_es_view(endpoint, atlas_bucket, token,
-                                                      current_view_list, aggregate_obp_view_id)
-        if _check_status(aggregate_response):
-            logger.info("- Successfully created the aggregate ES view for OBP suite projects")
-        else:
-            raise ValueError("Stopping the ES view creation.")
-
-    # if the view was fetched
-    elif _check_status(obp_view_response):
-
-        logger.info("- Found existing aggregate ES view for OBP suite projects")
-        obp_view_payload = obp_view_json['_source']
-
-        # check the list of projects in the views
-        if set(obp_view_payload['views']) != set(current_view_list):
-
-            logger.info("- Project list changed! - Updating aggregate ES view for OBP suite projects")
-            obp_view_payload['views'] = current_view_list
-            updated_response = View.update(endpoint, atlas_bucket, headers, obp_view_payload,
-                                           view_id=aggregate_obp_view_id,
-                                           rev=obp_view_json['_rev'])
-            if _check_status(updated_response):
-                logger.info("- Successfully updated aggregate ES view for OBP suite projects")
-            else:
-                raise ValueError("Stopping the ES view creation.")
-
-    views_to_aggregate.append({'@id': aggregate_obp_view_id,
-                               'project': atlas_bucket})
 
     for fixed_project in OBP_RELEASE_FIXED_PROJECTS:
         if fixed_project not in obp_projects:
@@ -164,21 +202,42 @@ def register_release_es_views(arguments: argparse.Namespace):
                                        'project': fixed_project})
 
     logger.info(
-        "Creating release Aggregate ES view - Start "
+        "Creating BBP release Aggregate ES view - Start "
     )
     aggregate_view_id = f"https://bbp.epfl.ch/data/{atlas_bucket}/es_aggregate_view_tags_{atlas_tag}_{bmo_tag}"
-    aggregate_response = create_aggregate_es_view(endpoint,
-                                                  bucket=atlas_bucket,
-                                                  token=token,
-                                                  views=views_to_aggregate,
-                                                  view_id=aggregate_view_id)
-    if _check_status(aggregate_response):
-        logger.info(f"- Successfully created aggregate ES view {aggregate_view_id} in {atlas_bucket} project")
+    aggregate_success = create_update_view(view_id=aggregate_view_id,
+                                           endpoint=endpoint,
+                                           token=token,
+                                           bucket=atlas_bucket,
+                                           view_list=views_to_aggregate,
+                                           is_aggregate=True)
+    if aggregate_success:
+        logger.info(f"- Successfully created/found aggregate ES view {aggregate_view_id} in {atlas_bucket} project")
     else:
         raise ValueError(f"Stopping the aggregate ES view creation. Views included: {views_to_aggregate}")
 
     logger.info(
-        "Creating release Aggregate ES view - Finish "
+        "Creating BBP release Aggregate ES view - Finish "
+    )
+
+    # Finally create the aggregate view of OBP projects, if it doesn't already exists
+    view_obp_list = [{'@id': DATASET_ES_VIEW_ID,
+                      'project': obp_p} for obp_p in obp_projects]
+
+    aggregate_obp_view_id = f"https://bbp.epfl.ch/data/{atlas_bucket}/es_aggregate_view_obp"
+    aggregate_obp_success = create_update_view(view_id=aggregate_obp_view_id,
+                                               endpoint=endpoint,
+                                               token=token,
+                                               bucket=atlas_bucket,
+                                               view_list=view_obp_list,
+                                               is_aggregate=True)
+    if aggregate_obp_success:
+        logger.info(f"- Successfully created/found aggregate ES view {aggregate_obp_view_id} in {atlas_bucket} project")
+    else:
+        raise ValueError(f"Stopping the aggregate ES view creation. Views included: {view_obp_list}")
+
+    logger.info(
+        "Creating OBP Aggregate ES view - Finish "
     )
 
 

@@ -1,6 +1,6 @@
 import requests
 from typing import List, Optional, Dict
-from urllib.parse import quote
+from urllib.parse import quote_plus
 
 from bmo.utils import get_request_headers
 
@@ -38,7 +38,7 @@ class View:
             which is not URL encoded.
         :return: The Nexus metadata of the retrieved view.
         """
-        path = "/".join([endpoint, "views", bucket, quote(view_id)])
+        path = "/".join([endpoint, "views", bucket, quote_plus(view_id)])
 
         return requests.get(url=path, headers=headers)
 
@@ -54,7 +54,7 @@ class View:
             which is not URL encoded.
         :return: The Nexus metadata of the updated view.
         """
-        path = "/".join([endpoint, "views", bucket, f"{quote(view_id)}" + f"?rev={rev}"])
+        path = "/".join([endpoint, "views", bucket, f"{quote_plus(view_id)}" + f"?rev={rev}"])
 
         return requests.put(url=path, headers=headers, json=payload)
 
@@ -75,9 +75,52 @@ class View:
         :return: A payload containing only the Nexus metadata for this updated view.
         """
 
-        path = "/".join([endpoint, "views", bucket, f"{quote(view_id)}" + f"?rev={rev}"])
+        path = "/".join([endpoint, "views", bucket, f"{quote_plus(view_id)}" + f"?rev={rev}"])
 
         return requests.delete(path, headers=headers)
+
+
+def create_es_view_payload(tag: Optional[str] = None,
+                           mapping: Optional[Dict] = {},
+                           resource_types: Optional[List[str]] = None,
+                           resource_schemas: Optional[List[str]] = None,
+                           include_metadata: Optional[bool] = True,
+                           include_deprecated: Optional[bool] = False) -> Dict:
+    payload = {
+        "@type": ["View", "ElasticSearchView"],
+        "mapping": mapping,
+        "includeMetadata": include_metadata,
+        "includeDeprecated": include_deprecated
+    }
+
+    if resource_schemas:
+        payload["resourceSchemas"] = resource_schemas
+    if resource_types:
+        payload["resourceTypes"] = resource_types
+    if tag is not None:
+        payload["resourceTag"] = tag
+    payload["sourceAsText"] = False
+    return payload
+
+
+def create_aggregate_es_view_payload(views):
+    views_data = []
+    for v in views:
+        v_data = {
+            "project": v["project"],
+            "viewId": v["@id"]
+        }
+
+        views_data.append(v_data)
+
+    payload = {
+        "@type": [
+            "View",
+            "AggregateElasticSearchView"
+        ],
+        "views": views_data
+    }
+    return payload
 
 
 def create_es_view(endpoint: str,
@@ -107,21 +150,8 @@ def create_es_view(endpoint: str,
     :param include_deprecated: whether to include deprecated resources in the index
     :return: The Nexus metadata of the created view.
     """
-    payload = {
-        "@type": ["View", "ElasticSearchView"],
-        "mapping": mapping,
-        "includeMetadata": include_metadata,
-        "includeDeprecated": include_deprecated
-    }
-
-    if resource_schemas:
-        payload["resourceSchemas"] = resource_schemas
-    if resource_types:
-        payload["resourceTypes"] = resource_types
-    if tag is not None:
-        payload["resourceTag"] = tag
-    payload["sourceAsText"] = False
-
+    payload = create_es_view_payload(tag, mapping, resource_types, resource_schemas,
+                                     include_metadata, include_deprecated)
     headers = get_request_headers(token)
 
     return View.create(endpoint, bucket, payload, headers, view_id)
@@ -132,23 +162,8 @@ def create_aggregate_es_view(endpoint: str,
                              token: str,
                              views: List[Dict],
                              view_id: Optional[str] = None) -> requests.Response:
-    views_data = []
-    for v in views:
-        v_data = {
-            "project": v["project"],
-            "viewId": v["@id"]
-        }
 
-        views_data.append(v_data)
-
-    payload = {
-        "@type": [
-            "View",
-            "AggregateElasticSearchView"
-        ],
-        "views": views_data
-    }
-
+    payload = create_aggregate_es_view_payload(views)
     headers = get_request_headers(token)
 
     return View.create(endpoint, bucket, payload, headers, view_id)
