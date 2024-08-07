@@ -14,11 +14,7 @@
     {
       "@id": "https://neuroshapes.org/commons/transformableobject/shapes/TransformableObjectShape",
       "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:commons/entity/shapes/EntityShape"
-        }
-      ],
+      "node": "nsg:commons/entity/shapes/EntityShape",
       "label": "Abstract definition of transformable object",
       "nodeKind": "sh:BlankNodeOrIRI"
     }

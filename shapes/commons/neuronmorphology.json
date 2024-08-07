@@ -119,6 +119,7 @@
                 "application/swc",
                 "application/asc",
                 "application/h5",
+                "application/x-hdf5",
                 "application/obj",
                 "application/xml"
               ],
