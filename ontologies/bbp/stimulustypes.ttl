@@ -115,6 +115,22 @@
         :WhiteNoise,
         :pulser,
         :sAHP,
+        :s2,
+        :A,
+        :SIne20Hz,
+        :Activation30,
+        :LoOffset1,
+        :spuls,
+        :H40S8,
+        :OU10Lo01,
+        :Rin,
+        :maria-STEP,
+        :Pulse,
+        :Wave,
+        :LoOffset3,
+        :IV2,
+        :scope,
+        :OU10Hi01,
         :AP,
         :Test,
         :VRest,
@@ -584,6 +600,86 @@ nsg:defines a owl:AnnotationProperty ;
     skos:definition "For the SpontAPs (spontaneous action potentials) stimulus, small current pulses close to but below the firing threshold are injected. In the presence of EPSPs, this results in a few action potentials. This stimulus is used to assess the spontaneous activity of the cell."@en .
 
 
+:s2 a owl:Class ;
+    rdfs:label "s2"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:A a owl:Class ;
+    rdfs:label "A"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:SIne20Hz a owl:Class ;
+    rdfs:label "SIne20Hz"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:Activation30 a owl:Class ;
+    rdfs:label "Activation30"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:LoOffset1 a owl:Class ;
+    rdfs:label "LoOffset1"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:spuls a owl:Class ;
+    rdfs:label "spuls"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:H40S8 a owl:Class ;
+    rdfs:label "H40S8"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:OU10Lo01 a owl:Class ;
+    rdfs:label "OU10Lo01"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:Rin a owl:Class ;
+    rdfs:label "Rin"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:maria-STEP a owl:Class ;
+    rdfs:label "maria-STEP"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:Pulse a owl:Class ;
+    rdfs:label "Pulse"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:Wave a owl:Class ;
+    rdfs:label "Wave"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:LoOffset3 a owl:Class ;
+    rdfs:label "LoOffset3"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:IV2 a owl:Class ;
+    rdfs:label "IV2"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:scope a owl:Class ;
+    rdfs:label "scope"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+:OU10Hi01 a owl:Class ;
+    rdfs:label "OU10Hi01"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
 :AP a owl:Class ;
     rdfs:label "AP"@en ;
     rdfs:subClassOf bmo:IonChannelStimulus .
@@ -670,12 +766,3 @@ nsg:LNMCStimulus a owl:Class ;
 bmo:IonChannelStimulus a owl:Class ;
     rdfs:label "IonChannelStimulus"@en ;
     rdfs:subClassOf bmo:ElectricalStimulus .
-
-
-
-
-
-
-
-
-
