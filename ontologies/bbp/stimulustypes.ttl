@@ -115,8 +115,23 @@
         :WhiteNoise,
         :pulser,
         :sAHP,
+        :AP,
+        :Test,
+        :VRest,
+        :Activation,
+        :Deactivation,
+        :Inactivation,
+        :SubInactivation,
+        :Recovery,
+        :Recovery60,
+        :Recovery100,
+        :Ramp,
+        :RampNeg,
+        :Drugs,
+        :DelayedInac,
         nsg:BlueBrainStimulus,
-        nsg:LNMCStimulus .
+        nsg:LNMCStimulus,
+        bmo:IonChannelStimulus .
 
 dc:rights a owl:AnnotationProperty .
 
@@ -568,6 +583,77 @@ nsg:defines a owl:AnnotationProperty ;
     rdfs:subClassOf nsg:BlueBrainStimulus ;
     skos:definition "For the SpontAPs (spontaneous action potentials) stimulus, small current pulses close to but below the firing threshold are injected. In the presence of EPSPs, this results in a few action potentials. This stimulus is used to assess the spontaneous activity of the cell."@en .
 
+
+:AP a owl:Class ;
+    rdfs:label "AP"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:Test a owl:Class ;
+    rdfs:label "Test"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:VRest a owl:Class ;
+    rdfs:label "VRest"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:Activation a owl:Class ;
+    rdfs:label "Activation"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:Deactivation a owl:Class ;
+    rdfs:label "Deactivation"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:Inactivation a owl:Class ;
+    rdfs:label "Inactivation"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:SubInactivation a owl:Class ;
+    rdfs:label "SubInactivation"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:Recovery a owl:Class ;
+    rdfs:label "Recovery"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:Recovery60 a owl:Class ;
+    rdfs:label "Recovery60"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:Recovery100 a owl:Class ;
+    rdfs:label "Recovery100"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:Ramp a owl:Class ;
+    rdfs:label "Ramp"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:RampNeg a owl:Class ;
+    rdfs:label "RampNeg"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:Drugs a owl:Class ;
+    rdfs:label "Drugs"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
+:DelayedInac a owl:Class ;
+    rdfs:label "DelayedInac"@en ;
+    rdfs:subClassOf bmo:IonChannelStimulus .
+
+
 bmo:ElectricalStimulus a owl:Class ;
     rdfs:label "Electrical Stimulus" .
 
@@ -580,4 +666,16 @@ nsg:LNMCStimulus a owl:Class ;
     rdfs:label "LNMCStimulus"@en ;
     schema1:description "The stimuli under LNMCStimulus were identified from the NWB files of the \'NMC SSCX\' and the \'Adaptive Stimulus Set\' datasets from the Laboratory of Neural Microcircuitry. They represent the 'raw' stimuli as assigned by the experimenter."^^xsd:string ;
     rdfs:subClassOf bmo:ElectricalStimulus .
+
+bmo:IonChannelStimulus a owl:Class ;
+    rdfs:label "IonChannelStimulus"@en ;
+    rdfs:subClassOf bmo:ElectricalStimulus .
+
+
+
+
+
+
+
+
 
