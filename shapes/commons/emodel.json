@@ -14,42 +14,40 @@
       {
         "@id": "https://neuroshapes.org/commons/emodel/shapes/EModelShape",
         "@type": "NodeShape",
-        "and": [
+        "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape",
+        "property": [
           {
-            "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape"
+            "description": "A quantitative measure of the quality of the EModel.",
+            "name": "EModel quality score",
+            "datatype": "xsd:double",
+            "path": "nsg:score"
           },
           {
-            "property": [
-              {
-                "description": "A quantitative measure of the quality of the EModel.",
-                "name": "EModel quality score",
-                "datatype": "xsd:double",
-                "path": "nsg:score"
-              },
-              {
-                "path": "nsg:eType",
-                "minCount": 1
-              },
-              {
-                "name": "EModel Generation",
-                "node": "this:EModelGenerationShape",
-                "path": "nsg:generation",
-                "minCount": 1
-              },
-              {
-                "name": "Iteration",
-                "path": "bmo:iteration",
-                "datatype": "xsd:string"
-              },
-              {
-                "name": "Seed used for building",
-                "path": "bmo:seed",
-                "datatype": "xsd:integer"
-              }
-            ]
+            "path": "nsg:eType",
+            "minCount": 1
+          },
+          {
+            "name": "EModel Generation",
+            "path": "nsg:generation",
+            "minCount": 1
+          },
+          {
+            "name": "Iteration",
+            "path": "bmo:iteration",
+            "datatype": "xsd:string",
+            "maxCount": 1
+          },
+          {
+            "name": "Seed used for building",
+            "path": "bmo:seed",
+            "datatype": "xsd:integer",
+            "maxCount": 1
+          },
+          {
+            "path": "schema:image"
           }
         ],
-        "comment": "An EModel requires all teh attributes in teh MINDS shape plus the detail of what is being modeled (values of modelOf)",
+        "comment": "An EModel requires all the attributes in teh MINDS shape plus the detail of what is being modeled (values of modelOf)",
         "label": "EModel shape"
       },
       {

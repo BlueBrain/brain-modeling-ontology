@@ -8,13 +8,14 @@
   "@id": "https://neuroshapes.org/dash/memodel",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/emodelentity"
+    "https://neuroshapes.org/commons/emodel",
+    "https://neuroshapes.org/commons/quantitativevalue"
   ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/memodel/shapes/MEModelShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/emodelentity/shapes/EModelEntityShape",
+      "node": "https://neuroshapes.org/commons/emodel/shapes/EModelShape",
       "property": [
         {
           "class": "nsg:MEModelRelease",
@@ -50,13 +51,24 @@
           "maxCount": 1
         },
         {
-          "path": "nsg:eType",
+          "path": "nsg:mType",
           "minCount": 1,
           "maxCount": 1
         },
         {
-          "path": "nsg:mType",
-          "minCount": 1,
+          "path": "nsg:parameter",
+          "node": "https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape",
+          "description": "Parameters used or obtained from analysis"
+        },
+        {
+          "path": "nsg:status",
+          "datatype": "xsd:string",
+          "maxCount": 1
+        },
+        {
+          "path": "bmo:validated",
+          "description": "Whether the MEModel was validated by the user",
+          "datatype": "xsd:boolean",
           "maxCount": 1
         }
       ],

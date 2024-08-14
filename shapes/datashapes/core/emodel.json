@@ -1,10 +1,5 @@
 {
-  "@context": [
-    "https://incf.github.io/neuroshapes/contexts/schema.json",
-    {
-      "this": "https://neuroshapes.org/dash/emodel/shapes/"
-    }
-  ],
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
   "@id": "https://neuroshapes.org/dash/emodel",
   "@type": "Schema",
   "imports": [
@@ -15,6 +10,14 @@
       "@id": "https://neuroshapes.org/dash/emodel/shapes/EModelShape",
       "@type": "NodeShape",
       "node": "nsg:commons/emodel/shapes/EModelShape",
+      "property": [
+        {
+          "name": "EModel Generation",
+          "node": "https://neuroshapes.org/commons/emodel/shapes/EModelGenerationShape",
+          "path": "nsg:generation",
+          "minCount": 1
+        }
+      ],
       "targetClass": "nsg:EModel"
     }
   ]

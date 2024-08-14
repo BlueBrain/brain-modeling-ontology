@@ -143,6 +143,18 @@
       "@id": "http://bbp.epfl.ch/neurosciencegraph/taxonomies/objectsofstudy/singlecells",
       "label": "Single Cell"
     },
+    "parameter": [
+      {
+        "name": "holding_current",
+        "value": -0.010937500000000001,
+        "unitCode": "mV"
+      },
+      {
+        "name": "threshold_current",
+        "value": 0.01714303359635279,
+        "unitCode": "mV"
+      }
+    ],
     "seed": 19,
     "subject": {
       "@type": "Subject",
@@ -150,5 +162,6 @@
         "@id": "http://purl.obolibrary.org/obo/NCBITaxon_10090",
         "label": "Mus musculus"
       }
-    }
+    },
+    "validated": true
   }
