@@ -121,7 +121,8 @@
                 "application/h5",
                 "application/x-hdf5",
                 "application/obj",
-                "application/xml"
+                "application/xml",
+                "application/dat"
               ],
               "name": "Media type",
               "path": "schema:encodingFormat"
