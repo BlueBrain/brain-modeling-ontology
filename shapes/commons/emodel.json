@@ -38,6 +38,10 @@
             "maxCount": 1
           },
           {
+            "path": "nsg:contribution",
+            "minCount": 1
+          },
+          {
             "name": "Seed used for building",
             "path": "bmo:seed",
             "datatype": "xsd:integer",

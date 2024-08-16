@@ -1,0 +1,54 @@
+{
+    "@context": "https://bbp.neuroshapes.org",
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/fc98f29b-a608-44d2-b9c4-910124894912",
+    "@type": "SynaptomeSimulation",
+    "brainLocation": {
+      "@type": "BrainLocation",
+      "brainRegion": {
+        "@id": "http://api.brain-map.org/api/v2/data/Structure/322",
+        "label": "Primary somatosensory area"
+      }
+    },
+    "description": "Synaptome simulation example.",
+    "distribution": {
+      "@type": "DataDownload",
+      "atLocation": {
+        "@type": "Location",
+        "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/0/7/4/9/0/0/f/6/synaptome_simulation.json",
+        "store": {
+          "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+          "@type": "RemoteDiskStorage",
+          "_rev": 1
+        }
+      },
+      "contentSize": {
+        "unitCode": "bytes",
+        "value": 284
+      },
+      "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F018e3911-f709-4c6a-ab47-a25631411427",
+      "digest": {
+        "algorithm": "SHA-256",
+        "value": "9779c55ee97fa63bf3e3390210259ef01523feeb3a6a9465070166de5abf78d3"
+      },
+      "encodingFormat": "application/json",
+      "name": "synaptome_simulation.json"
+    },
+    "name": "Synaptome Simulation Example",
+    "objectOfStudy": {
+      "@id": "http://bbp.epfl.ch/neurosciencegraph/taxonomies/objectsofstudy/singlecells",
+      "label": "Single Cell"
+    },
+    "subject": {
+      "@type": "Subject",
+      "species": {
+        "@id": "http://purl.obolibrary.org/obo/NCBITaxon_10090",
+        "label": "Mus musculus"
+      }
+    },
+    "used": [
+      {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/fc98f29b-a608-4910124894912",
+        "@type": "SingleNeuronSynaptome"
+      }
+    ]
+}

@@ -8,7 +8,8 @@
     "@id": "https://neuroshapes.org/commons/emodelentity",
     "@type": "Schema",
     "imports": [
-      "nsg:commons/modelinstance"
+      "nsg:commons/modelinstance",
+      "nsg:commons/contribution"
     ],
     "shapes": [
       {
@@ -40,11 +41,16 @@
             "datatype": "xsd:string"
           },
           {
+            "name": "EModel Contribution",
+            "node": "nsg:commons/contribution/shapes/ContributionShape",
+            "path": "nsg:contribution"
+          },
+          {
             "path": "nsg:objectOfStudy",
             "minCount": 1
           }
         ],
-        "comment": "An EModel requires all teh attributes in teh MINDS shape plus the detail of what is being modeled (values of modelOf)",
+        "comment": "An EModel requires all the attributes in the MINDS shape plus the detail of what is being modeled (values of modelOf)",
         "label": "EModel shape"
       }
     ]
