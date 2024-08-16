@@ -2070,6 +2070,9 @@
     "SingleNeuronSimulation": {
       "@id": "bmo:SingleNeuronSimulation"
     },
+    "SingleNeuronSynaptome": {
+      "@id": "bmo:SingleNeuronSynaptome"
+    },
     "Slice": {
       "@id": "nsg:Slice"
     },
@@ -2327,6 +2330,9 @@
     },
     "SynapticTypeMapping": {
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynapticTypeMapping"
+    },
+    "SynaptomeSimulation": {
+      "@id": "https://bbp.epfl.ch/ontologies/core/bmo/SynaptomeSimulation"
     },
     "SynthesizedAstrocyteMorphology": {
       "@id": "nsg:SynthesizedAstrocyteMorphology"

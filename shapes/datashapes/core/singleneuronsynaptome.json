@@ -1,0 +1,63 @@
+{
+    "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+    "@id": "https://bbp.epfl.ch/shapes/dash/singleneuronsynaptome",
+    "@type": "Schema",
+    "imports": [
+      "https://neuroshapes.org/commons/entity"
+
+    ],
+    "shapes": [
+      {
+        "@id": "https://bbp.epfl.ch/shapes/dash/singleneuronsynaptome/shapes/SingleNeuronSynaptomeShape",
+        "@type": "NodeShape",
+        "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
+        "property": [
+            {
+                "name": "Brain location",
+                "path": "nsg:brainLocation"
+            },
+            {
+                "name": "Generation",
+                "path": "nsg:generation",
+                "minCount": 1
+            },
+            {
+                "name": "Distribution object",
+                "path": "schema:distribution"
+            },
+            {
+                "path": "schema:name",
+                "minCount": 1
+            },
+            {
+                "datatype": "xsd:string",
+                "name": "Description",
+                "path": "schema:description"
+            },
+            {
+                "path": "nsg:objectOfStudy",
+                "minCount": 1
+            },
+            {
+                "name": "Subject",
+                "path": "nsg:subject",
+                "minCount": 1
+            },
+            {
+                "name": "Used",
+                "path": "prov:used",
+                "minCount": 1
+            },
+            {
+              "path": "prov:used",
+              "qualifiedValueShape":
+                {
+                  "class": "nsg:MEModel"
+                },
+              "qualifiedMinCount": 1
+            }
+        ],
+        "targetClass": "bmo:SingleNeuronSynaptome"
+      }
+    ]
+}

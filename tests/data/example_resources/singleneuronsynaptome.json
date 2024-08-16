@@ -1,0 +1,86 @@
+{
+    "@context": "https://bbp.neuroshapes.org",
+    "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/fc98f29b-a608-44d2-b9c4-9187501",
+    "@type": "SingleNeuronSynaptome",
+    "brainLocation": {
+      "@type": "BrainLocation",
+      "brainRegion": {
+        "@id": "http://api.brain-map.org/api/v2/data/Structure/322",
+        "label": "Primary somatosensory area"
+      }
+    },
+    "contribution": {
+      "@type": "Contribution",
+      "agent": {
+        "@id": "https://bbp.epfl.ch/nexus/v1/realms/bbp/users/ajaquier",
+        "@type": [
+          "Person",
+          "Agent"
+        ],
+        "email": "aurelien.jaquier@epfl.ch",
+        "name": "Aurélien Tristan Jaquier",
+        "preferred_username": "ajaquier",
+        "sub": "f:0fdadef7-b2b9-492b-af46-c65492d459c2:ajaquier"
+      }
+    },
+    "description": "Synaptome built from MEModel cNAC and morphology C270106C.",
+    "distribution": {
+      "@type": "DataDownload",
+      "atLocation": {
+        "@type": "Location",
+        "location": "file:///gpfs/bbp.cscs.ch/data/project/proj134/nexus/bbp/mmb-point-neuron-framework-model/0/7/4/9/0/0/f/6/MEM__emodel=cNAC_L1_DAC__etype=cNAC__mtype=L1_DAC__species=mouse__brain_region=SSp__iteration=117407f-C270106C.json",
+        "store": {
+          "@id": "https://bbp.epfl.ch/neurosciencegraph/data/10419671-da26-48d3-abf9-51eb54759ca4",
+          "@type": "RemoteDiskStorage",
+          "_rev": 1
+        }
+      },
+      "contentSize": {
+        "unitCode": "bytes",
+        "value": 284
+      },
+      "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/mmb-point-neuron-framework-model/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fmmb-point-neuron-framework-model%2F018e3911-f709-4c6a-ab47-a25631411427",
+      "digest": {
+        "algorithm": "SHA-256",
+        "value": "9779c55ee97fa63bf3e3390210259ef01523feeb3a6a9465070166de5abf78d3"
+      },
+      "encodingFormat": "application/json",
+      "name": "synaptome_config.json"
+    },
+    "generation": {
+      "@type": "Generation",
+      "activity": {
+        "@type": "Activity",
+        "wasAssociatedWith": {
+          "@type": "SoftwareAgent",
+          "description": "Generator of single-neuron synaptome.",
+          "name": "synaptome-generator",
+          "softwareSourceCode": {
+            "@type": "SoftwareSourceCode",
+            "codeRepository": "https://bbpgitlab.epfl.ch/project/sbo/synaptome-generator",
+            "programmingLanguage": "Python",
+            "runtimePlatform": 3.7,
+            "version": "1.0.1"
+          }
+        }
+      }
+    },
+    "name": "Single Neuron Synaptome Example",
+    "objectOfStudy": {
+      "@id": "http://bbp.epfl.ch/neurosciencegraph/taxonomies/objectsofstudy/singlecells",
+      "label": "Single Cell"
+    },
+    "subject": {
+      "@type": "Subject",
+      "species": {
+        "@id": "http://purl.obolibrary.org/obo/NCBITaxon_10090",
+        "label": "Mus musculus"
+      }
+    },
+    "used": [
+      {
+        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/fc98f29b-a608-4910124894912",
+        "@type": "MEModel"
+      }
+    ]
+}

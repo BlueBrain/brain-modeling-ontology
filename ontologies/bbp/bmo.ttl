@@ -2901,6 +2901,13 @@ bmo:ModelSynapseBuildingWorkflow rdf:type owl:Class ;
                                  rdfs:label "Model Synapse Building Workflow"@en .
 
 
+###  https://bbp.epfl.ch/ontologies/core/bmo/ModelSynaptome
+bmo:ModelSynaptome rdf:type owl:Class ;
+                 rdfs:subClassOf bmo:ModelBrainComponent ;
+                 rdfs:label "Model Synaptome"@en ;
+                 skos:altLabel "Synaptome"@en .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/ModelValidationWorkflow
 bmo:ModelValidationWorkflow rdf:type owl:Class ;
                             rdfs:subClassOf bmo:Workflow ,
@@ -4638,6 +4645,12 @@ nsg:Serotonin rdf:type owl:Class ;
                               nsg:Neuromodulator ;
               rdfs:label "Serotonin"@en ;
               skos:definition "A monoamine neurotransmitter. Its biological function is complex and multifaceted, modulating mood, cognition, reward, learning, memory, and numerous physiological processes such as vomiting and vasoconstriction. Biochemically, the indoleamine molecule derives from the amino acid tryptophan, via the (rate-limiting) hydroxylation of the 5 position on the ring (forming the intermediate 5-hydroxytryptophan), and then decarboxylation to produce serotonin. Serotonin is primarily found in the enteric nervous system located in the gastrointestinal tract (GI tract). However, it is also produced in the central nervous system (CNS), specifically in the raphe nuclei located in the brainstem, Merkel cells located in the skin, pulmonary neuroendocrine cells and taste receptor cells in the tongue. Additionally, serotonin is stored in blood platelets and is released during agitation and vasoconstriction, where it then acts as an agonist to other platelets." .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/SingleNeuronSynaptome
+bmo:SingleNeuronSynaptome rdf:type owl:Class ;
+                          rdfs:subClassOf bmo:ModelSynaptome ;
+                          rdfs:label "Single Neuron Synaptome"@en .
 
 
 ###  https://neuroshapes.org/SodiumChannel

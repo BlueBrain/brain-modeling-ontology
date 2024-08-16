@@ -39,7 +39,7 @@
               "path": "bmo:exposesParameter"
             },
             {
-              "description": "Temperature where teh mod operates in Celsius",
+              "description": "Temperature where the mod operates in Celsius",
               "name": "Temperature",
               "path": "nsg:temperature"
             },
@@ -58,13 +58,11 @@
               "minCount": 1
             },
             {
-              "description": "Object of Study",
               "name": "Objet of Study",
               "path": "nsg:objectOfStudy",
               "minCount": 1
             },
             {
-              "description": "Subject of Study",
               "name": "Subject",
               "path": "nsg:subject",
               "minCount": 1

@@ -10,7 +10,8 @@
   "imports": [
     "nsg:commons/emodelentity",
     "nsg:commons/distribution",
-    "nsg:commons/emodel"
+    "nsg:commons/emodel",
+    "nsg:commons/quantitativevalue"
   ],
   "shapes": [
     {
@@ -39,6 +40,11 @@
               "name": "Generation",
               "node": "https://neuroshapes.org/commons/emodel/shapes/EModelGenerationShape",
               "path": "nsg:generation"
+            },
+            {
+              "path": "nsg:parameter",
+              "node": "https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "description": "Parameters used or obtained from analysis"
             }
           ]
         }
