@@ -9,7 +9,7 @@
   "@type": "Schema",
   "imports": [
     "nsg:commons/experimentalactivity",
-    "nsg:commons/typedlabeledontologyterm"
+    "nsg:commons/trace"
   ],
   "shapes": [
     {
@@ -22,12 +22,11 @@
         {
           "property": [
             {
-              "description": "The shape of the stimulus",
               "maxCount": 1,
               "minCount": 1,
-              "name": "Stimulus",
-              "node": "this:StimulusShape",
+              "node": "nsg:commons/trace/shapes/StimulusShape",
               "path": "nsg:stimulus"
+
             },
             {
               "class": "nsg:PatchedCell",
@@ -42,31 +41,6 @@
       "label": "Stimulus experiment shape definition",
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:StimulusExperiment"
-    },
-    {
-      "@id": "https://neuroshapes.org/dash/stimulusexperiment/shapes/StimulusShape",
-      "@type": "NodeShape",
-      "label": "Stimulus shape definition",
-      "property": [
-        {
-          "maxCount": 1,
-          "minCount": 1,
-          "name": "Stimulus type",
-          "node": "nsg:commons/typedlabeledontologyterm/shapes/StimulusTypeOntologyTermShape",
-          "path": "nsg:stimulusType"
-        },
-        {
-          "maxCount": 1,
-          "name": "eCode",
-          "node": "nsg:commons/typedlabeledontologyterm/shapes/EcodeOntologyTermShape",
-          "path": "nsg:eCode"
-        },
-        {
-          "datatype": "xsd:string",
-          "maxCount": 1,
-          "path": "schema:description"
-        }
-      ]
     }
   ]
 }

@@ -8,27 +8,13 @@
   "@id": "https://neuroshapes.org/dash/singlecellsimulationtrace",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/entity"
+    "nsg:commons/trace"
   ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/singlecellsimulationtrace/shapes/SingleCellSimulationTraceShape",
       "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:commons/entity/shapes/EntityShape"
-        },
-        {
-          "property": [
-            {
-              "description": "Preview of the simulation trace as an image",
-              "name": "image",
-              "node": "nsg:commons/entity/shapes/EntityShape",
-              "path": "schema:image"
-            }
-          ]
-        }
-      ],
+      "node": "nsg:commons/trace/shapes/TraceShape",
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:SingleCellSimulationTrace"
     }

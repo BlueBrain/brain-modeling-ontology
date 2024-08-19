@@ -1,0 +1,74 @@
+{
+  "@context": "https://bbp.neuroshapes.org",
+  "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ab20248a-19cd-43b4-8d47-2c6bacff85d4",
+  "@type": [
+    "Dataset",
+    "bmo:TraceWebDataContainer"
+  ],
+  "brainLocation": {
+    "@type": "BrainLocation",
+    "brainRegion": {
+      "@id": "http://api.brain-map.org/api/v2/data/Structure/322",
+      "label": "Primary somatosensory area"
+    }
+  },
+  "contribution": {
+    "@type": "Contribution",
+    "agent": {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/persons/664380c8-5a22-4974-951c-68ca78c0b1f1",
+      "@type": "Agent"
+    },
+    "hadRole": {
+      "@id": "http://purl.obolibrary.org/obo/CRO_0000036",
+      "label": "data collection role",
+      "prefLabel": "experimenter"
+    }
+  },
+  "dateCreated": {
+    "@type": "xsd:dateTime",
+    "@value": "2000-06-02T19:53:24+00:00"
+  },
+  "distribution": {
+    "@type": "DataDownload",
+    "atLocation": {
+      "@type": "Location",
+      "location": "file:///gpfs/bbp.cscs.ch/data/project/proj106/nexus/bbp/lnmce/7/b/4/7/5/e/d/7/C020600B3-MT-C1.rab",
+      "store": {
+        "@id": "https://bbp.epfl.ch/neurosciencegraph/data/0617f3c3-8d30-4054-807f-c3708922f973",
+        "@type": "RemoteDiskStorage",
+        "_rev": 1
+      }
+    },
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 2345748
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/lnmce/https%3A%2F%2Fbbp.epfl.ch%2Fneurosciencegraph%2Fdata%2Ff82f174f-f19f-4192-a467-fe2d6be94f4e",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "2ece50a845e8033bf1169d190a388d9f96283c4178564ed19d9c159281158371"
+    },
+    "encodingFormat": "application/octet-stream",
+    "name": "C020600B3-MT-C1.rab"
+  },
+  "editorialNote": "Mapped original rat brain region 'http://purl.obolibrary.org/obo/UBERON_0008933' to new mouse brain region 'http://api.brain-map.org/api/v2/data/Structure/322'. ",
+  "identifier": "C020600B3-MT-C1",
+  "isPartOf": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ce20248a-19cd-43b4-8d47-2c6bacff85d4",
+    "@type": "ExperimentalTrace"
+  },
+  "name": "C020600B3-MT-C1",
+  "note": "NMC SSCx",
+  "subject": {
+    "@type": "Subject",
+    "age": {
+      "period": "Post-natal",
+      "unitCode": "days",
+      "value": 14
+    },
+    "species": {
+      "@id": "http://purl.obolibrary.org/obo/NCBITaxon_10116",
+      "label": "Rattus norvegicus"
+    }
+  }
+}

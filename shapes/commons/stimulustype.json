@@ -1,0 +1,33 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/stimulustype/shapes/"
+    }
+  ],
+  "imports": [
+    "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes_slim"
+  ],
+  "@id": "https://neuroshapes.org/commons/stimulustype",
+  "@type": "Schema",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/stimulustype/shapes/WithStimulusTypePropertyShape",
+      "@type": "NodeShape",
+      "property": [
+            {
+              "path": "nsg:stimulusType",
+              "maxCount": 1,
+              "label": "Stimulus type shape definition",
+              "sh:message": "Stimulus type should be defined in the Stimulus type ontology",
+              "name": "Stimulus type",
+              "sh:sparql": {
+                    "@type": "sh:SPARQLConstraint",
+                    "sh:message": "Stimulus types should be defined in the stimulus types ontology",
+                    "sh:select": "SELECT $this ?value \n WHERE {\n $this $PATH ?value. \n  FILTER NOT EXISTS {<http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes_slim> <https://neuroshapes.org/defines>  ?value . \n ?value <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ <https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus>}.\n}"
+              }
+          }
+      ]
+    }
+  ]
+}

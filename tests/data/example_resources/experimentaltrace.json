@@ -1,0 +1,952 @@
+{
+  "@context": "https://bbp.neuroshapes.org",
+  "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ce20248a-19cd-43b4-8d47-2c6bacff85d4",
+  "@type": [
+    "Trace",
+    "Entity",
+    "Dataset",
+    "ExperimentalTrace"
+  ],
+  "annotation": [
+    {
+      "@type": [
+        "ETypeAnnotation",
+        "Annotation"
+      ],
+      "hasBody": {
+        "@id": "http://uri.interlex.org/base/ilx_0738199",
+        "@type": [
+          "AnnotationBody",
+          "EType"
+        ],
+        "label": "bAC",
+        "prefLabel": "Burst accommodating electrical type"
+      },
+      "name": "E-type Annotation"
+    },
+    {
+      "@type": [
+        "QualityAnnotation",
+        "Annotation"
+      ],
+      "hasBody": {
+        "@id": "https://neuroshapes.org/Curated",
+        "@type": [
+          "AnnotationBody",
+          "DataMaturity"
+        ],
+        "label": "Curated"
+      },
+      "motivatedBy": {
+        "@id": "quality:Assessment",
+        "@type": "Motivation"
+      },
+      "name": "Data maturity annotation",
+      "note": "NWB dataset contains complete minimal metadata."
+    }
+  ],
+  "brainLocation": {
+    "@type": "BrainLocation",
+    "brainRegion": {
+      "@id": "http://api.brain-map.org/api/v2/data/Structure/322",
+      "label": "Primary somatosensory area"
+    }
+  },
+  "contribution": {
+    "@type": "Contribution",
+    "agent": {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/persons/664380c8-5a22-4974-951c-68ca78c0b1f1",
+      "@type": [
+        "Agent",
+        "Person"
+      ]
+    },
+    "hadRole": {
+      "@id": "http://purl.obolibrary.org/obo/CRO_0000036",
+      "label": "data collection role",
+      "prefLabel": "experimenter"
+    }
+  },
+  "dateCreated": {
+    "@type": "xsd:dateTime",
+    "@value": "2000-06-02T19:53:24+00:00"
+  },
+  "distribution": {
+    "@type": "DataDownload",
+    "atLocation": {
+      "@type": "Location",
+      "location": "file:///gpfs/bbp.cscs.ch/data/project/proj106/nexus/bbp/lnmce/b/3/b/0/b/c/4/b/C020600B3-MT-C1.nwb",
+      "store": {
+        "@id": "https://bbp.epfl.ch/neurosciencegraph/data/0617f3c3-8d30-4054-807f-c3708922f973",
+        "@type": "RemoteDiskStorage",
+        "_rev": 1
+      }
+    },
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 4650499
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/lnmce/https%3A%2F%2Fbbp.epfl.ch%2Fneurosciencegraph%2Fdata%2F8ac30be7-0bd6-419b-bf15-f13813b633f6",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "5af93ca75350da72699e63c3317fc0f73613cd70756c3899e1b748c8c5f6d56d"
+    },
+    "encodingFormat": "application/nwb",
+    "name": "C020600B3-MT-C1.nwb"
+  },
+  "editorialNote": "Mapped original rat brain region 'http://purl.obolibrary.org/obo/UBERON_0008933' to new mouse brain region 'http://api.brain-map.org/api/v2/data/Structure/322'. ",
+  "generation": {
+    "@type": "Generation",
+    "activity": {
+      "@type": "Activity",
+      "hadProtocol": [
+        {
+          "@id": "https://bbp.epfl.ch/data/bbp/protocols/b64cd947-46d4-40e1-a594-d0c9e7a8dc4b",
+          "@type": [
+            "Entity",
+            "Protocol",
+            "ExperimentalProtocol"
+          ]
+        },
+        {
+          "@id": "https://bbp.epfl.ch/data/bbp/protocols/6306c024-c9a7-485d-a612-5eb0dc3b222c",
+          "@type": [
+            "Entity",
+            "Protocol",
+            "ExperimentalProtocol"
+          ]
+        }
+      ]
+    }
+  },
+  "hasPart": [
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ab20248a-19cd-43b4-8d47-2c6bacff85d4",
+      "@type": "TraceWebDataContainer"
+    }
+  ],
+  "identifier": "C020600B3-MT-C1",
+  "image": [
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ae9e278c-9296-4750-8179-cce950fc24e8",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRhyperpol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/66bf1863-72b3-4813-9e26-2eb0cd807dfe",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IV"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/a347ec7d-ae87-4c01-8821-b03ac1619f3b",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IV"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/77294b6a-7ff8-4984-a95c-503b441bc93e",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRhyperpol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/7b3d3e2e-b1d2-460d-b2a8-008a28cfb38e",
+      "about": "nsg:StimulationTrace",
+      "repetition": 5,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/1b7d1962-66c2-4258-8f0c-f9a2d10f57cc",
+      "about": "nsg:ResponseTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/da7fd782-1c7d-4a0c-b8b9-0222283f3acd",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Test_eCode"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/eb4de147-abfa-4cf2-9f04-294568688de1",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDthresh"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/b227cded-3825-4892-a2bd-0f6911a303ae",
+      "about": "nsg:ResponseTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/3ecd7253-26f7-41aa-8d2e-257c391a2222",
+      "about": "nsg:StimulationTrace",
+      "repetition": 4,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/00ab2646-8d0d-4716-8517-f00a2f5e482e",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APThreshold"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/2975e56a-94f0-4f3d-8a68-7fbb1587d0b2",
+      "about": "nsg:StimulationTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Test_eCode"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/8c402926-cfde-4f09-b09e-670ff69ddb25",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/d93548a2-42eb-4aa5-89bc-ad796347ef75",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/f674af5d-30de-4b63-9bee-0452fcc8eb55",
+      "about": "nsg:StimulationTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/5565798f-7dce-4a69-af91-cee82ec6c396",
+      "about": "nsg:ResponseTrace",
+      "repetition": 5,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/648ac661-1084-4c4e-8c6d-f18bc60c2c1b",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Test_eCode"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/6c3fd42f-f952-4bad-b16e-a99cba42aa4e",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDthresh"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/938f9fd1-0975-4c9f-9d9b-91bf0a436258",
+      "about": "nsg:ResponseTrace",
+      "repetition": 4,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/64f83ab0-ef80-4a7b-a168-1823e0268e4b",
+      "about": "nsg:StimulationTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/1ce9b0a7-aec7-42d2-8c2b-26eedacd5bb7",
+      "about": "nsg:ResponseTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Test_eCode"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ff5ab280-e27c-4737-a2dd-359b5f6b61ca",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APThreshold"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/db15f1e5-533e-4ab7-933b-97ec38249cec",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/c8fb5349-77fa-41d7-8c56-ccd903dfa23a",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ad297cb0-e923-4154-93b3-fd8c26cbdf9c",
+      "about": "nsg:StimulationTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Delta"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/36fb432b-8b75-4741-871e-d7c1d6b265c6",
+      "about": "nsg:ResponseTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/9a3ac62b-7fff-4729-97b1-d65e4b9880ac",
+      "about": "nsg:StimulationTrace",
+      "repetition": 4,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/6175360c-624a-4780-bab1-2083866d9ca4",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/317b4837-ed2e-4b3b-a1db-d3db062e1309",
+      "about": "nsg:ResponseTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/92a61727-d310-4042-8aaa-88742f66678c",
+      "about": "nsg:ResponseTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ae20dfda-342c-49db-be4e-3a129146fab9",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SpikeRec"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/90b9375d-542a-482d-999c-d573eb564dbc",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APDrop"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/e0df60ff-97b3-44c1-9193-8c4094614525",
+      "about": "nsg:StimulationTrace",
+      "repetition": 5,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/86dbd5a9-b803-4d90-be63-26ce61a68e51",
+      "about": "nsg:ResponseTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/f839359f-45d8-4c27-bf11-31d0a1ed7001",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Delta"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/9215af8e-14f9-4ee6-8431-67675ef2351f",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPhyperpol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/527bd071-877c-4d87-9ef4-59ad888c4a69",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/61818e6a-9b58-412e-92e2-e2d5b15ba117",
+      "about": "nsg:ResponseTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/a49e139b-b105-4655-9b6d-49177ab8f130",
+      "about": "nsg:StimulationTrace",
+      "repetition": 4,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/f1ae14e6-a020-41c6-be3a-e5f957dcdf71",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/02da2c5c-784f-4e85-a9c1-ba5f88546fd0",
+      "about": "nsg:StimulationTrace",
+      "repetition": 5,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4cb27308-4949-4749-86e5-3e600c7d8ed3",
+      "about": "nsg:ResponseTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SpikeRec"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/7daf0331-fadf-4c05-a30c-e7d9a0ec9347",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/e552f566-81cf-4bac-9bb1-2a37aaa5fe29",
+      "about": "nsg:ResponseTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/a39bc511-1f70-4cf6-b41c-ad5b59139907",
+      "about": "nsg:ResponseTrace",
+      "repetition": 4,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ba89ccfd-a9e7-42e3-a8c0-4b040ebe8e3d",
+      "about": "nsg:StimulationTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/9426d119-5e88-4d4a-b5b1-e44bf4a30d22",
+      "about": "nsg:ResponseTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Delta"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/eda8d375-ee36-4d83-a5e9-db6f6040c4eb",
+      "about": "nsg:StimulationTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/6fe6e2b3-b7e1-43de-90c3-c76fcff98eca",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/57baa043-4feb-4765-b66d-e82100f692f9",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APDrop"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/703e9210-d98a-463d-85c0-7af2aa989fe3",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SpikeRec"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/9b3ea70a-3d1e-4aeb-9c0a-c94d7613247a",
+      "about": "nsg:StimulationTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/21c6b9ab-aa49-4335-8b08-b44e0d1269ae",
+      "about": "nsg:StimulationTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/7b2ee8d7-3d62-4905-844b-ec4cb1d1f80d",
+      "about": "nsg:ResponseTrace",
+      "repetition": 5,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/34c31373-6d74-4f1b-8a1f-8e8aa19de5ba",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/e86205be-6e47-4e5a-8981-ef269929c4de",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPhyperpol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/57d0fbe9-64fc-49da-877a-8c9850503b9d",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Delta"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/d09f94d1-702b-4fc8-9f06-9ba80e2e89ac",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4478be6e-9792-4754-8735-ca9d30d34762",
+      "about": "nsg:ResponseTrace",
+      "repetition": 4,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/62cc99a9-03c9-492d-8fa7-3fb9cb7459ad",
+      "about": "nsg:StimulationTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/5fe99246-e16a-43f8-8f85-7b614fac30ea",
+      "about": "nsg:StimulationTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/57256e99-e22b-4ac5-a572-72fc40dd07b3",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDdepol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/c336df83-3004-498b-98a4-53049beadfce",
+      "about": "nsg:StimulationTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SpikeRec"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/0c6eb593-e282-4645-8e8a-43bd26d689e5",
+      "about": "nsg:ResponseTrace",
+      "repetition": 5,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/04d273d5-965d-4d92-8a88-fba575a98a74",
+      "about": "nsg:StimulationTrace",
+      "repetition": 5,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/3b232d91-96fa-438d-9ac1-ad2eba42a994",
+      "about": "nsg:ResponseTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/3ce1a096-d5ea-4e8e-b21f-e5ccd9d941a7",
+      "about": "nsg:ResponseTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/a4c17cd4-7334-4bb0-8ee3-6ff993185bcb",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/c8fee068-e534-4ffd-b7e5-f82d7b06a0f9",
+      "about": "nsg:StimulationTrace",
+      "repetition": 4,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/8b6bd579-abdd-4487-8ba3-41d0e2d202be",
+      "about": "nsg:StimulationTrace",
+      "repetition": 6,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/2dfb13a4-f706-48af-b950-825e67a0ae96",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Spontaneous"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/2e184342-49ad-4604-9a5c-f1418933f2a8",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDhyperpol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/20110967-9343-43c7-a21f-e6d8249d5541",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4fe2de25-8e5a-4f68-bce1-69310bfe070a",
+      "about": "nsg:ResponseTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/bc121d69-55dd-469f-ba25-2d424307aeda",
+      "about": "nsg:StimulationTrace",
+      "repetition": 3,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/3392964b-e25f-4bf7-a30d-892b31b23ee2",
+      "about": "nsg:ResponseTrace",
+      "repetition": 5,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4f41777c-9f54-490e-8c55-d5e76ef836b6",
+      "about": "nsg:ResponseTrace",
+      "repetition": 4,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/0b348a46-ff74-4dfe-8189-9b7744bc7547",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/aeea06c5-2130-49b2-a80e-57c692b63a06",
+      "about": "nsg:StimulationTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/203e5986-5ed5-42df-8f90-1cd93b26e501",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Spontaneous"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/8b717512-7b1e-44d2-a83d-01ff36e5d1ff",
+      "about": "nsg:ResponseTrace",
+      "repetition": 6,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/d5628005-0c1b-4c28-8970-f8b160493768",
+      "about": "nsg:ResponseTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDhyperpol"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/5195e966-d4fb-4032-ada4-861729ed8439",
+      "about": "nsg:StimulationTrace",
+      "repetition": 2,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPrest"
+      }
+    },
+    {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/b04f5a21-e59e-423b-87f2-baa55ebdd42f",
+      "about": "nsg:StimulationTrace",
+      "repetition": 1,
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest"
+      }
+    }
+  ],
+  "name": "C020600B3-MT-C1",
+  "note": "NMC SSCx",
+  "stimulus": [
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform",
+        "label": "APWaveform"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APDrop",
+        "label": "APDrop"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRdepol",
+        "label": "IRdepol"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest",
+        "label": "IRrest"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Spontaneous",
+        "label": "Spontaneous"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPdepol",
+        "label": "ADHPdepol"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IV",
+        "label": "IV"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Test_eCode",
+        "label": "Test_eCode"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDthresh",
+        "label": "IDthresh"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPrest",
+        "label": "ADHPrest"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest",
+        "label": "IDRest"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP",
+        "label": "sAHP"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPhyperpol",
+        "label": "ADHPhyperpol"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APThreshold",
+        "label": "APThreshold"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDhyperpol",
+        "label": "IDhyperpol"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRhyperpol",
+        "label": "IRhyperpol"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SpikeRec",
+        "label": "SpikeRec"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDdepol",
+        "label": "IDdepol"
+      }
+    },
+    {
+      "@type": "Stimulus",
+      "stimulusType": {
+        "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Delta",
+        "label": "Delta"
+      }
+    }
+  ],
+  "subject": {
+    "@type": "Subject",
+    "age": {
+      "period": "Post-natal",
+      "unitCode": "days",
+      "value": 14
+    },
+    "species": {
+      "@id": "http://purl.obolibrary.org/obo/NCBITaxon_10116",
+      "label": "Rattus norvegicus"
+    }
+  }
+}
