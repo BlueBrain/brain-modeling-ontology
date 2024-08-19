@@ -9,7 +9,7 @@
   "@type": "Schema",
   "imports": [
     "nsg:commons/entity",
-    "nsg:commons/labeledontologyentity",
+    "nsg:commons/trace",
     "nsg:commons/quantitativevalue"
   ],
   "shapes": [
@@ -29,9 +29,8 @@
               "path": "nsg:eModel"
             },
             {
-              "description": "The shape of the stimulus",
-              "name": "Stimulus",
-              "node": "this:StimulusShape",
+              "name": "stimulus",
+              "node": "nsg:commons/trace/shapes/StimulusShape",
               "path": "nsg:stimulus"
             },
             {
@@ -45,28 +44,6 @@
       ],
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:ElectrophysiologyFeature"
-    },
-    {
-      "@id": "https://neuroshapes.org/dash/electrophysiologyfeature/shapes/StimulusShape",
-      "@type": "NodeShape",
-      "label": "Stimulus shape definition",
-      "property": [
-        {
-          "maxCount": 1,
-          "name": "Stimulus type",
-          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
-          "path": "nsg:stimulusType"
-        },
-        {
-          "name": "Stimulus target",
-          "path": "nsg:stimulusTarget"
-        },
-        {
-          "datatype": "xsd:string",
-          "maxCount": 1,
-          "path": "nsg:recordingLocation"
-        }
-      ]
     },
     {
       "@id": "https://neuroshapes.org/dash/electrophysiologyfeature/shapes/FeatureShape",

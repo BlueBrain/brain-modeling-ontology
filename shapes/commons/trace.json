@@ -1,11 +1,18 @@
 {
-  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/trace/shapes/"
+    }
+  ],
   "@id": "https://neuroshapes.org/commons/trace",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/entity",
+    "nsg:commons/dataset",
     "nsg:commons/quantitativevalue",
-    "nsg:commons/unit"
+    "nsg:commons/unit",
+    "nsg:commons/stimulustype",
+    "nsg:commons/typedlabeledontologyterm"
   ],
   "shapes": [
     {
@@ -13,10 +20,18 @@
       "@type": "NodeShape",
       "and": [
         {
-          "node": "nsg:commons/entity/shapes/EntityShape"
+          "node": "nsg:commons/dataset/shapes/DatasetShape"
         },
         {
           "property": [
+             {
+              "path": "schema:hasPart",
+              "qualifiedValueShape":
+                {
+                  "class": "bmo:TraceWebDataContainer"
+                },
+              "qualifiedMinCount": 1
+            },
             {
               "datatype": "xsd:integer",
               "description": "Recording channel of trace",
@@ -31,12 +46,77 @@
               "name": "Time step",
               "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
               "path": "nsg:timeStep"
+            },
+            {
+              "name": "stimulus",
+              "node": "this:StimulusShape",
+              "path": "nsg:stimulus"
+            },
+            {
+              "name": "image",
+              "path": "schema:image",
+              "node": "this:ImageShape"
             }
           ]
         }
       ],
       "label": "Electrophysiology trace shape definition. A trace should have an IRI as identifier",
       "nodeKind": "sh:BlankNodeOrIRI"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/trace/shapes/StimulusShape",
+      "@type": "NodeShape",
+      "label": "Stimulus shape definition",
+      "description": "The shape of the stimulus",
+      "name": "Stimulus",
+      "and": [
+        {
+          "node": "nsg:commons/stimulustype/shapes/WithStimulusTypePropertyShape"
+        },
+        {
+          "property": [
+            {
+              "name": "Stimulus target",
+              "path": "nsg:stimulusTarget"
+            },
+            {
+              "datatype": "xsd:string",
+              "maxCount": 1,
+              "path": "nsg:recordingLocation"
+            },
+            {
+              "maxCount": 1,
+              "name": "eCode",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/EcodeOntologyTermShape",
+              "path": "nsg:eCode"
+            },
+            {
+              "datatype": "xsd:string",
+              "maxCount": 1,
+              "path": "schema:description"
+            },
+            {
+              "name": "Tolerance",
+              "path": "nsg:tolerance"
+            },
+            {
+              "datatype": "xsd:boolean",
+              "maxCount": 1,
+              "path": "nsg:threshold"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/trace/shapes/ImageShape",
+      "@type": "NodeShape",
+      "nodeKind": "sh:IRI",
+      "label": "Image shape definition",
+      "node": "nsg:commons/stimulustype/shapes/WithStimulusTypePropertyShape",
+      "description": "image",
+      "name": "Image"
     }
+
   ]
 }

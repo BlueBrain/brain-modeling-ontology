@@ -1,13 +1,18 @@
+from contextlib import redirect_stdout
+import io
 import os
+import json
+
+from collections import defaultdict
+from typing import Dict, Optional, Tuple
 from rdflib import RDF
 from rdflib.paths import ZeroOrMore
 from rdflib.term import URIRef, BNode
 import pytest
 import requests
-import copy
 
-# from pyshacl import validate
-import json
+
+from kgforge.core import Resource, KnowledgeGraphForge
 from bmo.utils import NXV, SHACL, SH
 
 from bmo.schema_to_type_mapping import (
@@ -100,8 +105,9 @@ def test_get_schema_to_target_classes(all_schema_graphs, forge):
 def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, ontology_list):
     _, schema_graphs_dict, schema_id_to_filepath_dict = all_schema_graphs
     jsonld_context_from_ontologies, _ = data_jsonld_context
+
     for schema_file, schema_content_dict in schema_graphs_dict.items():
-        used_shapes = get_referenced_shapes(
+        used_shapes = _get_referenced_shapes(
             None, schema_content_dict["graph"], SH.node | SH.property
         )  # used shapes
         already_imported_schemas = []
@@ -117,10 +123,10 @@ def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, ontology_l
         )
         for imported_schema in transitive_imported_schemas:
             # check imported schemas are defined
-            assert imported_schema in schema_id_to_filepath_dict
+            assert imported_schema in schema_id_to_filepath_dict, f"{imported_schema} couldn't be found in any file"
             # there is a file within which the imported_schema is defined
             # check no recursive schema import
-            imported_schema_content_dict = get_imported_schema_content_dict(
+            imported_schema_content_dict = _get_imported_schema_content_dict(
                 schema_graphs_dict, schema_id_to_filepath_dict, imported_schema
             )
             if "imports" in imported_schema_content_dict:
@@ -139,7 +145,7 @@ def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, ontology_l
                 message = (
                     f"The schema {schema_content_dict['id']} located in {schema_file} "
                     f"imported the schema {imported_schema} "
-                    + f"that recursively imports it: {transitive_imported_imported_schemas}. "
+                    f"that recursively imports it: {transitive_imported_imported_schemas}. "
                     f"A schema should not be (recursively) imported by one of its imported schema"
                 )
 
@@ -150,10 +156,10 @@ def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, ontology_l
 
         # check imported schemas are actually used
         for imported_schema in directly_imported_schemas:
-            imported_schema_content_dict = get_imported_schema_content_dict(
+            imported_schema_content_dict = _get_imported_schema_content_dict(
                 schema_graphs_dict, schema_id_to_filepath_dict, imported_schema
             )
-            imported_shapes = get_referenced_shapes(
+            imported_shapes = _get_referenced_shapes(
                 URIRef(imported_schema),
                 imported_schema_content_dict["graph"],
                 NXV.shapes | (NXV.shapes / SH.property),
@@ -163,7 +169,7 @@ def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, ontology_l
                 f"The schema {schema_content_dict['id']} located in {schema_file} "
                 f"imported the schema {imported_schema} but is not using a shape from it. "
                 f"Used shapes are: {used_shapes} while imported shapes are: {imported_shapes}."
-                + "For each imported schema, there should be at least one used shape."
+                "For each imported schema, there should be at least one used shape."
             )
 
             assert (len(used_shapes) == 0) or (
@@ -174,16 +180,16 @@ def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, ontology_l
         for used_shape in used_shapes:
             imported_schema_defines_shape = []
             imported_schema_defines_shape.append(
-                is_shape_defined_by_schema(
+                _is_shape_defined_by_schema(
                     schema_content_dict["id"], schema_content_dict["graph"], used_shape
                 )
             )
             for imported_schema in set(transitive_imported_schemas):
-                imported_schema_content_dict = get_imported_schema_content_dict(
+                imported_schema_content_dict = _get_imported_schema_content_dict(
                     schema_graphs_dict, schema_id_to_filepath_dict, imported_schema
                 )
                 imported_schema_defines_shape.append(
-                    is_shape_defined_by_schema(
+                    _is_shape_defined_by_schema(
                         imported_schema,
                         imported_schema_content_dict["graph"],
                         used_shape,
@@ -192,8 +198,8 @@ def test_all_schema_are_valid(all_schema_graphs, data_jsonld_context, ontology_l
 
             message = (
                 f"The schema '{schema_content_dict['id']}' located in {schema_file} "
-                f"used a shape {used_shape} defined by {imported_schema_defines_shape.count(True)}"
-                + f"(imported or local) schemas. Imported schemas are: {transitive_imported_schemas}. "
+                f"used a shape {used_shape} defined by {imported_schema_defines_shape.count(True)} "
+                f"(imported or local) schemas. Imported schemas are: {transitive_imported_schemas}. "
                 f"Each used shapes should be defined by local or imported schemas."
             )
 
@@ -213,7 +219,7 @@ def get_imported_schemas(
     transitive_imports=True,
     ontology_list=[],
 ):
-    print("what is ontology list", ontology_list)
+    # print("what is ontology list", ontology_list)
     imported_schemas = set()
     transitive_imported_schemas = set()
     if schema_content_dict["id"] not in already_imported_schemas:
@@ -246,7 +252,7 @@ def get_imported_schemas(
     return imported_schemas, transitive_imported_schemas
 
 
-def is_shape_defined_by_schema(schema_id, schema_graph, shape):
+def _is_shape_defined_by_schema(schema_id, schema_graph, shape):
     schema_defines_shape = [
         NXV.shapes,
         NXV.shapes
@@ -276,7 +282,7 @@ def is_shape_defined_by_schema(schema_id, schema_graph, shape):
     )
 
 
-def get_imported_schema_content_dict(
+def _get_imported_schema_content_dict(
     schema_graphs_dict, schema_id_to_filepath_dict, imported_schema
 ):
     imported_schema_file = schema_id_to_filepath_dict[imported_schema]
@@ -284,12 +290,12 @@ def get_imported_schema_content_dict(
     return imported_schema_content_dict
 
 
-def get_referenced_shapes(schema_uri, schema_graph, sparql_path):
-    defined_shapes = []
-    for defined_shape in schema_graph.objects(schema_uri, sparql_path):
-        if not isinstance(defined_shape, BNode):
-            defined_shapes.append(defined_shape)
-    return defined_shapes
+def _get_referenced_shapes(schema_uri, schema_graph, sparql_path):
+    return [
+        defined_shape
+        for defined_shape in schema_graph.objects(schema_uri, sparql_path)
+        if not isinstance(defined_shape, BNode)
+    ]
 
 
 @pytest.fixture(scope="session")
@@ -308,186 +314,188 @@ def schemas_classes_dicts(forge, all_schema_graphs):
 
 def check_type_in_loaded_context(
     example_file, type_, class_schema, schema_to_file_dict, schema_dict
-):
+) -> Tuple[bool, Optional[str]]:
     if type_ not in class_schema:
-        raise ValueError(
-            f"Not found {type_} in class_schema, possible keys: {class_schema.keys()}"
-        )
+        return False, f"Not found {type_} in class_schema, possible keys: {class_schema.keys()}"
 
     schema_id = class_schema[type_]
     if schema_id not in schema_to_file_dict:
-        raise ValueError(
-            f"Not found source file for schema with id {schema_id}, possible keys are: {schema_to_file_dict.keys()}"
-        )
+        return False, f"Not found source file for schema with id {schema_id}, possible keys are: {schema_to_file_dict.keys()}"
+
     schema_file = schema_to_file_dict[schema_id]
     class_id = schema_dict[schema_file]
+
     if not class_id:
-        raise ValueError(
-            f"Class id for {type_} is {class_id}, with example_file: {example_file}, {schema_dict.keys()}"
-        )
+        return False, f"Class id for {type_} is {class_id}, with example_file: {example_file}, {schema_dict.keys()}"
 
     schema_jsonld = schema_dict[schema_file]["jsonld"]
-    assert schema_id == schema_jsonld["@id"]
+
+    if schema_id != schema_jsonld["@id"]:
+        return False, f"{schema_id} != {schema_jsonld['@id']}"
 
     if not schema_file:
-        raise ValueError(
-            f"Schema for the type {type_} was not found with class id {class_id}."
-        )
+        return False, f"Schema for the type {type_} was not found with class id {class_id}."
 
     if schema_file not in schema_dict:
-        raise ValueError(
-            f"Schema file {schema_file} was not found in the schema dictionary: {schema_dict.keys()}"
-        )
+        return False, f"Schema file {schema_file} was not found in the schema dictionary: {schema_dict.keys()}"
+
+    return True, None
 
 
 def test_schemas_validate_examples(
     schemas_classes_dicts, forge_rdfmodel, resource_examples, new_context_path
 ):
-    "Check that schemas validate againts sample resources"
+    """Check that schemas validate against sample resources"""
     # Get resources and classes mapping
     schema_dict, schema_to_file_dict, class_schema = schemas_classes_dicts
     class_lower = {k.lower(): k for k in class_schema.keys()}
 
+    errs = {}
     for example_file, example in resource_examples.items():
         type_ = class_lower[example_file.split(".json")[0]]
-        check_type_in_loaded_context(
+
+        success, err_message = check_type_in_loaded_context(
             example_file, type_, class_schema, schema_to_file_dict, schema_dict
         )
+        if not success:
+            errs[example_file] = err_message
+            continue
+
         schema_id = class_schema[type_]
-        # Run validation
-        try:
-            print(" --- Validating ", example_file)
-            # change the context iri to be the one of the directory
-            example["@context"] = new_context_path
-            example_resource = forge_rdfmodel._store.service.to_resource(example)
-            forge_rdfmodel.validate(example_resource, type_=type_)
-            if not example_resource._last_action.succeeded:
-                raise ValueError(
-                    f"Local validation failed: {example_resource._last_action.message}, {type_}"
-                )
-        except Exception as e:
-            raise ValueError(
-                f"The example from file {example_file} \n {example}\n"
-                f"failed to validate schema {schema_id}, with error {e}"
-            )
+
+        success, msg = _try_validation(
+            forge=forge_rdfmodel, example_file=example_file, example=example, type_=type_,
+            schema_id=schema_id, success_expected=True, new_context_path=new_context_path
+        )
+
+        if not success:
+            errs[example_file] = msg
+
+    assert len(errs) == 0, json.dumps(errs, indent=4)
+
+
+def _try_validation(
+        forge: KnowledgeGraphForge, example_file: str,
+        example: Dict, type_: str, schema_id: str, success_expected: bool, new_context_path: str,
+        resource_edit=lambda x: x
+):
+    # change the context iri to be the one of the directory
+    example["@context"] = new_context_path
+    example_resource = forge._store.service.to_resource(example)
+    example_resource = resource_edit(example_resource)
+
+    if example_resource is None:
+        return True, None
+
+    try:
+        f = io.StringIO()
+        with redirect_stdout(f):
+            forge.validate(example_resource, type_=type_)
+        success = example_resource._last_action.succeeded == success_expected
+
+        if not success:
+            err_message = f"Local validation failed: {example_resource._last_action.message}, {type_}" \
+                if success_expected else f"Local validation should have failed for type: {type_}"
+        else:
+            err_message = None
+
+        return success, err_message
+
+    except Exception as e:
+        jsonified_resource = json.dumps(forge.as_json(example_resource), indent=4)
+
+        return False, f"The example from file {example_file} \n {jsonified_resource}\n" \
+                      f"raised an error when attempting to validate schema {schema_id}, with error {e}"
 
 
 def test_schemas_validate_wrong_examples(
     schemas_classes_dicts, forge_rdfmodel, resource_examples, new_context_path
 ):
-    "Check that schemas validate againts sample resources"
+    """Check that schemas validate against sample resources"""
     # Get resources and classes mapping
     _, _, class_schema = schemas_classes_dicts
     class_lower = {k.lower(): k for k in class_schema.keys()}
 
-    def _try_validation(
-        forge, example, example_file, example_resource, type_, schema_id
-    ):
-        try:
-            # change the context iri to be the one of the directory
-            forge.validate(example_resource, type_=type_)
-            if example_resource._last_action.succeeded:
-                raise ValueError(
-                    f"Local validation should have failed for type: {type_}"
-                )
-        except Exception as e:
-            raise ValueError(
-                f"Error in {example}:\n {json.dumps(forge.as_json(example_resource), indent=4)}\n"
-                f"validated againts schema {schema_id}, with error {e}"
-            )
+    def edit_brain_region(res: Resource) -> Optional[Resource]:
+        if hasattr(res, "brainLocation"):
+            res.brainLocation.brainRegion.id = "http://example_hierarchy_allen/549"
+            return res
+        return None
+
+    def edit_subject_species(res: Resource) -> Optional[Resource]:
+        if hasattr(res, "subject"):
+            if hasattr(res.subject, "species"):
+                res.subject.species.id = "http://example.obolibrary.org/Mouse"
+                return res
+        return None
+
+    def edit_subject_strain(res: Resource) -> Optional[Resource]:
+        if hasattr(res, "subject"):
+            if hasattr(res.subject, "strain"):
+                res.subject.strain.id = "http://example.obolibrary.org/AWrongStrainId"
+                return res
+        return None
+
+    errs = defaultdict(list)
 
     for example_file, example in resource_examples.items():
         type_ = class_lower[example_file.split(".json")[0]]
         schema_id = class_schema[type_]
-        example["@context"] = new_context_path
-        example_resource = forge_rdfmodel._store.service.to_resource(example)
+
         # test wrong brainRegion
-        if hasattr(example_resource, "brainLocation"):
-            correct_brain_region = copy.deepcopy(
-                example_resource.brainLocation.brainRegion
-            )
-            # change to wrong id
-            example_resource.brainLocation.brainRegion.id = (
-                "http://example_hierarchy_allen/549"
-            )
-            # Check validation FAILS
-            _try_validation(
-                forge_rdfmodel,
-                example,
-                example_file,
-                example_resource,
-                type_,
-                schema_id,
-            )
-            # # Change to wrong label
-            # example_resource.brainLocation.brainRegion.id = correct_brain_region.id
-            # example_resource.brainLocation.brainRegion.label = (
-            #     "For Under Capacity Keys of Brain Stem"
-            # )
-            # # Check validation FAILS
-            # _try_validation(
-            #     forge_rdfmodel,
-            #     example,
-            #     example_file,
-            #     example_resource,
-            #     type_,
-            #     schema_id,
-            # )
-            example_resource.brainLocation.brainRegion = correct_brain_region
-        # test wrong subject
-        if hasattr(example_resource, "subject"):
-            correct_subject = copy.deepcopy(example_resource.subject)
-            # Change to wrong id
-            example_resource.subject.species.id = "http://example.obolibrary.org/Mouse"
-            # Check validation FAILS
-            _try_validation(
-                forge_rdfmodel,
-                example,
-                example_file,
-                example_resource,
-                type_,
-                schema_id,
-            )
-            # # Change  to wrong label
-            # example_resource.subject.species.id = correct_subject.species.id
-            # example_resource.subject.species.label = (
-            #     "A species label not in the ontology"
-            # )
-            # # Check validation FAILS
-            # _try_validation(
-            #     forge_rdfmodel,
-            #     example,
-            #     example_file,
-            #     example_resource,
-            #     type_,
-            #     schema_id,
-            # )
-            # test wrong strain
-            if hasattr(example_resource.subject, "strain"):
-                example_resource.subject.strain.id = (
-                    "http://example.obolibrary.org/AWrongStrainId"
-                )
-                # Check validation FAILS
-                _try_validation(
-                    forge_rdfmodel,
-                    example,
-                    example_file,
-                    example_resource,
-                    type_,
-                    schema_id,
-                )
-                # # Change the label
-                # example_resource.subject.strain.id = correct_subject.strain.id
-                # example_resource.subject.strain.label = (
-                #     "A strain label not in the ontology"
-                # )
-                # # Check validation FAILS
-                # _try_validation(
-                #     forge_rdfmodel,
-                #     example,
-                #     example_file,
-                #     example_resource,
-                #     type_,
-                #     schema_id,
-                # )
-            example_resource.subject = correct_subject
+        # change to wrong id
+        success_flag_a, msg_a = _try_validation(
+            forge=forge_rdfmodel, example_file=example_file, example=example, type_=type_,
+            schema_id=schema_id, success_expected=False, new_context_path=new_context_path,
+            resource_edit=edit_brain_region
+        )
+
+        if not success_flag_a:
+            errs[example_file].append(msg_a + " - Wrong brain region was still successful")
+
+        # # Change to wrong label
+        # example_resource.brainLocation.brainRegion.id = correct_brain_region.id
+        # example_resource.brainLocation.brainRegion.label = (
+        #     "For Under Capacity Keys of Brain Stem"
+        # )
+        # # Check validation FAILS
+        # _try_validation(example_file, example_resource, type_, schema_id)
+
+        # test wrong subject species
+        # Change to wrong id
+        success_flag_b, msg_b = _try_validation(
+            forge=forge_rdfmodel, example_file=example_file, example=example, type_=type_,
+            schema_id=schema_id, success_expected=False, new_context_path=new_context_path,
+            resource_edit=edit_subject_species
+        )
+        if not success_flag_b:
+            errs[example_file].append(msg_b + " - Wrong subject species was still successful")
+
+        # # Change to wrong label
+        # example_resource.subject.species.id = correct_subject.species.id
+        # example_resource.subject.species.label = (
+        #     "A species label not in the ontology"
+        # )
+        # # Check validation FAILS
+        # _try_validation(example_file, example_resource, type_, schema_id)
+
+        # test wrong subject strain
+        # Change to wrong id
+        success_flag_c, msg_c = _try_validation(
+            forge=forge_rdfmodel, example_file=example_file, example=example, type_=type_,
+            schema_id=schema_id, success_expected=False, new_context_path=new_context_path,
+            resource_edit=edit_subject_strain
+        )
+
+        if not success_flag_c:
+            errs[example_file].append(msg_c + " - Wrong subject strain was still successful")
+
+        # # Change the label
+        # example_resource.subject.strain.id = correct_subject.strain.id
+        # example_resource.subject.strain.label = (
+        #     "A strain label not in the ontology"
+        # )
+        # # Check validation FAILS
+        # _try_validation(example_file, example_resource, type_, schema_id)
+
+    assert len(errs) == 0, json.dumps(errs, indent=4)
