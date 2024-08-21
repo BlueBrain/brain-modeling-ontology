@@ -2716,6 +2716,12 @@
     "cellCompositionConfig": {
       "@id": "bmo:cellCompositionConfig"
     },
+    "cellCompositionSummary": {
+      "@id": "bmo:cellCompositionSummary"
+    },
+    "cellCompositionVolume": {
+      "@id": "bmo:cellCompositionVolume"
+    },
     "cellPositionConfig": {
       "@id": "bmo:cellPositionConfig"
     },
