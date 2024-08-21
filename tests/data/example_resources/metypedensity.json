@@ -1,0 +1,204 @@
+{
+  "@context": [
+    "https://bluebrain.github.io/nexus/contexts/metadata.json",
+    "https://bbp.neuroshapes.org"
+  ],
+  "@id": "https://bbp.epfl.ch/neurosciencegraph/data/e142d39c-003a-4aef-b7d3-e826ec1046db",
+  "@type": [
+    "METypeDensity",
+    "NeuronDensity",
+    "CellDensityDataLayer",
+    "VolumetricDataLayer"
+  ],
+  "annotation": [
+    {
+      "@type": [
+        "Annotation",
+        "MTypeAnnotation"
+      ],
+      "hasBody": {
+        "@id": "ilx:0383225",
+        "@type": [
+          "AnnotationBody",
+          "MType"
+        ],
+        "label": "L5_LBC"
+      },
+      "name": "M-type Annotation"
+    },
+    {
+      "@type": [
+        "Annotation",
+        "ETypeAnnotation"
+      ],
+      "hasBody": {
+        "@id": "ilx:0738204",
+        "@type": [
+          "AnnotationBody",
+          "EType"
+        ],
+        "label": "cIR"
+      },
+      "name": "E-type Annotation"
+    }
+  ],
+  "atlasRelease": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+    "@type": [
+      "BrainAtlasRelease",
+      "AtlasRelease",
+      "Entity"
+    ],
+    "_rev": 10
+  },
+  "brainLocation": {
+    "@type": "BrainLocation",
+    "atlasSpatialReferenceSystem": {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/allen_ccfv3_spatial_reference_system",
+      "@type": [
+        "AtlasSpatialReferenceSystem",
+        "BrainAtlasSpatialReferenceSystem"
+      ]
+    },
+    "brainRegion": {
+      "@id": "http://api.brain-map.org/api/v2/data/Structure/997",
+      "label": "root"
+    },
+    "layer": {
+      "@id": "uberon:0005394",
+      "label": "L5"
+    }
+  },
+  "bufferEncoding": "gzip",
+  "cellType": [
+    {
+      "@id": "ilx:0383225",
+      "label": "L5_LBC"
+    },
+    {
+      "@id": "ilx:0738204",
+      "label": "cIR"
+    }
+  ],
+  "componentEncoding": "float64",
+  "contribution": [
+    {
+      "@type": "Contribution",
+      "agent": {
+        "@id": "https://bbp.epfl.ch/nexus/v1/realms/bbp/users/service-account-brain-modeling-ontology-ci-cd",
+        "@type": [
+          "Agent",
+          "Person"
+        ]
+      },
+      "hadRole": {
+        "@id": "nsg:BrainAtlasPipelineExecutionRole",
+        "label": "Brain Atlas Pipeline Executor role"
+      }
+    },
+    {
+      "@type": "Contribution",
+      "agent": {
+        "@id": "https://www.grid.ac/institutes/grid.5333.6",
+        "@type": [
+          "Agent",
+          "Organization"
+        ]
+      }
+    }
+  ],
+  "dataSampleModality": "quantity",
+  "derivation": {
+    "@type": "Derivation",
+    "entity": {
+      "@id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+      "@type": "Entity"
+    }
+  },
+  "description": "L5_LBC|cIR_INH_densities density volume for the original Allen ccfv3 annotation at 25 um with the isocortex layer 2 and 3 split. It has been generated from a probability mapping, using the corrected nissl volume and transplanted..",
+  "dimension": [
+    {
+      "@type": "ComponentDimension",
+      "name": "intensity",
+      "size": 1
+    },
+    {
+      "@type": "SpaceDimension",
+      "size": 566,
+      "unitCode": "um"
+    },
+    {
+      "@type": "SpaceDimension",
+      "size": 320,
+      "unitCode": "um"
+    },
+    {
+      "@type": "SpaceDimension",
+      "size": 456,
+      "unitCode": "um"
+    }
+  ],
+  "distribution": {
+    "@type": "DataDownload",
+    "atLocation": {
+      "@type": "Location",
+      "location": "file:///gpfs/bbp.cscs.ch/data/project/proj39/nexus/bbp/atlas/0/a/e/e/a/4/2/0/L5_LBC%7CcIR_INH_densities.nrrd",
+      "store": {
+        "@id": "https://bbp.epfl.ch/neurosciencegraph/data/3806a8d9-0130-4535-bac6-3b1fecf855f5",
+        "@type": "RemoteDiskStorage",
+        "_rev": 1
+      }
+    },
+    "contentSize": {
+      "unitCode": "bytes",
+      "value": 18344822
+    },
+    "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp/atlas/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp%2Fatlas%2F27d3bcbc-1674-467a-b4c8-acdf355bfa67",
+    "digest": {
+      "algorithm": "SHA-256",
+      "value": "9098bad923aa4b269ceaf2abc758ae7593e2a06b1612abc9e20447abc672a374"
+    },
+    "encodingFormat": "application/nrrd",
+    "name": "L5_LBC|cIR_INH_densities.nrrd"
+  },
+  "endianness": "little",
+  "fileExtension": "nrrd",
+  "isRegisteredIn": {
+    "@id": "https://bbp.epfl.ch/neurosciencegraph/data/allen_ccfv3_spatial_reference_system",
+    "@type": [
+      "AtlasSpatialReferenceSystem",
+      "BrainAtlasSpatialReferenceSystem"
+    ]
+  },
+  "name": "L5_LBC|cIR_INH_densities",
+  "resolution": {
+    "unitCode": "um",
+    "value": 25
+  },
+  "sampleType": "intensity",
+  "subject": {
+    "@type": "Subject",
+    "species": {
+      "@id": "http://purl.obolibrary.org/obo/NCBITaxon_10090",
+      "label": "Mus musculus"
+    }
+  },
+  "worldMatrix": [
+    25,
+    0,
+    0,
+    0,
+    0,
+    25,
+    0,
+    0,
+    0,
+    0,
+    25,
+    0,
+    -350,
+    0,
+    0,
+    1
+  ]
+}
