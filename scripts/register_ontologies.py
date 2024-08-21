@@ -489,6 +489,14 @@ def parse_and_register_ontologies(arguments: argparse.Namespace):
         f"{'Finish' if data_update else 'Ignored'}\n"
     )
 
+    # Refresh forge instance after context changes to re-load context
+    forge, forge_schema, forge_atlas = _initialize_forge_objects(
+        endpoint=endpoint,
+        token=token,
+        input_bucket=bucket,
+        atlas_parcellation_ontology_bucket=atlas_parcellation_ontology_bucket,
+    )
+
     logger.info("Preparing ontology classes - Start")
     new_jsonld_context_dict = new_jsonld_context_document["@context"]
     new_jsonld_context_dict.update(_get_ontology_annotation_lang_context())
