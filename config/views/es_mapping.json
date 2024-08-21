@@ -329,6 +329,14 @@
           }
         }
       },
+      "subClassOf": {
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        },
+        "type": "keyword"
+      },
       "subject": {
         "type": "object"
       },
