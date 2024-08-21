@@ -115,12 +115,10 @@
       "@id": "nsg:Analysis"
     },
     "AnalysisConfiguration": {
-      "@id": "nsg:AnalysisConfiguration",
-      "@type": "@id"
+      "@id": "nsg:AnalysisConfiguration"
     },
     "AnalysisReport": {
-      "@id": "nsg:AnalysisReport",
-      "@type": "@id"
+      "@id": "nsg:AnalysisReport"
     },
     "AnalysisResult": {
       "@id": "nsg:AnalysisResult"
@@ -381,8 +379,7 @@
       "@id": "https://bbp.epfl.ch/ontologies/core/bmo/CalciumDynamics"
     },
     "CampaignAnalysis": {
-      "@id": "nsg:CampaignAnalysis",
-      "@type": "@id"
+      "@id": "nsg:CampaignAnalysis"
     },
     "CanonicalMorphologyModel": {
       "@id": "bmo:CanonicalMorphologyModel"
@@ -1960,8 +1957,7 @@
       "@id": "https://bbp.epfl.ch/ontologies/core/efeatures/SagRatio2"
     },
     "Schema": {
-      "@id": "https://bluebrain.github.io/nexus/vocabulary/Schema",
-      "@type": "@id"
+      "@id": "https://bluebrain.github.io/nexus/vocabulary/Schema"
     },
     "ScholarlyArticle": {
       "@id": "schema:ScholarlyArticle"
@@ -2018,8 +2014,7 @@
       "@id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SetISITest"
     },
     "SimWriterConfiguration": {
-      "@id": "nsg:SimWriterConfiguration",
-      "@type": "@id"
+      "@id": "nsg:SimWriterConfiguration"
     },
     "SimilarityBoostingFactor": {
       "@id": "nsg:SimilarityBoostingFactor"
@@ -2031,8 +2026,7 @@
       "@id": "nsg:Simulation"
     },
     "SimulationCampaign": {
-      "@id": "nsg:SimulationCampaign",
-      "@type": "@id"
+      "@id": "nsg:SimulationCampaign"
     },
     "SimulationCampaignAnalysis": {
       "@id": "bmo:SimulationCampaignAnalysis"
@@ -2554,8 +2548,7 @@
       "@id": "nsg:WorkflowEngine"
     },
     "WorkflowExecution": {
-      "@id": "nsg:WorkflowExecution",
-      "@type": "@id"
+      "@id": "nsg:WorkflowExecution"
     },
     "about": {
       "@id": "schema:about",
