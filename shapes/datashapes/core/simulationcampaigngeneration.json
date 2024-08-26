@@ -3,13 +3,13 @@
   "@id": "https://bbp.epfl.ch/shapes/dash/simulationcampaigngeneration",
   "@type": "Schema",
   "imports": [
-    "https://bbp.epfl.ch/shapes/commons/bbpworkflowactivity"
+    "https://neuroshapes.org/commons/entity"
   ],
   "shapes": [
     {
       "@id": "https://bbp.epfl.ch/shapes/dash/simulationcampaigngeneration/shapes/SimulationCampaignGenerationShape",
       "@type": "NodeShape",
-      "node": "https://bbp.epfl.ch/shapes/commons/bbpworkflowactivity/shapes/BbpWorkflowActivityShape",
+      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
       "targetClass": "bmo:SimulationCampaignGeneration"
     }
   ]
