@@ -23,9 +23,17 @@
               "path": "bmo:used_config",
               "qualifiedValueShape":
                 {
+                  "class": "bmo:BbpWorkflowConfig"
+                },
+              "qualifiedMaxCount": 1
+            },
+            {
+              "path": "bmo:used_config",
+              "qualifiedValueShape":
+                {
                   "class": "bmo:VariantTaskConfig"
                 },
-              "qualifiedMinCount": 1
+              "qualifiedMaxCount": 1
             },
             {
               "name": "User revision",
@@ -41,8 +49,7 @@
             },
             {
               "name": "Was influenced by",
-              "path": "prov:wasInfluencedBy",
-              "minCount": 1
+              "path": "prov:wasInfluencedBy"
             },
             {
               "path": "prov:wasInfluencedBy",
