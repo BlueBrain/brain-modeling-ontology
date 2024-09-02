@@ -25,6 +25,33 @@
             "minCount": 1
           },
           {
+            "path": "bmo:generates",
+            "qualifiedValueShape":
+              {
+                "class": "nsg:EModel"
+              },
+            "qualifiedMaxCount": 1,
+            "qualifiedValueShapesDisjoint": true
+          },
+          {
+            "path": "bmo:generates",
+            "qualifiedValueShape":
+              {
+                "class": "nsg:EModelScript"
+              },
+            "qualifiedMaxCount": 1,
+            "qualifiedValueShapesDisjoint": true
+          },
+          {
+            "path": "bmo:generates",
+            "qualifiedValueShape":
+              {
+                "class": "bmo:FitnessCalculatorConfig"
+              },
+            "qualifiedMaxCount": 1,
+            "qualifiedValueShapesDisjoint": true
+          },
+          {
             "name": "Has part",
             "path": "schema:hasPart",
             "nodeKind": "sh:BlankNodeOrIRI",
@@ -45,7 +72,7 @@
               {
                 "class": "bmo:ExtractionTargetsConfiguration"
               },
-            "qualifiedMinCount": 1,
+            "qualifiedMaxCount": 1,
             "qualifiedValueShapesDisjoint": true
           },
           {
@@ -54,7 +81,7 @@
               {
                 "class": "bmo:EModelPipelineSettings"
               },
-            "qualifiedMinCount": 1,
+            "qualifiedMaxCount": 1,
             "qualifiedValueShapesDisjoint": true
           },
           {
