@@ -90,10 +90,6 @@
     ],
     "hasPart": [
       {
-        "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/0237b5c0-8902-4945-ae9f-b15d74337290",
-        "@type": "ExtractionTargetsConfiguration"
-      },
-      {
         "@id": "https://bbp.epfl.ch/data/bbp/mmb-point-neuron-framework-model/03e3dcbc-8a5a-489a-b9b6-bc1d08ca1fc2",
         "@type": "EModelPipelineSettings"
       },
