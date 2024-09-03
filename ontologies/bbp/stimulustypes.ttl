@@ -4,7 +4,7 @@
 @prefix nsg: <https://neuroshapes.org/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema1: <http://schema.org/> .
+@prefix schema: <http://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -122,7 +122,13 @@
         :LoOffset1,
         :spuls,
         :H40S8,
+        :H10S8,
         :OU10Lo01,
+        :CalOU01,
+        :OU10Me01,
+        :CalOU04,
+        :S2,
+        :S30,
         :Rin,
         :maria-STEP,
         :Pulse,
@@ -147,15 +153,19 @@
         :DelayedInac,
         nsg:BlueBrainStimulus,
         nsg:LNMCStimulus,
-        bmo:IonChannelStimulus .
+        :VoltageClampStimulus,
+        :CurrentClampStimulus,
+        :SingleCellProtocolStimulus,
+        :MultiCellProtocolStimulus,
+        bmo:ElectricalStimulus .
 
 dc:rights a owl:AnnotationProperty .
 
 vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
-schema1:description a owl:AnnotationProperty .
+schema:description a owl:AnnotationProperty .
 
-schema1:license a owl:ObjectProperty ;
+schema:license a owl:ObjectProperty ;
     rdfs:label "license"@en ;
     rdfs:subPropertyOf owl:topObjectProperty ;
     skos:altLabel "license"@en .
@@ -602,167 +612,226 @@ nsg:defines a owl:AnnotationProperty ;
 
 :s2 a owl:Class ;
     rdfs:label "s2"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :A a owl:Class ;
     rdfs:label "A"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :SIne20Hz a owl:Class ;
     rdfs:label "SIne20Hz"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :Activation30 a owl:Class ;
     rdfs:label "Activation30"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :LoOffset1 a owl:Class ;
     rdfs:label "LoOffset1"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :spuls a owl:Class ;
     rdfs:label "spuls"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :H40S8 a owl:Class ;
     rdfs:label "H40S8"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
+
+
+:H10S8 a owl:Class ;
+    rdfs:label "H10S8"@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :OU10Lo01 a owl:Class ;
     rdfs:label "OU10Lo01"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :Rin a owl:Class ;
     rdfs:label "Rin"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :maria-STEP a owl:Class ;
     rdfs:label "maria-STEP"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :Pulse a owl:Class ;
     rdfs:label "Pulse"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :VoltageClampStimulus ;
+    schema:description "A sequence of voltage levels with discrete transitions"@en .
 
 
 :Wave a owl:Class ;
     rdfs:label "Wave"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :VoltageClampStimulus ;
+    schema:description "A continuously varying voltage trace"@en .
 
 
 :LoOffset3 a owl:Class ;
     rdfs:label "LoOffset3"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :IV2 a owl:Class ;
     rdfs:label "IV2"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :scope a owl:Class ;
     rdfs:label "scope"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :OU10Hi01 a owl:Class ;
     rdfs:label "OU10Hi01"@en ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    rdfs:subClassOf :CurrentClampStimulus .
+
+
+:S2 a owl:Class ;
+    rdfs:label "S2"@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
+
+
+:S30 a owl:Class ;
+    rdfs:label "S30"@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
+
+
+:CalOU01 a owl:Class ;
+    rdfs:label "CalOU01"@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
+
+
+:OU10Me01 a owl:Class ;
+    rdfs:label "OU10Me01"@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
+
+
+:CalOU04 a owl:Class ;
+    rdfs:label "CalOU04"@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
 
 
 :AP a owl:Class ;
     rdfs:label "AP"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Wave ;
+    schema:description "For measuring dynamic ion channel responses to prerecorded traces of neuronal action potentials."@en .
 
 
 :Test a owl:Class ;
     rdfs:label "Test"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Pulse ;
+    schema:description "General purpose activating test pulse."@en .
 
 
 :VRest a owl:Class ;
     rdfs:label "VRest"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Wave ;
+    schema:description "Constant voltage command prerecorded at fixed acquisition rate."@en .
 
 
 :Activation a owl:Class ;
     rdfs:label "Activation"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Pulse ;
+    schema:description "Sequence of activating voltage steps from a closed ion channel state. For measuring the amplitudes and kinetics of ion channel activation as a function of voltage."@en .
 
 
 :Deactivation a owl:Class ;
     rdfs:label "Deactivation"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Pulse ;
+    schema:description "Sequence of deactivating voltage steps from an open ion channel state. For measuring the kinetics of ion channel deactivation as a function of voltage."@en .
 
 
 :Inactivation a owl:Class ;
     rdfs:label "Inactivation"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Pulse ;
+    schema:description "Sequence of conditioning voltage steps, followed by an activating test voltage. For determining the steady-state level of ion channel inactivation as a function of voltage."@en .
 
 
 :SubInactivation a owl:Class ;
     rdfs:label "SubInactivation"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Pulse ;
+    schema:description "Sub-threshold voltage step, followed by increasingly delayed steps to a test voltage. For determining the kinetics of ion channel inactivation at a sub-threshold voltage."@en .
 
 
 :Recovery a owl:Class ;
     rdfs:label "Recovery"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Pulse ;
+    schema:description "Inactivating voltage step, followed by increasingly delayed steps to a test voltage. For determining the kinetics of recovery from ion channel inactivation at a sub-threshold resting potential."@en .
 
 
 :Recovery60 a owl:Class ;
     rdfs:label "Recovery60"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Recovery .
 
 
 :Recovery100 a owl:Class ;
     rdfs:label "Recovery100"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Recovery .
 
 
 :Ramp a owl:Class ;
     rdfs:label "Ramp"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Pulse ;
+    schema:description "Sequence of increasingly steep voltage gradients for measuring dynamic ion channel responses."@en .
 
 
 :RampNeg a owl:Class ;
     rdfs:label "RampNeg"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
-
+    rdfs:subClassOf :Ramp .
 
 :Drugs a owl:Class ;
     rdfs:label "Drugs"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Test .
 
 
 :DelayedInac a owl:Class ;
     rdfs:label "DelayedInac"@en ;
-    rdfs:subClassOf bmo:IonChannelStimulus .
+    rdfs:subClassOf :Test .
 
 
 bmo:ElectricalStimulus a owl:Class ;
     rdfs:label "Electrical Stimulus" .
 
+
 nsg:BlueBrainStimulus a owl:Class ;
     rdfs:label "BlueBrainStimulus"@en ;
-    schema1:description "The stimuli under BlueBrainStimulus and their description are based on the eCode Specification v 1.04 document."^^xsd:string ;
-    rdfs:subClassOf bmo:ElectricalStimulus .
+    schema:description "The stimuli under BlueBrainStimulus and their description are based on the eCode Specification v 1.04 document."@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
 
 nsg:LNMCStimulus a owl:Class ;
     rdfs:label "LNMCStimulus"@en ;
-    schema1:description "The stimuli under LNMCStimulus were identified from the NWB files of the \'NMC SSCX\' and the \'Adaptive Stimulus Set\' datasets from the Laboratory of Neural Microcircuitry. They represent the 'raw' stimuli as assigned by the experimenter."^^xsd:string ;
+    schema:description "The stimuli under LNMCStimulus were identified from the NWB files of the \'NMC SSCX\' and the \'Adaptive Stimulus Set\' datasets from the Laboratory of Neural Microcircuitry. They represent the 'raw' stimuli as assigned by the experimenter."@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
+
+:VoltageClampStimulus a owl:Class ;
+    rdfs:label "Voltage Clamp Stimulus"@en ;
+    schema:description "Control command aiming to maintain a set voltage across the cell membrane"@en ;
     rdfs:subClassOf bmo:ElectricalStimulus .
 
 bmo:IonChannelStimulus a owl:Class ;
     rdfs:label "IonChannelStimulus"@en ;
+    owl:deprecated true .
+
+:CurrentClampStimulus a owl:Class ;
+    rdfs:label "Current Clamp Stimulus"@en ;
     rdfs:subClassOf bmo:ElectricalStimulus .
+
+:SingleCellProtocolStimulus a owl:Class ;
+    rdfs:label "Single Cell Protocol Stimulus"@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
+
+:MultiCellProtocolStimulus a owl:Class ;
+    rdfs:label "Multi Cell Protocol Stimulus"@en ;
+    rdfs:subClassOf :CurrentClampStimulus .
+
