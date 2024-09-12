@@ -1,0 +1,157 @@
+{
+  "id": "https://bbp.epfl.ch/data/bbp-external/seu/59da003e-8a6a-464f-a54b-a084d8b143d4",
+  "type": [
+    "Dataset",
+    "NeuronMorphology",
+    "ReconstructedNeuronMorphology"
+  ],
+  "atlasRelease": {
+    "id": "https://bbp.epfl.ch/neurosciencegraph/data/4906ab85-694f-469d-962f-c0174e901885",
+    "type": [
+      "BrainAtlasRelease",
+      "AtlasRelease"
+    ]
+  },
+  "brainLocation": {
+    "type": "BrainLocation",
+    "brainRegion": {
+      "id": "http://api.brain-map.org/api/v2/data/Structure/767",
+      "label": "Secondary motor area, layer 5"
+    },
+    "coordinatesInBrainAtlas": {
+      "valueX": 5519.55,
+      "valueY": 1086.95,
+      "valueZ": 5005.975
+    },
+    "layer": {
+      "id": "http://purl.obolibrary.org/obo/UBERON_0005394",
+      "label": "L5"
+    }
+  },
+  "contribution": {
+    "type": "Contribution",
+    "agent": {
+      "id": "https://www.grid.ac/institutes/grid.263826.b",
+      "type": [
+        "Agent",
+        "Organization"
+      ]
+    }
+  },
+  "description": "Neuronal morphology of cell 201584_00001 in Secondary motor area, layer 5, by SEU, containing whole brain axonal reconstruction as described in https://doi.org/10.1101/675280.",
+  "distribution": [
+    {
+      "type": "DataDownload",
+      "atLocation": {
+        "type": "Location",
+        "location": "file:///gpfs/bbp.cscs.ch/data/project/proj94/nexus/bbp-external/seu/9/3/4/c/4/c/b/f/201584_00001.swc",
+        "store": {
+          "id": "https://bbp.epfl.ch/neurosciencegraph/data/86b26915-1c4a-41ab-8865-0d6f4dfbdf72",
+          "type": "RemoteDiskStorage",
+          "_rev": 1
+        }
+      },
+      "contentSize": {
+        "unitCode": "bytes",
+        "value": 850039
+      },
+      "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp-external/seu/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp-external%2Fseu%2F5ee4b836-9d0d-4cd5-a160-c363fa816ecf",
+      "digest": {
+        "algorithm": "SHA-256",
+        "value": "3d8d3919f46201cf894083a0b313faf58260513e4232014c36c573d1cf507b20"
+      },
+      "encodingFormat": "application/swc",
+      "name": "201584_00001.swc"
+    },
+    {
+      "type": "DataDownload",
+      "atLocation": {
+        "type": "Location",
+        "location": "file:///gpfs/bbp.cscs.ch/data/project/proj94/nexus/bbp-external/seu/1/3/1/e/e/b/b/1/201584_00001.asc",
+        "store": {
+          "id": "https://bbp.epfl.ch/neurosciencegraph/data/86b26915-1c4a-41ab-8865-0d6f4dfbdf72",
+          "type": "RemoteDiskStorage",
+          "_rev": 1
+        }
+      },
+      "contentSize": {
+        "unitCode": "bytes",
+        "value": 1620958
+      },
+      "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp-external/seu/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp-external%2Fseu%2F2a46d617-cb98-49f6-9507-18526e51030a",
+      "digest": {
+        "algorithm": "SHA-256",
+        "value": "c8656c6a1f6b702ac87889ef48669672871bccec7833b46fd0d24ac437f0f821"
+      },
+      "encodingFormat": "application/asc",
+      "name": "201584_00001.asc"
+    },
+    {
+      "type": "DataDownload",
+      "atLocation": {
+        "type": "Location",
+        "location": "file:///gpfs/bbp.cscs.ch/data/project/proj94/nexus/bbp-external/seu/f/f/6/7/0/7/4/0/201584_00001.h5",
+        "store": {
+          "id": "https://bbp.epfl.ch/neurosciencegraph/data/86b26915-1c4a-41ab-8865-0d6f4dfbdf72",
+          "type": "RemoteDiskStorage",
+          "_rev": 1
+        }
+      },
+      "contentSize": {
+        "unitCode": "bytes",
+        "value": 344452
+      },
+      "contentUrl": "https://bbp.epfl.ch/nexus/v1/files/bbp-external/seu/https%3A%2F%2Fbbp.epfl.ch%2Fdata%2Fbbp-external%2Fseu%2Ffaf48e4a-70ef-45c5-bd2b-a379e25064b5",
+      "digest": {
+        "algorithm": "SHA-256",
+        "value": "848b7e7940a9069a0c720351bf4db3dba0b44dfff5a3a4c0efd1aedf8c2fda41"
+      },
+      "encodingFormat": "application/h5",
+      "name": "201584_00001.h5"
+    }
+  ],
+  "generation": {
+    "type": "Generation",
+    "activity": {
+      "type": [
+        "ExperimentalActivity",
+        "Activity",
+        "ReconstructionFromImage"
+      ],
+      "endedAtTime": "2024-01-02T00:00:00",
+      "hadProtocol": {
+        "id": "https://bbp.epfl.ch/neurosciencegraph/data/781094e0-8fcb-4058-b3b9-9c67467e47d5",
+        "type": [
+          "ExperimentalProtocol",
+          "Protocol"
+        ]
+      },
+      "startedAtTime": "2024-01-01T00:00:00"
+    }
+  },
+  "isRegisteredIn": {
+    "id": "https://bbp.epfl.ch/neurosciencegraph/data/allen_ccfv3_spatial_reference_system",
+    "type": [
+      "AtlasSpatialReferenceSystem",
+      "BrainAtlasSpatialReferenceSystem"
+    ]
+  },
+  "name": "201584_00001",
+  "objectOfStudy": {
+    "id": "http://bbp.epfl.ch/neurosciencegraph/taxonomies/objectsofstudy/singlecells",
+    "type": "ObjectOfStudy",
+    "label": "Single Cell"
+  },
+  "subject": {
+    "type": "Subject",
+    "name": "Pvalb-T2A-CreERT2;Ai166-498844-201584",
+    "species": {
+      "id": "http://purl.obolibrary.org/obo/NCBITaxon_10090",
+      "label": "Mus musculus"
+    },
+    "strain": {
+      "id": "http://bbp.epfl.ch/neurosciencegraph/ontologies/speciestaxonomy/RxoGvqCAmwBJS0E7RVI7qT",
+      "label": "Pvalb-T2A-CreERT2"
+    }
+  }
+}
