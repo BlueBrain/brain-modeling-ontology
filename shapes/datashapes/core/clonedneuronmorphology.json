@@ -1,17 +1,17 @@
 {
   "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
-  "@id": "https://neuroshapes.org/dash/reconstructedneuronmorphology",
+  "@id": "https://bbp.epfl.ch/shapes/dash/clonedneuronmorphology",
   "@type": "Schema",
   "imports": [
     "https://neuroshapes.org/commons/reconstructedneuronmorphology"
   ],
   "shapes": [
     {
-      "@id": "https://neuroshapes.org/dash/reconstructedneuronmorphology/shapes/ReconstructedNeuronMorphologyShape",
+      "@id": "https://bbp.epfl.ch/shapes/dash/clonedneuronmorphology/shapes/ClonedNeuronMorphologyShape",
       "@type": "NodeShape",
       "label": "Reconstructed cell shape definition",
       "nodeKind": "sh:BlankNodeOrIRI",
-      "targetClass": "nsg:ReconstructedNeuronMorphology",
+      "targetClass": "bmo:ClonedNeuronMorphology",
       "node": "https://neuroshapes.org/commons/reconstructedneuronmorphology/shapes/ReconstructedNeuronMorphologyShape"
     }
   ]

@@ -1,0 +1,18 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/placeholderneuronmorphology",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/neuronmorphology"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/placeholderneuronmorphology/shapes/PlaceholderNeuronMorphologyShape",
+      "@type": "NodeShape",
+      "label": "Reconstructed cell shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "bmo:PlaceholderNeuronMorphology",
+      "node": "https://neuroshapes.org/commons/neuronmorphology/shapes/NeuronMorphologyShape"
+    }
+  ]
+}

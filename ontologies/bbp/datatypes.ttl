@@ -131,6 +131,11 @@ nsg:ReconstructedNeuronMorphology a owl:Class ;
     rdfs:subClassOf nsg:NeuronMorphology ;
     skos:prefLabel "Reconstructed Neuron Morphology"@en .
 
+bmo:ClonedNeuronMorphology a owl:Class ;
+    rdfs:label "Cloned Neuron Morphology"@en ;
+    rdfs:subClassOf nsg:ReconstructedNeuronMorphology ;
+    skos:prefLabel "Cloned Neuron Morphology"@en .
+
 nsg:SynthesizedNeuronMorphology a owl:Class ;
     rdfs:label "Synthesized Neuron Morphology"@en ;
     rdfs:subClassOf nsg:NeuronMorphology ;

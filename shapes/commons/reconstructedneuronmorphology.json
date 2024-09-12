@@ -1,0 +1,17 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://neuroshapes.org/commons/reconstructedneuronmorphology",
+  "@type": "Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/neuronmorphology"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/reconstructedneuronmorphology/shapes/ReconstructedNeuronMorphologyShape",
+      "@type": "NodeShape",
+      "label": "Reconstructed cell shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "node": "https://neuroshapes.org/commons/neuronmorphology/shapes/NeuronMorphologyShape"
+    }
+  ]
+}
