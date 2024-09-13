@@ -9,13 +9,13 @@
     {
       "@id": "https://neuroshapes.org/dash/parcellationvolume/shapes/ParcellationVolumeShape",
       "@type": "NodeShape",
-      "label": "Image volume",
+      "label": "Parcellation volume",
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:ParcellationVolume",
       "node": "https://neuroshapes.org/commons/imagevolume/shapes/ImageVolumeShape"
     },
     {
-      "@id": "https://neuroshapes.org/dash/imagevolume/shapes/VoxelResolutionShape",
+      "@id": "https://neuroshapes.org/dash/parcellationvolume/shapes/VoxelResolutionShape",
       "@type": "NodeShape",
       "and": [
         {

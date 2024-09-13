@@ -8,7 +8,8 @@
   "@id": "https://neuroshapes.org/commons/quantitativevalue",
   "@type": "Schema",
   "imports": [
-    "nsg:commons/unit"
+    "https://neuroshapes.org/commons/unit",
+    "https://neuroshapes.org/commons/vector3d"
   ],
   "shapes": [
     {
@@ -44,6 +45,9 @@
             },
             {
               "datatype": "xsd:integer"
+            },
+            {
+              "node": "nsg:commons/vector3d/shapes/Vector3DShape"
             }
           ],
           "path": "schema:value"
