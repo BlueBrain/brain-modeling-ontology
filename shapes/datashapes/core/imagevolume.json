@@ -13,28 +13,6 @@
       "nodeKind": "sh:BlankNodeOrIRI",
       "targetClass": "nsg:ImageVolume",
       "node": "https://neuroshapes.org/commons/imagevolume/shapes/ImageVolumeShape"
-    },
-    {
-      "@id": "https://neuroshapes.org/dash/imagevolume/shapes/VoxelResolutionShape",
-      "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape"
-        },
-        {
-          "property": [
-            {
-              "description": "Voxel resolution value",
-              "maxCount": 1,
-              "minCount": 1,
-              "name": "Voxel resolution value",
-              "node": "nsg:commons/vector3d/shapes/Vector3DShape",
-              "path": "schema:value"
-            }
-          ]
-        }
-      ],
-      "targetObjectsOf": "nsg:voxelResolution"
     }
   ]
 }
