@@ -1210,9 +1210,6 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
             owl:onProperty bmo:inferredCanHaveMType ;
             owl:someValuesFrom ct:MOBMI_MCI ],
         [ a owl:Restriction ;
-            owl:onProperty bmo:inferredCanHaveMType ;
-            owl:someValuesFrom ct:BedNucleusOfTheStriaTerminalisGlucagon-LikePeptide-1GLP-1 ],
-        [ a owl:Restriction ;
             owl:onProperty owl:equivalentClass ;
             owl:someValuesFrom ct:ICBuildupPauserEtype ],
         [ a owl:Restriction ;
@@ -2468,7 +2465,7 @@ ct:VPMpc_TC a owl:Class ;
     skos:notation "cACpyr"^^xsd:string ;
     skos:prefLabel "Continuous Accommodating Pyramidal Cell"@en .
 
-<http://uri.interlex.org/ilx_0101234> a owl:Class ;
+<http://uri.interlex.org/base/ilx_0101234> a owl:Class ;
     rdfs:label "CBXpu_BeC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
@@ -2478,7 +2475,7 @@ ct:VPMpc_TC a owl:Class ;
     skos:notation "CBXpu_BeC" ;
     skos:prefLabel "Cerebellum Bergmann Cell"@en .
 
-<http://uri.interlex.org/ilx_0101965> a owl:Class ;
+<http://uri.interlex.org/base/ilx_0101965> a owl:Class ;
     rdfs:label "CBXpu_CaC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -2491,7 +2488,7 @@ ct:VPMpc_TC a owl:Class ;
     skos:notation "CBXpu_CaC" ;
     skos:prefLabel "Cerebellum Candelabrum Cell"@en .
 
-<http://uri.interlex.org/ilx_0101976> a owl:Class ;
+<http://uri.interlex.org/base/ilx_0101976> a owl:Class ;
     rdfs:label "CBXgr_UBC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -11359,13 +11356,13 @@ ct:cAC rdfs:subClassOf [ a owl:Restriction ;
 
 ct:cNAC rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/ilx_0101964> ],
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0101964> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0101967> ],
         [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
-            owl:someValuesFrom <http://uri.interlex.org/ilx_0101975> ] .
+            owl:someValuesFrom <http://uri.interlex.org/base/ilx_0101975> ] .
 
 ct:cNAD_ltb_dSTR a owl:Class ;
     rdfs:label "cNAD_ltb_dSTR"@en ;
@@ -13101,7 +13098,7 @@ schema:Organization a owl:Class ;
     skos:notation "VPL_IN"^^xsd:string ;
     skos:prefLabel "Ventral posterolateral nucleus of the thalamus interneuron"@en .
 
-<http://uri.interlex.org/ilx_0101964> a owl:Class ;
+<http://uri.interlex.org/base/ilx_0101964> a owl:Class ;
     rdfs:label "CBXmo_BC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mtypes/hasNeurotransmitterType> ;
@@ -13114,7 +13111,7 @@ schema:Organization a owl:Class ;
     skos:notation "CBXmo_BC" ;
     skos:prefLabel "Cerebellum Basket Cell"@en .
 
-<http://uri.interlex.org/ilx_0101975> a owl:Class ;
+<http://uri.interlex.org/base/ilx_0101975> a owl:Class ;
     rdfs:label "CBXmo_StC"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canBeLocatedInBrainRegion ;
@@ -33417,6 +33414,21 @@ bmo:canBeLocatedInBrainRegion a owl:ObjectProperty ;
 bmo:canHaveTType a owl:ObjectProperty ;
     rdfs:label "canHaveTType"@en ;
     rdfs:subPropertyOf owl:topObjectProperty .
+
+<http://uri.interlex.org/ilx_0101234> a owl:Class ;
+    owl:deprecated true .
+
+<http://uri.interlex.org/ilx_0101964> a owl:Class ;
+    owl:deprecated true .
+
+<http://uri.interlex.org/ilx_0101965> a owl:Class ;
+    owl:deprecated true .
+
+<http://uri.interlex.org/ilx_0101975> a owl:Class ;
+    owl:deprecated true .
+
+<http://uri.interlex.org/ilx_0101976> a owl:Class ;
+    owl:deprecated true .
 
 [] a owl:Restriction ;
     owl:onProperty bmo:canHaveMType .
