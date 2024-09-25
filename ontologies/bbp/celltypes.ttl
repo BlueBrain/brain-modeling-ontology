@@ -2372,59 +2372,59 @@ ct:VPMpc_TC a owl:Class ;
     skos:prefLabel "Non-low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738249> a owl:Class ;
-    rdfs:label "cNAD-noscltb"@en ;
+    rdfs:label "cNAD_noscltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:definition "Continuous non-adapting non-oscillatory low-threshold bursting electrical type"@en ;
-    skos:notation "cNAD-noscltb"^^xsd:string ;
+    skos:notation "cNAD_noscltb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting non-oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738250> a owl:Class ;
-    rdfs:label "cAD-noscltb"@en ;
+    rdfs:label "cAD_noscltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:definition "Continuous adapting non-oscillatory low-threshold bursting electrical type"@en ;
-    skos:notation "cAD-noscltb"^^xsd:string ;
+    skos:notation "cAD_noscltb"^^xsd:string ;
     skos:prefLabel "Continuous adapting non-oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738251> a owl:Class ;
-    rdfs:label "cNAD-nltb"@en ;
+    rdfs:label "cNAD_nltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:definition "Continuous non-adapting non-low-threshold bursting electrical type"@en ;
-    skos:notation "cNAD-nltb"^^xsd:string ;
+    skos:notation "cNAD_nltb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting non-low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738252> a owl:Class ;
-    rdfs:label "cNAD-oscltb"@en ;
+    rdfs:label "cNAD_oscltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:definition "Continuous non-adapting oscillatory low-threshold bursting electrical type"@en ;
-    skos:notation "cNAD-oscltb"^^xsd:string ;
+    skos:notation "cNAD_oscltb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738253> a owl:Class ;
-    rdfs:label "cNAD-altb"@en ;
+    rdfs:label "cNAD_altb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:definition "Continuous non-adapting atypical low-threshold bursting electrical type"@en ;
-    skos:notation "cNAD-altb"^^xsd:string ;
+    skos:notation "cNAD_altb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting atypical low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738254> a owl:Class ;
-    rdfs:label "cNAD-ltb"@en ;
+    rdfs:label "cNAD_ltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:definition "Continuous non-adapting low-threshold bursting electrical type"@en ;
-    skos:notation "cNAD-ltb"^^xsd:string ;
+    skos:notation "cNAD_ltb"^^xsd:string ;
     skos:prefLabel "Continuous non-adapting low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738255> a owl:Class ;
-    rdfs:label "cAD-ltb"@en ;
+    rdfs:label "cAD_ltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:definition "Continuous adapting low-threshold bursting electrical type"@en ;
-    skos:notation "cAD-ltb"^^xsd:string ;
+    skos:notation "cAD_ltb"^^xsd:string ;
     skos:prefLabel "Continuous adapting low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738256> a owl:Class ;
-    rdfs:label "dNAD-ltb"@en ;
+    rdfs:label "dNAD_ltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:definition "Delayed non-adapting low-threshold bursting electrical type"@en ;
-    skos:notation "dNAD-ltb"^^xsd:string ;
+    skos:notation "dNAD_ltb"^^xsd:string ;
     skos:prefLabel "Delayed non-adapting low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738257> a owl:Class ;
@@ -2435,10 +2435,10 @@ ct:VPMpc_TC a owl:Class ;
     skos:prefLabel "Continuous stuttering non-oscillatory low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738258> a owl:Class ;
-    rdfs:label "dAD-ltb"@en ;
+    rdfs:label "dAD_ltb"@en ;
     rdfs:subClassOf bmo:NeuronElectricalType ;
     skos:definition "Delayed adapting low-threshold bursting electrical type"@en ;
-    skos:notation "dAD-ltb"^^xsd:string ;
+    skos:notation "dAD_ltb"^^xsd:string ;
     skos:prefLabel "Delayed adapting low-threshold bursting electrical type"@en .
 
 <http://uri.interlex.org/base/ilx_0738295> a owl:Class ;
@@ -7167,7 +7167,7 @@ bmo:ThalamusContinuousAdaptingElectricalType a owl:Class ;
     skos:prefLabel "Thalamus continuous adapting electrical type"@en .
 
 bmo:ThalamusContinuousAdaptingLowThresholdBurstingElectricalType a owl:Class ;
-    rdfs:label "TH_cAD-ltb"@en ;
+    rdfs:label "TH_cAD_ltb"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738229> ],
@@ -7175,11 +7175,11 @@ bmo:ThalamusContinuousAdaptingLowThresholdBurstingElectricalType a owl:Class ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738236> ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
-    skos:notation "TH_cAD-ltb"@en ;
+    skos:notation "TH_cAD_ltb"@en ;
     skos:prefLabel "Thalamus continuous adapting low-threshold bursting electrical type"@en .
 
 bmo:ThalamusContinuousAdaptingNonOscillatoryLowThresholdBurstingElectricalType a owl:Class ;
-    rdfs:label "TH_cAD-noscltb"@en ;
+    rdfs:label "TH_cAD_noscltb"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738229> ],
@@ -7187,13 +7187,13 @@ bmo:ThalamusContinuousAdaptingNonOscillatoryLowThresholdBurstingElectricalType a
         bmo:NeuronElectricalType ;
     skos:definition "Continuous adapting non-oscillatory low-threshold bursting"@en,
         "Thalamus continuous adapting non-oscillatory low-threshold bursting electrical type"@en ;
-    skos:notation "TH_cAD-noscltb"@en ;
+    skos:notation "TH_cAD_noscltb"@en ;
     skos:prefLabel "Thalamus continuous adapting non-oscillatory low-threshold bursting electrical type"@en .
 
 bmo:ThalamusContinuousNonAdaptingAtypicalLowThresholdBurstingElectricalType a owl:Class ;
-    rdfs:label "TH_cNAD-altb"@en ;
+    rdfs:label "TH_cNAD_altb"@en ;
     rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
-    skos:notation "TH_cNAD-altb"@en ;
+    skos:notation "TH_cNAD_altb"@en ;
     skos:prefLabel "Thalamus continuous non-adapting atypical low-threshold bursting electrical type"@en .
 
 bmo:ThalamusContinuousNonAdaptingElectricalType a owl:Class ;
@@ -7203,7 +7203,7 @@ bmo:ThalamusContinuousNonAdaptingElectricalType a owl:Class ;
     skos:prefLabel "Thalamus continuous non-adapting electrical type"@en .
 
 bmo:ThalamusContinuousNonAdaptingLowThresholdBurstingElectricalType a owl:Class ;
-    rdfs:label "TH_cNAD-ltb"@en ;
+    rdfs:label "TH_cNAD_ltb"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738229> ],
@@ -7211,17 +7211,17 @@ bmo:ThalamusContinuousNonAdaptingLowThresholdBurstingElectricalType a owl:Class 
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738236> ],
         <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
-    skos:notation "TH_cNAD-ltb"@en ;
+    skos:notation "TH_cNAD_ltb"@en ;
     skos:prefLabel "Thalamus continuous non-adapting low-threshold bursting electrical type"@en .
 
 bmo:ThalamusContinuousNonAdaptingNonLowThresholdBurstingElectricalType a owl:Class ;
-    rdfs:label "TH_cNAD-nltb"@en ;
+    rdfs:label "TH_cNAD_nltb"@en ;
     rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
-    skos:notation "TH_cNAD-nltb"@en ;
+    skos:notation "TH_cNAD_nltb"@en ;
     skos:prefLabel "Thalamus continuous non-adapting non-low-threshold bursting electrical type"@en .
 
 bmo:ThalamusContinuousNonAdaptingNonOscillatoryLowThresholdBurstingElectricalType a owl:Class ;
-    rdfs:label "TH_cNAD-noscltb"@en ;
+    rdfs:label "TH_cNAD_noscltb"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738229> ],
@@ -7229,13 +7229,13 @@ bmo:ThalamusContinuousNonAdaptingNonOscillatoryLowThresholdBurstingElectricalTyp
         bmo:NeuronElectricalType ;
     skos:definition "Continuous non-adapting non-oscillatory low-threshold bursting"@en,
         "Thalamus continuous non-adapting non-oscillatory low-threshold bursting electrical type"@en ;
-    skos:notation "TH_cNAD-noscltb"@en ;
+    skos:notation "TH_cNAD_noscltb"@en ;
     skos:prefLabel "Thalamus continuous non-adapting non-oscillatory low-threshold bursting electrical type"@en .
 
 bmo:ThalamusContinuousNonAdaptingOscillatoryLowThresholdBurstingElectricalType a owl:Class ;
-    rdfs:label "TH_cNAD-oscltb"@en ;
+    rdfs:label "TH_cNAD_oscltb"@en ;
     rdfs:subClassOf <http://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/ThalamusEType> ;
-    skos:notation "TH_cNAD-oscltb"@en ;
+    skos:notation "TH_cNAD_oscltb"@en ;
     skos:prefLabel "Thalamus continuous non-adapting oscillatory low-threshold bursting electrical type"@en .
 
 bmo:ThalamusContinuousStutteringElectricalType a owl:Class ;
@@ -7257,7 +7257,7 @@ bmo:ThalamusDelayedAdaptingElectricalType a owl:Class ;
     skos:prefLabel "Thalamus delayed adapting electrical type"@en .
 
 bmo:ThalamusDelayedAdaptingLowThresholdBurstingElectricalType a owl:Class ;
-    rdfs:label "TH_dAD-ltb"@en ;
+    rdfs:label "TH_dAD_ltb"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738236> ],
@@ -7265,7 +7265,7 @@ bmo:ThalamusDelayedAdaptingLowThresholdBurstingElectricalType a owl:Class ;
         bmo:NeuronElectricalType ;
     skos:definition "Delayed adapting low-threshold bursting"@en,
         "Thalamus delayed adapting low-threshold bursting electrical type"@en ;
-    skos:notation "TH_dAD-ltb"@en ;
+    skos:notation "TH_dAD_ltb"@en ;
     skos:prefLabel "Thalamus delayed adapting low-threshold bursting electrical type"@en .
 
 bmo:ThalamusDelayedNonAdaptingElectricalType a owl:Class ;
@@ -7275,7 +7275,7 @@ bmo:ThalamusDelayedNonAdaptingElectricalType a owl:Class ;
     skos:prefLabel "Thalamus delayed non-adapting electrical type"@en .
 
 bmo:ThalamusDelayedNonAdaptingLowThresholdBurstingElectricalType a owl:Class ;
-    rdfs:label "TH_dNAD-ltb"@en ;
+    rdfs:label "TH_dNAD_ltb"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty bmo:canHaveMType ;
             owl:someValuesFrom <http://uri.interlex.org/base/ilx_0738236> ],
@@ -7283,7 +7283,7 @@ bmo:ThalamusDelayedNonAdaptingLowThresholdBurstingElectricalType a owl:Class ;
         bmo:NeuronElectricalType ;
     skos:definition "Delayed non-adapting low-threshold bursting"@en,
         "Thalamus delayed non-adapting low-threshold bursting electrical type"@en ;
-    skos:notation "TH_dNAD-ltb"@en ;
+    skos:notation "TH_dNAD_ltb"@en ;
     skos:prefLabel "Thalamus delayed non-adapting low-threshold bursting electrical type"@en .
 
 bmo:ThalamusLowThresholdBurstingElectricalType a owl:Class ;
