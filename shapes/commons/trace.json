@@ -12,52 +12,46 @@
     "nsg:commons/quantitativevalue",
     "nsg:commons/unit",
     "nsg:commons/stimulustype",
-    "nsg:commons/typedlabeledontologyterm"
+    "nsg:commons/labeledontologyentity"
   ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/commons/trace/shapes/TraceShape",
       "@type": "NodeShape",
-      "and": [
-        {
-          "node": "nsg:commons/dataset/shapes/DatasetShape"
+      "node": "nsg:commons/dataset/shapes/DatasetShape",
+      "property": [
+         {
+          "path": "schema:hasPart",
+          "qualifiedValueShape":
+            {
+              "class": "bmo:TraceWebDataContainer"
+            },
+          "qualifiedMinCount": 1
         },
         {
-          "property": [
-             {
-              "path": "schema:hasPart",
-              "qualifiedValueShape":
-                {
-                  "class": "bmo:TraceWebDataContainer"
-                },
-              "qualifiedMinCount": 1
-            },
-            {
-              "datatype": "xsd:integer",
-              "description": "Recording channel of trace",
-              "maxCount": 1,
-              "name": "Channel",
-              "path": "nsg:channel"
-            },
-            "nsg:commons/unit/shapes/UnitCodePropertyShape",
-            {
-              "description": "Time step (inverted sampling frequency) of data",
-              "maxCount": 1,
-              "name": "Time step",
-              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
-              "path": "nsg:timeStep"
-            },
-            {
-              "name": "stimulus",
-              "node": "this:StimulusShape",
-              "path": "nsg:stimulus"
-            },
-            {
-              "name": "image",
-              "path": "schema:image",
-              "node": "this:ImageShape"
-            }
-          ]
+          "datatype": "xsd:integer",
+          "description": "Recording channel of trace",
+          "maxCount": 1,
+          "name": "Channel",
+          "path": "nsg:channel"
+        },
+        "nsg:commons/unit/shapes/UnitCodePropertyShape",
+        {
+          "description": "Time step (inverted sampling frequency) of data",
+          "maxCount": 1,
+          "name": "Time step",
+          "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+          "path": "nsg:timeStep"
+        },
+        {
+          "name": "stimulus",
+          "node": "this:StimulusShape",
+          "path": "nsg:stimulus"
+        },
+        {
+          "name": "image",
+          "path": "schema:image",
+          "node": "this:ImageShape"
         }
       ],
       "label": "Electrophysiology trace shape definition. A trace should have an IRI as identifier",
@@ -87,7 +81,7 @@
             {
               "maxCount": 1,
               "name": "eCode",
-              "node": "nsg:commons/typedlabeledontologyterm/shapes/EcodeOntologyTermShape",
+              "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
               "path": "nsg:eCode"
             },
             {

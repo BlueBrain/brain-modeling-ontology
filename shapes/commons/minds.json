@@ -14,51 +14,45 @@
     {
       "@id": "https://neuroshapes.org/commons/minds/shapes/MINDSShape",
       "@type": "NodeShape",
-      "and": [
+      "node": "nsg:commons/entity/shapes/EntityShape",
+      "property": [
         {
-          "node": "nsg:commons/entity/shapes/EntityShape"
+          "description": "The dataset release date.",
+          "maxCount": 1,
+          "name": "Release date",
+          "path": "schema:releaseDate"
         },
         {
-          "property": [
-            {
-              "description": "The dataset release date.",
-              "maxCount": 1,
-              "name": "Release date",
-              "path": "schema:releaseDate"
-            },
-            {
-              "description": "The dataset type.",
-              "minCount": 1,
-              "name": "Type",
-              "nodeKind": "sh:IRI",
-              "path": "rdf:type"
-            },
-            {
-              "maxCount": 1,
-              "path": "nsg:isRegisteredIn"
-            },
-            {
-              "maxCount": 1,
-              "path": "nsg:atlasRelease"
-            },
-            {
-              "minCount": 1,
-              "path": "nsg:subject"
-            },
-            {
-              "minCount": 1,
-              "path": "nsg:brainLocation"
-            },
-            {
-              "class": "nsg:Contribution",
-              "minCount": 1,
-              "path": "nsg:contribution"
-            },
-            {
-              "minCount": 1,
-              "path": "schema:distribution"
-            }
-          ]
+          "description": "The dataset type.",
+          "minCount": 1,
+          "name": "Type",
+          "nodeKind": "sh:IRI",
+          "path": "rdf:type"
+        },
+        {
+          "maxCount": 1,
+          "path": "nsg:isRegisteredIn"
+        },
+        {
+          "maxCount": 1,
+          "path": "nsg:atlasRelease"
+        },
+        {
+          "minCount": 1,
+          "path": "nsg:subject"
+        },
+        {
+          "minCount": 1,
+          "path": "nsg:brainLocation"
+        },
+        {
+          "class": "nsg:Contribution",
+          "minCount": 1,
+          "path": "nsg:contribution"
+        },
+        {
+          "minCount": 1,
+          "path": "schema:distribution"
         }
       ],
       "label": "Minimum Information about a Neuroscience DataSet",

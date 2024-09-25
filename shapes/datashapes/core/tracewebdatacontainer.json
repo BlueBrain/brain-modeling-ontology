@@ -10,22 +10,11 @@
       "@id": "https://bbp.epfl.ch/shapes/dash/tracewebdatacontainer/shapes/TraceWebDataContainerShape",
       "@type": "NodeShape",
       "node": "https://neuroshapes.org/commons/dataset/shapes/DatasetShape",
-
-      "and": [
-        {
-          "node": "nsg:commons/dataset/shapes/DatasetShape"
-        },
-        {
-          "property": [
-             {
-              "path": "schema:isPartOf",
-              "qualifiedValueShape":
-                {
-                  "class": "bmo:ExperimentalTrace"
-                },
-              "qualifiedMinCount": 1
-            }
-          ]
+      "property": [
+         {
+          "path": "schema:isPartOf",
+          "class": "nsg:Trace",
+          "minCount": 1
         }
       ],
       "targetClass": "bmo:TraceWebDataContainer"
