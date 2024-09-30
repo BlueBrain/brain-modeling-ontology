@@ -4647,6 +4647,13 @@ nsg:Serotonin rdf:type owl:Class ;
               skos:definition "A monoamine neurotransmitter. Its biological function is complex and multifaceted, modulating mood, cognition, reward, learning, memory, and numerous physiological processes such as vomiting and vasoconstriction. Biochemically, the indoleamine molecule derives from the amino acid tryptophan, via the (rate-limiting) hydroxylation of the 5 position on the ring (forming the intermediate 5-hydroxytryptophan), and then decarboxylation to produce serotonin. Serotonin is primarily found in the enteric nervous system located in the gastrointestinal tract (GI tract). However, it is also produced in the central nervous system (CNS), specifically in the raphe nuclei located in the brainstem, Merkel cells located in the skin, pulmonary neuroendocrine cells and taste receptor cells in the tongue. Additionally, serotonin is stored in blood platelets and is released during agitation and vasoconstriction, where it then acts as an agonist to other platelets." .
 
 
+###   https://neuroshapes.org/SimulationTrace
+nsg:SimulationTrace rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:Trace ;
+                  rdfs:label "Simulation Trace"@en ;
+                  skos:definition "Trace produced by simulating a model."^^xsd:string .
+
+
 ###  https://bbp.epfl.ch/ontologies/core/bmo/SingleNeuronSynaptome
 bmo:SingleNeuronSynaptome rdf:type owl:Class ;
                           rdfs:subClassOf bmo:ModelSynaptome ;

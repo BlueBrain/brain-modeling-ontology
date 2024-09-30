@@ -55,7 +55,7 @@
   "identifier": "C020600B3-MT-C1",
   "isPartOf": {
     "@id": "https://bbp.epfl.ch/neurosciencegraph/data/ce20248a-19cd-43b4-8d47-2c6bacff85d4",
-    "@type": "ExperimentalTrace"
+    "@type": "SimulationTrace"
   },
   "name": "C020600B3-MT-C1",
   "note": "NMC SSCx",
