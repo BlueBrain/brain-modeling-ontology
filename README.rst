@@ -8,3 +8,27 @@ both in `staging <https://staging.nise.bbp.epfl.ch/nexus/studios/neurosciencegra
 
 The ontologies are managed from WebProtege and added (currently manually by DKE) in this repository for synchronization and release in the knowledge graph.
 
+
+Install
+====
+
+This repository can be installed directly from the setup.py file:
+
+- git clone https://github.com/BlueBrain/brain-modeling-ontology.git
+- pip install brain-modeling-ontology
+
+
+Examples
+====
+
+The description of ontologies and schemas is available at https://bmo-docs.kcp.bbp.epfl.ch/guides.html
+
+
+Funding & Acknowledgment
+====
+
+The development of this software was supported by funding to the Blue Brain Project, a
+research center of the École polytechnique fédérale de Lausanne (EPFL), from the Swiss
+government’s ETH Board of the Swiss Federal Institutes of Technology.
+
+Copyright © 2021-2024 Blue Brain Project/EPFL
