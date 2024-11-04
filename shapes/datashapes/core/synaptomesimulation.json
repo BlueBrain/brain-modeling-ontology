@@ -17,6 +17,12 @@
                 "minCount": 1
             },
             {
+              "description": "Agents that generated the Synaptome Simulation entity.",
+              "name": "Contribution",
+              "path": "nsg:contribution",
+              "minCount": 1
+            },
+            {
                 "name": "Distribution object",
                 "path": "schema:distribution"
             },

@@ -15,8 +15,14 @@
             {
                 "path": "prov:used",
                 "nodeKind": "sh:IRI",
-                "class": "nsg:EModel",
+                "class": "bmo:ModelNeuron",
                 "minCount": 1
+            },
+            {
+              "description": "Agents that generated the Simulation.",
+              "name": "Contribution",
+              "path": "nsg:contribution",
+              "minCount": 1
             },
             {
                 "path": "nsg:recordingLocation",

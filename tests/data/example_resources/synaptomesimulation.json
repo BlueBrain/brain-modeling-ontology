@@ -9,6 +9,17 @@
         "label": "Primary somatosensory area"
       }
     },
+    "contribution": {
+    "@type": "Contribution",
+      "agent": {
+        "@id": "https://bbp.epfl.ch/nexus/v1/realms/bbp/group/bbp-ou-cells",
+        "@type": [
+          "Agent",
+          "OrganizationalUnit"
+        ],
+        "name": "Cells Team"
+      }
+    },
     "description": "Synaptome simulation example.",
     "distribution": {
       "@type": "DataDownload",

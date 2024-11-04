@@ -8,20 +8,26 @@
   "@id": "https://neuroshapes.org/dash/memodel",
   "@type": "Schema",
   "imports": [
-    "https://neuroshapes.org/commons/emodel",
+    "https://neuroshapes.org/commons/entity",
     "https://neuroshapes.org/commons/quantitativevalue"
   ],
   "shapes": [
     {
       "@id": "https://neuroshapes.org/dash/memodel/shapes/MEModelShape",
       "@type": "NodeShape",
-      "node": "https://neuroshapes.org/commons/emodel/shapes/EModelShape",
+      "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape",
       "property": [
         {
           "class": "nsg:MEModelRelease",
           "description": "The memodel release this memodel is part of.",
           "name": "Part of",
           "path": "schema:isPartOf"
+        },
+        {
+          "description": "Agents that generated the MEModel.",
+          "name": "Contribution",
+          "path": "nsg:contribution",
+          "minCount": 1
         },
         {
           "description": "The memodel parts: EModel and NeuronMorphology resources.",
@@ -47,12 +53,10 @@
         },
         {
           "path": "nsg:eModel",
-          "minCount": 1,
           "maxCount": 1
         },
         {
           "path": "nsg:mType",
-          "minCount": 1,
           "maxCount": 1
         },
         {

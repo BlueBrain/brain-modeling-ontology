@@ -4,6 +4,17 @@
       "Entity",
       "SingleNeuronSimulation"
     ],
+    "contribution": {
+    "@type": "Contribution",
+      "agent": {
+        "@id": "https://bbp.epfl.ch/nexus/v1/realms/bbp/group/bbp-ou-cells",
+        "@type": [
+          "Agent",
+          "OrganizationalUnit"
+        ],
+        "name": "Cells Team"
+      }
+    },
     "description": "Simulation with IV protocol",
     "distribution": {
       "@type": "DataDownload",
